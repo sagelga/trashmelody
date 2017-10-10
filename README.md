@@ -93,9 +93,15 @@ This game is all about helping the society to be a cleaner place!
 </table>
 
 <hr>
-<p align="center"> This game is a part of a project of Object Oriented Prorgramming (06016211)<br>in Information Technology, King Mongkut Institute of Technology Ladkrabang.<br>@2017 KAVIN, KUNANON, THITIPAT, NATHAN, APICHAYA ALL RIGHTS RESERVED.<br>Everything in this game that is similar to real world is pure coincidence. </p>
+<p align="center"> This game is a part of a project of Object Oriented Prorgramming (06016211)<br>in Information Technology, King Mongkut Institute of Technology Ladkrabang.</p>
+
+<p align="center">@2017 KAVIN, KUNANON, THITIPAT, NATHAN, APICHAYA ALL RIGHTS RESERVED.<br>Everything in this game that is similar to real world is pure coincidence. </p>
 
 <p align="center">Please see <a href="LICENSE.md">Legal Terms</a>for further information about our License</p>
 
-[![](http://forthebadge.com/images/badges/contains-cat-gifs.svg)]()[![](http://forthebadge.com/images/badges/powered-by-electricity.svg)]()[![](http://forthebadge.com/images/badges/built-for-android.svg)]()[![](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)]()
-
+<p align="center">
+<img src="http://forthebadge.com/images/badges/contains-cat-gifs.svg">
+<img src="http://forthebadge.com/images/badges/powered-by-responsibility.svg">
+<img src="http://forthebadge.com/images/badges/built-with-love.svg">
+<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">
+</p>

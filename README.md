@@ -1,7 +1,7 @@
 <h2 align="center">Gonna Trash Them All</h2>
 This game is all about helping the society to be a cleaner place!
 
----
+<hr>
 <h2 align="center">Game Detail</h2>
 เมื่อเหล่าขยะออกอาละวาด แก๊งถังขยะเลยต้องมาจัดการเก็บกวาดให้เรียบ! แก๊งถังขยะประกอบไปด้วยสมาชิกสี่ถัง ได้แก่<br><br>
 บลู - ทำหน้าที่เก็บกวาดขยะทั่วไปที่ย่อยสลายไม่ได้ รีไซเคิลยาก แต่ไม่เป็นพิษ เช่น พลาสติกห่อลูกอม, ถุงพลาสติก,โฟม<br>
@@ -10,41 +10,65 @@ This game is all about helping the society to be a cleaner place!
 เยลโล่ว - มีหน้าที่จัดการขยะรีไซเคิล หรือ ขยะแห้ง เช่น แก้ว กระดาษ โลหะ ขวดน้ำพลาสติก เศษผ้า<br><br>
 โดยรูปแบบเกมคล้ายเกมตีกลองญี่ปุ่น ให้ถังขยะเป็นปุ่มต่างๆ ก่อนเล่นแต่ละด่านจะมีแคตตาล็อกขยะให้ดูก่อนเริ่มเล่นเพื่อจะได้เลือกถูก และเมื่อคะแนนถึงเกณฑ์เพื่อปลดล็อคด่านสูงขึ้นไปเรื่อยๆ ขยะใหม่ๆ ก็จะเพิ่มขึ้นให้จำเพื่อกดให้ถูก โดยจะเก็บแต้มไปเรื่อยๆ จนเพลงจบ ในแคตตาล็อกจะแยกข้อมูลขยะทั้ง 4 ถังและชื่อขยะนั้นๆ
 
----
+<hr>
 <h2 align="center">Before playing</h2>
 
----
+<hr>
 <h2 align="center">How to play</h2>
 
----
+<hr>
 <h2 align="center">Contributors</h2>
 <table style="width:100%">
-	<tr>
-<th>Profile</th></th><th>GitHub Username</th><th>Name</th><th>Team Role</th><th>
+    <tr>
+        <th>Profile</th>
+        <th>GitHub Username</th>
+        <th>Name</th>
+        <th>Team Role</th>
+    </tr>
+
+<tr>
+<td><img src="https://avatars0.githubusercontent.com/u/20960087?s=200"></td>
+<td><a href="https://github.com/kavinvin">@kavinvin</a></td>
+<td>Kavin Rueangprateepsang</td>
+<td>Developer</td>
+
 </tr>
 
 <tr>
-<td></td><td>@kavinvin</td><td>Kavin Rueangprateepsang</td><td>Developer</td><td>
+<td><img src="https://avatars0.githubusercontent.com/u/13056824?s=200"></td>
+<td><a href="https://github.com/sagelga">@sagelga</a></td>
+<td>Kunanon Srisuntiroj</td>
+<td>Developer</td>
+
 </tr>
 
 <tr>
-<td></td><td>@sagelga</td><td>Kunanon Srisuntiroj</td><td>Developer</td><td>
+<td><img src="https://avatars0.githubusercontent.com/u/22119886?s=200"></td>
+<td><a href="https://github.com/ynhof6">@ynhof6</a></td>
+<td>Thitipat Worarat</td>
+<td>Developer</td>
+
 </tr>
 
 <tr>
-<td></td><td></td><td>Thitipat Worarat</td><td>Developer</td><td>
+<td><img src="https://avatars0.githubusercontent.com/u/3814520?s=200"></td>
+<td><a href="https://github.com/DobaKung">@DobaKung</a></td>
+<td>Nathan Yiangsupapaanontr</td>
+<td>Graphic Designer</td>
+
 </tr>
 
 <tr>
-<td></td><td></td><td>Nathan Yiangsupapaanontr</td><td>Graphic Designer</td><td>
-</tr>
+<td><img src="https://avatars0.githubusercontent.com/u/31977194?s=200"></td>
+<td><a href="https://github.com/Yupiiina">@Yupiiina</a></td>
+<td>Apichaya Khumpoh</td>
+<td>Graphic Designer</td>
 
-<tr>
-<td></td><td></td><td>Apichaya Khumpoh</td><td>Graphic Designer</td><td>
 </tr>
 
 </table>
 
+<hr>
 <p align="center"> This game is a part of a project of Object Oriented Prorgramming in Faculty of Information Technology Ladkrabang</p>
 
 

@@ -1,3 +1,31 @@
 <h2 align="center">Gonna Trash Them All</h2>
-
 This game is all about helping the society to be a cleaner place!
+
+---
+<h2 align="center">Game Detail</h2>
+เมื่อเหล่าขยะออกอาละวาด แก๊งถังขยะเลยต้องมาจัดการเก็บกวาดให้เรียบ! แก๊งถังขยะประกอบไปด้วยสมาชิกสี่ถัง ได้แก่
+บลู - ทำหน้าที่เก็บกวาดขยะทั่วไปที่ย่อยสลายไม่ได้ รีไซเคิลยาก แต่ไม่เป็นพิษ เช่น พลาสติกห่อลูกอม, ถุงพลาสติก,โฟม
+กรีน - ทำหน้าที่เก็บกวาดเหล่าขยะที่ย่อยสลายได้ ทำเป็นปุ๋ยได้ หรือ ขยะเปียก เช่น เปลือกผลไม้ เศษอาหาร พืช ใบไม้ เป็นต้น
+เรด - มีหน้าที่ในการจัดการขยะมีพิษต่อสิ่งมีชีวิตและสิ่งแวดล้อม เช่น ขวดยา หลอดไฟ ถ่านไฟฉาย
+เยลโล่ว - มีหน้าที่จัดการขยะรีไซเคิล หรือ ขยะแห้ง เช่น แก้ว กระดาษ โลหะ ขวดน้ำพลาสติก เศษผ้า
+โดยรูปแบบเกมคล้ายเกมตีกลองญี่ปุ่น ให้ถังขยะเป็นปุ่มต่างๆ ก่อนเล่นแต่ละด่านจะมีแคตตาล็อกขยะให้ดูก่อนเริ่มเล่นเพื่อจะได้เลือกถูก และเมื่อคะแนนถึงเกณฑ์เพื่อปลดล็อคด่านสูงขึ้นไปเรื่อยๆ ขยะใหม่ๆ ก็จะเพิ่มขึ้นให้จำเพื่อกดให้ถูก โดยจะเก็บแต้มไปเรื่อยๆ จนเพลงจบ ในแคตตาล็อกจะแยกข้อมูลขยะทั้ง 4 ถังและชื่อขยะนั้นๆ
+
+---
+<h2 align="center">Before playing</h2>
+
+---
+<h2 align="center">How to play</h2>
+
+---
+<h2 align="center">Contributors</h2>
+||GitHub Username|Name|Team Role|
+|:-:|:-:|:-:|:-:|
+||@kavinvin|Kavin Rueangprateepsang|Developer|
+||@sagelga|Kunanon Srisuntiroj|Developer|
+|||Thitipat Worarat|Developer|
+|||Nathan Yiangsupapaanontr|Graphic Designer|
+|||Apichaya Khumpoh|Graphic Designer|
+
+This game is a part of a project of Object Oriented Prorgramming in Faculty of Information Technology Ladkrabang
+
+

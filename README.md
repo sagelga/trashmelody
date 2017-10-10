@@ -51,7 +51,7 @@ This game is all about helping the society to be a cleaner place!
          src="https://avatars0.githubusercontent.com/u/22119886" 
          alt="Profile Photos"></td>
 <td><a href="https://github.com/ynhof6">@ynhof6</a></td>
-<td>Thitipat Worarat</td>
+<td>Thitipat Worrarat</td>
 <td>Developer</td>
 
 </tr>
@@ -63,7 +63,7 @@ This game is all about helping the society to be a cleaner place!
          alt="Profile Photos"></td>
 <td><a href="https://github.com/DobaKung">@DobaKung</a></td>
 <td>Nathan Yiangsupapaanontr</td>
-<td>Graphic Designer</td>
+<td>Developer</td>
 
 </tr>
 

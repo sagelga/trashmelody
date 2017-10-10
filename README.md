@@ -20,16 +20,21 @@ This game is all about helping the society to be a cleaner place!
 <h2 align="center">Contributors</h2>
 <table style="width:100%">
     <tr>
-        <th>Profile</th>
+        <th></th>
         <th>GitHub Username</th>
         <th>Name</th>
+        <th>Student ID</th>
         <th>Team Role</th>
     </tr>
 
 <tr>
-<td><img height="100px" width="100px" src="https://avatars0.githubusercontent.com/u/20960087" alt="Profile Photos"></td>
+<td><img height="100px" 
+         width="100px" 
+         src="https://avatars0.githubusercontent.com/u/20960087" 
+         alt="Profile Photos"></td>
 <td><a href="https://github.com/kavinvin">@kavinvin</a></td>
 <td>Kavin Rueangprateepsang</td>
+<td>59070009</td>
 <td>Developer</td>
 
 </tr>
@@ -41,6 +46,7 @@ This game is all about helping the society to be a cleaner place!
          alt="Profile Photos"></td>
 <td><a href="https://github.com/sagelga">@sagelga</a></td>
 <td>Kunanon Srisuntiroj</td>
+<td>59070022</td>
 <td>Developer</td>
 
 </tr>
@@ -49,9 +55,11 @@ This game is all about helping the society to be a cleaner place!
 <td><img height="100px" 
          width="100px" 
          src="https://avatars0.githubusercontent.com/u/22119886" 
-         alt="Profile Photos"></td>
+         alt="Profile Photos">
+</td>
 <td><a href="https://github.com/ynhof6">@ynhof6</a></td>
 <td>Thitipat Worrarat</td>
+<td>59070043</td>
 <td>Developer</td>
 
 </tr>
@@ -60,9 +68,11 @@ This game is all about helping the society to be a cleaner place!
 <td><img height="100px" 
          width="100px" 
          src="https://avatars0.githubusercontent.com/u/3814520" 
-         alt="Profile Photos"></td>
-<td><a href="https://github.com/DobaKung">@DobaKung</a></td>
+         alt="Profile Photos">
+</td>
+<td><a href="https://github.com/DobaKung">@dobakung</a></td>
 <td>Nathan Yiangsupapaanontr</td>
+<td>59070087</td>
 <td>Developer</td>
 
 </tr>
@@ -71,9 +81,11 @@ This game is all about helping the society to be a cleaner place!
 <td><img height="100px" 
          width="100px" 
          src="https://avatars0.githubusercontent.com/u/31977194" 
-         alt="Profile Photos"></td>
-<td><a href="https://github.com/Yupiiina">@Yupiiina</a></td>
+         alt="Profile Photos">
+</td>
+<td><a href="https://github.com/Yupiiina">@yupiiina</a></td>
 <td>Apichaya Khumpoh</td>
+<td>59070186</td>
 <td>Graphic Designer</td>
 
 </tr>
@@ -81,6 +93,8 @@ This game is all about helping the society to be a cleaner place!
 </table>
 
 <hr>
-<p align="center"> This game is a part of a project of Object Oriented Prorgramming in Faculty of Information Technology Ladkrabang</p>
+<p align="center"> This game is a part of a project of Object Oriented Prorgramming (06016211) in Information Technology, King Mongkut Institute of Technology Ladkrabang<br>@2017 Kunanon Srisuntiroj and teams ALL RIGHTS RESERVED. Everything in this game that is similar to real world is pure coincidence. </p>
+
+<p>Please see <a href="LICENSE.md">Legal Terms</a>for more information about Apache License</p>
 
 

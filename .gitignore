@@ -8,3 +8,7 @@ Thumbs.db
 # General
 log/
 *.log
+
+# Gradle build
+build/
+.gradle/

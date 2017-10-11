@@ -1,2 +1,10 @@
+# OS Stupid Extensions
+.DS_Store
+Thumbs.db
 
-\.DS_Store
+# JetBrains Extensions
+.idea/
+
+# General
+log/
+*.log

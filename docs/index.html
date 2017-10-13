@@ -104,7 +104,7 @@
     </tr>
 
 <tr>
-<td></td>
+<td><img src="https://travis-ci.com/sagelga/OOP_Project.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
  <td></td>
  </tr>
     

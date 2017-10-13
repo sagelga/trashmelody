@@ -1,14 +1,51 @@
-# OS Stupid Extensions
+## Java
 .DS_Store
-Thumbs.db
+*.class
+*.war
+*.ear
+hs_err_pid*
 
-# JetBrains Extensions
+## GWT
+gen/
+war/
+war/gwt_bree/
+gwt-unitCache/
+.apt_generated/
+war/WEB-INF/deploy/
+war/WEB-INF/classes/
+.gwt/
+www-test/
+.gwt-tmp/
+
+## Android Studio and Intellij
+libs/armeabi/
+libs/armeabi-v7a/
+libs/x86/
 .idea/
+*.ipr
+*.iws
+out/
+com_crashlytics_export_strings.xml
+android/libs
 
-# General
-log/
-*.log
+## Eclipse
 
-# Gradle build
+.metadata
+bin/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.externalToolBuilders/
+
+## Gradle
+versions.json
+.gradle
 build/
-.gradle/
+
+## General
+log/*
+*.log

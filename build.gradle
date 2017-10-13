@@ -1,14 +1,71 @@
-group 'com.OOP_Project'
-version '1.0'
+import groovy.json.JsonSlurper
 
-apply plugin: 'java'
+buildscript {
 
-sourceCompatibility = 1.8
+    ant.get(src: 'http://libgdx.badlogicgames.com/libgdx-site/service/getVersions?release=false', dest: 'versions.json')
+    def versionFile = file('versions.json')
+    def json
+    if (versionFile.exists()) {
+        json = new JsonSlurper().parseText(versionFile.text)
+    } else throw new GradleException("Unable to retrieve latest versions, please check your internet connection")
 
-repositories {
-    mavenCentral()
+    ext {
+        gdxVersion = json.libgdxSnapshot
+        roboVMVersion = json.robovmVersion
+        roboVMGradleVersion = json.robovmPluginVersion
+        androidToolsVersion = json.androidBuildtoolsVersion
+        androidSDKVersion = json.androidSDKVersion
+        androidGradleToolsVersion = json.androidGradleToolVersion
+        gwtVersion = json.gwtVersion
+        gwtGradleVersion = json.gwtPluginVersion
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    dependencies {
+        classpath "de.richsource.gradle.plugins:gwt-gradle-plugin:$gwtGradleVersion"
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$roboVMGradleVersion"
+    }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+allprojects {
+    apply plugin: "idea"
+
+    group 'com.trashmelody'
+    version '0.0.1'
+
+    ext {
+        appName = "trashmelody"
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
 }
+
+project(":core") {
+    apply plugin: "java"
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+}
+
+

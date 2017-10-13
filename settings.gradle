@@ -1,2 +1,2 @@
-rootProject.name = 'libgdxtutorial'
+rootProject.name = "trashmelody"
 include "core", "desktop"

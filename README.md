@@ -1,4 +1,4 @@
-<h2 align="center">Gonna Trash Them All</h2>
+<h2 align="center">Trash Melody</h2>
 เมื่อเหล่าขยะออกอาละวาด แก๊งถังขยะเลยต้องมาจัดการเก็บกวาดให้เรียบ! แก๊งถังขยะประกอบไปด้วยสมาชิกสี่ถัง ได้แก่<br><br>
 บลู - ทำหน้าที่เก็บกวาดขยะทั่วไปที่ย่อยสลายไม่ได้ รีไซเคิลยาก แต่ไม่เป็นพิษ เช่น พลาสติกห่อลูกอม, ถุงพลาสติก,โฟม<br>
 กรีน - ทำหน้าที่เก็บกวาดเหล่าขยะที่ย่อยสลายได้ ทำเป็นปุ๋ยได้ หรือ ขยะเปียก เช่น เปลือกผลไม้ เศษอาหาร พืช ใบไม้ เป็นต้น<br>
@@ -29,7 +29,7 @@
              src="https://avatars0.githubusercontent.com/u/20960087" 
              alt="Profile Photos"></td>
     <td><a href="https://github.com/kavinvin">@kavinvin</a></td>
-    <td>Kavin Rueangprateepsang</td>
+    <td>Kavin<br>Rueangprateepsang</td>
     <td>59070009</td>
     <td>Developer</td>
 </tr>
@@ -40,7 +40,7 @@
              src="https://avatars0.githubusercontent.com/u/13056824" 
              alt="Profile Photos"></td>
     <td><a href="https://github.com/sagelga">@sagelga</a></td>
-    <td>Kunanon Srisuntiroj</td>
+    <td>Kunanon<br>Srisuntiroj</td>
     <td>59070022</td>
     <td>Developer</td>
 </tr>
@@ -51,7 +51,7 @@
              src="https://avatars0.githubusercontent.com/u/22119886" 
              alt="Profile Photos"></td>
     <td><a href="https://github.com/ynhof6">@ynhof6</a></td>
-    <td>Thitipat Worrarat</td>
+    <td>Thitipat<br>Worrarat</td>
     <td>59070043</td>
     <td>Developer</td>
 </tr>
@@ -62,7 +62,7 @@
          src="https://avatars0.githubusercontent.com/u/3814520" 
          alt="Profile Photos"></td>
     <td><a href="https://github.com/DobaKung">@dobakung</a></td>
-    <td>Nathan Yiangsupapaanontr</td>
+    <td>Nathan<br>Yiangsupapaanontr</td>
     <td>59070087</td>
     <td>Developer</td>
 </tr>
@@ -73,7 +73,7 @@
          src="https://avatars0.githubusercontent.com/u/31977194" 
          alt="Profile Photos"></td>
     <td><a href="https://github.com/Yupiiina">@yupiiina</a></td>
-    <td>Apichaya Khumpoh</td>
+    <td>Apichaya<br>Khumpoh</td>
     <td>59070186</td>
     <td>Graphic Designer</td>
 </tr>
@@ -91,7 +91,6 @@
 <img src="http://forthebadge.com/images/badges/contains-cat-gifs.svg">
 <img src="http://forthebadge.com/images/badges/powered-by-responsibility.svg">
 <img src="http://forthebadge.com/images/badges/built-with-love.svg">
-<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">
 </p>
 
 <h2 align="center">Development Test Check</h2>
@@ -100,12 +99,14 @@
 <table style="width: 100%">
     <tr>
         <th><img height="25px" src="https://travis-ci.org/images/logos/TravisCI-Mascot-1.png">Build Test</th>
-        <th><img height="25px" src="https://pbs.twimg.com/profile_images/796423844663853056/WsR0OEAZ.jpg">Quality Test</th>
+        <th><img height="25px" src="https://avatars2.githubusercontent.com/u/789641?s=200&v=4">Quality Test</th>
     </tr>
 
 <tr>
 <td><img src="https://travis-ci.com/sagelga/OOP_Project.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
- <td></td>
+ <td><img src="https://api.codeclimate.com/v1/badges/abe983b04066d4e4786c/maintainability" /><br><img src="https://api.codeclimate.com/v1/badges/abe983b04066d4e4786c/test_coverage" /></td>
  </tr>
     
 </table>
+
+<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">

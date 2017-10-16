@@ -103,8 +103,8 @@
     </tr>
 
 <tr>
-<td><img src="https://travis-ci.com/sagelga/OOP_Project.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
- <td><img src="https://api.codeclimate.com/v1/badges/abe983b04066d4e4786c/maintainability" /><br><img src="https://api.codeclimate.com/v1/badges/abe983b04066d4e4786c/test_coverage" /></td>
+<td><img src="https://travis-ci.com/sagelga/trashmelody.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
+ <td><img src="https://api.codeclimate.com/v1/badges/e6b18d3432bbe3cf2b48/maintainability"/><br><img src="hhttps://api.codeclimate.com/v1/badges/e6b18d3432bbe3cf2b48/test_coverage"/></td>
  </tr>
     
 </table>

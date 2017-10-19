@@ -1,4 +1,4 @@
-image: java:8-jdk
+image: java:1.8.0-jdk
 
 stages:
   - build

@@ -98,13 +98,12 @@
 
 <table style="width: 100%">
     <tr>
-        <th><img height="25px" src="https://travis-ci.org/images/logos/TravisCI-Mascot-1.png">Build Test</th>
-        <th><img height="25px" src="https://avatars2.githubusercontent.com/u/789641?s=200&v=4">Quality Test</th>
+        <th>Build Test</th>
+        
     </tr>
 
 <tr>
 <td><img src="https://travis-ci.com/sagelga/trashmelody.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
- <td><img src="https://api.codeclimate.com/v1/badges/e6b18d3432bbe3cf2b48/maintainability"/><br><img src="hhttps://api.codeclimate.com/v1/badges/e6b18d3432bbe3cf2b48/test_coverage"/></td>
  </tr>
     
 </table>

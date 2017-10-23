@@ -10,7 +10,14 @@ before_script:
 #  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
 #  - export GRADLE_USER_HOME=`pwd`/.gradle
 
-build:
+java-tester:
+  stage: build
+  script: 
+    - java --version
+    - echo $JAVA_HOME
+    - gradle --version
+
+game-build:
   stage: build
   script:
     - ./gradlew check
@@ -19,11 +26,13 @@ build:
     paths:
       - build/libs/*.jar
     expire_in: 1 week
-  only:
-    - master
-    - ./gradlew dist
+#  only:
+#    - master
+#    - develop
+#    - repository
+#    - ./gradlew dist
 
-test:
+game-test:
   stage: test
   script:
     - ./gradlew run

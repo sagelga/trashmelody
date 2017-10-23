@@ -13,9 +13,9 @@ before_script:
 version-checker:
   stage: build
   script: 
-    - java --version
+    - java -version
     - echo $JAVA_HOME
-    - gradle --version
+    - gradle -version
 
 dependency-checker:
   stage: build

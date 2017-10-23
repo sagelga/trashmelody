@@ -1,5 +1,4 @@
-
-image: java:8-jdk
+image: java:1.8.0-jdk
 
 stages:
   - build
@@ -21,6 +20,7 @@ build:
     expire_in: 1 week
   only:
     - master
+    - ./gradlew dist
 
 test:
   stage: test

@@ -14,34 +14,51 @@ before_script:
 version-checker:
   stage: check
   script:
+    # Checking Java version + Directories
     - java -version
     - echo $JAVA_HOME
+
+    # Checking Gradle version
     - gradle -version
-  retry: 2
+  retry: 1
 
 dependency-checker:
   stage: check
   script:
+    # Gradle check for correct dependency imports
     - gradle check
+
+gradle-tasks:
+  stage: check
+  script:
+    # Gives out lists of Gradle Tasks
+    - gradle -q tasks
+
+gradle-clean:
+  stage: check
+  script:
+    # Deletes previous build cache
+    - gradle clean
 
 build-game:
   stage: build
   script:
+    # Pretty much like compiling the files
     - gradle assemble
 
 run-game:
   stage: test
   script:
+    # Do gradle check and gradle assemble
     - gradle run
 
-make-jar:
-  stage: export
-  script:
-    - gradle clean
-    - gradle fatJar
-  artifacts:
-    paths:
-      - $project/build/libs/
-    expire_in: 5 day
-  allow_failure: true
-  retry: 2
+#export-game:
+#  stage: export
+#  script:
+#    - gradle fatJar
+#  artifacts:
+#    paths:
+#      - $project/build/libs/
+#    expire_in: 5 day
+#  allow_failure: true
+#  retry: 1

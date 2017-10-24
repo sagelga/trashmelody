@@ -13,6 +13,24 @@
 <h2 align="center">How to play</h2>
 
 <hr>
+<h2 align="center">Development Test Check</h2>
+<p align="center">Test Check is run with every commit. CI is Ubuntu Linux in AWS Server.</p>
+<table style="width: 100%">
+
+<tr>
+<th>Build Test (Master)</th>
+<th>Build Test (Development)</th>
+</tr>
+
+<tr>
+<td><a href="http://git.nyancode.io/z/trashmelody/commits/master"><img alt="pipeline status" src="http://git.nyancode.io/z/trashmelody/badges/master/pipeline.svg" /></a></td>
+<td><a href="http://git.nyancode.io/z/trashmelody/commits/develop"><img alt="pipeline status" src="http://git.nyancode.io/z/trashmelody/badges/develop/pipeline.svg" /></a></td>
+</tr>
+    
+</table>
+
+<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">
+<hr>
 <h2 align="center">Contributors</h2>
 <table style="width:100%">
     <tr>
@@ -92,20 +110,3 @@
 <img src="http://forthebadge.com/images/badges/powered-by-responsibility.svg">
 <img src="http://forthebadge.com/images/badges/built-with-love.svg">
 </p>
-
-<h2 align="center">Development Test Check</h2>
-<p align="center">All test check are constantly checked. You may click on them to learn more.</p>
-
-<table style="width: 100%">
-    <tr>
-        <th>Build Test</th>
-        
-    </tr>
-
-<tr>
-<td><img src="https://travis-ci.com/sagelga/trashmelody.svg?token=hxfRmfpCpbnunWcyMpkC&branch=master"></td>
- </tr>
-    
-</table>
-
-<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">

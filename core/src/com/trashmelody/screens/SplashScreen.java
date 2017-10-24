@@ -1,14 +1,14 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.Assets;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
+
+import static com.trashmelody.Utils.clearScreen;
+import static com.trashmelody.Utils.drawCenter;
 
 public class SplashScreen extends ScreenAdapter {
     private SpriteBatch batch;
@@ -23,11 +23,10 @@ public class SplashScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        clearScreen();
 
         batch.begin();
-        Utils.drawCenter(batch, splashScreenLogo, 500F, 286F);
+        drawCenter(batch, splashScreenLogo, 500F, 286F);
         batch.end();
     }
 }

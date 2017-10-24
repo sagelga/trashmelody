@@ -1,7 +1,6 @@
 package com.trashmelody;
 
 
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Binder;
 import com.google.inject.Module;

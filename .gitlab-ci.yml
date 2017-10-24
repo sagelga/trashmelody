@@ -11,7 +11,7 @@ before_script:
 #  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
 #  - export GRADLE_USER_HOME=`pwd`/.gradle
 
-version checker:
+version-checker:
   stage: check
   script:
     - java -version
@@ -19,7 +19,7 @@ version checker:
     - gradle -version
   retry: 2
 
-dependency checker:
+dependency-checker:
   stage: check
   script:
     - gradle check
@@ -29,19 +29,19 @@ build-game:
   script:
     - gradle assemble
 
-run game:
+run-game:
   stage: test
   script:
     - gradle run
 
-make jar:
+make-jar:
   stage: export
   script:
     - gradle clean
     - gradle fatJar
-    artifacts:
-        paths:
-        - $project/build/libs/
-        expire_in: 5 day
+  artifacts:
+    paths:
+      - $project/build/libs/
+    expire_in: 5 day
   allow_failure: true
   retry: 2

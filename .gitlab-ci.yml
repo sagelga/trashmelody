@@ -1,28 +1,64 @@
 image: java:1.8.0-jdk
 
 stages:
+  - check
   - build
   - test
-  - deploy
+  - export
 
 before_script:
 #  - echo `pwd` # debug
 #  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
-  - export GRADLE_USER_HOME=`pwd`/.gradle
+#  - export GRADLE_USER_HOME=`pwd`/.gradle
 
-build:
+version-checker:
+  stage: check
+  script:
+    # Checking Java version + Directories
+    - java -version
+    - echo $JAVA_HOME
+
+    # Checking Gradle version
+    - gradle -version
+  retry: 1
+
+dependency-checker:
+  stage: check
+  script:
+    # Gradle check for correct dependency imports
+    - gradle check
+
+gradle-tasks:
+  stage: check
+  script:
+    # Gives out lists of Gradle Tasks
+    - gradle -q tasks
+
+gradle-clean:
+  stage: check
+  script:
+    # Deletes previous build cache
+    - gradle clean
+
+build-game:
   stage: build
   script:
-    - ./gradlew assemble
-  artifacts:
-    paths:
-      - build/libs/*.jar
-    expire_in: 1 week
-  only:
-    - master
-    - ./gradlew dist
+    # Pretty much like compiling the files
+    - gradle assemble
 
-test:
+run-game:
   stage: test
   script:
-    - ./gradlew check
+    # Do gradle check and gradle assemble
+    - gradle run
+
+#export-game:
+#  stage: export
+#  script:
+#    - gradle fatJar
+#  artifacts:
+#    paths:
+#      - $project/build/libs/
+#    expire_in: 5 day
+#  allow_failure: true
+#  retry: 1

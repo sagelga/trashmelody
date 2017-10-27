@@ -18,7 +18,7 @@ java-version:
     # Checking Java version + Directories
     - java -version
     - readlink -f $(which java)
-    retry: 1
+  retry: 1
 
 gradle-version:
   stage: prepare

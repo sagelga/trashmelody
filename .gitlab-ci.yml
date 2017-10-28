@@ -13,6 +13,8 @@ java-version:
     - java -version
     - readlink -f $(which java)
   retry: 1
+  except:
+    - schedules
 
 gradle-version:
   stage: prepare
@@ -20,6 +22,8 @@ gradle-version:
     # Checking Gradle version
     - gradle -version
   retry: 1
+  except:
+    - schedules
 
 gradle-check:
   stage: check
@@ -44,9 +48,17 @@ build-game:
   script:
     # Pretty much like compiling the files
     - gradle assemble
+  only:
+    - repository
+    - develop
+    - master
 
 run-game:
   stage: test
   script:
     # Do gradle check and gradle assemble
     - gradle run
+  only:
+    - repository
+    - develop
+    - master

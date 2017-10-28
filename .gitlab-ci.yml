@@ -5,6 +5,7 @@ stages:
   - check
   - build
   - test
+  - export
 
 java-version:
   stage: prepare
@@ -83,4 +84,4 @@ export-game:
   artifacts:
     paths:
       - build/*.jar
-  expire_in: 1 week
+    expire_in: 1 week

@@ -2,21 +2,26 @@ package com.trashmelody;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.google.inject.Binder;
-import com.google.inject.Module;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
+import com.google.inject.*;
+import com.trashmelody.screens.MenuScreen;
+import com.trashmelody.screens.SplashScreen;
 
 public class GameModule implements Module {
-    private TrashMelody trashMelody;
+    private TrashMelody game;
 
     GameModule(TrashMelody trashMelody) {
-        this.trashMelody = trashMelody;
+        this.game = trashMelody;
     }
 
     @Override
     public void configure(Binder binder) {
-        binder.bind(SpriteBatch.class).toInstance(trashMelody.batch);
+        binder.bind(TrashMelody.class).toInstance(game);
+    }
+
+    @Provides
+    @Singleton
+    public SplashScreen provideSplashScreen(Assets assets) {
+        return new SplashScreen(game, assets, new MenuScreen(game));
     }
 
     @Provides

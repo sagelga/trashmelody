@@ -15,8 +15,9 @@ public class Assets {
     }
 
     public Texture getSplashScreenLogo() {
-        return assetManager.get("splash-logo.png", Texture.class);
+        return assetManager.get("splash-logo.png", TEXTURE);
     }
 
-    private static Class<TextureAtlas> TEXTURE_ATLAS = TextureAtlas.class;
+    private static Class<Texture> TEXTURE = Texture.class;
+
 }

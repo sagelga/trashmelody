@@ -14,8 +14,6 @@ java-version:
     - java -version
     - readlink -f $(which java)
   retry: 1
-  except:
-    - schedules
 
 gradle-version:
   stage: prepare
@@ -23,8 +21,6 @@ gradle-version:
     # Checking Gradle version
     - gradle -version
   retry: 1
-  except:
-    - schedules
 
 set-paths:
   stage: prepare

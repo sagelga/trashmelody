@@ -7,10 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Utils {
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
-        float viewportWidth = Gdx.graphics.getWidth();
-        float viewportHeight = Gdx.graphics.getHeight();
-        float horizontalCenter = (viewportWidth - width) / 2F;
-        float verticalCenter = (viewportHeight - height) / 2F;
+        float horizontalCenter = (getViewportWidth() - width) / 2F;
+        float verticalCenter = (getViewportHeight() - height) / 2F;
 
         batch.draw(texture, horizontalCenter, verticalCenter, width, height);
     }
@@ -18,5 +16,13 @@ public class Utils {
     public static void clearScreen() {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
+
+    public static float getViewportWidth() {
+        return Gdx.graphics.getWidth();
+    }
+
+    public static float getViewportHeight() {
+        return Gdx.graphics.getHeight();
     }
 }

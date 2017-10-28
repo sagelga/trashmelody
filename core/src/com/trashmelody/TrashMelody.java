@@ -14,11 +14,12 @@ public class TrashMelody extends Game {
 	public BitmapFont font;
 
 	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 
 		Injector injector = Guice.createInjector(new GameModule(this));
+
 		setScreen(injector.getInstance(SplashScreen.class));
 	}
 

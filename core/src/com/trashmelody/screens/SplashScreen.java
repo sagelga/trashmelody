@@ -23,8 +23,7 @@ public class SplashScreen extends ScreenAdapter {
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
-
-        splashScreenLogo = assets.getSplashScreenLogo();
+        this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 
     @Override

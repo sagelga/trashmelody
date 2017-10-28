@@ -5,7 +5,6 @@ stages:
   - check
   - build
   - test
-  - export
 
 java-version:
   stage: prepare
@@ -68,16 +67,3 @@ run-game:
     - develop
     - master
     - /^feature.*$/
-
-export-game:
-  stage: export
-  script:
-    # Export all files to .jar & make archive
-    - gradle fatJar
-  only:
-    - repository
-    - master
-  artifacts:
-    paths:
-      - build/*.jar
-    expire_in: 1 week

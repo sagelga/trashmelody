@@ -25,6 +25,15 @@ gradle-version:
   except:
     - schedules
 
+set-paths:
+  stage: prepare
+  script:
+    - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
+    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+    - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin
+  only:
+    - web
+
 gradle-check:
   stage: check
   script:
@@ -49,9 +58,9 @@ build-game:
     # Pretty much like compiling the files
     - gradle assemble
   only:
-    - repository
     - develop
     - master
+    - /^feature.*$/
 
 run-game:
   stage: test
@@ -59,6 +68,19 @@ run-game:
     # Do gradle check and gradle assemble
     - gradle run
   only:
-    - repository
     - develop
     - master
+    - /^feature.*$/
+
+export-game:
+  stage: export
+  script:
+    # Export all files to .jar & make archive
+    - gradle fatJar
+  only:
+    - repository
+    - master
+  artifacts:
+    paths:
+      - build/*.jar
+  expire_in: 1 week

@@ -5,12 +5,6 @@ stages:
   - check
   - build
   - test
-# - export
-
-before_script:
-#  - echo `pwd` # debug
-#  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
-  - export GRADLE_USER_HOME=`pwd`/.gradle
 
 java-version:
   stage: prepare
@@ -56,14 +50,3 @@ run-game:
   script:
     # Do gradle check and gradle assemble
     - gradle run
-
-#export-game:
-#  stage: export
-#  script:
-#    - gradle fatJar
-#  artifacts:
-#    paths:
-#      - $project/build/libs/
-#    expire_in: 5 day
-#  allow_failure: true
-#  retry: 1

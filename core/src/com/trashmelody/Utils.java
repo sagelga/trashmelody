@@ -1,6 +1,7 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -24,5 +25,9 @@ public class Utils {
 
     public static float getViewportHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    public static boolean userPressSkip(){
+        return GDX.input.isTouched() || Gdx.input.isButtonPressed(Input.Keys.ENTER);
     }
 }

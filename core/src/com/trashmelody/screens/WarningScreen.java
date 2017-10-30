@@ -34,21 +34,27 @@ public class WarningScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        clearScreen(253,249,255,1);
+        clearScreen(253,243,255,1);
 
-        if (count >= 300) {
+        if (count >= 1000) {
             game.setScreen(menuScreen);
         }
-        if(userSkipScene()){
+        if(userSkipScene() && count > 500){
             // Speed up the delay time with SkipScene()
             count += 100;
         }
-        count++;
+        count += 5;
 
+        // Start loading assets
         game.batch.begin();
         drawCenterX(game.batch, warningScreenLogo, 180F, 237F, 500F);
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
+
+        // Debug zone
         game.font.draw(game.batch, "Warning Screen", 30, 40);
+        game.font.draw(game.batch, (count/10) + "%",150,40); // Showing delay progress
+        // Debug zone
+
         game.batch.end();
     }
 

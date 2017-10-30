@@ -22,14 +22,14 @@ public class GameModule implements Module {
     @Provides
     @Singleton
     public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
-                                            WarningScreen warningScreen) {
-        return new SplashScreen(game, assets, new MenuScreen(game), settingsScreen, warningScreen);
+                                            WarningScreen warningScreen, MenuScreen menuScreen) {
+        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen);
     }
 
     @Provides
     @Singleton
-    public WarningScreen provideWarningScreen(Assets assets) {
-        return new WarningScreen(game, assets, new MenuScreen(game));
+    public WarningScreen provideWarningScreen(MenuScreen menuScreen, Assets assets) {
+        return new WarningScreen(game, assets, menuScreen);
     }
 
     @Provides

@@ -16,6 +16,12 @@ public class Utils {
         batch.draw(texture, horizontalCenter, verticalCenter, width, height);
     }
 
+    public static void drawCenterX(Batch batch, Texture texture, float width, float height, float posY) {
+        float horizontalCenter = (getViewportWidth() - width) / 2F;
+
+        batch.draw(texture, horizontalCenter, posY, width, height);
+    }
+
     public static void clearScreen() {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

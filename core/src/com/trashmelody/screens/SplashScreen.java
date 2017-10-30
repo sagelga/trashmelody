@@ -21,15 +21,17 @@ public class SplashScreen extends ScreenAdapter {
     private Texture splashScreenLogo;
     private SettingsScreen settingsScreen;
     private MenuScreen menuScreen;
+    private NameScreen nameScreen;
     private int count;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                        SettingsScreen settingsScreen, WarningScreen warningScreen) {
+                        SettingsScreen settingsScreen, WarningScreen warningScreen,NameScreen nameScreen) {
         this.game = game;
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
+        this.nameScreen = nameScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 
@@ -50,6 +52,10 @@ public class SplashScreen extends ScreenAdapter {
             count += 100;
         }
         count++;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
+            game.setScreen(nameScreen);
+        }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             game.setScreen(menuScreen);

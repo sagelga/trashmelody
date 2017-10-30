@@ -2,31 +2,30 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
 
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenterX;
 
-public class MenuScreen extends ScreenAdapter {
+public class NameScreen extends ScreenAdapter {
     private TrashMelody game;
-    private Texture splashScreenLogo;
-    private Texture btnStart, btnCollection, btnSetting, btnExit;
-    private float vh = Utils.getViewportHeight();
+    private Texture splashScreenLogo, nameScreenBG, nameScreenEnterBox, nameScreenEnterName, nameScreenCloud,
+            nameScreenBorderLeft, nameScreenBorderRight;
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets) {
+    public NameScreen(TrashMelody game, Assets assets) {
         this.game = game;
         this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.btnStart = assets.getMenuScreenAssets("btnStart");
-        this.btnCollection = assets.getMenuScreenAssets("btnCollection");
-        this.btnSetting = assets.getMenuScreenAssets("btnSetting");
-        this.btnExit = assets.getMenuScreenAssets("btnExit");
+        this.nameScreenBG = assets.getNameScreenBG();
+        this.nameScreenEnterBox = assets.getNameScreenEnterBox();
+        this.nameScreenEnterName = assets.getNameScreenEnterName();
+        this.nameScreenCloud = assets.getNameScreenCloud();
+        this.nameScreenBorderLeft = assets.getNameScreenBorder();
+        this.nameScreenBorderRight = assets.getNameScreenBorder();
     }
 
     @Override
@@ -34,12 +33,12 @@ public class MenuScreen extends ScreenAdapter {
         clearScreen();
 
         game.batch.begin();
-        drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
-        drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        game.font.draw(game.batch, "Menu Screen", 30, 40);
+        drawCenterX(game.batch, nameScreenBG, 1000F, 600F, 0F);
+        drawCenterX(game.batch, splashScreenLogo, 325F, 193F, 275F);
+        drawCenterX(game.batch, nameScreenEnterBox, 300F, 35F, 215F);
+        drawCenterX(game.batch, nameScreenEnterName, 200F, 35F, 170F);
+        drawCenterX(game.batch, nameScreenCloud, 750F, 300F, 160F);
+        game.font.draw(game.batch, "Name Screen", 30, 40);
         game.batch.end();
     }
 

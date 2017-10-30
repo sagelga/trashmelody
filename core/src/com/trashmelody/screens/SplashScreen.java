@@ -42,26 +42,32 @@ public class SplashScreen extends ScreenAdapter {
         }
         /* NOTE : isTouched() will be triggered once. Holding the screen will trigger this once.
            justTouched() can be triggered multiple times  Holding the screen will also triggers */
-        if (count >= 500) {
+        if (count >= 1000) {
             game.setScreen(warningScreen);
         }
-        if (userSkipScene()) {
+        if (userSkipScene() && count > 500) {
             // Speed up the delay time with SkipScene()
             count += 100;
         }
-        count++;
+        count += 10;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) { // For speeding up development
             game.setScreen(menuScreen);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) { // For speeding up development
             game.setScreen(settingsScreen);
         }
 
+        // Start loading assets
         game.batch.begin();
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
+
+        // Debug zone
         game.font.draw(game.batch, "Splash Screen", 30, 40);
+        game.font.draw(game.batch, (count/10) + "%",150,40); // Showing delay progress
+        // Debug zone
+
         game.batch.end();
     }
 }

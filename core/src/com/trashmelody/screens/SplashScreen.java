@@ -13,26 +13,43 @@ import javax.inject.Inject;
 
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenter;
-import static io.vavr.API.println;
+import static com.trashmelody.Utils.userSkipScene;
 
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
-    private MenuScreen menuScreen;
+    private WarningScreen warningScreen;
     private Texture splashScreenLogo;
     private SettingsScreen settingsScreen;
+    private MenuScreen menuScreen;
+    private int count;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                        SettingsScreen settingsScreen) {
+                        SettingsScreen settingsScreen, WarningScreen warningScreen) {
         this.game = game;
+        this.warningScreen = warningScreen;
+        this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.settingsScreen = settingsScreen;
     }
 
     @Override
     public void render(float delta) {
         clearScreen();
+
+        if (Gdx.input.justTouched()) {
+            game.setScreen(warningScreen);
+        }
+        /* NOTE : isTouched() will be triggered once. Holding the screen will trigger this once.
+           justTouched() can be triggered multiple times  Holding the screen will also triggers */
+        if (count >= 500) {
+            game.setScreen(warningScreen);
+        }
+        if (userSkipScene()) {
+            // Speed up the delay time with SkipScene()
+            count += 100;
+        }
+        count++;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             game.setScreen(menuScreen);
@@ -48,3 +65,4 @@ public class SplashScreen extends ScreenAdapter {
         game.batch.end();
     }
 }
+

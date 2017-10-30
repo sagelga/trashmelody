@@ -4,7 +4,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
-
 public class Assets {
     private AssetManager assetManager;
 
@@ -15,11 +14,19 @@ public class Assets {
         assetManager.load("MenuScreen/p4-btn-collection.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-setting.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-exit.png", Texture.class);
+        assetManager.load("warning-screen-text.png", Texture.class);
+        assetManager.load("warning-screen-logo.png", Texture.class);
         assetManager.finishLoading();
     }
 
     public Texture getSplashScreenLogo() {
         return assetManager.get("splash-logo.png", TEXTURE);
+    }
+    public Texture getWarningScreenText() {
+        return assetManager.get("warning-screen-text.png", TEXTURE);
+    }
+    public Texture getWarningScreenLogo() {
+        return assetManager.get("warning-screen-logo.png", TEXTURE);
     }
 
     public Texture getMenuScreenBtnStart() {

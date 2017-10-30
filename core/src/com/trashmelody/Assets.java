@@ -29,20 +29,19 @@ public class Assets {
         return assetManager.get("warning-screen-logo.png", TEXTURE);
     }
 
-    public Texture getMenuScreenBtnStart() {
-        return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
-    }
-
-    public Texture getMenuScreenBtnCollection() {
-        return assetManager.get("MenuScreen/p4-btn-collection.png", TEXTURE);
-    }
-
-    public Texture getMenuScreenBtnSetting() {
-        return assetManager.get("MenuScreen/p4-btn-setting.png", TEXTURE);
-    }
-
-    public Texture getMenuScreenBtnExit() {
-        return assetManager.get("MenuScreen/p4-btn-exit.png", TEXTURE);
+    public Texture getMenuScreenAssets(String what) {
+        switch (what) {
+            case "btnStart":
+                return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
+            case "btnCollection":
+                return assetManager.get("MenuScreen/p4-btn-collection.png", TEXTURE);
+            case "btnSetting":
+                return assetManager.get("MenuScreen/p4-btn-setting.png", TEXTURE);
+            case "btnExit":
+                return assetManager.get("MenuScreen/p4-btn-exit.png", TEXTURE);
+            default:
+                return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
+        }
     }
 
     private static Class<Texture> TEXTURE = Texture.class;

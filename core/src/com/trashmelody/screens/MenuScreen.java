@@ -23,10 +23,10 @@ public class MenuScreen extends ScreenAdapter {
     public MenuScreen(TrashMelody game, Assets assets) {
         this.game = game;
         this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.btnStart = assets.getMenuScreenBtnStart();
-        this.btnCollection = assets.getMenuScreenBtnCollection();
-        this.btnSetting = assets.getMenuScreenBtnSetting();
-        this.btnExit = assets.getMenuScreenBtnExit();
+        this.btnStart = assets.getMenuScreenAssets("btnStart");
+        this.btnCollection = assets.getMenuScreenAssets("btnCollection");
+        this.btnSetting = assets.getMenuScreenAssets("btnSetting");
+        this.btnExit = assets.getMenuScreenAssets("btnExit");
     }
 
     @Override

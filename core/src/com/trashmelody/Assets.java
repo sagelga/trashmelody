@@ -15,6 +15,8 @@ public class Assets {
         assetManager.load("MenuScreen/p4-btn-setting.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-exit.png", Texture.class);
         assetManager.load("MenuScreen/p4-bg.png", Texture.class);
+        assetManager.load("MenuScreen/p4-border-left.png", Texture.class);
+        assetManager.load("MenuScreen/p4-border-right.png", Texture.class);
         assetManager.load("warning-screen-text.png", Texture.class);
         assetManager.load("warning-screen-logo.png", Texture.class);
         assetManager.finishLoading();
@@ -40,6 +42,10 @@ public class Assets {
                 return assetManager.get("MenuScreen/p4-btn-setting.png", TEXTURE);
             case "btnExit":
                 return assetManager.get("MenuScreen/p4-btn-exit.png", TEXTURE);
+            case "borderLeft":
+                return assetManager.get("MenuScreen/p4-border-left.png", TEXTURE);
+            case "borderRight":
+                return assetManager.get("MenuScreen/p4-border-right.png", TEXTURE);
             case "bg":
                 return assetManager.get("MenuScreen/p4-bg.png", TEXTURE);
             default:

@@ -12,11 +12,12 @@ import javax.rmi.CORBA.Util;
 
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenterX;
+import static com.trashmelody.Utils.getViewportWidth;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private Texture splashScreenLogo;
-    private Texture bg, btnStart, btnCollection, btnSetting, btnExit;
+    private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
     private float vh = Utils.getViewportHeight();
 
     @Inject
@@ -28,6 +29,8 @@ public class MenuScreen extends ScreenAdapter {
         this.btnCollection = assets.getMenuScreenAssets("btnCollection");
         this.btnSetting = assets.getMenuScreenAssets("btnSetting");
         this.btnExit = assets.getMenuScreenAssets("btnExit");
+        this.borderLeft = assets.getMenuScreenAssets("borderLeft");
+        this.borderRight = assets.getMenuScreenAssets("borderRight");
     }
 
     @Override
@@ -41,6 +44,8 @@ public class MenuScreen extends ScreenAdapter {
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
+        game.batch.draw(borderLeft, 0, 0, 168, 900);
+        game.batch.draw(borderRight, getViewportWidth()-168, 0, 168, 900);
         game.font.draw(game.batch, "Menu Screen", 30, 40);
         game.batch.end();
     }

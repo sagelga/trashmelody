@@ -10,13 +10,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenter;
-import static com.trashmelody.Utils.userSkipScene;
 
 import javax.inject.Inject;
 import javax.rmi.CORBA.Util;
 import javax.xml.soap.Text;
+
+import static com.trashmelody.Utils.*;
 
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -47,8 +46,8 @@ public class WarningScreen extends ScreenAdapter {
         count++;
 
         game.batch.begin();
-        game.batch.draw(warningScreenLogo, Utils.getViewportHeight()/1.5F, Utils.getViewportWidth()/2.5F,544F/4, 716/4);
-        drawCenter(game.batch, warningScreenText, 992F, 216F);
+        drawCenterX(game.batch, warningScreenLogo, 180F, 237F, 500F);
+        drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
         game.font.draw(game.batch, "Warning Screen", 30, 40);
         game.batch.end();
     }

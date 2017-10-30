@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
+import static io.vavr.API.println;
+
 public class Utils {
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
         float horizontalCenter = (getViewportWidth() - width) / 2F;
@@ -30,6 +32,10 @@ public class Utils {
 
     public static float getViewportHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    public static void logInputCoordinate() {
+        println(String.format("(X: %d, Y:%d)", Gdx.input.getX(), Gdx.input.getY()));
     }
 
     public static boolean userSkipScene(){

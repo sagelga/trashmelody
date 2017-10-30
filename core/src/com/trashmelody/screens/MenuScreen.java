@@ -16,13 +16,14 @@ import static com.trashmelody.Utils.drawCenterX;
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private Texture splashScreenLogo;
-    private Texture btnStart, btnCollection, btnSetting, btnExit;
+    private Texture bg, btnStart, btnCollection, btnSetting, btnExit;
     private float vh = Utils.getViewportHeight();
 
     @Inject
     public MenuScreen(TrashMelody game, Assets assets) {
         this.game = game;
         this.splashScreenLogo = assets.getSplashScreenLogo();
+        this.bg = assets.getMenuScreenAssets("bg");
         this.btnStart = assets.getMenuScreenAssets("btnStart");
         this.btnCollection = assets.getMenuScreenAssets("btnCollection");
         this.btnSetting = assets.getMenuScreenAssets("btnSetting");
@@ -34,6 +35,7 @@ public class MenuScreen extends ScreenAdapter {
         clearScreen();
 
         game.batch.begin();
+        Utils.drawCenter(game.batch, bg, 854*2F, 480*2F);
         drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);

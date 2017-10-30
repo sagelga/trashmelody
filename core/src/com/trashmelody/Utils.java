@@ -1,6 +1,7 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -17,6 +18,11 @@ public class Utils {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
+    public static void clearScreen(float red, float green, float blue, float alpha){
+        /// Overloads clearScreen() method
+        Gdx.gl.glClearColor(red, green, blue, alpha);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
 
     public static float getViewportWidth() {
         return Gdx.graphics.getWidth();
@@ -24,5 +30,9 @@ public class Utils {
 
     public static float getViewportHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    public static boolean userSkipScene(){
+        return Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER);
     }
 }

@@ -59,6 +59,7 @@ project(":core") {
         compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "com.google.inject:guice:$guiceVersion"
+        compile "io.vavr:vavr:0.9.1"
     }
 }
 

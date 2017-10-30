@@ -26,6 +26,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         guiceVersion = '4.1.0'
+        vavrVersion = '0.9.1'
     }
 
     repositories {
@@ -59,6 +60,7 @@ project(":core") {
         compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "com.google.inject:guice:$guiceVersion"
+        compile "io.vavr:vavr:$vavrVersion"
     }
 }
 

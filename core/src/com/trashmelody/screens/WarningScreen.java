@@ -12,6 +12,7 @@ import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenter;
+import static com.trashmelody.Utils.userSkipScene;
 
 import javax.inject.Inject;
 import javax.rmi.CORBA.Util;
@@ -22,6 +23,7 @@ public class WarningScreen extends ScreenAdapter {
     private MenuScreen menuScreen;
     private Texture warningScreenLogo;
     private Texture warningScreenText;
+    private int count;
 
     @Inject
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
@@ -33,16 +35,23 @@ public class WarningScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        clearScreen();
+        clearScreen(253,249,255,1);
 
-        if (Utils.userPressSkip()) {
+        if (count >= 300) {
             game.setScreen(menuScreen);
         }
+        if(userSkipScene()){
+            // Speed up the delay time with SkipScene()
+            count += 100;
+        }
+        count++;
 
         game.batch.begin();
-        game.batch.draw(warningScreenLogo, Utils.getViewportHeight()/2F, Utils.getViewportWidth()/4F,500F, 286F);
-        drawCenter(game.batch, warningScreenText, 500F, 286F);
-        game.font.draw(game.batch, "Splash Screen", 30, 40);
+        game.batch.draw(warningScreenLogo, Utils.getViewportHeight()/1.5F, Utils.getViewportWidth()/2.5F,544F/4, 716/4);
+        drawCenter(game.batch, warningScreenText, 992F, 216F);
+        game.font.draw(game.batch, "Warning Screen", 30, 40);
         game.batch.end();
     }
+
+//    public void update(float delta){}
 }

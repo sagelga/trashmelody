@@ -14,16 +14,19 @@ import javax.inject.Inject;
 
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenter;
+import static com.trashmelody.Utils.userSkipScene;
 
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
-    private MenuScreen menuScreen;
+    private WarningScreen warningScreen;
     private Texture splashScreenLogo;
+    private int count;
+
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
+    public SplashScreen(TrashMelody game, Assets assets, WarningScreen warningScreen) {
         this.game = game;
-        this.menuScreen = menuScreen;
+        this.warningScreen = warningScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 
@@ -33,10 +36,14 @@ public class SplashScreen extends ScreenAdapter {
 
         /* NOTE : isTouched() will be triggered once. Holding the screen will trigger this once.
                          justTouched() can be triggered multiple times  Holding the screen will also triggers */
-        if (Utils.userPressSkip()) {
-            // After doing 'Skip' keys in the screen, redirects to Warning Screen.
-            game.setScreen(Screen WarningScreen);
+        if (count >= 500) {
+            game.setScreen(warningScreen);
         }
+        if(userSkipScene()){
+            // Speed up the delay time with SkipScene()
+            count += 100;
+        }
+        count++;
 
         game.batch.begin();
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);

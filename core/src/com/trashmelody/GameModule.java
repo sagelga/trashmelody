@@ -2,6 +2,7 @@ package com.trashmelody;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.*;
+import com.google.inject.Module;
 import com.trashmelody.screens.*;
 
 public class GameModule implements Module {
@@ -18,8 +19,8 @@ public class GameModule implements Module {
 
     @Provides
     @Singleton
-    public SplashScreen provideSplashScreen(Assets assets) {
-        return new SplashScreen(game, assets, new MenuScreen(game));
+    public SplashScreen provideSplashScreen(Assets assets, WarningScreen warningScreen) {
+        return new SplashScreen(game, assets, warningScreen);
     }
 
     @Provides

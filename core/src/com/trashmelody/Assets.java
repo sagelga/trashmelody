@@ -1,14 +1,27 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
+import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
+import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
 
 public class Assets {
     private AssetManager assetManager;
 
     Assets() {
         assetManager = new AssetManager();
+
+        FileHandleResolver resolver = new InternalFileHandleResolver();
+        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
+        assetManager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
+
+        assetManager.load("super-space-20px.ttf", BitmapFont.class, getSuperSpaceFontParameter());
         assetManager.load("splash-logo.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-start.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-collection.png", Texture.class);
@@ -74,6 +87,20 @@ public class Assets {
         return assetManager.get("NameScreen/border.png", TEXTURE);
     }
 
+    public BitmapFont getSuperSpaceFont() {
+        return assetManager.get("super-space-20px.ttf");
+    }
+
+
     private static Class<Texture> TEXTURE = Texture.class;
+
+    private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter() {
+        FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();
+        loader.fontFileName = "fonts/Superspace Light ver 1.00.otf";
+        loader.fontParameters.size = 20;
+        loader.fontParameters.color = Color.BLACK;
+
+        return loader;
+    }
 
 }

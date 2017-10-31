@@ -3,6 +3,8 @@ package com.trashmelody;
 import com.google.inject.*;
 import com.trashmelody.screens.*;
 import com.google.inject.Module;
+import com.trashmelody.screens.WarningScreen;
+import com.trashmelody.screens.NameScreen;
 
 public class GameModule implements Module {
     private TrashMelody game;
@@ -27,6 +29,12 @@ public class GameModule implements Module {
     @Singleton
     public WarningScreen provideWarningScreen(MenuScreen menuScreen, Assets assets) {
         return new WarningScreen(game, assets, menuScreen);
+    }
+
+    @Provides
+    @Singleton
+    public NameScreen provideNameScreen(Assets assets) {
+        return new NameScreen(game, assets);
     }
 
     @Provides

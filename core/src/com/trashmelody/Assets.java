@@ -27,6 +27,13 @@ public class Assets {
         assetManager.load("MenuScreen/p4-bg.png", Texture.class);
         assetManager.load("MenuScreen/p4-border-left.png", Texture.class);
         assetManager.load("MenuScreen/p4-border-right.png", Texture.class);
+        assetManager.load("warning-screen-text.png", Texture.class);
+        assetManager.load("warning-screen-logo.png", Texture.class);
+        assetManager.load("NameScreen/bg.png", Texture.class);
+        assetManager.load("NameScreen/enterbox.png", Texture.class);
+        assetManager.load("NameScreen/entername.png", Texture.class);
+        assetManager.load("NameScreen/cloud.png", Texture.class);
+        assetManager.load("NameScreen/border.png", Texture.class);
 
         // Stage Select Assets
         assetManager.load("Stage Select/stage-cinema.png",Texture.class);
@@ -103,6 +110,22 @@ public class Assets {
 
         default: return assetManager.get("badlogic.png", TEXTURE);
         }
+    }
+
+    public Texture getNameScreenBG() {
+        return assetManager.get("NameScreen/bg.png", TEXTURE);
+    }
+    public Texture getNameScreenEnterBox() {
+        return assetManager.get("NameScreen/enterbox.png", TEXTURE);
+    }
+    public Texture getNameScreenEnterName() {
+        return assetManager.get("NameScreen/entername.png", TEXTURE);
+    }
+    public Texture getNameScreenCloud() {
+        return assetManager.get("NameScreen/cloud.png", TEXTURE);
+    }
+    public Texture getNameScreenBorder() {
+        return assetManager.get("NameScreen/border.png", TEXTURE);
     }
 
     private static Class<Texture> TEXTURE = Texture.class;

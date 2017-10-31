@@ -7,12 +7,10 @@ import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
+import static com.trashmelody.Utils.*;
+
 import javax.inject.Inject;
 import javax.rmi.CORBA.Util;
-
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenterX;
-import static com.trashmelody.Utils.getViewportWidth;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;

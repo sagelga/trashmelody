@@ -4,18 +4,14 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 
 import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
+import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
 import javax.rmi.CORBA.Util;
 import javax.xml.soap.Text;
-
-import static com.trashmelody.Utils.*;
 
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -40,7 +36,7 @@ public class WarningScreen extends ScreenAdapter {
             game.setScreen(menuScreen);
         }
         if(userSkipScene() && count > 500){
-            // Speed up the delay time with SkipScene()
+            // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
         count += 5;
@@ -51,8 +47,7 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        game.font.draw(game.batch, "Warning Screen", 30, 40);
-        game.font.draw(game.batch, (count/10) + "%",150,40); // Showing delay progress
+        game.font.draw(game.batch, "Warning Screen" + count/10 + "%", 30, 40);
         // Debug zone
 
         game.batch.end();

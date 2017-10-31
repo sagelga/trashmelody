@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
 
@@ -25,7 +24,7 @@ public class SplashScreen extends ScreenAdapter {
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                        SettingsScreen settingsScreen, WarningScreen warningScreen) {
+                                              SettingsScreen settingsScreen, WarningScreen warningScreen) {
         this.game = game;
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
@@ -46,7 +45,7 @@ public class SplashScreen extends ScreenAdapter {
             game.setScreen(warningScreen);
         }
         if (userSkipScene() && count > 500) {
-            // Speed up the delay time with SkipScene()
+            // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
         count += 10;
@@ -64,8 +63,7 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        game.font.draw(game.batch, "Splash Screen", 30, 40);
-        game.font.draw(game.batch, (count/10) + "%",150,40); // Showing delay progress
+        game.font.draw(game.batch, "Splash Screen" + count/10 + "%", 30, 40);
         // Debug zone
 
         game.batch.end();

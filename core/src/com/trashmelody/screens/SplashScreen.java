@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 import com.trashmelody.Assets;
 import com.trashmelody.TrashMelody;
 
@@ -20,15 +19,16 @@ public class SplashScreen extends ScreenAdapter {
     private Texture splashScreenLogo;
     private SettingsScreen settingsScreen;
     private MenuScreen menuScreen;
-    private int count;
+    private int count = 0;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                                              SettingsScreen settingsScreen, WarningScreen warningScreen) {
+                        SettingsScreen settingsScreen, WarningScreen warningScreen, StageSelectScreen stageSelectScreen) {
         this.game = game;
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
+        this.stageSelectionScreen = stageSelectScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 
@@ -44,18 +44,21 @@ public class SplashScreen extends ScreenAdapter {
         if (count >= 1000) {
             game.setScreen(warningScreen);
         }
-        if (userSkipScene() && count > 500) {
+        if (userSkipScene() && (count > 500)) {
             // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
         count += 10;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) { // For speeding up development
-            game.setScreen(menuScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            game.setScreen(menuScreen); // For speeding up development
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) { // For speeding up development
-            game.setScreen(settingsScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            game.setScreen(settingsScreen); // For speeding up development
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.K)){
+            game.setScreen(stageSelectScreen);
         }
 
         // Start loading assets

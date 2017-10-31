@@ -1,11 +1,8 @@
 package com.trashmelody;
 
 import com.google.inject.*;
-import com.trashmelody.screens.MenuScreen;
-import com.trashmelody.screens.SettingsScreen;
-import com.trashmelody.screens.SplashScreen;
+import com.trashmelody.screens.*;
 import com.google.inject.Module;
-import com.trashmelody.screens.WarningScreen;
 
 public class GameModule implements Module {
     private TrashMelody game;
@@ -23,7 +20,7 @@ public class GameModule implements Module {
     @Singleton
     public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
                                             WarningScreen warningScreen, MenuScreen menuScreen) {
-        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen);
+        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen, stageSelectionScreen);
     }
 
     @Provides
@@ -36,6 +33,11 @@ public class GameModule implements Module {
     @Singleton
     public Assets provideAssetManager() {
         return new Assets();
+    }
+
+    @Provides @Singleton
+    public StageSelectScreen provideStageSelectionScreen(Assets assets, MenuScreen menuScreen){
+        return new StageSelectScreen(game, assets, menuScreen, settingScreen);
     }
 
 }

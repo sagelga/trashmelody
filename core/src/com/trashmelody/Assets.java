@@ -9,7 +9,17 @@ public class Assets {
 
     Assets() {
         assetManager = new AssetManager();
+        // Default missing texture file
+        assetManager.load("badlogic.png",Texture.class);
+
+        //. Splash Logo Assets
         assetManager.load("splash-logo.png", Texture.class);
+
+        // Warning Screen Assets
+        assetManager.load("warning-screen-text.png", Texture.class);
+        assetManager.load("warning-screen-logo.png", Texture.class);
+
+        // Menu Screen Assets
         assetManager.load("MenuScreen/p4-btn-start.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-collection.png", Texture.class);
         assetManager.load("MenuScreen/p4-btn-setting.png", Texture.class);
@@ -17,8 +27,26 @@ public class Assets {
         assetManager.load("MenuScreen/p4-bg.png", Texture.class);
         assetManager.load("MenuScreen/p4-border-left.png", Texture.class);
         assetManager.load("MenuScreen/p4-border-right.png", Texture.class);
-        assetManager.load("warning-screen-text.png", Texture.class);
-        assetManager.load("warning-screen-logo.png", Texture.class);
+
+        // Stage Select Assets
+        assetManager.load("Stage Select/stage-cinema.png",Texture.class);
+        assetManager.load("Stage Select/stage-cinema-text.png",Texture.class);
+
+        assetManager.load("Stage Select/stage-hospital.png",Texture.class);
+        assetManager.load("Stage Select/stage-hospital-text.png",Texture.class);
+
+        assetManager.load("Stage Select/stage-home.png",Texture.class);
+        assetManager.load("Stage Select/stage-home-text.png",Texture.class);
+
+        assetManager.load("Stage Select/stage-office.png",Texture.class);
+        assetManager.load("Stage Select/stage-office-text.png",Texture.class);
+
+        assetManager.load("Stage Select/stage-school.png",Texture.class);
+        assetManager.load("Stage Select/stage-school-text.png",Texture.class);
+
+        assetManager.load("Stage Select/stage-cafe.png",Texture.class);
+        assetManager.load("Stage Select/stage-cafe-text.png",Texture.class);
+
         assetManager.finishLoading();
     }
 
@@ -50,6 +78,30 @@ public class Assets {
                 return assetManager.get("MenuScreen/p4-bg.png", TEXTURE);
             default:
                 return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
+        }
+    }
+
+    public Texture getStageSelectAssets(String stageAssetName){
+        switch (stageAssetName){
+            case "office": return assetManager.get("Stage Select/stage-office.png", TEXTURE);
+            case "office-text": return assetManager.get("Stage Select/stage-office-text.png", TEXTURE);
+
+            case "cinema": return assetManager.get("Stage Select/stage-cinema.png", TEXTURE);
+            case "cinema-text": return assetManager.get("Stage Select/stage-cinema-text.png", TEXTURE);
+
+            case "hospital": return assetManager.get("Stage Select/stage-hospital.png", TEXTURE);
+            case "hospital-text": return assetManager.get("Stage Select/stage-hospital-text.png", TEXTURE);
+
+            case "school": return assetManager.get("Stage Select/stage-school.png", TEXTURE);
+            case "school-text": return assetManager.get("Stage Select/stage-school-text.png", TEXTURE);
+
+            case "home": return assetManager.get("Stage Select/stage-home.png", TEXTURE);
+            case "home-text": return assetManager.get("Stage Select/stage-home-text.png", TEXTURE);
+
+            case "cafe": return assetManager.get("Stage Select/stage-cafe.png", TEXTURE);
+            case "cafe-text": return assetManager.get("Stage Select/stage-cafe-text.png", TEXTURE);
+
+        default: return assetManager.get("badlogic.png", TEXTURE);
         }
     }
 

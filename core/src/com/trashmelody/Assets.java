@@ -12,46 +12,51 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
 
 public class Assets {
-    private AssetManager assetManager;
-
-    Assets() {
+    public Assets() {
         assetManager = new AssetManager();
-
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        assetManager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
-
-        assetManager.load("super-space-20px.ttf", BitmapFont.class, getSuperSpaceFontParameter());
-        assetManager.load("splash-logo.png", Texture.class);
-        assetManager.load("MenuScreen/p4-btn-start.png", Texture.class);
-        assetManager.load("MenuScreen/p4-btn-collection.png", Texture.class);
-        assetManager.load("MenuScreen/p4-btn-setting.png", Texture.class);
-        assetManager.load("MenuScreen/p4-btn-exit.png", Texture.class);
-        assetManager.load("MenuScreen/p4-bg.png", Texture.class);
-        assetManager.load("MenuScreen/p4-border-left.png", Texture.class);
-        assetManager.load("MenuScreen/p4-border-right.png", Texture.class);
-        assetManager.load("warning-screen-text.png", Texture.class);
-        assetManager.load("warning-screen-logo.png", Texture.class);
-        assetManager.load("NameScreen/bg.png", Texture.class);
-        assetManager.load("NameScreen/enterbox.png", Texture.class);
-        assetManager.load("NameScreen/entername.png", Texture.class);
-        assetManager.load("NameScreen/cloud.png", Texture.class);
-        assetManager.load("NameScreen/border.png", Texture.class);
+        loadFonts();
+        loadImages();
         assetManager.finishLoading();
     }
 
     public Texture getSplashScreenLogo() {
-        return assetManager.get("splash-logo.png", TEXTURE);
+        return assetManager.get(SPLASH_SCREEN_LOGO, TEXTURE);
     }
+
     public Texture getWarningScreenText() {
         return assetManager.get("warning-screen-text.png", TEXTURE);
     }
+
     public Texture getWarningScreenLogo() {
         return assetManager.get("warning-screen-logo.png", TEXTURE);
     }
 
-    public Texture getMenuScreenAssets(String what) {
-        switch (what) {
+    public Texture getNameScreenBG() {
+        return assetManager.get("NameScreen/bg.png", TEXTURE);
+    }
+
+    public Texture getNameScreenEnterBox() {
+        return assetManager.get("NameScreen/enterbox.png", TEXTURE);
+    }
+
+    public Texture getNameScreenEnterName() {
+        return assetManager.get("NameScreen/entername.png", TEXTURE);
+    }
+
+    public Texture getNameScreenCloud() {
+        return assetManager.get("NameScreen/cloud.png", TEXTURE);
+    }
+
+    public Texture getNameScreenBorder() {
+        return assetManager.get("NameScreen/border.png", TEXTURE);
+    }
+
+    public BitmapFont getSuperSpaceFont() {
+        return assetManager.get("super-space-20px.ttf");
+    }
+
+    public Texture getMenuScreenAssets(String key) {
+        switch (key) {
             case "btnStart":
                 return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
             case "btnCollection":
@@ -71,28 +76,39 @@ public class Assets {
         }
     }
 
-    public Texture getNameScreenBG() {
-        return assetManager.get("NameScreen/bg.png", TEXTURE);
-    }
-    public Texture getNameScreenEnterBox() {
-        return assetManager.get("NameScreen/enterbox.png", TEXTURE);
-    }
-    public Texture getNameScreenEnterName() {
-        return assetManager.get("NameScreen/entername.png", TEXTURE);
-    }
-    public Texture getNameScreenCloud() {
-        return assetManager.get("NameScreen/cloud.png", TEXTURE);
-    }
-    public Texture getNameScreenBorder() {
-        return assetManager.get("NameScreen/border.png", TEXTURE);
-    }
 
-    public BitmapFont getSuperSpaceFont() {
-        return assetManager.get("super-space-20px.ttf");
-    }
-
+    private AssetManager assetManager;
 
     private static Class<Texture> TEXTURE = Texture.class;
+    private static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
+
+    private static final String SPLASH_SCREEN_LOGO = "splash-logo.png";
+
+    private void loadImages() {
+        assetManager.load(SPLASH_SCREEN_LOGO, TEXTURE);
+        assetManager.load("MenuScreen/p4-btn-start.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-btn-collection.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-btn-setting.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-btn-exit.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-bg.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-border-left.png", TEXTURE);
+        assetManager.load("MenuScreen/p4-border-right.png", TEXTURE);
+        assetManager.load("warning-screen-text.png", TEXTURE);
+        assetManager.load("warning-screen-logo.png", TEXTURE);
+        assetManager.load("NameScreen/bg.png", TEXTURE);
+        assetManager.load("NameScreen/enterbox.png", TEXTURE);
+        assetManager.load("NameScreen/entername.png", TEXTURE);
+        assetManager.load("NameScreen/cloud.png", TEXTURE);
+        assetManager.load("NameScreen/border.png", TEXTURE);
+    }
+
+    private void loadFonts() {
+        FileHandleResolver resolver = new InternalFileHandleResolver();
+        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
+        assetManager.setLoader(BITMAP_FONT, ".ttf", new FreetypeFontLoader(resolver));
+
+        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter());
+    }
 
     private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter() {
         FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();

@@ -38,7 +38,7 @@ public class MenuScreen extends ScreenAdapter {
         clearScreen();
 
         game.batch.begin();
-        Utils.drawCenter(game.batch, bg, 854*2F, 480*2F);
+        Utils.drawCenter(game.batch, bg, 691*2F, 480*2F);
         drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);

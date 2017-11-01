@@ -59,35 +59,33 @@ public class SettingsScreen extends ScreenAdapter {
             left = left.prepend(current);
             current = right.head();
             right = right.drop(1);
-            println("left -> " + left.mkString(" :: "));
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !left.isEmpty()) {
             right = right.prepend(current);
             current = left.head();
             left = left.drop(1);
-            println("right -> " + right.mkString(" :: "));
         }
 
         game.batch.begin();
 
         right.zip(List.of(
-                Position.of(getCenterX(), getCenterY() - 20),
                 Position.of(getCenterX(), getCenterY() - 40),
-                Position.of(getCenterX(), getCenterY() - 60)
+                Position.of(getCenterX(), getCenterY() - 80),
+                Position.of(getCenterX(), getCenterY() - 120)
         )).forEach(element -> {
             assets.getSuperSpaceFont().draw(game.batch, element._1, element._2.x, element._2.y);
         });
         left.zip(List.of(
-                Position.of(getCenterX(), getCenterY() + 20),
                 Position.of(getCenterX(), getCenterY() + 40),
-                Position.of(getCenterX(), getCenterY() + 60)
+                Position.of(getCenterX(), getCenterY() + 80),
+                Position.of(getCenterX(), getCenterY() + 120)
         )).forEach(element -> {
             assets.getSuperSpaceFont().draw(game.batch, element._1, element._2.x, element._2.y);
         });
 
-        assets.getSuperSpaceFont().draw(game.batch, current, getViewportWidth()/2, getViewportHeight()/2);
-        assets.getSuperSpaceFont().draw(game.batch, "Settings Screen", 30, 40);
+        assets.getSuperSpace40PxFont().draw(game.batch, current, getViewportWidth()/2, getViewportHeight()/2);
+        assets.getSuperSpace40PxFont().draw(game.batch, "Settings Screen", 30, 40);
         game.batch.end();
     }
 

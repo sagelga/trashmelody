@@ -55,6 +55,11 @@ public class Assets {
         return assetManager.get("super-space-20px.ttf");
     }
 
+    public BitmapFont getSuperSpace40PxFont() {
+        return assetManager.get("super-space-40px.ttf");
+    }
+
+
     public Texture getMenuScreenAssets(String key) {
         switch (key) {
             case "btnStart":
@@ -107,14 +112,15 @@ public class Assets {
         assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
         assetManager.setLoader(BITMAP_FONT, ".ttf", new FreetypeFontLoader(resolver));
 
-        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter());
+        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter(20, Color.BLACK));
+        assetManager.load("super-space-40px.ttf", BITMAP_FONT, getSuperSpaceFontParameter(40, Color.BLACK));
     }
 
-    private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter() {
+    private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter(int fontSize, Color fontColor) {
         FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();
         loader.fontFileName = "fonts/Superspace Light ver 1.00.otf";
-        loader.fontParameters.size = 20;
-        loader.fontParameters.color = Color.BLACK;
+        loader.fontParameters.size = fontSize;
+        loader.fontParameters.color = fontColor;
 
         return loader;
     }

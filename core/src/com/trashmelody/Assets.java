@@ -78,25 +78,33 @@ public class Assets {
 
     public Texture getStageSelectAssets(String stageAssetName){
         switch (stageAssetName){
-            case "office": return assetManager.get("Stage Select/stage-office.png", TEXTURE);
-            case "office-text": return assetManager.get("Stage Select/stage-office-text.png", TEXTURE);
+            case "office":          return assetManager.get("StageSelect/Building/stage-office.png", TEXTURE);
+            case "office-text":     return assetManager.get("StageSelect/Text/stage-office-text.png", TEXTURE);
 
-            case "cinema": return assetManager.get("Stage Select/stage-cinema.png", TEXTURE);
-            case "cinema-text": return assetManager.get("Stage Select/stage-cinema-text.png", TEXTURE);
+            case "cinema":          return assetManager.get("StageSelect/Building/stage-cinema.png", TEXTURE);
+            case "cinema-text":     return assetManager.get("StageSelect/Text/stage-cinema-text.png", TEXTURE);
 
-            case "hospital": return assetManager.get("Stage Select/stage-hospital.png", TEXTURE);
-            case "hospital-text": return assetManager.get("Stage Select/stage-hospital-text.png", TEXTURE);
+            case "hospital":        return assetManager.get("StageSelect/Building/stage-hospital.png", TEXTURE);
+            case "hospital-text":   return assetManager.get("StageSelect/Text/stage-hospital-text.png", TEXTURE);
 
-            case "school": return assetManager.get("Stage Select/stage-school.png", TEXTURE);
-            case "school-text": return assetManager.get("Stage Select/stage-school-text.png", TEXTURE);
+            case "school":          return assetManager.get("StageSelect/Building/stage-school.png", TEXTURE);
+            case "school-text":     return assetManager.get("StageSelect/Text/stage-school-text.png", TEXTURE);
 
-            case "home": return assetManager.get("Stage Select/stage-home.png", TEXTURE);
-            case "home-text": return assetManager.get("Stage Select/stage-home-text.png", TEXTURE);
+            case "home":            return assetManager.get("StageSelect/Building/stage-home.png", TEXTURE);
+            case "home-text":       return assetManager.get("StageSelect/Text/stage-home-text.png", TEXTURE);
 
-            case "cafe": return assetManager.get("Stage Select/stage-cafe.png", TEXTURE);
-            case "cafe-text": return assetManager.get("Stage Select/stage-cafe-text.png", TEXTURE);
+            case "cafe":            return assetManager.get("StageSelect/Building/stage-cafe.png", TEXTURE);
+            case "cafe-text":       return assetManager.get("StageSelect/Text/stage-cafe-text.png", TEXTURE);
 
-        default: return assetManager.get("badlogic.jpg", TEXTURE);
+            case "back-button":     return assetManager.get("StageSelect/Background/stage-backbutton.png", TEXTURE);
+            case "play-button":     return assetManager.get("StageSelect/Background/stage-playbutton.png", TEXTURE);
+            case "cloud":           return assetManager.get("StageSelect/Background/stage-cloud.png", TEXTURE);
+
+            case "header":          return assetManager.get("StageSelect/Background/stage-header.png", TEXTURE);
+            case "footer":          return assetManager.get("StageSelect/Background/stage-footer.png", TEXTURE);
+            case "trash-world":     return assetManager.get("StageSelect/Background/trashworld.png", TEXTURE);
+
+        default:                    return assetManager.get("badlogic.jpg", TEXTURE);
         }
     }
 
@@ -124,18 +132,24 @@ public class Assets {
         assetManager.load("NameScreen/entername.png", TEXTURE);
         assetManager.load("NameScreen/cloud.png", TEXTURE);
         assetManager.load("NameScreen/border.png", TEXTURE);
-        assetManager.load("Stage Select/stage-cinema.png",Texture.class);
-        assetManager.load("Stage Select/stage-cinema-text.png",Texture.class);
-        assetManager.load("Stage Select/stage-hospital.png",Texture.class);
-        assetManager.load("Stage Select/stage-hospital-text.png",Texture.class);
-        assetManager.load("Stage Select/stage-home.png",Texture.class);
-        assetManager.load("Stage Select/stage-home-text.png",Texture.class);
-        assetManager.load("Stage Select/stage-office.png",Texture.class);
-        assetManager.load("Stage Select/stage-office-text.png",Texture.class);
-        assetManager.load("Stage Select/stage-school.png",Texture.class);
-        assetManager.load("Stage Select/stage-school-text.png",Texture.class);
-        assetManager.load("Stage Select/stage-cafe.png",Texture.class);
-        assetManager.load("Stage Select/stage-cafe-text.png",Texture.class);
+        assetManager.load("StageSelect/Building/stage-office.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-office-text.png", TEXTURE);
+        assetManager.load("StageSelect/Building/stage-cinema.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-cinema-text.png", TEXTURE);
+        assetManager.load("StageSelect/Building/stage-hospital.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-hospital-text.png", TEXTURE);
+        assetManager.load("StageSelect/Building/stage-school.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-school-text.png", TEXTURE);
+        assetManager.load("StageSelect/Building/stage-home.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-home-text.png", TEXTURE);
+        assetManager.load("StageSelect/Building/stage-cafe.png", TEXTURE);
+        assetManager.load("StageSelect/Text/stage-cafe-text.png", TEXTURE);
+        assetManager.load("StageSelect/Background/stage-backbutton.png", TEXTURE);
+        assetManager.load("StageSelect/Background/stage-playbutton.png", TEXTURE);
+        assetManager.load("StageSelect/Background/stage-cloud.png", TEXTURE);
+        assetManager.load("StageSelect/Background/stage-header.png", TEXTURE);
+        assetManager.load("StageSelect/Background/stage-footer.png", TEXTURE);
+        assetManager.load("StageSelect/Background/trashworld.png", TEXTURE);
     }
 
     private void loadFonts() {

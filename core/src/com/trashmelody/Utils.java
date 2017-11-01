@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import static io.vavr.API.println;
 
 public class Utils {
+    public static float SCREEN_SIZE = (((int)getViewportWidth()) / 1440) * (((int) getViewportHeight()) / 900);
+
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
         float horizontalCenter = (getViewportWidth() - width) / 2F;
         float verticalCenter = (getViewportHeight() - height) / 2F;
@@ -47,4 +49,5 @@ public class Utils {
     public static boolean userSkipScene(){
         return Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER);
     }
+
 }

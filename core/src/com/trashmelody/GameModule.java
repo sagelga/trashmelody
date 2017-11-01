@@ -58,8 +58,9 @@ public class GameModule implements Module {
 
     @Provides
     @Singleton
-    public StageSelectScreen provideStageSelectionScreen(Assets assets, MenuScreen menuScreen){
-        return new StageSelectScreen(game, assets, menuScreen);
+    public StageSelectScreen provideStageSelectionScreen(Assets assets, MenuScreen menuScreen,
+                                                         OrthographicCamera camera){
+        return new StageSelectScreen(game, assets, menuScreen, camera);
     }
 
 }

@@ -1,13 +1,12 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.google.inject.*;
-import com.trashmelody.screens.MenuScreen;
-import com.trashmelody.screens.SettingsScreen;
-import com.trashmelody.screens.SplashScreen;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.google.inject.Binder;
 import com.google.inject.Module;
-import com.trashmelody.screens.WarningScreen;
-import com.trashmelody.screens.NameScreen;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
+import com.trashmelody.screens.*;
 
 import static com.trashmelody.Utils.getViewportHeight;
 import static com.trashmelody.Utils.getViewportWidth;
@@ -22,30 +21,19 @@ public class GameModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(TrashMelody.class).toInstance(game);
+        binder.bind(MenuScreen.class).in(Singleton.class);
+        binder.bind(NameScreen.class).in(Singleton.class);
+        binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(SplashScreen.class).in(Singleton.class);
+        binder.bind(WarningScreen.class).in(Singleton.class);
     }
 
-//    @Provides
-//    @Singleton
-//    public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
-//                                            WarningScreen warningScreen, MenuScreen menuScreen, NameScreen nameScreen) {
-//        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen , nameScreen);
-//    }
-
-    @Provides
-    @Singleton
-    public WarningScreen provideWarningScreen(MenuScreen menuScreen, Assets assets) {
-        return new WarningScreen(game, assets, menuScreen);
+    @Provides @Singleton
+    public SpriteBatch provideSpriteBatch() {
+        return new SpriteBatch();
     }
 
-    @Provides
-    @Singleton
-    public NameScreen provideNameScreen(Assets assets) {
-        return new NameScreen(game, assets);
-    }
-
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public OrthographicCamera provideCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());
@@ -53,8 +41,7 @@ public class GameModule implements Module {
         return camera;
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public Assets provideAssetManager() {
         return new Assets();
     }

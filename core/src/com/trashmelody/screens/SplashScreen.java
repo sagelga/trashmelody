@@ -19,6 +19,7 @@ public class SplashScreen extends ScreenAdapter {
     private Texture splashScreenLogo;
     private SettingsScreen settingsScreen;
     private MenuScreen menuScreen;
+    private StageSelectScreen stageSelectScreen;
     private int count = 0;
 
     @Inject
@@ -28,7 +29,7 @@ public class SplashScreen extends ScreenAdapter {
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
-        this.stageSelectionScreen = stageSelectScreen;
+        this.stageSelectScreen = stageSelectScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 

@@ -21,8 +21,8 @@ public class GameModule implements Module {
     @Provides
     @Singleton
     public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
-                                            WarningScreen warningScreen, MenuScreen menuScreen) {
-        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen, stageSelectionScreen);
+                                            WarningScreen warningScreen, MenuScreen menuScreen, StageSelectScreen stageSelectScreen) {
+        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen, stageSelectScreen);
     }
 
     @Provides
@@ -43,9 +43,10 @@ public class GameModule implements Module {
         return new Assets();
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     public StageSelectScreen provideStageSelectionScreen(Assets assets, MenuScreen menuScreen){
-        return new StageSelectScreen(game, assets, menuScreen, settingScreen);
+        return new StageSelectScreen(game, assets, menuScreen);
     }
 
 }

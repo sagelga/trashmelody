@@ -26,8 +26,7 @@ public class StageSelectScreen extends ScreenAdapter {
     private Texture stageOffice;        //private Texture stageOfficeText;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                             SettingsScreen settingsScreen) {
+    public StageSelectScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
 

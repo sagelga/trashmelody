@@ -104,7 +104,7 @@ public class Assets {
             case "footer":          return assetManager.get("StageSelect/Background/stage-footer.png", TEXTURE);
             case "trash-world":     return assetManager.get("StageSelect/Background/trashworld.png", TEXTURE);
 
-        default:                    return assetManager.get("badlogic.jpg", TEXTURE);
+        default:                    return assetManager.get("StageSelect/Background/trashworld.png", TEXTURE);
         }
     }
 

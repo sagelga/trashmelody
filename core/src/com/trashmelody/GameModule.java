@@ -1,10 +1,14 @@
 package com.trashmelody;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.google.inject.*;
 import com.trashmelody.screens.*;
 import com.google.inject.Module;
 import com.trashmelody.screens.WarningScreen;
 import com.trashmelody.screens.NameScreen;
+
+import static com.trashmelody.Utils.getViewportHeight;
+import static com.trashmelody.Utils.getViewportWidth;
 
 public class GameModule implements Module {
     private TrashMelody game;
@@ -35,6 +39,15 @@ public class GameModule implements Module {
     @Singleton
     public NameScreen provideNameScreen(Assets assets) {
         return new NameScreen(game, assets);
+    }
+
+    @Provides
+    @Singleton
+    public OrthographicCamera provideCamera() {
+        OrthographicCamera camera = new OrthographicCamera();
+        camera.setToOrtho(false, getViewportWidth(), getViewportHeight());
+        camera.update();
+        return camera;
     }
 
     @Provides

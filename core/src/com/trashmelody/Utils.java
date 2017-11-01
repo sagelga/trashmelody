@@ -40,6 +40,14 @@ public class Utils {
         return Gdx.graphics.getHeight();
     }
 
+    public static float getCenterX() {
+        return getViewportWidth()/2;
+    }
+
+    public static float getCenterY() {
+        return getViewportHeight()/2;
+    }
+
     public static void logInputCoordinate() {
         println(String.format("(X: %d, Y:%d)", Gdx.input.getX(), Gdx.input.getY()));
     }

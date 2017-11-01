@@ -6,18 +6,17 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
-import com.trashmelody.TrashMelody;
-import com.trashmelody.models.Position;
 import com.trashmelody.models.Button;
+import com.trashmelody.models.Position;
 import io.vavr.collection.List;
 
 import static com.trashmelody.Utils.*;
-import static io.vavr.API.println;
 
 public class SettingsScreen extends ScreenAdapter {
-    private TrashMelody game;
+    private SpriteBatch batch;
     private OrthographicCamera camera;
     private Assets assets;
     private List<String> rightSections;
@@ -29,10 +28,11 @@ public class SettingsScreen extends ScreenAdapter {
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(TrashMelody game, OrthographicCamera camera, Assets assets) {
-        this.game = game;
+    SettingsScreen(SpriteBatch batch, OrthographicCamera camera, Assets assets) {
+        this.batch = batch;
         this.camera = camera;
         this.assets = assets;
+
         largeFont = assets.getSuperSpaceFont(40, Color.BLACK);
         mediumFont = assets.getSuperSpaceFont(25, Color.BLACK);
 
@@ -58,11 +58,10 @@ public class SettingsScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
+        clearScreen();
 
-//        Vector3 touchPosition = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-//        camera.unproject(touchPosition);
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && !rightSections.isEmpty()) {
             leftSections = leftSections.prepend(currentSection);
@@ -76,17 +75,15 @@ public class SettingsScreen extends ScreenAdapter {
             leftSections = leftSections.tail();
         }
 
-        game.batch.begin();
+        batch.begin();
         rightSections.zipWith(rightPositions, Button::new).forEach(this::drawButton);
         leftSections.zipWith(leftPositions, Button::new).forEach(this::drawButton);
-        largeFont.draw(game.batch, currentSection, getViewportWidth()/2, getViewportHeight()/2 + 10);
-        mediumFont.draw(game.batch, "Settings Screen", 30, 40);
-        game.batch.end();
+        largeFont.draw(batch, currentSection, getViewportWidth()/2, getViewportHeight()/2 + 10);
+        mediumFont.draw(batch, "Settings Screen", 30, 40);
+        batch.end();
     }
-
 
     private void drawButton(Button button) {
-        mediumFont.draw(game.batch, button.text, button.position.x, button.position.y);
+        mediumFont.draw(batch, button.text, button.position.x, button.position.y);
     }
-
 }

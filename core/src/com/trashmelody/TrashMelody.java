@@ -13,6 +13,8 @@ import com.google.inject.Injector;
 import com.trashmelody.screens.SplashScreen;
 
 import static com.trashmelody.Utils.clearScreen;
+import static org.testng.Assert.assertSame;
+import static org.testng.Assert.assertNotSame;
 
 public class TrashMelody extends Game {
 	public SpriteBatch batch;
@@ -24,6 +26,10 @@ public class TrashMelody extends Game {
 		font = new BitmapFont();
 
 		Injector injector = Guice.createInjector(new GameModule(this));
+		assertSame(
+		        injector.getInstance(SplashScreen.class),
+                injector.getInstance(SplashScreen.class)
+        );
 
 		setScreen(injector.getInstance(SplashScreen.class));
 	}

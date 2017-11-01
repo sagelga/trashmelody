@@ -47,7 +47,7 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        game.font.draw(game.batch, "Warning Screen" + count/10 + "%", 30, 40);
+        game.font.draw(game.batch, "Warning Screen" + " ... " + count/10 + "%", 30, 40);
         // Debug zone
 
         game.batch.end();

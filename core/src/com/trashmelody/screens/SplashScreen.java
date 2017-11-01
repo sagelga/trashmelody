@@ -67,7 +67,7 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        game.font.draw(game.batch, "Splash Screen" + count/10 + "%", 30, 40);
+        game.font.draw(game.batch, "Splash Screen" + " ... " + count/10 + "%", 30, 40);
         // Debug zone
 
         game.batch.end();

@@ -55,12 +55,12 @@ public class StageSelectScreen extends ScreenAdapter {
         clearScreen(253, 243, 255, 1);
 
         game.batch.begin();
-        drawCenter(game.batch,stageCafe, 20,20);
-        drawCenter(game.batch,stageCinema, 20,20);
-        drawCenter(game.batch,stageHome, 20,20);
-        drawCenter(game.batch,stageSchool, 20,20);
-        drawCenter(game.batch,stageHospital, 20,20);
-        drawCenter(game.batch,stageOffice, 20,20);
+        drawCenter(game.batch,stageCafe, 100,100);
+        drawCenter(game.batch,stageCinema, 100,100);
+        drawCenter(game.batch,stageHome, 100,100);
+        drawCenter(game.batch,stageSchool, 100,100);
+        drawCenter(game.batch,stageHospital, 100,100);
+        drawCenter(game.batch,stageOffice, 100,100);
         game.batch.end();
     }
 }

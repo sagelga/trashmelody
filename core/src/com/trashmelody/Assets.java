@@ -10,7 +10,7 @@ public class Assets {
     Assets() {
         assetManager = new AssetManager();
         // Default missing texture file
-        assetManager.load("badlogic.png",Texture.class);
+        assetManager.load("badlogic.jpg",Texture.class);
 
         //. Splash Logo Assets
         assetManager.load("splash-logo.png", Texture.class);
@@ -108,7 +108,7 @@ public class Assets {
             case "cafe": return assetManager.get("Stage Select/stage-cafe.png", TEXTURE);
             case "cafe-text": return assetManager.get("Stage Select/stage-cafe-text.png", TEXTURE);
 
-        default: return assetManager.get("badlogic.png", TEXTURE);
+        default: return assetManager.get("badlogic.jpg", TEXTURE);
         }
     }
 

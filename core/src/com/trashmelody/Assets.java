@@ -20,8 +20,6 @@ import io.vavr.control.Option;
 public class Assets {
     public Assets() {
         assetManager = new AssetManager();
-        loadedFonts = TreeMap.empty();
-        loadFonts();
         loadImages();
         assetManager.finishLoading();
     }
@@ -62,10 +60,6 @@ public class Assets {
         return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 
-    public BitmapFont getSuperSpace40PxFont() {
-        return assetManager.get("super-space-40px.ttf", BITMAP_FONT);
-    }
-
     public Texture getMenuScreenAssets(String key) {
         switch (key) {
             case "btnStart":
@@ -92,7 +86,6 @@ public class Assets {
     private TreeMap<Integer, BitmapFont> loadedFonts;
 
     private static Class<Texture> TEXTURE = Texture.class;
-    private static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     private static final String SPLASH_SCREEN_LOGO = "splash-logo.png";
 
@@ -112,24 +105,6 @@ public class Assets {
         assetManager.load("NameScreen/entername.png", TEXTURE);
         assetManager.load("NameScreen/cloud.png", TEXTURE);
         assetManager.load("NameScreen/border.png", TEXTURE);
-    }
-
-    private void loadFonts() {
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        assetManager.setLoader(BITMAP_FONT, ".ttf", new FreetypeFontLoader(resolver));
-
-        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter(25, Color.BLACK));
-        assetManager.load("super-space-40px.ttf", BITMAP_FONT, getSuperSpaceFontParameter(60, Color.BLACK));
-    }
-
-    private FreeTypeFontLoaderParameter getSuperSpaceFontParameter(int fontSize, Color fontColor) {
-        FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();
-        loader.fontFileName = "fonts/Avenir Next.ttc";
-        loader.fontParameters.size = fontSize;
-        loader.fontParameters.color = fontColor;
-
-        return loader;
     }
 
     private BitmapFont getFont(String name, Integer size, Color color) {

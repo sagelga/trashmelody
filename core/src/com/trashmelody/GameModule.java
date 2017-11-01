@@ -20,14 +20,15 @@ public class GameModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(TrashMelody.class).toInstance(game);
+        binder.bind(SplashScreen.class).in(Singleton.class);
     }
 
-    @Provides
-    @Singleton
-    public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
-                                            WarningScreen warningScreen, MenuScreen menuScreen, StageSelectScreen stageSelectScreen) {
-        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen, stageSelectScreen);
-    }
+//    @Provides
+//    @Singleton
+//    public SplashScreen provideSplashScreen(Assets assets, SettingsScreen settingsScreen,
+//                                            WarningScreen warningScreen, MenuScreen menuScreen, NameScreen nameScreen) {
+//        return new SplashScreen(game, assets, menuScreen, settingsScreen, warningScreen , nameScreen);
+//    }
 
     @Provides
     @Singleton

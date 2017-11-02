@@ -9,8 +9,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import static io.vavr.API.println;
 
 public class Utils {
-    public static float SCREEN_SIZE = (((int)getViewportWidth()) / 1440) * (((int) getViewportHeight()) / 900);
-
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
         float horizontalCenter = (getViewportWidth() - width) / 2F;
         float verticalCenter = (getViewportHeight() - height) / 2F;
@@ -28,9 +26,9 @@ public class Utils {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
-    public static void clearScreen(int red, int green, int blue, double alpha){
+    public static void clearScreen(int red, int green, int blue, float alpha){
         /// Overloads clearScreen() method
-        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, (float)alpha);
+        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, alpha);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 

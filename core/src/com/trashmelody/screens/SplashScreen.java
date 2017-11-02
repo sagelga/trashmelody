@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
@@ -23,8 +24,8 @@ public class SplashScreen extends ScreenAdapter {
     private int count = 0;
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                        SettingsScreen settingsScreen, WarningScreen warningScreen, StageSelectScreen stageSelectScreen) {
+    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, SettingsScreen settingsScreen,
+                        WarningScreen warningScreen, StageSelectScreen stageSelectScreen) {
         this.game = game;
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
@@ -49,7 +50,7 @@ public class SplashScreen extends ScreenAdapter {
             // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
-        count += 10;
+        count += 5;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             game.setScreen(menuScreen); // For speeding up development
@@ -67,7 +68,8 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        game.font.draw(game.batch, "Splash Screen" + " ... " + count/10 + "%", 30, 40);
+        Debugger.runDebugger(game.batch, game.font,"Splash Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
         // Debug zone
 
         game.batch.end();

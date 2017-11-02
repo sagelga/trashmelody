@@ -1,8 +1,8 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.google.inject.*;
-import com.trashmelody.screens.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;

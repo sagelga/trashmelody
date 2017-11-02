@@ -6,12 +6,11 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
-import javax.xml.soap.Text;
 
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -47,7 +46,8 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        game.font.draw(game.batch, "Warning Screen" + " ... " + count/10 + "%", 30, 40);
+        Debugger.runDebugger(game.batch, game.font, "Warning Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
         // Debug zone
 
         game.batch.end();

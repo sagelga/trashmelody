@@ -26,9 +26,9 @@ public class Utils {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
-    public static void clearScreen(int red, int green, int blue, double alpha){
+    public static void clearScreen(int red, int green, int blue, float alpha){
         /// Overloads clearScreen() method
-        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, (float)alpha);
+        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, alpha);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
@@ -55,4 +55,5 @@ public class Utils {
     public static boolean userSkipScene(){
         return Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER);
     }
+
 }

@@ -4,10 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
 
@@ -21,17 +20,17 @@ public class SplashScreen extends ScreenAdapter {
     private Texture splashScreenLogo;
     private SettingsScreen settingsScreen;
     private MenuScreen menuScreen;
-    private NameScreen nameScreen;
-    private int count;
+    private StageSelectScreen stageSelectScreen;
+    private int count = 0;
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen,
-                        SettingsScreen settingsScreen, WarningScreen warningScreen,NameScreen nameScreen) {
+    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, SettingsScreen settingsScreen,
+                        WarningScreen warningScreen, StageSelectScreen stageSelectScreen) {
         this.game = game;
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
-        this.nameScreen = nameScreen;
+        this.stageSelectScreen = stageSelectScreen;
         this.splashScreenLogo = assets.getSplashScreenLogo();
     }
 
@@ -47,22 +46,21 @@ public class SplashScreen extends ScreenAdapter {
         if (count >= 1000) {
             game.setScreen(warningScreen);
         }
-        if (userSkipScene() && count > 500) {
-            // Speed up the delay time with SkipScene()
+        if (userSkipScene() && (count > 500)) {
+            // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
-        count += 10;
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
-            game.setScreen(nameScreen);
-        }
+        count += 5;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.setScreen(menuScreen);
+            game.setScreen(menuScreen); // For speeding up development
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) { // For speeding up development
-            game.setScreen(settingsScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            game.setScreen(settingsScreen); // For speeding up development
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.K)){
+            game.setScreen(stageSelectScreen);
         }
 
         // Start loading assets
@@ -70,8 +68,8 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        game.font.draw(game.batch, "Splash Screen", 30, 40);
-        game.font.draw(game.batch, (count/10) + "%",150,40); // Showing delay progress
+        Debugger.runDebugger(game.batch, game.font,"Splash Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
         // Debug zone
 
         game.batch.end();

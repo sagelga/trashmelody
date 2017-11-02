@@ -12,6 +12,7 @@ import com.trashmelody.Assets;
 import com.trashmelody.models.Button;
 import com.trashmelody.models.Position;
 import io.vavr.collection.List;
+import com.trashmelody.Debugger;
 
 import static com.trashmelody.Utils.*;
 
@@ -80,6 +81,11 @@ public class SettingsScreen extends ScreenAdapter {
         leftSections.zipWith(leftPositions, Button::new).forEach(this::drawButton);
         largeFont.draw(batch, currentSection, getViewportWidth()/2, getViewportHeight()/2 + 10);
         mediumFont.draw(batch, "Settings Screen", 30, 40);
+
+        // Debug zone
+        Debugger.runDebugger(batch, mediumFont, "Setting Screen");
+        Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
+
         batch.end();
     }
 

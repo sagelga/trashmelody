@@ -5,6 +5,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
@@ -47,7 +48,12 @@ public class MenuScreen extends ScreenAdapter {
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
         game.batch.draw(borderLeft, 0, 0, 168, 900);
         game.batch.draw(borderRight, getViewportWidth()-168, 0, 168, 900);
-        game.font.draw(game.batch, "Menu Screen", 30, 40);
+
+        // Debug zone
+        Debugger.runDebugger(game.batch, game.font,"Menu Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Debug zone
+
         game.batch.end();
     }
 

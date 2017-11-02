@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import static com.trashmelody.Utils.*;
 
@@ -61,16 +62,16 @@ public class StageSelectScreen extends ScreenAdapter {
 //        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.batch.draw(stageCafe, 100F,100F,200*SCREEN_SIZE,200*SCREEN_SIZE);
-        game.batch.draw(stageCinema, 400F,300F,200*SCREEN_SIZE,200*SCREEN_SIZE);
-        game.batch.draw(stageHome, 600F,500F,200*SCREEN_SIZE,200*SCREEN_SIZE);
-        game.batch.draw(stageSchool, 250F,100F,200*SCREEN_SIZE,200*SCREEN_SIZE);
-        game.batch.draw(stageHospital, 300F,100F,200*SCREEN_SIZE,200*SCREEN_SIZE);
-        game.batch.draw(stageOffice, 350F,100F,200*SCREEN_SIZE,200*SCREEN_SIZE);
+        game.batch.draw(stageCafe, 100F,100F,200,200);
+        game.batch.draw(stageCinema, 400F,300F,200,200);
+        game.batch.draw(stageHome, 600F,500F,200,200);
+        game.batch.draw(stageSchool, 250F,100F,200,200);
+        game.batch.draw(stageHospital, 300F,100F,200,200);
+        game.batch.draw(stageOffice, 350F,100F,200,200);
 
         // Debug zone
-        game.font.draw(game.batch, "Stage Selection Screen",30, 40);
-        game.font.draw(game.batch, getViewportHeight() + " x " + getViewportWidth(),30, 60);
+        Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
         // Debug zone
         game.batch.end();
     }

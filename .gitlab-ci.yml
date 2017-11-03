@@ -5,6 +5,7 @@ stages:
   - check
   - build
   - test
+  - track
 
 java-version:
   stage: prepare
@@ -67,3 +68,41 @@ run-game:
     - develop
     - master
     - /^feature.*$/
+
+code-count:
+  stage: track
+  script:
+    - ls -las
+    #
+    # Calculate .java count
+    - echo '|Lines |Words |Chars' > java_tracker.txt
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
+    #
+    # Calculate with coverage
+    - cloc core > adv_java_tracker.txt
+    - cloc desktop >> adv_java_tracker.txt
+    - cloc $(git ls-files) > all_adv_java_tracker.txt
+    #
+    # Calculate .gradle count
+    - echo '|Lines |Words |Chars' > gradle_tracker.txt
+    - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
+    #
+    # Calculate photo count
+    - echo '|Lines |Words |Chars' > photo_tracker.txt
+    - git ls-files | grep "\(.png\|.jpg\|.jpeg\|.gif\|.svg\)$" | xargs wc -c >> photo_tracker.txt
+    #
+    # Lists all assets
+    - git ls-files > assets_list.txt
+    #
+    # Keep the development graph line
+    - git log --decorate --oneline --graph > logs.txt
+    #
+    # Check directory again
+    - mkdir trackers
+    - mv *.txt trackers/
+    - ls -las
+  artifacts:
+    expire_in: 1 month
+    paths: 
+    - trackers
+

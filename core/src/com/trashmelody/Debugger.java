@@ -22,34 +22,37 @@ public class Debugger extends ScreenAdapter{
     private static final float Y_VAL = getViewportHeight();
     private static int line_margin = 20;
     private static String osType;
+    public static boolean debug_mode = true;
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page){
         // This method will show the debugger interfaces
 
         debugShow(batch,font,"Debugger v1.0", 1);
         debugShow(batch,font,"Trash Melody v1.0", 2);
-        debugShow(batch,font,"Screen Resolution : " + X_VAL + " x " + Y_VAL + "    " + "Cursor Coordinates : " + "XXX" + " x " + "YYY", 3);
-        debugShow(batch,font, "Current Page : " + current_page,4);
+        debugShow(batch,font,"Screen Resolution : " + X_VAL + " x " + Y_VAL,3);
+        debugShow(batch,font,"Cursor Coordinates : " + Gdx.input.getX() + " x " + Gdx.input.getY(), 4);
+        debugShow(batch,font,"FPS Rate : " + Gdx.graphics.getFramesPerSecond(),5);
+//        debugShow(batch,font,"Frame Loaded : " + Gdx.graphics.getDeltaTime() * 60,6);
+        debugShow(batch,font,"Current Page : " + current_page,6);
     }
 
     public static void runAdvancedDebugger(SpriteBatch batch, BitmapFont font, float asset_progress, float delay_progress){
-        // This method will show advanced information about game screen.
-        debugShow(batch,font,"Asset Loaded : " + asset_progress + " %",5);
-        debugShow(batch,font,"Delay Cooldown : " + delay_progress + " %",6);
-
-        if(Gdx.app.getType() == ApplicationType.iOS) {
-            osType = "iOS";
-        } else if (Gdx.app.getType() == ApplicationType.Android){
-            osType = "Android";
-        } else if (Gdx.app.getType() == ApplicationType.Applet){
-            osType = "Applet";
-        } else if (Gdx.app.getType() == ApplicationType.Desktop){
-            osType = "Desktop";
-        } else if (Gdx.app.getType() == ApplicationType.WebGL){
-            osType = "WebGL";
-        }
+        // Show the user basic platform.
+        if      (Gdx.app.getType() == ApplicationType.iOS)      { osType = "iOS"; }
+        else if (Gdx.app.getType() == ApplicationType.Android)  { osType = "Android"; }
+        else if (Gdx.app.getType() == ApplicationType.Applet)   { osType = "Applet"; }
+        else if (Gdx.app.getType() == ApplicationType.Desktop)  { osType = "Desktop"; }
+        else if (Gdx.app.getType() == ApplicationType.WebGL)    { osType = "WebGL"; }
 
         debugShow(batch,font,"OS used : " + osType,7);
+        // This method will show advanced information about game screen.
+        if (delay_progress != 0) {
+            debugShow(batch, font, "Delay Cooldown : " + delay_progress + " %", 8);
+        }
+        if (asset_progress != 0) {
+            debugShow(batch, font, "Asset Loaded : " + asset_progress + " %", 9);
+        }
+
     }
 
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

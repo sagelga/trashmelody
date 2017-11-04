@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,7 +26,7 @@ public class StageSelectScreen extends ScreenAdapter {
     private Texture stageHospital;      private Texture stageHospitalText;
     private Texture stageSchool;        private Texture stageSchoolText;
     private Texture stageOffice;        private Texture stageOfficeText;
-    private Texture stageBack;          private Texture stagePlay;
+    private Texture buttonBack;         private Texture buttonPlay;
     private Texture header;             private Texture footer;
     private Texture cloud;              private Texture trashworld_logo;
 
@@ -33,6 +34,7 @@ public class StageSelectScreen extends ScreenAdapter {
     public StageSelectScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, OrthographicCamera camera) {
         this.game = game;
         this.menuScreen = menuScreen;
+        this.camera = camera;
 
         this.stageCafe = assets.getStageSelectAssets("cafe");
         this.stageCafeText = assets.getStageSelectAssets("cafe-text");
@@ -46,8 +48,8 @@ public class StageSelectScreen extends ScreenAdapter {
         this.stageHospitalText = assets.getStageSelectAssets("hospital-text");
         this.stageOffice = assets.getStageSelectAssets("office");
         this.stageOfficeText = assets.getStageSelectAssets("office-text");
-        this.stageBack = assets.getStageSelectAssets("stage-backbutton");
-        this.stagePlay = assets.getStageSelectAssets("stage-playbutton");
+        this.buttonBack = assets.getStageSelectAssets("back-button");
+        this.buttonPlay = assets.getStageSelectAssets("play-button");
         this.header = assets.getStageSelectAssets("header");
         this.footer = assets.getStageSelectAssets("footer");
         this.cloud = assets.getStageSelectAssets("cloud");
@@ -62,17 +64,42 @@ public class StageSelectScreen extends ScreenAdapter {
 //        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
+        drawCenter(game.batch,trashworld_logo,2265/5,1370/5);// 2265 × 1370
+        drawCenter(game.batch,cloud,7507/6,2644/6); // 7507x2644
+
+        game.batch.draw(header,0,getViewportHeight()-100,4485/5,608/5); // 4485 × 608
+        drawCenterX(game.batch,footer,8002/5,296/5,0); // 8002 × 296
+
+//        switch (selected){
+//            case ("Cafe"):
+                game.batch.draw(stageCafeText, 20,getViewportHeight()-608/6,2057/5,487/6); // 2057 × 487
+//        }
+
+        game.batch.draw(buttonPlay,20,10,670/5,239/5); // 670 × 239
+        game.batch.draw(buttonBack,getViewportWidth()-20-(687/5),10,687/5,236/5); // 687 × 236
+
         game.batch.draw(stageCafe, 100F,100F,200,200);
         game.batch.draw(stageCinema, 400F,300F,200,200);
         game.batch.draw(stageHome, 600F,500F,200,200);
-        game.batch.draw(stageSchool, 250F,100F,200,200);
+        game.batch.draw(stageSchool, getViewportWidth()/3,getViewportHeight()/4,2489/8,1372/8); // 2489 × 1372
         game.batch.draw(stageHospital, 300F,100F,200,200);
         game.batch.draw(stageOffice, 350F,100F,200,200);
 
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+            game.setScreen(menuScreen);
+        }
+
         // Debug zone
-        Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
         // Debug zone
+
         game.batch.end();
     }
 }

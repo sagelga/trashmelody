@@ -1,6 +1,7 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
@@ -39,9 +40,15 @@ public class SettingsScreen extends ScreenAdapter {
         }
 
         game.batch.begin();
+
         // Debug zone
-        Debugger.runDebugger(game.batch, game.font,"Setting Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Settings Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
         // Debug zone
         game.batch.end();
     }

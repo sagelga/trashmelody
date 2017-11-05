@@ -1,18 +1,20 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
+
+import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
 import javax.rmi.CORBA.Util;
 
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenterX;
-import static com.trashmelody.Utils.getViewportWidth;
+import static com.trashmelody.Utils.*;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -38,7 +40,7 @@ public class MenuScreen extends ScreenAdapter {
         clearScreen();
 
         game.batch.begin();
-        Utils.drawCenter(game.batch, bg, 691*2F, 480*2F);
+        drawCenter(game.batch, bg, 691*2F, getViewportHeight());
         drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
@@ -46,7 +48,12 @@ public class MenuScreen extends ScreenAdapter {
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
         game.batch.draw(borderLeft, 0, 0, 168, 900);
         game.batch.draw(borderRight, getViewportWidth()-168, 0, 168, 900);
-        game.font.draw(game.batch, "Menu Screen", 30, 40);
+
+        // Debug zone
+        Debugger.runDebugger(game.batch, game.font,"Menu Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Debug zone
+
         game.batch.end();
     }
 

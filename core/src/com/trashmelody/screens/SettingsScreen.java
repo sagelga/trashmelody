@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import static com.trashmelody.Utils.logInputCoordinate;
@@ -38,7 +39,10 @@ public class SettingsScreen extends ScreenAdapter {
         }
 
         game.batch.begin();
-        assets.getSuperSpaceFont().draw(game.batch, "Settings Screen", 30, 40);
+        // Debug zone
+        Debugger.runDebugger(game.batch, game.font,"Setting Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Debug zone
         game.batch.end();
     }
 

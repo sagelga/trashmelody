@@ -3,6 +3,7 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
@@ -38,7 +39,12 @@ public class NameScreen extends ScreenAdapter {
         drawCenterX(game.batch, nameScreenEnterBox, 300F, 35F, 215F);
         drawCenterX(game.batch, nameScreenEnterName, 200F, 35F, 170F);
         drawCenterX(game.batch, nameScreenCloud, 750F, 300F, 160F);
-        game.font.draw(game.batch, "Name Screen", 30, 40);
+
+        // Debug zone
+        Debugger.runDebugger(game.batch, game.font,"Name Screen");
+        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Debug zone
+
         game.batch.end();
     }
 

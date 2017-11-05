@@ -59,7 +59,7 @@ public class StageSelectScreen extends ScreenAdapter {
         this.footer             = assets.getStageSelectAssets("footer");            // 8002 × 296
         this.cloud              = assets.getStageSelectAssets("cloud");             // 7507 × 2644
         this.trashworldLogo     = assets.getStageSelectAssets("trash-world");       // 2265 × 1370
-        this.overlayBackground  = assets.getStageSelectAssets("overlay-background");//
+        this.overlayBackground  = assets.getStageSelectAssets("overlay-background");// 6464 × 4460
         this.selectArrow        = assets.getStageSelectAssets("select-arrow");      //
 
     }
@@ -72,14 +72,16 @@ public class StageSelectScreen extends ScreenAdapter {
 
         game.batch.begin();
         // Show the logo and clouds
+        drawCenter(game.batch,overlayBackground,6464/6,4460/6);
         drawCenter(game.batch,trashworldLogo,2265/5,1370/5);
         drawCenter(game.batch,cloud,7507/6,2644/6);
         // Show the header + footer of the game
         game.batch.draw(header,0,getViewportHeight()-100,4485/5,608/5);
-        drawCenterX(game.batch,footer,8002/5,296/5,0);
+        drawCenterX(game.batch,footer,getViewportWidth(),296/5,0);
         // Show the button interfaces
         game.batch.draw(buttonPlay,20,5,670/5,239/5);
         game.batch.draw(buttonBack,getViewportWidth()-20-(687/5),5,687/5,236/5);
+        game.batch.draw(selectArrow,getViewportWidth() - (2702/6),getViewportHeight()/10,2702/8,546/8);
 
         selected = "Hospital"; // For debug purpose only
         // Show the text of the selected item

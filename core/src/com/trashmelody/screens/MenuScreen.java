@@ -20,7 +20,8 @@ public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
-    private float vh = Utils.getViewportHeight();
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
 
     @Inject
     public MenuScreen(TrashMelody game, Assets assets) {
@@ -40,14 +41,14 @@ public class MenuScreen extends ScreenAdapter {
         clearScreen();
 
         game.batch.begin();
-        drawCenter(game.batch, bg, 691*2F, getViewportHeight());
+        drawCenter(game.batch, bg, 691*2F, vh);
         drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
         game.batch.draw(borderLeft, 0, 0, 168, 900);
-        game.batch.draw(borderRight, getViewportWidth()-168, 0, 168, 900);
+        game.batch.draw(borderRight, vw-168, 0, 168, 900);
 
         // Debug zone
         Debugger.runDebugger(game.batch, game.font,"Menu Screen");

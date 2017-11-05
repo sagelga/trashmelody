@@ -113,6 +113,14 @@ public class Assets {
         }
     }
 
+    public Texture getCollectionScreenAssets(String key) {
+        switch (key) {
+            case "bg": return assetManager.get("CollectionScreen/bg.jpg", TEXTURE);
+            case "screenTitle": return assetManager.get("CollectionScreen/screen-title.png", TEXTURE);
+            default: return assetManager.get("CollectionScreen/bg.jpg", TEXTURE);
+        }
+    }
+
 
     private AssetManager assetManager;
     private TreeMap<Integer, BitmapFont> loadedFonts;
@@ -155,6 +163,8 @@ public class Assets {
         assetManager.load("StageSelect/Background/stage-header.png", TEXTURE);
         assetManager.load("StageSelect/Background/stage-footer.png", TEXTURE);
         assetManager.load("StageSelect/Background/trashworld.png", TEXTURE);
+        assetManager.load("CollectionScreen/bg.jpg", TEXTURE);
+        assetManager.load("CollectionScreen/screen-title.png", TEXTURE);
     }
 
     private BitmapFont getFont(String name, Integer size, Color color) {

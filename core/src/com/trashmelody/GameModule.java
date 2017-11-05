@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.utils.viewport.*;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
@@ -32,6 +29,7 @@ public class GameModule implements Module {
         binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(SplashScreen.class).in(Singleton.class);
         binder.bind(WarningScreen.class).in(Singleton.class);
+        binder.bind(CollectionScreen.class).in(Singleton.class);
     }
 
     @Provides @Singleton

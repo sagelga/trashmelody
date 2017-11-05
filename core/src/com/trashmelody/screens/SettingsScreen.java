@@ -18,6 +18,7 @@ import io.vavr.collection.List;
 import static com.trashmelody.Constant.SCALE;
 import static com.trashmelody.Constant.WIDTH;
 import static com.trashmelody.Utils.*;
+import static io.vavr.API.println;
 
 public class SettingsScreen extends ScreenAdapter {
     private SpriteBatch batch;
@@ -93,6 +94,9 @@ public class SettingsScreen extends ScreenAdapter {
         Debugger.runDebugger(batch, mediumFont, "Setting Screen");
         Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
         Debugger.logScreenResolution();
+
+        println(Gdx.graphics.getPpiX());
+        println(Gdx.graphics.getPpiY());
 
         batch.end();
     }

@@ -49,9 +49,9 @@ public class MenuScreen extends ScreenAdapter {
         game.batch.draw(borderRight, getViewportWidth()-168, 0, 168, 900);
 
         // Click 'ENTER' equivalent to clicking play (for now)
-//        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-//            game.setScreen(stageSelectScreen);
-//        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            game.setScreen(stageSelectScreen);
+        }
 
         /// Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {

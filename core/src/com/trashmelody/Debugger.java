@@ -27,9 +27,10 @@ public class Debugger extends ScreenAdapter{
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page){
         // This method will show the debugger interfaces
 
-        debugShow(batch,font,"Debugger v1.0", 1);
-        debugShow(batch,font,"Trash Melody v1.0", 2);
-        debugShow(batch,font,"Screen Resolution : " + X_VAL + " x " + Y_VAL,3);
+        debugShow(batch,font,"Press '1' to toggle debug page", 1);
+        debugShow(batch,font,"[ Trash Melody ] Debugger v1.0", 2);
+        debugShow(batch,font,"True Screen Resolution : " + X_VAL + " x " + Y_VAL,3);
+//        debugShow(batch,font,"Dedicated Screen Resolution : " + DesktopLauncher.screen_width +" x " + DesktopLauncher.screen_height + " (" + DesktopLauncher.screen_scale + ") ",4);
         debugShow(batch,font,"Cursor Coordinates : " + Gdx.input.getX() + " x " + Gdx.input.getY(), 4);
         debugShow(batch,font,"FPS Rate : " + Gdx.graphics.getFramesPerSecond(),5);
 //        debugShow(batch,font,"Frame Loaded : " + Gdx.graphics.getDeltaTime() * 60,6);
@@ -44,15 +45,14 @@ public class Debugger extends ScreenAdapter{
         else if (Gdx.app.getType() == ApplicationType.Desktop)  { osType = "Desktop"; }
         else if (Gdx.app.getType() == ApplicationType.WebGL)    { osType = "WebGL"; }
 
-        debugShow(batch,font,"OS used : " + osType,7);
+        debugShow(batch,font,"OS used : " + osType + ", " + System.getProperty("os.name"),7);
         // This method will show advanced information about game screen.
         if (delay_progress != 0) {
-            debugShow(batch, font, "Delay Cooldown : " + delay_progress + " %", 8);
+            debugShow(batch, font, "Delay Cool Down : " + delay_progress + " %", 8);
         }
         if (asset_progress != 0) {
             debugShow(batch, font, "Asset Loaded : " + asset_progress + " %", 9);
         }
-
     }
 
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

@@ -3,6 +3,7 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,7 +20,7 @@ import static com.trashmelody.Utils.*;
 
 public class SettingsScreen extends ScreenAdapter {
     private SpriteBatch batch;
-    private OrthographicCamera camera;
+    private Camera camera;
     private Assets assets;
     private Viewport viewport;
     private List<String> rightSections;
@@ -31,7 +32,7 @@ public class SettingsScreen extends ScreenAdapter {
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(SpriteBatch batch, OrthographicCamera camera, Assets assets, Viewport viewport) {
+    SettingsScreen(SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
         this.batch = batch;
         this.camera = camera;
         this.assets = assets;
@@ -101,6 +102,5 @@ public class SettingsScreen extends ScreenAdapter {
         super.resize(width, height);
 
         viewport.update(width, height);
-
     }
 }

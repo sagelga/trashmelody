@@ -1,6 +1,7 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
@@ -39,7 +40,7 @@ public class GameModule implements Module {
     }
 
     @Provides @Singleton
-    public OrthographicCamera provideCamera() {
+    public Camera provideCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());
         camera.update();

@@ -19,6 +19,12 @@ public class Assets {
         assetManager.finishLoading();
     }
 
+    public <T> T get(String name, Class<T> type) {
+        return assetManager.get(name, type);
+    }
+
+    private static String WARNING_SCREEN_TEXT = "warning-screen-text.png";
+
     public Texture getSplashScreenLogo() {
         return assetManager.get(SPLASH_SCREEN_LOGO, TEXTURE);
     }

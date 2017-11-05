@@ -61,7 +61,6 @@ public class StageSelectScreen extends ScreenAdapter {
         this.trashworldLogo     = assets.getStageSelectAssets("trash-world");       // 2265 × 1370
         this.overlayBackground  = assets.getStageSelectAssets("overlay-background");//
         this.selectArrow        = assets.getStageSelectAssets("select-arrow");      //
-
     }
 
     @Override

@@ -18,8 +18,6 @@ import static com.trashmelody.Utils.*;
 
 public class Debugger extends ScreenAdapter{
     private TrashMelody game;
-    private static final float X_VAL = getViewportWidth();
-    private static final float Y_VAL = getViewportHeight();
     private static int line_margin = 20;
     private static String osType;
 
@@ -28,7 +26,7 @@ public class Debugger extends ScreenAdapter{
 
         debugShow(batch,font,"Debugger v1.0", 1);
         debugShow(batch,font,"Trash Melody v1.0", 2);
-        debugShow(batch,font,"Screen Resolution : " + X_VAL + " x " + Y_VAL + "    " + "Cursor Coordinates : " + "XXX" + " x " + "YYY", 3);
+        debugShow(batch,font,"Screen Resolution : " + getViewportWidth() + " x " + getViewportHeight() + "    " + "Cursor Coordinates : " + "XXX" + " x " + "YYY", 3);
         debugShow(batch,font, "Current Page : " + current_page,4);
     }
 
@@ -58,6 +56,6 @@ public class Debugger extends ScreenAdapter{
     }
     private static float lineMarginCalculate(int line_count){
         // Returns the Y coordinates that have been margin.
-        return Y_VAL - (line_count * line_margin);
+        return getViewportHeight() - (line_count * line_margin);
     }
 }

@@ -1,7 +1,12 @@
 package com.trashmelody;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
@@ -39,6 +44,11 @@ public class GameModule implements Module {
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());
         camera.update();
         return camera;
+    }
+
+    @Provides @Singleton
+    public Viewport provideViewport(OrthographicCamera camera) {
+        return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     }
 
     @Provides @Singleton

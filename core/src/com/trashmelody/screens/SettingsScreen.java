@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.*;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
 import com.trashmelody.models.Button;
@@ -20,6 +21,7 @@ public class SettingsScreen extends ScreenAdapter {
     private SpriteBatch batch;
     private OrthographicCamera camera;
     private Assets assets;
+    private Viewport viewport;
     private List<String> rightSections;
     private List<Position> rightPositions;
     private List<String> leftSections;
@@ -29,10 +31,11 @@ public class SettingsScreen extends ScreenAdapter {
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(SpriteBatch batch, OrthographicCamera camera, Assets assets) {
+    SettingsScreen(SpriteBatch batch, OrthographicCamera camera, Assets assets, Viewport viewport) {
         this.batch = batch;
         this.camera = camera;
         this.assets = assets;
+        this.viewport = viewport;
 
         largeFont = assets.getSuperSpaceFont(40, Color.BLACK);
         mediumFont = assets.getSuperSpaceFont(25, Color.BLACK);
@@ -91,5 +94,13 @@ public class SettingsScreen extends ScreenAdapter {
 
     private void drawButton(Button button) {
         mediumFont.draw(batch, button.text, button.position.x, button.position.y);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
+
     }
 }

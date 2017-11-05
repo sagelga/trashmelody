@@ -7,6 +7,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
+import com.google.inject.Provider;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
@@ -16,7 +17,7 @@ import javax.inject.Inject;
 
 public class StageSelectScreen extends ScreenAdapter {
     private TrashMelody game;
-    private MenuScreen menuScreen;
+    private Provider<MenuScreen> menuScreen;
     private OrthographicCamera camera;
 
     // Defining building value
@@ -31,7 +32,7 @@ public class StageSelectScreen extends ScreenAdapter {
     private Texture cloud;              private Texture trashworld_logo;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, OrthographicCamera camera) {
+    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera) {
         this.game = game;
         this.menuScreen = menuScreen;
         this.camera = camera;
@@ -87,7 +88,7 @@ public class StageSelectScreen extends ScreenAdapter {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            game.setScreen(menuScreen);
+            game.setScreen(menuScreen.get());
         }
 
         // Debug zone

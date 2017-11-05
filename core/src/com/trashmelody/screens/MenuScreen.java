@@ -4,19 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
-import static com.trashmelody.Utils.*;
-
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
 
 import static com.trashmelody.Utils.*;
-import com.trashmelody.screens.StageSelectScreen;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;

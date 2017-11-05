@@ -1,5 +1,6 @@
 package com.trashmelody;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -10,11 +11,15 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
+import io.vavr.Function2;
+import io.vavr.Tuple;
+import io.vavr.Tuple3;
+import io.vavr.collection.*;
+import io.vavr.control.Option;
 
 public class Assets {
     public Assets() {
         assetManager = new AssetManager();
-        loadFonts();
         loadImages();
         assetManager.finishLoading();
     }
@@ -51,8 +56,8 @@ public class Assets {
         return assetManager.get("NameScreen/border.png", TEXTURE);
     }
 
-    public BitmapFont getSuperSpaceFont() {
-        return assetManager.get("super-space-20px.ttf");
+    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
+        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 
     public Texture getMenuScreenAssets(String key) {
@@ -110,9 +115,9 @@ public class Assets {
 
 
     private AssetManager assetManager;
+    private TreeMap<Integer, BitmapFont> loadedFonts;
 
     private static Class<Texture> TEXTURE = Texture.class;
-    private static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     private static final String SPLASH_SCREEN_LOGO = "splash-logo.png";
 
@@ -152,21 +157,12 @@ public class Assets {
         assetManager.load("StageSelect/Background/trashworld.png", TEXTURE);
     }
 
-    private void loadFonts() {
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        assetManager.setLoader(BITMAP_FONT, ".ttf", new FreetypeFontLoader(resolver));
+    private BitmapFont getFont(String name, Integer size, Color color) {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(name));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size;
+        parameter.color = color;
 
-        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter());
+        return generator.generateFont(parameter);
     }
-
-    private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter() {
-        FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();
-        loader.fontFileName = "fonts/Superspace Light ver 1.00.otf";
-        loader.fontParameters.size = 20;
-        loader.fontParameters.color = Color.BLACK;
-
-        return loader;
-    }
-
 }

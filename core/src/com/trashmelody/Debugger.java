@@ -18,13 +18,14 @@ import static com.trashmelody.Utils.*;
 
 public class Debugger extends ScreenAdapter{
     private TrashMelody game;
+
     private static final float X_VAL = getViewportWidth();
     private static final float Y_VAL = getViewportHeight();
-    private static int line_margin = 20;
-    private static String osType;
 
     private static int line_margin = 20;
+
     public static boolean debug_mode = true;
+
     private static double frame_count;
     
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page){
@@ -36,7 +37,7 @@ public class Debugger extends ScreenAdapter{
         debugShow(batch,font,"Cursor Coordinates : " + Gdx.input.getX() + " x " + Gdx.input.getY(), 4);
         debugShow(batch,font,"FPS : " + Gdx.graphics.getFramesPerSecond() + " (" + (Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond()) + ")",5);
         debugShow(batch,font,"Current Frames : " + (int) frame_count,6);
-        debugShow(batch, font, "Threading Use : " + Thread.activeCount() , 7);
+        debugShow(batch, font, "Active Threads : " + Thread.activeCount() , 7);
         debugShow(batch,font,"Current Page : " + current_page,8);
 
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
@@ -66,6 +67,7 @@ public class Debugger extends ScreenAdapter{
         // This method minimize the debug code thing.
         font.draw(batch, text,30,lineMarginCalculate(line));
     }
+
     private static float lineMarginCalculate(int line_count){
         // Returns the Y coordinates that have been margin.
         return getViewportHeight() - (line_count * line_margin);

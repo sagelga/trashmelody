@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.*;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.models.Button;
 import com.trashmelody.models.Position;
 import io.vavr.collection.List;
@@ -20,6 +21,7 @@ import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
 public class SettingsScreen extends ScreenAdapter {
+    private TrashMelody game;
     private SpriteBatch batch;
     private Camera camera;
     private Assets assets;
@@ -33,7 +35,8 @@ public class SettingsScreen extends ScreenAdapter {
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
+    SettingsScreen(TrashMelody game, SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
+        this.game = game;
         this.batch = batch;
         this.camera = camera;
         this.assets = assets;

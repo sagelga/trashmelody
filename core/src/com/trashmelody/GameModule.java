@@ -50,6 +50,7 @@ public class GameModule implements Module {
     @Provides @Singleton
     public Viewport provideViewport(OrthographicCamera camera) {
         return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+//        return new ScreenViewport(camera);
     }
 
     @Provides @Singleton

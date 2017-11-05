@@ -48,6 +48,10 @@ public class Utils {
         return getViewportHeight()/2;
     }
 
+    public static float getScreenPpi() {
+        return Gdx.graphics.getPpiX();
+    }
+
     public static void logInputCoordinate() {
         println(String.format("(X: %d, Y:%d)", Gdx.input.getX(), Gdx.input.getY()));
     }

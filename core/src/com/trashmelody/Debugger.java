@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import static com.trashmelody.Utils.*;
 
 import static com.trashmelody.Utils.*;
+import static io.vavr.API.println;
 
 public class Debugger extends ScreenAdapter{
     private TrashMelody game;
@@ -50,10 +51,16 @@ public class Debugger extends ScreenAdapter{
         debugShow(batch,font,"OS used : " + osType,7);
     }
 
+    public static void logScreenResolution() {
+        println(String.format("Height = %d", Gdx.graphics.getHeight()));
+        println(String.format("Weight = %d", Gdx.graphics.getWidth()));
+    }
+
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){
         // This method minimize the debug code thing.
         font.draw(batch, text,30,lineMarginCalculate(line));
     }
+
     private static float lineMarginCalculate(int line_count){
         // Returns the Y coordinates that have been margin.
         return getViewportHeight() - (line_count * line_margin);

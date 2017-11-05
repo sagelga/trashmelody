@@ -17,6 +17,7 @@ import io.vavr.collection.List;
 import com.trashmelody.Debugger;
 
 import static com.trashmelody.Utils.*;
+import static io.vavr.API.println;
 
 public class SettingsScreen extends ScreenAdapter {
     private SpriteBatch batch;
@@ -38,8 +39,11 @@ public class SettingsScreen extends ScreenAdapter {
         this.assets = assets;
         this.viewport = viewport;
 
-        largeFont = assets.getSuperSpaceFont(40, Color.BLACK);
-        mediumFont = assets.getSuperSpaceFont(25, Color.BLACK);
+        float scale = getViewportWidth() / 1920;
+        largeFont = assets.getSuperSpaceFont((int)(40 * scale), Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont((int)(25 * scale), Color.BLACK);
+        mediumFont.setUseIntegerPositions(false);
+        largeFont.setUseIntegerPositions(false);
 
         leftSections = List.empty();
         rightSections = List.of(
@@ -89,6 +93,7 @@ public class SettingsScreen extends ScreenAdapter {
         // Debug zone
         Debugger.runDebugger(batch, mediumFont, "Setting Screen");
         Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
+        Debugger.logScreenResolution();
 
         batch.end();
     }
@@ -101,6 +106,9 @@ public class SettingsScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         super.resize(width, height);
 
+        float scale = getViewportWidth() / 1920;
+        largeFont = assets.getSuperSpaceFont((int)(40 * scale), Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont((int)(25 * scale), Color.BLACK);
         viewport.update(width, height);
     }
 }

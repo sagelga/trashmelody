@@ -1,5 +1,7 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
@@ -41,8 +43,13 @@ public class NameScreen extends ScreenAdapter {
         drawCenterX(game.batch, nameScreenCloud, 750F, 300F, 160F);
 
         // Debug zone
-        Debugger.runDebugger(game.batch, game.font,"Name Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Naming Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
         // Debug zone
 
         game.batch.end();

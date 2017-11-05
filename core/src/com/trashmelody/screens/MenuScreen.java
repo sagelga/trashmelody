@@ -1,6 +1,7 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,15 +13,13 @@ import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
-import static com.trashmelody.Utils.*;
-
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
 
 import static com.trashmelody.Utils.*;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
+    private StageSelectScreen stageSelectScreen;
     private Camera camera;
     private Viewport viewport;
     private Texture splashScreenLogo;
@@ -58,9 +57,19 @@ public class MenuScreen extends ScreenAdapter {
         game.batch.draw(borderLeft, 0, 0, 168, 900);
         game.batch.draw(borderRight, vw-168, 0, 168, 900);
 
-        // Debug zone
-        Debugger.runDebugger(game.batch, game.font,"Menu Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Click 'ENTER' equivalent to clicking play (for now)
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            game.setScreen(stageSelectScreen);
+        }
+
+        /// Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Menu Screen Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
         // Debug zone
 
         game.batch.end();

@@ -16,7 +16,7 @@ import com.trashmelody.models.Position;
 import io.vavr.collection.List;
 
 import static com.trashmelody.Constant.SCALE;
-import static com.trashmelody.Constant.SCREEN_WIDTH;
+import static com.trashmelody.Constant.WIDTH;
 import static com.trashmelody.Utils.*;
 
 public class SettingsScreen extends ScreenAdapter {
@@ -105,7 +105,7 @@ public class SettingsScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         super.resize(width, height);
 
-        SCALE = getViewportWidth() / SCREEN_WIDTH;
+        SCALE = getViewportWidth() / WIDTH;
         largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
         mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
         viewport.update(width, height);

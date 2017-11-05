@@ -14,7 +14,7 @@ public class DesktopLauncher {
 		config.height = 1800;
 		config.useHDPI = true;
 
-		// Enable native fullscreen on macOS
+		// Enable native fullscreen mode on macOS
 		System.setProperty("org.lwjgl.opengl.Display.enableOSXFullscreenModeAPI", "true");
 
 		new LwjglApplication(new TrashMelody(), config);

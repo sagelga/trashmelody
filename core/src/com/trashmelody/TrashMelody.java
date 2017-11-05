@@ -18,7 +18,7 @@ public class TrashMelody extends Game {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 
-		Constant.SCALE = getViewportWidth() / Constant.SCREEN_WIDTH;
+		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
 		Injector injector = Guice.createInjector(new GameModule(this));
 		setScreen(injector.getInstance(SplashScreen.class));

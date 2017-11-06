@@ -5,15 +5,15 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.trashmelody.TrashMelody;
 
 public class DesktopLauncher {
-    private static double screen_width = 1920;
-    private static double screen_height = 1080;
-    private static double screen_scale = 1;
+    private static int screen_width = 1920;
+    private static int screen_height = 1080;
+    private static double screen_scale = 0.5;
 
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.fullscreen = false;
 
-		config.width =  (int) (screen_width * screen_scale);
+		config.width  = (int) (screen_width * screen_scale);
 		config.height = (int) (screen_height * screen_scale);
 
 		config.useHDPI = true;

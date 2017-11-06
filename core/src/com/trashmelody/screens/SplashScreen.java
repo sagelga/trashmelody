@@ -21,17 +21,20 @@ public class SplashScreen extends ScreenAdapter {
     private SettingsScreen settingsScreen;
     private MenuScreen menuScreen;
     private StageSelectScreen stageSelectScreen;
+
     private int count = 0;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, SettingsScreen settingsScreen,
                         WarningScreen warningScreen, StageSelectScreen stageSelectScreen) {
         this.game = game;
+
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
         this.stageSelectScreen = stageSelectScreen;
-        this.splashScreenLogo = assets.getSplashScreenLogo();
+
+        this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
     }
 
     @Override

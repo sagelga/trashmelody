@@ -34,33 +34,34 @@ public class StageSelectScreen extends ScreenAdapter {
 
     private String selected;
 
-    @Inject public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera) {
+    @Inject
+    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera) {
         this.game = game;
         this.menuScreen = menuScreen;
         this.camera = camera;
         //Variable handlers      |Assets retrival path                                               |Asset Resolution
-        this.stageHome          = assets.getStageSelectAssets("home");              // 2176 × 2164
-        this.stageOffice        = assets.getStageSelectAssets("office");            // 2408 × 1356
-        this.stageCafe          = assets.getStageSelectAssets("cafe");              // 1608 x 1062
-        this.stageCinema        = assets.getStageSelectAssets("cinema");            // 1539 × 1901
-        this.stageHospital      = assets.getStageSelectAssets("hospital");          // 1919 × 1402
-        this.stageSchool        = assets.getStageSelectAssets("school");            // 2489 × 1372
+        this.stageHome          = assets.get(Assets.STAGE_BUILDING_HOME, Assets.TEXTURE);             // 2176 × 2164
+        this.stageOffice        = assets.get(Assets.STAGE_BUILDING_OFFICE, Assets.TEXTURE);            // 2408 × 1356
+        this.stageCafe          = assets.get(Assets.STAGE_BUILDING_CAFE, Assets.TEXTURE);              // 1608 x 1062
+        this.stageCinema        = assets.get(Assets.STAGE_BUILDING_CINEMA, Assets.TEXTURE);            // 1539 × 1901
+        this.stageHospital      = assets.get(Assets.STAGE_BUILDING_HOSPITAL, Assets.TEXTURE);          // 1919 × 1402
+        this.stageSchool        = assets.get(Assets.STAGE_BUILDING_SCHOOL, Assets.TEXTURE);            // 2489 × 1372
 
-        this.stageHomeText      = assets.getStageSelectAssets("home-text");         // 2826 × 487
-        this.stageOfficeText    = assets.getStageSelectAssets("office-text");       // 2507 × 487
-        this.stageCafeText      = assets.getStageSelectAssets("cafe-text");         // 2057 × 487
-        this.stageCinemaText    = assets.getStageSelectAssets("cinema-text");       // 2601 × 487
-        this.stageHospitalText  = assets.getStageSelectAssets("hospital-text");     // 3428 × 487
-        this.stageSchoolText    = assets.getStageSelectAssets("school-text");       // 2702 × 487
+        this.stageHomeText      = assets.get(Assets.STAGE_TEXT_HOME, Assets.TEXTURE);        // 2826 × 487
+        this.stageOfficeText    = assets.get(Assets.STAGE_TEXT_OFFICE, Assets.TEXTURE);       // 2507 × 487
+        this.stageCafeText      = assets.get(Assets.STAGE_TEXT_CAFE, Assets.TEXTURE);         // 2057 × 487
+        this.stageCinemaText    = assets.get(Assets.STAGE_TEXT_CINEMA, Assets.TEXTURE);       // 2601 × 487
+        this.stageHospitalText  = assets.get(Assets.STAGE_TEXT_HOSPITAL, Assets.TEXTURE);    // 3428 × 487
+        this.stageSchoolText    = assets.get(Assets.STAGE_TEXT_SCHOOL, Assets.TEXTURE);       // 2702 × 487
 
-        this.buttonBack         = assets.getStageSelectAssets("back-button");       // 687  × 236
-        this.buttonPlay         = assets.getStageSelectAssets("play-button");       // 670  × 239
-        this.header             = assets.getStageSelectAssets("header");            // 4485 × 608
-        this.footer             = assets.getStageSelectAssets("footer");            // 8002 × 296
-        this.cloud              = assets.getStageSelectAssets("cloud");             // 7507 × 2644
-        this.trashworldLogo     = assets.getStageSelectAssets("trash-world");       // 2265 × 1370
-        this.overlayBackground  = assets.getStageSelectAssets("overlay-background");//
-        this.selectArrow        = assets.getStageSelectAssets("select-arrow");      //
+        this.buttonBack         = assets.get(Assets.STAGE_BG_BACKBUTTON, Assets.TEXTURE);       // 687  × 236
+        this.buttonPlay         = assets.get(Assets.STAGE_BG_PLAYBUTTON, Assets.TEXTURE);       // 670  × 239
+        this.header             = assets.get(Assets.STAGE_BG_HEADER, Assets.TEXTURE);           // 4485 × 608
+        this.footer             = assets.get(Assets.STAGE_BG_FOOTER, Assets.TEXTURE);            // 8002 × 296
+        this.cloud              = assets.get(Assets.STAGE_BG_CLOUD, Assets.TEXTURE);             // 7507 × 2644
+        this.trashworldLogo     = assets.get(Assets.STAGE_BG_TRASHWORLD, Assets.TEXTURE);       // 2265 × 1370
+        this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY_BACKGROUND, Assets.TEXTURE);//
+        this.selectArrow        = assets.get(Assets.STAGE_BG_ARROW, Assets.TEXTURE);            //
     }
 
     @Override

@@ -24,8 +24,8 @@ public class WarningScreen extends ScreenAdapter {
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
-        this.warningScreenLogo = assets.getWarningScreenLogo();
-        this.warningScreenText = assets.getWarningScreenText();
+        this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
+        this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
     }
 
     @Override

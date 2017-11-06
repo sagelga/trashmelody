@@ -39,26 +39,26 @@ public class StageSelectScreen extends ScreenAdapter {
         this.game = game;
         this.menuScreen = menuScreen;
         this.camera = camera;
-        //Variable handlers      |Assets retrival path                                               |Asset Resolution
-        this.stageHome          = assets.get(Assets.STAGE_BUILDING_HOME, Assets.TEXTURE);             // 2176 × 2164
-        this.stageOffice        = assets.get(Assets.STAGE_BUILDING_OFFICE, Assets.TEXTURE);            // 2408 × 1356
-        this.stageCafe          = assets.get(Assets.STAGE_BUILDING_CAFE, Assets.TEXTURE);              // 1608 x 1062
-        this.stageCinema        = assets.get(Assets.STAGE_BUILDING_CINEMA, Assets.TEXTURE);            // 1539 × 1901
-        this.stageHospital      = assets.get(Assets.STAGE_BUILDING_HOSPITAL, Assets.TEXTURE);          // 1919 × 1402
-        this.stageSchool        = assets.get(Assets.STAGE_BUILDING_SCHOOL, Assets.TEXTURE);            // 2489 × 1372
+        //Variable handlers     |Assets retrival path                                               |Asset Resolution
+        this.stageHome          = assets.get(Assets.STAGE_BUILDING_HOME, Assets.TEXTURE);       // 2176 × 2164
+        this.stageOffice        = assets.get(Assets.STAGE_BUILDING_OFFICE, Assets.TEXTURE);     // 2408 × 1356
+        this.stageCafe          = assets.get(Assets.STAGE_BUILDING_CAFE, Assets.TEXTURE);       // 1608 x 1062
+        this.stageCinema        = assets.get(Assets.STAGE_BUILDING_CINEMA, Assets.TEXTURE);     // 1539 × 1901
+        this.stageHospital      = assets.get(Assets.STAGE_BUILDING_HOSPITAL, Assets.TEXTURE);   // 1919 × 1402
+        this.stageSchool        = assets.get(Assets.STAGE_BUILDING_SCHOOL, Assets.TEXTURE);     // 2489 × 1372
 
-        this.stageHomeText      = assets.get(Assets.STAGE_TEXT_HOME, Assets.TEXTURE);        // 2826 × 487
-        this.stageOfficeText    = assets.get(Assets.STAGE_TEXT_OFFICE, Assets.TEXTURE);       // 2507 × 487
-        this.stageCafeText      = assets.get(Assets.STAGE_TEXT_CAFE, Assets.TEXTURE);         // 2057 × 487
-        this.stageCinemaText    = assets.get(Assets.STAGE_TEXT_CINEMA, Assets.TEXTURE);       // 2601 × 487
-        this.stageHospitalText  = assets.get(Assets.STAGE_TEXT_HOSPITAL, Assets.TEXTURE);    // 3428 × 487
-        this.stageSchoolText    = assets.get(Assets.STAGE_TEXT_SCHOOL, Assets.TEXTURE);       // 2702 × 487
+        this.stageHomeText      = assets.get(Assets.STAGE_TEXT_HOME, Assets.TEXTURE);           // 2826 × 487
+        this.stageOfficeText    = assets.get(Assets.STAGE_TEXT_OFFICE, Assets.TEXTURE);         // 2507 × 487
+        this.stageCafeText      = assets.get(Assets.STAGE_TEXT_CAFE, Assets.TEXTURE);           // 2057 × 487
+        this.stageCinemaText    = assets.get(Assets.STAGE_TEXT_CINEMA, Assets.TEXTURE);         // 2601 × 487
+        this.stageHospitalText  = assets.get(Assets.STAGE_TEXT_HOSPITAL, Assets.TEXTURE);       // 3428 × 487
+        this.stageSchoolText    = assets.get(Assets.STAGE_TEXT_SCHOOL, Assets.TEXTURE);         // 2702 × 487
 
         this.buttonBack         = assets.get(Assets.STAGE_BG_BACKBUTTON, Assets.TEXTURE);       // 687  × 236
         this.buttonPlay         = assets.get(Assets.STAGE_BG_PLAYBUTTON, Assets.TEXTURE);       // 670  × 239
         this.header             = assets.get(Assets.STAGE_BG_HEADER, Assets.TEXTURE);           // 4485 × 608
-        this.footer             = assets.get(Assets.STAGE_BG_FOOTER, Assets.TEXTURE);            // 8002 × 296
-        this.cloud              = assets.get(Assets.STAGE_BG_CLOUD, Assets.TEXTURE);             // 7507 × 2644
+        this.footer             = assets.get(Assets.STAGE_BG_FOOTER, Assets.TEXTURE);           // 8002 × 296
+        this.cloud              = assets.get(Assets.STAGE_BG_CLOUD, Assets.TEXTURE);            // 7507 × 2644
         this.trashworldLogo     = assets.get(Assets.STAGE_BG_TRASHWORLD, Assets.TEXTURE);       // 2265 × 1370
         this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY_BACKGROUND, Assets.TEXTURE);//
         this.selectArrow        = assets.get(Assets.STAGE_BG_ARROW, Assets.TEXTURE);            //
@@ -72,14 +72,16 @@ public class StageSelectScreen extends ScreenAdapter {
 
         game.batch.begin();
         // Show the logo and clouds
+        drawCenter(game.batch,overlayBackground,6464/6,4460/6);
         drawCenter(game.batch,trashworldLogo,2265/5,1370/5);
         drawCenter(game.batch,cloud,7507/6,2644/6);
         // Show the header + footer of the game
         game.batch.draw(header,0,getViewportHeight()-100,4485/5,608/5);
-        drawCenterX(game.batch,footer,8002/5,296/5,0);
+        drawCenterX(game.batch,footer,getViewportWidth(),296/5,0);
         // Show the button interfaces
         game.batch.draw(buttonPlay,20,5,670/5,239/5);
         game.batch.draw(buttonBack,getViewportWidth()-20-(687/5),5,687/5,236/5);
+        game.batch.draw(selectArrow,getViewportWidth() - (2702/6),getViewportHeight()/10,2702/8,546/8);
 
         selected = "Hospital"; // For debug purpose only
         // Show the text of the selected item

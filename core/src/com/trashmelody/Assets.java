@@ -1,5 +1,6 @@
 package com.trashmelody;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -10,6 +11,11 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
+import io.vavr.Function2;
+import io.vavr.Tuple;
+import io.vavr.Tuple3;
+import io.vavr.collection.*;
+import io.vavr.control.Option;
 
 public class Assets {
 
@@ -58,11 +64,14 @@ public class Assets {
     public static final String STAGE_BG_TRASHWORLD          = "StageSelect/Background/trashworld.png";
     public static final String STAGE_BG_OVERLAY_BACKGROUND  = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW               = "StageSelect/Background/stage-select-arrow.png";
+    // Collection Stage Assets
+    public static final String COLLECTION_SCREEN_TITLE      = "CollectionScreen/screen-title.png";
+    public static final String COLLECTION_BG                = "CollectionScreen/bg.jpg";
+
 
 
     public Assets() {
         assetManager = new AssetManager();
-        loadFonts();
         loadImages();
         assetManager.finishLoading();
     }
@@ -71,17 +80,12 @@ public class Assets {
         return assetManager.get(name, type);
     }
 
-
-    public BitmapFont getSuperSpaceFont() {
-        return assetManager.get("super-space-20px.ttf");
-    }
-
     private AssetManager assetManager;
 
+    private TreeMap<Integer, BitmapFont> loadedFonts;
     public static Class<Texture> TEXTURE = Texture.class;
+
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
-
-
     private void loadImages() {
         assetManager.load(SPLASH_LOGO, TEXTURE);
 
@@ -122,23 +126,21 @@ public class Assets {
         assetManager.load(STAGE_BG_TRASHWORLD, TEXTURE);
         assetManager.load(STAGE_BG_OVERLAY_BACKGROUND, TEXTURE);
         assetManager.load(STAGE_BG_ARROW,TEXTURE);
+
+        assetManager.load(COLLECTION_BG, TEXTURE);
+        assetManager.load(COLLECTION_SCREEN_TITLE, TEXTURE);
     }
 
-    private void loadFonts() {
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-        assetManager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        assetManager.setLoader(BITMAP_FONT, ".ttf", new FreetypeFontLoader(resolver));
+    private BitmapFont getFont(String name, Integer size, Color color) {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(name));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size;
+        parameter.color = color;
 
-        assetManager.load("super-space-20px.ttf", BITMAP_FONT, getSuperSpaceFontParameter());
+        return generator.generateFont(parameter);
     }
 
-    private static FreeTypeFontLoaderParameter getSuperSpaceFontParameter() {
-        FreeTypeFontLoaderParameter loader = new FreeTypeFontLoaderParameter();
-        loader.fontFileName = "fonts/Superspace Light ver 1.00.otf";
-        loader.fontParameters.size = 20;
-        loader.fontParameters.color = Color.BLACK;
-
-        return loader;
+    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
+        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
-
 }

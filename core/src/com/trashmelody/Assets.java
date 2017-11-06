@@ -64,6 +64,7 @@ public class Assets {
     public static final String STAGE_BG_TRASHWORLD          = "StageSelect/Background/trashworld.png";
     public static final String STAGE_BG_OVERLAY_BACKGROUND  = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW               = "StageSelect/Background/stage-select-arrow.png";
+
     // Collection Stage Assets
     public static final String COLLECTION_SCREEN_TITLE      = "CollectionScreen/screen-title.png";
     public static final String COLLECTION_BG                = "CollectionScreen/bg.jpg";

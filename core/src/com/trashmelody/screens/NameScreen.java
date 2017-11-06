@@ -54,8 +54,4 @@ public class NameScreen extends ScreenAdapter {
 
         game.batch.end();
     }
-
-    private void update(float delta) {
-
-    }
 }

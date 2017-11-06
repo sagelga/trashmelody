@@ -22,13 +22,13 @@ public class NameScreen extends ScreenAdapter {
     @Inject
     public NameScreen(TrashMelody game, Assets assets) {
         this.game = game;
-        this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.nameScreenBG = assets.getNameScreenBG();
-        this.nameScreenEnterBox = assets.getNameScreenEnterBox();
-        this.nameScreenEnterName = assets.getNameScreenEnterName();
-        this.nameScreenCloud = assets.getNameScreenCloud();
-        this.nameScreenBorderLeft = assets.getNameScreenBorder();
-        this.nameScreenBorderRight = assets.getNameScreenBorder();
+        this.splashScreenLogo       = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
+        this.nameScreenBG           = assets.get(Assets.NAME_BACKGROUND, Assets.TEXTURE);
+        this.nameScreenEnterBox     = assets.get(Assets.NAME_ENTER_BOX, Assets.TEXTURE);
+        this.nameScreenEnterName    = assets.get(Assets.NAME_ENTER_NAME, Assets.TEXTURE);
+        this.nameScreenCloud        = assets.get(Assets.NAME_CLOUD, Assets.TEXTURE);
+        this.nameScreenBorderLeft   = assets.get(Assets.NAME_BORDER, Assets.TEXTURE);
+        this.nameScreenBorderRight  = assets.get(Assets.NAME_BORDER, Assets.TEXTURE);
     }
 
     @Override
@@ -53,9 +53,5 @@ public class NameScreen extends ScreenAdapter {
         // Debug zone
 
         game.batch.end();
-    }
-
-    private void update(float delta) {
-
     }
 }

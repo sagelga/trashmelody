@@ -30,16 +30,18 @@ public class MenuScreen extends ScreenAdapter {
     @Inject
     public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
         this.game = game;
+        this.stageSelectScreen = stageSelectScreen;
         this.camera = camera;
         this.viewport = viewport;
-        this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.bg = assets.getMenuScreenAssets("bg");
-        this.btnStart = assets.getMenuScreenAssets("btnStart");
-        this.btnCollection = assets.getMenuScreenAssets("btnCollection");
-        this.btnSetting = assets.getMenuScreenAssets("btnSetting");
-        this.btnExit = assets.getMenuScreenAssets("btnExit");
-        this.borderLeft = assets.getMenuScreenAssets("borderLeft");
-        this.borderRight = assets.getMenuScreenAssets("borderRight");
+
+        this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
+        this.bg                 = assets.get(Assets.MENU_BG, Assets.TEXTURE);
+        this.btnStart           = assets.get(Assets.MENU_BTN_START, Assets.TEXTURE);
+        this.btnCollection      = assets.get(Assets.MENU_BTN_COLLECTION, Assets.TEXTURE);
+        this.btnSetting         = assets.get(Assets.MENU_BTN_SETTING, Assets.TEXTURE);
+        this.btnExit            = assets.get(Assets.MENU_BTN_EXIT, Assets.TEXTURE);
+        this.borderLeft         = assets.get(Assets.MENU_BORDER_LEFT, Assets.TEXTURE);
+        this.borderRight        = assets.get(Assets.MENU_BORDER_RIGHT, Assets.TEXTURE);
     }
 
     @Override

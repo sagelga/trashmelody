@@ -24,7 +24,7 @@ public class Debugger extends ScreenAdapter{
 
     private static int line_margin = 20;
 
-    public static boolean debug_mode = true;
+    public static boolean debug_mode = false;
 
     private static double frame_count;
 

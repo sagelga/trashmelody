@@ -62,7 +62,7 @@ public class StageSelectScreen extends ScreenAdapter {
         this.footer             = assets.get(Assets.STAGE_BG_FOOTER, Assets.TEXTURE);               // 8002 × 296
         this.cloud              = assets.get(Assets.STAGE_BG_CLOUD, Assets.TEXTURE);                // 7507 × 2644
         this.trashworldLogo     = assets.get(Assets.STAGE_BG_TRASHWORLD, Assets.TEXTURE);           // 2265 × 1370
-        this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY_BACKGROUND, Assets.TEXTURE);   // 6464 × 4460
+        this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY, Assets.TEXTURE);   // 6464 × 4460
         this.selectArrowLeft    = assets.get(Assets.STAGE_BG_ARROW_L, Assets.TEXTURE);
         this.selectArrowRight   = assets.get(Assets.STAGE_BG_ARROW_R,assets.TEXTURE);
 

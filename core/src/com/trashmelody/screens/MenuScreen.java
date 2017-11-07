@@ -51,14 +51,14 @@ public class MenuScreen extends ScreenAdapter {
         camera.update();
 
         game.batch.begin();
-        drawCenter(game.batch, bg, 691*2F, vh);
-        drawCenterX(game.batch, splashScreenLogo, 500F, 286F, 520F);
+        drawCenterX(game.batch, bg, 691*2F, vh, 0);
+        drawCenterX(game.batch, splashScreenLogo, 320F, 183F, 350F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        game.batch.draw(borderLeft, 0, 0, 168, 900);
-        game.batch.draw(borderRight, vw-168, 0, 168, 900);
+        game.batch.draw(borderLeft, 0, 0, ((float)168/900)*vh, vh);
+        game.batch.draw(borderRight, vw-(((float)168/900)*vh), 0, ((float)168/900)*vh, 900);
 
         // Click 'ENTER' equivalent to clicking play (for now)
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {

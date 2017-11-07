@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import static com.trashmelody.Utils.*;
 
 import static com.trashmelody.Utils.*;
+import static io.vavr.API.println;
 
 public class Debugger extends ScreenAdapter{
     private TrashMelody game;
@@ -63,6 +64,11 @@ public class Debugger extends ScreenAdapter{
             case Desktop: osType = "Desktop"; break;
             case WebGL: osType = "WebGL"; break;
         }
+    }
+
+    public static void logScreenResolution() {
+        println(String.format("Height = %d", Gdx.graphics.getHeight()));
+        println(String.format("Weight = %d", Gdx.graphics.getWidth()));
     }
 
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

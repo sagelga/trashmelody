@@ -32,11 +32,11 @@ public class Utils {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    public static float getViewportWidth() {
+    public static int getViewportWidth() {
         return Gdx.graphics.getWidth();
     }
 
-    public static float getViewportHeight() {
+    public static int getViewportHeight() {
         return Gdx.graphics.getHeight();
     }
 
@@ -46,6 +46,10 @@ public class Utils {
 
     public static float getCenterY() {
         return getViewportHeight()/2;
+    }
+
+    public static float getScreenPpi() {
+        return Gdx.graphics.getPpiX();
     }
 
     public static void logInputCoordinate() {

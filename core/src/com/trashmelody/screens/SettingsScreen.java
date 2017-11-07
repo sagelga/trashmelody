@@ -5,18 +5,19 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.*;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.models.Button;
 import com.trashmelody.models.Position;
 import io.vavr.collection.List;
-import com.trashmelody.Debugger;
 
+import static com.trashmelody.Constant.SCALE;
+import static com.trashmelody.Constant.WIDTH;
 import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
@@ -42,8 +43,10 @@ public class SettingsScreen extends ScreenAdapter {
         this.assets = assets;
         this.viewport = viewport;
 
-        largeFont = assets.getSuperSpaceFont(40, Color.BLACK);
-        mediumFont = assets.getSuperSpaceFont(25, Color.BLACK);
+        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
+        mediumFont.setUseIntegerPositions(false);
+        largeFont.setUseIntegerPositions(false);
 
         leftSections = List.empty();
         rightSections = List.of(
@@ -100,9 +103,9 @@ public class SettingsScreen extends ScreenAdapter {
             Debugger.runDebugger(game.batch, game.font,"Settings Screen");
         }
         // Debug zone
-        
-        println(Gdx.graphics.getPpiX());
-        println(Gdx.graphics.getPpiY());
+        Debugger.runDebugger(batch, mediumFont, "Setting Screen");
+        Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
+        Debugger.logScreenResolution();
 
         batch.end();
     }
@@ -115,6 +118,9 @@ public class SettingsScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         super.resize(width, height);
 
+        SCALE = getViewportWidth() / WIDTH;
+        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
         viewport.update(width, height);
     }
 }

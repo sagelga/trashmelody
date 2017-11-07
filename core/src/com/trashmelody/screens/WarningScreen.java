@@ -51,8 +51,7 @@ public class WarningScreen extends ScreenAdapter {
             Debugger.debug_mode = !Debugger.debug_mode;
         }
         if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Warning Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+            Debugger.runDebugger(game.batch, game.font,"Warning Screen",count/10);
         }
         // Debug zone
 

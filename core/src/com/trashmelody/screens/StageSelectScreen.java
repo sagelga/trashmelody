@@ -30,7 +30,8 @@ public class StageSelectScreen extends ScreenAdapter {
     private Texture buttonBack;         private Texture buttonPlay;
     private Texture header;             private Texture footer;
     private Texture cloud;              private Texture trashworldLogo;
-    private Texture overlayBackground;  private Texture selectArrow;
+    private Texture selectArrowLeft;    private Texture selectArrowRight;
+    private Texture overlayBackground;
 
     private String selected;
 
@@ -61,8 +62,10 @@ public class StageSelectScreen extends ScreenAdapter {
         this.footer             = assets.get(Assets.STAGE_BG_FOOTER, Assets.TEXTURE);               // 8002 × 296
         this.cloud              = assets.get(Assets.STAGE_BG_CLOUD, Assets.TEXTURE);                // 7507 × 2644
         this.trashworldLogo     = assets.get(Assets.STAGE_BG_TRASHWORLD, Assets.TEXTURE);           // 2265 × 1370
-        this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY_BACKGROUND, Assets.TEXTURE);   // 6464 × 4460
-        this.selectArrow        = assets.get(Assets.STAGE_BG_ARROW, Assets.TEXTURE);                // 2702 × 546
+        this.overlayBackground  = assets.get(Assets.STAGE_BG_OVERLAY, Assets.TEXTURE);   // 6464 × 4460
+        this.selectArrowLeft    = assets.get(Assets.STAGE_BG_ARROW_L, Assets.TEXTURE);
+        this.selectArrowRight   = assets.get(Assets.STAGE_BG_ARROW_R,assets.TEXTURE);
+
     }
 
     @Override
@@ -84,7 +87,8 @@ public class StageSelectScreen extends ScreenAdapter {
         // Show the button interfaces
         game.batch.draw(buttonPlay,20,5,670/5,239/5);
         game.batch.draw(buttonBack,getViewportWidth()-20-(687/5),5,687/5,236/5);
-        game.batch.draw(selectArrow,getViewportWidth() - (2702/6),getViewportHeight()/10,2702/8,546/8);
+        game.batch.draw(selectArrowLeft,getViewportWidth() - (2702/6),getViewportHeight()/10,2702/8,546/8);
+        game.batch.draw(selectArrowRight,getViewportWidth() - (2702/4),getViewportHeight()/10,2702/8,546/8);
 
         selected = "Hospital"; // For debug purpose only
         // Show the text of the selected item
@@ -126,7 +130,6 @@ public class StageSelectScreen extends ScreenAdapter {
         }
         if (Debugger.debug_mode){
             Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
         }
         // Debug zone
 

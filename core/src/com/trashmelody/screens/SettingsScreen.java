@@ -101,11 +101,9 @@ public class SettingsScreen extends ScreenAdapter {
         }
         if (Debugger.debug_mode){
             Debugger.runDebugger(game.batch, game.font,"Settings Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
         }
         // Debug zone
-        Debugger.runDebugger(batch, mediumFont, "Setting Screen");
-        Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
+        Debugger.runDebugger(batch, mediumFont, "Setting Screen",0);
         Debugger.logScreenResolution();
 
         batch.end();

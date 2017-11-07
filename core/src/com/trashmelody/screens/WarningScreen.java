@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -23,8 +24,8 @@ public class WarningScreen extends ScreenAdapter {
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
-        this.warningScreenLogo = assets.getWarningScreenLogo();
-        this.warningScreenText = assets.getWarningScreenText();
+        this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
+        this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
     }
 
     @Override
@@ -46,8 +47,13 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        Debugger.runDebugger(game.batch, game.font, "Warning Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Warning Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+        }
         // Debug zone
 
         game.batch.end();

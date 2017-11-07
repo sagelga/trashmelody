@@ -1,6 +1,7 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -32,8 +33,9 @@ public class CollectionScreen extends ScreenAdapter {
         this.game = game;
         this.camera = camera;
         this.viewport = viewport;
-        this.bg = assets.getCollectionScreenAssets("bg");
-        this.screenTitle = assets.getCollectionScreenAssets("screenTitle");
+
+        this.bg             = assets.get(Assets.COLLECTION_BG, Assets.TEXTURE);
+        this.screenTitle    = assets.get(Assets.COLLECTION_SCREEN_TITLE, Assets.TEXTURE);
     }
 
     @Override
@@ -45,8 +47,15 @@ public class CollectionScreen extends ScreenAdapter {
         drawCenter(game.batch, bg, vw, vh);
         // drawCenterX(game.batch, screenTitle, vw, hey, vh-400);
 
-        Debugger.runDebugger(game.batch, game.font,"Collection Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Collection Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
+        // Debug zone
 
         game.batch.end();
     }

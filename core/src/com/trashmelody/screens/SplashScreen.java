@@ -30,39 +30,35 @@ public class SplashScreen extends ScreenAdapter {
                         WarningScreen warningScreen, StageSelectScreen stageSelectScreen, CollectionScreen collectionScreen,
                         SandboxScreen sandboxScreen) {
         this.game = game;
+
         this.warningScreen = warningScreen;
         this.settingsScreen = settingsScreen;
         this.menuScreen = menuScreen;
         this.stageSelectScreen = stageSelectScreen;
         this.collectionScreen = collectionScreen;
         this.sandboxScreen = sandboxScreen;
-        this.splashScreenLogo = assets.getSplashScreenLogo();
+        this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
     }
 
     @Override
     public void render(float delta) {
         clearScreen();
 
-        if (Gdx.input.justTouched()) {
-            game.setScreen(warningScreen);
-        }
-        /* NOTE : isTouched() will be triggered once. Holding the screen will trigger this once.
-           justTouched() can be triggered multiple times  Holding the screen will also triggers */
         if (count >= 1000) {
             game.setScreen(warningScreen);
         }
-        if (userSkipScene() && (count > 500)) {
+        if (userSkipScene() && (count > 200)) {
             // Speed up the delay time by doing userSkipScene() pre-defined methods.
-            count += 100;
+            count += 200;
         }
         count += 5;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.setScreen(menuScreen); // For speeding up development
+            game.setScreen(menuScreen);
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
-            game.setScreen(settingsScreen); // For speeding up development
+            game.setScreen(settingsScreen);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.K)){
             game.setScreen(stageSelectScreen);
@@ -79,8 +75,13 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        Debugger.runDebugger(game.batch, game.font,"Splash Screen");
-        Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Splash Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+        }
         // Debug zone
 
         game.batch.end();

@@ -18,153 +18,118 @@ import io.vavr.collection.*;
 import io.vavr.control.Option;
 
 public class Assets {
+
+
+    // Splash Screen Assets
+    public static final String SPLASH_LOGO                  = "splash-logo.png";
+
+    // Warning Screen Assets
+    public static final String WARNING_TEXT                 = "WarningScreen/warning-screen-text.png";
+    public static final String WARNING_LOGO                 = "WarningScreen/warning-screen-logo.png";
+
+    // Menu Screen Assets
+    public static final String MENU_BTN_START               = "MenuScreen/p4-btn-start.png";
+    public static final String MENU_BTN_COLLECTION          = "MenuScreen/p4-btn-collection.png";
+    public static final String MENU_BTN_SETTING             = "MenuScreen/p4-btn-setting.png";
+    public static final String MENU_BTN_EXIT                = "MenuScreen/p4-btn-exit.png";
+    public static final String MENU_BG                      = "MenuScreen/p4-bg.png";
+    public static final String MENU_BORDER_LEFT             = "MenuScreen/p4-border-left.png";
+    public static final String MENU_BORDER_RIGHT            = "MenuScreen/p4-border-right.png";
+
+    // Name Screen Assets
+    public static final String NAME_ENTER_BOX               = "NameScreen/enterbox.png";
+    public static final String NAME_ENTER_NAME              = "NameScreen/entername.png";
+    public static final String NAME_CLOUD                   = "NameScreen/cloud.png";
+    public static final String NAME_BORDER                  = "NameScreen/border.png";
+    public static final String NAME_BACKGROUND              = "NameScreen/bg.png";
+
+    // Stage Selection Screen Assets
+    public static final String STAGE_BUILDING_OFFICE        = "StageSelect/Building/stage-office.png";
+    public static final String STAGE_BUILDING_CINEMA        = "StageSelect/Building/stage-cinema.png";
+    public static final String STAGE_BUILDING_HOSPITAL      = "StageSelect/Building/stage-hospital.png";
+    public static final String STAGE_BUILDING_SCHOOL        = "StageSelect/Building/stage-school.png";
+    public static final String STAGE_BUILDING_HOME          = "StageSelect/Building/stage-home.png";
+    public static final String STAGE_BUILDING_CAFE          = "StageSelect/Building/stage-cafe.png";
+    public static final String STAGE_TEXT_OFFICE            = "StageSelect/Text/stage-office-text.png";
+    public static final String STAGE_TEXT_CINEMA            = "StageSelect/Text/stage-cinema-text.png";
+    public static final String STAGE_TEXT_HOSPITAL          = "StageSelect/Text/stage-hospital-text.png";
+    public static final String STAGE_TEXT_SCHOOL            = "StageSelect/Text/stage-school-text.png";
+    public static final String STAGE_TEXT_HOME              = "StageSelect/Text/stage-home-text.png";
+    public static final String STAGE_TEXT_CAFE              = "StageSelect/Text/stage-cafe-text.png";
+    public static final String STAGE_BG_BACKBUTTON          = "StageSelect/Background/stage-backbutton.png";
+    public static final String STAGE_BG_PLAYBUTTON          = "StageSelect/Background/stage-playbutton.png";
+    public static final String STAGE_BG_CLOUD               = "StageSelect/Background/stage-cloud.png";
+    public static final String STAGE_BG_HEADER              = "StageSelect/Background/stage-header.png";
+    public static final String STAGE_BG_FOOTER              = "StageSelect/Background/stage-footer.png";
+    public static final String STAGE_BG_TRASHWORLD          = "StageSelect/Background/trashworld.png";
+    public static final String STAGE_BG_OVERLAY_BACKGROUND  = "StageSelect/Background/stage-overlay-background.png";
+    public static final String STAGE_BG_ARROW               = "StageSelect/Background/stage-select-arrow.png";
+
+    // Collection Stage Assets
+    public static final String COLLECTION_SCREEN_TITLE      = "CollectionScreen/screen-title.png";
+    public static final String COLLECTION_BG                = "CollectionScreen/bg.jpg";
+
+
+
     public Assets() {
         assetManager = new AssetManager();
         loadImages();
         assetManager.finishLoading();
     }
 
-    public Texture getSplashScreenLogo() {
-        return assetManager.get(SPLASH_SCREEN_LOGO, TEXTURE);
+    public <T> T get(String name, Class<T> type) {
+        return assetManager.get(name, type);
     }
-
-    public Texture getWarningScreenText() {
-        return assetManager.get("warning-screen-text.png", TEXTURE);
-    }
-
-    public Texture getWarningScreenLogo() {
-        return assetManager.get("warning-screen-logo.png", TEXTURE);
-    }
-
-    public Texture getNameScreenBG() {
-        return assetManager.get("NameScreen/bg.png", TEXTURE);
-    }
-
-    public Texture getNameScreenEnterBox() {
-        return assetManager.get("NameScreen/enterbox.png", TEXTURE);
-    }
-
-    public Texture getNameScreenEnterName() {
-        return assetManager.get("NameScreen/entername.png", TEXTURE);
-    }
-
-    public Texture getNameScreenCloud() {
-        return assetManager.get("NameScreen/cloud.png", TEXTURE);
-    }
-
-    public Texture getNameScreenBorder() {
-        return assetManager.get("NameScreen/border.png", TEXTURE);
-    }
-
-    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
-        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
-    }
-
-    public Texture getMenuScreenAssets(String key) {
-        switch (key) {
-            case "btnStart":
-                return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
-            case "btnCollection":
-                return assetManager.get("MenuScreen/p4-btn-collection.png", TEXTURE);
-            case "btnSetting":
-                return assetManager.get("MenuScreen/p4-btn-setting.png", TEXTURE);
-            case "btnExit":
-                return assetManager.get("MenuScreen/p4-btn-exit.png", TEXTURE);
-            case "borderLeft":
-                return assetManager.get("MenuScreen/p4-border-left.png", TEXTURE);
-            case "borderRight":
-                return assetManager.get("MenuScreen/p4-border-right.png", TEXTURE);
-            case "bg":
-                return assetManager.get("MenuScreen/p4-bg.png", TEXTURE);
-            default:
-                return assetManager.get("MenuScreen/p4-btn-start.png", TEXTURE);
-        }
-    }
-
-    public Texture getStageSelectAssets(String stageAssetName){
-        switch (stageAssetName){
-            case "office":          return assetManager.get("StageSelect/Building/stage-office.png", TEXTURE);
-            case "office-text":     return assetManager.get("StageSelect/Text/stage-office-text.png", TEXTURE);
-
-            case "cinema":          return assetManager.get("StageSelect/Building/stage-cinema.png", TEXTURE);
-            case "cinema-text":     return assetManager.get("StageSelect/Text/stage-cinema-text.png", TEXTURE);
-
-            case "hospital":        return assetManager.get("StageSelect/Building/stage-hospital.png", TEXTURE);
-            case "hospital-text":   return assetManager.get("StageSelect/Text/stage-hospital-text.png", TEXTURE);
-
-            case "school":          return assetManager.get("StageSelect/Building/stage-school.png", TEXTURE);
-            case "school-text":     return assetManager.get("StageSelect/Text/stage-school-text.png", TEXTURE);
-
-            case "home":            return assetManager.get("StageSelect/Building/stage-home.png", TEXTURE);
-            case "home-text":       return assetManager.get("StageSelect/Text/stage-home-text.png", TEXTURE);
-
-            case "cafe":            return assetManager.get("StageSelect/Building/stage-cafe.png", TEXTURE);
-            case "cafe-text":       return assetManager.get("StageSelect/Text/stage-cafe-text.png", TEXTURE);
-
-            case "back-button":     return assetManager.get("StageSelect/Background/stage-backbutton.png", TEXTURE);
-            case "play-button":     return assetManager.get("StageSelect/Background/stage-playbutton.png", TEXTURE);
-            case "cloud":           return assetManager.get("StageSelect/Background/stage-cloud.png", TEXTURE);
-
-            case "header":          return assetManager.get("StageSelect/Background/stage-header.png", TEXTURE);
-            case "footer":          return assetManager.get("StageSelect/Background/stage-footer.png", TEXTURE);
-            case "trash-world":     return assetManager.get("StageSelect/Background/trashworld.png", TEXTURE);
-
-        default:                    return assetManager.get("StageSelect/Background/trashworld.png", TEXTURE);
-        }
-    }
-
-    public Texture getCollectionScreenAssets(String key) {
-        switch (key) {
-            case "bg": return assetManager.get("CollectionScreen/bg.jpg", TEXTURE);
-            case "screenTitle": return assetManager.get("CollectionScreen/screen-title.png", TEXTURE);
-            default: return assetManager.get("CollectionScreen/bg.jpg", TEXTURE);
-        }
-    }
-
 
     private AssetManager assetManager;
+
     private TreeMap<Integer, BitmapFont> loadedFonts;
+    public static Class<Texture> TEXTURE = Texture.class;
 
-    private static Class<Texture> TEXTURE = Texture.class;
-
-    private static final String SPLASH_SCREEN_LOGO = "splash-logo.png";
-
+    public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
     private void loadImages() {
-        assetManager.load(SPLASH_SCREEN_LOGO, TEXTURE);
-        assetManager.load("MenuScreen/p4-btn-start.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-btn-collection.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-btn-setting.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-btn-exit.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-bg.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-border-left.png", TEXTURE);
-        assetManager.load("MenuScreen/p4-border-right.png", TEXTURE);
-        assetManager.load("warning-screen-text.png", TEXTURE);
-        assetManager.load("warning-screen-logo.png", TEXTURE);
-        assetManager.load("NameScreen/bg.png", TEXTURE);
-        assetManager.load("NameScreen/enterbox.png", TEXTURE);
-        assetManager.load("NameScreen/entername.png", TEXTURE);
-        assetManager.load("NameScreen/cloud.png", TEXTURE);
-        assetManager.load("NameScreen/border.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-office.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-office-text.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-cinema.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-cinema-text.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-hospital.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-hospital-text.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-school.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-school-text.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-home.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-home-text.png", TEXTURE);
-        assetManager.load("StageSelect/Building/stage-cafe.png", TEXTURE);
-        assetManager.load("StageSelect/Text/stage-cafe-text.png", TEXTURE);
-        assetManager.load("StageSelect/Background/stage-backbutton.png", TEXTURE);
-        assetManager.load("StageSelect/Background/stage-playbutton.png", TEXTURE);
-        assetManager.load("StageSelect/Background/stage-cloud.png", TEXTURE);
-        assetManager.load("StageSelect/Background/stage-header.png", TEXTURE);
-        assetManager.load("StageSelect/Background/stage-footer.png", TEXTURE);
-        assetManager.load("StageSelect/Background/trashworld.png", TEXTURE);
-        assetManager.load("CollectionScreen/bg.jpg", TEXTURE);
-        assetManager.load("CollectionScreen/screen-title.png", TEXTURE);
+        assetManager.load(SPLASH_LOGO, TEXTURE);
+
+        assetManager.load(WARNING_TEXT, TEXTURE);
+        assetManager.load(WARNING_LOGO, TEXTURE);
+
+        assetManager.load(MENU_BTN_START, TEXTURE);
+        assetManager.load(MENU_BTN_COLLECTION, TEXTURE);
+        assetManager.load(MENU_BTN_SETTING, TEXTURE);
+        assetManager.load(MENU_BTN_EXIT, TEXTURE);
+        assetManager.load(MENU_BG, TEXTURE);
+        assetManager.load(MENU_BORDER_LEFT, TEXTURE);
+        assetManager.load(MENU_BORDER_RIGHT, TEXTURE);
+
+        assetManager.load(NAME_BACKGROUND, TEXTURE);
+        assetManager.load(NAME_ENTER_BOX, TEXTURE);
+        assetManager.load(NAME_ENTER_NAME, TEXTURE);
+        assetManager.load(NAME_CLOUD, TEXTURE);
+        assetManager.load(NAME_BORDER, TEXTURE);
+
+        assetManager.load(STAGE_BUILDING_OFFICE, TEXTURE);
+        assetManager.load(STAGE_TEXT_OFFICE, TEXTURE);
+        assetManager.load(STAGE_BUILDING_CINEMA, TEXTURE);
+        assetManager.load(STAGE_TEXT_CINEMA, TEXTURE);
+        assetManager.load(STAGE_BUILDING_HOSPITAL, TEXTURE);
+        assetManager.load(STAGE_TEXT_HOSPITAL, TEXTURE);
+        assetManager.load(STAGE_BUILDING_SCHOOL, TEXTURE);
+        assetManager.load(STAGE_TEXT_SCHOOL, TEXTURE);
+        assetManager.load(STAGE_BUILDING_HOME, TEXTURE);
+        assetManager.load(STAGE_TEXT_HOME, TEXTURE);
+        assetManager.load(STAGE_BUILDING_CAFE, TEXTURE);
+        assetManager.load(STAGE_TEXT_CAFE, TEXTURE);
+        assetManager.load(STAGE_BG_BACKBUTTON, TEXTURE);
+        assetManager.load(STAGE_BG_PLAYBUTTON, TEXTURE);
+        assetManager.load(STAGE_BG_CLOUD, TEXTURE);
+        assetManager.load(STAGE_BG_HEADER, TEXTURE);
+        assetManager.load(STAGE_BG_FOOTER, TEXTURE);
+        assetManager.load(STAGE_BG_TRASHWORLD, TEXTURE);
+        assetManager.load(STAGE_BG_OVERLAY_BACKGROUND, TEXTURE);
+        assetManager.load(STAGE_BG_ARROW,TEXTURE);
+
+        assetManager.load(COLLECTION_BG, TEXTURE);
+        assetManager.load(COLLECTION_SCREEN_TITLE, TEXTURE);
     }
 
     private BitmapFont getFont(String name, Integer size, Color color) {
@@ -177,5 +142,9 @@ public class Assets {
         parameter.genMipMaps = true;
 
         return generator.generateFont(parameter);
+    }
+
+    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
+        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 }

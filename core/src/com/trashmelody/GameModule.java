@@ -29,6 +29,7 @@ public class GameModule implements Module {
         binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(SplashScreen.class).in(Singleton.class);
         binder.bind(WarningScreen.class).in(Singleton.class);
+        binder.bind(StageSelectScreen.class).in(Singleton.class);
         binder.bind(CollectionScreen.class).in(Singleton.class);
         binder.bind(SandboxScreen.class).in(Singleton.class);
     }
@@ -55,13 +56,6 @@ public class GameModule implements Module {
     @Provides @Singleton
     public Assets provideAssetManager() {
         return new Assets();
-    }
-
-    @Provides
-    @Singleton
-    public StageSelectScreen provideStageSelectionScreen(Assets assets, MenuScreen menuScreen,
-                                                         OrthographicCamera camera){
-        return new StageSelectScreen(game, assets, menuScreen, camera);
     }
 
 }

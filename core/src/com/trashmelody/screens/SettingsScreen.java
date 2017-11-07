@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.models.Button;
 import com.trashmelody.models.Position;
 import io.vavr.collection.List;
@@ -21,6 +22,7 @@ import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
 public class SettingsScreen extends ScreenAdapter {
+    private TrashMelody game;
     private SpriteBatch batch;
     private Camera camera;
     private Assets assets;
@@ -34,7 +36,8 @@ public class SettingsScreen extends ScreenAdapter {
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
+    SettingsScreen(TrashMelody game, SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
+        this.game = game;
         this.batch = batch;
         this.camera = camera;
         this.assets = assets;
@@ -78,6 +81,8 @@ public class SettingsScreen extends ScreenAdapter {
             rightSections = rightSections.tail();
         }
 
+        game.batch.begin();
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && !leftSections.isEmpty()) {
             rightSections = rightSections.prepend(currentSection);
             currentSection = leftSections.head();
@@ -90,13 +95,18 @@ public class SettingsScreen extends ScreenAdapter {
         largeFont.draw(batch, currentSection, getViewportWidth()/2, getViewportHeight()/2 + 10);
         mediumFont.draw(batch, "Settings Screen", 30, 40);
 
+       // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+        if (Debugger.debug_mode){
+            Debugger.runDebugger(game.batch, game.font,"Settings Screen");
+            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
+        }
         // Debug zone
         Debugger.runDebugger(batch, mediumFont, "Setting Screen");
         Debugger.runAdvancedDebugger(batch, mediumFont,0,0);
         Debugger.logScreenResolution();
-
-        println(Gdx.graphics.getPpiX());
-        println(Gdx.graphics.getPpiY());
 
         batch.end();
     }

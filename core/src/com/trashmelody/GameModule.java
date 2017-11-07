@@ -31,6 +31,7 @@ public class GameModule implements Module {
         binder.bind(WarningScreen.class).in(Singleton.class);
         binder.bind(StageSelectScreen.class).in(Singleton.class);
         binder.bind(CollectionScreen.class).in(Singleton.class);
+        binder.bind(SandboxScreen.class).in(Singleton.class);
     }
 
     @Provides @Singleton
@@ -49,6 +50,7 @@ public class GameModule implements Module {
     @Provides @Singleton
     public Viewport provideViewport(OrthographicCamera camera) {
         return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+//        return new ScreenViewport(camera);
     }
 
     @Provides @Singleton

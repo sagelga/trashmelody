@@ -137,6 +137,9 @@ public class Assets {
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = size;
         parameter.color = color;
+        parameter.minFilter = Texture.TextureFilter.Linear;
+        parameter.magFilter = Texture.TextureFilter.Linear;
+        parameter.genMipMaps = true;
 
         return generator.generateFont(parameter);
     }

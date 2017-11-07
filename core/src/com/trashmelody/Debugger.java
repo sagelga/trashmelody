@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import static com.trashmelody.Utils.*;
 
 import static com.trashmelody.Utils.*;
+import static io.vavr.API.println;
 
 public class Debugger extends ScreenAdapter{
     private TrashMelody game;
@@ -61,6 +62,11 @@ public class Debugger extends ScreenAdapter{
         if (delay_progress != 0) {
             debugShow(batch, font, "Delay Cool Down : " + delay_progress + " %", 10);
         }
+    }
+
+    public static void logScreenResolution() {
+        println(String.format("Height = %d", Gdx.graphics.getHeight()));
+        println(String.format("Weight = %d", Gdx.graphics.getWidth()));
     }
 
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

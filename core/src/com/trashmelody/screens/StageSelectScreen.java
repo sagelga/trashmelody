@@ -130,7 +130,6 @@ public class StageSelectScreen extends ScreenAdapter {
         }
         if (Debugger.debug_mode){
             Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
         }
         // Debug zone
 

@@ -52,19 +52,10 @@ public class SplashScreen extends ScreenAdapter {
         }
         count += 5;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.setScreen(menuScreen);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
-            game.setScreen(settingsScreen);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.K)){
-            game.setScreen(stageSelectScreen);
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            game.setScreen(collectionScreen);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) game.setScreen(menuScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) game.setScreen(settingsScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.K)) game.setScreen(stageSelectScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) game.setScreen(collectionScreen);
 
         // Start loading assets
         game.batch.begin();
@@ -75,8 +66,7 @@ public class SplashScreen extends ScreenAdapter {
             Debugger.debug_mode = !Debugger.debug_mode;
         }
         if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Splash Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,count/10);
+            Debugger.runDebugger(game.batch, game.font,"Splash Screen",count/10);
         }
         // Debug zone
 

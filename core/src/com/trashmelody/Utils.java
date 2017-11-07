@@ -32,11 +32,11 @@ public class Utils {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    public static float getViewportWidth() {
+    public static int getViewportWidth() {
         return Gdx.graphics.getWidth();
     }
 
-    public static float getViewportHeight() {
+    public static int getViewportHeight() {
         return Gdx.graphics.getHeight();
     }
 

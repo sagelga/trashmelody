@@ -30,6 +30,7 @@ public class GameModule implements Module {
         binder.bind(SplashScreen.class).in(Singleton.class);
         binder.bind(WarningScreen.class).in(Singleton.class);
         binder.bind(CollectionScreen.class).in(Singleton.class);
+        binder.bind(SandboxScreen.class).in(Singleton.class);
     }
 
     @Provides @Singleton

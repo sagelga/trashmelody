@@ -9,8 +9,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         DisplayMode[] primaryDesktopMode = LwjglApplicationConfiguration.getDisplayModes();
-        config.width = 2880;
-        config.height = 1800;
+        config.width = 900;
+        config.height = 700;
 
 		new LwjglApplication(new TrashMelody(), config);
 	}

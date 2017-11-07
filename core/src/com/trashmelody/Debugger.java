@@ -33,7 +33,7 @@ public class Debugger extends ScreenAdapter{
         // This method will show the debugger interfaces
         debugShow(batch,font,"Press '1' to toggle debug page", 1);
         debugShow(batch,font,"[ Trash Melody ] Debugger v1.0", 2);
-        debugShow(batch,font,"True Screen Resolution : " + X_VAL + " x " + Y_VAL,3);
+        debugShow(batch,font,"Window Resolution : " + X_VAL + " x " + Y_VAL,3);
 //        debugShow(batch,font,"Dedicated Screen Resolution : " + DesktopLauncher.screen_width +" x " + DesktopLauncher.screen_height + " (" + DesktopLauncher.screen_scale + ") ",4);
         debugShow(batch,font,"Cursor Coordinates : " + Gdx.input.getX() + " x " + Gdx.input.getY(), 4);
         debugShow(batch,font,"FPS : " + Gdx.graphics.getFramesPerSecond() + " (" + (Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond()) + ")",5);

@@ -63,7 +63,8 @@ public class Assets {
     public static final String STAGE_BG_FOOTER              = "StageSelect/Background/stage-footer.png";
     public static final String STAGE_BG_TRASHWORLD          = "StageSelect/Background/trashworld.png";
     public static final String STAGE_BG_OVERLAY_BACKGROUND  = "StageSelect/Background/stage-overlay-background.png";
-    public static final String STAGE_BG_ARROW               = "StageSelect/Background/stage-select-arrow.png";
+    public static final String STAGE_BG_ARROW_L             = "StageSelect/Background/stage-arrow-left.png";
+    public static final String STAGE_BG_ARROW_R             = "StageSelect/Background/stage-arrow-right.png";
 
     // Collection Stage Assets
     public static final String COLLECTION_SCREEN_TITLE      = "CollectionScreen/screen-title.png";
@@ -83,13 +84,15 @@ public class Assets {
     public static final String COUNTDOWN_STRIPE3            = "CountdownPage/stripe3.png";
     public static final String COUNTDOWN_STRIPE4            = "CountdownPage/stripe4.png";
     public static final String COUNTDOWN_STRIPE5            = "CountdownPage/stripe5.png";
+    public static final String COUNTDOWN_STRIPE6            = "CountdownPage/stripe6.png";
 
+    // Main Game Screen Assets
     public static final String GAME_BACKGROUND1             = "GameScreen/background1.png";
     public static final String GAME_BACKGROUND_FOOTER1      = "GameScreen/background-footer1.png";
-    public static final String GAME_BIN_01                  = "GameScreen/BIN-01.png";
-    public static final String GAME_BIN_02                  = "GameScreen/BIN-02.png";
-    public static final String GAME_BIN_03                  = "GameScreen/BIN-03.png";
-    public static final String GAME_BIN_04                  = "GameScreen/BIN-04.png";
+    public static final String GAME_BIN_01                  = "GameScreen/BIN-1.png";
+    public static final String GAME_BIN_02                  = "GameScreen/BIN-2.png";
+    public static final String GAME_BIN_03                  = "GameScreen/BIN-3.png";
+    public static final String GAME_BIN_04                  = "GameScreen/BIN-4.png";
     public static final String GAME_CENTER                  = "GameScreen/CENTER.png";
     public static final String GAME_CHECK                   = "GameScreen/CHECK.png";
     public static final String GAME_HEADER                  = "GameScreen/HEADER.png";
@@ -103,9 +106,9 @@ public class Assets {
     public static final String GAME_LEVEL_2                 = "GameScreen/LEVEL-2.png";
     public static final String GAME_LEVEL_3                 = "GameScreen/LEVEL-3.png";
     public static final String GAME_ICON                    = "GameScreen/ICON.png";
-    public static final String GAME_NAME_SONG_EXAMPLE       = "GameScreen/NAME-SONG-EXAMPLE.png";
+    public static final String GAME_SONG_NAME_1             = "GameScreen/Song-Name-1.png";
     public static final String GAME_PAUSE                   = "GameScreen/PAUSE.png";
-    public static final String GAME_RIGHT_LEVEL_LEFT        = "GameScreen/RIGHT-LEVEL-LEFT.png";
+    public static final String GAME_LEVEL_BORDER            = "GameScreen/Level-Border.png";
     public static final String GAME_SCORE                   = "GameScreen/SCORE.png";
     public static final String GAME_SCORE_1                 = "GameScreen/SCORE-1.png";
     public static final String GAME_SCORE_2                 = "GameScreen/SCORE-2.png";
@@ -170,7 +173,8 @@ public class Assets {
         assetManager.load(STAGE_BG_FOOTER, TEXTURE);
         assetManager.load(STAGE_BG_TRASHWORLD, TEXTURE);
         assetManager.load(STAGE_BG_OVERLAY_BACKGROUND, TEXTURE);
-        assetManager.load(STAGE_BG_ARROW,TEXTURE);
+        assetManager.load(STAGE_BG_ARROW_L,TEXTURE);
+        assetManager.load(STAGE_BG_ARROW_R,TEXTURE);
 
         assetManager.load(COLLECTION_BG, TEXTURE);
         assetManager.load(COLLECTION_SCREEN_TITLE, TEXTURE);
@@ -188,6 +192,7 @@ public class Assets {
         assetManager.load(COUNTDOWN_STRIPE3,TEXTURE);
         assetManager.load(COUNTDOWN_STRIPE4,TEXTURE);
         assetManager.load(COUNTDOWN_STRIPE5,TEXTURE);
+        assetManager.load(COUNTDOWN_STRIPE6,TEXTURE);
 
         assetManager.load(GAME_BACKGROUND1, TEXTURE);
         assetManager.load(GAME_BACKGROUND_FOOTER1, TEXTURE);
@@ -208,9 +213,9 @@ public class Assets {
         assetManager.load(GAME_LEVEL_2, TEXTURE);
         assetManager.load(GAME_LEVEL_3, TEXTURE);
         assetManager.load(GAME_ICON, TEXTURE);
-        assetManager.load(GAME_NAME_SONG_EXAMPLE, TEXTURE);
+        assetManager.load(GAME_SONG_NAME_1, TEXTURE);
         assetManager.load(GAME_PAUSE, TEXTURE);
-        assetManager.load(GAME_RIGHT_LEVEL_LEFT, TEXTURE);
+        assetManager.load(GAME_LEVEL_BORDER, TEXTURE);
         assetManager.load(GAME_SCORE, TEXTURE);
         assetManager.load(GAME_SCORE_1, TEXTURE);
         assetManager.load(GAME_SCORE_2, TEXTURE);

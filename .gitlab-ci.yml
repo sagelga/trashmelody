@@ -54,20 +54,12 @@ build-game:
   script:
     # Pretty much like compiling the files
     - gradle assemble
-  only:
-    - develop
-    - master
-    - /^feature.*$/
 
 run-game:
   stage: test
   script:
     # Do gradle check and gradle assemble
     - gradle run
-  only:
-    - develop
-    - master
-    - /^feature.*$/
 
 code-count:
   stage: track

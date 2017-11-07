@@ -12,12 +12,6 @@ public class DesktopLauncher {
         config.width = 2880;
         config.height = 1800;
 
-        config.setFromDisplayMode(primaryDesktopMode[2]);
-
-        for (DisplayMode mode : primaryDesktopMode) {
-            System.out.println(mode);
-        }
-
 		new LwjglApplication(new TrashMelody(), config);
 	}
 }

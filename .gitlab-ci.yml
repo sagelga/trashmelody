@@ -97,4 +97,5 @@ code-count:
     expire_in: 1 month
     paths: 
     - trackers
+  allow_failure: true
 

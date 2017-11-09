@@ -79,10 +79,6 @@ code-count:
     - echo '|Lines |Words |Chars' > gradle_tracker.txt
     - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
     #
-    # Calculate photo count
-    - echo '|Lines |Words |Chars' > photo_tracker.txt
-    - git ls-files | grep "\(.png\|.jpg\|.jpeg\|.gif\|.svg\)$" | xargs wc -c >> photo_tracker.txt
-    #
     # Lists all assets
     - git ls-files > assets_list.txt
     #

@@ -4,36 +4,55 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Provider;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
+
+import java.awt.*;
 
 import static com.trashmelody.Utils.*;
 
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
-    private StageSelectScreen stageSelectScreen;
+    private Provider<StageSelectScreen> stageSelectScreen;
     private Camera camera;
     private Viewport viewport;
+    private Stage stage;
+    private Container<MenuButtons> container;
+    private MenuButtons menuButtons;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport,
+                      Provider<StageSelectScreen> stageSelectScreen, MenuButtons menuButtons) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
         this.camera = camera;
-        this.viewport = viewport;
+        this.viewport = new ScalingViewport(Scaling.fill, vw, vh, camera);
+        this.stage = new Stage(this.viewport);
+        this.menuButtons = menuButtons;
+        this.container = new Container<>();
+        container.setFillParent(true);
+        container.align(Align.top);
+        container.pad(50);
+        container.setActor(menuButtons);
+        stage.addActor(container);
+//        stage.addActor(menuButtons);
+        Gdx.input.setInputProcessor(stage);
 
         this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         this.bg                 = assets.get(Assets.MENU_BG, Assets.TEXTURE);
@@ -49,20 +68,18 @@ public class MenuScreen extends ScreenAdapter {
     public void render(float delta) {
         clearScreen();
         camera.update();
+        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        drawCenterX(game.batch, bg, 691*2F, vh, 0);
-        drawCenterX(game.batch, splashScreenLogo, 320F, 183F, 350F);
-        drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        game.batch.draw(borderLeft, 0, 0, ((float)168/900)*vh, vh);
-        game.batch.draw(borderRight, vw-(((float)168/900)*vh), 0, ((float)168/900)*vh, 900);
+        float backgroundWidth = vh / bg.getHeight() * bg.getWidth();
+        float backgroundHeight = vh;
+        game.batch.draw(bg, (vw - backgroundWidth)/2, 0, backgroundWidth, backgroundHeight);
+//        game.batch.draw(borderLeft, 0, 0, , backgroundHeight);
+//        game.batch.draw(borderRight, );
 
         // Click 'ENTER' equivalent to clicking play (for now)
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setScreen(stageSelectScreen);
+            game.setScreen(stageSelectScreen.get());
         }
 
         /// Debug zone
@@ -73,8 +90,10 @@ public class MenuScreen extends ScreenAdapter {
             Debugger.runDebugger(game.batch, game.font,"Menu Screen Screen");
         }
         // Debug zone
-
         game.batch.end();
+
+        stage.act();
+        stage.draw();
     }
 
     private void update(float delta) {
@@ -83,8 +102,6 @@ public class MenuScreen extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-
-        viewport.update(width, height);
+        stage.getViewport().update(width, height);
     }
 }

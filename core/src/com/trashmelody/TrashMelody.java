@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.trashmelody.screens.MenuScreen;
 import com.trashmelody.screens.SplashScreen;
 
 import static com.trashmelody.Utils.getViewportWidth;
@@ -21,7 +22,7 @@ public class TrashMelody extends Game {
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
 		Injector injector = Guice.createInjector(new GameModule(this));
-		setScreen(injector.getInstance(SplashScreen.class));
+		setScreen(injector.getInstance(MenuScreen.class));
 	}
 
 	@Override

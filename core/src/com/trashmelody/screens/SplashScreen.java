@@ -44,13 +44,10 @@ public class SplashScreen extends ScreenAdapter {
         game.batch.begin();
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
+
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Splash Screen",count/10);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen");
         // Debug zone
 
         game.batch.end();

@@ -125,12 +125,8 @@ public class StageSelectScreen extends ScreenAdapter {
         }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
         // Debug zone
 
         game.batch.end();

@@ -47,12 +47,8 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Warning Screen",count/10);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",count/10);
         // Debug zone
 
         game.batch.end();

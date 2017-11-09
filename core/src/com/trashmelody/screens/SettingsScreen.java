@@ -95,17 +95,11 @@ public class SettingsScreen extends ScreenAdapter {
         largeFont.draw(batch, currentSection, getViewportWidth()/2, getViewportHeight()/2 + 10);
         mediumFont.draw(batch, "Settings Screen", 30, 40);
 
-       // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Settings Screen");
-        }
         // Debug zone
-        Debugger.runDebugger(batch, mediumFont, "Setting Screen",0);
-        Debugger.logScreenResolution();
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Settings Screen");
+        // Debug zone
+        
         batch.end();
     }
 

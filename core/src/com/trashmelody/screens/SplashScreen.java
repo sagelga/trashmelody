@@ -3,40 +3,32 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
+import com.google.inject.Provider;
 
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenter;
-import static com.trashmelody.Utils.userSkipScene;
+import static com.trashmelody.Utils.*;
 
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
-    private WarningScreen warningScreen;
+    private Assets assets;
+    private Provider<WarningScreen> warningScreen;
     private Texture splashScreenLogo;
-    private SettingsScreen settingsScreen;
-    private MenuScreen menuScreen;
-    private StageSelectScreen stageSelectScreen;
-    private CollectionScreen collectionScreen;
-    private SandboxScreen sandboxScreen;
+
+
     private int count = 0;
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, SettingsScreen settingsScreen,
-                        WarningScreen warningScreen, StageSelectScreen stageSelectScreen, CollectionScreen collectionScreen,
-                        SandboxScreen sandboxScreen) {
+    public SplashScreen(TrashMelody game, Assets assets, Provider<WarningScreen> warningScreen) {
         this.game = game;
-
+        this.assets = assets;
         this.warningScreen = warningScreen;
-        this.settingsScreen = settingsScreen;
-        this.menuScreen = menuScreen;
-        this.stageSelectScreen = stageSelectScreen;
-        this.collectionScreen = collectionScreen;
-        this.sandboxScreen = sandboxScreen;
+
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
     }
 
@@ -44,19 +36,9 @@ public class SplashScreen extends ScreenAdapter {
     public void render(float delta) {
         clearScreen();
 
-        if (count >= 1000) {
-            game.setScreen(warningScreen);
+        if(assets.assetManager.update()){
+            game.setScreen(warningScreen.get());
         }
-        if (userSkipScene() && (count > 200)) {
-            // Speed up the delay time by doing userSkipScene() pre-defined methods.
-            count += 200;
-        }
-        count += 5;
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) game.setScreen(menuScreen);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) game.setScreen(settingsScreen);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.K)) game.setScreen(stageSelectScreen);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) game.setScreen(collectionScreen);
 
         // Start loading assets
         game.batch.begin();
@@ -73,5 +55,5 @@ public class SplashScreen extends ScreenAdapter {
 
         game.batch.end();
     }
-}
 
+}

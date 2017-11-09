@@ -144,7 +144,6 @@ public class Assets {
     public static final String RESULT_RESULT_COMBO      = "ResultScreen/Result-Combo.png";
 
     private void loadImages() {
-        assetManager.load(SPLASH_LOGO,              TEXTURE);
 
         assetManager.load(WARNING_TEXT,             TEXTURE);
         assetManager.load(WARNING_LOGO,             TEXTURE);
@@ -259,17 +258,23 @@ public class Assets {
         assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
     }
 
+    private void eagerLoad() {
+      // Assets that will load first
+          assetManager.load(SPLASH_LOGO,              TEXTURE);
+    }
+
     public Assets() {
         assetManager = new AssetManager();
-        loadImages();
+        eagerLoad();
         assetManager.finishLoading();
+        loadImages();
     }
 
     public <T> T get(String name, Class<T> type) {
         return assetManager.get(name, type);
     }
 
-    private AssetManager assetManager;
+    public AssetManager assetManager;
 
     private TreeMap<Integer, BitmapFont> loadedFonts;
 

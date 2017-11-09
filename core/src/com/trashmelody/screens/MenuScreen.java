@@ -65,13 +65,9 @@ public class MenuScreen extends ScreenAdapter {
             game.setScreen(stageSelectScreen);
         }
 
-        /// Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Menu Screen Screen");
-        }
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Main Menu Screen");
         // Debug zone
 
         game.batch.end();

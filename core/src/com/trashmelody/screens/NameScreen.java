@@ -43,12 +43,8 @@ public class NameScreen extends ScreenAdapter {
         drawCenterX(game.batch, nameScreenCloud, 750F, 300F, 160F);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Naming Screen");
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Name Screen");
         // Debug zone
 
         game.batch.end();

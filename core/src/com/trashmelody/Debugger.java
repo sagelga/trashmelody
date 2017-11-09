@@ -64,11 +64,6 @@ public class Debugger extends ScreenAdapter{
         }
     }
 
-    public static void logScreenResolution() {
-        println(String.format("Height = %d", Gdx.graphics.getHeight()));
-        println(String.format("Weight = %d", Gdx.graphics.getWidth()));
-    }
-
     private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){
         // This method minimize the debug code thing.
         font.draw(batch, text,30,lineMarginCalculate(line));

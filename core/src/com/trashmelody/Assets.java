@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -116,7 +117,18 @@ public class Assets {
     public static final String GAME_SCORE_5             = "GameScreen/SCORE-5.png";
     public static final String GAME_STATUS_BAR          = "GameScreen/STATUS-BAR.png";
 
-    /* Calibrate Screen Assets
+    // Pause Screen Assets
+    public static final String PAUSE_CONTINUE_BTN1      = "PauseScreen/PAUSE-BUTTON-01.png";
+    public static final String PAUSE_CONTINUE_BTN2      = "PauseScreen/PAUSE-BUTTON-02.png";
+    public static final String PAUSE_SETTING_BTN1       = "PauseScreen/PAUSE-BUTTON-03.png";
+    public static final String PAUSE_SETTING_BTN2       = "PauseScreen/PAUSE-BUTTON-04.png";
+    public static final String PAUSE_RETRY_BTN1         = "PauseScreen/PAUSE-BUTTON-05.png";
+    public static final String PAUSE_RETRY_BTN2         = "PauseScreen/PAUSE-BUTTON-06.png";
+    public static final String PAUSE_HOME_BTN1          = "PauseScreen/PAUSE-BUTTON-07.png";
+    public static final String PAUSE_HOME_BTN2          = "PauseScreen/PAUSE-BUTTON-08.png";
+    public static final String PAUSE_SELECTOR_ARROW     = "PauseScreen/PAUSE-SIDE.png";
+
+    // Calibrate Screen Assets
     public static final String CALIBRATE_BG             = "CalibrateScreen/Calibrate-Background.png";
     public static final String CALIBRATE_HEADER         = "CalibrateScreen/Calibrate-Header.png";
     public static final String CALIBRATE_FOOTER         = "CalibrateScreen/Calibrate-Footer.png";
@@ -127,8 +139,8 @@ public class Assets {
     public static final String CALIBRATE_NUM_1          = "CalibrateScreen/Calibrate-Num-1.png";
     public static final String CALIBRATE_SPEED_POINTER  = "CalibrateScreen/Calibrate-Speed-Pointer.png";
     public static final String CALIBRATE_SPEED_BAR      = "CalibrateScreen/Calibrate-Speed-Bar.png";
-*/
-    /* Result Screen Assets
+
+    // Result Screen Assets
     public static final String RESULT_RESULT_BACKGROUND = "ResultScreen/Result-Background.png";
     public static final String RESULT_RESULT_HEADER     = "ResultScreen/Result-Header.png";
     public static final String RESULT_RESULT_FOOTER     = "ResultScreen/Result-Footer.png";
@@ -142,8 +154,8 @@ public class Assets {
     public static final String RESULT_RESULT_NICE       = "ResultScreen/Result-Nice.png";
     public static final String RESULT_RESULT_MISS       = "ResultScreen/Result-Miss.png";
     public static final String RESULT_RESULT_COMBO      = "ResultScreen/Result-Combo.png";
-*/
-    /* Setting Screen Assets
+
+    // Setting Screen Assets
     public static final String SETTING_BACK_BUTTON      = "SettingScreen/SETTING-BACK-BUTTON.png";
     public static final String SETTING_CALIBRATE        = "SettingScreen/SETTING-CALIBRATE.png";
     public static final String SETTING_EFFECT           = "SettingScreen/SETTING-EFFECT.png";
@@ -154,8 +166,8 @@ public class Assets {
     public static final String SETTING_VOLUME           = "SettingScreen/SETTING-VOLUME.png";
     public static final String SETTING_VOLUME_BAR       = "SettingScreen/SETTING-VOLUME-BAR.png";
     public static final String SETTING_WINDOW           = "SettingScreen/SETTING-WINDOW.png";
-*/
-    /* Music Assets
+
+    // Music Assets
     public static final String MUSIC_1_SONG             = "Song/1HITORIGOTO/AUDIO.mp3";
     public static final String MUSIC_1_BG_CLEAR         = "Song/1HITORIGOTO/BG1_CLEAR.png";
     public static final String MUSIC_1_BG_OPAC          = "Song/1HITORIGOTO/BG1_OPAC70.png";
@@ -190,7 +202,7 @@ public class Assets {
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
-    */
+
 
     private void loadImages() {
 
@@ -280,7 +292,17 @@ public class Assets {
         assetManager.load(GAME_SCORE_4,             TEXTURE);
         assetManager.load(GAME_SCORE_5,             TEXTURE);
         assetManager.load(GAME_STATUS_BAR,          TEXTURE);
-/*
+
+        assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
+        assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);
+        assetManager.load(PAUSE_SETTING_BTN1,       TEXTURE);
+        assetManager.load(PAUSE_SETTING_BTN2,       TEXTURE);
+        assetManager.load(PAUSE_RETRY_BTN1,         TEXTURE);
+        assetManager.load(PAUSE_RETRY_BTN2,         TEXTURE);
+        assetManager.load(PAUSE_HOME_BTN1,          TEXTURE);
+        assetManager.load(PAUSE_HOME_BTN2,          TEXTURE);
+        assetManager.load(PAUSE_SELECTOR_ARROW,     TEXTURE);
+
         assetManager.load(CALIBRATE_BG,             TEXTURE);
         assetManager.load(CALIBRATE_HEADER,         TEXTURE);
         assetManager.load(CALIBRATE_FOOTER,         TEXTURE);
@@ -317,41 +339,41 @@ public class Assets {
         assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
         assetManager.load(SETTING_WINDOW,           TEXTURE);
 
-//        assetManager.load(MUSIC_1_SONG,             TEXTURE);
+        assetManager.load(MUSIC_1_SONG,             MUSIC);
         assetManager.load(MUSIC_1_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_1_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_1_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_2_SONG,             TEXTURE);
+        assetManager.load(MUSIC_2_SONG,             MUSIC);
         assetManager.load(MUSIC_2_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_2_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_2_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_3_SONG,             TEXTURE);
+        assetManager.load(MUSIC_3_SONG,             MUSIC);
         assetManager.load(MUSIC_3_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_3_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_3_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_4_SONG,             TEXTURE);
+        assetManager.load(MUSIC_4_SONG,             MUSIC);
         assetManager.load(MUSIC_4_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_4_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_4_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_5_SONG,             TEXTURE);
+        assetManager.load(MUSIC_5_SONG,             MUSIC);
         assetManager.load(MUSIC_5_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_5_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_5_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_6_SONG,             TEXTURE);
+        assetManager.load(MUSIC_6_SONG,             MUSIC);
         assetManager.load(MUSIC_6_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_6_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_6_BG_BLUR,          TEXTURE);
 
-//        assetManager.load(MUSIC_7_SONG,             TEXTURE);
+        assetManager.load(MUSIC_7_SONG,             MUSIC);
         assetManager.load(MUSIC_7_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_7_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);
-        */
+
     }
 
     private void eagerLoad() {
@@ -379,6 +401,8 @@ public class Assets {
     private TreeMap<Integer, BitmapFont> loadedFonts;
 
     public static Class<Texture> TEXTURE = Texture.class;
+    public static Class<Music> MUSIC = Music.class;
+
 
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 

@@ -5,6 +5,7 @@ stages:
   - check
   - build
   - test
+  - track
 
 java-version:
   stage: prepare
@@ -53,17 +54,44 @@ build-game:
   script:
     # Pretty much like compiling the files
     - gradle assemble
-  only:
-    - develop
-    - master
-    - /^feature.*$/
 
 run-game:
   stage: test
   script:
     # Do gradle check and gradle assemble
     - gradle run
-  only:
-    - develop
-    - master
-    - /^feature.*$/
+
+code-count:
+  stage: track
+  script:
+    - ls -las
+    #
+    # Calculate .java count
+    - echo '|Lines |Words |Chars' > java_tracker.txt
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
+    #
+    # Calculate with coverage
+    - cloc core > adv_java_tracker.txt
+    - cloc desktop >> adv_java_tracker.txt
+    - cloc $(git ls-files) > all_adv_java_tracker.txt
+    #
+    # Calculate .gradle count
+    - echo '|Lines |Words |Chars' > gradle_tracker.txt
+    - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
+    #
+    # Lists all assets
+    - git ls-files > assets_list.txt
+    #
+    # Keep the development graph line
+    - git log --decorate --oneline --graph > logs.txt
+    #
+    # Check directory again
+    - mkdir trackers
+    - mv *.txt trackers/
+    - ls -las
+  artifacts:
+    expire_in: 1 month
+    paths: 
+    - trackers
+  allow_failure: true
+

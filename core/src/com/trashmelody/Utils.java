@@ -26,18 +26,30 @@ public class Utils {
         Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
-    public static void clearScreen(float red, float green, float blue, float alpha){
+    public static void clearScreen(int red, int green, int blue, float alpha){
         /// Overloads clearScreen() method
-        Gdx.gl.glClearColor(red, green, blue, alpha);
+        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, alpha);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    public static float getViewportWidth() {
+    public static int getViewportWidth() {
         return Gdx.graphics.getWidth();
     }
 
-    public static float getViewportHeight() {
+    public static int getViewportHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    public static float getCenterX() {
+        return getViewportWidth()/2;
+    }
+
+    public static float getCenterY() {
+        return getViewportHeight()/2;
+    }
+
+    public static float getScreenPpi() {
+        return Gdx.graphics.getPpiX();
     }
 
     public static void logInputCoordinate() {
@@ -47,4 +59,5 @@ public class Utils {
     public static boolean userSkipScene(){
         return Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER);
     }
+
 }

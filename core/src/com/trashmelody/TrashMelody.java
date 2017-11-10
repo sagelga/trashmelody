@@ -7,7 +7,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.trashmelody.screens.SplashScreen;
 
-import static com.trashmelody.Utils.clearScreen;
+import static com.trashmelody.Utils.getViewportWidth;
 
 public class TrashMelody extends Game {
 	public SpriteBatch batch;
@@ -18,15 +18,14 @@ public class TrashMelody extends Game {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 
-		Injector injector = Guice.createInjector(new GameModule(this));
+		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
+		Injector injector = Guice.createInjector(new GameModule(this));
 		setScreen(injector.getInstance(SplashScreen.class));
 	}
 
 	@Override
 	public void render () {
-	    clearScreen();
-
 		super.render();
 	}
 }

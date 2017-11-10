@@ -1,8 +1,11 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
@@ -19,13 +22,13 @@ public class NameScreen extends ScreenAdapter {
     @Inject
     public NameScreen(TrashMelody game, Assets assets) {
         this.game = game;
-        this.splashScreenLogo = assets.getSplashScreenLogo();
-        this.nameScreenBG = assets.getNameScreenBG();
-        this.nameScreenEnterBox = assets.getNameScreenEnterBox();
-        this.nameScreenEnterName = assets.getNameScreenEnterName();
-        this.nameScreenCloud = assets.getNameScreenCloud();
-        this.nameScreenBorderLeft = assets.getNameScreenBorder();
-        this.nameScreenBorderRight = assets.getNameScreenBorder();
+        this.splashScreenLogo       = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
+        this.nameScreenBG           = assets.get(Assets.NAME_BACKGROUND, Assets.TEXTURE);
+        this.nameScreenEnterBox     = assets.get(Assets.NAME_ENTER_BOX, Assets.TEXTURE);
+        this.nameScreenEnterName    = assets.get(Assets.NAME_ENTER_NAME, Assets.TEXTURE);
+        this.nameScreenCloud        = assets.get(Assets.NAME_CLOUD, Assets.TEXTURE);
+        this.nameScreenBorderLeft   = assets.get(Assets.NAME_BORDER, Assets.TEXTURE);
+        this.nameScreenBorderRight  = assets.get(Assets.NAME_BORDER, Assets.TEXTURE);
     }
 
     @Override
@@ -41,10 +44,13 @@ public class NameScreen extends ScreenAdapter {
         game.batch.draw(nameScreenBorderLeft,0,0,50,500);
         game.batch.draw(nameScreenBorderRight,855,0,-50,500);
         game.font.draw(game.batch, "Name Screen", 30, 40);
+
+
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Name Screen");
+        // Debug zone
+
         game.batch.end();
-    }
-
-    private void update(float delta) {
-
     }
 }

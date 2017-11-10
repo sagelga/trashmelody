@@ -2,20 +2,16 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 
 import com.trashmelody.Assets;
+import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
+import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
-import javax.xml.soap.Text;
-
-import static com.trashmelody.Utils.*;
 
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -28,27 +24,33 @@ public class WarningScreen extends ScreenAdapter {
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
-        this.warningScreenLogo = assets.getWarningScreenLogo();
-        this.warningScreenText = assets.getWarningScreenText();
+        this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
+        this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
     }
 
     @Override
     public void render(float delta) {
-        clearScreen(253,249,255,1);
+        clearScreen(253,243,255,1);
 
-        if (count >= 300) {
+        if (count >= 1000) {
             game.setScreen(menuScreen);
         }
-        if(userSkipScene()){
-            // Speed up the delay time with SkipScene()
+        if(userSkipScene() && count > 500){
+            // Speed up the delay time by doing userSkipScene() pre-defined methods.
             count += 100;
         }
-        count++;
+        count += 5;
 
+        // Start loading assets
         game.batch.begin();
         drawCenterX(game.batch, warningScreenLogo, 180F, 237F, 500F);
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
-        game.font.draw(game.batch, "Warning Screen", 30, 40);
+
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",count/10);
+        // Debug zone
+
         game.batch.end();
     }
 

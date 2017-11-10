@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
@@ -18,7 +20,7 @@ public class ResultScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
-    private Texture bg;
+    private Texture header;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -26,17 +28,20 @@ public class ResultScreen extends ScreenAdapter {
     public ResultScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
-        this.viewport = viewport;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
 
-        //this.bg = assets.get(Assets.MENU_BG, Assets.TEXTURE);
+        this.header = assets.get(Assets.RESULT_RESULT_HEADER, Assets.TEXTURE);
     }
 
     @Override
     public void render(float delta) {
         clearScreen();
         camera.update();
+        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
+
+        game.batch.draw(header, 0, vh-105, 1200, 105);
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
@@ -45,5 +50,12 @@ public class ResultScreen extends ScreenAdapter {
         // Debug zone
 
         game.batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
     }
 }

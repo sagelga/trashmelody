@@ -46,24 +46,19 @@ public class Debugger extends ScreenAdapter{
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
     }
 
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, int delay_progress){
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed){
         runDebugger(batch, font, current_page);
-        if (delay_progress != 0) debugShow(batch, font, "Delay Cool Down : " + delay_progress + " %", 10);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 10);
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume){
         runDebugger(batch, font, current_page);
-        debugShow(batch, font, "Volume : " + (int)(music_volume*100) + " %", 10);
+        debugShow(batch, font, "Music Volume : " + (int)(music_volume*100) + " %", 10);
     }
 
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, int delay_progress){
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, long time_lapsed){
         runDebugger(batch, font, current_page,music_volume);
-        if (delay_progress != 0) debugShow(batch, font, "Delay Cool Down : " + delay_progress + " %", 11);
-    }
-
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, int delay_progress, long time_lapsed){
-        runDebugger(batch, font, current_page,music_volume,delay_progress);
-        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 12);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
     }
 
     private static String osType;

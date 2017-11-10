@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
@@ -22,6 +23,9 @@ public class Assets {
 
     // Splash Screen Assets
     public static final String SPLASH_LOGO              = "splash-logo.png";
+
+    // Loading Screen Assets
+    public static final String LOADING_LOGO             = "LoadingScreen/Loading_Logo.gif";
 
     // Warning Screen Assets
     public static final String WARNING_TEXT             = "WarningScreen/warning-screen-text.png";
@@ -384,6 +388,7 @@ public class Assets {
     private void eagerLoad() { // Assets that will load first
         assetManager.load(SPLASH_LOGO,              TEXTURE);
         assetManager.load(MUSIC_BG1,                MUSIC);
+        assetManager.load(LOADING_LOGO,             TEXTURE);
     }
 
     public Assets() {
@@ -403,6 +408,7 @@ public class Assets {
 
     public static Class<Texture> TEXTURE = Texture.class;
     public static Class<Music> MUSIC = Music.class;
+//    public static Class<Animation> ANIMATION = Animation.class;
 
 
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;

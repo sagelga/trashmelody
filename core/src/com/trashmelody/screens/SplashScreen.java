@@ -69,6 +69,9 @@ public class SplashScreen extends ScreenAdapter {
         if (Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             game.setScreen(sandboxScreen);
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            game.setScreen(sandboxScreen);
+        }
 
         // Start loading assets
         game.batch.begin();

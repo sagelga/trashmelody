@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Provider;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
@@ -28,7 +29,7 @@ public class MenuScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
         this.camera = camera;
@@ -64,14 +65,9 @@ public class MenuScreen extends ScreenAdapter {
             game.setScreen(stageSelectScreen);
         }
 
-        /// Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Menu Screen Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
-        }
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Main Menu Screen");
         // Debug zone
 
         game.batch.end();

@@ -48,13 +48,8 @@ public class CollectionScreen extends ScreenAdapter {
         // drawCenterX(game.batch, screenTitle, vw, hey, vh-400);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Collection Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
         // Debug zone
 
         game.batch.end();

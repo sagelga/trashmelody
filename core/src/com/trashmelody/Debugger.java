@@ -46,10 +46,19 @@ public class Debugger extends ScreenAdapter{
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
     }
 
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, int delay_progress){
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed){
         runDebugger(batch, font, current_page);
-        // This method will show advanced information about game screen.
-        if (delay_progress != 0) debugShow(batch, font, "Delay Cool Down : " + delay_progress + " %", 10);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 10);
+    }
+
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume){
+        runDebugger(batch, font, current_page);
+        debugShow(batch, font, "Music Volume : " + (int)(music_volume*100) + " %", 10);
+    }
+
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, long time_lapsed){
+        runDebugger(batch, font, current_page,music_volume);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
     }
 
     private static String osType;
@@ -64,12 +73,12 @@ public class Debugger extends ScreenAdapter{
         }
     }
 
-    private static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){
+    public static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){
         // This method minimize the debug code thing.
         font.draw(batch, text,30,lineMarginCalculate(line));
     }
 
-    private static float lineMarginCalculate(int line_count){
+    public static float lineMarginCalculate(int line_count){
         // Returns the Y coordinates that have been margin.
         return getViewportHeight() - (line_count * line_margin);
     }

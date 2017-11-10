@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
@@ -22,6 +23,9 @@ public class Assets {
 
     // Splash Screen Assets
     public static final String SPLASH_LOGO              = "splash-logo.png";
+
+    // Loading Screen Assets
+    public static final String LOADING_LOGO             = "LoadingScreen/Loading_Logo.gif";
 
     // Warning Screen Assets
     public static final String WARNING_TEXT             = "WarningScreen/warning-screen-text.png";
@@ -168,7 +172,7 @@ public class Assets {
     public static final String SETTING_VOLUME_BAR       = "SettingScreen/SETTING-VOLUME-BAR.png";
     public static final String SETTING_WINDOW           = "SettingScreen/SETTING-WINDOW.png";
 
-    // Music Assets
+    /*// Music Assets
     public static final String MUSIC_1_SONG             = "Song/1HITORIGOTO/AUDIO.mp3";
     public static final String MUSIC_1_BG_CLEAR         = "Song/1HITORIGOTO/BG1_CLEAR.png";
     public static final String MUSIC_1_BG_OPAC          = "Song/1HITORIGOTO/BG1_OPAC70.png";
@@ -203,7 +207,9 @@ public class Assets {
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
-
+*/
+    public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
+    public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
 
     private void loadImages() {
 
@@ -341,6 +347,53 @@ public class Assets {
         // assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
         // assetManager.load(SETTING_WINDOW,           TEXTURE);
 /*
+        assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
+        assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);
+        assetManager.load(PAUSE_SETTING_BTN1,       TEXTURE);
+        assetManager.load(PAUSE_SETTING_BTN2,       TEXTURE);
+        assetManager.load(PAUSE_RETRY_BTN1,         TEXTURE);
+        assetManager.load(PAUSE_RETRY_BTN2,         TEXTURE);
+        assetManager.load(PAUSE_HOME_BTN1,          TEXTURE);
+        assetManager.load(PAUSE_HOME_BTN2,          TEXTURE);
+        assetManager.load(PAUSE_SELECTOR_ARROW,     TEXTURE);
+
+        assetManager.load(CALIBRATE_BG,             TEXTURE);
+        assetManager.load(CALIBRATE_HEADER,         TEXTURE);
+        assetManager.load(CALIBRATE_FOOTER,         TEXTURE);
+        assetManager.load(CALIBRATE_NUM_5,          TEXTURE);
+        assetManager.load(CALIBRATE_NUM_4,          TEXTURE);
+        assetManager.load(CALIBRATE_NUM_3,          TEXTURE);
+        assetManager.load(CALIBRATE_NUM_2,          TEXTURE);
+        assetManager.load(CALIBRATE_NUM_1,          TEXTURE);
+        assetManager.load(CALIBRATE_SPEED_POINTER,  TEXTURE);
+        assetManager.load(CALIBRATE_SPEED_BAR,      TEXTURE);
+
+        assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
+        assetManager.load(RESULT_RESULT_HEADER,     TEXTURE);
+        assetManager.load(RESULT_RESULT_FOOTER,     TEXTURE);
+        assetManager.load(RESULT_RESULT_GRADE_A,    TEXTURE);
+        assetManager.load(RESULT_RESULT_GRADE_B,    TEXTURE);
+        assetManager.load(RESULT_RESULT_GRADE_C,    TEXTURE);
+        assetManager.load(RESULT_RESULT_GRADE_D,    TEXTURE);
+        assetManager.load(RESULT_RESULT_GRADE_F,    TEXTURE);
+        assetManager.load(RESULT_RESULT_PERFECT,    TEXTURE);
+        assetManager.load(RESULT_RESULT_GOOD,       TEXTURE);
+        assetManager.load(RESULT_RESULT_NICE,       TEXTURE);
+        assetManager.load(RESULT_RESULT_MISS,       TEXTURE);
+        assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
+
+        assetManager.load(SETTING_BACK_BUTTON,      TEXTURE);
+        assetManager.load(SETTING_CALIBRATE,        TEXTURE);
+        assetManager.load(SETTING_EFFECT,           TEXTURE);
+        assetManager.load(SETTING_FULLSCREEN,       TEXTURE);
+        assetManager.load(SETTING_HEADER,           TEXTURE);
+        assetManager.load(SETTING_MUSIC,            TEXTURE);
+        assetManager.load(SETTING_SLIDE_BAR,        TEXTURE);
+        assetManager.load(SETTING_VOLUME,           TEXTURE);
+        assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
+        assetManager.load(SETTING_WINDOW,           TEXTURE);
+
+        /*
         assetManager.load(MUSIC_1_SONG,             MUSIC);
         assetManager.load(MUSIC_1_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_1_BG_OPAC,          TEXTURE);
@@ -374,18 +427,17 @@ public class Assets {
         assetManager.load(MUSIC_7_SONG,             MUSIC);
         assetManager.load(MUSIC_7_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_7_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);*/
-
+        assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);
+*/
+//        assetManager.load(MUSIC_BG1,                MUSIC);
+        assetManager.load(MUSIC_BG2,                MUSIC);
     }
 
-    private void eagerLoad() {
-      // Assets that will load first
-          assetManager.load(SPLASH_LOGO,              TEXTURE);
+    private void eagerLoad() { // Assets that will load first
+        assetManager.load(SPLASH_LOGO,              TEXTURE);
+        assetManager.load(MUSIC_BG1,                MUSIC);
+        assetManager.load(LOADING_LOGO,             TEXTURE);
     }
-
-//    private void song1Load(){
-//     // Load songs + assets for stage 1
-//    }
 
     public Assets() {
         assetManager = new AssetManager();
@@ -404,6 +456,7 @@ public class Assets {
 
     public static Class<Texture> TEXTURE = Texture.class;
     public static Class<Music> MUSIC = Music.class;
+//    public static Class<Animation> ANIMATION = Animation.class;
 
 
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;

@@ -21,6 +21,7 @@ import static com.trashmelody.Utils.*;
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private StageSelectScreen stageSelectScreen;
+    private GameScreen gameScreen;
     private Camera camera;
     private Viewport viewport;
     private Texture splashScreenLogo;
@@ -29,7 +30,7 @@ public class MenuScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen, GameScreen gameScreen) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
         this.camera = camera;
@@ -63,6 +64,10 @@ public class MenuScreen extends ScreenAdapter {
         // Click 'ENTER' equivalent to clicking play (for now)
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             game.setScreen(stageSelectScreen);
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)) {
+            game.setScreen(gameScreen);
         }
 
         // Debug zone

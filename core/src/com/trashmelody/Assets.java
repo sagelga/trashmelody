@@ -217,11 +217,11 @@ public class Assets {
         assetManager.load(MENU_BORDER_LEFT,         TEXTURE);
         assetManager.load(MENU_BORDER_RIGHT,        TEXTURE);
 
-        assetManager.load(NAME_BACKGROUND,          TEXTURE);
+    /*    assetManager.load(NAME_BACKGROUND,          TEXTURE);
         assetManager.load(NAME_ENTER_BOX,           TEXTURE);
         assetManager.load(NAME_ENTER_NAME,          TEXTURE);
         assetManager.load(NAME_CLOUD,               TEXTURE);
-        assetManager.load(NAME_BORDER,              TEXTURE);
+        assetManager.load(NAME_BORDER,              TEXTURE); */
 
         assetManager.load(STAGE_BUILDING_OFFICE,    TEXTURE);
         assetManager.load(STAGE_TEXT_OFFICE,        TEXTURE);
@@ -314,7 +314,7 @@ public class Assets {
         assetManager.load(CALIBRATE_SPEED_POINTER,  TEXTURE);
         assetManager.load(CALIBRATE_SPEED_BAR,      TEXTURE);
 
-        assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
+        /*assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
         assetManager.load(RESULT_RESULT_HEADER,     TEXTURE);
         assetManager.load(RESULT_RESULT_FOOTER,     TEXTURE);
         assetManager.load(RESULT_RESULT_GRADE_A,    TEXTURE);
@@ -372,7 +372,7 @@ public class Assets {
         assetManager.load(MUSIC_7_SONG,             MUSIC);
         assetManager.load(MUSIC_7_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_7_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);
+        assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);*/
 
     }
 

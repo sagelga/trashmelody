@@ -38,6 +38,8 @@ public class NameScreen extends ScreenAdapter {
         drawCenterX(game.batch, nameScreenEnterBox, 300F, 35F, 215F);
         drawCenterX(game.batch, nameScreenEnterName, 200F, 35F, 170F);
         drawCenterX(game.batch, nameScreenCloud, 750F, 300F, 160F);
+        game.batch.draw(nameScreenBorderLeft,0,0,50,500);
+        game.batch.draw(nameScreenBorderRight,855,0,-50,500);
         game.font.draw(game.batch, "Name Screen", 30, 40);
         game.batch.end();
     }

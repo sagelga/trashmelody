@@ -93,6 +93,7 @@ public class Assets {
     public static final String GAME_BIN_02              = "GameScreen/BIN-2.png";
     public static final String GAME_BIN_03              = "GameScreen/BIN-3.png";
     public static final String GAME_BIN_04              = "GameScreen/BIN-4.png";
+    public static final String GAME_BIN_05              = "GameScreen/BIN-5.png";
     public static final String GAME_CENTER              = "GameScreen/CENTER.png";
     public static final String GAME_CHECK               = "GameScreen/CHECK.png";
     public static final String GAME_HEADER              = "GameScreen/HEADER.png";
@@ -269,6 +270,7 @@ public class Assets {
         assetManager.load(GAME_BIN_02,              TEXTURE);
         assetManager.load(GAME_BIN_03,              TEXTURE);
         assetManager.load(GAME_BIN_04,              TEXTURE);
+        assetManager.load(GAME_BIN_05,              TEXTURE);
         assetManager.load(GAME_CENTER,              TEXTURE);
         assetManager.load(GAME_CHECK,               TEXTURE);
         assetManager.load(GAME_HEADER,              TEXTURE);

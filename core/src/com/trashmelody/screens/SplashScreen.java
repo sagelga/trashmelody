@@ -40,7 +40,6 @@ public class SplashScreen extends ScreenAdapter {
         this.game = game;
         this.assets = assets;
         this.warningScreen = warningScreen;
-
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         this.splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
     }

@@ -24,22 +24,18 @@ import static com.trashmelody.Utils.*;
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;
-    private Provider<WarningScreen> warningScreen;
+    private LoadingScreen loadingScreen;
     private Texture splashScreenLogo;
-    private Music splashScreenMusic;
+    public static Music splashScreenMusic;
 
-    private ProgressBar barStyle;
-    private ProgressBar bar;
-    private TextureRegionDrawable textureBar;
     private long time_lapsed = TimeUtils.millis();
 
-    private int count = 0;
-
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, Provider<WarningScreen> warningScreen) {
+    public SplashScreen(TrashMelody game, Assets assets,LoadingScreen loadingScreen) {
         this.game = game;
         this.assets = assets;
-        this.warningScreen = warningScreen;
+        this.loadingScreen = loadingScreen;
+
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         this.splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
     }
@@ -55,36 +51,20 @@ public class SplashScreen extends ScreenAdapter {
     public void render(float delta) { // Continuously run during active
         clearScreen();
 
-        if(assets.assetManager.update()){
-            game.setScreen(warningScreen.get());
+        if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
+            game.setScreen(loadingScreen);
         }
 
         // Start loading assets
         game.batch.begin();
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
-//        if (AssetManager.getProgress()){
-//            textureBar = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("barGreen_horizontalMid.png"))));
-//            barStyle = new ProgressBar.ProgressBarStyle(skin.newDrawable("white", Color.DARK_GRAY), textureBar);
-//            barStyle.knobBefore = barStyle.knob;
-//            bar = new ProgressBar(0F, 10F, 0.1F, false, barStyle);
-//            bar.setPosition(10, 10);
-//            bar.setSize(290, bar.getPrefHeight());
-//            bar.setAnimateDuration(2);
-//        }
-
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",splashScreenMusic.getVolume(),0,TimeUtils.timeSinceMillis(time_lapsed));
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed));
         // Debug zone
 
         game.batch.end();
-    }
-
-    @Override
-    public void hide(){ // Run while screen is dismissed
-        splashScreenMusic.dispose();
-        splashScreenLogo.dispose();
     }
 
 }

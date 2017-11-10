@@ -21,28 +21,32 @@ import static com.trashmelody.Utils.*;
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private StageSelectScreen stageSelectScreen;
+    private ResultScreen resultScreen;
+
     private Camera camera;
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
+
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen, ResultScreen resultScreen) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
+        this.resultScreen = resultScreen;
         this.camera = camera;
         this.viewport = viewport;
 
-        this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
-        this.bg                 = assets.get(Assets.MENU_BG, Assets.TEXTURE);
-        this.btnStart           = assets.get(Assets.MENU_BTN_START, Assets.TEXTURE);
-        this.btnCollection      = assets.get(Assets.MENU_BTN_COLLECTION, Assets.TEXTURE);
-        this.btnSetting         = assets.get(Assets.MENU_BTN_SETTING, Assets.TEXTURE);
-        this.btnExit            = assets.get(Assets.MENU_BTN_EXIT, Assets.TEXTURE);
-        this.borderLeft         = assets.get(Assets.MENU_BORDER_LEFT, Assets.TEXTURE);
-        this.borderRight        = assets.get(Assets.MENU_BORDER_RIGHT, Assets.TEXTURE);
+        this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO,            Assets.TEXTURE);
+        this.bg                 = assets.get(Assets.MENU_BG,                Assets.TEXTURE);
+        this.btnStart           = assets.get(Assets.MENU_BTN_START,         Assets.TEXTURE);
+        this.btnCollection      = assets.get(Assets.MENU_BTN_COLLECTION,    Assets.TEXTURE);
+        this.btnSetting         = assets.get(Assets.MENU_BTN_SETTING,       Assets.TEXTURE);
+        this.btnExit            = assets.get(Assets.MENU_BTN_EXIT,          Assets.TEXTURE);
+        this.borderLeft         = assets.get(Assets.MENU_BORDER_LEFT,       Assets.TEXTURE);
+        this.borderRight        = assets.get(Assets.MENU_BORDER_RIGHT,      Assets.TEXTURE);
     }
 
     @Override
@@ -63,6 +67,9 @@ public class MenuScreen extends ScreenAdapter {
         // Click 'ENTER' equivalent to clicking play (for now)
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             game.setScreen(stageSelectScreen);
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            game.setScreen(resultScreen);
         }
 
         // Debug zone

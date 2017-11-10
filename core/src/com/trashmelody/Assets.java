@@ -167,7 +167,7 @@ public class Assets {
     public static final String SETTING_VOLUME_BAR       = "SettingScreen/SETTING-VOLUME-BAR.png";
     public static final String SETTING_WINDOW           = "SettingScreen/SETTING-WINDOW.png";
 
-    // Music Assets
+    /*// Music Assets
     public static final String MUSIC_1_SONG             = "Song/1HITORIGOTO/AUDIO.mp3";
     public static final String MUSIC_1_BG_CLEAR         = "Song/1HITORIGOTO/BG1_CLEAR.png";
     public static final String MUSIC_1_BG_OPAC          = "Song/1HITORIGOTO/BG1_OPAC70.png";
@@ -202,7 +202,7 @@ public class Assets {
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
-
+*/
     public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
     public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
 
@@ -341,6 +341,7 @@ public class Assets {
         assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
         assetManager.load(SETTING_WINDOW,           TEXTURE);
 
+        /*
         assetManager.load(MUSIC_1_SONG,             MUSIC);
         assetManager.load(MUSIC_1_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_1_BG_OPAC,          TEXTURE);
@@ -375,7 +376,9 @@ public class Assets {
         assetManager.load(MUSIC_7_BG_CLEAR,         TEXTURE);
         assetManager.load(MUSIC_7_BG_OPAC,          TEXTURE);
         assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);
-
+*/
+//        assetManager.load(MUSIC_BG1,                MUSIC);
+        assetManager.load(MUSIC_BG2,                MUSIC);
     }
 
     private void eagerLoad() { // Assets that will load first

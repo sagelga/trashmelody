@@ -36,9 +36,8 @@ public class GameScreen extends ScreenAdapter {
     private String selected;
 
     @Inject
-    public GameScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera) {
+    public GameScreen(TrashMelody game, Assets assets, OrthographicCamera camera) {
         this.game = game;
-        this.menuScreen = menuScreen;
         this.camera = camera;
 
         //Variable handlers     |Assets retrival path                                               |Asset Resolution

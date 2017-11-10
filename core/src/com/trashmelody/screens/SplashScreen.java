@@ -23,12 +23,13 @@ public class SplashScreen extends ScreenAdapter {
     private StageSelectScreen stageSelectScreen;
     private CollectionScreen collectionScreen;
     private SandboxScreen sandboxScreen;
+    private ResultScreen resultScreen;
     private int count = 0;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, MenuScreen menuScreen, SettingsScreen settingsScreen,
                         WarningScreen warningScreen, StageSelectScreen stageSelectScreen, CollectionScreen collectionScreen,
-                        SandboxScreen sandboxScreen) {
+                        SandboxScreen sandboxScreen, ResultScreen resultScreen) {
         this.game = game;
 
         this.warningScreen = warningScreen;
@@ -37,6 +38,7 @@ public class SplashScreen extends ScreenAdapter {
         this.stageSelectScreen = stageSelectScreen;
         this.collectionScreen = collectionScreen;
         this.sandboxScreen = sandboxScreen;
+        this.resultScreen = resultScreen;
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
     }
 
@@ -70,7 +72,7 @@ public class SplashScreen extends ScreenAdapter {
             game.setScreen(sandboxScreen);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
-            game.setScreen(sandboxScreen);
+            game.setScreen(resultScreen);
         }
 
         // Start loading assets

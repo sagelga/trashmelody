@@ -203,6 +203,8 @@ public class Assets {
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
 
+    public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
+    public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
 
     private void loadImages() {
 
@@ -376,14 +378,10 @@ public class Assets {
 
     }
 
-    private void eagerLoad() {
-      // Assets that will load first
-          assetManager.load(SPLASH_LOGO,              TEXTURE);
+    private void eagerLoad() { // Assets that will load first
+        assetManager.load(SPLASH_LOGO,              TEXTURE);
+        assetManager.load(MUSIC_BG1,                MUSIC);
     }
-
-//    private void song1Load(){
-//     // Load songs + assets for stage 1
-//    }
 
     public Assets() {
         assetManager = new AssetManager();

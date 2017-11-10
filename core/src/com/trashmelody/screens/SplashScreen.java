@@ -1,9 +1,11 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
@@ -19,6 +21,7 @@ public class SplashScreen extends ScreenAdapter {
     private Assets assets;
     private Provider<WarningScreen> warningScreen;
     private Texture splashScreenLogo;
+    private Music splashScreenMusic;
 
 
     private int count = 0;
@@ -30,6 +33,7 @@ public class SplashScreen extends ScreenAdapter {
         this.warningScreen = warningScreen;
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
+        this.splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
     }
 
     @Override
@@ -37,13 +41,15 @@ public class SplashScreen extends ScreenAdapter {
         clearScreen();
 
         if(assets.assetManager.update()){
+            splashScreenMusic.dispose();
+            splashScreenMusic.pause();
             game.setScreen(warningScreen.get());
         }
 
         // Start loading assets
         game.batch.begin();
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
-
+        splashScreenMusic.play();
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;

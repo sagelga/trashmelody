@@ -38,14 +38,10 @@ public class ResultScreen extends ScreenAdapter {
 
         game.batch.begin();
 
-        /// Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            Debugger.debug_mode = !Debugger.debug_mode;
-        }
-        if (Debugger.debug_mode){
-            Debugger.runDebugger(game.batch, game.font,"Menu Screen Screen");
-            Debugger.runAdvancedDebugger(game.batch,game.font,0,0);
-        }
+        // Debug zone
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
+
         // Debug zone
 
         game.batch.end();

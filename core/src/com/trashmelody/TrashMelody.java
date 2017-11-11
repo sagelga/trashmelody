@@ -1,6 +1,8 @@
 package com.trashmelody;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,12 +20,14 @@ public class TrashMelody extends Game {
 
 	@Override
 	public void create() {
-		Injector injector = Guice.createInjector(new GameModule(this));
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		assets = injector.getInstance(Assets.class);
 
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
+
+		Injector injector = Guice.createInjector(new GameModule(this));
+		assets = injector.getInstance(Assets.class);
+		Gdx.input.setInputProcessor(new DebugInputProcessor());
 
 		setScreen(injector.getInstance(SplashScreen.class));
 	}
@@ -33,7 +37,6 @@ public class TrashMelody extends Game {
 		super.render();
 	}
 
-	@Inject
 	@Override
 	public void dispose() {
 		super.dispose();

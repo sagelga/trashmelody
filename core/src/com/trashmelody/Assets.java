@@ -158,6 +158,7 @@ public class Assets {
     public static final String RESULT_RESULT_NICE       = "ResultScreen/Result-Nice.png";
     public static final String RESULT_RESULT_MISS       = "ResultScreen/Result-Miss.png";
     public static final String RESULT_RESULT_COMBO      = "ResultScreen/Result-Combo.png";
+    public static final String RESULT_RESULT_TEXT_ALL   = "ResultScreen/Result-Text-All.png";
 
     // Setting Screen Assets
     public static final String SETTING_BACK_BUTTON      = "SettingScreen/SETTING-BACK-BUTTON.png";
@@ -333,6 +334,7 @@ public class Assets {
         assetManager.load(RESULT_RESULT_NICE,       TEXTURE);
         assetManager.load(RESULT_RESULT_MISS,       TEXTURE);
         assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
+        assetManager.load(RESULT_RESULT_TEXT_ALL,   TEXTURE);
 
         assetManager.load(SETTING_BACK_BUTTON,      TEXTURE);
         assetManager.load(SETTING_CALIBRATE,        TEXTURE);

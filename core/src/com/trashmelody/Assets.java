@@ -391,6 +391,10 @@ public class Assets extends AssetManager {
 
         eagerLoad();
         finishLoading();
+        loadAllAssets();
+    }
+
+    private void loadAllAssets() {
         loadImages();
     }
 

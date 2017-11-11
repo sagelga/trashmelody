@@ -24,7 +24,7 @@ public class LoadingScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;
     private Provider<WarningScreen> warningScreen;
-    Animation<TextureRegion> loadingScreenLogo;
+    private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
     private ProgressBar barStyle;

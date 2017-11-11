@@ -3,360 +3,412 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1082.8375125657549" y="1030.0">com.trashmelody.GameModule</node>
-    <node x="924.6272556390977" y="554.0">com.trashmelody.models.Position</node>
-    <node x="1740.037028353851" y="554.0">com.trashmelody.screens.WarningScreen</node>
-    <node x="731.5" y="832.0">com.trashmelody.screens.SettingsScreen</node>
-    <node x="1471.7453616871842" y="386.0">com.trashmelody.screens.MenuScreen</node>
-    <node x="0.0" y="1693.0">com.trashmelody.Utils</node>
-    <node x="10.5" y="854.0">com.trashmelody.screens.NameScreen</node>
-    <node x="1938.1751723057644" y="843.0">com.trashmelody.screens.SplashScreen</node>
-    <node x="1382.3078491214294" y="1322.0">com.trashmelody.TrashMelody</node>
-    <node x="1233.5" y="262.0">com.trashmelody.screens.StageSelectScreen</node>
-    <node x="1330.218762565755" y="0.0">com.trashmelody.Assets</node>
-    <node x="864.3772556390977" y="719.5">com.trashmelody.models.Button</node>
-    <node x="1748.6751723057646" y="708.0">com.trashmelody.screens.LoadingScreen</node>
-    <node x="304.5" y="854.0">com.trashmelody.screens.CollectionScreen</node>
-    <node x="1242.8078491214296" y="1465.0">com.trashmelody.Debugger</node>
+    <node x="1858.4077778702776" y="1256.0">com.trashmelody.screens.SandboxScreen</node>
+    <node x="2329.7003839910085" y="440.0">com.trashmelody.models.Position</node>
+    <node x="1831.4077778702776" y="1452.0">com.trashmelody.GameModule</node>
+    <node x="1026.1499999999996" y="858.0">com.trashmelody.screens.WarningScreen</node>
+    <node x="2216.4077778702776" y="1234.0">com.trashmelody.screens.SettingsScreen</node>
+    <node x="1174.6499999999996" y="418.0">com.trashmelody.screens.MenuScreen</node>
+    <node x="139.74762205387333" y="451.5">com.trashmelody.utils.GifDecoder.GifFrame</node>
+    <node x="0.0" y="616.0">com.trashmelody.utils.GifDecoder</node>
+    <node x="125.04528307340775" y="262.0">com.trashmelody.utils.GifDecoder.DixieMap</node>
+    <node x="1823.4077778702776" y="759.5">com.trashmelody.Utils</node>
+    <node x="3133.4077778702776" y="1256.0">com.trashmelody.screens.NameScreen</node>
+    <node x="730.4517887205393" y="429.0">com.trashmelody.screens.SplashScreen</node>
+    <node x="1704.3077778702777" y="1754.0">com.trashmelody.TrashMelody</node>
+    <node x="1388.041116406741" y="273.0">com.trashmelody.screens.StageSelectScreen</node>
+    <node x="1545.045838536463" y="0.0">com.trashmelody.Assets</node>
+    <node x="2466.248039807413" y="869.5">com.trashmelody.models.Button</node>
+    <node x="500.0" y="1256.0">com.trashmelody.screens.LoadingScreen</node>
+    <node x="2706.4077778702776" y="1256.0">com.trashmelody.screens.CollectionScreen</node>
+    <node x="1564.8077778702777" y="1897.0">com.trashmelody.Debugger</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.models.Position">
-      <point x="94.0" y="-59.0" />
-      <point x="1060.5" y="812.0" />
-      <point x="1079.8772556390977" y="812.0" />
-      <point x="1079.8772556390977" y="688.0" />
-      <point x="1046.5022556390977" y="688.0" />
-      <point x="24.375" y="37.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.Debugger">
-      <point x="-152.625" y="37.0" />
-      <point x="355.375" y="1000.0" />
-      <point x="166.47661168718423" y="1000.0" />
-      <point x="166.47661168718423" y="1425.0" />
-      <point x="1360.3078491214294" y="1425.0" />
-      <point x="-94.00000000000011" y="-91.5" />
-    </edge>
-    <edge source="com.trashmelody.TrashMelody" target="com.trashmelody.screens.SplashScreen">
-      <point x="54.0" y="-36.5" />
-      <point x="1508.3078491214294" y="1282.0" />
-      <point x="1984.6816712109937" y="1282.0" />
-      <point x="1984.6816712109937" y="1010.0" />
-      <point x="2049.7751723057645" y="1010.0" />
-      <point x="-74.39999999999998" y="48.0" />
+      <point x="-94.0" y="-59.0" />
+      <point x="2357.4077778702776" y="1214.0" />
+      <point x="2354.5128839910085" y="1214.0" />
+      <point x="-73.125" y="37.0" />
     </edge>
     <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.Debugger">
-      <point x="242.0833333333332" y="59.0" />
-      <point x="2004.3286950205174" y="524.0" />
-      <point x="2342.675172305764" y="524.0" />
-      <point x="2342.675172305764" y="1445.0" />
-      <point x="1642.3078491214294" y="1445.0" />
-      <point x="187.9999999999999" y="-91.5" />
+      <point x="-242.08333333333326" y="59.0" />
+      <point x="1223.0666666666664" y="596.0" />
+      <point x="489.5" y="596.0" />
+      <point x="489.5" y="1867.0" />
+      <point x="1635.3077778702777" y="1867.0" />
+      <point x="-141.0" y="-91.5" />
     </edge>
-    <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.Assets">
-      <point x="-94.0" y="-59.0" />
-      <point x="872.5" y="812.0" />
-      <point x="820.6562625657549" y="812.0" />
-      <point x="820.6562625657549" y="222.0" />
-      <point x="1420.9495317965243" y="222.0" />
-      <point x="-77.76923076923072" y="81.0" />
-    </edge>
-    <edge source="com.trashmelody.TrashMelody" target="com.trashmelody.GameModule">
-      <point x="-25.200000000000045" y="-36.5" />
-      <point x="1429.1078491214294" y="1242.0" />
-      <point x="1140.3375125657549" y="1242.0" />
-      <point x="-115.0" y="81.0" />
-    </edge>
-    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.StageSelectScreen">
-      <point x="17.25" y="-81.0" />
-      <point x="1272.5875125657549" y="990.0" />
-      <point x="1323.5453616871841" y="990.0" />
-      <point x="1323.5453616871841" y="361.0" />
-      <point x="1342.4375" y="361.0" />
-      <point x="-181.5625" y="37.0" />
+    <edge source="com.trashmelody.utils.GifDecoder" target="com.trashmelody.utils.GifDecoder.DixieMap">
+      <point x="204.75" y="-279.0" />
+      <point x="438.75" y="596.0" />
+      <point x="389.003616406741" y="596.0" />
+      <point x="389.003616406741" y="398.0" />
+      <point x="406.46194974007426" y="398.0" />
+      <point x="127.91666666666652" y="48.0" />
     </edge>
     <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.Assets">
-      <point x="167.625" y="-37.0" />
-      <point x="2139.8001723057646" y="688.0" />
-      <point x="2129.537028353851" y="688.0" />
-      <point x="2129.537028353851" y="202.0" />
-      <point x="1602.4110702580626" y="202.0" />
-      <point x="103.69230769230762" y="81.0" />
+      <point x="-83.8125" y="-37.0" />
+      <point x="639.6875" y="1214.0" />
+      <point x="651.4708385364631" y="1214.0" />
+      <point x="651.4708385364631" y="192.0" />
+      <point x="1583.9304539210782" y="192.0" />
+      <point x="-129.61538461538476" y="81.0" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.Assets">
-      <point x="-17.25" y="-81.0" />
-      <point x="1238.0875125657549" y="1010.0" />
-      <point x="1223.0" y="1010.0" />
-      <point x="1223.0" y="242.0" />
-      <point x="1472.795685642678" y="242.0" />
-      <point x="-25.923076923076906" y="81.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.screens.MenuScreen">
-      <point x="0.0" y="-37.0" />
-      <point x="1924.037028353851" y="534.0" />
-      <point x="1907.4953616871842" y="534.0" />
-      <point x="145.25" y="59.0" />
+      <point x="31.363636363636488" y="-81.0" />
+      <point x="2035.2714142339141" y="1392.0" />
+      <point x="2194.9077778702776" y="1392.0" />
+      <point x="2194.9077778702776" y="242.0" />
+      <point x="1739.46891545954" y="242.0" />
+      <point x="25.923076923077133" y="81.0" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.SettingsScreen">
-      <point x="-86.25" y="-81.0" />
-      <point x="1169.0875125657549" y="1010.0" />
-      <point x="1142.75" y="1010.0" />
-      <point x="176.25" y="59.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.screens.StageSelectScreen">
-      <point x="-116.19999999999999" y="-59.0" />
-      <point x="1646.0453616871841" y="361.0" />
-      <point x="1632.9375" y="361.0" />
-      <point x="108.9375" y="37.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.Debugger">
-      <point x="157.71428571428578" y="37.0" />
-      <point x="2081.7513140681367" y="668.0" />
-      <point x="2331.675172305764" y="668.0" />
-      <point x="2331.675172305764" y="1435.0" />
-      <point x="1595.3078491214294" y="1435.0" />
-      <point x="140.9999999999999" y="-91.5" />
+      <point x="94.09090909090901" y="-81.0" />
+      <point x="2097.9986869611866" y="1412.0" />
+      <point x="2275.1577778702776" y="1412.0" />
+      <point x="-176.25" y="59.0" />
     </edge>
     <edge source="com.trashmelody.screens.NameScreen" target="com.trashmelody.Debugger">
-      <point x="-102.75" y="37.0" />
-      <point x="44.75" y="1010.0" />
-      <point x="69.0897556390978" y="1010.0" />
-      <point x="69.0897556390978" y="1435.0" />
-      <point x="1313.3078491214294" y="1435.0" />
-      <point x="-141.0000000000001" y="-91.5" />
-    </edge>
-    <edge source="com.trashmelody.models.Button" target="com.trashmelody.models.Position">
-      <point x="51.25" y="-25.5" />
-      <point x="1018.1272556390977" y="688.0" />
-      <point x="997.7522556390977" y="688.0" />
-      <point x="-24.375" y="37.0" />
+      <point x="102.75" y="37.0" />
+      <point x="3373.1577778702776" y="1432.0" />
+      <point x="3349.6101220538726" y="1432.0" />
+      <point x="3349.6101220538726" y="1867.0" />
+      <point x="1917.3077778702777" y="1867.0" />
+      <point x="141.0" y="-91.5" />
     </edge>
     <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.models.Button">
-      <point x="0.0" y="-59.0" />
+      <point x="94.0" y="-59.0" />
+      <point x="2545.4077778702776" y="1214.0" />
+      <point x="2568.748039807413" y="1214.0" />
       <point x="0.0" y="25.5" />
     </edge>
     <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.Debugger">
-      <point x="-176.25" y="59.0" />
-      <point x="790.25" y="1010.0" />
-      <point x="177.47661168718423" y="1010.0" />
-      <point x="177.47661168718423" y="1415.0" />
-      <point x="1407.3078491214294" y="1415.0" />
-      <point x="-47.000000000000114" y="-91.5" />
-    </edge>
-    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.WarningScreen">
-      <point x="86.25" y="-81.0" />
-      <point x="1341.5875125657549" y="1010.0" />
-      <point x="1361.7772556390978" y="1010.0" />
-      <point x="1361.7772556390978" y="648.0" />
-      <point x="1766.3227426395651" y="648.0" />
-      <point x="-157.71428571428572" y="37.0" />
+      <point x="176.25" y="59.0" />
+      <point x="2627.6577778702776" y="1412.0" />
+      <point x="3303.341116406741" y="1412.0" />
+      <point x="3303.341116406741" y="1847.0" />
+      <point x="1823.3077778702777" y="1847.0" />
+      <point x="47.0" y="-91.5" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.NameScreen">
-      <point x="-155.25" y="-81.0" />
-      <point x="1100.0875125657549" y="980.0" />
-      <point x="250.25" y="980.0" />
-      <point x="102.75" y="37.0" />
+      <point x="156.81818181818198" y="-81.0" />
+      <point x="2160.7259596884596" y="1432.0" />
+      <point x="3167.6577778702776" y="1432.0" />
+      <point x="-102.75" y="37.0" />
     </edge>
-    <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.Debugger">
-      <point x="191.57142857142844" y="37.0" />
-      <point x="2163.746600877193" y="802.0" />
-      <point x="2320.675172305764" y="802.0" />
-      <point x="2320.675172305764" y="1425.0" />
-      <point x="1548.3078491214294" y="1425.0" />
-      <point x="93.99999999999989" y="-91.5" />
+    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.SandboxScreen">
+      <point x="0.0" y="-81.0" />
+      <point x="0.0" y="37.0" />
     </edge>
-    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.TrashMelody">
-      <point x="-108.9375" y="37.0" />
-      <point x="1415.0625" y="361.0" />
-      <point x="1438.3375125657549" y="361.0" />
-      <point x="1438.3375125657549" y="1212.0" />
-      <point x="1450.7078491214293" y="1212.0" />
-      <point x="-3.6000000000000227" y="-36.5" />
-    </edge>
-    <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.TrashMelody">
-      <point x="74.39999999999998" y="48.0" />
-      <point x="2198.575172305764" y="1000.0" />
-      <point x="2179.8751723057644" y="1000.0" />
-      <point x="2179.8751723057644" y="1302.0" />
-      <point x="1522.7078491214293" y="1302.0" />
-      <point x="68.39999999999998" y="-36.5" />
+    <edge source="com.trashmelody.utils.GifDecoder.DixieMap" target="com.trashmelody.utils.GifDecoder">
+      <point x="76.75" y="48.0" />
+      <point x="355.29528307340775" y="398.0" />
+      <point x="378.003616406741" y="398.0" />
+      <point x="378.003616406741" y="596.0" />
+      <point x="380.25" y="596.0" />
+      <point x="146.25" y="-279.0" />
     </edge>
     <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.screens.WarningScreen">
-      <point x="-55.875" y="-37.0" />
-      <point x="1916.3001723057646" y="688.0" />
-      <point x="1976.6084569252796" y="688.0" />
-      <point x="52.57142857142867" y="37.0" />
+      <point x="139.6875" y="-37.0" />
+      <point x="863.1875" y="1194.0" />
+      <point x="1056.8166666666664" y="1194.0" />
+      <point x="-153.33333333333326" y="37.0" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.CollectionScreen">
-      <point x="-120.75" y="-81.0" />
-      <point x="1134.5875125657549" y="970.0" />
-      <point x="660.625" y="970.0" />
-      <point x="152.625" y="37.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.Assets">
-      <point x="232.40000000000003" y="-59.0" />
-      <point x="1994.6453616871843" y="361.0" />
-      <point x="1995.8062625657549" y="361.0" />
-      <point x="1995.8062625657549" y="232.0" />
-      <point x="1524.641839488832" y="232.0" />
-      <point x="25.923076923076906" y="81.0" />
-    </edge>
-    <edge source="com.trashmelody.Debugger" target="com.trashmelody.TrashMelody">
-      <point x="-1.1368683772161603E-13" y="-91.5" />
-      <point x="0.0" y="36.5" />
-    </edge>
-    <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.screens.LoadingScreen">
-      <point x="-93.0" y="-48.0" />
-      <point x="2031.1751723057644" y="812.0" />
-      <point x="2036.0323151629073" y="812.0" />
-      <point x="63.85714285714289" y="37.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.screens.MenuScreen">
-      <point x="181.5625" y="37.0" />
-      <point x="1705.5625" y="361.0" />
-      <point x="1762.2453616871842" y="361.0" />
-      <point x="0.0" y="-59.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.TrashMelody">
-      <point x="-52.571428571428555" y="37.0" />
-      <point x="1871.4655997824225" y="668.0" />
-      <point x="1706.366243734336" y="668.0" />
-      <point x="1706.366243734336" y="1252.0" />
-      <point x="1486.7078491214293" y="1252.0" />
-      <point x="32.39999999999998" y="-36.5" />
-    </edge>
-    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.Assets">
-      <point x="0.0" y="-37.0" />
-      <point x="508.0" y="202.0" />
-      <point x="1369.1033779503705" y="202.0" />
-      <point x="-129.61538461538453" y="81.0" />
+      <point x="125.4545454545455" y="-81.0" />
+      <point x="2129.362323324823" y="1422.0" />
+      <point x="2757.2827778702776" y="1422.0" />
+      <point x="-152.625" y="37.0" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.SplashScreen">
-      <point x="155.25" y="-81.0" />
-      <point x="1410.5875125657549" y="1010.0" />
-      <point x="1975.3751723057644" y="1010.0" />
-      <point x="-148.79999999999995" y="48.0" />
+      <point x="-94.09090909090901" y="-81.0" />
+      <point x="1909.8168687793686" y="1392.0" />
+      <point x="1790.9077778702776" y="1392.0" />
+      <point x="1790.9077778702776" y="586.0" />
+      <point x="1081.7851220538728" y="586.0" />
+      <point x="165.33333333333348" y="48.0" />
     </edge>
     <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.Assets">
-      <point x="93.0" y="-48.0" />
-      <point x="2217.175172305764" y="192.0" />
-      <point x="1628.3341471811398" y="192.0" />
-      <point x="129.61538461538476" y="81.0" />
+      <point x="-93.0" y="-48.0" />
+      <point x="823.4517887205393" y="398.0" />
+      <point x="944.8166666666662" y="398.0" />
+      <point x="944.8166666666662" y="202.0" />
+      <point x="1609.8535308441553" y="202.0" />
+      <point x="-103.69230769230762" y="81.0" />
     </edge>
-    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.Assets">
+    <edge source="com.trashmelody.utils.GifDecoder" target="com.trashmelody.utils.GifDecoder.GifFrame">
+      <point x="-29.25" y="-279.0" />
+      <point x="204.75" y="596.0" />
+      <point x="217.37262205387333" y="596.0" />
+      <point x="-25.875" y="25.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.SandboxScreen" target="com.trashmelody.Utils">
       <point x="0.0" y="-37.0" />
-      <point x="1524.0" y="242.0" />
-      <point x="1498.718762565755" y="242.0" />
-      <point x="0.0" y="81.0" />
+      <point x="0.0" y="135.5" />
     </edge>
     <edge source="com.trashmelody.screens.NameScreen" target="com.trashmelody.TrashMelody">
-      <point x="-34.25" y="37.0" />
-      <point x="113.25" y="990.0" />
-      <point x="188.47661168718423" y="990.0" />
-      <point x="188.47661168718423" y="1302.0" />
-      <point x="1385.9078491214293" y="1302.0" />
-      <point x="-68.39999999999998" y="-36.5" />
+      <point x="34.25" y="37.0" />
+      <point x="3304.6577778702776" y="1432.0" />
+      <point x="3257.716116406741" y="1432.0" />
+      <point x="3257.716116406741" y="1734.0" />
+      <point x="1844.7077778702778" y="1734.0" />
+      <point x="68.40000000000009" y="-36.5" />
     </edge>
     <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.TrashMelody">
-      <point x="-127.71428571428567" y="37.0" />
-      <point x="1844.4608865914788" y="802.0" />
-      <point x="1806.7520958990883" y="802.0" />
-      <point x="1806.7520958990883" y="1262.0" />
-      <point x="1493.9078491214293" y="1262.0" />
-      <point x="39.60000000000002" y="-36.5" />
+      <point x="-55.875" y="37.0" />
+      <point x="667.625" y="1432.0" />
+      <point x="970.05" y="1432.0" />
+      <point x="970.05" y="1734.0" />
+      <point x="1707.9077778702776" y="1734.0" />
+      <point x="-68.40000000000009" y="-36.5" />
     </edge>
     <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.screens.SplashScreen">
-      <point x="127.71428571428578" y="37.0" />
-      <point x="2099.8894580200504" y="812.0" />
-      <point x="2093.175172305764" y="812.0" />
-      <point x="-31.0" y="-48.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.Debugger">
-      <point x="-254.1875" y="37.0" />
-      <point x="1269.8125" y="361.0" />
-      <point x="0.0" y="361.0" />
-      <point x="0.0" y="1445.0" />
-      <point x="1266.3078491214294" y="1445.0" />
-      <point x="-188.0000000000001" y="-91.5" />
-    </edge>
-    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.TrashMelody">
-      <point x="-145.25" y="59.0" />
-      <point x="1616.9953616871842" y="534.0" />
-      <point x="1566.679277692858" y="534.0" />
-      <point x="1566.679277692858" y="1222.0" />
-      <point x="1465.1078491214294" y="1222.0" />
-      <point x="10.799999999999955" y="-36.5" />
-    </edge>
-    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.LoadingScreen">
-      <point x="120.75" y="-81.0" />
-      <point x="1376.0875125657549" y="1010.0" />
-      <point x="1372.7772556390978" y="1010.0" />
-      <point x="1372.7772556390978" y="812.0" />
-      <point x="1780.603743734336" y="812.0" />
-      <point x="-191.57142857142856" y="37.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.Assets">
-      <point x="122.66666666666663" y="-37.0" />
-      <point x="2046.7036950205174" y="534.0" />
-      <point x="2064.4062625657552" y="534.0" />
-      <point x="2064.4062625657552" y="222.0" />
-      <point x="1550.5649164119088" y="222.0" />
-      <point x="51.84615384615381" y="81.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.TrashMelody">
-      <point x="-58.75" y="59.0" />
-      <point x="907.75" y="1010.0" />
-      <point x="937.6187625657549" y="1010.0" />
-      <point x="937.6187625657549" y="1262.0" />
-      <point x="1414.7078491214293" y="1262.0" />
-      <point x="-39.60000000000002" y="-36.5" />
+      <point x="-27.9375" y="-37.0" />
+      <point x="695.5625" y="1214.0" />
+      <point x="730.5601220538733" y="1214.0" />
+      <point x="730.5601220538733" y="566.0" />
+      <point x="792.4517887205393" y="566.0" />
+      <point x="-124.0" y="48.0" />
     </edge>
     <edge source="com.trashmelody.GameModule" target="com.trashmelody.TrashMelody">
-      <point x="115.0" y="81.0" />
-      <point x="1370.3375125657549" y="1222.0" />
-      <point x="1443.5078491214292" y="1222.0" />
-      <point x="-10.800000000000068" y="-36.5" />
-    </edge>
-    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.screens.SplashScreen">
-      <point x="105.14285714285711" y="37.0" />
-      <point x="2029.179885496708" y="678.0" />
-      <point x="2206.175172305764" y="678.0" />
-      <point x="2206.175172305764" y="812.0" />
-      <point x="2155.175172305764" y="812.0" />
-      <point x="31.0" y="-48.0" />
+      <point x="0.0" y="81.0" />
+      <point x="2003.9077778702776" y="1664.0" />
+      <point x="1794.3077778702777" y="1664.0" />
+      <point x="18.0" y="-36.5" />
     </edge>
     <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.Debugger">
-      <point x="148.79999999999995" y="48.0" />
-      <point x="2272.9751723057643" y="1010.0" />
-      <point x="2192.425172305764" y="1010.0" />
-      <point x="2192.425172305764" y="1415.0" />
-      <point x="1501.3078491214294" y="1415.0" />
-      <point x="46.999999999999886" y="-91.5" />
-    </edge>
-    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.MenuScreen">
-      <point x="51.75" y="-81.0" />
-      <point x="1307.0875125657549" y="1000.0" />
-      <point x="1350.7772556390978" y="1000.0" />
-      <point x="1350.7772556390978" y="534.0" />
-      <point x="1520.162028353851" y="534.0" />
-      <point x="-242.08333333333331" y="59.0" />
-    </edge>
-    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.TrashMelody">
-      <point x="-50.875" y="37.0" />
-      <point x="457.125" y="1000.0" />
-      <point x="565.6016116871842" y="1000.0" />
-      <point x="565.6016116871842" y="1282.0" />
-      <point x="1400.3078491214294" y="1282.0" />
-      <point x="-54.0" y="-36.5" />
+      <point x="-165.33333333333326" y="48.0" />
+      <point x="751.118455387206" y="556.0" />
+      <point x="478.5" y="556.0" />
+      <point x="478.5" y="1877.0" />
+      <point x="1588.3077778702777" y="1877.0" />
+      <point x="-188.0" y="-91.5" />
     </edge>
     <edge source="com.trashmelody.screens.NameScreen" target="com.trashmelody.Assets">
       <point x="0.0" y="-37.0" />
-      <point x="147.5" y="192.0" />
-      <point x="1343.1803010272936" y="192.0" />
-      <point x="-155.53846153846143" y="81.0" />
+      <point x="3270.4077778702776" y="192.0" />
+      <point x="1869.0843000749244" y="192.0" />
+      <point x="155.53846153846143" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.Debugger">
+      <point x="152.625" y="37.0" />
+      <point x="3062.5327778702776" y="1402.0" />
+      <point x="3314.341116406741" y="1402.0" />
+      <point x="3314.341116406741" y="1857.0" />
+      <point x="1870.3077778702777" y="1857.0" />
+      <point x="94.0" y="-91.5" />
+    </edge>
+    <edge source="com.trashmelody.TrashMelody" target="com.trashmelody.screens.SplashScreen">
+      <point x="-54.0" y="-36.5" />
+      <point x="1722.3077778702777" y="1714.0" />
+      <point x="984.4499999999998" y="1714.0" />
+      <point x="984.4499999999998" y="586.0" />
+      <point x="916.4517887205393" y="586.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.trashmelody.TrashMelody" target="com.trashmelody.GameModule">
+      <point x="10.799999999999955" y="-36.5" />
+      <point x="1787.1077778702775" y="1654.0" />
+      <point x="1888.9077778702776" y="1654.0" />
+      <point x="-115.0" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.Assets">
+      <point x="-188.0" y="-59.0" />
+      <point x="2263.4077778702776" y="1214.0" />
+      <point x="2319.2003839910085" y="1214.0" />
+      <point x="2319.2003839910085" y="222.0" />
+      <point x="1791.315069305694" y="222.0" />
+      <point x="77.76923076923094" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.StageSelectScreen">
+      <point x="-31.363636363636488" y="-81.0" />
+      <point x="1972.5441415066412" y="1372.0" />
+      <point x="1812.9077778702776" y="1372.0" />
+      <point x="1812.9077778702776" y="398.0" />
+      <point x="1860.103616406741" y="398.0" />
+      <point x="181.5625" y="37.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.screens.MenuScreen">
+      <point x="138.0" y="-37.0" />
+      <point x="1348.1499999999996" y="596.0" />
+      <point x="1416.733333333333" y="596.0" />
+      <point x="-48.41666666666674" y="59.0" />
+    </edge>
+    <edge source="com.trashmelody.utils.GifDecoder.GifFrame" target="com.trashmelody.utils.GifDecoder.DixieMap">
+      <point x="-51.75" y="-25.5" />
+      <point x="191.49762205387333" y="398.0" />
+      <point x="252.9619497400745" y="398.0" />
+      <point x="-25.583333333333343" y="48.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.screens.StageSelectScreen">
+      <point x="0.0" y="-59.0" />
+      <point x="1465.1499999999996" y="398.0" />
+      <point x="1496.978616406741" y="398.0" />
+      <point x="-181.5625" y="37.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.Debugger">
+      <point x="-30.666666666666742" y="37.0" />
+      <point x="1179.483333333333" y="1214.0" />
+      <point x="957.5" y="1214.0" />
+      <point x="957.5" y="1847.0" />
+      <point x="1729.3077778702777" y="1847.0" />
+      <point x="-47.0" y="-91.5" />
+    </edge>
+    <edge source="com.trashmelody.models.Button" target="com.trashmelody.models.Position">
+      <point x="51.25" y="-25.5" />
+      <point x="2619.998039807413" y="586.0" />
+      <point x="2500.3253839910085" y="586.0" />
+      <point x="73.125" y="37.0" />
+    </edge>
+    <edge source="com.trashmelody.utils.GifDecoder.GifFrame" target="com.trashmelody.utils.GifDecoder">
+      <point x="77.625" y="25.5" />
+      <point x="87.75" y="-279.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.Debugger">
+      <point x="-167.625" y="37.0" />
+      <point x="555.875" y="1432.0" />
+      <point x="580.7827778702779" y="1432.0" />
+      <point x="580.7827778702779" y="1857.0" />
+      <point x="1682.3077778702777" y="1857.0" />
+      <point x="-94.0" y="-91.5" />
+    </edge>
+    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.WarningScreen">
+      <point x="-125.4545454545455" y="-81.0" />
+      <point x="1878.4532324157321" y="1402.0" />
+      <point x="1317.8077778702777" y="1402.0" />
+      <point x="1317.8077778702777" y="1214.0" />
+      <point x="1363.4833333333331" y="1214.0" />
+      <point x="153.33333333333348" y="37.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.TrashMelody">
+      <point x="36.3125" y="37.0" />
+      <point x="1714.853616406741" y="398.0" />
+      <point x="1766.1499999999996" y="398.0" />
+      <point x="1766.1499999999996" y="1644.0" />
+      <point x="1772.7077778702778" y="1644.0" />
+      <point x="-3.599999999999909" y="-36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.TrashMelody">
+      <point x="41.333333333333485" y="48.0" />
+      <point x="957.7851220538728" y="576.0" />
+      <point x="991.6499999999997" y="576.0" />
+      <point x="991.6499999999997" y="1704.0" />
+      <point x="1729.5077778702776" y="1704.0" />
+      <point x="-46.799999999999955" y="-36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.Assets">
+      <point x="-232.39999999999998" y="-59.0" />
+      <point x="1232.7499999999995" y="398.0" />
+      <point x="1228.080994352868" y="398.0" />
+      <point x="1228.080994352868" y="232.0" />
+      <point x="1687.6227616133858" y="232.0" />
+      <point x="-25.923076923077133" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.Debugger" target="com.trashmelody.TrashMelody">
+      <point x="0.0" y="-91.5" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.screens.MenuScreen">
+      <point x="-108.9375" y="37.0" />
+      <point x="1569.603616406741" y="398.0" />
+      <point x="1581.3499999999997" y="398.0" />
+      <point x="116.20000000000005" y="-59.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.SplashScreen" target="com.trashmelody.screens.LoadingScreen">
+      <point x="-41.33333333333326" y="48.0" />
+      <point x="875.118455387206" y="586.0" />
+      <point x="754.253616406741" y="586.0" />
+      <point x="754.253616406741" y="1204.0" />
+      <point x="807.3125" y="1204.0" />
+      <point x="83.8125" y="-37.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.Assets">
+      <point x="0.0" y="-37.0" />
+      <point x="2909.9077778702776" y="202.0" />
+      <point x="1843.1612231518477" y="202.0" />
+      <point x="129.61538461538476" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.TrashMelody">
+      <point x="92.0" y="37.0" />
+      <point x="1302.1499999999996" y="1214.0" />
+      <point x="1306.8077778702777" y="1214.0" />
+      <point x="1306.8077778702777" y="1674.0" />
+      <point x="1751.1077778702775" y="1674.0" />
+      <point x="-25.200000000000045" y="-36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.Assets">
+      <point x="0.0" y="-37.0" />
+      <point x="1678.541116406741" y="242.0" />
+      <point x="1713.545838536463" y="242.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.StageSelectScreen" target="com.trashmelody.Debugger">
+      <point x="254.1875" y="37.0" />
+      <point x="1932.728616406741" y="398.0" />
+      <point x="3417.9077778702776" y="398.0" />
+      <point x="3417.9077778702776" y="1877.0" />
+      <point x="1964.3077778702777" y="1877.0" />
+      <point x="188.0" y="-91.5" />
+    </edge>
+    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.LoadingScreen">
+      <point x="-156.81818181818198" y="-81.0" />
+      <point x="1847.0895960520957" y="1412.0" />
+      <point x="891.125" y="1412.0" />
+      <point x="167.625" y="37.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.MenuScreen" target="com.trashmelody.TrashMelody">
+      <point x="48.416666666666515" y="59.0" />
+      <point x="1513.5666666666662" y="596.0" />
+      <point x="1537.6976610195343" y="596.0" />
+      <point x="1537.6976610195343" y="1664.0" />
+      <point x="1758.3077778702777" y="1664.0" />
+      <point x="-18.0" y="-36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.LoadingScreen" target="com.trashmelody.utils.GifDecoder">
+      <point x="-195.5625" y="-37.0" />
+      <point x="527.9375" y="1214.0" />
+      <point x="234.0" y="1214.0" />
+      <point x="0.0" y="279.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.SettingsScreen" target="com.trashmelody.TrashMelody">
+      <point x="58.75" y="59.0" />
+      <point x="2510.1577778702776" y="1412.0" />
+      <point x="2471.112883991008" y="1412.0" />
+      <point x="2471.112883991008" y="1694.0" />
+      <point x="1815.9077778702776" y="1694.0" />
+      <point x="39.59999999999991" y="-36.5" />
+    </edge>
+    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.Assets">
+      <point x="-46.0" y="-37.0" />
+      <point x="1164.1499999999996" y="222.0" />
+      <point x="1661.6996846903091" y="222.0" />
+      <point x="-51.84615384615381" y="81.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.WarningScreen" target="com.trashmelody.screens.SplashScreen">
+      <point x="-138.0" y="-37.0" />
+      <point x="1072.1499999999996" y="586.0" />
+      <point x="1040.4517887205393" y="586.0" />
+      <point x="124.0" y="48.0" />
+    </edge>
+    <edge source="com.trashmelody.GameModule" target="com.trashmelody.screens.MenuScreen">
+      <point x="-62.727272727272975" y="-81.0" />
+      <point x="1941.1805051430047" y="1382.0" />
+      <point x="1801.9077778702776" y="1382.0" />
+      <point x="1801.9077778702776" y="576.0" />
+      <point x="1707.233333333333" y="576.0" />
+      <point x="242.08333333333326" y="59.0" />
+    </edge>
+    <edge source="com.trashmelody.screens.CollectionScreen" target="com.trashmelody.TrashMelody">
+      <point x="50.875" y="37.0" />
+      <point x="2960.7827778702776" y="1422.0" />
+      <point x="2897.216116406741" y="1422.0" />
+      <point x="2897.216116406741" y="1714.0" />
+      <point x="1830.3077778702777" y="1714.0" />
+      <point x="54.0" y="-36.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.5913322437029505" x="1221.4775013495741" y="5462.789915523454" />
+  <settings layout="Hierarchic Group" zoom="0.5" x="1371.25" y="1022.25" />
   <SelectedNodes />
   <Categories>
     <Category>Inner Classes</Category>

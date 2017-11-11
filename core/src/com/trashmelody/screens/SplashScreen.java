@@ -37,12 +37,12 @@ public class SplashScreen extends ScreenAdapter {
         this.loadingScreen = loadingScreen;
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
-        this.splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
+        splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
     }
 
     @Override
     public void show(){ // Run while screen is active
-        splashScreenMusic.setVolume(0.5F); // for development phase only
+        splashScreenMusic.setVolume(0.3F); // for development phase only
         splashScreenMusic.play();
         splashScreenMusic.setLooping(true);
     }

@@ -31,13 +31,13 @@ public class BeatmapParser {
 	static {
 		PARSERS.put(GameMode.OSU,   new OsuParser());
 		PARSERS.put(GameMode.TAIKO, new TaikoParser());
-		//PARSERS.put(GameMode.CATCH, new CatchParser());
+		PARSERS.put(GameMode.CATCH, new CatchParser());
 		PARSERS.put(GameMode.MANIA, new ManiaParser());
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T extends Beatmap> T parse(File file, Class<T> klass) throws BeatmapException, FileNotFoundException {
-		return (T) parse(new FileInputStream(file), klass);
+	public <T extends Beatmap> T parse(File file, Class<T> beatmapClass) throws BeatmapException, FileNotFoundException {
+		return (T) parse(new FileInputStream(file), beatmapClass);
 	}
 	
 	public Beatmap parse(File file) throws FileNotFoundException, BeatmapException {
@@ -45,12 +45,12 @@ public class BeatmapParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends Beatmap> Beatmap parse(String string, Class<T> klass) throws BeatmapException {
-		return parse(new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8)), klass);
+	public <T extends Beatmap> Beatmap parse(String string, Class<T> beatmapClass) throws BeatmapException {
+		return parse(new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8)), beatmapClass);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T extends Beatmap> Beatmap parse(InputStream stream, Class<T> klass) throws BeatmapException {
+	public <T extends Beatmap> Beatmap parse(InputStream stream, Class<T> beatmapClass) throws BeatmapException {
 		try (Scanner scanner = new Scanner(stream)){
 			Map<String, FilePart> parts = new HashMap<>();
 			
@@ -70,17 +70,17 @@ public class BeatmapParser {
 			}
 			parts.put(tag, new FilePart(tag, lines));
 			
-			for (String reqiredTag : REQUIRED_TAGS)
-				if (!parts.containsKey(reqiredTag))
-					throw new BeatmapException("Couldn't find required \"" + reqiredTag + "\" tag found.");
+			for (String requiredTag : REQUIRED_TAGS)
+				if (!parts.containsKey(requiredTag))
+					throw new BeatmapException("Couldn't find required \"" + requiredTag + "\" tag found.");
 			
 			BeatmapGenerals generalSettings = new BeatmapGenerals(parts.get("General"));
-			GameMode gameMode = GameModeMapper.get(klass);
+			GameMode gameMode = GameModeMapper.get(beatmapClass);
 			if (gameMode == GameMode.UNKNOWN) {
 				gameMode = generalSettings.getGameMode();
 			}
 			HitObjectParser<?> parser = PARSERS.get(gameMode);
-			// TODO: parse other gamemodes
+			// TODO: parse other game modes
 			if (parser == null)
 				return null;
 			
@@ -96,7 +96,7 @@ public class BeatmapParser {
 			List<TimingPoint> timingPoints = parseTimePoints(parts.get("TimingPoints"));
 			List<String> rawObjects = parts.get("HitObjects").getLines();
 			
-			return (T) parser.buildBeatmap(generalSettings, editorState, metadata, difficulties, breaks, timingPoints, rawObjects);
+			return parser.buildBeatmap(generalSettings, editorState, metadata, difficulties, breaks, timingPoints, rawObjects);
 		}
 	}
 	

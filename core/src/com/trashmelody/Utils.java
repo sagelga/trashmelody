@@ -22,6 +22,12 @@ public class Utils {
         batch.draw(texture, horizontalCenter, posY, width, height);
     }
 
+    public static void drawCenterY(Batch batch, Texture texture, float width, float height, float posX) {
+        float verticalCenter = (getViewportHeight() - height) / 2F;
+
+        batch.draw(texture, posX, verticalCenter, width, height);
+    }
+
     public static void clearScreen() {
         clearScreen(255F, 255F, 255F, 255F);
     }

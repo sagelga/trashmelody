@@ -32,6 +32,7 @@ public class GameModule implements Module {
         binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(StageSelectScreen.class).in(Singleton.class);
         binder.bind(CollectionScreen.class).in(Singleton.class);
+        binder.bind(GameScreen.class).in(Singleton.class);
         binder.bind(SandboxScreen.class).in(Singleton.class);
         binder.bind(ResultScreen.class).in(Singleton.class);
     }

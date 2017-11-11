@@ -50,7 +50,6 @@ public class SplashScreen extends ScreenAdapter {
     @Override
     public void render(float delta) { // Continuously run during active
         clearScreen();
-
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
             game.setScreen(loadingScreen);
         }

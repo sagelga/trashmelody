@@ -7,28 +7,31 @@ import lt.ekgame.beatmap_analyzer.utils.MathUtils;
 import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public abstract class ManiaObject extends HitObject {
-	
-	private int collumn;
+	private int column;
+	private boolean isHold;
 
-	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound) {
+	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound, boolean isHold) {
 		super(position, startTime, endTime, hitSound);
+
+		this.isHold = isHold;
 	}
 	
 	@Override
 	public void finalize(TimingPoint current, TimingPoint parent, Beatmap beatmap) {
-		int numCollumns = ((ManiaBeatmap)beatmap).getCollumns(); 
-		collumn = MathUtils.calculateManiaCollumn(position.getX(), numCollumns);
+		int numColumns = ((ManiaBeatmap)beatmap).getCollumns();
+		column = MathUtils.calculateManiaCollumn(position.getX(), numColumns);
 	}
 	
-	public int getCollumn() {
-		return collumn;
+	public int getColumn() {
+		return column;
 	}
 
 	@Override
 	public String toString() {
 		return String.valueOf(stringifyKeyValue("position", position)) +
 				stringifyKeyValue("startTime", startTime) +
-				stringifyKeyValue("endTime", startTime) +
+				stringifyKeyValue("endTime", endTime) +
+				stringifyKeyValue("isHold", isHold) +
 				stringifyKeyValue("hitSound", hitSound);
 	}
 

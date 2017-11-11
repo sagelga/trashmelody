@@ -3,7 +3,7 @@ package lt.ekgame.beatmap_analyzer.parser;
 import java.util.HashMap;
 import java.util.Map;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 
 public class FilePartConfig {
 	
@@ -48,8 +48,8 @@ public class FilePartConfig {
 		return Integer.parseInt(getString(name)) == 1;
 	}
 	
-	public Gamemode getGamemode(String name) throws BeatmapException {
-		return Gamemode.fromInt(getInt(name));
+	public GameMode getGameMode(String name) throws BeatmapException {
+		return GameMode.fromInt(getInt(name));
 	}
 	
 	public double getDouble(String name, double defaultValue) throws BeatmapException {
@@ -70,9 +70,9 @@ public class FilePartConfig {
 		return defaultValue;
 	}
 	
-	public Gamemode getGamemode(String name, Gamemode defaultValue) throws BeatmapException {
+	public GameMode getGameMode(String name, GameMode defaultValue) throws BeatmapException {
 		if (hasProperty(name))
-			return getGamemode(name);
+			return getGameMode(name);
 		return defaultValue;
 	}
 	

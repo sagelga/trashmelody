@@ -1,6 +1,6 @@
 package lt.ekgame.beatmap_analyzer.performance;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.difficulty.Difficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.ManiaDifficulty;
 import lt.ekgame.beatmap_analyzer.performance.scores.Score;
@@ -25,7 +25,7 @@ public class ManiaPerformanceCalculator implements PerformanceCalculator {
 	}
 	
 	private double calculateStrain(ManiaDifficulty difficulty, Score score) {
-		double scoreMultiplier = difficulty.getMods().getScoreMultiplier(Gamemode.MANIA);
+		double scoreMultiplier = difficulty.getMods().getScoreMultiplier(GameMode.MANIA);
 		if (scoreMultiplier <= 0)
 			return 0;
 		

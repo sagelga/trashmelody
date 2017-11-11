@@ -3,7 +3,7 @@ package lt.ekgame.beatmap_analyzer.beatmap;
 import java.util.List;
 import java.util.ListIterator;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.difficulty.Difficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.DifficultyCalculator;
 import lt.ekgame.beatmap_analyzer.utils.Mods;
@@ -59,7 +59,7 @@ public abstract class Beatmap {
 		}
 	}
 	
-	public abstract Gamemode getGamemode();
+	public abstract GameMode getGameMode();
 	
 	public abstract DifficultyCalculator getDifficultyCalculator();
 	

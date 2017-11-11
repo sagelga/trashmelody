@@ -1,5 +1,6 @@
 package com.trashmelody.tests.beatmap;
 
+import lt.ekgame.beatmap_analyzer.beatmap.osu.OsuBeatmap;
 import lt.ekgame.beatmap_analyzer.difficulty.OsuDifficulty;
 import lt.ekgame.beatmap_analyzer.parser.BeatmapException;
 import lt.ekgame.beatmap_analyzer.parser.BeatmapParser;
@@ -11,12 +12,12 @@ import lt.ekgame.beatmap_analyzer.utils.Mods;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class OsuBeatmap {
+public class TestBeatmap {
     public static void main(String[] args) {
         BeatmapParser parser = new BeatmapParser();
-        lt.ekgame.beatmap_analyzer.beatmap.osu.OsuBeatmap beatmap = null;
+        OsuBeatmap beatmap = null;
         try {
-            beatmap = parser.parse(new File("/Users/kavinvin/Repositories/trashmelody/core/assets/songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu"), lt.ekgame.beatmap_analyzer.beatmap.osu.OsuBeatmap.class);
+            beatmap = parser.parse(new File("/Users/kavinvin/Repositories/trashmelody/core/assets/songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu"), OsuBeatmap.class);
         } catch (BeatmapException | FileNotFoundException e) {
             e.printStackTrace();
         }

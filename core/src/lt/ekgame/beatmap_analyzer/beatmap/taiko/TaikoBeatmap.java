@@ -2,7 +2,7 @@ package lt.ekgame.beatmap_analyzer.beatmap.taiko;
 
 import java.util.List;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.beatmap.*;
 import lt.ekgame.beatmap_analyzer.difficulty.TaikoDifficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.TaikoDifficultyCalculator;
@@ -21,8 +21,8 @@ public class TaikoBeatmap extends Beatmap {
 	}
 
 	@Override
-	public Gamemode getGamemode() {
-		return Gamemode.TAIKO;
+	public GameMode getGameMode() {
+		return GameMode.TAIKO;
 	}
 
 	@Override

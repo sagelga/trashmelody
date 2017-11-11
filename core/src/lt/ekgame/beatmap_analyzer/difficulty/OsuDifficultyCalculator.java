@@ -10,7 +10,7 @@ import lt.ekgame.beatmap_analyzer.beatmap.osu.OsuBeatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.osu.OsuObject;
 import lt.ekgame.beatmap_analyzer.beatmap.osu.OsuSpinner;
 import lt.ekgame.beatmap_analyzer.utils.Mods;
-import lt.ekgame.beatmap_analyzer.utils.Vec2;
+import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public class OsuDifficultyCalculator implements DifficultyCalculator {
 
@@ -112,7 +112,7 @@ public class OsuDifficultyCalculator implements DifficultyCalculator {
 		
 		private OsuObject object;
 		private double[] strains = {1, 1};
-		private Vec2 normStart;//, normEnd;
+		private Vector2 normStart;//, normEnd;
 		
 		DifficultyObject(OsuObject object, double radius) {
 			this.object = object;

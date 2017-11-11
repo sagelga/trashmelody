@@ -1,6 +1,6 @@
 package lt.ekgame.beatmap_analyzer.utils;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 
 public class MathUtils {
 	
@@ -32,9 +32,9 @@ public class MathUtils {
 	    	: mid;
 	}
 	
-	public static int getHitWindow50(double od, Gamemode gamemode, Mods mods) {
+	public static int getHitWindow50(double od, GameMode gameMode, Mods mods) {
 		double speed = mods.getSpeedMultiplier();
-		switch (gamemode) {
+		switch (gameMode) {
 		case OSU: return (int) (difficultyRange(od, 200, 150, 100, mods)/speed);
 		case TAIKO: return (int) (difficultyRange(od, 135, 95, 70, mods)/speed);
 		case CATCH: return -1;
@@ -43,9 +43,9 @@ public class MathUtils {
 		}
 	}
 	
-	public static int getHitWindow100(double od, Gamemode gamemode, Mods mods) {
+	public static int getHitWindow100(double od, GameMode gameMode, Mods mods) {
 		double speed = mods.getSpeedMultiplier();
-        switch (gamemode) {
+        switch (gameMode) {
 		case OSU: return (int) (difficultyRange(od, 140, 100, 60, mods)/speed);
 		case TAIKO: return (int) (difficultyRange(od, 120, 80, 50, mods)/speed);
 		case CATCH: return -1;
@@ -54,9 +54,9 @@ public class MathUtils {
 		}
 	}
 	
-	public static int getHitWindow300(double od, Gamemode gamemode, Mods mods) {
+	public static int getHitWindow300(double od, GameMode gameMode, Mods mods) {
 		double speed = mods.getSpeedMultiplier();
-		switch (gamemode) {
+		switch (gameMode) {
 		case OSU: return (int) (difficultyRange(od, 80, 50, 20, mods)/speed);
 		case TAIKO: return (int) (difficultyRange(od, 50, 35, 20, mods)/speed);
 		case CATCH: return -1;

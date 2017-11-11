@@ -16,7 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
+import lt.ekgame.beatmap_analyzer.GameModeMapper;
 import lt.ekgame.beatmap_analyzer.beatmap.*;
 import lt.ekgame.beatmap_analyzer.parser.hitobjects.*;
 
@@ -25,39 +26,31 @@ public class BeatmapParser {
 	private static final Pattern PART_TAG = Pattern.compile("^\\[(\\w+)\\]");
 	private static final String[] REQUIRED_TAGS = {"General", "Metadata", "TimingPoints", "Difficulty", "Events", "HitObjects"};
 	
-	private static final Map<Gamemode, HitObjectParser<?>> PARSERS = new HashMap<>();
+	private static final Map<GameMode, HitObjectParser<?>> PARSERS = new HashMap<>();
 	
 	static {
-		PARSERS.put(Gamemode.OSU,   new OsuParser());
-		PARSERS.put(Gamemode.TAIKO, new TaikoParser());
-		//PARSERS.put(Gamemode.CATCH, new CatchParser());
-		PARSERS.put(Gamemode.MANIA, new ManiaParser());
+		PARSERS.put(GameMode.OSU,   new OsuParser());
+		PARSERS.put(GameMode.TAIKO, new TaikoParser());
+		//PARSERS.put(GameMode.CATCH, new CatchParser());
+		PARSERS.put(GameMode.MANIA, new ManiaParser());
 	}
 	
 	@SuppressWarnings("unchecked")
 	public <T extends Beatmap> T parse(File file, Class<T> klass) throws BeatmapException, FileNotFoundException {
-		return (T) parse(file);
+		return (T) parse(new FileInputStream(file), klass);
 	}
 	
 	public Beatmap parse(File file) throws FileNotFoundException, BeatmapException {
-		return parse(new FileInputStream(file));
+		return parse(file, null);
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends Beatmap> Beatmap parse(String string, Class<T> klass) throws BeatmapException {
+		return parse(new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8)), klass);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T extends Beatmap> T parse(String string, Class<T> klass) throws BeatmapException {
-		return (T) parse(string);
-	}
-	
-	public Beatmap parse(String string) throws BeatmapException {
-		return parse(new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8)));
-	}
-	
-	@SuppressWarnings("unchecked")
-	public <T extends Beatmap> T parse(InputStream stream, Class<T> klass) throws BeatmapException {
-		return (T) parse(stream);
-	}
-	
-	public Beatmap parse(InputStream stream) throws BeatmapException {
+	public <T extends Beatmap> Beatmap parse(InputStream stream, Class<T> klass) throws BeatmapException {
 		try (Scanner scanner = new Scanner(stream)){
 			Map<String, FilePart> parts = new HashMap<>();
 			
@@ -82,7 +75,11 @@ public class BeatmapParser {
 					throw new BeatmapException("Couldn't find required \"" + reqiredTag + "\" tag found.");
 			
 			BeatmapGenerals generalSettings = new BeatmapGenerals(parts.get("General"));
-			HitObjectParser<?> parser = PARSERS.get(generalSettings.getGamemode());
+			GameMode gameMode = GameModeMapper.get(klass);
+			if (gameMode == GameMode.UNKNOWN) {
+				gameMode = generalSettings.getGameMode();
+			}
+			HitObjectParser<?> parser = PARSERS.get(gameMode);
 			// TODO: parse other gamemodes
 			if (parser == null)
 				return null;
@@ -99,7 +96,7 @@ public class BeatmapParser {
 			List<TimingPoint> timingPoints = parseTimePoints(parts.get("TimingPoints"));
 			List<String> rawObjects = parts.get("HitObjects").getLines();
 			
-			return parser.buildBeatmap(generalSettings, editorState, metadata, difficulties, breaks, timingPoints, rawObjects);
+			return (T) parser.buildBeatmap(generalSettings, editorState, metadata, difficulties, breaks, timingPoints, rawObjects);
 		}
 	}
 	

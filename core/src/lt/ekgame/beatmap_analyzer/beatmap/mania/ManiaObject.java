@@ -4,13 +4,13 @@ import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 import lt.ekgame.beatmap_analyzer.beatmap.TimingPoint;
 import lt.ekgame.beatmap_analyzer.utils.MathUtils;
-import lt.ekgame.beatmap_analyzer.utils.Vec2;
+import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public abstract class ManiaObject extends HitObject {
 	
 	private int collumn;
 
-	public ManiaObject(Vec2 position, int startTime, int endTime, int hitSound) {
+	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound) {
 		super(position, startTime, endTime, hitSound);
 	}
 	
@@ -24,4 +24,21 @@ public abstract class ManiaObject extends HitObject {
 		return collumn;
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(stringifyKeyValue("position", position)) +
+				stringifyKeyValue("startTime", startTime) +
+				stringifyKeyValue("endTime", startTime) +
+				stringifyKeyValue("hitSound", hitSound);
+	}
+
+	private <T> StringBuilder stringifyKeyValue(String key, T value) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(key);
+		builder.append(": ");
+		builder.append(value);
+		builder.append("\n");
+
+		return builder;
+	}
 }

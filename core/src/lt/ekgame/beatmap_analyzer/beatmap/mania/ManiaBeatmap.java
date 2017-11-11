@@ -2,7 +2,7 @@ package lt.ekgame.beatmap_analyzer.beatmap.mania;
 
 import java.util.List;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.BeatmapDifficulties;
 import lt.ekgame.beatmap_analyzer.beatmap.BeatmapEditorState;
@@ -28,8 +28,8 @@ public class ManiaBeatmap extends Beatmap {
 	}
 
 	@Override
-	public Gamemode getGamemode() {
-		return Gamemode.MANIA;
+	public GameMode getGameMode() {
+		return GameMode.MANIA;
 	}
 	
 	@Override

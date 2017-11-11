@@ -1,6 +1,6 @@
 package lt.ekgame.beatmap_analyzer.performance;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.difficulty.Difficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.TaikoDifficulty;
 import lt.ekgame.beatmap_analyzer.performance.scores.Score;
@@ -53,7 +53,7 @@ public class TaikoPerformanceCalculator implements PerformanceCalculator {
 	}
 	
 	private double calculateAccuracyValue(TaikoDifficulty difficulty, Score score) {
-		int perfectHitWindow = MathUtils.getHitWindow300(difficulty.getOD(), Gamemode.TAIKO, difficulty.getMods());
+		int perfectHitWindow = MathUtils.getHitWindow300(difficulty.getOD(), GameMode.TAIKO, difficulty.getMods());
 		if (perfectHitWindow <= 0)
 			return 0;
 		

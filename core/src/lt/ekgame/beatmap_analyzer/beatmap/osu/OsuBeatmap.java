@@ -2,7 +2,7 @@ package lt.ekgame.beatmap_analyzer.beatmap.osu;
 
 import java.util.List;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.beatmap.*;
 import lt.ekgame.beatmap_analyzer.difficulty.OsuDifficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.OsuDifficultyCalculator;
@@ -66,8 +66,8 @@ public class OsuBeatmap extends Beatmap {
 	}
 
 	@Override
-	public Gamemode getGamemode() {
-		return Gamemode.OSU;
+	public GameMode getGameMode() {
+		return GameMode.OSU;
 	}
 	
 	@Override

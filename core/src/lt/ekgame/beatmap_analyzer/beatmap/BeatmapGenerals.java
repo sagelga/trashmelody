@@ -1,6 +1,6 @@
 package lt.ekgame.beatmap_analyzer.beatmap;
 
-import lt.ekgame.beatmap_analyzer.Gamemode;
+import lt.ekgame.beatmap_analyzer.GameMode;
 import lt.ekgame.beatmap_analyzer.parser.BeatmapException;
 import lt.ekgame.beatmap_analyzer.parser.FilePart;
 import lt.ekgame.beatmap_analyzer.parser.FilePartConfig;
@@ -13,7 +13,7 @@ public class BeatmapGenerals {
 	private boolean hasCountdown;
 	private String sampleSet;
 	private double stackLeniency;
-	private Gamemode gamemode;
+	private GameMode gameMode;
 	private boolean hasLetterboxing;
 	private boolean hasEpilepsyWarning;
 	private boolean hasWidescreenStoryboard;
@@ -28,7 +28,7 @@ public class BeatmapGenerals {
 		hasCountdown = config.getBoolean("Countdown", true);
 		sampleSet = config.getString("SampleSet");
 		stackLeniency = config.getDouble("StackLeniency", 0.7);
-		gamemode = config.getGamemode("Mode", Gamemode.OSU);
+		gameMode = config.getGameMode("Mode", GameMode.OSU);
 		hasLetterboxing = config.getBoolean("LetterboxInBreaks", true);
 		hasEpilepsyWarning = config.getBoolean("EpilepsyWarning", false);
 		hasWidescreenStoryboard = config.getBoolean("WidescreenStoryboard", false);
@@ -42,7 +42,7 @@ public class BeatmapGenerals {
 		clone.hasCountdown = this.hasCountdown;
 		clone.sampleSet = this.sampleSet;
 		clone.stackLeniency = this.stackLeniency;
-		clone.gamemode = this.gamemode;
+		clone.gameMode = this.gameMode;
 		clone.hasLetterboxing = this.hasLetterboxing;
 		clone.hasEpilepsyWarning = this.hasEpilepsyWarning;
 		clone.hasWidescreenStoryboard = this.hasWidescreenStoryboard;
@@ -73,8 +73,8 @@ public class BeatmapGenerals {
 		return stackLeniency;
 	}
 
-	public Gamemode getGamemode() {
-		return gamemode;
+	public GameMode getGameMode() {
+		return gameMode;
 	}
 
 	public boolean hasLetterboxing() {
@@ -113,8 +113,8 @@ public class BeatmapGenerals {
 		this.stackLeniency = stackLeniency;
 	}
 
-	public void setGamemode(Gamemode gamemode) {
-		this.gamemode = gamemode;
+	public void setGameMode(GameMode gameMode) {
+		this.gameMode = gameMode;
 	}
 
 	public void setLetterboxing(boolean hasLetterboxing) {

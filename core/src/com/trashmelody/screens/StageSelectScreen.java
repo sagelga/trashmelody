@@ -71,6 +71,14 @@ public class StageSelectScreen extends ScreenAdapter {
     }
 
     @Override
+    public void show(){
+        if (SplashScreen.splashScreenMusic.isPlaying()){
+            SplashScreen.splashScreenMusic.stop();
+            SplashScreen.splashScreenMusic.setLooping(false);
+        }
+    }
+
+    @Override
     public void render(float delta) {
         clearScreen(253, 243, 255, 1);
 //        camera.update();

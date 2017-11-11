@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
@@ -19,7 +18,6 @@ import com.trashmelody.utils.GifDecoder;
 import javax.inject.Inject;
 
 import static com.trashmelody.Assets.LOADING_LOGO;
-import static com.trashmelody.Assets.TEXTURE;
 import static com.trashmelody.Utils.*;
 
 public class LoadingScreen extends ScreenAdapter {
@@ -56,7 +54,7 @@ public class LoadingScreen extends ScreenAdapter {
         clearScreen(253,243,255,1);
         elapsed += delta;
 
-        if(assets.assetManager.update()){
+        if(assets.update()){
             game.setScreen(warningScreen.get());
         }
 

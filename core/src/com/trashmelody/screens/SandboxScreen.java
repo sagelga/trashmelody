@@ -7,20 +7,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Inject;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
 import static io.vavr.API.println;
 
 public class SandboxScreen extends ScreenAdapter {
-    private SpriteBatch batch;
+    private TrashMelody game;
     private Camera camera;
     private Sprite badLogicLogo;
     private Texture badLogicTexture;
 
     @Inject
-    SandboxScreen(SpriteBatch batch, Camera camera) {
-        this.batch = batch;
+    SandboxScreen(TrashMelody game, Camera camera) {
         this.camera = camera;
+        this.game = game;
         badLogicTexture = new Texture(Gdx.files.internal("badlogic.jpg"));
         badLogicLogo = new Sprite(badLogicTexture, 0, 0, Utils.getViewportWidth(), Utils.getViewportHeight());
     }
@@ -31,13 +32,13 @@ public class SandboxScreen extends ScreenAdapter {
 
         camera.update();
 
-        batch.begin();
-        batch.draw(badLogicTexture, 0, 0, Utils.getViewportWidth(), Utils.getViewportWidth());
-        badLogicLogo.draw(batch);
+        game.batch.begin();
+        game.batch.draw(badLogicTexture, 0, 0, Utils.getViewportWidth(), Utils.getViewportWidth());
+        badLogicLogo.draw(game.batch);
         if (Gdx.input.justTouched()) {
             println(Gdx.input.getX());
             println(Gdx.input.getY());
         }
-        batch.end();
+        game.batch.end();
     }
 }

@@ -41,7 +41,7 @@ public class WarningScreen extends ScreenAdapter {
 
         // Start loading assets
         game.batch.begin();
-        drawCenterX(game.batch, warningScreenLogo, 180F, 237F, 500F);
+        drawCenterX(game.batch, warningScreenLogo, 180F, 237F, getViewportHeight()/2);
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone

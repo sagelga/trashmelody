@@ -37,11 +37,6 @@ public class GameModule implements Module {
     }
 
     @Provides @Singleton
-    public SpriteBatch provideSpriteBatch() {
-        return new SpriteBatch();
-    }
-
-    @Provides @Singleton
     public Camera provideCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());

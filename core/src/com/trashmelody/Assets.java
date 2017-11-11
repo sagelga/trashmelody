@@ -2,24 +2,15 @@ package com.trashmelody;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.FileHandleResolver;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader.FreeTypeFontLoaderParameter;
-import io.vavr.Function2;
-import io.vavr.Tuple;
-import io.vavr.Tuple3;
-import io.vavr.collection.*;
-import io.vavr.control.Option;
+import io.vavr.collection.TreeMap;
 
-public class Assets {
+public class Assets extends AssetManager {
 
     // Splash Screen Assets
     public static final String SPLASH_LOGO              = "splash-logo.png";
@@ -212,205 +203,196 @@ public class Assets {
 
     private void loadImages() {
 
-        assetManager.load(WARNING_TEXT,             TEXTURE);
-        assetManager.load(WARNING_LOGO,             TEXTURE);
+        load(WARNING_TEXT,             TEXTURE);
+        load(WARNING_LOGO,             TEXTURE);
 
-        assetManager.load(MENU_BTN_START,           TEXTURE);
-        assetManager.load(MENU_BTN_COLLECTION,      TEXTURE);
-        assetManager.load(MENU_BTN_SETTING,         TEXTURE);
-        assetManager.load(MENU_BTN_EXIT,            TEXTURE);
-        assetManager.load(MENU_BG,                  TEXTURE);
-        assetManager.load(MENU_BORDER_LEFT,         TEXTURE);
-        assetManager.load(MENU_BORDER_RIGHT,        TEXTURE);
+        load(MENU_BTN_START,           TEXTURE);
+        load(MENU_BTN_COLLECTION,      TEXTURE);
+        load(MENU_BTN_SETTING,         TEXTURE);
+        load(MENU_BTN_EXIT,            TEXTURE);
+        load(MENU_BG,                  TEXTURE);
+        load(MENU_BORDER_LEFT,         TEXTURE);
+        load(MENU_BORDER_RIGHT,        TEXTURE);
 
-        assetManager.load(NAME_BACKGROUND,          TEXTURE);
-        assetManager.load(NAME_ENTER_BOX,           TEXTURE);
-        assetManager.load(NAME_ENTER_NAME,          TEXTURE);
-        assetManager.load(NAME_CLOUD,               TEXTURE);
-        assetManager.load(NAME_BORDER,              TEXTURE);
+        load(NAME_BACKGROUND,          TEXTURE);
+        load(NAME_ENTER_BOX,           TEXTURE);
+        load(NAME_ENTER_NAME,          TEXTURE);
+        load(NAME_CLOUD,               TEXTURE);
+        load(NAME_BORDER,              TEXTURE);
 
-        assetManager.load(STAGE_BUILDING_OFFICE,    TEXTURE);
-        assetManager.load(STAGE_TEXT_OFFICE,        TEXTURE);
-        assetManager.load(STAGE_BUILDING_CINEMA,    TEXTURE);
-        assetManager.load(STAGE_TEXT_CINEMA,        TEXTURE);
-        assetManager.load(STAGE_BUILDING_HOSPITAL,  TEXTURE);
-        assetManager.load(STAGE_TEXT_HOSPITAL,      TEXTURE);
-        assetManager.load(STAGE_BUILDING_SCHOOL,    TEXTURE);
-        assetManager.load(STAGE_TEXT_SCHOOL,        TEXTURE);
-        assetManager.load(STAGE_BUILDING_HOME,      TEXTURE);
-        assetManager.load(STAGE_TEXT_HOME,          TEXTURE);
-        assetManager.load(STAGE_BUILDING_CAFE,      TEXTURE);
-        assetManager.load(STAGE_TEXT_CAFE,          TEXTURE);
-        assetManager.load(STAGE_BG_BACKBUTTON,      TEXTURE);
-        assetManager.load(STAGE_BG_PLAYBUTTON,      TEXTURE);
-        assetManager.load(STAGE_BG_CLOUD,           TEXTURE);
-        assetManager.load(STAGE_BG_HEADER,          TEXTURE);
-        assetManager.load(STAGE_BG_FOOTER,          TEXTURE);
-        assetManager.load(STAGE_BG_TRASHWORLD,      TEXTURE);
-        assetManager.load(STAGE_BG_OVERLAY,         TEXTURE);
-        assetManager.load(STAGE_BG_ARROW_L,         TEXTURE);
-        assetManager.load(STAGE_BG_ARROW_R,         TEXTURE);
+        load(STAGE_BUILDING_OFFICE,    TEXTURE);
+        load(STAGE_TEXT_OFFICE,        TEXTURE);
+        load(STAGE_BUILDING_CINEMA,    TEXTURE);
+        load(STAGE_TEXT_CINEMA,        TEXTURE);
+        load(STAGE_BUILDING_HOSPITAL,  TEXTURE);
+        load(STAGE_TEXT_HOSPITAL,      TEXTURE);
+        load(STAGE_BUILDING_SCHOOL,    TEXTURE);
+        load(STAGE_TEXT_SCHOOL,        TEXTURE);
+        load(STAGE_BUILDING_HOME,      TEXTURE);
+        load(STAGE_TEXT_HOME,          TEXTURE);
+        load(STAGE_BUILDING_CAFE,      TEXTURE);
+        load(STAGE_TEXT_CAFE,          TEXTURE);
+        load(STAGE_BG_BACKBUTTON,      TEXTURE);
+        load(STAGE_BG_PLAYBUTTON,      TEXTURE);
+        load(STAGE_BG_CLOUD,           TEXTURE);
+        load(STAGE_BG_HEADER,          TEXTURE);
+        load(STAGE_BG_FOOTER,          TEXTURE);
+        load(STAGE_BG_TRASHWORLD,      TEXTURE);
+        load(STAGE_BG_OVERLAY,         TEXTURE);
+        load(STAGE_BG_ARROW_L,         TEXTURE);
+        load(STAGE_BG_ARROW_R,         TEXTURE);
 
-        assetManager.load(COLLECTION_BG,            TEXTURE);
-        assetManager.load(COLLECTION_SCREEN_TITLE,  TEXTURE);
+        load(COLLECTION_BG,            TEXTURE);
+        load(COLLECTION_SCREEN_TITLE,  TEXTURE);
 
-        assetManager.load(COUNTDOWN_BACKGROUND1,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_0,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_1,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_2,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_3,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_4,    TEXTURE);
-        assetManager.load(COUNTDOWN_COUNT_NUM_5,    TEXTURE);
-        assetManager.load(COUNTDOWN_RING,           TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE1,        TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE2,        TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE3,        TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE4,        TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE5,        TEXTURE);
-        assetManager.load(COUNTDOWN_STRIPE6,        TEXTURE);
+        load(COUNTDOWN_BACKGROUND1,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_0,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_1,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_2,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_3,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_4,    TEXTURE);
+        load(COUNTDOWN_COUNT_NUM_5,    TEXTURE);
+        load(COUNTDOWN_RING,           TEXTURE);
+        load(COUNTDOWN_STRIPE1,        TEXTURE);
+        load(COUNTDOWN_STRIPE2,        TEXTURE);
+        load(COUNTDOWN_STRIPE3,        TEXTURE);
+        load(COUNTDOWN_STRIPE4,        TEXTURE);
+        load(COUNTDOWN_STRIPE5,        TEXTURE);
+        load(COUNTDOWN_STRIPE6,        TEXTURE);
 
-        assetManager.load(GAME_BACKGROUND1,         TEXTURE);
-        assetManager.load(GAME_BACKGROUND_FOOTER1,  TEXTURE);
-        assetManager.load(GAME_BIN_01,              TEXTURE);
-        assetManager.load(GAME_BIN_02,              TEXTURE);
-        assetManager.load(GAME_BIN_03,              TEXTURE);
-        assetManager.load(GAME_BIN_04,              TEXTURE);
-        assetManager.load(GAME_CENTER,              TEXTURE);
-        assetManager.load(GAME_CHECK,               TEXTURE);
-        assetManager.load(GAME_HEADER,              TEXTURE);
-        assetManager.load(GAME_HEADER2,             TEXTURE);
-        assetManager.load(GAME_FOOTER,              TEXTURE);
-        assetManager.load(GAME_HANOI_1,             TEXTURE);
-        assetManager.load(GAME_HANOI_2,             TEXTURE);
-        assetManager.load(GAME_HANOI_3,             TEXTURE);
-        assetManager.load(GAME_HANOI_4,             TEXTURE);
-        assetManager.load(GAME_LEVEL_1,             TEXTURE);
-        assetManager.load(GAME_LEVEL_2,             TEXTURE);
-        assetManager.load(GAME_LEVEL_3,             TEXTURE);
-        assetManager.load(GAME_ICON,                TEXTURE);
-        assetManager.load(GAME_SONG_NAME_1,         TEXTURE);
-        assetManager.load(GAME_PAUSE,               TEXTURE);
-        assetManager.load(GAME_LEVEL_BORDER,        TEXTURE);
-        assetManager.load(GAME_SCORE,               TEXTURE);
-        assetManager.load(GAME_SCORE_1,             TEXTURE);
-        assetManager.load(GAME_SCORE_2,             TEXTURE);
-        assetManager.load(GAME_SCORE_3,             TEXTURE);
-        assetManager.load(GAME_SCORE_4,             TEXTURE);
-        assetManager.load(GAME_SCORE_5,             TEXTURE);
-        assetManager.load(GAME_STATUS_BAR,          TEXTURE);
+        load(GAME_BACKGROUND1,         TEXTURE);
+        load(GAME_BACKGROUND_FOOTER1,  TEXTURE);
+        load(GAME_BIN_01,              TEXTURE);
+        load(GAME_BIN_02,              TEXTURE);
+        load(GAME_BIN_03,              TEXTURE);
+        load(GAME_BIN_04,              TEXTURE);
+        load(GAME_CENTER,              TEXTURE);
+        load(GAME_CHECK,               TEXTURE);
+        load(GAME_HEADER,              TEXTURE);
+        load(GAME_HEADER2,             TEXTURE);
+        load(GAME_FOOTER,              TEXTURE);
+        load(GAME_HANOI_1,             TEXTURE);
+        load(GAME_HANOI_2,             TEXTURE);
+        load(GAME_HANOI_3,             TEXTURE);
+        load(GAME_HANOI_4,             TEXTURE);
+        load(GAME_LEVEL_1,             TEXTURE);
+        load(GAME_LEVEL_2,             TEXTURE);
+        load(GAME_LEVEL_3,             TEXTURE);
+        load(GAME_ICON,                TEXTURE);
+        load(GAME_SONG_NAME_1,         TEXTURE);
+        load(GAME_PAUSE,               TEXTURE);
+        load(GAME_LEVEL_BORDER,        TEXTURE);
+        load(GAME_SCORE,               TEXTURE);
+        load(GAME_SCORE_1,             TEXTURE);
+        load(GAME_SCORE_2,             TEXTURE);
+        load(GAME_SCORE_3,             TEXTURE);
+        load(GAME_SCORE_4,             TEXTURE);
+        load(GAME_SCORE_5,             TEXTURE);
+        load(GAME_STATUS_BAR,          TEXTURE);
 
-        assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
-        assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);
-        assetManager.load(PAUSE_SETTING_BTN1,       TEXTURE);
-        assetManager.load(PAUSE_SETTING_BTN2,       TEXTURE);
-        assetManager.load(PAUSE_RETRY_BTN1,         TEXTURE);
-        assetManager.load(PAUSE_RETRY_BTN2,         TEXTURE);
-        assetManager.load(PAUSE_HOME_BTN1,          TEXTURE);
-        assetManager.load(PAUSE_HOME_BTN2,          TEXTURE);
-        assetManager.load(PAUSE_SELECTOR_ARROW,     TEXTURE);
+        load(PAUSE_CONTINUE_BTN1,      TEXTURE);
+        load(PAUSE_CONTINUE_BTN2,      TEXTURE);
+        load(PAUSE_SETTING_BTN1,       TEXTURE);
+        load(PAUSE_SETTING_BTN2,       TEXTURE);
+        load(PAUSE_RETRY_BTN1,         TEXTURE);
+        load(PAUSE_RETRY_BTN2,         TEXTURE);
+        load(PAUSE_HOME_BTN1,          TEXTURE);
+        load(PAUSE_HOME_BTN2,          TEXTURE);
+        load(PAUSE_SELECTOR_ARROW,     TEXTURE);
 
-        assetManager.load(CALIBRATE_BG,             TEXTURE);
-        assetManager.load(CALIBRATE_HEADER,         TEXTURE);
-        assetManager.load(CALIBRATE_FOOTER,         TEXTURE);
-        assetManager.load(CALIBRATE_NUM_5,          TEXTURE);
-        assetManager.load(CALIBRATE_NUM_4,          TEXTURE);
-        assetManager.load(CALIBRATE_NUM_3,          TEXTURE);
-        assetManager.load(CALIBRATE_NUM_2,          TEXTURE);
-        assetManager.load(CALIBRATE_NUM_1,          TEXTURE);
-        assetManager.load(CALIBRATE_SPEED_POINTER,  TEXTURE);
-        assetManager.load(CALIBRATE_SPEED_BAR,      TEXTURE);
+        load(CALIBRATE_BG,             TEXTURE);
+        load(CALIBRATE_HEADER,         TEXTURE);
+        load(CALIBRATE_FOOTER,         TEXTURE);
+        load(CALIBRATE_NUM_5,          TEXTURE);
+        load(CALIBRATE_NUM_4,          TEXTURE);
+        load(CALIBRATE_NUM_3,          TEXTURE);
+        load(CALIBRATE_NUM_2,          TEXTURE);
+        load(CALIBRATE_NUM_1,          TEXTURE);
+        load(CALIBRATE_SPEED_POINTER,  TEXTURE);
+        load(CALIBRATE_SPEED_BAR,      TEXTURE);
 
-        assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
-        assetManager.load(RESULT_RESULT_HEADER,     TEXTURE);
-        assetManager.load(RESULT_RESULT_FOOTER,     TEXTURE);
-        assetManager.load(RESULT_RESULT_GRADE_A,    TEXTURE);
-        assetManager.load(RESULT_RESULT_GRADE_B,    TEXTURE);
-        assetManager.load(RESULT_RESULT_GRADE_C,    TEXTURE);
-        assetManager.load(RESULT_RESULT_GRADE_D,    TEXTURE);
-        assetManager.load(RESULT_RESULT_GRADE_F,    TEXTURE);
-        assetManager.load(RESULT_RESULT_PERFECT,    TEXTURE);
-        assetManager.load(RESULT_RESULT_GOOD,       TEXTURE);
-        assetManager.load(RESULT_RESULT_NICE,       TEXTURE);
-        assetManager.load(RESULT_RESULT_MISS,       TEXTURE);
-        assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
+        load(RESULT_RESULT_BACKGROUND, TEXTURE);
+        load(RESULT_RESULT_HEADER,     TEXTURE);
+        load(RESULT_RESULT_FOOTER,     TEXTURE);
+        load(RESULT_RESULT_GRADE_A,    TEXTURE);
+        load(RESULT_RESULT_GRADE_B,    TEXTURE);
+        load(RESULT_RESULT_GRADE_C,    TEXTURE);
+        load(RESULT_RESULT_GRADE_D,    TEXTURE);
+        load(RESULT_RESULT_GRADE_F,    TEXTURE);
+        load(RESULT_RESULT_PERFECT,    TEXTURE);
+        load(RESULT_RESULT_GOOD,       TEXTURE);
+        load(RESULT_RESULT_NICE,       TEXTURE);
+        load(RESULT_RESULT_MISS,       TEXTURE);
+        load(RESULT_RESULT_COMBO,      TEXTURE);
 
-        assetManager.load(SETTING_BACK_BUTTON,      TEXTURE);
-        assetManager.load(SETTING_CALIBRATE,        TEXTURE);
-        assetManager.load(SETTING_EFFECT,           TEXTURE);
-        assetManager.load(SETTING_FULLSCREEN,       TEXTURE);
-        assetManager.load(SETTING_HEADER,           TEXTURE);
-        assetManager.load(SETTING_MUSIC,            TEXTURE);
-        assetManager.load(SETTING_SLIDE_BAR,        TEXTURE);
-        assetManager.load(SETTING_VOLUME,           TEXTURE);
-        assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
-        assetManager.load(SETTING_WINDOW,           TEXTURE);
+        load(SETTING_BACK_BUTTON,      TEXTURE);
+        load(SETTING_CALIBRATE,        TEXTURE);
+        load(SETTING_EFFECT,           TEXTURE);
+        load(SETTING_FULLSCREEN,       TEXTURE);
+        load(SETTING_HEADER,           TEXTURE);
+        load(SETTING_MUSIC,            TEXTURE);
+        load(SETTING_SLIDE_BAR,        TEXTURE);
+        load(SETTING_VOLUME,           TEXTURE);
+        load(SETTING_VOLUME_BAR,       TEXTURE);
+        load(SETTING_WINDOW,           TEXTURE);
 
         /*
-        assetManager.load(MUSIC_1_SONG,             MUSIC);
-        assetManager.load(MUSIC_1_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_1_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_1_BG_BLUR,          TEXTURE);
+        load(MUSIC_1_SONG,             MUSIC);
+        load(MUSIC_1_BG_CLEAR,         TEXTURE);
+        load(MUSIC_1_BG_OPAC,          TEXTURE);
+        load(MUSIC_1_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_2_SONG,             MUSIC);
-        assetManager.load(MUSIC_2_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_2_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_2_BG_BLUR,          TEXTURE);
+        load(MUSIC_2_SONG,             MUSIC);
+        load(MUSIC_2_BG_CLEAR,         TEXTURE);
+        load(MUSIC_2_BG_OPAC,          TEXTURE);
+        load(MUSIC_2_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_3_SONG,             MUSIC);
-        assetManager.load(MUSIC_3_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_3_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_3_BG_BLUR,          TEXTURE);
+        load(MUSIC_3_SONG,             MUSIC);
+        load(MUSIC_3_BG_CLEAR,         TEXTURE);
+        load(MUSIC_3_BG_OPAC,          TEXTURE);
+        load(MUSIC_3_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_4_SONG,             MUSIC);
-        assetManager.load(MUSIC_4_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_4_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_4_BG_BLUR,          TEXTURE);
+        load(MUSIC_4_SONG,             MUSIC);
+        load(MUSIC_4_BG_CLEAR,         TEXTURE);
+        load(MUSIC_4_BG_OPAC,          TEXTURE);
+        load(MUSIC_4_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_5_SONG,             MUSIC);
-        assetManager.load(MUSIC_5_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_5_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_5_BG_BLUR,          TEXTURE);
+        load(MUSIC_5_SONG,             MUSIC);
+        load(MUSIC_5_BG_CLEAR,         TEXTURE);
+        load(MUSIC_5_BG_OPAC,          TEXTURE);
+        load(MUSIC_5_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_6_SONG,             MUSIC);
-        assetManager.load(MUSIC_6_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_6_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_6_BG_BLUR,          TEXTURE);
+        load(MUSIC_6_SONG,             MUSIC);
+        load(MUSIC_6_BG_CLEAR,         TEXTURE);
+        load(MUSIC_6_BG_OPAC,          TEXTURE);
+        load(MUSIC_6_BG_BLUR,          TEXTURE);
 
-        assetManager.load(MUSIC_7_SONG,             MUSIC);
-        assetManager.load(MUSIC_7_BG_CLEAR,         TEXTURE);
-        assetManager.load(MUSIC_7_BG_OPAC,          TEXTURE);
-        assetManager.load(MUSIC_7_BG_BLUR,          TEXTURE);
+        load(MUSIC_7_SONG,             MUSIC);
+        load(MUSIC_7_BG_CLEAR,         TEXTURE);
+        load(MUSIC_7_BG_OPAC,          TEXTURE);
+        load(MUSIC_7_BG_BLUR,          TEXTURE);
 */
-//        assetManager.load(MUSIC_BG1,                MUSIC);
-        assetManager.load(MUSIC_BG2,                MUSIC);
+//        load(MUSIC_BG1,                MUSIC);
+        load(MUSIC_BG2,                MUSIC);
     }
 
     private void eagerLoad() { // Assets that will load first
-        assetManager.load(SPLASH_LOGO,              TEXTURE);
-        assetManager.load(MUSIC_BG1,                MUSIC);
-        assetManager.load(LOADING_LOGO,             TEXTURE);
+        load(SPLASH_LOGO,              TEXTURE);
+        load(MUSIC_BG1,                MUSIC);
+        load(LOADING_LOGO,             TEXTURE);
     }
 
     public Assets() {
-        assetManager = new AssetManager();
+        super();
+
         eagerLoad();
-        assetManager.finishLoading();
+        finishLoading();
         loadImages();
     }
 
-    public <T> T get(String name, Class<T> type) {
-        return assetManager.get(name, type);
-    }
-
-    public AssetManager assetManager;
-
-    private TreeMap<Integer, BitmapFont> loadedFonts;
-
     public static Class<Texture> TEXTURE = Texture.class;
     public static Class<Music> MUSIC = Music.class;
-//    public static Class<Animation> ANIMATION = Animation.class;
-
-
+    public static Class<Animation> ANIMATION = Animation.class;
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     private BitmapFont getFont(String name, Integer size, Color color) {

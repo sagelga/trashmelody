@@ -1,25 +1,22 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.google.inject.Provider;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
-import com.google.inject.Provider;
 
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.Utils.clearScreen;
+import static com.trashmelody.Utils.drawCenter;
 
 public class LoadingScreen extends ScreenAdapter {
     private TrashMelody game;
@@ -54,7 +51,7 @@ public class LoadingScreen extends ScreenAdapter {
     public void render(float delta) { // Continuously run during active
         clearScreen(253,243,255,1);
 
-        if(assets.assetManager.update()){
+        if(assets.update()){
             game.setScreen(warningScreen.get());
         }
 

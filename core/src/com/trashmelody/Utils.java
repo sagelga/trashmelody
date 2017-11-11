@@ -23,12 +23,10 @@ public class Utils {
     }
 
     public static void clearScreen() {
-        Gdx.gl.glClearColor(1F, 1F, 1F, 1F);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        clearScreen(255F, 255F, 255F, 255F);
     }
-    public static void clearScreen(int red, int green, int blue, float alpha){
-        /// Overloads clearScreen() method
-        Gdx.gl.glClearColor(red/255F, green/255F, blue/255F, alpha);
+    public static void clearScreen(float red, float green, float blue, float alpha){
+        Gdx.gl.glClearColor(red / 255F, green / 255F, blue / 255F, alpha);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 

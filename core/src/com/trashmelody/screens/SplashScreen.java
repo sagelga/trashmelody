@@ -37,7 +37,7 @@ public class SplashScreen extends ScreenAdapter {
         this.loadingScreen = loadingScreen;
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
-        this.splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
+        splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ResultScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
-    private Texture header, footer;
+    private Texture bg, header, footer;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -30,6 +30,7 @@ public class ResultScreen extends ScreenAdapter {
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
 
+        this.bg = assets.get(Assets.RESULT_RESULT_BACKGROUND, Assets.TEXTURE);
         this.header = assets.get(Assets.RESULT_RESULT_HEADER, Assets.TEXTURE);
         this.footer = assets.get(Assets.RESULT_RESULT_FOOTER, Assets.TEXTURE);
     }
@@ -42,6 +43,7 @@ public class ResultScreen extends ScreenAdapter {
 
         game.batch.begin();
 
+        game.batch.draw(bg, 0, 0, vw, vh);
         game.batch.draw(header, 0, vh-105, 1200, 105);
         game.batch.draw(footer, 0, 0, vw, ((float)83/1920)*vw);
 

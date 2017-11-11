@@ -28,8 +28,6 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin
-  only:
-    - web
 
 gradle-check:
   stage: check

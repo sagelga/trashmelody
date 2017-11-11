@@ -50,6 +50,14 @@ public class MenuScreen extends ScreenAdapter {
     }
 
     @Override
+    public void show(){
+        if (!SplashScreen.splashScreenMusic.isPlaying()){
+            SplashScreen.splashScreenMusic.play();
+            SplashScreen.splashScreenMusic.setLooping(true);
+        }
+    }
+
+    @Override
     public void render(float delta) {
         clearScreen();
         camera.update();
@@ -89,5 +97,10 @@ public class MenuScreen extends ScreenAdapter {
         super.resize(width, height);
 
         viewport.update(width, height);
+    }
+
+    @Override
+    public void hide(){
+        SplashScreen.splashScreenMusic.stop();
     }
 }

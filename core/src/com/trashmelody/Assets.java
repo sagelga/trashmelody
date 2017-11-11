@@ -428,4 +428,7 @@ public class Assets {
     public BitmapFont getSuperSpaceFont(Integer size, Color color) {
         return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
+    public float getProgress(){
+        return assetManager.getProgress();
+    }
 }

@@ -322,11 +322,11 @@ public class Assets extends AssetManager {
         load(RESULT_RESULT_GRADE_C,    TEXTURE);
         load(RESULT_RESULT_GRADE_D,    TEXTURE);
         load(RESULT_RESULT_GRADE_F,    TEXTURE);
-        load(RESULT_RESULT_PERFECT,    TEXTURE);
-        load(RESULT_RESULT_GOOD,       TEXTURE);
-        load(RESULT_RESULT_NICE,       TEXTURE);
-        load(RESULT_RESULT_MISS,       TEXTURE);
-        load(RESULT_RESULT_COMBO,      TEXTURE);
+//        load(RESULT_RESULT_PERFECT,    TEXTURE);
+//        load(RESULT_RESULT_GOOD,       TEXTURE);
+//        load(RESULT_RESULT_NICE,       TEXTURE);
+//        load(RESULT_RESULT_MISS,       TEXTURE);
+//        load(RESULT_RESULT_COMBO,      TEXTURE);
         load(RESULT_RESULT_TEXT_ALL,   TEXTURE);
 
         load(SETTING_BACK_BUTTON,      TEXTURE);

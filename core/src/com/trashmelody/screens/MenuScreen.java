@@ -32,13 +32,12 @@ public class MenuScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport, StageSelectScreen stageSelectScreen, ResultScreen resultScreen) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport,StageSelectScreen stageSelectScreen, ResultScreen resultScreen) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
         this.resultScreen = resultScreen;
         this.camera = camera;
         this.viewport = viewport;
-
         this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO,            Assets.TEXTURE);
         this.bg                 = assets.get(Assets.MENU_BG,                Assets.TEXTURE);
         this.btnStart           = assets.get(Assets.MENU_BTN_START,         Assets.TEXTURE);
@@ -65,13 +64,13 @@ public class MenuScreen extends ScreenAdapter {
         game.batch.draw(borderRight, vw-(((float)168/900)*vh), 0, ((float)168/900)*vh, 900);
 
         // Click 'ENTER' equivalent to clicking play (for now)
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             game.setScreen(stageSelectScreen);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
             game.setScreen(resultScreen);
         }
-        
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Main Menu Screen");

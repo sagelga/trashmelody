@@ -35,7 +35,6 @@ public class WarningScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         clearScreen(253,243,255,1);
-
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
             game.setScreen(menuScreen);
         }

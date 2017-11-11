@@ -229,6 +229,7 @@ public class Assets {
         assetManager.load(NAME_ENTER_NAME,          TEXTURE);
         assetManager.load(NAME_CLOUD,               TEXTURE);
         assetManager.load(NAME_BORDER,              TEXTURE); */
+    //Tiger Tempo
 
         assetManager.load(STAGE_BUILDING_OFFICE,    TEXTURE);
         assetManager.load(STAGE_TEXT_OFFICE,        TEXTURE);
@@ -301,51 +302,52 @@ public class Assets {
         assetManager.load(GAME_SCORE_5,             TEXTURE);
         assetManager.load(GAME_STATUS_BAR,          TEXTURE);
 
-        // assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
-        // assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);
-        // assetManager.load(PAUSE_SETTING_BTN1,       TEXTURE);
-        // assetManager.load(PAUSE_SETTING_BTN2,       TEXTURE);
-        // assetManager.load(PAUSE_RETRY_BTN1,         TEXTURE);
-        // assetManager.load(PAUSE_RETRY_BTN2,         TEXTURE);
-        // assetManager.load(PAUSE_HOME_BTN1,          TEXTURE);
-        // assetManager.load(PAUSE_HOME_BTN2,          TEXTURE);
-        // assetManager.load(PAUSE_SELECTOR_ARROW,     TEXTURE);
 
-        // assetManager.load(CALIBRATE_BG,             TEXTURE);
-        // assetManager.load(CALIBRATE_HEADER,         TEXTURE);
-        // assetManager.load(CALIBRATE_FOOTER,         TEXTURE);
-        // assetManager.load(CALIBRATE_NUM_5,          TEXTURE);
-        // assetManager.load(CALIBRATE_NUM_4,          TEXTURE);
-        // assetManager.load(CALIBRATE_NUM_3,          TEXTURE);
-        // assetManager.load(CALIBRATE_NUM_2,          TEXTURE);
-        // assetManager.load(CALIBRATE_NUM_1,          TEXTURE);
-        // assetManager.load(CALIBRATE_SPEED_POINTER,  TEXTURE);
-        // assetManager.load(CALIBRATE_SPEED_BAR,      TEXTURE);
-        //
-        // assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
-        // assetManager.load(RESULT_RESULT_HEADER,     TEXTURE);
-        // assetManager.load(RESULT_RESULT_FOOTER,     TEXTURE);
-        // assetManager.load(RESULT_RESULT_GRADE_A,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_GRADE_B,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_GRADE_C,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_GRADE_D,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_GRADE_F,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_PERFECT,    TEXTURE);
-        // assetManager.load(RESULT_RESULT_GOOD,       TEXTURE);
-        // assetManager.load(RESULT_RESULT_NICE,       TEXTURE);
-        // assetManager.load(RESULT_RESULT_MISS,       TEXTURE);
-        // assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
-        //
-        // assetManager.load(SETTING_BACK_BUTTON,      TEXTURE);
-        // assetManager.load(SETTING_CALIBRATE,        TEXTURE);
-        // assetManager.load(SETTING_EFFECT,           TEXTURE);
-        // assetManager.load(SETTING_FULLSCREEN,       TEXTURE);
-        // assetManager.load(SETTING_HEADER,           TEXTURE);
-        // assetManager.load(SETTING_MUSIC,            TEXTURE);
-        // assetManager.load(SETTING_SLIDE_BAR,        TEXTURE);
-        // assetManager.load(SETTING_VOLUME,           TEXTURE);
-        // assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
-        // assetManager.load(SETTING_WINDOW,           TEXTURE);
+         assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
+         assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);
+         assetManager.load(PAUSE_SETTING_BTN1,       TEXTURE);
+         assetManager.load(PAUSE_SETTING_BTN2,       TEXTURE);
+         assetManager.load(PAUSE_RETRY_BTN1,         TEXTURE);
+         assetManager.load(PAUSE_RETRY_BTN2,         TEXTURE);
+         assetManager.load(PAUSE_HOME_BTN1,          TEXTURE);
+         assetManager.load(PAUSE_HOME_BTN2,          TEXTURE);
+         assetManager.load(PAUSE_SELECTOR_ARROW,     TEXTURE);
+
+         assetManager.load(CALIBRATE_BG,             TEXTURE);
+         assetManager.load(CALIBRATE_HEADER,         TEXTURE);
+         assetManager.load(CALIBRATE_FOOTER,         TEXTURE);
+         assetManager.load(CALIBRATE_NUM_5,          TEXTURE);
+         assetManager.load(CALIBRATE_NUM_4,          TEXTURE);
+         assetManager.load(CALIBRATE_NUM_3,          TEXTURE);
+         assetManager.load(CALIBRATE_NUM_2,          TEXTURE);
+         assetManager.load(CALIBRATE_NUM_1,          TEXTURE);
+         assetManager.load(CALIBRATE_SPEED_POINTER,  TEXTURE);
+         assetManager.load(CALIBRATE_SPEED_BAR,      TEXTURE);
+
+         assetManager.load(RESULT_RESULT_BACKGROUND, TEXTURE);
+         assetManager.load(RESULT_RESULT_HEADER,     TEXTURE);
+         assetManager.load(RESULT_RESULT_FOOTER,     TEXTURE);
+         assetManager.load(RESULT_RESULT_GRADE_A,    TEXTURE);
+         assetManager.load(RESULT_RESULT_GRADE_B,    TEXTURE);
+         assetManager.load(RESULT_RESULT_GRADE_C,    TEXTURE);
+         assetManager.load(RESULT_RESULT_GRADE_D,    TEXTURE);
+         assetManager.load(RESULT_RESULT_GRADE_F,    TEXTURE);
+         assetManager.load(RESULT_RESULT_PERFECT,    TEXTURE);
+         assetManager.load(RESULT_RESULT_GOOD,       TEXTURE);
+         assetManager.load(RESULT_RESULT_NICE,       TEXTURE);
+         assetManager.load(RESULT_RESULT_MISS,       TEXTURE);
+         assetManager.load(RESULT_RESULT_COMBO,      TEXTURE);
+
+         assetManager.load(SETTING_BACK_BUTTON,      TEXTURE);
+         assetManager.load(SETTING_CALIBRATE,        TEXTURE);
+         assetManager.load(SETTING_EFFECT,           TEXTURE);
+         assetManager.load(SETTING_FULLSCREEN,       TEXTURE);
+         assetManager.load(SETTING_HEADER,           TEXTURE);
+         assetManager.load(SETTING_MUSIC,            TEXTURE);
+         assetManager.load(SETTING_SLIDE_BAR,        TEXTURE);
+         assetManager.load(SETTING_VOLUME,           TEXTURE);
+         assetManager.load(SETTING_VOLUME_BAR,       TEXTURE);
+         assetManager.load(SETTING_WINDOW,           TEXTURE);
 /*
         assetManager.load(PAUSE_CONTINUE_BTN1,      TEXTURE);
         assetManager.load(PAUSE_CONTINUE_BTN2,      TEXTURE);

@@ -42,7 +42,7 @@ public class SplashScreen extends ScreenAdapter {
 
     @Override
     public void show(){ // Run while screen is active
-        splashScreenMusic.setVolume(0.5F); // for development phase only
+        splashScreenMusic.setVolume(0.3F); // for development phase only
         splashScreenMusic.play();
         splashScreenMusic.setLooping(true);
     }

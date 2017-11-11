@@ -22,7 +22,6 @@ import static com.trashmelody.Utils.*;
 
 public class SettingsScreen extends ScreenAdapter {
     private TrashMelody game;
-    private SpriteBatch batch;
     private Camera camera;
     private Assets assets;
     private Viewport viewport;
@@ -32,7 +31,6 @@ public class SettingsScreen extends ScreenAdapter {
     @Inject
     SettingsScreen(TrashMelody game, SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
         this.game = game;
-        this.batch = batch;
         this.camera = camera;
         this.assets = assets;
         this.viewport = viewport;
@@ -48,7 +46,7 @@ public class SettingsScreen extends ScreenAdapter {
         clearScreen();
 
         camera.update();
-        batch.setProjectionMatrix(camera.combined);
+        game.batch.setProjectionMatrix(camera.combined);
     }
 
     @Override

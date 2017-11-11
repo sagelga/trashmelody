@@ -28,26 +28,27 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin
-  only:
-    - web
 
 gradle-check:
   stage: check
   script:
     # Gradle check for correct dependency imports
     - gradle check
+  retry: 1
 
 gradle-tasks:
   stage: check
   script:
     # Gives out lists of Gradle Tasks
     - gradle -q tasks
+  retry: 1
 
 gradle-clean:
   stage: check
   script:
     # Deletes previous build cache
     - gradle clean
+  retry: 1
 
 build-game:
   stage: build
@@ -60,6 +61,7 @@ run-game:
   script:
     # Do gradle check and gradle assemble
     - gradle run
+  retry: 1
 
 code-count:
   stage: track
@@ -90,7 +92,7 @@ code-count:
     - mv *.txt trackers/
     - ls -las
   artifacts:
-    expire_in: 1 month
+    expire_in: 90 day
     paths: 
     - trackers
   allow_failure: true

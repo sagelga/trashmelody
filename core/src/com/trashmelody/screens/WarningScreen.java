@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 
+import com.badlogic.gdx.utils.TimeUtils;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
@@ -18,7 +19,9 @@ public class WarningScreen extends ScreenAdapter {
     private MenuScreen menuScreen;
     private Texture warningScreenLogo;
     private Texture warningScreenText;
-    private int count;
+
+    private long time_lapsed = TimeUtils.millis();
+
 
     @Inject
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
@@ -26,20 +29,16 @@ public class WarningScreen extends ScreenAdapter {
         this.menuScreen = menuScreen;
         this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
         this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
+
     }
 
     @Override
     public void render(float delta) {
         clearScreen(253,243,255,1);
 
-        if (count >= 1000) {
+        if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
             game.setScreen(menuScreen);
         }
-        if(userSkipScene() && count > 500){
-            // Speed up the delay time by doing userSkipScene() pre-defined methods.
-            count += 100;
-        }
-        count += 5;
 
         // Start loading assets
         game.batch.begin();
@@ -48,11 +47,9 @@ public class WarningScreen extends ScreenAdapter {
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",count/10);
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed));
         // Debug zone
 
         game.batch.end();
     }
-
-//    public void update(float delta){}
 }

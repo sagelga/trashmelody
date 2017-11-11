@@ -24,11 +24,12 @@ public class GameModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(TrashMelody.class).toInstance(game);
-        binder.bind(MenuScreen.class).in(Singleton.class);
-        binder.bind(NameScreen.class).in(Singleton.class);
-        binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(SplashScreen.class).in(Singleton.class);
+        binder.bind(LoadingScreen.class).in(Singleton.class);
         binder.bind(WarningScreen.class).in(Singleton.class);
+        binder.bind(NameScreen.class).in(Singleton.class);
+        binder.bind(MenuScreen.class).in(Singleton.class);
+        binder.bind(SettingsScreen.class).in(Singleton.class);
         binder.bind(StageSelectScreen.class).in(Singleton.class);
         binder.bind(CollectionScreen.class).in(Singleton.class);
         binder.bind(SandboxScreen.class).in(Singleton.class);

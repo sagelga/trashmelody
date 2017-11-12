@@ -2,25 +2,22 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.trashmelody.Assets;
-import com.trashmelody.Debugger;
-import com.trashmelody.TrashMelody;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.Singleton;
+import com.trashmelody.*;
 
 import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton
-public class MenuScreen extends ScreenAdapter {
+public class MenuScreen extends LazyScreen {
     private TrashMelody game;
-    private StageSelectScreen stageSelectScreen;
-    private ResultScreen resultScreen;
+    private Provider<StageSelectScreen> stageSelectScreen;
+    private Provider<ResultScreen> resultScreen;
 
     private Camera camera;
     private Viewport viewport;
@@ -31,26 +28,17 @@ public class MenuScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport,StageSelectScreen stageSelectScreen, ResultScreen resultScreen) {
+    public MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider) {
         this.game = game;
-        this.stageSelectScreen = stageSelectScreen;
-        this.resultScreen = resultScreen;
+        this.stageSelectScreen = screenProvider.getProvider(StageSelectScreen.class);
+        this.resultScreen = screenProvider.getProvider(ResultScreen.class);
         this.camera = camera;
         this.viewport = viewport;
-
-        this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO,            Assets.TEXTURE);
-        this.bg                 = assets.get(Assets.MENU_BG,                Assets.TEXTURE);
-        this.btnStart           = assets.get(Assets.MENU_BTN_START,         Assets.TEXTURE);
-        this.btnCollection      = assets.get(MENU_BTN_COLLECTION,           Assets.TEXTURE);
-        this.btnSetting         = assets.get(MENU_BTN_SETTING,              Assets.TEXTURE);
-        this.btnExit            = assets.get(Assets.MENU_BTN_EXIT,          Assets.TEXTURE);
-        this.borderLeft         = assets.get(Assets.MENU_BORDER_LEFT,       Assets.TEXTURE);
-        this.borderRight        = assets.get(Assets.MENU_BORDER_RIGHT,      Assets.TEXTURE);
     }
 
     @Override
-    public void show(){
-        if (!SplashScreen.splashScreenMusic.isPlaying()){
+    public void show() {
+        if (!SplashScreen.splashScreenMusic.isPlaying()) {
             SplashScreen.splashScreenMusic.play();
             SplashScreen.splashScreenMusic.setLooping(true);
         }
@@ -62,26 +50,26 @@ public class MenuScreen extends ScreenAdapter {
         camera.update();
 
         game.batch.begin();
-        drawCenterX(game.batch, bg, 691*2F, vh, 0);
+        drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
         drawCenterX(game.batch, splashScreenLogo, 320F, 183F, 350F);
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        game.batch.draw(borderLeft, 0, 0, ((float)168/900)*vh, vh);
-        game.batch.draw(borderRight, vw-(((float)168/900)*vh), 0, ((float)168/900)*vh, 900);
+        game.batch.draw(borderLeft, 0, 0, ((float) 168 / 900) * vh, vh);
+        game.batch.draw(borderRight, vw - (((float) 168 / 900) * vh), 0, ((float) 168 / 900) * vh, 900);
 
         // Click 'ENTER' equivalent to clicking play (for now)
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setScreen(stageSelectScreen);
+            game.setLazyScreen(stageSelectScreen.get());
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
-            game.setScreen(resultScreen);
+            game.setLazyScreen(resultScreen.get());
         }
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Main Menu Screen");
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
 
         game.batch.end();
@@ -99,7 +87,31 @@ public class MenuScreen extends ScreenAdapter {
     }
 
     @Override
-    public void hide(){
+    public void hide() {
         SplashScreen.splashScreenMusic.stop();
+    }
+
+    @Override
+    protected void loadAssets(Assets assets) {
+        assets.load(SPLASH_LOGO, TEXTURE);
+        assets.load(MENU_BG, TEXTURE);
+        assets.load(MENU_BTN_START, TEXTURE);
+        assets.load(MENU_BTN_COLLECTION, TEXTURE);
+        assets.load(MENU_BTN_SETTING, TEXTURE);
+        assets.load(MENU_BTN_EXIT, TEXTURE);
+        assets.load(MENU_BORDER_LEFT, TEXTURE);
+        assets.load(MENU_BORDER_RIGHT, TEXTURE);
+    }
+
+    @Override
+    public void afterLoad(Assets assets) {
+        this.splashScreenLogo = assets.get(SPLASH_LOGO, TEXTURE);
+        this.bg = assets.get(MENU_BG, TEXTURE);
+        this.btnStart = assets.get(MENU_BTN_START, TEXTURE);
+        this.btnCollection = assets.get(MENU_BTN_COLLECTION, TEXTURE);
+        this.btnSetting = assets.get(MENU_BTN_SETTING, TEXTURE);
+        this.btnExit = assets.get(MENU_BTN_EXIT, TEXTURE);
+        this.borderLeft = assets.get(MENU_BORDER_LEFT, TEXTURE);
+        this.borderRight = assets.get(MENU_BORDER_RIGHT, TEXTURE);
     }
 }

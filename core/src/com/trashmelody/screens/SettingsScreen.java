@@ -1,39 +1,31 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.Assets;
+import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
 import static com.trashmelody.Constant.SCALE;
 import static com.trashmelody.Utils.clearScreen;
 
 @Singleton
-public class SettingsScreen extends ScreenAdapter {
+public class SettingsScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
-    private Assets assets;
     private Viewport viewport;
     private BitmapFont largeFont;
     private BitmapFont mediumFont;
 
     @Inject
-    SettingsScreen(TrashMelody game, SpriteBatch batch, Camera camera, Assets assets, Viewport viewport) {
+    SettingsScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
-        this.assets = assets;
         this.viewport = viewport;
-
-        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
-        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
-        mediumFont.setUseIntegerPositions(false);
-        largeFont.setUseIntegerPositions(false);
     }
 
     @Override
@@ -48,9 +40,12 @@ public class SettingsScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         super.resize(width, height);
 
-//        SCALE = getViewportWidth() / WIDTH;
-//        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
-//        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
         viewport.update(width, height);
+    }
+
+    @Override
+    protected void loadAssets(Assets assets) {
+        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
     }
 }

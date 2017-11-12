@@ -2,19 +2,18 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import com.trashmelody.*;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
+import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton
-public class WarningScreen extends ScreenAdapter {
+public class WarningScreen extends LazyScreen {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
     private Texture warningScreenLogo;
@@ -23,19 +22,16 @@ public class WarningScreen extends ScreenAdapter {
     private long time_lapsed = TimeUtils.millis();
 
     @Inject
-    public WarningScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
+    public WarningScreen(TrashMelody game, ScreenProvider screenProvider) {
         this.game = game;
         this.menuScreen = screenProvider.getProvider(MenuScreen.class);
-
-        this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
-        this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
     }
 
     @Override
     public void render(float delta) {
         clearScreen(253,243,255,1);
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
-            game.setScreen(menuScreen.get());
+            game.setLazyScreen(menuScreen.get());
         }
 
         // Start loading assets
@@ -49,5 +45,17 @@ public class WarningScreen extends ScreenAdapter {
         // Debug zone
 
         game.batch.end();
+    }
+
+    @Override
+    protected void loadAssets(Assets assets) {
+        assets.load(WARNING_LOGO, TEXTURE);
+        assets.load(WARNING_TEXT, TEXTURE);
+    }
+
+    @Override
+    public void afterLoad(Assets assets) {
+        this.warningScreenLogo = assets.get(WARNING_LOGO, TEXTURE);
+        this.warningScreenText = assets.get(WARNING_TEXT, TEXTURE);
     }
 }

@@ -3,8 +3,12 @@ package com.trashmelody;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.viewport.*;
-import com.google.inject.*;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Binder;
+import com.google.inject.Module;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
 
 import static com.trashmelody.Utils.getViewportHeight;
 import static com.trashmelody.Utils.getViewportWidth;
@@ -31,13 +35,7 @@ public class GameModule implements Module {
     }
 
     @Provides @Singleton
-    public Viewport provideViewport(OrthographicCamera camera) {
+    public Viewport provideViewport(Camera camera) {
         return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     }
-
-    @Provides @Singleton
-    public Assets provideAssetManager() {
-        return new Assets();
-    }
-
 }

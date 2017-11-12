@@ -9,9 +9,19 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.google.inject.Inject;
-import io.vavr.collection.TreeMap;
+import com.google.inject.Singleton;
 
+@Singleton
 public class Assets extends AssetManager {
+
+    @Inject
+    public Assets() {
+        super();
+
+        finishLoading();
+//        eagerLoad();
+//        loadAllAssets();
+    }
 
     // Splash Screen Assets
     public static final String SPLASH_LOGO              = "splash-logo.png";
@@ -327,15 +337,6 @@ public class Assets extends AssetManager {
         load(SPLASH_LOGO,              TEXTURE);
         load(MUSIC_BG1,                MUSIC);
         load(LOADING_LOGO,             TEXTURE);
-    }
-
-    @Inject
-    public Assets() {
-        super();
-
-        eagerLoad();
-        finishLoading();
-        loadAllAssets();
     }
 
     private void loadAllAssets() {

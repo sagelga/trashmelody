@@ -2,31 +2,24 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import com.trashmelody.*;
 import com.trashmelody.utils.GifDecoder;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import static com.trashmelody.Assets.LOADING_LOGO;
-import static com.trashmelody.Assets.MUSIC;
 import static com.trashmelody.Utils.*;
 
 @Singleton
-public class LoadingScreen extends ScreenAdapter {
+public class LoadingScreen extends LazyScreen {
     private TrashMelody game;
     private Assets assets;
+    private ScreenProvider screenProvider;
     private Provider<WarningScreen> warningScreen;
     private LazyScreen nextScreen;
     private Animation<TextureRegion> loadingScreenLogo;
@@ -39,8 +32,8 @@ public class LoadingScreen extends ScreenAdapter {
     public LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
+        this.screenProvider = screenProvider;
         this.warningScreen = screenProvider.getProvider(WarningScreen.class);
-        this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
     }
 
 //    @Override
@@ -57,10 +50,12 @@ public class LoadingScreen extends ScreenAdapter {
 
         if(assets.update()){
             if (nextScreen != null) {
-                nextScreen.getLazyAssets(assets);
+                nextScreen.afterLoad(assets);
                 game.setScreen(nextScreen);
             } else {
-                game.setScreen(warningScreen.get());
+                warningScreen.get().afterLoad(assets);
+                screenProvider.get(MenuScreen.class).afterLoad(assets);
+                game.setLazyScreen(warningScreen.get());
             }
         }
 
@@ -87,6 +82,11 @@ public class LoadingScreen extends ScreenAdapter {
 
     public void setNextScreen(LazyScreen nextScreen) {
         this.nextScreen = nextScreen;
+    }
+
+    @Override
+    protected void loadAssets(Assets assets) {
+        this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
     }
 }
 

@@ -2,24 +2,20 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
-import io.vavr.collection.List;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import static com.trashmelody.Assets.*;
-import static com.trashmelody.Assets.PAUSE_CONTINUE_BTN1;
 import static com.trashmelody.Utils.*;
 
 @Singleton
@@ -75,32 +71,28 @@ public class PauseScreen extends LazyScreen {
     }
 
     @Override
-    public void loadLazyAssets(Assets assets) {
-        List<String> textures = List.of(
-                PAUSE_CONTINUE_BTN1,
-                PAUSE_SETTING_BTN1,
-                PAUSE_RETRY_BTN1,
-                PAUSE_HOME_BTN1,
-                PAUSE_SELECTOR_ARROW,
-                PAUSE_CONTINUE_BTN1,
-                PAUSE_SETTING_BTN1,
-                PAUSE_SETTING_BTN1,
-                PAUSE_RETRY_BTN1,
-                PAUSE_HOME_BTN1
-        );
-        textures.forEach(fileName -> assets.load(fileName, TEXTURE));
+    public void loadAssets(Assets assets) {
+        assets.load(PAUSE_CONTINUE_BTN1, TEXTURE);
+        assets.load(PAUSE_SETTING_BTN1, TEXTURE);
+        assets.load(PAUSE_RETRY_BTN1, TEXTURE);
+        assets.load(PAUSE_HOME_BTN1, TEXTURE);
+        assets.load(PAUSE_SELECTOR_ARROW, TEXTURE);
+        assets.load(PAUSE_CONTINUE_BTN1, TEXTURE);
+        assets.load(PAUSE_SETTING_BTN1, TEXTURE);
+        assets.load(PAUSE_RETRY_BTN1, TEXTURE);
+        assets.load(PAUSE_HOME_BTN1, TEXTURE);
     }
 
     @Override
-    public void getLazyAssets(Assets assets) {
-        this.continuebtn       = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
-        this.settingbtn        = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
-        this.retrybtn          = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
-        this.homebtn           = assets.get(PAUSE_HOME_BTN1, TEXTURE);
-        this.selectBar         = assets.get(PAUSE_SELECTOR_ARROW, TEXTURE);
-        this.touchContinuebtn  = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
-        this.touchSettingbtn   = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
-        this.touchRetrybtn     = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
-        this.touchHomebtn      = assets.get(PAUSE_HOME_BTN1, TEXTURE);
+    public void afterLoad(Assets assets) {
+        this.continuebtn = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
+        this.settingbtn = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
+        this.retrybtn = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
+        this.homebtn = assets.get(PAUSE_HOME_BTN1, TEXTURE);
+        this.selectBar = assets.get(PAUSE_SELECTOR_ARROW, TEXTURE);
+        this.touchContinuebtn = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
+        this.touchSettingbtn = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
+        this.touchRetrybtn = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
+        this.touchHomebtn = assets.get(PAUSE_HOME_BTN1, TEXTURE);
     }
 }

@@ -1,19 +1,19 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
 import static io.vavr.API.println;
 
 @Singleton
-public class SandboxScreen extends ScreenAdapter {
+public class SandboxScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Sprite badLogicLogo;

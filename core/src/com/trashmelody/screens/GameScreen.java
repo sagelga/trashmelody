@@ -1,23 +1,17 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
-import io.vavr.collection.List;
-
-import javax.inject.Inject;
-
-import java.util.stream.Stream;
 
 import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
@@ -30,7 +24,6 @@ public class GameScreen extends LazyScreen {
     private Stage stage;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
-
 
     // Defining building value
     private Texture bg1;
@@ -65,7 +58,7 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
 
     @Inject
-    public GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
@@ -123,43 +116,41 @@ public class GameScreen extends LazyScreen {
     }
 
     @Override
-    public void loadLazyAssets(Assets assets) {
-        Stream.of(
-                GAME_BACKGROUND1,
-                GAME_BACKGROUND_FOOTER1,
-                GAME_BIN_01,
-                GAME_BIN_02,
-                GAME_BIN_03,
-                GAME_BIN_04,
-                GAME_BIN_05,
-                GAME_CENTER,
-                GAME_CHECK,
-                GAME_FOOTER,
-                GAME_HANOI_1,
-                GAME_HANOI_2,
-                GAME_HANOI_3,
-                GAME_HANOI_4,
-                GAME_HEADER,
-                GAME_HEADER2,
-                GAME_ICON,
-                GAME_LEVEL_1,
-                GAME_LEVEL_2,
-                GAME_LEVEL_3,
-                GAME_LEVEL_BORDER,
-                GAME_PAUSE,
-                GAME_SCORE,
-                GAME_SCORE_1,
-                GAME_SCORE_2,
-                GAME_SCORE_3,
-                GAME_SCORE_4,
-                GAME_SCORE_5,
-                GAME_SONG_NAME_1,
-                GAME_STATUS_BAR
-        ).forEach(fileName -> assets.load(fileName, TEXTURE));
+    public void loadAssets(Assets assets) {
+        assets.load(GAME_BACKGROUND1, TEXTURE);
+        assets.load(GAME_BACKGROUND_FOOTER1, TEXTURE);
+        assets.load(GAME_BIN_01, TEXTURE);
+        assets.load(GAME_BIN_02, TEXTURE);
+        assets.load(GAME_BIN_03, TEXTURE);
+        assets.load(GAME_BIN_04, TEXTURE);
+        assets.load(GAME_BIN_05, TEXTURE);
+        assets.load(GAME_CENTER, TEXTURE);
+        assets.load(GAME_CHECK, TEXTURE);
+        assets.load(GAME_FOOTER, TEXTURE);
+        assets.load(GAME_HANOI_1, TEXTURE);
+        assets.load(GAME_HANOI_2, TEXTURE);
+        assets.load(GAME_HANOI_3, TEXTURE);
+        assets.load(GAME_HANOI_4, TEXTURE);
+        assets.load(GAME_HEADER, TEXTURE);
+        assets.load(GAME_HEADER2, TEXTURE);
+        assets.load(GAME_ICON, TEXTURE);
+        assets.load(GAME_LEVEL_1, TEXTURE);
+        assets.load(GAME_LEVEL_2, TEXTURE);
+        assets.load(GAME_LEVEL_3, TEXTURE);
+        assets.load(GAME_LEVEL_BORDER, TEXTURE);
+        assets.load(GAME_PAUSE, TEXTURE);
+        assets.load(GAME_SCORE, TEXTURE);
+        assets.load(GAME_SCORE_1, TEXTURE);
+        assets.load(GAME_SCORE_2, TEXTURE);
+        assets.load(GAME_SCORE_3, TEXTURE);
+        assets.load(GAME_SCORE_4, TEXTURE);
+        assets.load(GAME_SCORE_5, TEXTURE);
+        assets.load(GAME_SONG_NAME_1, TEXTURE);
+        assets.load(GAME_STATUS_BAR, TEXTURE);
     }
 
     @Override
-    public void getLazyAssets(Assets assets) {
+    public void afterLoad(Assets assets) {
         this.bg1 = assets.get(GAME_BACKGROUND1, TEXTURE);
         this.bgFooter = assets.get(GAME_BACKGROUND_FOOTER1, TEXTURE);
         this.dangerRedBin = assets.get(GAME_BIN_01, TEXTURE);

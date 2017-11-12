@@ -1,22 +1,12 @@
 package com.trashmelody;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.Application.ApplicationType;
-import com.trashmelody.Assets;
-import com.trashmelody.TrashMelody;
 
-import javax.inject.Inject;
-
-import static com.trashmelody.Utils.*;
-
-import static com.trashmelody.Utils.*;
-import static io.vavr.API.println;
+import static com.trashmelody.Utils.getViewportHeight;
+import static com.trashmelody.Utils.getViewportWidth;
 
 public class Debugger extends ScreenAdapter {
 //    private  MusicManager musicManager;

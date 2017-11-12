@@ -1,25 +1,19 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import static com.trashmelody.Assets.*;
-import static com.trashmelody.Assets.RESULT_RESULT_BACKGROUND;
 import static com.trashmelody.Utils.*;
-import static jdk.nashorn.internal.objects.Global.load;
 
 @Singleton
 public class ResultScreen extends LazyScreen {
@@ -31,7 +25,7 @@ public class ResultScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    public ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
@@ -67,7 +61,7 @@ public class ResultScreen extends LazyScreen {
     }
 
     @Override
-    public void loadLazyAssets(Assets assets) {
+    public void loadAssets(Assets assets) {
         assets.load(RESULT_RESULT_BACKGROUND, TEXTURE);
         assets.load(RESULT_RESULT_HEADER, TEXTURE);
         assets.load(RESULT_RESULT_FOOTER, TEXTURE);
@@ -76,16 +70,16 @@ public class ResultScreen extends LazyScreen {
         assets.load(RESULT_RESULT_GRADE_C, TEXTURE);
         assets.load(RESULT_RESULT_GRADE_D, TEXTURE);
         assets.load(RESULT_RESULT_GRADE_F, TEXTURE);
-//        assets.load(RESULT_RESULT_PERFECT, TEXTURE);
-//        assets.load(RESULT_RESULT_GOOD, TEXTURE);
-//        assets.load(RESULT_RESULT_NICE, TEXTURE);
-//        assets.load(RESULT_RESULT_MISS, TEXTURE);
-//        assets.load(RESULT_RESULT_COMBO, TEXTURE);
+        assets.load(RESULT_RESULT_PERFECT, TEXTURE);
+        assets.load(RESULT_RESULT_GOOD, TEXTURE);
+        assets.load(RESULT_RESULT_NICE, TEXTURE);
+        assets.load(RESULT_RESULT_MISS, TEXTURE);
+        assets.load(RESULT_RESULT_COMBO, TEXTURE);
         assets.load(RESULT_RESULT_TEXT_ALL, TEXTURE);
     }
 
     @Override
-    public void getLazyAssets(Assets assets) {
+    public void afterLoad(Assets assets) {
         this.bg = assets.get(RESULT_RESULT_BACKGROUND, TEXTURE);
         this.header = assets.get(RESULT_RESULT_HEADER, TEXTURE);
         this.footer = assets.get(RESULT_RESULT_FOOTER, TEXTURE);

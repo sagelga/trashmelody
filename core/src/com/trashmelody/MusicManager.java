@@ -1,11 +1,11 @@
 package com.trashmelody;
 
-        import com.badlogic.gdx.audio.Music;
-        import com.google.inject.Inject;
-        import com.google.inject.Singleton;
+import com.badlogic.gdx.audio.Music;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
-        import static com.trashmelody.Assets.MUSIC;
-        import static com.trashmelody.Assets.MUSIC_BG1;
+import static com.trashmelody.Assets.MUSIC;
+import static com.trashmelody.Assets.MUSIC_BG1;
 
 @Singleton
 public class MusicManager {
@@ -16,9 +16,8 @@ public class MusicManager {
     public static final float MUSIC_DEFAULT_VOLUME = 0.5F;
     public static String currentBackgroundMusicTrack;
 
-
     @Inject
-    public MusicManager(Assets assets) {
+    MusicManager(Assets assets) {
         this.assets = assets;
         this.loadingBackgroundMusic = assets.get(MUSIC_BG1, MUSIC);
 

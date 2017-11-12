@@ -8,13 +8,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Provider;
 import com.google.inject.Stage;
-import com.trashmelody.screens.LoadingScreen;
-import com.trashmelody.screens.SplashScreen;
-
-import static org.testng.Assert.assertSame;
-import static org.testng.Assert.assertNotSame;
+import com.trashmelody.screens.*;
 
 import static com.trashmelody.Utils.getViewportWidth;
 
@@ -32,9 +27,15 @@ public class TrashMelody extends Game {
 
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
-		injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
+		injector = Guice.createInjector(Stage.DEVELOPMENT, new GameModule(this));
 		this.assets = injector.getInstance(Assets.class);
 		this.screenProvider = injector.getInstance(ScreenProvider.class);
+
+		screenProvider.get(SplashScreen.class).load(assets);
+		screenProvider.get(LoadingScreen.class).load(assets);
+		assets.finishLoading();
+		screenProvider.get(SplashScreen.class).afterLoad(assets);
+		screenProvider.get(LoadingScreen.class).afterLoad(assets);
 
 		Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
 		setScreen(injector.getInstance(SplashScreen.class));
@@ -64,9 +65,13 @@ public class TrashMelody extends Game {
 	}
 
 	public void setLazyScreen(LazyScreen screen) {
-		screen.loadLazyAssets(assets);
-		LoadingScreen loadingScreen = screenProvider.get(LoadingScreen.class);
-		loadingScreen.setNextScreen(screen);
-		super.setScreen(loadingScreen);
+		if (screen.isLoaded()) {
+			super.setScreen(screen);
+		} else {
+			screen.load(assets);
+			LoadingScreen loadingScreen = screenProvider.get(LoadingScreen.class);
+			loadingScreen.setNextScreen(screen);
+			super.setScreen(loadingScreen);
+		}
 	}
 }

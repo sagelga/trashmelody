@@ -2,18 +2,12 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-import com.trashmelody.Assets;
-import com.trashmelody.Debugger;
-import com.trashmelody.MusicManager;
-import com.trashmelody.LazyScreen;
-import com.trashmelody.TrashMelody;
-
-import javax.inject.Inject;
+import com.trashmelody.*;
 
 import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
@@ -22,9 +16,9 @@ import static com.trashmelody.Utils.*;
 public class StageSelectScreen extends LazyScreen {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
+    private Provider<GameScreen> gameScreen;
+    private Camera camera;
     private MusicManager musicManager;
-    private GameScreen gameScreen;
-    private OrthographicCamera camera;
 
     // Defining building value
     private Texture stageHome;          private Texture stageHomeText;
@@ -42,12 +36,12 @@ public class StageSelectScreen extends LazyScreen {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen, MusicManager musicManager) {
+    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
-        this.menuScreen = menuScreen;
-        this.gameScreen = gameScreen;
-        this.musicManager = musicManager;
         this.camera = camera;
+        this.musicManager = musicManager;
+        this.menuScreen = screenProvider.getProvider(MenuScreen.class);
+        this.gameScreen = screenProvider.getProvider(GameScreen.class);
     }
 
     @Override
@@ -108,13 +102,12 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(stageHospital, 1000F,275F,1919/9,1402/9);
         game.batch.draw(stageSchool, 600F,150F,2489/9,1372/9);
 
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            game.setScreen(menuScreen.get());
+            game.setLazyScreen(menuScreen.get());
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            game.setScreen(gameScreen);
+            game.setLazyScreen(gameScreen.get());
         }
 
         // Debug zone
@@ -125,7 +118,7 @@ public class StageSelectScreen extends LazyScreen {
     }
 
     @Override
-    public void loadLazyAssets(Assets assets) {
+    public void loadAssets(Assets assets) {
         assets.load(STAGE_BUILDING_OFFICE, TEXTURE);
         assets.load(STAGE_TEXT_OFFICE, TEXTURE);
         assets.load(STAGE_BUILDING_CINEMA, TEXTURE);
@@ -150,7 +143,7 @@ public class StageSelectScreen extends LazyScreen {
     }
 
     @Override
-    public void getLazyAssets(Assets assets) {
+    public void afterLoad(Assets assets) {
         this.stageHome = assets.get(STAGE_BUILDING_HOME, TEXTURE);           // 2176 × 2164
         this.stageOffice = assets.get(STAGE_BUILDING_OFFICE, TEXTURE);         // 2408 × 1356
         this.stageCafe = assets.get(STAGE_BUILDING_CAFE, TEXTURE);           // 1608 x 1062

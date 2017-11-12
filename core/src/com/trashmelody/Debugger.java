@@ -57,9 +57,9 @@ public class Debugger extends ScreenAdapter {
         debugShow(batch, font, "Music Volume : " + (int)(music_volume*100) + " %", 10);
     }
 
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, long time_lapsed){
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, long time_lapsed, float asset_load){
         runDebugger(batch, font, current_page,music_volume);
-        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
+        debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",11);
     }
 
     private static String osType;

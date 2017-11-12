@@ -9,16 +9,16 @@ import com.google.inject.Singleton;
 import com.trashmelody.screens.*;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
-
+import io.vavr.control.Option;
 
 @Singleton
 public class DebugInputProcessor implements InputProcessor {
     private ScreenProvider screenProvider;
     private TrashMelody game;
-    private static Map<Integer, Class<? extends Screen>> SCREEN_MAPPER;
+    private static Map<Integer, Class<? extends Screen>> MAPPER;
 
     static {
-        SCREEN_MAPPER = HashMap.of(
+        MAPPER = HashMap.of(
                 Input.Keys.G, GameScreen.class,
                 Input.Keys.M, MenuScreen.class,
                 Input.Keys.X, SandboxScreen.class,
@@ -39,13 +39,16 @@ public class DebugInputProcessor implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
+        Option<Screen> maybeScreen = MAPPER.get(keycode).map(screenProvider::get);
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();
                 break;
+            case Input.Keys.EQUALS:
+                //Music.
             default:
-                SCREEN_MAPPER.get(keycode).map(screenProvider::get).forEach(game::setScreen);
-                Gdx.app.debug("Switching to:", SCREEN_MAPPER.get(keycode).toString());
+                maybeScreen.forEach(screen -> Gdx.app.log("Switching to", screen.toString()));
+                maybeScreen.forEach(game::setScreen);
         }
         return true;
     }
@@ -84,4 +87,6 @@ public class DebugInputProcessor implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
+
 }

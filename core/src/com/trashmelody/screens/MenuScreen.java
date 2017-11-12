@@ -8,11 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.MusicManager;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static com.trashmelody.Assets.MUSIC_BG1;
 import static com.trashmelody.Utils.*;
 
 @Singleton
@@ -20,6 +22,7 @@ public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private StageSelectScreen stageSelectScreen;
     private ResultScreen resultScreen;
+    private MusicManager musicManager;
 
     private Camera camera;
     private Viewport viewport;
@@ -30,10 +33,11 @@ public class MenuScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport,StageSelectScreen stageSelectScreen, ResultScreen resultScreen) {
+    public MenuScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport,StageSelectScreen stageSelectScreen, ResultScreen resultScreen, MusicManager musicManager) {
         this.game = game;
         this.stageSelectScreen = stageSelectScreen;
         this.resultScreen = resultScreen;
+        this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
         this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO,            Assets.TEXTURE);
@@ -48,9 +52,8 @@ public class MenuScreen extends ScreenAdapter {
 
     @Override
     public void show(){
-        if (!SplashScreen.splashScreenMusic.isPlaying()){
-            SplashScreen.splashScreenMusic.play();
-            SplashScreen.splashScreenMusic.setLooping(true);
+        if (!musicManager.isMusicPlaying(MUSIC_BG1)){
+            musicManager.playMusic(MUSIC_BG1);
         }
     }
 

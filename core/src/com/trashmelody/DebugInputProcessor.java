@@ -50,10 +50,10 @@ public class DebugInputProcessor implements InputProcessor {
             case Input.Keys.Q:
                 Gdx.app.exit();
             case Input.Keys.EQUALS:
-                musicManager.increaseBackgroundVolume(MUSIC_BG1);
+                musicManager.increaseBackgroundVolume();
                 break;
             case Input.Keys.MINUS:
-                musicManager.decreaseBackgroundVolume(MUSIC_BG1);
+                musicManager.decreaseBackgroundVolume();
                 break;
             default:
                 maybeScreen.forEach(screen -> Gdx.app.log("Switching to", screen.toString()));

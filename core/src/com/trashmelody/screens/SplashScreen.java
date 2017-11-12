@@ -43,6 +43,7 @@ public class SplashScreen extends ScreenAdapter {
     @Override
     public void show(){ // Run while screen is active
         musicManager.playMusic(MUSIC_BG1);
+        musicManager.setDefault(MUSIC_BG1);
         time_lapsed = TimeUtils.millis();
     }
 

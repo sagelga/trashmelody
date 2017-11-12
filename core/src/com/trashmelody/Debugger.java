@@ -19,6 +19,7 @@ import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
 public class Debugger extends ScreenAdapter {
+//    private  MusicManager musicManager;
     private TrashMelody game;
 
     private static int line_margin = 20;
@@ -26,6 +27,11 @@ public class Debugger extends ScreenAdapter {
     public static boolean debug_mode = false;
 
     private static double frame_count;
+
+//    @Inject
+//    public Debugger(MusicManager musicManager){
+//        this.musicManager = musicManager;
+//    }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page){
         // This method will show the debugger interfaces
@@ -39,18 +45,19 @@ public class Debugger extends ScreenAdapter {
         debugShow(batch, font, "Active Threads : " + Thread.activeCount() , 7);
         debugShow(batch,font,"Current Page : " + current_page,8);
         debugShow(batch,font, "Operating System : " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " (" + getOSType() + ")",9);
+//        debugShow(batch,font,"Music Volume : "  + "| BG " + musicManger.getBGMusicVolume(),10);
 
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed){
         runDebugger(batch, font, current_page);
-        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 10);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed, float asset_load){
         runDebugger(batch, font, current_page);
-        debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",10);
+        debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",11);
     }
 
     private static String getOSType() {

@@ -9,16 +9,19 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.MusicManager;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
 
+import static com.trashmelody.Assets.MUSIC_BG1;
 import static com.trashmelody.Utils.*;
 
 @Singleton
 public class StageSelectScreen extends ScreenAdapter {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
+    private MusicManager musicManager;
     private GameScreen gameScreen;
     private OrthographicCamera camera;
 
@@ -38,10 +41,11 @@ public class StageSelectScreen extends ScreenAdapter {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen) {
+    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen, MusicManager musicManager) {
         this.game = game;
         this.menuScreen = menuScreen;
         this.gameScreen = gameScreen;
+        this.musicManager = musicManager;
         this.camera = camera;
 
         //Variable handlers     |Assets retrival path                                               |Asset Resolution
@@ -73,9 +77,8 @@ public class StageSelectScreen extends ScreenAdapter {
 
     @Override
     public void show(){
-        if (SplashScreen.splashScreenMusic.isPlaying()){
-            SplashScreen.splashScreenMusic.stop();
-            SplashScreen.splashScreenMusic.setLooping(false);
+        if (musicManager.isMusicPlaying(MUSIC_BG1)){
+            musicManager.stopMusic(MUSIC_BG1);
         }
     }
 

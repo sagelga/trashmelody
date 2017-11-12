@@ -25,7 +25,7 @@ public class LoadingScreen extends LazyScreen {
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
-    private long time_lapsed = TimeUtils.millis() + 5000;
+    public  long time_lapsed;
     float elapsed;
 
     @Inject
@@ -36,12 +36,10 @@ public class LoadingScreen extends LazyScreen {
         this.warningScreen = screenProvider.getProvider(WarningScreen.class);
     }
 
-//    @Override
-////    public void show(){ // Run while screen is active
-////        splashScreenMusic.setVolume(0.5F); // for development phase only
-////        splashScreenMusic.play();
-////        splashScreenMusic.setLooping(true);
-////    }
+    @Override
+    public void show(){
+        time_lapsed = TimeUtils.millis();
+    }
 
     @Override
     public void render(float delta) { // Continuously run during active
@@ -62,19 +60,9 @@ public class LoadingScreen extends LazyScreen {
         // Start loading assets
         game.batch.begin();
         game.batch.draw(loadingScreenLogo.getKeyFrame(elapsed), getCenterX()/2, getCenterY()/2);
-//        if (assets.getProgress()){
-//            textureBar = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("barGreen_horizontalMid.png"))));
-//            barStyle = new ProgressBar.ProgressBarStyle(skin.newDrawable("white", Color.DARK_GRAY), textureBar);
-//            barStyle.knobBefore = barStyle.knob;
-//            bar = new ProgressBar(0F, 10F, 0.1F, false, barStyle);
-//            bar.setPosition(10, 10);
-//            bar.setSize(290, bar.getPrefHeight());
-//            bar.setAnimateDuration(2);
-//        }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed), assets.getProgress());
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Loading Screen",TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
         // Debug zone
 
         game.batch.end();

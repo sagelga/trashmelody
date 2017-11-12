@@ -39,7 +39,6 @@ public class NameScreen extends LazyScreen {
         game.batch.draw(nameScreenBorderRight,855,0,-50,500);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Name Screen");
         // Debug zone
 
@@ -53,7 +52,6 @@ public class NameScreen extends LazyScreen {
         assets.load(NAME_ENTER_BOX, TEXTURE);
         assets.load(NAME_ENTER_NAME, TEXTURE);
         assets.load(NAME_CLOUD, TEXTURE);
-        assets.load(NAME_BORDER, TEXTURE);
         assets.load(NAME_BORDER, TEXTURE);
     }
 

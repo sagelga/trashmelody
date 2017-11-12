@@ -17,7 +17,7 @@ public class Assets extends AssetManager {
     @Inject
     public Assets() {
         super();
-
+        load(MUSIC_BG1, Music.class);
         finishLoading();
 //        eagerLoad();
 //        loadAllAssets();

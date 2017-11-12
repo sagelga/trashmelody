@@ -56,7 +56,6 @@ public class PauseScreen extends LazyScreen {
 
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
         // Debug zone
 

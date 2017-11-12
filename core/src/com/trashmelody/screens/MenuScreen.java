@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.loaders.MusicLoader;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -18,6 +19,7 @@ public class MenuScreen extends LazyScreen {
     private TrashMelody game;
     private Provider<StageSelectScreen> stageSelectScreen;
     private Provider<ResultScreen> resultScreen;
+    private MusicManager musicManager;
 
     private Camera camera;
     private Viewport viewport;
@@ -28,19 +30,19 @@ public class MenuScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider) {
+    public MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
         this.stageSelectScreen = screenProvider.getProvider(StageSelectScreen.class);
         this.resultScreen = screenProvider.getProvider(ResultScreen.class);
+        this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
     }
 
     @Override
     public void show() {
-        if (!SplashScreen.splashScreenMusic.isPlaying()) {
-            SplashScreen.splashScreenMusic.play();
-            SplashScreen.splashScreenMusic.setLooping(true);
+        if (!musicManager.isMusicPlaying(MUSIC_BG1)) {
+            musicManager.playMusic(MUSIC_BG1);
         }
     }
 
@@ -68,15 +70,10 @@ public class MenuScreen extends LazyScreen {
             game.setLazyScreen(resultScreen.get());
         }
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
 
         game.batch.end();
-    }
-
-    private void update(float delta) {
-
     }
 
     @Override

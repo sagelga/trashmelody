@@ -18,6 +18,7 @@ public class StageSelectScreen extends LazyScreen {
     private Provider<MenuScreen> menuScreen;
     private Provider<GameScreen> gameScreen;
     private Camera camera;
+    private MusicManager musicManager;
 
     // Defining building value
     private Texture stageHome;          private Texture stageHomeText;
@@ -35,18 +36,18 @@ public class StageSelectScreen extends LazyScreen {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider) {
+    public StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
         this.camera = camera;
+        this.musicManager = musicManager;
         this.menuScreen = screenProvider.getProvider(MenuScreen.class);
         this.gameScreen = screenProvider.getProvider(GameScreen.class);
     }
 
     @Override
     public void show(){
-        if (SplashScreen.splashScreenMusic.isPlaying()){
-            SplashScreen.splashScreenMusic.stop();
-            SplashScreen.splashScreenMusic.setLooping(false);
+        if (musicManager.isMusicPlaying(MUSIC_BG1)){
+            musicManager.stopMusic(MUSIC_BG1);
         }
     }
 
@@ -101,7 +102,6 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(stageHospital, 1000F,275F,1919/9,1402/9);
         game.batch.draw(stageSchool, 600F,150F,2489/9,1372/9);
 
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
             game.setLazyScreen(menuScreen.get());
         }
@@ -111,7 +111,6 @@ public class StageSelectScreen extends LazyScreen {
         }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
         // Debug zone
 

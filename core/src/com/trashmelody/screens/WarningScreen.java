@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.google.inject.Inject;
@@ -40,8 +38,7 @@ public class WarningScreen extends LazyScreen {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),1);
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(time_lapsed));
         // Debug zone
 
         game.batch.end();

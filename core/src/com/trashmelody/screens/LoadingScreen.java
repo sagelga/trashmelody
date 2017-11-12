@@ -29,12 +29,6 @@ public class LoadingScreen extends ScreenAdapter {
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
-    private ProgressBar barStyle;
-    private ProgressBar bar;
-    private TextureRegionDrawable textureBar;
-    private BitmapFont font;
-    private SpriteBatch batch;
-
     private long time_lapsed = TimeUtils.millis() + 5000;
     float elapsed;
 

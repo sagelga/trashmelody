@@ -28,6 +28,7 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin
+  when: on_failure
 
 gradle-check:
   stage: check

@@ -1,21 +1,23 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-
 import com.badlogic.gdx.utils.TimeUtils;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+import static com.trashmelody.Utils.*;
+
+@Singleton
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
+    private Assets assets;
     private MenuScreen menuScreen;
     private Texture warningScreenLogo;
     private Texture warningScreenText;
@@ -26,6 +28,7 @@ public class WarningScreen extends ScreenAdapter {
     @Inject
     public WarningScreen(TrashMelody game, Assets assets, MenuScreen menuScreen) {
         this.game = game;
+        this.assets = assets;
         this.menuScreen = menuScreen;
         this.warningScreenLogo = assets.get(Assets.WARNING_LOGO, Assets.TEXTURE);
         this.warningScreenText = assets.get(Assets.WARNING_TEXT, Assets.TEXTURE);
@@ -45,8 +48,7 @@ public class WarningScreen extends ScreenAdapter {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),1);
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
         // Debug zone
 
         game.batch.end();

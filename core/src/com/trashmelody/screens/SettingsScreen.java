@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
@@ -9,17 +7,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.trashmelody.Assets;
-import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.models.Button;
-import com.trashmelody.models.Position;
-import io.vavr.collection.List;
 
 import static com.trashmelody.Constant.SCALE;
-import static com.trashmelody.Constant.WIDTH;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.Utils.clearScreen;
 
+@Singleton
 public class SettingsScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;

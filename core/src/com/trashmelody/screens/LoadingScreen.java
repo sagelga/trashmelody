@@ -18,10 +18,12 @@ import com.trashmelody.TrashMelody;
 import com.trashmelody.utils.GifDecoder;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Assets.LOADING_LOGO;
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class LoadingScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;
@@ -29,7 +31,7 @@ public class LoadingScreen extends ScreenAdapter {
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
-    private long time_lapsed = TimeUtils.millis() + 5000;
+    private long time_lapsed = TimeUtils.millis();
     float elapsed;
 
     @Inject
@@ -39,13 +41,6 @@ public class LoadingScreen extends ScreenAdapter {
         this.warningScreen = warningScreen;
         this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
     }
-
-//    @Override
-////    public void show(){ // Run while screen is active
-////        splashScreenMusic.setVolume(0.5F); // for development phase only
-////        splashScreenMusic.play();
-////        splashScreenMusic.setLooping(true);
-////    }
 
     @Override
     public void render(float delta) { // Continuously run during active
@@ -70,7 +65,6 @@ public class LoadingScreen extends ScreenAdapter {
 //        }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
         // Debug zone
 

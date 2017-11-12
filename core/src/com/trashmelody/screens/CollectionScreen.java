@@ -4,22 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
-
-import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
-import javax.rmi.CORBA.Util;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class CollectionScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;
@@ -48,7 +44,6 @@ public class CollectionScreen extends ScreenAdapter {
         // drawCenterX(game.batch, screenTitle, vw, hey, vh-400);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
         // Debug zone
 

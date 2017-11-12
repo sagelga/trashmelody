@@ -5,13 +5,14 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.Utils;
 
 import static io.vavr.API.println;
 
+@Singleton
 public class SandboxScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;

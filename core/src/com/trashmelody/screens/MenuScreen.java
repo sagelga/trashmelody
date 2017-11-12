@@ -4,20 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.google.inject.Provider;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class MenuScreen extends ScreenAdapter {
     private TrashMelody game;
     private StageSelectScreen stageSelectScreen;
@@ -80,7 +78,6 @@ public class MenuScreen extends ScreenAdapter {
             game.setScreen(resultScreen);
         }
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Main Menu Screen");
         // Debug zone
 

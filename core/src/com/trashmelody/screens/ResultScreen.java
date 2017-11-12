@@ -13,9 +13,11 @@ import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class ResultScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;
@@ -52,7 +54,6 @@ public class ResultScreen extends ScreenAdapter {
         drawCenterY(game.batch, stats, 409, 700, getCenterX());
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
 
         // Debug zone

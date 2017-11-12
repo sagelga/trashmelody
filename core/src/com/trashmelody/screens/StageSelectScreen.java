@@ -1,20 +1,21 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
 
+import static com.trashmelody.Utils.*;
+
+@Singleton
 public class StageSelectScreen extends ScreenAdapter {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
@@ -139,7 +140,6 @@ public class StageSelectScreen extends ScreenAdapter {
         }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
         // Debug zone
 

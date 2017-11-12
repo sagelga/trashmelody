@@ -9,6 +9,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.MusicManager;
 import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
@@ -21,6 +22,7 @@ import static com.trashmelody.Utils.*;
 public class StageSelectScreen extends LazyScreen {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
+    private MusicManager musicManager;
     private GameScreen gameScreen;
     private OrthographicCamera camera;
 
@@ -40,18 +42,18 @@ public class StageSelectScreen extends LazyScreen {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen) {
+    public StageSelectScreen(TrashMelody game, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen, MusicManager musicManager) {
         this.game = game;
         this.menuScreen = menuScreen;
         this.gameScreen = gameScreen;
+        this.musicManager = musicManager;
         this.camera = camera;
     }
 
     @Override
     public void show(){
-        if (SplashScreen.splashScreenMusic.isPlaying()){
-            SplashScreen.splashScreenMusic.stop();
-            SplashScreen.splashScreenMusic.setLooping(false);
+        if (musicManager.isMusicPlaying(MUSIC_BG1)){
+            musicManager.stopMusic(MUSIC_BG1);
         }
     }
 
@@ -116,7 +118,6 @@ public class StageSelectScreen extends LazyScreen {
         }
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Stage Selection Screen");
         // Debug zone
 

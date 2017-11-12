@@ -19,6 +19,7 @@ import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
 public class Debugger extends ScreenAdapter {
+//    private  MusicManager musicManager;
     private TrashMelody game;
 
     private static int line_margin = 20;
@@ -26,6 +27,11 @@ public class Debugger extends ScreenAdapter {
     public static boolean debug_mode = false;
 
     private static double frame_count;
+
+//    @Inject
+//    public Debugger(MusicManager musicManager){
+//        this.musicManager = musicManager;
+//    }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page){
         // This method will show the debugger interfaces
@@ -38,40 +44,31 @@ public class Debugger extends ScreenAdapter {
         debugShow(batch,font,"Current Frames : " + (int) frame_count,6);
         debugShow(batch, font, "Active Threads : " + Thread.activeCount() , 7);
         debugShow(batch,font,"Current Page : " + current_page,8);
-
-        // Show the user basic platform.
-        getOSType();
-
-        debugShow(batch,font, "Operating System : " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " (" + osType + ")",9);
+        debugShow(batch,font, "Operating System : " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " (" + getOSType() + ")",9);
+//        debugShow(batch,font,"Music Volume : "  + "| BG " + musicManger.getBGMusicVolume(),10);
 
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed){
         runDebugger(batch, font, current_page);
-        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 10);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
     }
 
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume){
+    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed, float asset_load){
         runDebugger(batch, font, current_page);
-        debugShow(batch, font, "Music Volume : " + (int)(music_volume*100) + " %", 10);
-    }
-
-    public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, float music_volume, long time_lapsed, float asset_load){
-        runDebugger(batch, font, current_page,music_volume);
         debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",11);
     }
 
-    private static String osType;
-
-    private static void getOSType() {
+    private static String getOSType() {
         switch (Gdx.app.getType()) {
-            case iOS: osType = "iOS"; break;
-            case Android: osType = "Android"; break;
-            case Applet: osType = "Applet"; break;
-            case Desktop: osType = "Desktop"; break;
-            case WebGL: osType = "WebGL"; break;
+            case iOS: return "iOS";
+            case Android: return "Android";
+            case Applet: return "Applet";
+            case Desktop: return "Desktop";
+            case WebGL: return "WebGL";
         }
+        return "IDK";
     }
 
     public static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

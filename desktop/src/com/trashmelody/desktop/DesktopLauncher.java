@@ -1,5 +1,6 @@
 package com.trashmelody.desktop;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -30,6 +31,10 @@ public class DesktopLauncher {
 		config.width  = (int) (screen_width  * screen_scale);
 		config.height = (int) (screen_height * screen_scale);
 		config.useHDPI = true;
+		config.addIcon("GameLogo/game-logo-MacOS.png", Files.FileType.Internal);
+		config.addIcon("GameLogo/game-logo-Linux.png", Files.FileType.Internal);
+		config.addIcon("GameLogo/game-logo-Windows.png", Files.FileType.Internal);
+		config.addIcon("GameLogo/game-logo.jpeg", Files.FileType.Internal);
 
 		new LwjglApplication(new TrashMelody(), config);
 	}

@@ -2,6 +2,7 @@ package com.trashmelody;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -42,6 +43,15 @@ public class TrashMelody extends Game {
 	@Override
 	public void render () {
 		super.render();
+		batch.begin();
+		// Toggling the Debugger for all screen
+		if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
+
+		// Flashing the background music progress bar
+
+
+		batch.end();
+
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.trashmelody;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.trashmelody.MusicManager;
 import com.badlogic.gdx.Screen;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -11,9 +12,13 @@ import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.control.Option;
 
+import static com.trashmelody.Assets.MUSIC_BG1;
+
 @Singleton
 public class DebugInputProcessor implements InputProcessor {
     private ScreenProvider screenProvider;
+    private MusicManager musicManager;
+
     private TrashMelody game;
     private static Map<Integer, Class<? extends Screen>> MAPPER;
     private static Map<Integer, Class<? extends LazyScreen>> LAZY_MAPPER;
@@ -35,8 +40,9 @@ public class DebugInputProcessor implements InputProcessor {
     }
 
     @Inject
-    DebugInputProcessor(TrashMelody game, ScreenProvider screenProvider) {
+    DebugInputProcessor(TrashMelody game, ScreenProvider screenProvider, MusicManager musicManager) {
         this.screenProvider = screenProvider;
+        this.musicManager = musicManager;
         this.game = game;
     }
 
@@ -47,6 +53,11 @@ public class DebugInputProcessor implements InputProcessor {
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();
+            case Input.Keys.EQUALS:
+                musicManager.increaseBackgroundVolume();
+                break;
+            case Input.Keys.MINUS:
+                musicManager.decreaseBackgroundVolume();
                 break;
             default:
                 maybeScreen.forEach(screen -> Gdx.app.log("Switching to", screen.toString()));

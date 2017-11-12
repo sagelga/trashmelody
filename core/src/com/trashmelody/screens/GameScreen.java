@@ -109,7 +109,6 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(centerLine,0,vh/2.02F,vw,vh/128);
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
         // Debug zone
 

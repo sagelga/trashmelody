@@ -52,7 +52,6 @@ public class ResultScreen extends LazyScreen {
         drawCenterY(game.batch, stats, 409, 700, getCenterX());
 
         // Debug zone
-        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
 
         // Debug zone

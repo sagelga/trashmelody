@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.*;
 import com.google.inject.*;
+import com.google.inject.Module;
 
 import static com.trashmelody.Utils.getViewportHeight;
 import static com.trashmelody.Utils.getViewportWidth;

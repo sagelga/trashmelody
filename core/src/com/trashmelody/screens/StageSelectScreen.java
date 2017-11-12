@@ -18,6 +18,7 @@ import javax.inject.Inject;
 public class StageSelectScreen extends ScreenAdapter {
     private TrashMelody game;
     private Provider<MenuScreen> menuScreen;
+    private GameScreen gameScreen;
     private OrthographicCamera camera;
 
     // Defining building value
@@ -36,9 +37,10 @@ public class StageSelectScreen extends ScreenAdapter {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera) {
+    public StageSelectScreen(TrashMelody game, Assets assets, Provider<MenuScreen> menuScreen, OrthographicCamera camera,GameScreen gameScreen) {
         this.game = game;
         this.menuScreen = menuScreen;
+        this.gameScreen = gameScreen;
         this.camera = camera;
 
         //Variable handlers     |Assets retrival path                                               |Asset Resolution
@@ -130,6 +132,10 @@ public class StageSelectScreen extends ScreenAdapter {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
             game.setScreen(menuScreen.get());
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
+            game.setScreen(gameScreen);
         }
 
         // Debug zone

@@ -20,7 +20,7 @@ public class ResultScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
-    private Texture header;
+    private Texture bg, header, footer, gradeA, stats;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -30,7 +30,11 @@ public class ResultScreen extends ScreenAdapter {
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
 
+        this.bg = assets.get(Assets.RESULT_RESULT_BACKGROUND, Assets.TEXTURE);
         this.header = assets.get(Assets.RESULT_RESULT_HEADER, Assets.TEXTURE);
+        this.footer = assets.get(Assets.RESULT_RESULT_FOOTER, Assets.TEXTURE);
+        this.gradeA = assets.get(Assets.RESULT_RESULT_GRADE_A, Assets.TEXTURE);
+        this.stats = assets.get(Assets.RESULT_RESULT_TEXT_ALL, Assets.TEXTURE);
     }
 
     @Override
@@ -41,7 +45,11 @@ public class ResultScreen extends ScreenAdapter {
 
         game.batch.begin();
 
+        game.batch.draw(bg, 0, 0, vw, vh);
         game.batch.draw(header, 0, vh-105, 1200, 105);
+        game.batch.draw(footer, 0, 0, vw, ((float)79/1920)*vw);
+        drawCenterY(game.batch, gradeA, 589, 700, 150);
+        drawCenterY(game.batch, stats, 409, 700, getCenterX());
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;

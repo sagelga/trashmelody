@@ -3,15 +3,16 @@ package com.trashmelody;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.google.inject.Provider;
 import com.google.inject.Stage;
+import com.trashmelody.screens.LoadingScreen;
 import com.trashmelody.screens.SplashScreen;
+
 import static org.testng.Assert.assertSame;
 import static org.testng.Assert.assertNotSame;
 
@@ -21,6 +22,7 @@ public class TrashMelody extends Game {
 	public SpriteBatch batch;
 	public BitmapFont font;
 	private Assets assets;
+	private ScreenProvider screenProvider;
 	Injector injector;
 
 	@Override
@@ -30,8 +32,10 @@ public class TrashMelody extends Game {
 
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
-		injector = Guice.createInjector(Stage.PRODUCTION,  new GameModule(this));
-		assets = injector.getInstance(Assets.class);
+		injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
+		this.assets = injector.getInstance(Assets.class);
+		this.screenProvider = injector.getInstance(ScreenProvider.class);
+
 		Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
 		setScreen(injector.getInstance(SplashScreen.class));
 	}
@@ -57,5 +61,12 @@ public class TrashMelody extends Game {
 		batch.dispose();
 		font.dispose();
 		assets.dispose();
+	}
+
+	public void setLazyScreen(LazyScreen screen) {
+		screen.loadLazyAssets(assets);
+		LoadingScreen loadingScreen = screenProvider.get(LoadingScreen.class);
+		loadingScreen.setNextScreen(screen);
+		super.setScreen(loadingScreen);
 	}
 }

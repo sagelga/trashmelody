@@ -2,21 +2,22 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton
-public class CollectionScreen extends ScreenAdapter {
+public class CollectionScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
@@ -25,13 +26,10 @@ public class CollectionScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public CollectionScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    public CollectionScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = viewport;
-
-        this.bg             = assets.get(Assets.COLLECTION_BG, Assets.TEXTURE);
-        this.screenTitle    = assets.get(Assets.COLLECTION_SCREEN_TITLE, Assets.TEXTURE);
     }
 
     @Override
@@ -48,5 +46,17 @@ public class CollectionScreen extends ScreenAdapter {
         // Debug zone
 
         game.batch.end();
+    }
+
+    @Override
+    public void loadLazyAssets(Assets assets) {
+        assets.load(COLLECTION_BG, TEXTURE);
+        assets.load(COLLECTION_SCREEN_TITLE, TEXTURE);
+    }
+
+    @Override
+    public void getLazyAssets(Assets assets) {
+        this.bg = assets.get(COLLECTION_BG, Assets.TEXTURE);
+        this.screenTitle = assets.get(COLLECTION_SCREEN_TITLE, Assets.TEXTURE);
     }
 }

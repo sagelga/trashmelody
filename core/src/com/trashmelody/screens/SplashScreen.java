@@ -25,7 +25,8 @@ public class SplashScreen extends ScreenAdapter {
     private Assets assets;
     private Texture splashScreenLogo;
     public static Music splashScreenMusic;
-    private long time_lapsed = TimeUtils.millis();
+
+    private long time_lapsed;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider, MusicManager musicManager) {
@@ -42,6 +43,7 @@ public class SplashScreen extends ScreenAdapter {
     @Override
     public void show(){ // Run while screen is active
         musicManager.playMusic(MUSIC_BG1);
+        time_lapsed = TimeUtils.millis();
     }
 
     @Override
@@ -57,7 +59,7 @@ public class SplashScreen extends ScreenAdapter {
         drawCenter(game.batch, splashScreenLogo, 500F, 286F);
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",TimeUtils.timeSinceMillis(time_lapsed));
         // Debug zone
 
         game.batch.end();

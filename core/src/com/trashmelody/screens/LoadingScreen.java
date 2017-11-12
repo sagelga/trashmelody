@@ -32,7 +32,7 @@ public class LoadingScreen extends ScreenAdapter {
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
-    private long time_lapsed = TimeUtils.millis();
+    public  long time_lapsed;
     float elapsed;
 
     @Inject
@@ -41,6 +41,11 @@ public class LoadingScreen extends ScreenAdapter {
         this.assets = assets;
         this.warningScreen = warningScreen;
         this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
+    }
+
+    @Override
+    public void show(){
+        time_lapsed = TimeUtils.millis();
     }
 
     @Override
@@ -55,18 +60,9 @@ public class LoadingScreen extends ScreenAdapter {
         // Start loading assets
         game.batch.begin();
         game.batch.draw(loadingScreenLogo.getKeyFrame(elapsed), getCenterX()/2, getCenterY()/2);
-//        if (assets.getProgress()){
-//            textureBar = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("barGreen_horizontalMid.png"))));
-//            barStyle = new ProgressBar.ProgressBarStyle(skin.newDrawable("white", Color.DARK_GRAY), textureBar);
-//            barStyle.knobBefore = barStyle.knob;
-//            bar = new ProgressBar(0F, 10F, 0.1F, false, barStyle);
-//            bar.setPosition(10, 10);
-//            bar.setSize(290, bar.getPrefHeight());
-//            bar.setAnimateDuration(2);
-//        }
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
         // Debug zone
 
         game.batch.end();

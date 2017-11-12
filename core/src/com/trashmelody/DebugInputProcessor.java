@@ -3,6 +3,7 @@ package com.trashmelody;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.trashmelody.MusicManager;
 
 public class DebugInputProcessor implements InputProcessor {
     @Override
@@ -11,7 +12,7 @@ public class DebugInputProcessor implements InputProcessor {
             case Input.Keys.Q:
                 Gdx.app.exit();
             case Input.Keys.EQUALS:
-                //Music.
+//                MusicManager.playMusic();
         }
         return true;
     }

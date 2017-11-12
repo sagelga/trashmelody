@@ -222,31 +222,6 @@ public class Assets extends AssetManager {
         load(NAME_CLOUD,               TEXTURE);
         load(NAME_BORDER,              TEXTURE);
 
-        load(STAGE_BUILDING_OFFICE,    TEXTURE);
-        load(STAGE_TEXT_OFFICE,        TEXTURE);
-        load(STAGE_BUILDING_CINEMA,    TEXTURE);
-        load(STAGE_TEXT_CINEMA,        TEXTURE);
-        load(STAGE_BUILDING_HOSPITAL,  TEXTURE);
-        load(STAGE_TEXT_HOSPITAL,      TEXTURE);
-        load(STAGE_BUILDING_SCHOOL,    TEXTURE);
-        load(STAGE_TEXT_SCHOOL,        TEXTURE);
-        load(STAGE_BUILDING_HOME,      TEXTURE);
-        load(STAGE_TEXT_HOME,          TEXTURE);
-        load(STAGE_BUILDING_CAFE,      TEXTURE);
-        load(STAGE_TEXT_CAFE,          TEXTURE);
-        load(STAGE_BG_BACKBUTTON,      TEXTURE);
-        load(STAGE_BG_PLAYBUTTON,      TEXTURE);
-        load(STAGE_BG_CLOUD,           TEXTURE);
-        load(STAGE_BG_HEADER,          TEXTURE);
-        load(STAGE_BG_FOOTER,          TEXTURE);
-        load(STAGE_BG_TRASHWORLD,      TEXTURE);
-        load(STAGE_BG_OVERLAY,         TEXTURE);
-        load(STAGE_BG_ARROW_L,         TEXTURE);
-        load(STAGE_BG_ARROW_R,         TEXTURE);
-
-        load(COLLECTION_BG,            TEXTURE);
-        load(COLLECTION_SCREEN_TITLE,  TEXTURE);
-
         load(COUNTDOWN_BACKGROUND1,    TEXTURE);
         load(COUNTDOWN_COUNT_NUM_0,    TEXTURE);
         load(COUNTDOWN_COUNT_NUM_1,    TEXTURE);
@@ -261,37 +236,6 @@ public class Assets extends AssetManager {
         load(COUNTDOWN_STRIPE4,        TEXTURE);
         load(COUNTDOWN_STRIPE5,        TEXTURE);
         load(COUNTDOWN_STRIPE6,        TEXTURE);
-
-//        load(GAME_BACKGROUND1,         TEXTURE);
-//        load(GAME_BACKGROUND_FOOTER1,  TEXTURE);
-//        load(GAME_BIN_01,              TEXTURE);
-//        load(GAME_BIN_02,              TEXTURE);
-//        load(GAME_BIN_03,              TEXTURE);
-//        load(GAME_BIN_04,              TEXTURE);
-//        load(GAME_BIN_05,              TEXTURE);
-//        load(GAME_CENTER,              TEXTURE);
-//        load(GAME_CHECK,               TEXTURE);
-//        load(GAME_HEADER,              TEXTURE);
-//        load(GAME_HEADER2,             TEXTURE);
-//        load(GAME_FOOTER,              TEXTURE);
-//        load(GAME_HANOI_1,             TEXTURE);
-//        load(GAME_HANOI_2,             TEXTURE);
-//        load(GAME_HANOI_3,             TEXTURE);
-//        load(GAME_HANOI_4,             TEXTURE);
-//        load(GAME_LEVEL_1,             TEXTURE);
-//        load(GAME_LEVEL_2,             TEXTURE);
-//        load(GAME_LEVEL_3,             TEXTURE);
-//        load(GAME_ICON,                TEXTURE);
-//        load(GAME_SONG_NAME_1,         TEXTURE);
-//        load(GAME_PAUSE,               TEXTURE);
-//        load(GAME_LEVEL_BORDER,        TEXTURE);
-//        load(GAME_SCORE,               TEXTURE);
-//        load(GAME_SCORE_1,             TEXTURE);
-//        load(GAME_SCORE_2,             TEXTURE);
-//        load(GAME_SCORE_3,             TEXTURE);
-//        load(GAME_SCORE_4,             TEXTURE);
-//        load(GAME_SCORE_5,             TEXTURE);
-//        load(GAME_STATUS_BAR,          TEXTURE);
 
 //        load(PAUSE_CONTINUE_BTN1,      TEXTURE);
 //        load(PAUSE_CONTINUE_BTN2,      TEXTURE);
@@ -328,16 +272,16 @@ public class Assets extends AssetManager {
 //        load(RESULT_RESULT_COMBO,      TEXTURE);
         load(RESULT_RESULT_TEXT_ALL,   TEXTURE);
 
-        load(SETTING_BACK_BUTTON,      TEXTURE);
-        load(SETTING_CALIBRATE,        TEXTURE);
-        load(SETTING_EFFECT,           TEXTURE);
-        load(SETTING_FULLSCREEN,       TEXTURE);
-        load(SETTING_HEADER,           TEXTURE);
-        load(SETTING_MUSIC,            TEXTURE);
-        load(SETTING_SLIDE_BAR,        TEXTURE);
-        load(SETTING_VOLUME,           TEXTURE);
-        load(SETTING_VOLUME_BAR,       TEXTURE);
-        load(SETTING_WINDOW,           TEXTURE);
+//        load(SETTING_BACK_BUTTON,      TEXTURE);
+//        load(SETTING_CALIBRATE,        TEXTURE);
+//        load(SETTING_EFFECT,           TEXTURE);
+//        load(SETTING_FULLSCREEN,       TEXTURE);
+//        load(SETTING_HEADER,           TEXTURE);
+//        load(SETTING_MUSIC,            TEXTURE);
+//        load(SETTING_SLIDE_BAR,        TEXTURE);
+//        load(SETTING_VOLUME,           TEXTURE);
+//        load(SETTING_VOLUME_BAR,       TEXTURE);
+//        load(SETTING_WINDOW,           TEXTURE);
 
         /*
         load(MUSIC_1_SONG,             MUSIC);

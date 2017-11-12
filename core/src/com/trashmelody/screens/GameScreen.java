@@ -17,6 +17,8 @@ import io.vavr.collection.List;
 
 import javax.inject.Inject;
 
+import java.util.stream.Stream;
+
 import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
@@ -63,7 +65,7 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
 
     @Inject
-    public GameScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    public GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
@@ -123,7 +125,7 @@ public class GameScreen extends LazyScreen {
 
     @Override
     public void loadLazyAssets(Assets assets) {
-        List<String> textures = List.of(
+        Stream.of(
                 GAME_BACKGROUND1,
                 GAME_BACKGROUND_FOOTER1,
                 GAME_BIN_01,
@@ -154,8 +156,7 @@ public class GameScreen extends LazyScreen {
                 GAME_SCORE_5,
                 GAME_SONG_NAME_1,
                 GAME_STATUS_BAR
-        );
-        textures.forEach(fileName -> assets.load(fileName, TEXTURE));
+        ).forEach(fileName -> assets.load(fileName, TEXTURE));
     }
 
     @Override

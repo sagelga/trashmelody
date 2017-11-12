@@ -13,6 +13,7 @@ import com.trashmelody.TrashMelody;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton
@@ -36,11 +37,12 @@ public class MenuScreen extends ScreenAdapter {
         this.resultScreen = resultScreen;
         this.camera = camera;
         this.viewport = viewport;
+
         this.splashScreenLogo   = assets.get(Assets.SPLASH_LOGO,            Assets.TEXTURE);
         this.bg                 = assets.get(Assets.MENU_BG,                Assets.TEXTURE);
         this.btnStart           = assets.get(Assets.MENU_BTN_START,         Assets.TEXTURE);
-        this.btnCollection      = assets.get(Assets.MENU_BTN_COLLECTION,    Assets.TEXTURE);
-        this.btnSetting         = assets.get(Assets.MENU_BTN_SETTING,       Assets.TEXTURE);
+        this.btnCollection      = assets.get(MENU_BTN_COLLECTION,           Assets.TEXTURE);
+        this.btnSetting         = assets.get(MENU_BTN_SETTING,              Assets.TEXTURE);
         this.btnExit            = assets.get(Assets.MENU_BTN_EXIT,          Assets.TEXTURE);
         this.borderLeft         = assets.get(Assets.MENU_BORDER_LEFT,       Assets.TEXTURE);
         this.borderRight        = assets.get(Assets.MENU_BORDER_RIGHT,      Assets.TEXTURE);

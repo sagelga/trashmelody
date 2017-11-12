@@ -25,7 +25,8 @@ public class ScreenProvider {
                 CollectionScreen.class,
                 GameScreen.class,
                 SandboxScreen.class,
-                ResultScreen.class
+                ResultScreen.class,
+                PauseScreen.class
         );
     }
 

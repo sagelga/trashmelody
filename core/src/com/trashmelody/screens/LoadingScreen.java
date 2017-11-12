@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -26,10 +28,6 @@ public class LoadingScreen extends ScreenAdapter {
     private Provider<WarningScreen> warningScreen;
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
-
-    private ProgressBar barStyle;
-    private ProgressBar bar;
-    private TextureRegionDrawable textureBar;
 
     private long time_lapsed = TimeUtils.millis() + 5000;
     float elapsed;
@@ -61,7 +59,7 @@ public class LoadingScreen extends ScreenAdapter {
         // Start loading assets
         game.batch.begin();
         game.batch.draw(loadingScreenLogo.getKeyFrame(elapsed), getCenterX()/2, getCenterY()/2);
-//        if (AssetManager.getProgress()){
+//        if (assets.getProgress()){
 //            textureBar = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("barGreen_horizontalMid.png"))));
 //            barStyle = new ProgressBar.ProgressBarStyle(skin.newDrawable("white", Color.DARK_GRAY), textureBar);
 //            barStyle.knobBefore = barStyle.knob;
@@ -73,7 +71,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed));
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
         // Debug zone
 
         game.batch.end();

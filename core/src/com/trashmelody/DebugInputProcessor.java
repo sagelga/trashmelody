@@ -10,6 +10,8 @@ public class DebugInputProcessor implements InputProcessor {
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();
+            case Input.Keys.EQUALS:
+                //Music.
         }
         return true;
     }
@@ -48,4 +50,6 @@ public class DebugInputProcessor implements InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
+
+
 }

@@ -125,7 +125,6 @@ public class Assets extends AssetManager {
     public static final String PAUSE_SELECTOR_ARROW     = "PauseScreen/PAUSE-SIDE.png";
 
     // Calibrate Screen Assets
-    public static final String CALIBRATE_BG             = "CalibrateScreen/Calibrate-Background.png";
     public static final String CALIBRATE_HEADER         = "CalibrateScreen/Calibrate-Header.png";
     public static final String CALIBRATE_FOOTER         = "CalibrateScreen/Calibrate-Footer.png";
     public static final String CALIBRATE_NUM_5          = "CalibrateScreen/Calibrate-Num-5.png";
@@ -303,7 +302,6 @@ public class Assets extends AssetManager {
         load(PAUSE_HOME_BTN2,          TEXTURE);
         load(PAUSE_SELECTOR_ARROW,     TEXTURE);
 
-        load(CALIBRATE_BG,             TEXTURE);
         load(CALIBRATE_HEADER,         TEXTURE);
         load(CALIBRATE_FOOTER,         TEXTURE);
         load(CALIBRATE_NUM_5,          TEXTURE);

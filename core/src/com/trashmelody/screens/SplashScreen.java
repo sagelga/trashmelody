@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.ScreenProvider;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
@@ -31,10 +32,10 @@ public class SplashScreen extends ScreenAdapter {
     private long time_lapsed = TimeUtils.millis();
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets,LoadingScreen loadingScreen) {
+    public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
-        this.loadingScreen = loadingScreen;
+        this.loadingScreen = screenProvider.get(LoadingScreen.class).get();
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);

@@ -3,8 +3,14 @@ package com.trashmelody;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.google.inject.Inject;
 
 public class DebugInputProcessor implements InputProcessor {
+    @Inject
+    DebugInputProcessor() {
+
+    }
+
     @Override
     public boolean keyDown(int keycode) {
         switch (keycode) {

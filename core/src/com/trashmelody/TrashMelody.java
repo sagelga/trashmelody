@@ -16,6 +16,7 @@ import static com.trashmelody.Utils.getViewportWidth;
 public class TrashMelody extends Game {
 	public SpriteBatch batch;
 	public BitmapFont font;
+	public Injector injector;
 	private Assets assets;
 
 	@Override
@@ -25,7 +26,7 @@ public class TrashMelody extends Game {
 
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
-		Injector injector = Guice.createInjector(new GameModule(this));
+		injector = Guice.createInjector(new GameModule(this));
 		assets = injector.getInstance(Assets.class);
 		Gdx.input.setInputProcessor(new DebugInputProcessor());
 

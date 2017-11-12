@@ -14,9 +14,9 @@ public class GameModeMapper {
 
     static {
         MAPPER.put(null, GameMode.UNKNOWN);
-        MAPPER.put(OsuBeatmap.class, GameMode.MANIA);
-        MAPPER.put(TaikoBeatmap.class, GameMode.MANIA);
-        MAPPER.put(CatchBeatmap.class, GameMode.MANIA);
+        MAPPER.put(OsuBeatmap.class, GameMode.OSU);
+        MAPPER.put(TaikoBeatmap.class, GameMode.TAIKO);
+        MAPPER.put(CatchBeatmap.class, GameMode.CATCH);
         MAPPER.put(ManiaBeatmap.class, GameMode.MANIA);
     }
 

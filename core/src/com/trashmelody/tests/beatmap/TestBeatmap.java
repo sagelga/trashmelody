@@ -21,6 +21,9 @@ public class TestBeatmap {
         } catch (BeatmapException | FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        beatmap.getHitObjects().forEach(System.out::println);
+
         System.out.println(beatmap.getMaxCombo());
 
         OsuDifficulty diff = beatmap.getDifficulty(new Mods(Mod.HARDROCK));

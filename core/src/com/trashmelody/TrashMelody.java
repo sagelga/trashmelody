@@ -10,14 +10,16 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.trashmelody.screens.SplashScreen;
+import static org.testng.Assert.assertSame;
+import static org.testng.Assert.assertNotSame;
 
 import static com.trashmelody.Utils.getViewportWidth;
 
 public class TrashMelody extends Game {
 	public SpriteBatch batch;
 	public BitmapFont font;
-	public Injector injector;
 	private Assets assets;
+	Injector injector;
 
 	@Override
 	public void create() {
@@ -28,8 +30,7 @@ public class TrashMelody extends Game {
 
 		injector = Guice.createInjector(new GameModule(this));
 		assets = injector.getInstance(Assets.class);
-		Gdx.input.setInputProcessor(new DebugInputProcessor());
-
+		Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
 		setScreen(injector.getInstance(SplashScreen.class));
 	}
 

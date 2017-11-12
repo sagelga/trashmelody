@@ -22,7 +22,6 @@ public class GameModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(TrashMelody.class).toInstance(game);
-        ScreenProvider.screenClassList.forEach(screen -> binder.bind(screen).in(Singleton.class));
     }
 
     @Provides @Singleton

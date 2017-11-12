@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.google.inject.Inject;
 import io.vavr.collection.TreeMap;
 
 public class Assets extends AssetManager {
@@ -386,6 +387,7 @@ public class Assets extends AssetManager {
         load(LOADING_LOGO,             TEXTURE);
     }
 
+    @Inject
     public Assets() {
         super();
 

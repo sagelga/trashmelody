@@ -13,9 +13,11 @@ import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class ResultScreen extends ScreenAdapter {
     private TrashMelody game;
     private Camera camera;

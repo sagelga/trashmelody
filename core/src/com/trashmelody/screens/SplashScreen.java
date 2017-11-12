@@ -1,40 +1,36 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.ScreenProvider;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
-import com.google.inject.Provider;
 
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.Utils.clearScreen;
+import static com.trashmelody.Utils.drawCenter;
 
+@Singleton
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
+    ScreenProvider screenProvider;
     private Assets assets;
     private Texture splashScreenLogo;
     public static Music splashScreenMusic;
     private long time_lapsed = TimeUtils.millis();
-    private Provider<LoadingScreen> loadingScreen;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
-        this.loadingScreen = screenProvider.getProvider(LoadingScreen.class);
+        this.screenProvider = screenProvider;
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
@@ -50,8 +46,9 @@ public class SplashScreen extends ScreenAdapter {
     @Override
     public void render(float delta) { // Continuously run during active
         clearScreen();
+
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
-            game.setScreen(jloadingScreen);
+            game.setScreen(screenProvider.get(LoadingScreen.class));
         }
 
         // Start loading assets

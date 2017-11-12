@@ -4,11 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.trashmelody.screens.GameScreen;
 
+@Singleton
 public class DebugInputProcessor implements InputProcessor {
-    @Inject
-    DebugInputProcessor() {
+    private ScreenProvider screenProvider;
 
+    @Inject
+    DebugInputProcessor(ScreenProvider screenProvider) {
+        this.screenProvider = screenProvider;
     }
 
     @Override
@@ -16,6 +21,10 @@ public class DebugInputProcessor implements InputProcessor {
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();
+                break;
+            case Input.Keys.G:
+                screenProvider.get(GameScreen.class);
+                break;
         }
         return true;
     }

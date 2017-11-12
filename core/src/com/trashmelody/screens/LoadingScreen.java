@@ -16,10 +16,12 @@ import com.trashmelody.TrashMelody;
 import com.trashmelody.utils.GifDecoder;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Assets.LOADING_LOGO;
 import static com.trashmelody.Utils.*;
 
+@Singleton
 public class LoadingScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;

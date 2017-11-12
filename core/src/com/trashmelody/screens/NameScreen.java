@@ -7,13 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static com.trashmelody.Utils.clearScreen;
 import static com.trashmelody.Utils.drawCenterX;
 
+@Singleton
 public class NameScreen extends ScreenAdapter {
     private TrashMelody game;
     private Texture splashScreenLogo, nameScreenBG, nameScreenEnterBox, nameScreenEnterName, nameScreenCloud,

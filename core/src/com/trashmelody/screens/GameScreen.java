@@ -2,7 +2,6 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -12,14 +11,19 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Singleton;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
+import io.vavr.collection.List;
 
 import javax.inject.Inject;
 
+import java.util.stream.Stream;
+
+import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton
-public class GameScreen extends ScreenAdapter {
+public class GameScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
@@ -61,43 +65,10 @@ public class GameScreen extends ScreenAdapter {
     private Texture hpBar;
 
     @Inject
-    public GameScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    public GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
-
-
-        //Variable handlers     |Assets retrival path
-        this.bg1 = assets.get(Assets.GAME_BACKGROUND1, Assets.TEXTURE);
-        this.bgFooter = assets.get(Assets.GAME_BACKGROUND_FOOTER1, Assets.TEXTURE);
-        this.dangerRedBin = assets.get(Assets.GAME_BIN_01, Assets.TEXTURE);
-        this.recycleBin = assets.get(Assets.GAME_BIN_02, Assets.TEXTURE);
-        this.yellowBin = assets.get(Assets.GAME_BIN_03, Assets.TEXTURE);
-        this.idkBin = assets.get(Assets.GAME_BIN_04, Assets.TEXTURE);
-        this.rainbowFlashBin = assets.get(Assets.GAME_BIN_05, Assets.TEXTURE);
-        this.centerLine = assets.get(Assets.GAME_CENTER, Assets.TEXTURE);
-        this.check = assets.get(Assets.GAME_CHECK, Assets.TEXTURE);
-        this.footerTab = assets.get(Assets.GAME_FOOTER, Assets.TEXTURE);
-        this.redBinPlot = assets.get(Assets.GAME_HANOI_1, Assets.TEXTURE);
-        this.recycleBinPlot = assets.get(Assets.GAME_HANOI_2, Assets.TEXTURE);
-        this.yellowBinPlot = assets.get(Assets.GAME_HANOI_3, Assets.TEXTURE);
-        this.idkBinPlot = assets.get(Assets.GAME_HANOI_4, Assets.TEXTURE);
-        this.songNameBar = assets.get(Assets.GAME_HEADER, Assets.TEXTURE);
-        this.levelScoreBar = assets.get(Assets.GAME_HEADER2, Assets.TEXTURE);
-        this.hpPoint = assets.get(Assets.GAME_ICON, Assets.TEXTURE);
-        this.normal = assets.get(Assets.GAME_LEVEL_1, Assets.TEXTURE);
-        this.easy = assets.get(Assets.GAME_LEVEL_2, Assets.TEXTURE);
-        this.hard = assets.get(Assets.GAME_LEVEL_3, Assets.TEXTURE);
-        this.levelCover = assets.get(Assets.GAME_LEVEL_BORDER, Assets.TEXTURE);
-        this.pauseTab = assets.get(Assets.GAME_PAUSE, Assets.TEXTURE);
-        this.scoreTitle = assets.get(Assets.GAME_SCORE, Assets.TEXTURE);
-        this.miss = assets.get(Assets.GAME_SCORE_1, Assets.TEXTURE);
-        this.bad = assets.get(Assets.GAME_SCORE_2, Assets.TEXTURE);
-        this.cool = assets.get(Assets.GAME_SCORE_3, Assets.TEXTURE);
-        this.good = assets.get(Assets.GAME_SCORE_4, Assets.TEXTURE);
-        this.perfect = assets.get(Assets.GAME_SCORE_5, Assets.TEXTURE);
-        this.songName = assets.get(Assets.GAME_SONG_NAME_1, Assets.TEXTURE);
-        this.hpBar = assets.get(Assets.GAME_STATUS_BAR, Assets.TEXTURE);
     }
 
     @Override
@@ -152,4 +123,73 @@ public class GameScreen extends ScreenAdapter {
         viewport.update(width, height);
     }
 
+    @Override
+    public void loadLazyAssets(Assets assets) {
+        Stream.of(
+                GAME_BACKGROUND1,
+                GAME_BACKGROUND_FOOTER1,
+                GAME_BIN_01,
+                GAME_BIN_02,
+                GAME_BIN_03,
+                GAME_BIN_04,
+                GAME_BIN_05,
+                GAME_CENTER,
+                GAME_CHECK,
+                GAME_FOOTER,
+                GAME_HANOI_1,
+                GAME_HANOI_2,
+                GAME_HANOI_3,
+                GAME_HANOI_4,
+                GAME_HEADER,
+                GAME_HEADER2,
+                GAME_ICON,
+                GAME_LEVEL_1,
+                GAME_LEVEL_2,
+                GAME_LEVEL_3,
+                GAME_LEVEL_BORDER,
+                GAME_PAUSE,
+                GAME_SCORE,
+                GAME_SCORE_1,
+                GAME_SCORE_2,
+                GAME_SCORE_3,
+                GAME_SCORE_4,
+                GAME_SCORE_5,
+                GAME_SONG_NAME_1,
+                GAME_STATUS_BAR
+        ).forEach(fileName -> assets.load(fileName, TEXTURE));
+    }
+
+    @Override
+    public void getLazyAssets(Assets assets) {
+        this.bg1 = assets.get(GAME_BACKGROUND1, TEXTURE);
+        this.bgFooter = assets.get(GAME_BACKGROUND_FOOTER1, TEXTURE);
+        this.dangerRedBin = assets.get(GAME_BIN_01, TEXTURE);
+        this.recycleBin = assets.get(GAME_BIN_02, TEXTURE);
+        this.yellowBin = assets.get(GAME_BIN_03, TEXTURE);
+        this.idkBin = assets.get(GAME_BIN_04, TEXTURE);
+        this.rainbowFlashBin = assets.get(GAME_BIN_05, TEXTURE);
+        this.centerLine = assets.get(GAME_CENTER, TEXTURE);
+        this.check = assets.get(GAME_CHECK, TEXTURE);
+        this.footerTab = assets.get(GAME_FOOTER, TEXTURE);
+        this.redBinPlot = assets.get(GAME_HANOI_1, TEXTURE);
+        this.recycleBinPlot = assets.get(GAME_HANOI_2, TEXTURE);
+        this.yellowBinPlot = assets.get(GAME_HANOI_3, TEXTURE);
+        this.idkBinPlot = assets.get(GAME_HANOI_4, TEXTURE);
+        this.songNameBar = assets.get(GAME_HEADER, TEXTURE);
+        this.levelScoreBar = assets.get(GAME_HEADER2, TEXTURE);
+        this.hpPoint = assets.get(GAME_ICON, TEXTURE);
+        this.normal = assets.get(GAME_LEVEL_1, TEXTURE);
+        this.easy = assets.get(GAME_LEVEL_2, TEXTURE);
+        this.hard = assets.get(GAME_LEVEL_3, TEXTURE);
+        this.levelCover = assets.get(GAME_LEVEL_BORDER, TEXTURE);
+        this.pauseTab = assets.get(GAME_PAUSE, TEXTURE);
+        this.scoreTitle = assets.get(GAME_SCORE, TEXTURE);
+        this.miss = assets.get(GAME_SCORE_1, TEXTURE);
+        this.bad = assets.get(GAME_SCORE_2, TEXTURE);
+        this.cool = assets.get(GAME_SCORE_3, TEXTURE);
+        this.good = assets.get(GAME_SCORE_4, TEXTURE);
+        this.perfect = assets.get(GAME_SCORE_5, TEXTURE);
+        this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
+        this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
+    }
 }

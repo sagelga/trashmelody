@@ -10,15 +10,19 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
+import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static com.trashmelody.Assets.*;
+import static com.trashmelody.Assets.RESULT_RESULT_BACKGROUND;
 import static com.trashmelody.Utils.*;
+import static jdk.nashorn.internal.objects.Global.load;
 
 @Singleton
-public class ResultScreen extends ScreenAdapter {
+public class ResultScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
@@ -27,16 +31,10 @@ public class ResultScreen extends ScreenAdapter {
     private float vw = getViewportWidth();
 
     @Inject
-    public ResultScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    public ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
-
-        this.bg = assets.get(Assets.RESULT_RESULT_BACKGROUND, Assets.TEXTURE);
-        this.header = assets.get(Assets.RESULT_RESULT_HEADER, Assets.TEXTURE);
-        this.footer = assets.get(Assets.RESULT_RESULT_FOOTER, Assets.TEXTURE);
-        this.gradeA = assets.get(Assets.RESULT_RESULT_GRADE_A, Assets.TEXTURE);
-        this.stats = assets.get(Assets.RESULT_RESULT_TEXT_ALL, Assets.TEXTURE);
     }
 
     @Override
@@ -67,5 +65,32 @@ public class ResultScreen extends ScreenAdapter {
         super.resize(width, height);
 
         viewport.update(width, height);
+    }
+
+    @Override
+    public void loadLazyAssets(Assets assets) {
+        assets.load(RESULT_RESULT_BACKGROUND, TEXTURE);
+        assets.load(RESULT_RESULT_HEADER, TEXTURE);
+        assets.load(RESULT_RESULT_FOOTER, TEXTURE);
+        assets.load(RESULT_RESULT_GRADE_A, TEXTURE);
+        assets.load(RESULT_RESULT_GRADE_B, TEXTURE);
+        assets.load(RESULT_RESULT_GRADE_C, TEXTURE);
+        assets.load(RESULT_RESULT_GRADE_D, TEXTURE);
+        assets.load(RESULT_RESULT_GRADE_F, TEXTURE);
+//        assets.load(RESULT_RESULT_PERFECT, TEXTURE);
+//        assets.load(RESULT_RESULT_GOOD, TEXTURE);
+//        assets.load(RESULT_RESULT_NICE, TEXTURE);
+//        assets.load(RESULT_RESULT_MISS, TEXTURE);
+//        assets.load(RESULT_RESULT_COMBO, TEXTURE);
+        assets.load(RESULT_RESULT_TEXT_ALL, TEXTURE);
+    }
+
+    @Override
+    public void getLazyAssets(Assets assets) {
+        this.bg = assets.get(RESULT_RESULT_BACKGROUND, TEXTURE);
+        this.header = assets.get(RESULT_RESULT_HEADER, TEXTURE);
+        this.footer = assets.get(RESULT_RESULT_FOOTER, TEXTURE);
+        this.gradeA = assets.get(RESULT_RESULT_GRADE_A, TEXTURE);
+        this.stats = assets.get(RESULT_RESULT_TEXT_ALL, TEXTURE);
     }
 }

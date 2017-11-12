@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -12,9 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.google.inject.Provider;
-import com.trashmelody.Assets;
-import com.trashmelody.Debugger;
-import com.trashmelody.TrashMelody;
+import com.trashmelody.*;
 import com.trashmelody.utils.GifDecoder;
 
 import javax.inject.Inject;
@@ -29,6 +28,7 @@ public class LoadingScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;
     private Provider<WarningScreen> warningScreen;
+    private LazyScreen nextScreen;
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
@@ -36,10 +36,10 @@ public class LoadingScreen extends ScreenAdapter {
     float elapsed;
 
     @Inject
-    public LoadingScreen(TrashMelody game, Assets assets, Provider<WarningScreen> warningScreen) {
+    public LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
-        this.warningScreen = warningScreen;
+        this.warningScreen = screenProvider.getProvider(WarningScreen.class);
         this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
     }
 
@@ -56,7 +56,12 @@ public class LoadingScreen extends ScreenAdapter {
         elapsed += delta;
 
         if(assets.update()){
-            game.setScreen(warningScreen.get());
+            if (nextScreen != null) {
+                nextScreen.getLazyAssets(assets);
+                game.setScreen(nextScreen);
+            } else {
+                game.setScreen(warningScreen.get());
+            }
         }
 
         // Start loading assets
@@ -74,11 +79,14 @@ public class LoadingScreen extends ScreenAdapter {
 
         // Debug zone
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",SplashScreen.splashScreenMusic.getVolume(),TimeUtils.timeSinceMillis(time_lapsed), assets.getProgress());
         // Debug zone
 
         game.batch.end();
     }
 
+    public void setNextScreen(LazyScreen nextScreen) {
+        this.nextScreen = nextScreen;
+    }
 }
 

@@ -20,7 +20,7 @@ public class WarningScreen extends LazyScreen {
     private long time_lapsed = TimeUtils.millis();
 
     @Inject
-    public WarningScreen(TrashMelody game, ScreenProvider screenProvider) {
+    WarningScreen(TrashMelody game, ScreenProvider screenProvider) {
         this.game = game;
         this.menuScreen = screenProvider.getProvider(MenuScreen.class);
     }

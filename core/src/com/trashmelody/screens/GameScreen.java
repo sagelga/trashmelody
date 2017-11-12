@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -60,7 +58,7 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
 
     @Inject
-    public GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);

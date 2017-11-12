@@ -25,7 +25,7 @@ public class SplashScreen extends LazyScreen {
     private long time_lapsed;
 
     @Inject
-    public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider, MusicManager musicManager) {
+    SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
         this.assets = assets;
         this.screenProvider = screenProvider;
@@ -34,7 +34,7 @@ public class SplashScreen extends LazyScreen {
     }
 
     @Override
-    public void show(){ // Run while screen is active
+    public void show() { // Run while screen is active
         musicManager.playMusic(MUSIC_BG1);
         musicManager.setDefault(MUSIC_BG1);
         time_lapsed = TimeUtils.millis();

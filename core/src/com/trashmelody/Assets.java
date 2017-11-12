@@ -15,13 +15,17 @@ import com.google.inject.Singleton;
 public class Assets extends AssetManager {
 
     @Inject
-    public Assets() {
+    Assets() {
         super();
+
         load(MUSIC_BG1, Music.class);
         finishLoading();
-//        eagerLoad();
-//        loadAllAssets();
     }
+
+    public static Class<Texture> TEXTURE = Texture.class;
+    public static Class<Music> MUSIC = Music.class;
+    public static Class<Animation> ANIMATION = Animation.class;
+    public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     // Splash Screen Assets
     public static final String SPLASH_LOGO              = "splash-logo.png";
@@ -92,7 +96,7 @@ public class Assets extends AssetManager {
     public static final String COUNTDOWN_STRIPE5        = "CountdownPage/stripe5.png";
     public static final String COUNTDOWN_STRIPE6        = "CountdownPage/stripe6.png";
 
-    // Main Game Screen Assets
+    // Game Screen Assets
     public static final String GAME_BACKGROUND1         = "GameScreen/background1.png";
     public static final String GAME_BACKGROUND_FOOTER1  = "GameScreen/background-footer1.png";
     public static final String GAME_BIN_01              = "GameScreen/BIN-1.png";
@@ -174,179 +178,37 @@ public class Assets extends AssetManager {
     public static final String SETTING_VOLUME_BAR       = "SettingScreen/SETTING-VOLUME-BAR.png";
     public static final String SETTING_WINDOW           = "SettingScreen/SETTING-WINDOW.png";
 
-    /*// Music Assets
+    // Music Assets
+    public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
+    public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
     public static final String MUSIC_1_SONG             = "Song/1HITORIGOTO/AUDIO.mp3";
     public static final String MUSIC_1_BG_CLEAR         = "Song/1HITORIGOTO/BG1_CLEAR.png";
     public static final String MUSIC_1_BG_OPAC          = "Song/1HITORIGOTO/BG1_OPAC70.png";
     public static final String MUSIC_1_BG_BLUR          = "Song/1HITORIGOTO/BG1_BLUR.png";
-
     public static final String MUSIC_2_SONG             = "Song/2MARBLE SODA/AUDIO.mp3";
     public static final String MUSIC_2_BG_CLEAR         = "Song/2MARBLE SODA/BG1_CLEAR.jpg";
     public static final String MUSIC_2_BG_OPAC          = "Song/2MARBLE SODA/BG1_OPAC70.png";
     public static final String MUSIC_2_BG_BLUR          = "Song/2MARBLE SODA/BG1_BLUR.png";
-
     public static final String MUSIC_3_SONG             = "Song/3REUNIOUN/AUDIO.mp3";
     public static final String MUSIC_3_BG_CLEAR         = "Song/3REUNIOUN/BG1_CLEAR.jpg";
     public static final String MUSIC_3_BG_OPAC          = "Song/3REUNIOUN/BG1_OPAC70.jpg";
     public static final String MUSIC_3_BG_BLUR          = "Song/3REUNIOUN/BG1_BLUR.png";
-
     public static final String MUSIC_4_SONG             = "Song/4KANASHII URESHII/AUDIO.mp3";
     public static final String MUSIC_4_BG_CLEAR         = "Song/4KANASHII URESHII/BG1_CLEAR.jpg";
     public static final String MUSIC_4_BG_OPAC          = "Song/4KANASHII URESHII/BG1_OPAC70.png";
     public static final String MUSIC_4_BG_BLUR          = "Song/4KANASHII URESHII/BG1_BLUR.png";
-
     public static final String MUSIC_5_SONG             = "Song/5ORANGE/AUDIO.mp3";
     public static final String MUSIC_5_BG_CLEAR         = "Song/5ORANGE/BG1_CLEAR.jpg";
     public static final String MUSIC_5_BG_OPAC          = "Song/5ORANGE/BG1_OPAC70.png";
     public static final String MUSIC_5_BG_BLUR          = "Song/5ORANGE/BG1_BLUR.png";
-
     public static final String MUSIC_6_SONG             = "Song/6TELL YOUR WORLD/AUDIO.mp3";
     public static final String MUSIC_6_BG_CLEAR         = "Song/6TELL YOUR WORLD/BG1_CLEAR.jpg";
     public static final String MUSIC_6_BG_OPAC          = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
     public static final String MUSIC_6_BG_BLUR          = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
-
     public static final String MUSIC_7_SONG             = "Song/7STEP AHEAD/AUDIO.mp3";
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
-*/
-    public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
-    public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
-
-    private void loadImages() {
-
-        load(WARNING_TEXT,             TEXTURE);
-        load(WARNING_LOGO,             TEXTURE);
-
-        load(MENU_BTN_START,           TEXTURE);
-        load(MENU_BTN_COLLECTION,      TEXTURE);
-        load(MENU_BTN_SETTING,         TEXTURE);
-        load(MENU_BTN_EXIT,            TEXTURE);
-        load(MENU_BG,                  TEXTURE);
-        load(MENU_BORDER_LEFT,         TEXTURE);
-        load(MENU_BORDER_RIGHT,        TEXTURE);
-
-        load(NAME_BACKGROUND,          TEXTURE);
-        load(NAME_ENTER_BOX,           TEXTURE);
-        load(NAME_ENTER_NAME,          TEXTURE);
-        load(NAME_CLOUD,               TEXTURE);
-        load(NAME_BORDER,              TEXTURE);
-
-//        load(COUNTDOWN_BACKGROUND1,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_0,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_1,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_2,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_3,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_4,    TEXTURE);
-//        load(COUNTDOWN_COUNT_NUM_5,    TEXTURE);
-//        load(COUNTDOWN_RING,           TEXTURE);
-//        load(COUNTDOWN_STRIPE1,        TEXTURE);
-//        load(COUNTDOWN_STRIPE2,        TEXTURE);
-//        load(COUNTDOWN_STRIPE3,        TEXTURE);
-//        load(COUNTDOWN_STRIPE4,        TEXTURE);
-//        load(COUNTDOWN_STRIPE5,        TEXTURE);
-//        load(COUNTDOWN_STRIPE6,        TEXTURE);
-
-//        load(PAUSE_CONTINUE_BTN1,      TEXTURE);
-//        load(PAUSE_CONTINUE_BTN2,      TEXTURE);
-//        load(PAUSE_SETTING_BTN1,       TEXTURE);
-//        load(PAUSE_SETTING_BTN2,       TEXTURE);
-//        load(PAUSE_RETRY_BTN1,         TEXTURE);
-//        load(PAUSE_RETRY_BTN2,         TEXTURE);
-//        load(PAUSE_HOME_BTN1,          TEXTURE);
-//        load(PAUSE_HOME_BTN2,          TEXTURE);
-//        load(PAUSE_SELECTOR_ARROW,     TEXTURE);
-
-//        load(CALIBRATE_HEADER,         TEXTURE);
-//        load(CALIBRATE_FOOTER,         TEXTURE);
-//        load(CALIBRATE_NUM_5,          TEXTURE);
-//        load(CALIBRATE_NUM_4,          TEXTURE);
-//        load(CALIBRATE_NUM_3,          TEXTURE);
-//        load(CALIBRATE_NUM_2,          TEXTURE);
-//        load(CALIBRATE_NUM_1,          TEXTURE);
-//        load(CALIBRATE_SPEED_POINTER,  TEXTURE);
-//        load(CALIBRATE_SPEED_BAR,      TEXTURE);
-
-//        load(RESULT_RESULT_BACKGROUND, TEXTURE);
-//        load(RESULT_RESULT_HEADER,     TEXTURE);
-//        load(RESULT_RESULT_FOOTER,     TEXTURE);
-//        load(RESULT_RESULT_GRADE_A,    TEXTURE);
-//        load(RESULT_RESULT_GRADE_B,    TEXTURE);
-//        load(RESULT_RESULT_GRADE_C,    TEXTURE);
-//        load(RESULT_RESULT_GRADE_D,    TEXTURE);
-//        load(RESULT_RESULT_GRADE_F,    TEXTURE);
-////        load(RESULT_RESULT_PERFECT,    TEXTURE);
-////        load(RESULT_RESULT_GOOD,       TEXTURE);
-////        load(RESULT_RESULT_NICE,       TEXTURE);
-////        load(RESULT_RESULT_MISS,       TEXTURE);
-////        load(RESULT_RESULT_COMBO,      TEXTURE);
-//        load(RESULT_RESULT_TEXT_ALL,   TEXTURE);
-
-//        load(SETTING_BACK_BUTTON,      TEXTURE);
-//        load(SETTING_CALIBRATE,        TEXTURE);
-//        load(SETTING_EFFECT,           TEXTURE);
-//        load(SETTING_FULLSCREEN,       TEXTURE);
-//        load(SETTING_HEADER,           TEXTURE);
-//        load(SETTING_MUSIC,            TEXTURE);
-//        load(SETTING_SLIDE_BAR,        TEXTURE);
-//        load(SETTING_VOLUME,           TEXTURE);
-//        load(SETTING_VOLUME_BAR,       TEXTURE);
-//        load(SETTING_WINDOW,           TEXTURE);
-
-        /*
-        load(MUSIC_1_SONG,             MUSIC);
-        load(MUSIC_1_BG_CLEAR,         TEXTURE);
-        load(MUSIC_1_BG_OPAC,          TEXTURE);
-        load(MUSIC_1_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_2_SONG,             MUSIC);
-        load(MUSIC_2_BG_CLEAR,         TEXTURE);
-        load(MUSIC_2_BG_OPAC,          TEXTURE);
-        load(MUSIC_2_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_3_SONG,             MUSIC);
-        load(MUSIC_3_BG_CLEAR,         TEXTURE);
-        load(MUSIC_3_BG_OPAC,          TEXTURE);
-        load(MUSIC_3_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_4_SONG,             MUSIC);
-        load(MUSIC_4_BG_CLEAR,         TEXTURE);
-        load(MUSIC_4_BG_OPAC,          TEXTURE);
-        load(MUSIC_4_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_5_SONG,             MUSIC);
-        load(MUSIC_5_BG_CLEAR,         TEXTURE);
-        load(MUSIC_5_BG_OPAC,          TEXTURE);
-        load(MUSIC_5_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_6_SONG,             MUSIC);
-        load(MUSIC_6_BG_CLEAR,         TEXTURE);
-        load(MUSIC_6_BG_OPAC,          TEXTURE);
-        load(MUSIC_6_BG_BLUR,          TEXTURE);
-
-        load(MUSIC_7_SONG,             MUSIC);
-        load(MUSIC_7_BG_CLEAR,         TEXTURE);
-        load(MUSIC_7_BG_OPAC,          TEXTURE);
-        load(MUSIC_7_BG_BLUR,          TEXTURE);
-*/
-//        load(MUSIC_BG1,                MUSIC);
-        load(MUSIC_BG2,                MUSIC);
-    }
-
-    private void eagerLoad() { // Assets that will load first
-        load(SPLASH_LOGO,              TEXTURE);
-        load(MUSIC_BG1,                MUSIC);
-        load(LOADING_LOGO,             TEXTURE);
-    }
-
-    private void loadAllAssets() {
-        loadImages();
-    }
-
-    public static Class<Texture> TEXTURE = Texture.class;
-    public static Class<Music> MUSIC = Music.class;
-    public static Class<Animation> ANIMATION = Animation.class;
-    public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     private BitmapFont getFont(String name, Integer size, Color color) {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(name));

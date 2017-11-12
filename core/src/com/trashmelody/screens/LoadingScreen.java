@@ -1,7 +1,6 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -29,7 +28,7 @@ public class LoadingScreen extends LazyScreen {
     float elapsed;
 
     @Inject
-    public LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
+    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
         this.screenProvider = screenProvider;

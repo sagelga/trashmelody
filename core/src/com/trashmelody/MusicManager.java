@@ -17,7 +17,7 @@ public class MusicManager {
     public static String currentBackgroundMusicTrack;
 
     @Inject
-    public MusicManager(Assets assets) {
+    MusicManager(Assets assets) {
         this.assets = assets;
         this.loadingBackgroundMusic = assets.get(MUSIC_BG1, MUSIC);
 

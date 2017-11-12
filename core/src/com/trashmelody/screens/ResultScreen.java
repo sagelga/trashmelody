@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Scaling;
@@ -27,7 +25,7 @@ public class ResultScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    public ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);

@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -21,7 +19,7 @@ public class NameScreen extends LazyScreen {
             nameScreenBorderLeft, nameScreenBorderRight;
 
     @Inject
-    public NameScreen(TrashMelody game) {
+    NameScreen(TrashMelody game) {
         this.game = game;
     }
 

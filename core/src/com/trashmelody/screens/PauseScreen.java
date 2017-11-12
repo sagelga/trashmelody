@@ -1,7 +1,5 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -39,7 +37,7 @@ public class PauseScreen extends LazyScreen {
     private Texture touchHomebtn;
 
     @Inject
-    public PauseScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    PauseScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);

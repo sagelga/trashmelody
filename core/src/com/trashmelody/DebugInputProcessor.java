@@ -3,16 +3,12 @@ package com.trashmelody;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.trashmelody.MusicManager;
-import com.badlogic.gdx.Screen;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.screens.*;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.control.Option;
-
-import static com.trashmelody.Assets.MUSIC_BG1;
 
 @Singleton
 public class DebugInputProcessor implements InputProcessor {

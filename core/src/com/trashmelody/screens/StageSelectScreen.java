@@ -36,7 +36,7 @@ public class StageSelectScreen extends LazyScreen {
     private String selected;
 
     @Inject
-    public StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider, MusicManager musicManager) {
+    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
         this.camera = camera;
         this.musicManager = musicManager;

@@ -2,7 +2,6 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.loaders.MusicLoader;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -30,7 +29,7 @@ public class MenuScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    public MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider, MusicManager musicManager) {
+    MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
         this.stageSelectScreen = screenProvider.getProvider(StageSelectScreen.class);
         this.resultScreen = screenProvider.getProvider(ResultScreen.class);

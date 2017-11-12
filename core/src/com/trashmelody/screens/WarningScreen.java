@@ -1,19 +1,20 @@
 package com.trashmelody.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
-
 import com.badlogic.gdx.utils.TimeUtils;
 import com.trashmelody.Assets;
 import com.trashmelody.Debugger;
 import com.trashmelody.TrashMelody;
-import static com.trashmelody.Utils.*;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+import static com.trashmelody.Utils.*;
+
+@Singleton
 public class WarningScreen extends ScreenAdapter {
     private TrashMelody game;
     private MenuScreen menuScreen;

@@ -18,7 +18,7 @@ import static com.trashmelody.Utils.*;
 import static com.trashmelody.Utils.*;
 import static io.vavr.API.println;
 
-public class Debugger extends ScreenAdapter{
+public class Debugger extends ScreenAdapter {
     private TrashMelody game;
 
     private static int line_margin = 20;

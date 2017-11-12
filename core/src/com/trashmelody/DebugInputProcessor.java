@@ -22,7 +22,6 @@ public class DebugInputProcessor implements InputProcessor {
         MAPPER = HashMap.of(
                 Input.Keys.M, MenuScreen.class,
                 Input.Keys.X, SandboxScreen.class,
-                Input.Keys.R, ResultScreen.class,
                 Input.Keys.N, NameScreen.class,
                 Input.Keys.L, LoadingScreen.class
         );
@@ -30,9 +29,9 @@ public class DebugInputProcessor implements InputProcessor {
                 Input.Keys.P, PauseScreen.class,
                 Input.Keys.G, GameScreen.class,
                 Input.Keys.S, StageSelectScreen.class,
-                Input.Keys.C, CollectionScreen.class
-
-        );
+                Input.Keys.C, CollectionScreen.class,
+                Input.Keys.R, ResultScreen.class
+            );
     }
 
     @Inject

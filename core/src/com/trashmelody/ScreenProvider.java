@@ -33,7 +33,11 @@ public class ScreenProvider {
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends Screen> Provider<T> get(Class<T> screenClass) {
+    public <T extends Screen> Provider<T> getProvider(Class<T> screenClass) {
         return (Provider<T>) MAPPER.get(screenClass).getOrElseThrow(() -> new RuntimeException("Screen not found"));
+    }
+
+    public <T extends Screen> T get(Class<T> screenClass) {
+        return getProvider(screenClass).get();
     }
 }

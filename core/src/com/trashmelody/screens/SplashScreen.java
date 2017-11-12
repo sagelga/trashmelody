@@ -25,17 +25,16 @@ import static com.trashmelody.Utils.*;
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
     private Assets assets;
-    private LoadingScreen loadingScreen;
     private Texture splashScreenLogo;
     public static Music splashScreenMusic;
-
     private long time_lapsed = TimeUtils.millis();
+    private Provider<LoadingScreen> loadingScreen;
 
     @Inject
     public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
-        this.loadingScreen = screenProvider.get(LoadingScreen.class).get();
+        this.loadingScreen = screenProvider.getProvider(LoadingScreen.class);
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
@@ -52,7 +51,7 @@ public class SplashScreen extends ScreenAdapter {
     public void render(float delta) { // Continuously run during active
         clearScreen();
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
-            game.setScreen(loadingScreen);
+            game.setScreen(jloadingScreen);
         }
 
         // Start loading assets

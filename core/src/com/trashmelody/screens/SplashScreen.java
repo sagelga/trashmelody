@@ -20,7 +20,7 @@ import static com.trashmelody.Utils.drawCenter;
 @Singleton
 public class SplashScreen extends ScreenAdapter {
     private TrashMelody game;
-    ScreenProvider screenProvider;
+    private LoadingScreen loadingScreen;
     private Assets assets;
     private Texture splashScreenLogo;
     public static Music splashScreenMusic;
@@ -30,7 +30,7 @@ public class SplashScreen extends ScreenAdapter {
     public SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
         this.game = game;
         this.assets = assets;
-        this.screenProvider = screenProvider;
+        this.loadingScreen = screenProvider.get(LoadingScreen.class);
 
         this.splashScreenLogo = assets.get(Assets.SPLASH_LOGO, Assets.TEXTURE);
         splashScreenMusic = assets.get(Assets.MUSIC_BG1,Assets.MUSIC);
@@ -48,7 +48,7 @@ public class SplashScreen extends ScreenAdapter {
         clearScreen();
 
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
-            game.setScreen(screenProvider.get(LoadingScreen.class));
+            game.setScreen(loadingScreen);
         }
 
         // Start loading assets

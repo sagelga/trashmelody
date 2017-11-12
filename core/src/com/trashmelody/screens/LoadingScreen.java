@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import static com.trashmelody.Assets.LOADING_LOGO;
+import static com.trashmelody.Assets.MUSIC;
 import static com.trashmelody.Utils.*;
 
 @Singleton

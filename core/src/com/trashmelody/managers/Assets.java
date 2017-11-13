@@ -50,7 +50,6 @@ public class Assets extends AssetManager {
 
     // Warning Screen Assets
     public static final String WARNING_TEXT             = "WarningScreen/warning-screen-text.png";
-    public static final String WARNING_LOGO             = "WarningScreen/warning-screen-logo.png";
 
     // Menu Screen Assets
     public static final String MENU_BTN_START           = "MenuScreen/btn-start.png";

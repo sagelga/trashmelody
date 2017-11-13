@@ -64,4 +64,18 @@ public class RenderingUtils {
         return Gdx.input.justTouched() || Gdx.input.isKeyPressed(Input.Keys.ENTER);
     }
 
+    public static float findRatio(float w, float h, float newSize, char wOrH) {
+        /* w = original width ratio
+         * h = original height ratio
+         * newSize = new width or height
+         * wOrH = find width or height? */
+        if (wOrH == 'w') {
+            float newWidth = newSize;
+            return ((float)w/h) * newWidth;
+        } else if (wOrH == 'h') {
+            float newHeight = newSize;
+            return ((float)h/w) * newHeight;
+        } else return 0;
+    }
+
 }

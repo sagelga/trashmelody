@@ -32,15 +32,7 @@ public class PauseScreen extends LazyScreen {
 
 
     // Defining building value
-    private Texture continuebtn;
-    private Texture settingbtn;
-    private Texture retrybtn;
-    private Texture homebtn;
-    private Texture selectBar;
-    private Texture touchContinuebtn;
-    private Texture touchSettingbtn;
-    private Texture touchRetrybtn;
-    private Texture touchHomebtn;
+    private Texture continuebtn, settingbtn, retrybtn, homebtn, selectBar, touchContinuebtn, touchSettingbtn, touchRetrybtn, touchHomebtn;
     private int count = 1;
 
     @Inject
@@ -98,7 +90,7 @@ public class PauseScreen extends LazyScreen {
         }
 
         if (count > 4) count = 1; else if (count<1) count = 4;
-        
+
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
         // Debug zone

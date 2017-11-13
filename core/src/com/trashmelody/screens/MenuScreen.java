@@ -31,6 +31,8 @@ public class MenuScreen extends LazyScreen {
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
     private Stage stage = new Stage();
 
+    private int menuCount = 1;
+
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -60,12 +62,27 @@ public class MenuScreen extends LazyScreen {
         camera.update();
 
         game.batch.begin();
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) menuCount++;
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) menuCount--;
+
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
-        drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
+
+        if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
+        else drawCenterX(game.batch, btnCollection, 320F, 56F, 400F);
+
+        if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
+        else drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
+
+        if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnCollection, 320F, 56F, 200F);
+
+        if (menuCount != 4) drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
+        else drawCenterX(game.batch, btnCollection, 320F, 56F, 100F);
+
+        if (menuCount > 4) menuCount = 1; else if (menuCount < 1) menuCount = 4;
+
         game.batch.draw(borderLeft, 0, 0, findRatio(168, 900, vh, 'w'), vh);
         game.batch.draw(borderRight, vw - findRatio(168, 900, vh, 'w'), 0, findRatio(168, 900, vh, 'w'), vh);
 

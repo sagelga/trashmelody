@@ -25,7 +25,7 @@ import java.io.FileNotFoundException;
 public class DesktopLauncher {
     private static int screen_width = 1920;
     private static int screen_height = 1080;
-    private static double screen_scale = 0.5;
+    private static double screen_scale = 1;
 
 //    DesktopLauncher(){
 //		(new JFrame()).setIconImage(new ImageIcon("GameLogo/game-logo-MacOS.png").getImage());
@@ -34,16 +34,18 @@ public class DesktopLauncher {
 
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.fullscreen = true;
+		config.fullscreen = false;
 		config.width  = (int) (screen_width  * screen_scale);
 		config.height = (int) (screen_height * screen_scale);
-		config.useHDPI = false;
+		config.useHDPI = true;
 		config.addIcon("GameLogo/game-logo-MacOS.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo-Linux.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo-Windows.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo.jpeg", Files.FileType.Internal);
 //		DesktopLauncher s = new DesktopLauncher();
 //		s.setVisible(true);
+		System.setProperty("org.lwjgl.opengl.Display.enableOSXFullscreenModeAPI", "true");
+
 		new LwjglApplication(new TrashMelody(), config);
 	}
 }

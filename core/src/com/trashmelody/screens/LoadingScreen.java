@@ -54,7 +54,7 @@ public class LoadingScreen extends LazyScreen {
         clearScreen(253,243,255,1);
         elapsed += delta;
 
-        if (assets.update() && false) {
+        if (assets.update()) {
             if (nextScreen != null) {
                 nextScreen.afterLoad(assets);
                 game.setScreen(nextScreen);
@@ -104,6 +104,7 @@ public class LoadingScreen extends LazyScreen {
         Container container = new Container<>(loadingAnimation);
         container.setFillParent(true);
         container.center();
+        container.maxSize(259, 221);
 
         Stage stage = new Stage(new ScreenViewport(camera));
         Gdx.input.setInputProcessor(stage);

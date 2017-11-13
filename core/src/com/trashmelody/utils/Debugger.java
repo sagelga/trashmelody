@@ -59,7 +59,7 @@ public class Debugger extends ScreenAdapter {
             case Desktop: return "Desktop";
             case WebGL: return "WebGL";
         }
-        return "IDK";
+        return "Unidentified by Java";
     }
 
     public static void debugShow(SpriteBatch batch, BitmapFont font, String text, int line){

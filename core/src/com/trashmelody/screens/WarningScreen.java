@@ -18,8 +18,7 @@ public class WarningScreen extends LazyScreen {
     private ScreenProvider screens;
     private Texture warningScreenLogo;
     private Texture warningScreenText;
-
-    private long time_lapsed = TimeUtils.millis();
+    private long timeLapsed;
 
     @Inject
     WarningScreen(TrashMelody game, ScreenProvider screens) {
@@ -28,9 +27,15 @@ public class WarningScreen extends LazyScreen {
     }
 
     @Override
+    public void show() {
+        timeLapsed = TimeUtils.millis();
+    }
+
+    @Override
     public void render(float delta) {
-        clearScreen(253,243,255,1);
-        if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
+        clearScreen(253, 243, 255, 1);
+
+        if (TimeUtils.timeSinceMillis(timeLapsed) > 5000) {
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
@@ -40,7 +45,7 @@ public class WarningScreen extends LazyScreen {
         drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(time_lapsed));
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
         // Debug zone
 
         game.batch.end();

@@ -88,7 +88,7 @@ public class MenuScreen extends LazyScreen {
 
     @Override
     public void hide() {
-        SplashScreen.splashScreenMusic.stop();
+        musicManager.stopMusic(MUSIC_BG1);
     }
 
     @Override

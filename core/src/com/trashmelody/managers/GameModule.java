@@ -21,20 +21,6 @@ import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 public class GameModule implements Module {
     private TrashMelody game;
-    public List<Class<? extends Screen>> screenClasses = List.of(
-            SplashScreen.class,
-            LoadingScreen.class,
-            WarningScreen.class,
-            NameScreen.class,
-            MenuScreen.class,
-            SettingsScreen.class,
-            StageSelectScreen.class,
-            CollectionScreen.class,
-            GameScreen.class,
-            SandboxScreen.class,
-            ResultScreen.class,
-            PauseScreen.class
-    );
 
     public GameModule(TrashMelody trashMelody) {
         this.game = trashMelody;
@@ -51,8 +37,7 @@ public class GameModule implements Module {
 //        ScreenProvider.screenClasses.forEach(screen -> binder.bind(screen).in(Singleton.class));
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public Camera provideCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());

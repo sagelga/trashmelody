@@ -1,13 +1,13 @@
 digraph injector {
 graph [rankdir=TB];
-x2 [margin="0.02,0", shape=box, style=dashed, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#ffffff"><font color="#000000">TrashMelody<br align="left"/></font></td></tr></table>>]
-x3 [margin="0.02,0", shape=box, style=solid, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#aaaaaa"><font color="#ffffff" point-size="10">GameModule.java:31<br align="left"/></font><font color="#ffffff">TrashMelody<br align="left"/></font></td></tr></table>>]
-x4 [margin="0.02,0", shape=box, style=dashed, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#ffffff"><font color="#000000">Camera<br align="left"/></font></td></tr></table>>]
+x4 [margin="0.02,0", shape=box, style=dashed, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#ffffff"><font color="#000000">TrashMelody<br align="left"/></font></td></tr></table>>]
+x3 [margin="0.02,0", shape=box, style=solid, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#aaaaaa"><font color="#ffffff" point-size="10">GameModule.java:42<br align="left"/></font><font color="#ffffff">#provideCamera()<br align="left"/></font></td></tr></table>>]
 x1 [margin="0.02,0", shape=box, style=solid, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#aaaaaa"><font color="#ffffff" point-size="10">GameModule.java:50<br align="left"/></font><font color="#ffffff">#provideViewport(Camera)<br align="left"/></font></td></tr><tr><td align="left" port="m_10db9814">#provideViewport(...)</td></tr></table>>]
-x5 [margin="0.02,0", shape=box, style=solid, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#aaaaaa"><font color="#ffffff" point-size="10">GameModule.java:42<br align="left"/></font><font color="#ffffff">#provideCamera()<br align="left"/></font></td></tr></table>>]
+x5 [margin="0.02,0", shape=box, style=solid, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#aaaaaa"><font color="#ffffff" point-size="10">GameModule.java:31<br align="left"/></font><font color="#ffffff">TrashMelody<br align="left"/></font></td></tr></table>>]
+x2 [margin="0.02,0", shape=box, style=dashed, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#ffffff"><font color="#000000">Camera<br align="left"/></font></td></tr></table>>]
 x0 [margin="0.02,0", shape=box, style=dashed, label=<<table cellspacing="0" cellpadding="5" cellborder="0" border="0"><tr><td align="left" port="header" bgcolor="#ffffff"><font color="#000000">Viewport<br align="left"/></font></td></tr></table>>]
 x0 -> x1 [style=dashed, arrowhead=onormalonormal, arrowtail=none]
-x1:m_10db9814:e -> x4 [style=solid, arrowhead=normal, arrowtail=none]
-x2 -> x3 [style=dashed, arrowhead=onormal, arrowtail=none]
-x4 -> x5 [style=dashed, arrowhead=onormalonormal, arrowtail=none]
+x1:m_10db9814:e -> x2 [style=solid, arrowhead=normal, arrowtail=none]
+x2 -> x3 [style=dashed, arrowhead=onormalonormal, arrowtail=none]
+x4 -> x5 [style=dashed, arrowhead=onormal, arrowtail=none]
 }

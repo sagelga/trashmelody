@@ -37,7 +37,7 @@ public class TrashMelody extends Game {
 		injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
 		this.assets = injector.getInstance(Assets.class);
 		this.screens = injector.getInstance(ScreenProvider.class);
-		(new Grapher()).graph("object-graph", injector);
+		(new Grapher()).graph("generated/graph", injector);
 
 		screens.get(SplashScreen.class).load(assets);
 		screens.get(LoadingScreen.class).load(assets);

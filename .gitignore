@@ -1,5 +1,7 @@
 ## Java
 
+core/assets/generated/
+
 *.class
 *.war
 *.ear

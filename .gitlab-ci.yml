@@ -86,7 +86,7 @@ code-count:
     - git ls-files > assets_list.txt
     #
     # Keep the development graph line
-    - git log --decorate --oneline --graph > logs.txt
+    - git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
     #
     # Check directory again
     - mkdir trackers

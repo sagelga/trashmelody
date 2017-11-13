@@ -66,6 +66,17 @@ public class MenuScreen extends LazyScreen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) menuCount++;
         else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) menuCount--;
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            switch (menuCount) {
+                case 1:
+                    game.setLazyScreen(stageSelectScreen);
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+            }
+        }
+
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
 
@@ -86,11 +97,6 @@ public class MenuScreen extends LazyScreen {
         game.batch.draw(borderLeft, 0, 0, findRatio(168, 900, vh, 'w'), vh);
         game.batch.draw(borderRight, vw - findRatio(168, 900, vh, 'w'), 0, findRatio(168, 900, vh, 'w'), vh);
 
-        // Click 'ENTER' equivalent to clicking play (for now)
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setLazyScreen(stageSelectScreen);
-        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
             game.setLazyScreen(resultScreen);
         }

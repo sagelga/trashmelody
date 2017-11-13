@@ -3,7 +3,6 @@ package com.trashmelody.utils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -12,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 
-import static com.badlogic.gdx.graphics.g2d.Animation.*;
+import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 
 /**
  * Animated scene2d actor. Similar to {@link Image} but uses {@link Animation} instead of a {@link Drawable}.

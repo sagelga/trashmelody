@@ -9,8 +9,7 @@ import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
 import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenterX;
+import static com.trashmelody.Utils.*;
 
 @Singleton
 public class NameScreen extends LazyScreen {

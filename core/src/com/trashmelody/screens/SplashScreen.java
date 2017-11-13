@@ -9,8 +9,7 @@ import com.google.inject.Singleton;
 import com.trashmelody.*;
 
 import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.clearScreen;
-import static com.trashmelody.Utils.drawCenter;
+import static com.trashmelody.Utils.*;
 
 @Singleton
 public class SplashScreen extends LazyScreen {

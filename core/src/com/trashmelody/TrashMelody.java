@@ -27,7 +27,7 @@ public class TrashMelody extends Game {
 
 		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
 
-		injector = Guice.createInjector(Stage.DEVELOPMENT, new GameModule(this));
+		injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
 		this.assets = injector.getInstance(Assets.class);
 		this.screenProvider = injector.getInstance(ScreenProvider.class);
 

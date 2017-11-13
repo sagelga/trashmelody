@@ -62,6 +62,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "com.google.inject:guice:$guiceVersion"
         compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
+        compile "com.google.inject.extensions:guice-grapher:$guiceVersion"
         compile "io.vavr:vavr:$vavrVersion"
         compile "org.testng:testng:$testngVersion"
     }

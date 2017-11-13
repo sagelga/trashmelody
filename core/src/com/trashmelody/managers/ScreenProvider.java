@@ -9,6 +9,8 @@ import com.trashmelody.screens.*;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
 
+import java.util.Set;
+
 @Singleton
 public class ScreenProvider {
     public static List<Class<? extends Screen>> screenClasses;
@@ -35,6 +37,7 @@ public class ScreenProvider {
     ScreenProvider(TrashMelody game) {
         ScreenProvider.screenClasses.forEach(System.out::println);
         MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> game.injector.getProvider(screen));
+//        screens.forEach(screen -> MAPPER = MAPPER.put(screen.getClass(), screen));
     }
 
     @SuppressWarnings("unchecked")

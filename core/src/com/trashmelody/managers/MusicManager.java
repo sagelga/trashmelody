@@ -1,11 +1,11 @@
-package com.trashmelody;
+package com.trashmelody.managers;
 
 import com.badlogic.gdx.audio.Music;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import static com.trashmelody.Assets.MUSIC;
-import static com.trashmelody.Assets.MUSIC_BG1;
+import static com.trashmelody.managers.Assets.MUSIC;
+import static com.trashmelody.managers.Assets.MUSIC_BG1;
 
 @Singleton
 public class MusicManager {

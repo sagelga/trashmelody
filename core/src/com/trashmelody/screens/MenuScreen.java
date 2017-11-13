@@ -6,12 +6,15 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.MusicManager;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.Debugger;
 
-import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class MenuScreen extends LazyScreen {
@@ -29,10 +32,10 @@ public class MenuScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider, MusicManager musicManager) {
+    MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screens, MusicManager musicManager) {
         this.game = game;
-        this.stageSelectScreen = screenProvider.get(StageSelectScreen.class);
-        this.resultScreen = screenProvider.get(ResultScreen.class);
+        this.stageSelectScreen = screens.get(StageSelectScreen.class);
+        this.resultScreen = screens.get(ResultScreen.class);
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;

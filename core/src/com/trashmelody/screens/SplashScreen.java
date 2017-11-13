@@ -4,32 +4,31 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.MusicManager;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.Debugger;
 
-import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class SplashScreen extends LazyScreen {
     private TrashMelody game;
-    private ScreenProvider screenProvider;
-    private Provider<LoadingScreen> loadingScreen;
+    private ScreenProvider screens;
     private MusicManager musicManager;
-    private Assets assets;
     private Texture splashScreenLogo;
     public static Music splashScreenMusic;
 
     private long time_lapsed;
 
     @Inject
-    SplashScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider, MusicManager musicManager) {
+    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager) {
         this.game = game;
-        this.assets = assets;
-        this.screenProvider = screenProvider;
+        this.screens = screens;
         this.musicManager = musicManager;
-        this.loadingScreen = screenProvider.getProvider(LoadingScreen.class);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SplashScreen extends LazyScreen {
         clearScreen();
 
         if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
-            game.setScreen(loadingScreen.get());
+            game.setScreen(screens.get(LoadingScreen.class));
         }
 
         // Start loading assets
@@ -68,9 +67,9 @@ public class SplashScreen extends LazyScreen {
     public void afterLoad(Assets assets) {
         splashScreenLogo = assets.get(SPLASH_LOGO, TEXTURE);
         splashScreenMusic = assets.get(MUSIC_BG1, MUSIC);
-        screenProvider.get(WarningScreen.class).load(assets);
-        screenProvider.get(MenuScreen.class).load(assets);
-        screenProvider.get(SandboxScreen.class).load(assets);
-        screenProvider.get(NameScreen.class).load(assets);
+        screens.get(WarningScreen.class).load(assets);
+        screens.get(MenuScreen.class).load(assets);
+        screens.get(SandboxScreen.class).load(assets);
+        screens.get(NameScreen.class).load(assets);
     }
 }

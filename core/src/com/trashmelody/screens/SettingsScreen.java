@@ -6,12 +6,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.Assets;
-import com.trashmelody.LazyScreen;
+import com.trashmelody.managers.Assets;
 import com.trashmelody.TrashMelody;
 
-import static com.trashmelody.Constant.SCALE;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.constants.Global.SCALE;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class SettingsScreen extends LazyScreen {

@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.Utils;
+import com.trashmelody.utils.RenderingUtils;
 
 import static io.vavr.API.println;
 
@@ -24,17 +23,17 @@ public class SandboxScreen extends LazyScreen {
         this.camera = camera;
         this.game = game;
         badLogicTexture = new Texture(Gdx.files.internal("badlogic.jpg"));
-        badLogicLogo = new Sprite(badLogicTexture, 0, 0, Utils.getViewportWidth(), Utils.getViewportHeight());
+        badLogicLogo = new Sprite(badLogicTexture, 0, 0, RenderingUtils.getViewportWidth(), RenderingUtils.getViewportHeight());
     }
 
     @Override
     public void render(float delta) {
-        Utils.clearScreen();
+        RenderingUtils.clearScreen();
 
         camera.update();
 
         game.batch.begin();
-        game.batch.draw(badLogicTexture, 0, 0, Utils.getViewportWidth(), Utils.getViewportWidth());
+        game.batch.draw(badLogicTexture, 0, 0, RenderingUtils.getViewportWidth(), RenderingUtils.getViewportWidth());
         badLogicLogo.draw(game.batch);
         if (Gdx.input.justTouched()) {
             println(Gdx.input.getX());

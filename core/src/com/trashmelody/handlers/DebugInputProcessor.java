@@ -1,10 +1,14 @@
-package com.trashmelody;
+package com.trashmelody.handlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.managers.MusicManager;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.screens.LazyScreen;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.screens.*;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
@@ -12,7 +16,7 @@ import io.vavr.control.Option;
 
 @Singleton
 public class DebugInputProcessor implements InputProcessor {
-    private ScreenProvider screenProvider;
+    private ScreenProvider screens;
     private MusicManager musicManager;
 
     private TrashMelody game;
@@ -32,15 +36,15 @@ public class DebugInputProcessor implements InputProcessor {
     }
 
     @Inject
-    DebugInputProcessor(TrashMelody game, ScreenProvider screenProvider, MusicManager musicManager) {
-        this.screenProvider = screenProvider;
+    DebugInputProcessor(TrashMelody game, ScreenProvider screens, MusicManager musicManager) {
+        this.screens = screens;
         this.musicManager = musicManager;
         this.game = game;
     }
 
     @Override
     public boolean keyDown(int keycode) {
-        Option<LazyScreen> maybeScreen = MAPPER.get(keycode).map(screenProvider::get);
+        Option<LazyScreen> maybeScreen = MAPPER.get(keycode).map(screens::get);
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();

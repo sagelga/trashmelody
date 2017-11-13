@@ -1,12 +1,13 @@
-package com.trashmelody;
+package com.trashmelody.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.trashmelody.TrashMelody;
 
-import static com.trashmelody.Utils.getViewportHeight;
-import static com.trashmelody.Utils.getViewportWidth;
+import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
+import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 public class Debugger extends ScreenAdapter {
 //    private  MusicManager musicManager;

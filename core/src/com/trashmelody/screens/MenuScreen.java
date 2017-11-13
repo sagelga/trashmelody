@@ -76,7 +76,6 @@ public class MenuScreen extends LazyScreen {
         // Debug zone
 
         game.batch.end();
-        System.out.println("VH: " + vh + " | VW: " + vw);
     }
 
     @Override

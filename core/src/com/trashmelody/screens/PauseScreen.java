@@ -59,63 +59,46 @@ public class PauseScreen extends LazyScreen {
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
+
         //Components Draw
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-            count++;
-        }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            count--;
-        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) count++;
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) count--;
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            switch (count){
-                case (1):
-                    game.setLazyScreen(gameScreen);
-                    break;
-                case(2):
-                    game.setLazyScreen(gameScreen);
-                    break;
-                case(3):
-                    game.setLazyScreen(resultScreen);
-                    break;
-                case(4):
-                    game.setLazyScreen(menuScreen);
-                    break;
+            switch (count) {
+                case 1: game.setLazyScreen(gameScreen); break;
+                case 2: game.setLazyScreen(gameScreen); break;
+                case 3: game.setLazyScreen(resultScreen); break;
+                case 4: game.setLazyScreen(menuScreen); break;
             }
         }
-        if (count == 1){
+
+        if (count != 1) game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+        else {
             game.batch.draw(touchContinuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
-            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
-            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
-            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
             game.batch.draw(selectBar, vw / 3.7F, vh / 1.48F, vw / 2.2F, vh / 10);
         }
-        if (count == 2){
-            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+
+        if (count != 2) game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+        else {
             game.batch.draw(touchRetrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
-            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
-            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
             game.batch.draw(selectBar,vw/3.7F,vh/1.98F,vw/2.2F,vh/10);
         }
-        if (count == 3){
-            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
-            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+
+        if (count != 3) game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+        else {
             game.batch.draw(touchSettingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
-            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
             game.batch.draw(selectBar,vw/3.7F,vh/2.98F,vw/2.2F,vh/10);
         }
-        if (count == 4){
-            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
-            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
-            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+
+        if (count != 4) game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
+        else {
             game.batch.draw(touchHomebtn, vw / 3, vh / 6, vw / 3, vh / 10);
             game.batch.draw(selectBar,vw/3.7F,vh/5.98F,vw/2.2F,vh/10);
         }
-        if(count > 4){
-            count = 1;
-        }
-        if(count<1){
-            count = 4;
-        }
+
+        if (count > 4) count = 1; else if (count<1) count = 4;
+        
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
         // Debug zone

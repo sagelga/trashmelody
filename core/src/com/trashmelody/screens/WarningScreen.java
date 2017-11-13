@@ -21,7 +21,6 @@ import static com.trashmelody.utils.RenderingUtils.*;
 public class WarningScreen extends LazyScreen {
     private TrashMelody game;
     private ScreenProvider screens;
-    private Texture warningScreenLogo;
     private Texture warningScreenText;
     private long timeLapsed;
     private Camera camera;
@@ -52,8 +51,7 @@ public class WarningScreen extends LazyScreen {
 
         // Start loading assets
         game.batch.begin();
-        game.batch.draw(warningScreenLogo, vw / 2.3F, vh / 1.9F, vw / 7.6F, vh / 4);
-        game.batch.draw(warningScreenText, vw / 5.5F, vh / 5, vw / 1.5F, vh / 3.5F);
+        drawCenter(game.batch, warningScreenText, 1000, findRatio(1097, 504, 1000, 'h'));
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
@@ -64,13 +62,11 @@ public class WarningScreen extends LazyScreen {
 
     @Override
     protected void loadAssets(Assets assets) {
-        assets.load(WARNING_LOGO, TEXTURE);
         assets.load(WARNING_TEXT, TEXTURE);
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.warningScreenLogo = assets.get(WARNING_LOGO, TEXTURE);
         this.warningScreenText = assets.get(WARNING_TEXT, TEXTURE);
     }
 }

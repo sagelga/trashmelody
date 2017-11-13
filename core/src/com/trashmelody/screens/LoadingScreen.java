@@ -15,12 +15,12 @@ import com.trashmelody.TrashMelody;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.AnimatedImage;
-import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.LOADING_LOGO;
 import static com.trashmelody.utils.RenderingUtils.clearScreen;
-import static com.trashmelody.utils.RenderingUtils.drawCenter;
+
+;
 
 @Singleton
 public class LoadingScreen extends LazyScreen {
@@ -104,6 +104,7 @@ public class LoadingScreen extends LazyScreen {
         Container container = new Container<>(loadingAnimation);
         container.setFillParent(true);
         container.center();
+        container.maxSize(259, 221);
 
         Stage stage = new Stage(new ScreenViewport(camera));
         Gdx.input.setInputProcessor(stage);

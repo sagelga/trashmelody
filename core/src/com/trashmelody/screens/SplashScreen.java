@@ -1,20 +1,12 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
@@ -83,20 +75,19 @@ public class SplashScreen extends LazyScreen {
         screens.get(SandboxScreen.class).load(assets);
         screens.get(NameScreen.class).load(assets);
 
-        this.stage = prepare();
+        this.stage = getStage();
     }
 
-    private Stage prepare() {
-        Stage stage = new Stage(new ScreenViewport(camera));
-        Gdx.input.setInputProcessor(stage);
-
-        Drawable drawable = new TextureRegionDrawable(new TextureRegion(splashScreenLogo));
-        Image logo = new Image(drawable);
+    private Stage getStage() {
+        Image logo = new Image(new TextureRegion(splashScreenLogo));
 
         Container<Image> container = new Container<>(logo);
         container.setFillParent(true);
         container.center();
         container.maxSize(500, 286);
+
+        Stage stage = new Stage(new ScreenViewport(camera));
+        Gdx.input.setInputProcessor(stage);
         stage.addActor(container);
 
         return stage;

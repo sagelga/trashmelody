@@ -1,5 +1,7 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
@@ -20,9 +23,13 @@ public class PauseScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
+    private GameScreen gameScreen;
+    private MenuScreen menuScreen;
+    private ResultScreen resultScreen;
     private Stage stage;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
+
 
     // Defining building value
     private Texture continuebtn;
@@ -34,12 +41,16 @@ public class PauseScreen extends LazyScreen {
     private Texture touchSettingbtn;
     private Texture touchRetrybtn;
     private Texture touchHomebtn;
+    private int count = 1;
 
     @Inject
-    PauseScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    PauseScreen(TrashMelody game, Camera camera, Viewport viewport,ScreenProvider screens) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.menuScreen = screens.get(MenuScreen.class);
+        this.gameScreen = screens.get(GameScreen.class);
+        this.resultScreen = screens.get(ResultScreen.class);
     }
 
     @Override
@@ -49,9 +60,62 @@ public class PauseScreen extends LazyScreen {
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         //Components Draw
-        game.batch.draw(continuebtn,0,vh/10,vw,vh/1.15F);
-
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            count++;
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            count--;
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            switch (count){
+                case (1):
+                    game.setLazyScreen(gameScreen);
+                    break;
+                case(2):
+                    game.setLazyScreen(gameScreen);
+                    break;
+                case(3):
+                    game.setLazyScreen(resultScreen);
+                    break;
+                case(4):
+                    game.setLazyScreen(menuScreen);
+                    break;
+            }
+        }
+        if (count == 1){
+            game.batch.draw(touchContinuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
+            game.batch.draw(selectBar, vw / 3.7F, vh / 1.48F, vw / 2.2F, vh / 10);
+        }
+        if (count == 2){
+            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+            game.batch.draw(touchRetrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
+            game.batch.draw(selectBar,vw/3.7F,vh/1.98F,vw/2.2F,vh/10);
+        }
+        if (count == 3){
+            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+            game.batch.draw(touchSettingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+            game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
+            game.batch.draw(selectBar,vw/3.7F,vh/2.98F,vw/2.2F,vh/10);
+        }
+        if (count == 4){
+            game.batch.draw(continuebtn, vw / 3, vh / 1.5F, vw / 3, vh / 10);
+            game.batch.draw(retrybtn, vw / 3, vh / 2, vw / 3, vh / 10);
+            game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+            game.batch.draw(touchHomebtn, vw / 3, vh / 6, vw / 3, vh / 10);
+            game.batch.draw(selectBar,vw/3.7F,vh/5.98F,vw/2.2F,vh/10);
+        }
+        if(count > 4){
+            count = 1;
+        }
+        if(count<1){
+            count = 4;
+        }
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
         // Debug zone
@@ -73,10 +137,10 @@ public class PauseScreen extends LazyScreen {
         assets.load(PAUSE_RETRY_BTN1, TEXTURE);
         assets.load(PAUSE_HOME_BTN1, TEXTURE);
         assets.load(PAUSE_SELECTOR_ARROW, TEXTURE);
-        assets.load(PAUSE_CONTINUE_BTN1, TEXTURE);
-        assets.load(PAUSE_SETTING_BTN1, TEXTURE);
-        assets.load(PAUSE_RETRY_BTN1, TEXTURE);
-        assets.load(PAUSE_HOME_BTN1, TEXTURE);
+        assets.load(PAUSE_CONTINUE_BTN2, TEXTURE);
+        assets.load(PAUSE_SETTING_BTN2, TEXTURE);
+        assets.load(PAUSE_RETRY_BTN2, TEXTURE);
+        assets.load(PAUSE_HOME_BTN2, TEXTURE);
     }
 
     @Override
@@ -86,9 +150,9 @@ public class PauseScreen extends LazyScreen {
         this.retrybtn = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
         this.homebtn = assets.get(PAUSE_HOME_BTN1, TEXTURE);
         this.selectBar = assets.get(PAUSE_SELECTOR_ARROW, TEXTURE);
-        this.touchContinuebtn = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
-        this.touchSettingbtn = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
-        this.touchRetrybtn = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
-        this.touchHomebtn = assets.get(PAUSE_HOME_BTN1, TEXTURE);
+        this.touchContinuebtn = assets.get(PAUSE_CONTINUE_BTN2, TEXTURE);
+        this.touchSettingbtn = assets.get(PAUSE_SETTING_BTN2, TEXTURE);
+        this.touchRetrybtn = assets.get(PAUSE_RETRY_BTN2, TEXTURE);
+        this.touchHomebtn = assets.get(PAUSE_HOME_BTN2, TEXTURE);
     }
 }

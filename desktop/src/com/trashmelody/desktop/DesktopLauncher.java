@@ -35,6 +35,7 @@ public class DesktopLauncher {
 		config.addIcon("GameLogo/game-logo-Linux.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo-Windows.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo.jpeg", Files.FileType.Internal);
+		System.setProperty("org.lwjgl.opengl.Display.enableOSXFullscreenModeAPI", "true");
 
 		new LwjglApplication(new TrashMelody(), config);
 	}

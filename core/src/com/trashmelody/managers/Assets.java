@@ -3,20 +3,13 @@ package com.trashmelody.managers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.google.inject.*;
-import com.trashmelody.TrashMelody;
-
-import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
-import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @Singleton
 public class Assets extends AssetManager {

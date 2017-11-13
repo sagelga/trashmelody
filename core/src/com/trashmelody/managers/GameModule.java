@@ -43,9 +43,11 @@ public class GameModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(TrashMelody.class).toInstance(game);
-//        Multibinder<Screen> screenBinder = Multibinder.newSetBinder(binder, Screen.class);
-//        screenBinder.addBinding().to(SplashScreen.class);
-//        screenBinder.addBinding().to(GameScreen.class);
+//        binder.bind(Assets.class).in(Singleton.class);
+//        binder.bind(MusicManager.class).in(Singleton.class);
+//        binder.bind(ScreenProvider.class).in(Singleton.class);
+//        binder.bind(DebugInputProcessor.class).in(Singleton.class);
+
 //        ScreenProvider.screenClasses.forEach(screen -> binder.bind(screen).in(Singleton.class));
     }
 

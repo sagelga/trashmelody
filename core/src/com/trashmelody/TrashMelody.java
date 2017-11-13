@@ -74,7 +74,7 @@ public class TrashMelody extends Game {
 
 	private Injector getInjector() {
         Injector injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
-        (new Grapher()).graph("graph", injector);
+        (new Grapher()).graph("dependencies-graph", injector);
 
         return injector;
     }

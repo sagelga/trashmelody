@@ -13,6 +13,8 @@ import com.trashmelody.managers.MusicManager;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 
+import java.util.ArrayList;
+
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -36,7 +38,8 @@ public class StageSelectScreen extends LazyScreen {
     private Texture selectArrowLeft;    private Texture selectArrowRight;
     private Texture overlayBackground;
 
-    private String selected;
+    private int currentStageNumber = 0;
+    private int modes;
 
     @Inject
     StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screens, MusicManager musicManager) {
@@ -75,25 +78,24 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(selectArrowLeft,getViewportWidth() - (2702/6),getViewportHeight()/10,2702/8,546/8);
         game.batch.draw(selectArrowRight,getViewportWidth() - (2702/4),getViewportHeight()/10,2702/8,546/8);
 
-        selected = "Hospital"; // For debug purpose only
         // Show the text of the selected item
-        switch (selected){
-            case ("Cafe"):
-                game.batch.draw(stageCafeText, 20,getViewportHeight()-608/6,2057/5,487/6);
+        switch (currentStageNumber){
+            case(0):
+                game.batch.draw(stageCafeText, 20,getViewportHeight()-608/6,1850/5,487/6);
                 break;
-            case("Cinema"):
+            case(1):
                 game.batch.draw(stageCinemaText,20,getViewportHeight()-608/6,2601/6,487/6);
                 break;
-            case("Home"):
+            case(2):
                 game.batch.draw(stageHomeText,20,getViewportHeight()-608/6,2826/6,487/6);
                 break;
-            case("Hospital"):
+            case(3):
                 game.batch.draw(stageHospitalText,20,getViewportHeight()-608/6,3428/6,487/6);
                 break;
-            case("School"):
+            case(4):
                 game.batch.draw(stageSchoolText,20,getViewportHeight()-608/6,2702/6,487/6);
                 break;
-            case("Office"):
+            case(5):
                 game.batch.draw(stageOfficeText,20,getViewportHeight()-608/6,2507/6,487/6);
         }
         // Show the stage building
@@ -110,6 +112,14 @@ public class StageSelectScreen extends LazyScreen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
             game.setLazyScreen(screens.get(GameScreen.class));
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)){
+            currentStageNumber = (currentStageNumber + 1) % 6;
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)){
+            currentStageNumber = (currentStageNumber - 1) % 6;
+            if (currentStageNumber < 0){ currentStageNumber = 5; }
         }
 
         // Debug zone

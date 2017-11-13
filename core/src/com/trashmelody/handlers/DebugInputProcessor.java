@@ -45,6 +45,7 @@ public class DebugInputProcessor implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
         Option<LazyScreen> maybeScreen = MAPPER.get(keycode).map(screens::get);
+        System.out.println("Key Logger " + keycode);
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();

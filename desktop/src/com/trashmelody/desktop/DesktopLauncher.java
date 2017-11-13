@@ -27,10 +27,10 @@ public class DesktopLauncher {
 
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.fullscreen = true;
+		config.fullscreen = false;
 		config.width  = (int) (screen_width  * screen_scale);
 		config.height = (int) (screen_height * screen_scale);
-		config.useHDPI = false;
+		config.useHDPI = true;
 		config.addIcon("GameLogo/game-logo-MacOS.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo-Linux.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/game-logo-Windows.png", Files.FileType.Internal);

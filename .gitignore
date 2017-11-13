@@ -2,6 +2,7 @@
 
 core/assets/generated/
 
+*.dot
 *.class
 *.war
 *.ear

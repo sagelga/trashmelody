@@ -16,8 +16,8 @@ import static com.trashmelody.Utils.*;
 @Singleton
 public class MenuScreen extends LazyScreen {
     private TrashMelody game;
-    private Provider<StageSelectScreen> stageSelectScreen;
-    private Provider<ResultScreen> resultScreen;
+    private StageSelectScreen stageSelectScreen;
+    private ResultScreen resultScreen;
     private MusicManager musicManager;
 
     private Camera camera;
@@ -31,8 +31,8 @@ public class MenuScreen extends LazyScreen {
     @Inject
     MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screenProvider, MusicManager musicManager) {
         this.game = game;
-        this.stageSelectScreen = screenProvider.getProvider(StageSelectScreen.class);
-        this.resultScreen = screenProvider.getProvider(ResultScreen.class);
+        this.stageSelectScreen = screenProvider.get(StageSelectScreen.class);
+        this.resultScreen = screenProvider.get(ResultScreen.class);
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
@@ -63,10 +63,10 @@ public class MenuScreen extends LazyScreen {
         // Click 'ENTER' equivalent to clicking play (for now)
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setLazyScreen(stageSelectScreen.get());
+            game.setLazyScreen(stageSelectScreen);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
-            game.setLazyScreen(resultScreen.get());
+            game.setLazyScreen(resultScreen);
         }
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");

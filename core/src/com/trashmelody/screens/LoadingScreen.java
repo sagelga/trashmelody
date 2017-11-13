@@ -11,7 +11,7 @@ import com.google.inject.Singleton;
 import com.trashmelody.*;
 import com.trashmelody.utils.GifDecoder;
 
-import static com.trashmelody.Assets.LOADING_LOGO;
+import static com.trashmelody.Assets.*;
 import static com.trashmelody.Utils.*;
 
 @Singleton

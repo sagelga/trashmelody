@@ -13,13 +13,28 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Assets extends AssetManager {
-
     @Inject
     Assets() {
         super();
 
         load(MUSIC_BG1, Music.class);
         finishLoading();
+    }
+
+    private BitmapFont getFont(String name, Integer size, Color color) {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(name));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size;
+        parameter.color = color;
+        parameter.minFilter = Texture.TextureFilter.Linear;
+        parameter.magFilter = Texture.TextureFilter.Linear;
+        parameter.genMipMaps = true;
+
+        return generator.generateFont(parameter);
+    }
+
+    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
+        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 
     public static Class<Texture> TEXTURE = Texture.class;
@@ -209,20 +224,4 @@ public class Assets extends AssetManager {
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
-
-    private BitmapFont getFont(String name, Integer size, Color color) {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(name));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = size;
-        parameter.color = color;
-        parameter.minFilter = Texture.TextureFilter.Linear;
-        parameter.magFilter = Texture.TextureFilter.Linear;
-        parameter.genMipMaps = true;
-
-        return generator.generateFont(parameter);
-    }
-
-    public BitmapFont getSuperSpaceFont(Integer size, Color color) {
-        return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
-    }
 }

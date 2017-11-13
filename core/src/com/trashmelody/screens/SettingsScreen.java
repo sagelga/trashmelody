@@ -11,7 +11,7 @@ import com.trashmelody.LazyScreen;
 import com.trashmelody.TrashMelody;
 
 import static com.trashmelody.Constant.SCALE;
-import static com.trashmelody.Utils.clearScreen;
+import static com.trashmelody.Utils.*;
 
 @Singleton
 public class SettingsScreen extends LazyScreen {

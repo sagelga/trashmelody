@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -27,6 +29,7 @@ public class MenuScreen extends LazyScreen {
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
+    private Stage stage = new Stage();
 
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -39,6 +42,9 @@ public class MenuScreen extends LazyScreen {
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
+        Gdx.input.setInputProcessor(stage);
+        stage.act();
+        stage.draw();
     }
 
     @Override
@@ -74,7 +80,7 @@ public class MenuScreen extends LazyScreen {
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
-
+        
         game.batch.end();
     }
 

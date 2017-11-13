@@ -1,4 +1,4 @@
-package com.trashmelody;
+package com.trashmelody.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 import static io.vavr.API.println;
 
-public class Utils {
+public class RenderingUtils {
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
         float horizontalCenter = (getViewportWidth() - width) / 2F;
         float verticalCenter = (getViewportHeight() - height) / 2F;

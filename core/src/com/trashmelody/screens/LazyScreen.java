@@ -1,6 +1,7 @@
-package com.trashmelody;
+package com.trashmelody.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.trashmelody.managers.Assets;
 import io.vavr.Tuple2;
 
 import java.util.stream.Stream;

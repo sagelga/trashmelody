@@ -8,13 +8,12 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.Assets;
-import com.trashmelody.Debugger;
-import com.trashmelody.LazyScreen;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
-import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class PauseScreen extends LazyScreen {
@@ -37,7 +36,7 @@ public class PauseScreen extends LazyScreen {
     private Texture touchHomebtn;
 
     @Inject
-    PauseScreen(TrashMelody game, Assets assets, Camera camera, Viewport viewport) {
+    PauseScreen(TrashMelody game, Camera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);

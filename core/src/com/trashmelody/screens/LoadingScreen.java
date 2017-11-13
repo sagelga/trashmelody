@@ -6,20 +6,21 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.GifDecoder;
 
-import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class LoadingScreen extends LazyScreen {
     private TrashMelody game;
     private Assets assets;
-    private ScreenProvider screenProvider;
-    private Provider<WarningScreen> warningScreen;
+    private ScreenProvider screens;
     private LazyScreen nextScreen;
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
@@ -28,11 +29,10 @@ public class LoadingScreen extends LazyScreen {
     float elapsed;
 
     @Inject
-    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screenProvider) {
+    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screens) {
         this.game = game;
         this.assets = assets;
-        this.screenProvider = screenProvider;
-        this.warningScreen = screenProvider.getProvider(WarningScreen.class);
+        this.screens = screens;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class LoadingScreen extends LazyScreen {
     }
 
     @Override
-    public void render(float delta) { // Continuously run during active
+    public void render(float delta) {
         clearScreen(253,243,255,1);
         elapsed += delta;
 
@@ -50,9 +50,9 @@ public class LoadingScreen extends LazyScreen {
                 nextScreen.afterLoad(assets);
                 game.setScreen(nextScreen);
             } else {
-                warningScreen.get().afterLoad(assets);
-                screenProvider.get(MenuScreen.class).afterLoad(assets);
-                game.setLazyScreen(warningScreen.get());
+                screens.get(WarningScreen.class).afterLoad(assets);
+                screens.get(MenuScreen.class).afterLoad(assets);
+                game.setLazyScreen(screens.get(WarningScreen.class));
             }
         }
 

@@ -3,39 +3,44 @@ package com.trashmelody;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
+import com.trashmelody.constants.Global;
+import com.trashmelody.handlers.DebugInputProcessor;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.GameModule;
+import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.screens.*;
+import com.trashmelody.utils.Debugger;
 
-import static com.trashmelody.Utils.getViewportWidth;
+import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 public class TrashMelody extends Game {
 	public SpriteBatch batch;
 	public BitmapFont font;
 	private Assets assets;
-	private ScreenProvider screenProvider;
-	Injector injector;
+	private ScreenProvider screens;
+	public Injector injector;
 
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 
-		Constant.SCALE = getViewportWidth() / Constant.WIDTH;
+		Global.SCALE = getViewportWidth() / Global.WIDTH;
 
 		injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
 		this.assets = injector.getInstance(Assets.class);
-		this.screenProvider = injector.getInstance(ScreenProvider.class);
+		this.screens = injector.getInstance(ScreenProvider.class);
 
-		screenProvider.get(SplashScreen.class).load(assets);
-		screenProvider.get(LoadingScreen.class).load(assets);
+		screens.get(SplashScreen.class).load(assets);
+		screens.get(LoadingScreen.class).load(assets);
 		assets.finishLoading();
-		screenProvider.get(SplashScreen.class).afterLoad(assets);
-		screenProvider.get(LoadingScreen.class).afterLoad(assets);
+		screens.get(SplashScreen.class).afterLoad(assets);
+		screens.get(LoadingScreen.class).afterLoad(assets);
 
 		Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
 		setScreen(injector.getInstance(SplashScreen.class));
@@ -69,7 +74,7 @@ public class TrashMelody extends Game {
 			super.setScreen(screen);
 		} else {
 			screen.load(assets);
-			LoadingScreen loadingScreen = screenProvider.get(LoadingScreen.class);
+			LoadingScreen loadingScreen = screens.get(LoadingScreen.class);
 			loadingScreen.setNextScreen(screen);
 			super.setScreen(loadingScreen);
 		}

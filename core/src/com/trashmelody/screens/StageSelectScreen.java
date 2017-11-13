@@ -5,18 +5,20 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.MusicManager;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.Debugger;
 
-import static com.trashmelody.Assets.*;
-import static com.trashmelody.Utils.*;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class StageSelectScreen extends LazyScreen {
     private TrashMelody game;
-    private Provider<MenuScreen> menuScreen;
-    private Provider<GameScreen> gameScreen;
+    private ScreenProvider screens;
     private Camera camera;
     private MusicManager musicManager;
 
@@ -36,12 +38,11 @@ public class StageSelectScreen extends LazyScreen {
     private String selected;
 
     @Inject
-    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screenProvider, MusicManager musicManager) {
+    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screens, MusicManager musicManager) {
         this.game = game;
+        this.screens = screens;
         this.camera = camera;
         this.musicManager = musicManager;
-        this.menuScreen = screenProvider.getProvider(MenuScreen.class);
-        this.gameScreen = screenProvider.getProvider(GameScreen.class);
     }
 
     @Override
@@ -103,11 +104,11 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(stageSchool, 600F,150F,2489/9,1372/9);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            game.setLazyScreen(menuScreen.get());
+            game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            game.setLazyScreen(gameScreen.get());
+            game.setLazyScreen(screens.get(GameScreen.class));
         }
 
         // Debug zone

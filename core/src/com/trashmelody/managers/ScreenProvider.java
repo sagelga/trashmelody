@@ -1,9 +1,10 @@
-package com.trashmelody;
+package com.trashmelody.managers;
 
 import com.badlogic.gdx.Screen;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.screens.*;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
@@ -32,6 +33,7 @@ public class ScreenProvider {
 
     @Inject
     ScreenProvider(TrashMelody game) {
+        ScreenProvider.screenClasses.forEach(System.out::println);
         MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> game.injector.getProvider(screen));
     }
 

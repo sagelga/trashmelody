@@ -5,11 +5,19 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import static io.vavr.API.println;
 
 public class RenderingUtils {
     public static void drawCenter(Batch batch, Texture texture, float width, float height) {
+        float horizontalCenter = (getViewportWidth() - width) / 2F;
+        float verticalCenter = (getViewportHeight() - height) / 2F;
+
+        batch.draw(texture, horizontalCenter, verticalCenter, width, height);
+    }
+
+    public static void drawCenter(Batch batch, TextureRegion texture, float width, float height) {
         float horizontalCenter = (getViewportWidth() - width) / 2F;
         float verticalCenter = (getViewportHeight() - height) / 2F;
 

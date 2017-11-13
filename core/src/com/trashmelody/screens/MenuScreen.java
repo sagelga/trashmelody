@@ -55,13 +55,13 @@ public class MenuScreen extends LazyScreen {
 
         game.batch.begin();
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
-        drawCenterX(game.batch, splashScreenLogo, 320F, 183F, 350F);
+        drawCenterX(game.batch, splashScreenLogo, 320F, 183F, vh-(183+200));
         drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
         drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
         game.batch.draw(borderLeft, 0, 0, ((float) 168 / 900) * vh, vh);
-        game.batch.draw(borderRight, vw - (((float) 168 / 900) * vh), 0, ((float) 168 / 900) * vh, 900);
+        game.batch.draw(borderRight, vw - (((float) 168 / 900) * vh), 0, ((float) 168 / 900) * vh, vh);
 
         // Click 'ENTER' equivalent to clicking play (for now)
 
@@ -76,6 +76,7 @@ public class MenuScreen extends LazyScreen {
         // Debug zone
 
         game.batch.end();
+        System.out.println("VH: " + vh + " | VW: " + vw);
     }
 
     @Override

@@ -84,7 +84,9 @@ public class SplashScreen extends LazyScreen {
         Container<Image> container = new Container<>(logo);
         container.setFillParent(true);
         container.center();
-        container.maxSize(500, 286);
+        System.out.println(game.SCALE);
+        container.maxSize(500 * game.SCALE, 286 * game.SCALE);
+//        container.maxSize(500, 286);
 
         Stage stage = new Stage(new ScreenViewport(camera));
         Gdx.input.setInputProcessor(stage);

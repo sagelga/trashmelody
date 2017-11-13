@@ -9,7 +9,6 @@ import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.TrashMelody;
 
-import static com.trashmelody.constants.Global.SCALE;
 import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
@@ -44,7 +43,7 @@ public class SettingsScreen extends LazyScreen {
 
     @Override
     protected void loadAssets(Assets assets) {
-        largeFont = assets.getSuperSpaceFont((int)(40 * SCALE), Color.BLACK);
-        mediumFont = assets.getSuperSpaceFont((int)(25 * SCALE), Color.BLACK);
+        largeFont = assets.getSuperSpaceFont(40, Color.BLACK);
+        mediumFont = assets.getSuperSpaceFont(25, Color.BLACK);
     }
 }

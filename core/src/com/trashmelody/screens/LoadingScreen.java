@@ -25,7 +25,7 @@ public class LoadingScreen extends LazyScreen {
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
-    public  long time_lapsed;
+    public long time_lapsed;
     float elapsed;
 
     @Inject
@@ -45,7 +45,7 @@ public class LoadingScreen extends LazyScreen {
         clearScreen(253,243,255,1);
         elapsed += delta;
 
-        if(assets.update()){
+        if (assets.update()) {
             if (nextScreen != null) {
                 nextScreen.afterLoad(assets);
                 game.setScreen(nextScreen);

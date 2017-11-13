@@ -1,60 +1,72 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.*;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.MusicManager;
 import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.utils.Debugger;
 
 import static com.trashmelody.managers.Assets.*;
-import static com.trashmelody.utils.RenderingUtils.*;
+import static com.trashmelody.utils.RenderingUtils.clearScreen;
 
 @Singleton
 public class SplashScreen extends LazyScreen {
     private TrashMelody game;
     private ScreenProvider screens;
     private MusicManager musicManager;
+    private Camera camera;
     private Texture splashScreenLogo;
-    public static Music splashScreenMusic;
-
-    private long time_lapsed;
+    private Stage stage;
+    private long timeLapsed;
 
     @Inject
-    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager) {
+    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager, Camera camera) {
         this.game = game;
         this.screens = screens;
+        this.camera = camera;
         this.musicManager = musicManager;
     }
 
     @Override
-    public void show() { // Run while screen is active
+    public void show() {
         musicManager.playMusic(MUSIC_BG1);
         musicManager.setDefault(MUSIC_BG1);
-        time_lapsed = TimeUtils.millis();
+        timeLapsed = TimeUtils.millis();
     }
 
     @Override
-    public void render(float delta) { // Continuously run during active
+    public void render(float delta) {
         clearScreen();
 
-        if (TimeUtils.timeSinceMillis(time_lapsed) > 5000) {
+        if (TimeUtils.timeSinceMillis(timeLapsed) > 5000) {
             game.setScreen(screens.get(LoadingScreen.class));
         }
 
-        // Start loading assets
-        game.batch.begin();
-        drawCenter(game.batch, splashScreenLogo, 500F, 286F);
+        stage.act();
+        stage.draw();
+    }
 
-        // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Splash Screen",TimeUtils.timeSinceMillis(time_lapsed));
-        // Debug zone
-
-        game.batch.end();
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
@@ -66,10 +78,27 @@ public class SplashScreen extends LazyScreen {
     @Override
     public void afterLoad(Assets assets) {
         splashScreenLogo = assets.get(SPLASH_LOGO, TEXTURE);
-        splashScreenMusic = assets.get(MUSIC_BG1, MUSIC);
         screens.get(WarningScreen.class).load(assets);
         screens.get(MenuScreen.class).load(assets);
         screens.get(SandboxScreen.class).load(assets);
         screens.get(NameScreen.class).load(assets);
+
+        this.stage = prepare();
+    }
+
+    private Stage prepare() {
+        Stage stage = new Stage(new ScreenViewport(camera));
+        Gdx.input.setInputProcessor(stage);
+
+        Drawable drawable = new TextureRegionDrawable(new TextureRegion(splashScreenLogo));
+        Image logo = new Image(drawable);
+
+        Container<Image> container = new Container<>(logo);
+        container.setFillParent(true);
+        container.center();
+        container.maxSize(500, 286);
+        stage.addActor(container);
+
+        return stage;
     }
 }

@@ -2,26 +2,34 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.*;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.AnimatedImage;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.GifDecoder;
 
-import static com.trashmelody.managers.Assets.*;
-import static com.trashmelody.utils.RenderingUtils.*;
+import static com.trashmelody.managers.Assets.LOADING_LOGO;
+import static com.trashmelody.utils.RenderingUtils.clearScreen;
+import static com.trashmelody.utils.RenderingUtils.drawCenter;
 
 @Singleton
 public class LoadingScreen extends LazyScreen {
     private TrashMelody game;
     private Assets assets;
     private ScreenProvider screens;
+    private Camera camera;
     private LazyScreen nextScreen;
+    private Stage stage;
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
 
@@ -29,14 +37,15 @@ public class LoadingScreen extends LazyScreen {
     float elapsed;
 
     @Inject
-    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screens) {
+    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screens, Camera camera) {
         this.game = game;
         this.assets = assets;
         this.screens = screens;
+        this.camera = camera;
     }
 
     @Override
-    public void show(){
+    public void show() {
         time_lapsed = TimeUtils.millis();
     }
 
@@ -57,14 +66,22 @@ public class LoadingScreen extends LazyScreen {
         }
 
         // Start loading assets
-        game.batch.begin();
-        drawCenter(game.batch, loadingScreenLogo.getKeyFrame(elapsed), 150, 128);
+//        game.batch.begin();
+//        drawCenter(game.batch, loadingScreenLogo.getKeyFrame(elapsed), 150, 128);
+//
+//         Debug zone
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Loading Screen",TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
+//         Debug zone
+//
+//        game.batch.end();
 
-        // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Loading Screen",TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
-        // Debug zone
+        stage.act();
+        stage.draw();
+    }
 
-        game.batch.end();
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, true);
     }
 
     public void setNextScreen(LazyScreen nextScreen) {
@@ -74,6 +91,26 @@ public class LoadingScreen extends LazyScreen {
     @Override
     protected void loadAssets(Assets assets) {
         this.loadingScreenLogo = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(LOADING_LOGO).read());
+    }
+
+    @Override
+    public void afterLoad(Assets assets) {
+        this.stage = getStage();
+    }
+
+    private Stage getStage() {
+        AnimatedImage loadingAnimation = new AnimatedImage(loadingScreenLogo);
+
+        Container container = new Container<>(loadingAnimation);
+        container.setFillParent(true);
+        container.center();
+        container.maxSize(259, 221);
+
+        Stage stage = new Stage(new ScreenViewport(camera));
+        Gdx.input.setInputProcessor(stage);
+        stage.addActor(container);
+
+        return stage;
     }
 }
 

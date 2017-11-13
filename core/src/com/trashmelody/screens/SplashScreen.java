@@ -25,8 +25,8 @@ public class SplashScreen extends LazyScreen {
     private ScreenProvider screens;
     private MusicManager musicManager;
     private Camera camera;
-    private Texture splashScreenLogo;
     private Stage stage;
+    private Texture splashScreenLogo;
     private long timeLapsed;
 
     @Inject
@@ -84,9 +84,7 @@ public class SplashScreen extends LazyScreen {
         Container<Image> container = new Container<>(logo);
         container.setFillParent(true);
         container.center();
-        System.out.println(game.SCALE);
         container.maxSize(500 * game.SCALE, 286 * game.SCALE);
-//        container.maxSize(500, 286);
 
         Stage stage = new Stage(new ScreenViewport(camera));
         Gdx.input.setInputProcessor(stage);

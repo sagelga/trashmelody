@@ -12,7 +12,9 @@ import com.trashmelody.handlers.DebugInputProcessor;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.GameModule;
 import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.screens.*;
+import com.trashmelody.screens.LazyScreen;
+import com.trashmelody.screens.LoadingScreen;
+import com.trashmelody.screens.SplashScreen;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.Grapher;
 
@@ -74,7 +76,7 @@ public class TrashMelody extends Game {
 
 	private Injector getInjector() {
         Injector injector = Guice.createInjector(Stage.PRODUCTION, new GameModule(this));
-        (new Grapher()).graph("graph", injector);
+        (new Grapher()).graph("dependencies-graph.dot", injector);
 
         return injector;
     }

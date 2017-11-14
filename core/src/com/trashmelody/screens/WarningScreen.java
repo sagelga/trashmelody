@@ -1,7 +1,12 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
@@ -16,13 +21,19 @@ import static com.trashmelody.utils.RenderingUtils.*;
 public class WarningScreen extends LazyScreen {
     private TrashMelody game;
     private ScreenProvider screens;
-    private Texture warningScreenLogo;
     private Texture warningScreenText;
     private long timeLapsed;
+    private Camera camera;
+
+    private Viewport viewport;
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
 
     @Inject
-    WarningScreen(TrashMelody game, ScreenProvider screens) {
+    WarningScreen(TrashMelody game, ScreenProvider screens, Camera camera, Viewport viewport) {
         this.game = game;
+        this.camera = camera;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
         this.screens = screens;
     }
 
@@ -34,15 +45,13 @@ public class WarningScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen(253, 243, 255, 1);
-
         if (TimeUtils.timeSinceMillis(timeLapsed) > 5000) {
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
         // Start loading assets
         game.batch.begin();
-        drawCenterX(game.batch, warningScreenLogo, 180F, 237F, getViewportHeight()/2);
-        drawCenterX(game.batch, warningScreenText, 992F, 216F, 230F);
+        drawCenter(game.batch, warningScreenText, 1000, findRatio(1097, 504, 1000, 'h'));
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
@@ -53,13 +62,11 @@ public class WarningScreen extends LazyScreen {
 
     @Override
     protected void loadAssets(Assets assets) {
-        assets.load(WARNING_LOGO, TEXTURE);
         assets.load(WARNING_TEXT, TEXTURE);
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.warningScreenLogo = assets.get(WARNING_LOGO, TEXTURE);
         this.warningScreenText = assets.get(WARNING_TEXT, TEXTURE);
     }
 }

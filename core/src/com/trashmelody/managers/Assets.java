@@ -50,7 +50,6 @@ public class Assets extends AssetManager {
 
     // Warning Screen Assets
     public static final String WARNING_TEXT             = "WarningScreen/warning-screen-text.png";
-    public static final String WARNING_LOGO             = "WarningScreen/warning-screen-logo.png";
 
     // Menu Screen Assets
     public static final String MENU_BTN_START           = "MenuScreen/btn-start.png";
@@ -60,6 +59,10 @@ public class Assets extends AssetManager {
     public static final String MENU_BG                  = "MenuScreen/bg.png";
     public static final String MENU_BORDER_LEFT         = "MenuScreen/border-left.png";
     public static final String MENU_BORDER_RIGHT        = "MenuScreen/border-right.png";
+    public static final String MENU_BTN_START_HOVER     = "MenuScreen/btn-start-hover.png";
+    public static final String MENU_BTN_COLLECTION_HOVER = "MenuScreen/btn-collection-hover.png";
+    public static final String MENU_BTN_SETTING_HOVER   = "MenuScreen/btn-setting-hover.png";
+    public static final String MENU_BTN_EXIT_HOVER      = "MenuScreen/btn-exit-hover.png";
 
     // Name Screen Assets
     public static final String NAME_ENTER_BOX           = "NameScreen/enterbox.png";

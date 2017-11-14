@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -27,6 +29,10 @@ public class MenuScreen extends LazyScreen {
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
+    private Texture btnStart_hover, btnCollection_hover, btnSetting_hover, btnExit_hover;
+    private Stage stage = new Stage();
+
+    private int menuCount = 1;
 
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -39,6 +45,9 @@ public class MenuScreen extends LazyScreen {
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
+        Gdx.input.setInputProcessor(stage);
+        stage.act();
+        stage.draw();
     }
 
     @Override
@@ -54,27 +63,48 @@ public class MenuScreen extends LazyScreen {
         camera.update();
 
         game.batch.begin();
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) menuCount++;
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) menuCount--;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            switch (menuCount) {
+                case 1:
+                    game.setLazyScreen(stageSelectScreen);
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+            }
+        }
+
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
-        drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
+
+        if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
+        else drawCenterX(game.batch, btnStart_hover, 320F, 56F, 400F);
+
+        if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
+        else drawCenterX(game.batch, btnCollection_hover, 320F, 56F, 300F);
+
+        if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);
+
+        if (menuCount != 4) drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
+        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 100F);
+
+        if (menuCount > 4) menuCount = 1; else if (menuCount < 1) menuCount = 4;
+
         game.batch.draw(borderLeft, 0, 0, findRatio(168, 900, vh, 'w'), vh);
         game.batch.draw(borderRight, vw - findRatio(168, 900, vh, 'w'), 0, findRatio(168, 900, vh, 'w'), vh);
 
-        // Click 'ENTER' equivalent to clicking play (for now)
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            game.setLazyScreen(stageSelectScreen);
-        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
             game.setLazyScreen(resultScreen);
         }
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
-
+        
         game.batch.end();
     }
 
@@ -100,6 +130,10 @@ public class MenuScreen extends LazyScreen {
         assets.load(MENU_BTN_EXIT, TEXTURE);
         assets.load(MENU_BORDER_LEFT, TEXTURE);
         assets.load(MENU_BORDER_RIGHT, TEXTURE);
+        assets.load(MENU_BTN_START_HOVER, TEXTURE);
+        assets.load(MENU_BTN_COLLECTION_HOVER, TEXTURE);
+        assets.load(MENU_BTN_SETTING_HOVER, TEXTURE);
+        assets.load(MENU_BTN_EXIT_HOVER, TEXTURE);
     }
 
     @Override
@@ -112,5 +146,9 @@ public class MenuScreen extends LazyScreen {
         this.btnExit = assets.get(MENU_BTN_EXIT, TEXTURE);
         this.borderLeft = assets.get(MENU_BORDER_LEFT, TEXTURE);
         this.borderRight = assets.get(MENU_BORDER_RIGHT, TEXTURE);
+        this.btnStart_hover = assets.get(MENU_BTN_START_HOVER, TEXTURE);
+        this.btnCollection_hover = assets.get(MENU_BTN_COLLECTION_HOVER, TEXTURE);
+        this.btnSetting_hover = assets.get(MENU_BTN_SETTING_HOVER, TEXTURE);
+        this.btnExit_hover = assets.get(MENU_BTN_EXIT_HOVER, TEXTURE);
     }
 }

@@ -52,7 +52,7 @@ public class ManiaBeatmap extends Beatmap {
 	}
 	
 	public int getCollumns() {
-		return (int)difficulties.getCS();
+		return (int)difficulties.getCircleSize();
 	}
 
 	@Override

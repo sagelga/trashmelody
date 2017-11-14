@@ -1,7 +1,7 @@
 package lt.ekgame.beatmap_analyzer.utils;
 
 public class Vector2 {
-	
+
 	private double positionX, positionY;
 	
 	public Vector2(double positionX, double positionY) {
@@ -47,6 +47,10 @@ public class Vector2 {
 	
 	public Vector2 clone() {
 		return new Vector2(positionX, positionY);
+	}
+
+	public com.badlogic.gdx.math.Vector2 toGdxVector() {
+		return new com.badlogic.gdx.math.Vector2((float) positionX, (float) positionY);
 	}
 
 	@Override

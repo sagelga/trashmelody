@@ -8,7 +8,7 @@ import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public abstract class ManiaObject extends HitObject {
 	private int column;
-	private boolean isHold;
+	protected boolean isHold;
 
 	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound, boolean isHold) {
 		super(position, startTime, endTime, hitSound);

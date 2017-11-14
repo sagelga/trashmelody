@@ -52,7 +52,7 @@ public class OsuBeatmap extends Beatmap {
 	}
 	
 	public double getCS() {
-		return difficulties.getCS();
+		return difficulties.getCircleSize();
 	}
 	
 	public double getCS(Mods mods) {

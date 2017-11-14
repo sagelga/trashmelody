@@ -86,4 +86,8 @@ public abstract class HitObject {
 	public void setNewCombo(boolean isNewCombo) {
 		this.isNewCombo = isNewCombo;
 	}
+
+	public boolean isAfterStartTime(float time) {
+		return time > startTime;
+	}
 }

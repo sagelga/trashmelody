@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import lt.ekgame.beatmap_analyzer.GameMode;
+import lt.ekgame.beatmap_analyzer.beatmap.ctb.CatchObject;
 import lt.ekgame.beatmap_analyzer.difficulty.Difficulty;
 import lt.ekgame.beatmap_analyzer.difficulty.DifficultyCalculator;
 import lt.ekgame.beatmap_analyzer.utils.Mods;
@@ -60,7 +61,9 @@ public abstract class Beatmap {
 	}
 	
 	public abstract GameMode getGameMode();
-	
+
+	public abstract List<? extends HitObject> getHitObjects();
+
 	public abstract DifficultyCalculator getDifficultyCalculator();
 	
 	public abstract Difficulty getDifficulty(Mods mods);

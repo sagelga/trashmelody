@@ -78,7 +78,8 @@ public class GameModule implements Module {
                 PlayerControlSystem.class,
                 PhysicsDebugSystem.class,
                 PhysicsSystem.class,
-                PhysicsSynchronizationSystem.class
+                PhysicsSynchronizationSystem.class,
+                HitObjectDispatchSystem.class
         ));
     }
 }

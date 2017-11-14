@@ -26,12 +26,24 @@ public class StageSelectScreen extends LazyScreen {
     private MusicManager musicManager;
 
     // Defining building value
-    private Texture stageHome;          private Texture stageHomeText;
-    private Texture stageCafe;          private Texture stageCafeText;
-    private Texture stageCinema;        private Texture stageCinemaText;
-    private Texture stageHospital;      private Texture stageHospitalText;
-    private Texture stageSchool;        private Texture stageSchoolText;
-    private Texture stageOffice;        private Texture stageOfficeText;
+    private Texture bdHomeShow;
+    private Texture bdCafeShow;
+    private Texture bdCinemaShow;
+    private Texture bdHospitalShow;
+    private Texture bdSchoolShow;
+    private Texture bdOfficeShow;
+    private Texture bdHomeHide;
+    private Texture bdCafeHide;
+    private Texture bdCinemaHide;
+    private Texture bdHospitalHide;
+    private Texture bdSchoolHide;
+    private Texture bdOfficeHide;
+    private Texture stageHomeText;
+    private Texture stageCafeText;
+    private Texture stageCinemaText;
+    private Texture stageHospitalText;
+    private Texture stageSchoolText;
+    private Texture stageOfficeText;
     private Texture buttonBack;         private Texture buttonPlay;
     private Texture header;             private Texture footer;
     private Texture cloud;              private Texture trashworldLogo;
@@ -82,37 +94,46 @@ public class StageSelectScreen extends LazyScreen {
         switch (currentStageNumber){
             case(0):
                 game.batch.draw(stageCafeText, 20,getViewportHeight()-608/6,1850/5,487/6);
+                game.batch.draw(bdCafeShow, 750F,625F,1608/9,1062/9);
                 break;
             case(1):
                 game.batch.draw(stageCinemaText,20,getViewportHeight()-608/6,2601/6,487/6);
+                game.batch.draw(bdCinemaShow, 1000F,425F,1539/9,1901/9);
                 break;
             case(2):
-                game.batch.draw(stageHomeText,20,getViewportHeight()-608/6,2826/6,487/6);
+                game.batch.draw(stageHospitalText,20,getViewportHeight()-608/6,3428/6,487/6);
+                game.batch.draw(bdHospitalShow, 1000F,275F,1919/9,1402/9);
                 break;
             case(3):
-                game.batch.draw(stageHospitalText,20,getViewportHeight()-608/6,3428/6,487/6);
+                game.batch.draw(stageSchoolText,20,getViewportHeight()-608/6,2702/6,487/6);
+                game.batch.draw(bdSchoolShow, 600F,150F,2489/9,1372/9);
                 break;
             case(4):
-                game.batch.draw(stageSchoolText,20,getViewportHeight()-608/6,2702/6,487/6);
+                game.batch.draw(stageHomeText,20,getViewportHeight()-608/6,2826/6,487/6);
+                game.batch.draw(bdHomeShow, 275F,375F,2176/9,2164/9);
                 break;
             case(5):
                 game.batch.draw(stageOfficeText,20,getViewportHeight()-608/6,2507/6,487/6);
+                game.batch.draw(bdOfficeShow, 450F,625F,2408/9,1356/9);
+                break;
+            default:
+                System.out.println("Stage Selector overflow");
         }
         // Show the stage building
-        game.batch.draw(stageHome, 275F,375F,2176/9,2164/9);
-        game.batch.draw(stageOffice, 450F,625F,2408/9,1356/9);
-        game.batch.draw(stageCafe, 750F,625F,1608/9,1062/9);
-        game.batch.draw(stageCinema, 1000F,425F,1539/9,1901/9);
-        game.batch.draw(stageHospital, 1000F,275F,1919/9,1402/9);
-        game.batch.draw(stageSchool, 600F,150F,2489/9,1372/9);
+        if (currentStageNumber != 0){ game.batch.draw(bdCafeHide, 750F,625F,1608/9,1062/9);         }
+        if (currentStageNumber != 1){ game.batch.draw(bdCinemaHide, 1000F,425F,1539/9,1901/9);      }
+        if (currentStageNumber != 2){ game.batch.draw(bdHospitalHide, 1000F,275F,1919/9,1402/9);    }
+        if (currentStageNumber != 3){ game.batch.draw(bdSchoolHide, 600F,150F,2489/9,1372/9);       }
+        if (currentStageNumber != 4){ game.batch.draw(bdHomeHide, 275F,375F,2176/9,2164/9);         }
+        if (currentStageNumber != 5){ game.batch.draw(bdOfficeHide, 450F,625F,2408/9,1356/9);       }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            game.setLazyScreen(screens.get(MenuScreen.class));
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            game.setLazyScreen(screens.get(GameScreen.class));
-        }
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+//            game.setLazyScreen(screens.get(MenuScreen.class));
+//        }
+//
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
+//            game.setLazyScreen(screens.get(GameScreen.class));
+//        }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)){
             currentStageNumber = (currentStageNumber + 1) % 6;
@@ -131,37 +152,52 @@ public class StageSelectScreen extends LazyScreen {
 
     @Override
     public void loadAssets(Assets assets) {
-        assets.load(STAGE_BUILDING_OFFICE, TEXTURE);
-        assets.load(STAGE_TEXT_OFFICE, TEXTURE);
-        assets.load(STAGE_BUILDING_CINEMA, TEXTURE);
-        assets.load(STAGE_TEXT_CINEMA, TEXTURE);
-        assets.load(STAGE_BUILDING_HOSPITAL, TEXTURE);
-        assets.load(STAGE_TEXT_HOSPITAL, TEXTURE);
-        assets.load(STAGE_BUILDING_SCHOOL, TEXTURE);
-        assets.load(STAGE_TEXT_SCHOOL, TEXTURE);
-        assets.load(STAGE_BUILDING_HOME, TEXTURE);
-        assets.load(STAGE_TEXT_HOME, TEXTURE);
-        assets.load(STAGE_BUILDING_CAFE, TEXTURE);
-        assets.load(STAGE_TEXT_CAFE, TEXTURE);
-        assets.load(STAGE_BG_BACKBUTTON, TEXTURE);
-        assets.load(STAGE_BG_PLAYBUTTON, TEXTURE);
-        assets.load(STAGE_BG_CLOUD, TEXTURE);
-        assets.load(STAGE_BG_HEADER, TEXTURE);
-        assets.load(STAGE_BG_FOOTER, TEXTURE);
-        assets.load(STAGE_BG_TRASHWORLD, TEXTURE);
-        assets.load(STAGE_BG_OVERLAY, TEXTURE);
-        assets.load(STAGE_BG_ARROW_L, TEXTURE);
-        assets.load(STAGE_BG_ARROW_R, TEXTURE);
+        assets.load(STAGE_BD_SHOW_OFFICE,   TEXTURE);
+        assets.load(STAGE_BD_SHOW_CINEMA,   TEXTURE);
+        assets.load(STAGE_BD_SHOW_HOSPITAL, TEXTURE);
+        assets.load(STAGE_BD_SHOW_SCHOOL,   TEXTURE);
+        assets.load(STAGE_BD_SHOW_HOME,     TEXTURE);
+        assets.load(STAGE_BD_SHOW_CAFE,     TEXTURE);
+
+        assets.load(STAGE_BD_HIDE_OFFICE,   TEXTURE);
+        assets.load(STAGE_BD_HIDE_CINEMA,   TEXTURE);
+        assets.load(STAGE_BD_HIDE_HOSPITAL, TEXTURE);
+        assets.load(STAGE_BD_HIDE_SCHOOL,   TEXTURE);
+        assets.load(STAGE_BD_HIDE_HOME,     TEXTURE);
+        assets.load(STAGE_BD_HIDE_CAFE,     TEXTURE);
+
+        assets.load(STAGE_TEXT_OFFICE,      TEXTURE);
+        assets.load(STAGE_TEXT_CINEMA,      TEXTURE);
+        assets.load(STAGE_TEXT_HOSPITAL,    TEXTURE);
+        assets.load(STAGE_TEXT_SCHOOL,      TEXTURE);
+        assets.load(STAGE_TEXT_HOME,        TEXTURE);
+        assets.load(STAGE_TEXT_CAFE,        TEXTURE);
+        assets.load(STAGE_BG_BACKBUTTON,    TEXTURE);
+        assets.load(STAGE_BG_PLAYBUTTON,    TEXTURE);
+        assets.load(STAGE_BG_CLOUD,         TEXTURE);
+        assets.load(STAGE_BG_HEADER,        TEXTURE);
+        assets.load(STAGE_BG_FOOTER,        TEXTURE);
+        assets.load(STAGE_BG_TRASHWORLD,    TEXTURE);
+        assets.load(STAGE_BG_OVERLAY,       TEXTURE);
+        assets.load(STAGE_BG_ARROW_L,       TEXTURE);
+        assets.load(STAGE_BG_ARROW_R,       TEXTURE);
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.stageHome = assets.get(STAGE_BUILDING_HOME, TEXTURE);           // 2176 × 2164
-        this.stageOffice = assets.get(STAGE_BUILDING_OFFICE, TEXTURE);         // 2408 × 1356
-        this.stageCafe = assets.get(STAGE_BUILDING_CAFE, TEXTURE);           // 1608 x 1062
-        this.stageCinema = assets.get(STAGE_BUILDING_CINEMA, TEXTURE);         // 1539 × 1901
-        this.stageHospital = assets.get(STAGE_BUILDING_HOSPITAL, TEXTURE);       // 1919 × 1402
-        this.stageSchool = assets.get(STAGE_BUILDING_SCHOOL, TEXTURE);         // 2489 × 1372
+        this.bdOfficeShow = assets.get(STAGE_BD_SHOW_OFFICE, TEXTURE);// 2408 × 1356
+        this.bdCinemaShow = assets.get(STAGE_BD_SHOW_CINEMA, TEXTURE); // 1539 × 1901
+        this.bdHospitalShow = assets.get(STAGE_BD_SHOW_HOSPITAL, TEXTURE); // 1919 × 1402
+        this.bdSchoolShow = assets.get(STAGE_BD_SHOW_SCHOOL, TEXTURE); // 2489 × 1372
+        this.bdHomeShow = assets.get(STAGE_BD_SHOW_HOME, TEXTURE);// 2176 × 2164
+        this.bdCafeShow = assets.get(STAGE_BD_SHOW_CAFE, TEXTURE); // 1608 x 1062
+
+        this.bdOfficeHide = assets.get(STAGE_BD_HIDE_OFFICE, TEXTURE);
+        this.bdCinemaHide = assets.get(STAGE_BD_HIDE_CINEMA, TEXTURE);
+        this.bdHospitalHide = assets.get(STAGE_BD_HIDE_HOSPITAL, TEXTURE);
+        this.bdSchoolHide = assets.get(STAGE_BD_HIDE_SCHOOL, TEXTURE);
+        this.bdHomeHide = assets.get(STAGE_BD_HIDE_HOME, TEXTURE);
+        this.bdCafeHide = assets.get(STAGE_BD_HIDE_CAFE, TEXTURE);
 
         this.stageHomeText = assets.get(STAGE_TEXT_HOME, TEXTURE);               // 2826 × 487
         this.stageOfficeText = assets.get(STAGE_TEXT_OFFICE, TEXTURE);             // 2507 × 487
@@ -179,5 +215,10 @@ public class StageSelectScreen extends LazyScreen {
         this.overlayBackground = assets.get(STAGE_BG_OVERLAY, TEXTURE);   // 6464 × 4460
         this.selectArrowLeft = assets.get(STAGE_BG_ARROW_L, TEXTURE);
         this.selectArrowRight = assets.get(STAGE_BG_ARROW_R, TEXTURE);
+    }
+
+    @Override
+    public void hide(){
+        currentStageNumber = 0;
     }
 }

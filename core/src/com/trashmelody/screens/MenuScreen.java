@@ -29,6 +29,7 @@ public class MenuScreen extends LazyScreen {
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
+    private Texture btnStart_hover, btnCollection_hover, btnSetting_hover, btnExit_hover;
     private Stage stage = new Stage();
 
     private int menuCount = 1;
@@ -81,16 +82,16 @@ public class MenuScreen extends LazyScreen {
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
 
         if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        else drawCenterX(game.batch, btnCollection, 320F, 56F, 400F);
+        else drawCenterX(game.batch, btnStart_hover, 320F, 56F, 400F);
 
         if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        else drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
+        else drawCenterX(game.batch, btnCollection_hover, 320F, 56F, 300F);
 
         if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        else drawCenterX(game.batch, btnCollection, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);
 
         if (menuCount != 4) drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        else drawCenterX(game.batch, btnCollection, 320F, 56F, 100F);
+        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 100F);
 
         if (menuCount > 4) menuCount = 1; else if (menuCount < 1) menuCount = 4;
 
@@ -129,6 +130,10 @@ public class MenuScreen extends LazyScreen {
         assets.load(MENU_BTN_EXIT, TEXTURE);
         assets.load(MENU_BORDER_LEFT, TEXTURE);
         assets.load(MENU_BORDER_RIGHT, TEXTURE);
+        assets.load(MENU_BTN_START_HOVER, TEXTURE);
+        assets.load(MENU_BTN_COLLECTION_HOVER, TEXTURE);
+        assets.load(MENU_BTN_SETTING_HOVER, TEXTURE);
+        assets.load(MENU_BTN_EXIT_HOVER, TEXTURE);
     }
 
     @Override
@@ -141,5 +146,9 @@ public class MenuScreen extends LazyScreen {
         this.btnExit = assets.get(MENU_BTN_EXIT, TEXTURE);
         this.borderLeft = assets.get(MENU_BORDER_LEFT, TEXTURE);
         this.borderRight = assets.get(MENU_BORDER_RIGHT, TEXTURE);
+        this.btnStart_hover = assets.get(MENU_BTN_START_HOVER, TEXTURE);
+        this.btnCollection_hover = assets.get(MENU_BTN_COLLECTION_HOVER, TEXTURE);
+        this.btnSetting_hover = assets.get(MENU_BTN_SETTING_HOVER, TEXTURE);
+        this.btnExit_hover = assets.get(MENU_BTN_EXIT_HOVER, TEXTURE);
     }
 }

@@ -57,6 +57,7 @@ public class LoadingScreen extends LazyScreen {
         if (assets.update()) {
             if (nextScreen != null) {
                 nextScreen.afterLoad(assets);
+                nextScreen.setLoaded(true);
                 game.setScreen(nextScreen);
             } else {
                 screens.get(WarningScreen.class).afterLoad(assets);

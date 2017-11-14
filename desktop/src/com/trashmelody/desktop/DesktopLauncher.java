@@ -18,6 +18,7 @@ public class DesktopLauncher {
 		config.width  = (int) (screen_width  * screen_scale);
 		config.height = (int) (screen_height * screen_scale);
 		config.useHDPI = true;
+		config.samples = 3;
 		config.addIcon("GameLogo/Icon2/MacOS.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/Icon2/Linux.png", Files.FileType.Internal);
 		config.addIcon("GameLogo/Icon2/Windows.png", Files.FileType.Internal);

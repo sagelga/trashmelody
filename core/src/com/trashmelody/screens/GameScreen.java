@@ -1,17 +1,28 @@
 package com.trashmelody.screens;
 
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.components.PlayerComponent;
+import com.trashmelody.components.TypeComponent;
+import com.trashmelody.entities.Platform;
+import com.trashmelody.entities.Player;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.utils.AnimatedImage;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
+import static com.badlogic.gdx.Input.Keys.*;
+import static com.badlogic.gdx.Input.Keys.Q;
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -20,11 +31,12 @@ public class GameScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
+    private Engine engine;
+    private World world;
     private Stage stage;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
-    // Defining building value
     private Texture bg1;
     private Texture redBinPlot;
     private Texture levelCover;
@@ -57,61 +69,37 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
 
     @Inject
-    GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    GameScreen(TrashMelody game,
+               Engine engine,
+               World world,
+               Camera camera,
+               Viewport viewport,
+               InputProcessor inputProcessor) {
         this.game = game;
         this.camera = camera;
-        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.engine = engine;
+        this.world = world;
+//        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+
+        Gdx.input.setInputProcessor(inputProcessor);
     }
 
     @Override
     public void render(float delta) {
-        clearScreen();
+        clearScreen(0, 0, 0, 1);
         camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
+
+//        game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
-        //Components Draw
-        game.batch.draw(bg1,0,vh/10,vw,vh/1.15F);
-        game.batch.draw(bgFooter,0,0,vw,vh/2);
-        game.batch.draw(levelScoreBar,vw/2,vh/1.07F,vw/2,vh/7);
-        game.batch.draw(songNameBar,0,vh/1.09F,vw/1.8F,vh/10);
-        game.batch.draw(songName,vw/128,vh/1.05F,vw/3.2F,vh/32);
-        game.batch.draw(dangerRedBin,vw/128,vw/128,vw/7F,vh/5);
-        game.batch.draw(recycleBin,vw/5.6F,vw/128,vw/7F,vh/5);
-        game.batch.draw(yellowBin,vw/1.47F,vw/128,vw/7F,vh/5);
-        game.batch.draw(idkBin,vw/1.18F,vw/128,vw/7F,vh/5);
-        game.batch.draw(redBinPlot,vw/128,vh/2.3F,vw/7F,vh/16);
-        game.batch.draw(recycleBinPlot,vw/5.6F,vh/2.3F,vw/7F,vh/16);
-        game.batch.draw(yellowBinPlot,vw/1.47F,vh/2.3F,vw/7F,vh/16);
-        game.batch.draw(idkBinPlot,vw/1.18F,vh/2.3F,vw/7F,vh/16);
-        game.batch.draw(footerTab,0,0,vw,vh/12);
-        game.batch.draw(levelCover,vw/1.8F,vh/1.05F,vw/7,vh/30);
-        game.batch.draw(pauseTab,vw/1.16F,vh/100,vw/8,vh/24);
-        game.batch.draw(normal,vw/1.73F,vh/1.05F,vw/10,vh/30);
-        //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
-        //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
-        game.batch.draw(scoreTitle,vw/1.39F,vh/1.05F,vw/10,vh/30);
-        game.batch.draw(hpBar,vw/3,vh/20,vw/3,vh/30);
-        game.batch.draw(hpPoint,vw/1.56F,vh/20.2F,vw/40,vh/24);
-        //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(cool,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(good,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(check,vw/32,vh/2,vw/5,vh/2.4F);
-        game.batch.draw(centerLine,0,vh/2.02F,vw,vh/128);
-
-        // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
-        // Debug zone
-
+        drawBackground();
         game.batch.end();
 
+        engine.update(delta);
     }
+
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-
-        viewport.update(width, height);
+//        viewport.update(width, height);
     }
 
     @Override
@@ -180,5 +168,55 @@ public class GameScreen extends LazyScreen {
         this.perfect = assets.get(GAME_SCORE_5, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
+
+        createEntities();
+    }
+
+    private void createEntities() {
+        engine.addEntity(new Platform(world));
+        engine.addEntity(new Player(
+                world,
+                new PlayerComponent(LEFT, RIGHT, UP, SHIFT_RIGHT, 300F),
+                new TypeComponent(TypeComponent.PLAYER)
+        ));
+        engine.addEntity(new Player(
+                world,
+                new PlayerComponent(A, D, W, Q, 300F),
+                new TypeComponent(TypeComponent.PLAYER)
+        ));
+    }
+
+    private void drawBackground() {
+        game.batch.draw(bg1, 0, vh / 10, vw, vh / 1.15F);
+        game.batch.draw(bgFooter, 0, 0, vw, vh / 2);
+        game.batch.draw(levelScoreBar, vw / 2, vh / 1.07F, vw / 2, vh / 7);
+        game.batch.draw(songNameBar, 0, vh / 1.09F, vw / 1.8F, vh / 10);
+        game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
+        game.batch.draw(dangerRedBin, vw / 128, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(recycleBin, vw / 5.6F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(yellowBin, vw / 1.47F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(idkBin, vw / 1.18F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(redBinPlot, vw / 128, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(footerTab, 0, 0, vw, vh / 12);
+        game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
+        game.batch.draw(pauseTab, vw / 1.16F, vh / 100, vw / 8, vh / 24);
+        game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
+        //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
+        //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
+        game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
+        game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
+        game.batch.draw(hpPoint, vw / 1.56F, vh / 20.2F, vw / 40, vh / 24);
+        //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
+        //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
+        game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
+        //game.batch.draw(good,vw/8,vh/1.8F,vw/5,vh/3);
+        //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
+        game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
+        game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
+
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
 }

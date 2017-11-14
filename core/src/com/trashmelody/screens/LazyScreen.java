@@ -2,25 +2,20 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.trashmelody.managers.Assets;
-import io.vavr.Tuple2;
-
-import java.util.stream.Stream;
 
 public abstract class LazyScreen extends ScreenAdapter {
     private boolean loaded = false;
-    protected Stream<Tuple2<String, Class<?>>> fileNames;
 
     public final void load(Assets assets) {
         if (loaded) return;
         loadAssets(assets);
-        loaded = true;
     }
 
-    public boolean isLoaded() {
+    public final boolean isLoaded() {
         return loaded;
     }
 
-    public void setLoaded(boolean loaded) {
+    public final void setLoaded(boolean loaded) {
         this.loaded = loaded;
     }
 

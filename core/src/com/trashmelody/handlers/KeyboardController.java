@@ -49,6 +49,9 @@ public class KeyboardController implements InputProcessor {
         }
         mouseLocation.x = screenX;
         mouseLocation.y = screenY;
+
+        System.out.println(screenX);
+        System.out.println(screenY);
         return false;
     }
 

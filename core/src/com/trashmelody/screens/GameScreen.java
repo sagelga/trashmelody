@@ -1,18 +1,28 @@
 package com.trashmelody.screens;
 
+import com.badlogic.ashley.core.Engine;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.components.PlayerComponent;
+import com.trashmelody.components.TypeComponent;
+import com.trashmelody.entities.Platform;
+import com.trashmelody.entities.Player;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.utils.AnimatedImage;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
+import static com.badlogic.gdx.Input.Keys.*;
+import static com.badlogic.gdx.Input.Keys.Q;
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -21,6 +31,8 @@ public class GameScreen extends LazyScreen {
     private TrashMelody game;
     private Camera camera;
     private Viewport viewport;
+    private Engine engine;
+    private World world;
     private Stage stage;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -57,28 +69,37 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
 
     @Inject
-    GameScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    GameScreen(TrashMelody game,
+               Engine engine,
+               World world,
+               Camera camera,
+               Viewport viewport,
+               InputProcessor inputProcessor) {
         this.game = game;
         this.camera = camera;
-        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.engine = engine;
+        this.world = world;
+//        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+
+        Gdx.input.setInputProcessor(inputProcessor);
     }
 
     @Override
     public void render(float delta) {
-        clearScreen();
+        clearScreen(0, 0, 0, 1);
         camera.update();
 
-        game.batch.setProjectionMatrix(camera.combined);
+//        game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         drawBackground();
         game.batch.end();
+
+        engine.update(delta);
     }
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-
-        viewport.update(width, height);
+//        viewport.update(width, height);
     }
 
     @Override
@@ -147,11 +168,23 @@ public class GameScreen extends LazyScreen {
         this.perfect = assets.get(GAME_SCORE_5, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
+
+        createEntities();
     }
 
-//    private Stage getStage() {
-//
-//    }
+    private void createEntities() {
+        engine.addEntity(new Platform(world));
+        engine.addEntity(new Player(
+                world,
+                new PlayerComponent(LEFT, RIGHT, UP, SHIFT_RIGHT, 300F),
+                new TypeComponent(TypeComponent.PLAYER)
+        ));
+        engine.addEntity(new Player(
+                world,
+                new PlayerComponent(A, D, W, Q, 300F),
+                new TypeComponent(TypeComponent.PLAYER)
+        ));
+    }
 
     private void drawBackground() {
         game.batch.draw(bg1, 0, vh / 10, vw, vh / 1.15F);

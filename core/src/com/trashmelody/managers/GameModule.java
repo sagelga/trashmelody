@@ -1,10 +1,11 @@
 package com.trashmelody.managers;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.World;
@@ -14,14 +15,10 @@ import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import com.google.inject.multibindings.Multibinder;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.handlers.CollisionDetector;
 import com.trashmelody.handlers.KeyboardController;
-import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.screens.*;
 import com.trashmelody.systems.*;
-import io.vavr.collection.List;
 
 import java.util.Arrays;
 
@@ -40,6 +37,9 @@ public class GameModule implements Module {
         binder.requireAtInjectOnConstructors();
         binder.requireExactBindingAnnotations();
         binder.bind(TrashMelody.class).toInstance(game);
+        binder.bind(SpriteBatch.class).toInstance(game.batch);
+        binder.bind(Engine.class).toInstance(game.engine);
+        binder.bind(InputProcessor.class).to(KeyboardController.class);
         binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
         binder.bind(KeyboardController.class).in(Singleton.class);
@@ -62,8 +62,7 @@ public class GameModule implements Module {
         return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public World world() {
         Box2D.init();
         World world = new World(new Vector2(0F, -9.81F), true);
@@ -71,8 +70,7 @@ public class GameModule implements Module {
         return world;
     }
 
-    @Provides
-    @Singleton
+    @Provides @Singleton
     public Systems systems() {
         return new Systems(Arrays.asList(
                 CollisionSystem.class,

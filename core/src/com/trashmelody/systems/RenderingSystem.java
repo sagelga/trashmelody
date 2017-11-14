@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.trashmelody.components.Mapper;
 import com.trashmelody.components.TextureComponent;
 import com.trashmelody.components.TextureRegionComponent;
@@ -17,10 +18,10 @@ import com.google.inject.Inject;
 
 public class RenderingSystem extends IteratingSystem {
     private SpriteBatch batch;
-    private OrthographicCamera camera;
+    private Camera camera;
 
     @Inject
-    public RenderingSystem(SpriteBatch batch, OrthographicCamera camera) {
+    public RenderingSystem(SpriteBatch batch, Camera camera) {
         super(Family.all(TransformComponent.class)
                 .one(TextureComponent.class, TextureRegionComponent.class)
                 .get()

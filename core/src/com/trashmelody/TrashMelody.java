@@ -1,5 +1,6 @@
 package com.trashmelody;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -15,6 +16,7 @@ import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.screens.LazyScreen;
 import com.trashmelody.screens.LoadingScreen;
 import com.trashmelody.screens.SplashScreen;
+import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.Grapher;
 
@@ -22,22 +24,23 @@ public class TrashMelody extends Game {
     public Injector injector;
     public SpriteBatch batch;
     public BitmapFont font;
+    public Engine engine = new Engine();
     private Assets assets;
     private ScreenProvider screens;
     public float SCALE;
 
 	@Override
 	public void create() {
-        this.injector = getInjector();
 		this.batch = new SpriteBatch();
-		this.font = new BitmapFont();
+        this.font = new BitmapFont();
+        this.injector = getInjector();
         this.assets = injector.getInstance(Assets.class);
         this.screens = injector.getInstance(ScreenProvider.class);
         loadBootstrap();
-        loadImportantAssets(this.assets, this.screens);
+        loadImportantAssets();
 
         Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
-		setScreen(injector.getInstance(SplashScreen.class));
+        setLazyScreen(injector.getInstance(SplashScreen.class));
 	}
 
 	@Override
@@ -46,12 +49,8 @@ public class TrashMelody extends Game {
 		batch.begin();
 		// Toggling the Debugger for all screen
 		if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
-
 		// Flashing the background music progress bar
-
-
 		batch.end();
-
 	}
 
 	@Override
@@ -81,15 +80,22 @@ public class TrashMelody extends Game {
         return injector;
     }
 
-    private void loadImportantAssets(Assets assets, ScreenProvider screens) {
-        screens.get(SplashScreen.class).load(assets);
-        screens.get(LoadingScreen.class).load(assets);
+    private void loadImportantAssets() {
+	    SplashScreen splashScreen = screens.get(SplashScreen.class);
+	    LoadingScreen loadingScreen = screens.get(LoadingScreen.class);
+        splashScreen.load(assets);
+        loadingScreen.load(assets);
         assets.finishLoading();
-        screens.get(SplashScreen.class).afterLoad(assets);
-        screens.get(LoadingScreen.class).afterLoad(assets);
+        splashScreen.setLoaded(true);
+        splashScreen.afterLoad(assets);
+        splashScreen.setLoaded(true);
+        loadingScreen.afterLoad(assets);
     }
 
     private void loadBootstrap() {
         SCALE = Gdx.graphics.getPpiX() / 100;
+        injector.getInstance(Systems.class).list.stream()
+                .map(systemClass -> injector.getInstance(systemClass))
+                .forEach(entitySystem -> engine.addSystem(entitySystem));
     }
 }

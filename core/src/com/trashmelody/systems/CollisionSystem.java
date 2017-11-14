@@ -1,10 +1,10 @@
 package com.trashmelody.systems;
 
-import com.trashmelody.components.*;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.google.inject.Inject;
+import com.trashmelody.components.*;
 
 public class CollisionSystem extends IteratingSystem {
 

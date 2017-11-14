@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.trashmelody.components.*;
 
+import java.util.Random;
+
 import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class Player extends Entity {
@@ -22,13 +24,15 @@ public class Player extends Entity {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         Body body = world.createBody(bodyDef);
 
+        Random random = new Random();
+        float width = random.nextFloat() * 20F / PPM;
+        float height = random.nextFloat() * 20F / PPM;
         shape.setAsBox(20F / PPM, 20F / PPM);
         fixtureDef.shape = shape;
         fixtureDef.restitution = 0.5F;
         fixtureDef.filter.groupIndex = type.getGroup();
         body.createFixture(fixtureDef);
         shape.dispose();
-
 
         TransformComponent transformComponent = new TransformComponent(new Vector2(640F / PPM, 520F / PPM));
         body.setTransform(transformComponent.position, 0F);

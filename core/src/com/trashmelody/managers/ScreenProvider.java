@@ -6,10 +6,10 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.screens.*;
+import com.trashmelody.utils.Environment;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
-
-import java.util.Set;
+import io.vavr.control.Option;
 
 @Singleton
 public class ScreenProvider {
@@ -47,5 +47,15 @@ public class ScreenProvider {
 
     public <T extends Screen> T get(Class<T> screenClass) {
         return getProvider(screenClass).get();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Class<? extends LazyScreen> getScreenFromEnv(Class<? extends LazyScreen> other) {
+        Class<?> loadedClass = Environment.getClassFromEnv("com.trashmelody.screens.", "ENTRY_SCREEN").getOrElse(other);
+        if (LazyScreen.class.isAssignableFrom(loadedClass)) {
+            return (Class<? extends LazyScreen>) loadedClass;
+        } else {
+            return other;
+        }
     }
 }

@@ -45,7 +45,7 @@ public class WarningScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen(253, 243, 255, 1);
-        if (TimeUtils.timeSinceMillis(timeLapsed) > 500000) {
+        if (TimeUtils.timeSinceMillis(timeLapsed) > 5000) {
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 

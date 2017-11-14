@@ -22,62 +22,106 @@ public class MusicManager {
         this.loadingBackgroundMusic = assets.get(MUSIC_BG1, MUSIC);
     }
 
-    public  void setDefault(String music){
+    // Set current music track for future use -----------------------------------------------------
+    public void setDefault(String music) {
         currentBackgroundMusicTrack = music;
-        playMusic(music, 0.3F);
     }
 
-    public void playMusic(String music) { playMusic(music, MUSIC_DEFAULT_VOLUME); }
+    // Set music states ---------------------------------------------------------------------------
+    public void playMusic() {
+        playMusic(currentBackgroundMusicTrack);
+    }
+
+    public void playMusic(String music) {
+        playMusic(music, MUSIC_DEFAULT_VOLUME);
+    }
+
+    public void playMusic(float volume) {
+        playMusic(currentBackgroundMusicTrack, volume);
+    }
+
     public void playMusic(String music, float volume) {
         assets.get(music, MUSIC).play();
         assets.get(music, MUSIC).setVolume(volume);
     }
 
-    public void pauseMusic(String music){
+    public void pauseMusic(String music) {
         assets.get(music, MUSIC).pause();
     }
-    public void stopMusic(String music){
+
+    public void stopMusic() {
+        assets.get(currentBackgroundMusicTrack, MUSIC).stop();
+    }
+
+    public void stopMusic(String music) {
         assets.get(music, MUSIC).stop();
     }
 
     // Check Background Music status --------------------------------------------------------------
-    public boolean isMusicPlaying(String music){
+    public boolean isMusicPlaying(String music) {
         return assets.get(music, MUSIC).isPlaying();
     }
-    public boolean isMusicLooping(String music){
+
+    public boolean isMusicLooping(String music) {
         return assets.get(music, MUSIC).isLooping();
     }
-    public String getCurrentBackgroundMusic() { return currentBackgroundMusicTrack; }
 
-    // Set Background Music Volume ----------------------------------------------------------------
-    public float getBackgroundMusicVolume(){
+    public String getCurrentBackgroundMusic() {
+        return currentBackgroundMusicTrack;
+    }
+
+    // Toggling Background Music Volume -----------------------------------------------------------
+    public float getBackgroundMusicVolume() {
         return assets.get(currentBackgroundMusicTrack, MUSIC).getVolume();
     }
 
-    public void increaseBackgroundVolume(){ increaseVolume(currentBackgroundMusicTrack); }
-    public void increaseVolume(String music){
-        assets.get(music, MUSIC).setVolume(Math.min(assets.get(music, MUSIC).getVolume() + musicVolumeChange,1F));
+    public void increaseBackgroundVolume() {
+        increaseVolume(currentBackgroundMusicTrack);
     }
 
-    public void decreaseBackgroundVolume(){ decreaseVolume(currentBackgroundMusicTrack); }
-    public void decreaseVolume(String music){
-        assets.get(music, MUSIC).setVolume(Math.max(assets.get(music, MUSIC).getVolume() - musicVolumeChange,0F));
+    public void increaseVolume(String music) {
+        assets.get(music, MUSIC).setVolume(Math.min(assets.get(music, MUSIC).getVolume() + musicVolumeChange, 1F));
     }
 
-    public void setBackgroundVolume(){ setVolume(currentBackgroundMusicTrack); }
-    public void setBackgroundVolume(float volume){ setVolume(currentBackgroundMusicTrack, volume); }
-    public void setVolume(String music){ setVolume(music, MUSIC_DEFAULT_VOLUME);}
-    public void setVolume(String music, float volume){
+    public void decreaseBackgroundVolume() {
+        decreaseVolume(currentBackgroundMusicTrack);
+    }
+
+    public void decreaseVolume(String music) {
+        assets.get(music, MUSIC).setVolume(Math.max(assets.get(music, MUSIC).getVolume() - musicVolumeChange, 0F));
+    }
+
+    // Set background Volume ----------------------------------------------------------------------
+    public void setVolume() { // Use default value of music track + volume
+        setVolume(currentBackgroundMusicTrack);
+    }
+
+    public void setVolume(float volume) { // Use default value of music track
+        setVolume(currentBackgroundMusicTrack, volume);
+    }
+
+    public void setVolume(String music) {
+        setVolume(music, MUSIC_DEFAULT_VOLUME);
+    }
+
+    public void setVolume(String music, float volume) {
         assets.get(music, MUSIC).setVolume(volume);
     }
 
-    public float getBackgroundPosition(){ return getPosition(currentBackgroundMusicTrack); }
-    public float getPosition(String music){
+    // Getters + Setter music positions -----------------------------------------------------------
+    public float getMusicPosition() {
+        return getMusicPosition(currentBackgroundMusicTrack);
+    }
+
+    public float getMusicPosition(String music) {
         return assets.get(music, MUSIC).getPosition();
     }
 
-    public void setBackgroundPosition(float position){ setPosition(currentBackgroundMusicTrack, position); }
-    public void setPosition(String music, float position){
+    public void setMusicPosition(float position) {
+        setMusicPosition(currentBackgroundMusicTrack, position);
+    }
+
+    public void setMusicPosition(String music, float position) {
         assets.get(music, MUSIC).setPosition(position);
     }
 }

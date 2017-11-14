@@ -39,8 +39,8 @@ public class SplashScreen extends LazyScreen {
 
     @Override
     public void show() {
-        musicManager.playMusic(MUSIC_BG1);
         musicManager.setDefault(MUSIC_BG1);
+        musicManager.playMusic(MUSIC_BG1);
         timeLapsed = TimeUtils.millis();
     }
 

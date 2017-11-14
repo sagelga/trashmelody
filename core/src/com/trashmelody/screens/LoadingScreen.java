@@ -15,6 +15,7 @@ import com.trashmelody.TrashMelody;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.AnimatedImage;
+import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.LOADING_LOGO;
@@ -51,7 +52,7 @@ public class LoadingScreen extends LazyScreen {
 
     @Override
     public void render(float delta) {
-        clearScreen(253,243,255,1);
+        clearScreen(253, 243, 255, 1);
         elapsed += delta;
 
         if (assets.update()) {
@@ -67,14 +68,15 @@ public class LoadingScreen extends LazyScreen {
         }
 
         // Start loading assets
-//        game.batch.begin();
+        game.batch.begin();
 //        drawCenter(game.batch, loadingScreenLogo.getKeyFrame(elapsed), 150, 128);
-//
-//         Debug zone
-//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Loading Screen",TimeUtils.timeSinceMillis(time_lapsed),assets.getProgress());
-//         Debug zone
-//
-//        game.batch.end();
+
+        // Debug zone
+        if (Debugger.debug_mode)
+            Debugger.runDebugger(game.batch, game.font, "Loading Screen", TimeUtils.timeSinceMillis(time_lapsed), assets.getProgress());
+        // Debug zone
+
+        game.batch.end();
 
         stage.act();
         stage.draw();

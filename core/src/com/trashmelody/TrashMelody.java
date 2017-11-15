@@ -41,7 +41,7 @@ public class TrashMelody extends Game {
         loadImportantAssets();
 
         Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
-        setLazyScreen(injector.getInstance(GameScreen.class));
+        setLazyScreen(injector.getInstance(SplashScreen.class));
 	}
 
 	@Override

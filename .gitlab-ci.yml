@@ -30,7 +30,6 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
-  when: on_failure
 
 code-count:
   stage: track
@@ -106,15 +105,3 @@ run-game:
     # Do gradle check and gradle assemble
     - gradle run
   retry: 1
-
-export-to-jar:
-  stage: export
-  script:
-    - gradle :desktop:dist
-  artifacts:
-      expire_in: 2 hour
-      paths:
-        - desktop/build/libs
-  only:
-    - master
-    - develop

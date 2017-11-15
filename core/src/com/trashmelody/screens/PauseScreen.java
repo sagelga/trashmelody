@@ -26,14 +26,13 @@ public class PauseScreen extends LazyScreen {
     private GameScreen gameScreen;
     private MenuScreen menuScreen;
     private ResultScreen resultScreen;
-    private Stage stage;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
 
     // Defining building value
-    private Texture continuebtn, settingbtn, retrybtn, homebtn, selectBar, touchContinuebtn, touchSettingbtn, touchRetrybtn, touchHomebtn;
-    private int count = 1;
+    private Texture continuebtn, retrybtn, homebtn, selectBar, touchContinuebtn, touchRetrybtn, touchHomebtn;
+    int count = 1;
 
     @Inject
     PauseScreen(TrashMelody game, Camera camera, Viewport viewport,ScreenProvider screens) {
@@ -50,6 +49,7 @@ public class PauseScreen extends LazyScreen {
         clearScreen();
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
+
         game.batch.begin();
 
         //Components Draw
@@ -77,22 +77,16 @@ public class PauseScreen extends LazyScreen {
             game.batch.draw(selectBar,vw/3.7F,vh/1.98F,vw/2.2F,vh/10);
         }
 
-        if (count != 3) game.batch.draw(settingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+        if (count != 3) game.batch.draw(homebtn, vw / 3, vh / 3, vw / 3, vh / 10);
         else {
-            game.batch.draw(touchSettingbtn, vw / 3, vh / 3, vw / 3, vh / 10);
+            game.batch.draw(touchHomebtn, vw / 3, vh / 3, vw / 3, vh / 10);
             game.batch.draw(selectBar,vw/3.7F,vh/2.98F,vw/2.2F,vh/10);
         }
 
-        if (count != 4) game.batch.draw(homebtn, vw / 3, vh / 6, vw / 3, vh / 10);
-        else {
-            game.batch.draw(touchHomebtn, vw / 3, vh / 6, vw / 3, vh / 10);
-            game.batch.draw(selectBar,vw/3.7F,vh/5.98F,vw/2.2F,vh/10);
-        }
-
-        if (count > 4) count = 1; else if (count<1) count = 4;
+        if (count > 3) count = 1; else if (count<1) count = 3;
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Pause Screen");
         // Debug zone
 
         game.batch.end();
@@ -108,12 +102,10 @@ public class PauseScreen extends LazyScreen {
     @Override
     public void loadAssets(Assets assets) {
         assets.load(PAUSE_CONTINUE_BTN1, TEXTURE);
-        assets.load(PAUSE_SETTING_BTN1, TEXTURE);
         assets.load(PAUSE_RETRY_BTN1, TEXTURE);
         assets.load(PAUSE_HOME_BTN1, TEXTURE);
         assets.load(PAUSE_SELECTOR_ARROW, TEXTURE);
         assets.load(PAUSE_CONTINUE_BTN2, TEXTURE);
-        assets.load(PAUSE_SETTING_BTN2, TEXTURE);
         assets.load(PAUSE_RETRY_BTN2, TEXTURE);
         assets.load(PAUSE_HOME_BTN2, TEXTURE);
     }
@@ -121,12 +113,10 @@ public class PauseScreen extends LazyScreen {
     @Override
     public void afterLoad(Assets assets) {
         this.continuebtn = assets.get(PAUSE_CONTINUE_BTN1, TEXTURE);
-        this.settingbtn = assets.get(PAUSE_SETTING_BTN1, TEXTURE);
         this.retrybtn = assets.get(PAUSE_RETRY_BTN1, TEXTURE);
         this.homebtn = assets.get(PAUSE_HOME_BTN1, TEXTURE);
         this.selectBar = assets.get(PAUSE_SELECTOR_ARROW, TEXTURE);
         this.touchContinuebtn = assets.get(PAUSE_CONTINUE_BTN2, TEXTURE);
-        this.touchSettingbtn = assets.get(PAUSE_SETTING_BTN2, TEXTURE);
         this.touchRetrybtn = assets.get(PAUSE_RETRY_BTN2, TEXTURE);
         this.touchHomebtn = assets.get(PAUSE_HOME_BTN2, TEXTURE);
     }

@@ -57,17 +57,31 @@ public class MusicManager {
         assets.get(music, MUSIC).stop();
     }
 
-    // Check Background Music status --------------------------------------------------------------
-    public boolean isMusicPlaying(String music) {
-        return assets.get(music, MUSIC).isPlaying();
-    }
-
-    public boolean isMusicLooping(String music) {
+    // Check Background Music Looping status ------------------------------------------------------
+    public boolean getMusicLoopStatus(String music){
         return assets.get(music, MUSIC).isLooping();
     }
 
-    public String getCurrentBackgroundMusic() {
-        return currentBackgroundMusicTrack;
+    public boolean getMusicLoopStatus(){
+    return getMusicLoopStatus(currentBackgroundMusicTrack);
+    }
+
+    // Setter Background Music Looping ------------------------------------------------------------
+    public void setMusicLoopStatus(String music, boolean status){
+            assets.get(music, MUSIC).setLooping(status);
+    }
+
+    public void setMusicLoopStatus(boolean status){
+        setMusicLoopStatus(currentBackgroundMusicTrack, status);
+    }
+
+    // Check Background Music Playing status ------------------------------------------------------
+    public boolean getMusicPlayStatus(String music){
+        return assets.get(music, MUSIC).isPlaying();
+    }
+
+    public boolean getMusicPlayStatus(){
+        return getMusicPlayStatus(currentBackgroundMusicTrack);
     }
 
     // Toggling Background Music Volume -----------------------------------------------------------
@@ -123,5 +137,16 @@ public class MusicManager {
 
     public void setMusicPosition(String music, float position) {
         assets.get(music, MUSIC).setPosition(position);
+    }
+
+    // Fading up and down of music
+    public void musicFadeUp(long currentVolume, long desiredVolume, long rate) {
+        for (long i = currentVolume; i <= desiredVolume; i += rate) {
+            setVolume(i);
+        }
+    }
+
+    public void musicFadeDown(long currentVolume, long desiredVolume, long rate) {
+
     }
 }

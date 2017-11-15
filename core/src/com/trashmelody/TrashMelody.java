@@ -32,7 +32,7 @@ public class TrashMelody extends Game {
 
 	@Override
 	public void create() {
-		this.batch = new SpriteBatch();
+	    this.batch = new SpriteBatch();
         this.font = new BitmapFont();
         this.injector = getInjector();
         this.assets = injector.getInstance(Assets.class);

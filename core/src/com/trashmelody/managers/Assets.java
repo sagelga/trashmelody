@@ -72,12 +72,18 @@ public class Assets extends AssetManager {
     public static final String NAME_BACKGROUND          = "NameScreen/bg.png";
 
     // Stage Selection Screen Assets
-    public static final String STAGE_BUILDING_OFFICE    = "StageSelect/Building/stage-office.png";
-    public static final String STAGE_BUILDING_CINEMA    = "StageSelect/Building/stage-cinema.png";
-    public static final String STAGE_BUILDING_HOSPITAL  = "StageSelect/Building/stage-hospital.png";
-    public static final String STAGE_BUILDING_SCHOOL    = "StageSelect/Building/stage-school.png";
-    public static final String STAGE_BUILDING_HOME      = "StageSelect/Building/stage-home.png";
-    public static final String STAGE_BUILDING_CAFE      = "StageSelect/Building/stage-cafe.png";
+    public static final String STAGE_BD_SHOW_OFFICE    = "StageSelect/Building/Show/office.png";
+    public static final String STAGE_BD_SHOW_CINEMA    = "StageSelect/Building/Show/cinema.png";
+    public static final String STAGE_BD_SHOW_HOSPITAL  = "StageSelect/Building/Show/hospital.png";
+    public static final String STAGE_BD_SHOW_SCHOOL    = "StageSelect/Building/Show/school.png";
+    public static final String STAGE_BD_SHOW_HOME      = "StageSelect/Building/Show/home.png";
+    public static final String STAGE_BD_SHOW_CAFE      = "StageSelect/Building/Show/cafe.png";
+    public static final String STAGE_BD_HIDE_OFFICE    = "StageSelect/Building/Hide/office.png";
+    public static final String STAGE_BD_HIDE_CINEMA    = "StageSelect/Building/Hide/cinema.png";
+    public static final String STAGE_BD_HIDE_HOSPITAL  = "StageSelect/Building/Hide/hospital.png";
+    public static final String STAGE_BD_HIDE_SCHOOL    = "StageSelect/Building/Hide/school.png";
+    public static final String STAGE_BD_HIDE_HOME      = "StageSelect/Building/Hide/home.png";
+    public static final String STAGE_BD_HIDE_CAFE      = "StageSelect/Building/Hide/cafe.png";
     public static final String STAGE_TEXT_OFFICE        = "StageSelect/Text/stage-office-text.png";
     public static final String STAGE_TEXT_CINEMA        = "StageSelect/Text/stage-cinema-text.png";
     public static final String STAGE_TEXT_HOSPITAL      = "StageSelect/Text/stage-hospital-text.png";
@@ -223,14 +229,14 @@ public class Assets extends AssetManager {
     public static final String MUSIC_6_BG_CLEAR         = "Song/6TELL YOUR WORLD/BG1_CLEAR.jpg";
     public static final String MUSIC_6_BG_OPAC          = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
     public static final String MUSIC_6_BG_BLUR          = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
-    public static final String MUSIC_7_SONG             = "Song/7STEP AHEAD/AUDIO.mp3";
-    public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
-    public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
-    public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
 
+    // Hit Objects
     public static final String CIGARETTE_HIT_OBJECT = "hit-objects/cigarette.png";
     public static final String HAIR_SPRAY_HIT_OBJECT = "hit-objects/hair-spray.png";
     public static final String OIL_CAN_HIT_OBJECT = "hit-objects/oil-can.png";
     public static final String PLASTIC_BAG_HIT_OBJECT = "hit-objects/plastic-bag.png";
     public static final String THINNER_HIT_OBJECT = "hit-objects/thinner.png";
+
+    // Sound Effects Assets
+    public static final String SFX_SOUND_INCREASE       = "SFx/VolumeCheck.wav";
 }

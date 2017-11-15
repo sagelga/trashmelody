@@ -8,12 +8,15 @@ import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public abstract class ManiaObject extends HitObject {
 	private int column;
-	private boolean isHold;
 
-	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound, boolean isHold) {
+	public enum Type {
+		Single, Hold
+	}
+
+	public abstract Type getType();
+
+	public ManiaObject(Vector2 position, int startTime, int endTime, int hitSound) {
 		super(position, startTime, endTime, hitSound);
-
-		this.isHold = isHold;
 	}
 	
 	@Override
@@ -31,7 +34,7 @@ public abstract class ManiaObject extends HitObject {
 		return String.valueOf(stringifyKeyValue("position", position)) +
 				stringifyKeyValue("startTime", startTime) +
 				stringifyKeyValue("endTime", endTime) +
-				stringifyKeyValue("isHold", isHold) +
+				stringifyKeyValue("isHold", getType()) +
 				stringifyKeyValue("hitSound", hitSound);
 	}
 

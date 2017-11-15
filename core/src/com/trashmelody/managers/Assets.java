@@ -230,6 +230,17 @@ public class Assets extends AssetManager {
     public static final String MUSIC_6_BG_OPAC          = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
     public static final String MUSIC_6_BG_BLUR          = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
 
+    // Hit Objects
+    public static final String PLASTIC_BAG_HIT_OBJECT   = "trashes/dangerous/buttons/button-01.png";
+    public static final String HAIR_SPRAY_HIT_OBJECT    = "trashes/dangerous/buttons/button-02.png";
+    public static final String CIGARETTE_HIT_OBJECT     = "trashes/dangerous/buttons/button-03.png";
+    public static final String THINNER_HIT_OBJECT       = "trashes/dangerous/buttons/button-04.png";
+    public static final String OIL_CAN_HIT_OBJECT       = "trashes/dangerous/buttons/button-05.png";
+
+    public static final String HITORIGOTO_EASY          = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu";
+    public static final String HITORIGOTO_HARD          = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Hard].osu";
+    public static final String HITORIGOTO_INSANE        = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Insane].osu";
+
     // Sound Effects Assets
     public static final String SFX_SOUND_INCREASE       = "SFx/VolumeCheck.wav";
 }

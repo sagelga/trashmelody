@@ -3,7 +3,6 @@ package lt.ekgame.beatmap_analyzer.beatmap;
 import lt.ekgame.beatmap_analyzer.utils.Vector2;
 
 public abstract class HitObject {
-
 	protected Vector2 position;
 	protected int startTime, endTime;
 	protected int hitSound;
@@ -85,5 +84,9 @@ public abstract class HitObject {
 
 	public void setNewCombo(boolean isNewCombo) {
 		this.isNewCombo = isNewCombo;
+	}
+
+	public boolean isAfterStartTime(float time) {
+		return time > startTime;
 	}
 }

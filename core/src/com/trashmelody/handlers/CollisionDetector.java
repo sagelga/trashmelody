@@ -13,11 +13,9 @@ public class CollisionDetector implements ContactListener {
         if (a.getBody().getUserData() instanceof Entity) {
             Entity entity = (Entity) a.getBody().getUserData();
             entityCollision(entity, b);
-            return;
         } else if (b.getBody().getUserData() instanceof Entity) {
             Entity entity = (Entity) b.getBody().getUserData();
             entityCollision(entity, a);
-            return;
         }
     }
 

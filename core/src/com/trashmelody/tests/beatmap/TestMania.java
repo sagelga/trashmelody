@@ -13,7 +13,7 @@ public class TestMania {
     public static void main(String[] args) {
         BeatmapParser parser = new BeatmapParser();
         //File file = new File("C:\\Program Files\\osu!\\Songs\\341207  - VSRG Pattern Training\\5min (iJinjin) [test2].osu");
-        File file = new File("/Users/kavinvin/Repositories/trashmelody/core/assets/songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu");
+        File file = new File("/Users/zartre/Documents/Git/trashmelody/core/assets/songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu");
         ManiaBeatmap beatmap = null;//.withMods(new Mods(Mod.DOUBLE_TIME));
         try {
             beatmap = parser.parse(file, ManiaBeatmap.class);
@@ -23,7 +23,7 @@ public class TestMania {
 
         if (beatmap != null) {
             beatmap.getHitObjects().forEach(System.out::println);
-            println(String.format("Note count: %d", beatmap.getHitObjects().size()));
+            println(String.format("HitObjectEntity count: %d", beatmap.getHitObjects().size()));
         }
 
 //        ManiaDifficulty diff = beatmap.getDifficulty();

@@ -7,22 +7,21 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.components.PlayerComponent;
 import com.trashmelody.components.TypeComponent;
 import com.trashmelody.entities.Platform;
 import com.trashmelody.entities.Player;
 import com.trashmelody.managers.Assets;
-import com.trashmelody.utils.AnimatedImage;
 import com.trashmelody.utils.Debugger;
-import com.trashmelody.TrashMelody;
+import io.vavr.collection.Stream;
+import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
+import lt.ekgame.beatmap_analyzer.beatmap.mania.ManiaBeatmap;
 
 import static com.badlogic.gdx.Input.Keys.*;
-import static com.badlogic.gdx.Input.Keys.Q;
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -34,6 +33,8 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private Stage stage;
+    private ManiaBeatmap beatmap;
+    private Stream<HitObject> hitObjects;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -89,12 +90,25 @@ public class GameScreen extends LazyScreen {
         clearScreen(0, 0, 0, 1);
         camera.update();
 
-//        game.batch.setProjectionMatrix(camera.combined);
+        game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         drawBackground();
         game.batch.end();
 
-        engine.update(delta);
+//        println(hitObjects.head().getPosition());
+
+//        Vector2 notePosition = hitObjects.head().getPosition().toGdxVector();
+//        engine.addEntity(new HitObjectEntity(
+//                world,
+//                new HitObjectComponent(A, D, W, Q, 300F),
+//                new TypeComponent(TypeComponent.PLAYER),
+//                new TransformComponent(new Vector2(notePosition.y * 2 / PPM, notePosition.x * 2 / PPM))
+//        ));
+//        hitObjects = hitObjects.tail();
+//
+        if (isLoaded()) {
+            engine.update(delta);
+        }
     }
 
     @Override
@@ -134,6 +148,11 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_SCORE_5, TEXTURE);
         assets.load(GAME_SONG_NAME_1, TEXTURE);
         assets.load(GAME_STATUS_BAR, TEXTURE);
+        assets.load(CIGARETTE_HIT_OBJECT, TEXTURE);
+        assets.load(HAIR_SPRAY_HIT_OBJECT, TEXTURE);
+        assets.load(OIL_CAN_HIT_OBJECT, TEXTURE);
+        assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
+        assets.load(THINNER_HIT_OBJECT, TEXTURE);
     }
 
     @Override
@@ -168,6 +187,20 @@ public class GameScreen extends LazyScreen {
         this.perfect = assets.get(GAME_SCORE_5, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
+
+//        BeatmapParser parser = new BeatmapParser();
+//        File file = new File("songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu");
+//        try {
+//            beatmap = parser.parse(file, ManiaBeatmap.class);
+//        } catch (BeatmapException | FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if (beatmap != null) {
+//            beatmap.getHitObjects().forEach(System.out::println);
+//            println(String.format("HitObjectEntity count: %d", beatmap.getHitObjects().size()));
+//        }
+//        hitObjects = Stream.ofAll(beatmap.getHitObjects());
 
         createEntities();
     }

@@ -23,7 +23,7 @@ public class TestMania {
 
         if (beatmap != null) {
             beatmap.getHitObjects().forEach(System.out::println);
-            println(String.format("Note count: %d", beatmap.getHitObjects().size()));
+            println(String.format("HitObjectEntity count: %d", beatmap.getHitObjects().size()));
         }
 
 //        ManiaDifficulty diff = beatmap.getDifficulty();

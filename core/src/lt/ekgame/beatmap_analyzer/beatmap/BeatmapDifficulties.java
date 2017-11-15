@@ -7,7 +7,7 @@ import lt.ekgame.beatmap_analyzer.parser.FilePartConfig;
 public class BeatmapDifficulties {
 	
 	private double healthDrain;
-	private double cirlceSize;
+	private double circleSize;
 	private double overallDifficulty;
 	private double approachRate;
 	private double sliderMultiplier;
@@ -18,7 +18,7 @@ public class BeatmapDifficulties {
 	public BeatmapDifficulties(FilePart part) throws BeatmapException {
 		FilePartConfig config = new FilePartConfig(part);
 		healthDrain = config.getDouble("HPDrainRate");
-		cirlceSize = config.getDouble("CircleSize");
+		circleSize = config.getDouble("CircleSize");
 		overallDifficulty = config.getDouble("OverallDifficulty");
 		// Long ago, osu! OD and AR used to be the same setting, so some maps don't have it.
 		approachRate = config.getDouble("ApproachRate", overallDifficulty);
@@ -29,7 +29,7 @@ public class BeatmapDifficulties {
 	public BeatmapDifficulties clone() {
 		BeatmapDifficulties clone = new BeatmapDifficulties();
 		clone.healthDrain = this.healthDrain;
-		clone.cirlceSize = this.cirlceSize;
+		clone.circleSize = this.circleSize;
 		clone.overallDifficulty = this.overallDifficulty;
 		clone.approachRate = this.approachRate;
 		clone.sliderMultiplier = this.sliderMultiplier;
@@ -41,8 +41,8 @@ public class BeatmapDifficulties {
 		return healthDrain;
 	}
 
-	public double getCS() {
-		return cirlceSize;
+	public double getCircleSize() {
+		return circleSize;
 	}
 
 	public double getOD() {
@@ -66,7 +66,7 @@ public class BeatmapDifficulties {
 	}
 
 	public void setCS(double cirlceSize) {
-		this.cirlceSize = cirlceSize;
+		this.circleSize = cirlceSize;
 	}
 
 	public void setOD(double overallDifficulty) {

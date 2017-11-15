@@ -22,6 +22,7 @@ import com.trashmelody.systems.*;
 
 import java.util.Arrays;
 
+import static com.trashmelody.constants.B2Dvars.PPM;
 import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
 import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
@@ -58,6 +59,14 @@ public class GameModule implements Module {
     }
 
     @Provides @Singleton
+    public OrthographicCamera provideOrthographicCamera() {
+        OrthographicCamera camera = new OrthographicCamera();
+        camera.setToOrtho(false, 1280 / PPM, 720 / PPM);
+        camera.update();
+        return camera;
+    }
+
+    @Provides @Singleton
     public Viewport provideViewport(Camera camera) {
         return new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     }
@@ -78,7 +87,8 @@ public class GameModule implements Module {
                 PlayerControlSystem.class,
                 PhysicsDebugSystem.class,
                 PhysicsSystem.class,
-                PhysicsSynchronizationSystem.class
+                PhysicsSynchronizationSystem.class,
+                HitObjectDispatchSystem.class
         ));
     }
 }

@@ -2,10 +2,10 @@ image: java:1.8.0-jdk
 
 stages:
   - prepare
+  - track
   - check
   - build
   - test
-  - track
   - export
 
 java-version:
@@ -31,40 +31,6 @@ set-paths:
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
   when: on_failure
-
-gradle-check:
-  stage: check
-  script:
-    # Gradle check for correct dependency imports
-    - gradle check
-  retry: 1
-
-gradle-tasks:
-  stage: check
-  script:
-    # Gives out lists of Gradle Tasks
-    - gradle -q tasks
-  retry: 1
-
-gradle-clean:
-  stage: check
-  script:
-    # Deletes previous build cache
-    - gradle clean
-  retry: 1
-
-build-game:
-  stage: build
-  script:
-    # Pretty much like compiling the files
-    - gradle assemble
-
-run-game:
-  stage: test
-  script:
-    # Do gradle check and gradle assemble
-    - gradle run
-  retry: 1
 
 code-count:
   stage: track
@@ -107,7 +73,41 @@ code-count:
     paths:
     - trackers
   allow_failure: true
-  retry: 2
+  retry: 1
+
+gradle-check:
+  stage: check
+  script:
+    # Gradle check for correct dependency imports
+    - gradle check
+  retry: 1
+
+gradle-tasks:
+  stage: check
+  script:
+    # Gives out lists of Gradle Tasks
+    - gradle -q tasks
+  retry: 1
+
+gradle-clean:
+  stage: check
+  script:
+    # Deletes previous build cache
+    - gradle clean
+  retry: 1
+
+build-game:
+  stage: build
+  script:
+    # Pretty much like compiling the files
+    - gradle assemble
+
+run-game:
+  stage: test
+  script:
+    # Do gradle check and gradle assemble
+    - gradle run
+  retry: 1
 
 export-to-jar:
   stage: export
@@ -120,4 +120,3 @@ export-to-jar:
   only:
     - master
     - develop
-    - feature/stage-selection-screen

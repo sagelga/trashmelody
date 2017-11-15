@@ -68,6 +68,9 @@ public class StageSelectScreen extends LazyScreen {
     private Texture selectArrowLeft;
     private Texture selectArrowRight;
     private Texture overlayBackground;
+    private Texture easy;
+    private Texture normal;
+    private Texture hard;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -118,7 +121,7 @@ public class StageSelectScreen extends LazyScreen {
         // Show the text of the selected item
         switch (currentStageNumber) {
             case (0):
-                game.batch.draw(stageCafeText, 20, getViewportHeight() - 608 / 6, 1850 / 5, 487 / 6);
+                game.batch.draw(stageCafeText, vw/64,vh/1.1F, vw/6, vh/8);
                 game.batch.draw(bdCafeShow, vw/2, vh/1.5F, vw/6, vh/5);
 
                 if (cooldown == 0) {
@@ -285,6 +288,10 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
 
+        assets.load(GAME_LEVEL_1, TEXTURE);
+        assets.load(GAME_LEVEL_2, TEXTURE);
+        assets.load(GAME_LEVEL_3, TEXTURE);
+
         assets.load(MUSIC_1_SONG, MUSIC);
         assets.load(MUSIC_2_SONG, MUSIC);
         assets.load(MUSIC_3_SONG, MUSIC);
@@ -326,6 +333,10 @@ public class StageSelectScreen extends LazyScreen {
         this.overlayBackground = assets.get(STAGE_BG_OVERLAY, TEXTURE); // 6464 × 4460
         this.selectArrowLeft = assets.get(STAGE_BG_ARROW_L, TEXTURE); // 291 × 456
         this.selectArrowRight = assets.get(STAGE_BG_ARROW_R, TEXTURE); // 291 × 456
+
+        this.normal = assets.get(GAME_LEVEL_1, TEXTURE);
+        this.easy = assets.get(GAME_LEVEL_2, TEXTURE);
+        this.hard = assets.get(GAME_LEVEL_3, TEXTURE);
 
         this.music1 = assets.get(MUSIC_1_SONG, MUSIC);
         this.music2 = assets.get(MUSIC_2_SONG, MUSIC);

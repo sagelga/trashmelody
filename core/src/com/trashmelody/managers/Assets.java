@@ -227,4 +227,10 @@ public class Assets extends AssetManager {
     public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
     public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
     public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
+
+    public static final String CIGARETTE_HIT_OBJECT = "hit-objects/cigarette.png";
+    public static final String HAIR_SPRAY_HIT_OBJECT = "hit-objects/hair-spray.png";
+    public static final String OIL_CAN_HIT_OBJECT = "hit-objects/oil-can.png";
+    public static final String PLASTIC_BAG_HIT_OBJECT = "hit-objects/plastic-bag.png";
+    public static final String THINNER_HIT_OBJECT = "hit-objects/thinner.png";
 }

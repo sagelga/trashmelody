@@ -15,8 +15,9 @@ public class PhysicsDebugSystem extends EntitySystem {
     private Box2DDebugRenderer renderer = new Box2DDebugRenderer();
 
     @Inject
-    public PhysicsDebugSystem(World world, Camera camera) {
-        this.camera = new OrthographicCamera(1280 * 2 / PPM, 720 * 2 / PPM);
+    public PhysicsDebugSystem(World world, OrthographicCamera camera) {
+        this.camera = camera;
+//        this.camera = new OrthographicCamera(1280 * 2 / PPM, 720 * 2 / PPM);
         this.world = world;
     }
 

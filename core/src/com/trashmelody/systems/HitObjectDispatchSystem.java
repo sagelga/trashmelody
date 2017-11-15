@@ -5,10 +5,11 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
-import com.trashmelody.components.NoteComponent;
+import com.trashmelody.components.HitObjectComponent;
 import com.trashmelody.components.TransformComponent;
 import com.trashmelody.components.TypeComponent;
-import com.trashmelody.entities.Note;
+import com.trashmelody.entities.HitObjectEntity;
+import com.trashmelody.managers.Assets;
 import io.vavr.collection.Stream;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
@@ -28,12 +29,16 @@ public class HitObjectDispatchSystem extends EntitySystem {
     private Stream<HitObject> hitObjects;
     private Engine engine;
     private World world;
+    private Assets assets;
     private float elapsedTime = 0;
 
     @Inject
-    public HitObjectDispatchSystem(Engine engine, World world) {
+    public HitObjectDispatchSystem(Engine engine,
+                                   World world,
+                                   Assets assets) {
         this.engine = engine;
         this.world = world;
+        this.assets = assets;
 
         beatmap = getBeatmap();
         hitObjects = Stream.ofAll(beatmap.getHitObjects());
@@ -45,11 +50,14 @@ public class HitObjectDispatchSystem extends EntitySystem {
 
         hitObjects.headOption().filter(isAfter(elapsedTime)).forEach(hitObject -> {
             Vector2 hitObjectPosition = hitObject.getPosition().toGdxVector();
-            engine.addEntity(new Note(
+            float hitObjectX = 200 * 2 / PPM;
+            float hitObjectY = (hitObjectPosition.y + 120) / PPM;
+            engine.addEntity(new HitObjectEntity(
                     world,
-                    new NoteComponent(A, D, W, Q, 300F),
+                    new HitObjectComponent(A, D, W, Q, 300F),
                     new TypeComponent(TypeComponent.PLAYER),
-                    new TransformComponent(new Vector2(200 * 2 / PPM, (hitObjectPosition.y + 120) / PPM))
+                    new TransformComponent(new Vector2(hitObjectX, hitObjectY), 0.1F),
+                    assets
             ));
             hitObjects = hitObjects.tail();
         });

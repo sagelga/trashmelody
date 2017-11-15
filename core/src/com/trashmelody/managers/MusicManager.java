@@ -58,12 +58,32 @@ public class MusicManager {
     }
 
     // Check Background Music status --------------------------------------------------------------
-    public boolean isMusicPlaying(String music) {
+    public boolean getMusicPlaying() {
+        return getMusicPlaying(currentBackgroundMusicTrack);
+    }
+
+    public boolean getMusicPlaying(String music) {
         return assets.get(music, MUSIC).isPlaying();
     }
 
-    public boolean isMusicLooping(String music) {
+    public boolean getMusicLooping(){
+        return getMusicLooping(currentBackgroundMusicTrack);
+    }
+
+    public boolean getMusicLooping(String music) {
         return assets.get(music, MUSIC).isLooping();
+    }
+
+    public void setMusicLooping(){
+        setMusicLooping(true);
+    }
+
+    public void setMusicLooping(boolean loop){
+        setMusicLooping(currentBackgroundMusicTrack, loop);
+    }
+
+    public void setMusicLooping(String music, boolean loop){
+        assets.get(music,MUSIC).setLooping(loop);
     }
 
     public String getCurrentBackgroundMusic() {
@@ -123,5 +143,16 @@ public class MusicManager {
 
     public void setMusicPosition(String music, float position) {
         assets.get(music, MUSIC).setPosition(position);
+    }
+
+    // Fading up and down of music
+    public void musicFadeUp(long currentVolume, long desiredVolume, long rate) {
+        for (long i = currentVolume; i <= desiredVolume; i += rate) {
+            setVolume(i);
+        }
+    }
+
+    public void musicFadeDown(long currentVolume, long desiredVolume, long rate) {
+
     }
 }

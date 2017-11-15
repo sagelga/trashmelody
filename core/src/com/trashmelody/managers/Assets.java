@@ -229,8 +229,7 @@ public class Assets extends AssetManager {
     public static final String MUSIC_6_BG_CLEAR         = "Song/6TELL YOUR WORLD/BG1_CLEAR.jpg";
     public static final String MUSIC_6_BG_OPAC          = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
     public static final String MUSIC_6_BG_BLUR          = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
-    public static final String MUSIC_7_SONG             = "Song/7STEP AHEAD/AUDIO.mp3";
-    public static final String MUSIC_7_BG_CLEAR         = "Song/7STEP AHEAD/BG1_CLEAR.png";
-    public static final String MUSIC_7_BG_OPAC          = "Song/7STEP AHEAD/BG1_OPAC70.png";
-    public static final String MUSIC_7_BG_BLUR          = "Song/7STEP AHEAD/BG1_BLUR.png";
+
+    // Sound Effects Assets
+    public static final String SFX_SOUND_INCREASE       = "SFx/VolumeCheck.wav";
 }

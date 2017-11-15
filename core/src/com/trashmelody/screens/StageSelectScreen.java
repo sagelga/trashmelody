@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -64,6 +66,7 @@ public class StageSelectScreen extends LazyScreen {
     private Texture selectArrowLeft;
     private Texture selectArrowRight;
     private Texture overlayBackground;
+    private BitmapFont font;
 
     private int currentStageNumber = 0;
     private int modes;
@@ -79,7 +82,7 @@ public class StageSelectScreen extends LazyScreen {
 
     @Override
     public void show() {
-        if (musicManager.isMusicPlaying(MUSIC_BG1)) {
+        if (musicManager.getMusicPlaying(MUSIC_BG1)) {
             musicManager.stopMusic(MUSIC_BG1);
         }
         cooldown = 50;
@@ -111,19 +114,19 @@ public class StageSelectScreen extends LazyScreen {
         switch (currentStageNumber) {
             case (0):
                 game.batch.draw(stageCafeText, 20, getViewportHeight() - 608 / 6, 1850 / 5, 487 / 6);
-                game.batch.draw(bdCafeShow, 750F, 625F, 1608 / 9, 1062 / 9);
+                game.batch.draw(bdCafeShow, 750F, 625F, 1608 / 7, 1062 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_1_SONG);
                     musicManager.playMusic(.3F);
-                    musicManager.setMusicPosition(52);
+//                    musicManager.setMusicPosition(52);
 
                 }
                 break;
             case (1):
                 game.batch.draw(stageCinemaText, 20, getViewportHeight() - 608 / 6, 2601 / 6, 487 / 6);
-                game.batch.draw(bdCinemaShow, 1000F, 425F, 1539 / 9, 1901 / 9);
+                game.batch.draw(bdCinemaShow, 1000F, 425F, 1539 / 7, 1901 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -135,7 +138,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (2):
                 game.batch.draw(stageHospitalText, 20, getViewportHeight() - 608 / 6, 3428 / 6, 487 / 6);
-                game.batch.draw(bdHospitalShow, 1000F, 275F, 1919 / 9, 1402 / 9);
+                game.batch.draw(bdHospitalShow, 1000F, 275F, 1919 / 7, 1402 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -147,7 +150,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (3):
                 game.batch.draw(stageSchoolText, 20, getViewportHeight() - 608 / 6, 2702 / 6, 487 / 6);
-                game.batch.draw(bdSchoolShow, 600F, 150F, 2489 / 9, 1372 / 9);
+                game.batch.draw(bdSchoolShow, 600F, 150F, 2489 / 7, 1372 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -159,7 +162,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (4):
                 game.batch.draw(stageHomeText, 20, getViewportHeight() - 608 / 6, 2826 / 6, 487 / 6);
-                game.batch.draw(bdHomeShow, 275F, 375F, 2176 / 9, 2164 / 9);
+                game.batch.draw(bdHomeShow, 275F, 375F, 2176 / 7, 2164 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -171,7 +174,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (5):
                 game.batch.draw(stageOfficeText, 20, getViewportHeight() - 608 / 6, 2507 / 6, 487 / 6);
-                game.batch.draw(bdOfficeShow, 450F, 625F, 2408 / 9, 1356 / 9);
+                game.batch.draw(bdOfficeShow, 450F, 625F, 2408 / 7, 1356 / 7);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -182,27 +185,28 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             default:
-                System.out.println("Stage Selector overflow");
+                currentStageNumber %= 5;
         }
+
 
         // Show the stage building --------------------------------
         if (currentStageNumber != 0) {
-            game.batch.draw(bdCafeHide, 750F, 625F, 1608 / 9, 1062 / 9);
+            game.batch.draw(bdCafeHide, 750F, 625F, 1608 / 7, 1062 / 7);
         }
         if (currentStageNumber != 1) {
-            game.batch.draw(bdCinemaHide, 1000F, 425F, 1539 / 9, 1901 / 9);
+            game.batch.draw(bdCinemaHide, 1000F, 425F, 1539 / 7, 1901 / 7);
         }
         if (currentStageNumber != 2) {
-            game.batch.draw(bdHospitalHide, 1000F, 275F, 1919 / 9, 1402 / 9);
+            game.batch.draw(bdHospitalHide, 1000F, 275F, 1919 / 7, 1402 / 7);
         }
         if (currentStageNumber != 3) {
-            game.batch.draw(bdSchoolHide, 600F, 150F, 2489 / 9, 1372 / 9);
+            game.batch.draw(bdSchoolHide, 600F, 150F, 2489 / 7, 1372 / 7);
         }
         if (currentStageNumber != 4) {
-            game.batch.draw(bdHomeHide, 275F, 375F, 2176 / 9, 2164 / 9);
+            game.batch.draw(bdHomeHide, 275F, 375F, 2176 / 7, 2164 / 7);
         }
         if (currentStageNumber != 5) {
-            game.batch.draw(bdOfficeHide, 450F, 625F, 2408 / 9, 1356 / 9);
+            game.batch.draw(bdOfficeHide, 450F, 625F, 2408 / 7, 1356 / 7);
         }
 
         if (cooldown > 0) {
@@ -220,7 +224,7 @@ public class StageSelectScreen extends LazyScreen {
         if (modes == 0) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
                 currentStageNumber = (currentStageNumber + 1) % 6;
-                cooldown = 100;
+                cooldown = 50;
                 musicManager.stopMusic();
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
@@ -228,15 +232,16 @@ public class StageSelectScreen extends LazyScreen {
                 if (currentStageNumber < 0) {
                     currentStageNumber = 5;
                 }
-                cooldown = 100;
+                cooldown = 50;
                 musicManager.stopMusic();
             }
         }
-
-        if ((modes == 0) && (Gdx.input.isKeyJustPressed(Input.Keys.ENTER))) {
-            modes++;
-
-        }
+//
+//        if ((modes == 0) && (Gdx.input.isKeyJustPressed(Input.Keys.ENTER))) {
+//            modes++;
+//            font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
+//
+//        }
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
@@ -283,54 +288,56 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(MUSIC_4_SONG, MUSIC);
         assets.load(MUSIC_5_SONG, MUSIC);
         assets.load(MUSIC_6_SONG, MUSIC);
-//        assets.load(MUSIC_7_SONG,           MUSIC);
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.bdOfficeShow = assets.get(STAGE_BD_SHOW_OFFICE, TEXTURE); // 2408 × 1356
-        this.bdCinemaShow = assets.get(STAGE_BD_SHOW_CINEMA, TEXTURE); // 1539 × 1901
-        this.bdHospitalShow = assets.get(STAGE_BD_SHOW_HOSPITAL, TEXTURE); // 1919 × 1402
-        this.bdSchoolShow = assets.get(STAGE_BD_SHOW_SCHOOL, TEXTURE); // 2489 × 1372
-        this.bdHomeShow = assets.get(STAGE_BD_SHOW_HOME, TEXTURE); // 2176 × 2164
-        this.bdCafeShow = assets.get(STAGE_BD_SHOW_CAFE, TEXTURE); // 1608 x 1062
+        this.bdOfficeShow       = assets.get(STAGE_BD_SHOW_OFFICE, TEXTURE); // 2408 × 1356
+        this.bdCinemaShow       = assets.get(STAGE_BD_SHOW_CINEMA, TEXTURE); // 1539 × 1901
+        this.bdHospitalShow     = assets.get(STAGE_BD_SHOW_HOSPITAL, TEXTURE); // 1919 × 1402
+        this.bdSchoolShow       = assets.get(STAGE_BD_SHOW_SCHOOL, TEXTURE); // 2489 × 1372
+        this.bdHomeShow         = assets.get(STAGE_BD_SHOW_HOME, TEXTURE); // 2176 × 2164
+        this.bdCafeShow         = assets.get(STAGE_BD_SHOW_CAFE, TEXTURE); // 1608 x 1062
 
-        this.bdOfficeHide = assets.get(STAGE_BD_HIDE_OFFICE, TEXTURE);
-        this.bdCinemaHide = assets.get(STAGE_BD_HIDE_CINEMA, TEXTURE);
-        this.bdHospitalHide = assets.get(STAGE_BD_HIDE_HOSPITAL, TEXTURE);
-        this.bdSchoolHide = assets.get(STAGE_BD_HIDE_SCHOOL, TEXTURE);
-        this.bdHomeHide = assets.get(STAGE_BD_HIDE_HOME, TEXTURE);
-        this.bdCafeHide = assets.get(STAGE_BD_HIDE_CAFE, TEXTURE);
+        this.bdOfficeHide       = assets.get(STAGE_BD_HIDE_OFFICE, TEXTURE);
+        this.bdCinemaHide       = assets.get(STAGE_BD_HIDE_CINEMA, TEXTURE);
+        this.bdHospitalHide     = assets.get(STAGE_BD_HIDE_HOSPITAL, TEXTURE);
+        this.bdSchoolHide       = assets.get(STAGE_BD_HIDE_SCHOOL, TEXTURE);
+        this.bdHomeHide         = assets.get(STAGE_BD_HIDE_HOME, TEXTURE);
+        this.bdCafeHide         = assets.get(STAGE_BD_HIDE_CAFE, TEXTURE);
 
-        this.stageHomeText = assets.get(STAGE_TEXT_HOME, TEXTURE); // 2826 × 487
-        this.stageOfficeText = assets.get(STAGE_TEXT_OFFICE, TEXTURE); // 2507 × 487
-        this.stageCafeText = assets.get(STAGE_TEXT_CAFE, TEXTURE); // 2057 × 487
-        this.stageCinemaText = assets.get(STAGE_TEXT_CINEMA, TEXTURE); // 2601 × 487
-        this.stageHospitalText = assets.get(STAGE_TEXT_HOSPITAL, TEXTURE); // 3428 × 487
-        this.stageSchoolText = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
+        this.stageHomeText      = assets.get(STAGE_TEXT_HOME, TEXTURE); // 2826 × 487
+        this.stageOfficeText    = assets.get(STAGE_TEXT_OFFICE, TEXTURE); // 2507 × 487
+        this.stageCafeText      = assets.get(STAGE_TEXT_CAFE, TEXTURE); // 2057 × 487
+        this.stageCinemaText    = assets.get(STAGE_TEXT_CINEMA, TEXTURE); // 2601 × 487
+        this.stageHospitalText  = assets.get(STAGE_TEXT_HOSPITAL, TEXTURE); // 3428 × 487
+        this.stageSchoolText    = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
 
-        this.buttonBack = assets.get(STAGE_BG_BACKBUTTON, TEXTURE); // 687  × 236
-        this.buttonPlay = assets.get(STAGE_BG_PLAYBUTTON, TEXTURE); // 670  × 239
-        this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
-        this.footer = assets.get(STAGE_BG_FOOTER, TEXTURE); // 8002 × 296
-        this.cloud = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644
-        this.trashworldLogo = assets.get(STAGE_BG_TRASHWORLD, TEXTURE); // 2265 × 1370
-        this.overlayBackground = assets.get(STAGE_BG_OVERLAY, TEXTURE); // 6464 × 4460
-        this.selectArrowLeft = assets.get(STAGE_BG_ARROW_L, TEXTURE); // 291 × 456
-        this.selectArrowRight = assets.get(STAGE_BG_ARROW_R, TEXTURE); // 291 × 456
+        this.buttonBack         = assets.get(STAGE_BG_BACKBUTTON, TEXTURE); // 687  × 236
+        this.buttonPlay         = assets.get(STAGE_BG_PLAYBUTTON, TEXTURE); // 670  × 239
+        this.header             = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
+        this.footer             = assets.get(STAGE_BG_FOOTER, TEXTURE); // 8002 × 296
+        this.cloud              = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644
+        this.trashworldLogo     = assets.get(STAGE_BG_TRASHWORLD, TEXTURE); // 2265 × 1370
+        this.overlayBackground  = assets.get(STAGE_BG_OVERLAY, TEXTURE); // 6464 × 4460
+        this.selectArrowLeft    = assets.get(STAGE_BG_ARROW_L, TEXTURE); // 291 × 456
+        this.selectArrowRight   = assets.get(STAGE_BG_ARROW_R, TEXTURE); // 291 × 456
 
-        this.music1 = assets.get(MUSIC_1_SONG, MUSIC);
-        this.music2 = assets.get(MUSIC_2_SONG, MUSIC);
-        this.music3 = assets.get(MUSIC_3_SONG, MUSIC);
-        this.music4 = assets.get(MUSIC_4_SONG, MUSIC);
-        this.music5 = assets.get(MUSIC_5_SONG, MUSIC);
-        this.music6 = assets.get(MUSIC_6_SONG, MUSIC);
-//        this.music7             = assets.get(MUSIC_7_SONG,              MUSIC);
+        this.music1             = assets.get(MUSIC_1_SONG, MUSIC);
+        this.music2             = assets.get(MUSIC_2_SONG, MUSIC);
+        this.music3             = assets.get(MUSIC_3_SONG, MUSIC);
+        this.music4             = assets.get(MUSIC_4_SONG, MUSIC);
+        this.music5             = assets.get(MUSIC_5_SONG, MUSIC);
+        this.music6             = assets.get(MUSIC_6_SONG, MUSIC);
+
+        this.font = assets.getSuperSpaceFont(42, Color.RED);
+
     }
 
     @Override
     public void hide() {
         currentStageNumber = 0;
         cooldown = 0;
+        musicManager.stopMusic();
     }
 }

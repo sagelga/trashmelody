@@ -63,6 +63,7 @@ public class Assets extends AssetManager {
     public static final String MENU_BTN_COLLECTION_HOVER = "MenuScreen/btn-collection-hover.png";
     public static final String MENU_BTN_SETTING_HOVER   = "MenuScreen/btn-setting-hover.png";
     public static final String MENU_BTN_EXIT_HOVER      = "MenuScreen/btn-exit-hover.png";
+    public static final String MENU_CLOUD               = "MenuScreen/cloud.gif";
 
     // Name Screen Assets
     public static final String NAME_ENTER_BOX           = "NameScreen/enterbox.png";

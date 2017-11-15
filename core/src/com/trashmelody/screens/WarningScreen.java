@@ -69,7 +69,9 @@ public class WarningScreen extends LazyScreen {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        super.resize(width, height);
+
+        viewport.update(width, height);
     }
 
     @Override

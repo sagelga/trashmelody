@@ -35,23 +35,26 @@ public class StageSelectScreen extends LazyScreen {
 
     // Defining building value
     private Texture bdHomeShow;
-    private Texture bdHomeHide;
-    private Texture stageHomeText;
     private Texture bdCafeShow;
-    private Texture bdCafeHide;
-    private Texture stageCafeText;
     private Texture bdCinemaShow;
-    private Texture bdCinemaHide;
-    private Texture stageCinemaText;
     private Texture bdHospitalShow;
-    private Texture bdHospitalHide;
-    private Texture stageHospitalText;
     private Texture bdSchoolShow;
-    private Texture bdSchoolHide;
-    private Texture stageSchoolText;
     private Texture bdOfficeShow;
+
+    private Texture bdHomeHide;
+    private Texture bdCafeHide;
+    private Texture bdCinemaHide;
+    private Texture bdHospitalHide;
+    private Texture bdSchoolHide;
     private Texture bdOfficeHide;
+
+    private Texture stageHomeText;
+    private Texture stageCafeText;
+    private Texture stageCinemaText;
+    private Texture stageHospitalText;
+    private Texture stageSchoolText;
     private Texture stageOfficeText;
+
     private Texture buttonBack;
     private Texture buttonPlay;
     private Texture header;
@@ -61,6 +64,7 @@ public class StageSelectScreen extends LazyScreen {
     private Texture selectArrowLeft;
     private Texture selectArrowRight;
     private Texture overlayBackground;
+    
     private Texture easy;
     private Texture normal;
     private Texture hard;
@@ -221,9 +225,9 @@ public class StageSelectScreen extends LazyScreen {
             game.batch.draw(bdOfficeHide, vw/3.7F, vh/1.58F, vw/4.2F, vh/4);
         }
 
-        if (cooldown > 0) {
+        if (cooldown > 0)
             cooldown--;
-        }
+        
 
 //        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
 //            game.setLazyScreen(screens.get(MenuScreen.class));
@@ -248,11 +252,10 @@ public class StageSelectScreen extends LazyScreen {
                 musicManager.stopMusic();
             }
         }
-//
+
 //        if ((modes == 0) && (Gdx.input.isKeyJustPressed(Input.Keys.ENTER))) {
 //            modes++;
 //            font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
-//
 //        }
 
         game.batch.draw(cloud,vw/6.5F,vh/2.6F,vw/1.3F,vh/2);
@@ -261,6 +264,13 @@ public class StageSelectScreen extends LazyScreen {
         // Debug zone
 
         game.batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
     }
 
     @Override

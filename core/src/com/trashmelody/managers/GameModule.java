@@ -61,7 +61,7 @@ public class GameModule implements Module {
     @Provides @Singleton
     public OrthographicCamera provideOrthographicCamera() {
         OrthographicCamera camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1280 / PPM, 720 / PPM);
+        camera.setToOrtho(false, 1920 / PPM, 1080 / PPM);
         camera.update();
         return camera;
     }
@@ -88,7 +88,8 @@ public class GameModule implements Module {
                 PhysicsDebugSystem.class,
                 PhysicsSystem.class,
                 PhysicsSynchronizationSystem.class,
-                HitObjectDispatchSystem.class
+                HitObjectDispatchSystem.class,
+                ScanLineSystem.class
         ));
     }
 }

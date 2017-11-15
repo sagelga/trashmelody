@@ -11,6 +11,9 @@ import com.trashmelody.components.*;
 import com.trashmelody.managers.Assets;
 import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
+
 import static com.trashmelody.constants.B2Dvars.PPM;
 import static com.trashmelody.managers.Assets.CIGARETTE_HIT_OBJECT;
 import static com.trashmelody.managers.Assets.TEXTURE;
@@ -29,10 +32,10 @@ public class HitObjectEntity extends Entity {
         Vector2 hitObjectPosition = hitObject.getPosition().toGdxVector();
         float hitObjectX = 200 * 2 / PPM;
         float hitObjectY = (hitObjectPosition.y + 120) / PPM;
-        TransformComponent transformComponent = new TransformComponent(new Vector2(hitObjectX, hitObjectY), 0.1F);
+        TransformComponent transformComponent = new TransformComponent(hitObjectX, hitObjectY, 0.6F, 0.6F);
 
         CircleShape shape = new CircleShape();
-        shape.setRadius(1);
+        shape.setRadius(0.3F);
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;

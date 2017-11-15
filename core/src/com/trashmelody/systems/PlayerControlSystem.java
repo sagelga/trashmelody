@@ -45,7 +45,7 @@ public class PlayerControlSystem extends IteratingSystem {
             physics.body.setLinearVelocity(
                     MathUtils.lerp(xVelocity, -5F, 0.2F),
                     yVelocity
-                );
+            );
 
         if (controller.KEY_MAP.get(player.rightKey))
             physics.body.setLinearVelocity(

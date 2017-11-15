@@ -28,11 +28,13 @@ public class TrashMelody extends Game {
     public Engine engine = new Engine();
     private Assets assets;
     private ScreenProvider screens;
+    public final float WIDTH = 1920;
+    public final float HEIGHT = 1080;
     public float SCALE;
 
 	@Override
 	public void create() {
-	    this.batch = new SpriteBatch();
+	        this.batch = new SpriteBatch();
         this.font = new BitmapFont();
         this.injector = getInjector();
         this.assets = injector.getInstance(Assets.class);

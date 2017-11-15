@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import io.vavr.control.Option;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
 
@@ -29,35 +30,33 @@ public class RenderingSystem extends IteratingSystem {
                 .get()
         );
         this.batch = batch;
-//        this.camera = new OrthographicCamera(1280 * 2 * 10 / PPM, 720 * 2 * 10/ PPM);
         this.camera = camera;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        TransformComponent transformComponent = Mapper.transform.get(entity);
-        Vector2 position = transformComponent.position;
-        float scale = transformComponent.scale;
-
+        TransformComponent transform = Mapper.transform.get(entity);
         TextureComponent textureComponent = Mapper.texture.get(entity);
-        if (textureComponent != null) {
-            Texture img = textureComponent.texture;
-            int imgWidth = img.getWidth();
-            int imgHeight = img.getHeight();
-            batch.draw(
-                    img,
-                    position.x - imgWidth / 32F / 2F * scale,
-                    position.y - imgHeight / 32F / 2F * scale,
-                    (imgWidth / 32F) * scale,
-                    (imgHeight / 32F) * scale
-            );
-
-//            System.out.println(imgWidth / 32F);
-//            System.out.println(imgHeight / 32F);
-//            System.out.println(scale);
-//            System.out.println((imgWidth / 32F) * scale);
-        }
         TextureRegionComponent textureRegionComponent = Mapper.textureRegion.get(entity);
+
+        Vector2 position = transform.position;
+        Option<Vector2> maybeSize = transform.size;
+        float scale = transform.scale;
+
+        if (textureComponent != null) {
+            Texture texture = textureComponent.texture;
+            Vector2 size = maybeSize.getOrElse(new Vector2(texture.getWidth(), texture.getHeight()));
+            float width = size.x * scale;
+            float height = size.y * scale;
+            batch.draw(
+                    texture,
+                    position.x - width / 2F,
+                    position.y - height / 2F,
+                    width,
+                    height
+            );
+        }
+
         if (textureRegionComponent != null) {
             TextureRegion img = textureRegionComponent.textureRegion;
             int imgWidth = img.getRegionWidth();
@@ -72,17 +71,8 @@ public class RenderingSystem extends IteratingSystem {
                     imgHeight,
                     scale,
                     scale,
-                    transformComponent.angelRadiant * MathUtils.radiansToDegrees
+                    transform.angelRadiant * MathUtils.radiansToDegrees
             );
-//            batch.draw(
-//                    img,
-//                    position.x - imgWidth / 32F / 2F,
-//                    position.y - imgHeight / 32F / 2F
-//            );
-//            System.out.println(position.x - imgWidth / 320F / 2F);
-//            System.out.println(position.x);
-//            System.out.println(position.y - imgHeight / 320F / 2F);
-//            System.out.println(position.y);
         }
     }
 

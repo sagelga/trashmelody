@@ -12,9 +12,11 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.components.PlayerComponent;
+import com.trashmelody.components.ScanLineComponent;
 import com.trashmelody.components.TypeComponent;
 import com.trashmelody.entities.Platform;
 import com.trashmelody.entities.Player;
+import com.trashmelody.entities.ScanLine;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.utils.Debugger;
 import io.vavr.collection.Stream;
@@ -216,6 +218,11 @@ public class GameScreen extends LazyScreen {
                 world,
                 new PlayerComponent(A, D, W, Q, 300F),
                 new TypeComponent(TypeComponent.PLAYER)
+        ));
+        engine.addEntity(new ScanLine(
+                world,
+                new ScanLineComponent(20F),
+                3F
         ));
     }
 

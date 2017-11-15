@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -14,6 +16,7 @@ import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.MusicManager;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
+import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
@@ -29,6 +32,7 @@ public class MenuScreen extends LazyScreen {
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
+    private Animation<TextureRegion> cloud;
     private Texture btnStart_hover, btnCollection_hover, btnSetting_hover, btnExit_hover;
     private Stage stage = new Stage();
 
@@ -36,6 +40,7 @@ public class MenuScreen extends LazyScreen {
 
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
+    float elapsed;
 
     @Inject
     MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screens, MusicManager musicManager) {
@@ -62,6 +67,7 @@ public class MenuScreen extends LazyScreen {
     public void render(float delta) {
         clearScreen();
         camera.update();
+        elapsed += delta;
 
         game.batch.begin();
 
@@ -80,6 +86,7 @@ public class MenuScreen extends LazyScreen {
         }
 
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
+        drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
 
         if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
@@ -135,6 +142,8 @@ public class MenuScreen extends LazyScreen {
         assets.load(MENU_BTN_COLLECTION_HOVER, TEXTURE);
         assets.load(MENU_BTN_SETTING_HOVER, TEXTURE);
         assets.load(MENU_BTN_EXIT_HOVER, TEXTURE);
+        assets.load(MENU_CLOUD, TEXTURE);
+        this.cloud = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MENU_CLOUD).read());
     }
 
     @Override
@@ -151,5 +160,6 @@ public class MenuScreen extends LazyScreen {
         this.btnCollection_hover = assets.get(MENU_BTN_COLLECTION_HOVER, TEXTURE);
         this.btnSetting_hover = assets.get(MENU_BTN_SETTING_HOVER, TEXTURE);
         this.btnExit_hover = assets.get(MENU_BTN_EXIT_HOVER, TEXTURE);
+//        this.cloud = assets.get(MENU_CLOUD, TEXTURE);
     }
 }

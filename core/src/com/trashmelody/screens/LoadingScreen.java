@@ -7,8 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
@@ -20,6 +23,8 @@ import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.LOADING_LOGO;
 import static com.trashmelody.utils.RenderingUtils.clearScreen;
+import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
+import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 ;
 
@@ -33,16 +38,20 @@ public class LoadingScreen extends LazyScreen {
     private Stage stage;
     private Animation<TextureRegion> loadingScreenLogo;
     private Music loadingScreenMusic;
+    private Viewport viewport;
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
 
     public long time_lapsed;
     float elapsed;
 
     @Inject
-    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screens, Camera camera) {
+    LoadingScreen(TrashMelody game, Assets assets, ScreenProvider screens, Camera camera,Viewport viewport) {
         this.game = game;
         this.assets = assets;
         this.screens = screens;
         this.camera = camera;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
     }
 
     @Override
@@ -84,9 +93,10 @@ public class LoadingScreen extends LazyScreen {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
-    }
+        super.resize(width, height);
 
+        viewport.update(width, height);
+    }
     public void setNextScreen(LazyScreen nextScreen) {
         this.nextScreen = nextScreen;
     }

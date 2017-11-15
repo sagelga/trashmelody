@@ -57,37 +57,31 @@ public class MusicManager {
         assets.get(music, MUSIC).stop();
     }
 
-    // Check Background Music status --------------------------------------------------------------
-    public boolean getMusicPlaying() {
-        return getMusicPlaying(currentBackgroundMusicTrack);
-    }
-
-    public boolean getMusicPlaying(String music) {
-        return assets.get(music, MUSIC).isPlaying();
-    }
-
-    public boolean getMusicLooping(){
-        return getMusicLooping(currentBackgroundMusicTrack);
-    }
-
-    public boolean getMusicLooping(String music) {
+    // Check Background Music Looping status ------------------------------------------------------
+    public boolean getMusicLoopStatus(String music){
         return assets.get(music, MUSIC).isLooping();
     }
 
-    public void setMusicLooping(){
-        setMusicLooping(true);
+    public boolean getMusicLoopStatus(){
+    return getMusicLoopStatus(currentBackgroundMusicTrack);
     }
 
-    public void setMusicLooping(boolean loop){
-        setMusicLooping(currentBackgroundMusicTrack, loop);
+    // Setter Background Music Looping ------------------------------------------------------------
+    public void setMusicLoopStatus(String music, boolean status){
+            assets.get(music, MUSIC).setLooping(status);
     }
 
-    public void setMusicLooping(String music, boolean loop){
-        assets.get(music,MUSIC).setLooping(loop);
+    public void setMusicLoopStatus(boolean status){
+        setMusicLoopStatus(currentBackgroundMusicTrack, status);
     }
 
-    public String getCurrentBackgroundMusic() {
-        return currentBackgroundMusicTrack;
+    // Check Background Music Playing status ------------------------------------------------------
+    public boolean getMusicPlayStatus(String music){
+        return assets.get(music, MUSIC).isPlaying();
+    }
+
+    public boolean getMusicPlayStatus(){
+        return getMusicPlayStatus(currentBackgroundMusicTrack);
     }
 
     // Toggling Background Music Volume -----------------------------------------------------------

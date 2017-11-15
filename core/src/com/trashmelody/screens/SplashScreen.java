@@ -41,7 +41,7 @@ public class SplashScreen extends LazyScreen {
     public void show() {
         musicManager.setDefault(MUSIC_BG1);
         musicManager.playMusic();
-        musicManager.setMusicLooping(true);
+        musicManager.setMusicLoopStatus(true);
         timeLapsed = TimeUtils.millis();
     }
 

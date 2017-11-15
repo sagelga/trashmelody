@@ -92,6 +92,8 @@ code-count:
     - mkdir trackers
     - mv *.txt trackers/
     - ls -las
+    # And show the java count
+    - cat all_adv_java_tracker.txt
   artifacts:
     expire_in: 90 day
     paths: 

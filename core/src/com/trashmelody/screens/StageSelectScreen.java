@@ -91,7 +91,7 @@ public class StageSelectScreen extends LazyScreen {
 
     @Override
     public void show() {
-        if (musicManager.getMusicPlaying(MUSIC_BG1)) {
+        if (musicManager.getMusicPlayStatus(MUSIC_BG1)) {
             musicManager.stopMusic(MUSIC_BG1);
         }
         cooldown = 50;

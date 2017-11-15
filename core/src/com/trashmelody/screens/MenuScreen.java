@@ -52,7 +52,7 @@ public class MenuScreen extends LazyScreen {
 
     @Override
     public void show() {
-        if (!musicManager.isMusicPlaying(MUSIC_BG1)) {
+        if (! musicManager.getMusicPlayStatus(MUSIC_BG1)) {
             musicManager.setDefault(MUSIC_BG1);
             musicManager.playMusic();
         }

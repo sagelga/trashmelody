@@ -100,14 +100,13 @@ public class StageSelectScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen(253, 243, 255, 1);
-//        camera.update();
-//        game.batch.setProjectionMatrix(camera.combined);
+        camera.update();
+        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
         // Show the logo and clouds
-        //drawCenter(game.batch, overlayBackground, 6464 / 6, 4460 / 6);
-        game.batch.draw(trashworldLogo,vw/2.7F,vh/2.5F,vw/4.2F,vh/4);
-        //drawCenter(game.batch, cloud, 7507 / 6, 2644 / 6);
+        game.batch.draw(overlayBackground,vw/4,vh/4,vw/1.5F,vh/1.5F);
+        game.batch.draw(trashworldLogo,vw/2.8F,vh/2.5F,vw/3.7F,vh/3.5F);
 
         // Show the header + footer of the game
         game.batch.draw(header, 0, vh/1.15F, vw/2, vh/8);
@@ -119,12 +118,15 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(selectArrowLeft, vw/1.4F, vh/8, vw/28, vh/10);
         game.batch.draw(selectArrowRight, vw/1.065F, vh/8, vw/28, vh/10);
 
+        int count = 0;
+        game.batch.draw(normal, vw/1.4F, vh/50, vw/10, vh/25);
+
 
         // Show the text of the selected item
         switch (currentStageNumber) {
             case (0):
-                game.batch.draw(stageCafeText, 20, getViewportHeight() - 608 / 6, 1850 / 5, 487 / 6);
-                game.batch.draw(bdCafeShow, 750F, 625F, 1608 / 7, 1062 / 7);
+                game.batch.draw(stageCafeText, vw/64, vh/1.16F, vw/3.5F, vh/8);
+                game.batch.draw(bdCafeShow, vw/2, vh/1.47F, vw/6, vw/9);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -135,8 +137,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (1):
-                game.batch.draw(stageCinemaText, 20, getViewportHeight() - 608 / 6, 2601 / 6, 487 / 6);
-                game.batch.draw(bdCinemaShow, 1000F, 425F, 1539 / 7, 1901 / 7);
+                game.batch.draw(stageCinemaText, vw/64, vh/1.16F, vw/2.6F, vh/8);
+                game.batch.draw(bdCinemaShow, vw/1.57F, vh/2.05F, vw/6, vh/3);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -147,8 +149,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (2):
-                game.batch.draw(stageHospitalText, 20, getViewportHeight() - 608 / 6, 3428 / 6, 487 / 6);
-                game.batch.draw(bdHospitalShow, 1000F, 275F, 1919 / 7, 1402 / 7);
+                game.batch.draw(stageHospitalText, vw/64, vh/1.16F, vw/2, vh/8);
+                game.batch.draw(bdHospitalShow, vw/1.7F, vh/3.4F, vw/5, vh/4);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -159,8 +161,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (3):
-                game.batch.draw(stageSchoolText, 20, getViewportHeight() - 608 / 6, 2702 / 6, 487 / 6);
-                game.batch.draw(bdSchoolShow, 600F, 150F, 2489 / 7, 1372 / 7);
+                game.batch.draw(bdSchoolShow, vw/2.8F, vh/6, vw/4, vh/4);
+                game.batch.draw(stageSchoolText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -171,8 +173,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (4):
-                game.batch.draw(stageHomeText, 20, getViewportHeight() - 608 / 6, 2826 / 6, 487 / 6);
-                game.batch.draw(bdHomeShow, 275F, 375F, 2176 / 7, 2164 / 7);
+                game.batch.draw(bdHomeShow, vw/4.8F, vh/3.85F, vw/4.2F, vh/2.5F);
+                game.batch.draw(stageHomeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -183,8 +185,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (5):
-                game.batch.draw(stageOfficeText, 20, getViewportHeight() - 608 / 6, 2507 / 6, 487 / 6);
-                game.batch.draw(bdOfficeShow, 450F, 625F, 2408 / 7, 1356 / 7);
+                game.batch.draw(bdOfficeShow, vw/3.7F, vh/1.58F, vw/4.2F, vh/4);
+                game.batch.draw(stageOfficeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -201,22 +203,22 @@ public class StageSelectScreen extends LazyScreen {
 
         // Show the stage building --------------------------------
         if (currentStageNumber != 0) {
-            game.batch.draw(bdCafeHide, 750F, 625F, 1608 / 7, 1062 / 7);
+            game.batch.draw(bdCafeHide, vw/2, vh/1.47F, vw/6, vw/9);
         }
         if (currentStageNumber != 1) {
-            game.batch.draw(bdCinemaHide, 1000F, 425F, 1539 / 7, 1901 / 7);
+            game.batch.draw(bdCinemaHide, vw/1.57F, vh/2.05F, vw/6, vh/3);
         }
         if (currentStageNumber != 2) {
-            game.batch.draw(bdHospitalHide, 1000F, 275F, 1919 / 7, 1402 / 7);
+            game.batch.draw(bdHospitalHide, vw/1.7F, vh/3.4F, vw/5, vh/4);
         }
         if (currentStageNumber != 3) {
-            game.batch.draw(bdSchoolHide, 600F, 150F, 2489 / 7, 1372 / 7);
+            game.batch.draw(bdSchoolHide, vw/2.8F, vh/6, vw/4, vh/4);
         }
         if (currentStageNumber != 4) {
-            game.batch.draw(bdHomeHide, 275F, 375F, 2176 / 7, 2164 / 7);
+            game.batch.draw(bdHomeHide, vw/4.8F, vh/3.85F, vw/4.2F, vh/2.5F);
         }
         if (currentStageNumber != 5) {
-            game.batch.draw(bdOfficeHide, 450F, 625F, 2408 / 7, 1356 / 7);
+            game.batch.draw(bdOfficeHide, vw/3.7F, vh/1.58F, vw/4.2F, vh/4);
         }
 
         if (cooldown > 0) {
@@ -253,6 +255,7 @@ public class StageSelectScreen extends LazyScreen {
 //
 //        }
 
+        game.batch.draw(cloud,vw/6.5F,vh/2.6F,vw/1.3F,vh/2);
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
         // Debug zone

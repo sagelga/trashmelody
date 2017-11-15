@@ -39,10 +39,11 @@ public class ResultScreen extends LazyScreen {
         game.batch.begin();
 
         game.batch.draw(bg, 0, 0, vw, vh);
-        game.batch.draw(header, 0, vh-findRatio(1200, 105, 800, 'h'), 800, findRatio(1200, 105, 800, 'h'));
-        game.batch.draw(footer, 0, 0, vw, findRatio(80, 3, vw, 'h'));
-        drawCenterY(game.batch, gradeA, findRatio(589, 700, 500, 'w'), 500, 150);
-        drawCenterY(game.batch, stats, findRatio(409, 700, 500, 'w'), 500, getCenterX());
+        game.batch.draw(header, 0, vh/1.1F,vw/2,vh/11);
+        game.batch.draw(footer, 0, 0, vw, vh/12);
+        game.batch.draw(gradeA, vw/12, vh/3.5F, vw/4, vh/2);
+        game.batch.draw(stats, vw/2, vh/5, vw/4, vh/1.5F);
+        
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");

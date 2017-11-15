@@ -51,7 +51,7 @@ public class WarningScreen extends LazyScreen {
 
         // Start loading assets
         game.batch.begin();
-        drawCenter(game.batch, warningScreenText, 1000, findRatio(1097, 504, 1000, 'h'));
+        game.batch.draw(warningScreenText,vw/9,vh/6,vw/1.3F,vh/1.5F);
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));

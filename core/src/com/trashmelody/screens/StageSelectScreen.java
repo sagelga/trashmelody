@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
@@ -28,6 +31,7 @@ public class StageSelectScreen extends LazyScreen {
     private Camera camera;
     private MusicManager musicManager;
     private Assets assets;
+    private Viewport viewport;
 
     // Defining building value
     private Texture bdHomeShow;
@@ -48,15 +52,6 @@ public class StageSelectScreen extends LazyScreen {
     private Texture bdOfficeShow;
     private Texture bdOfficeHide;
     private Texture stageOfficeText;
-
-    private Music music1;
-    private Music music2;
-    private Music music3;
-    private Music music4;
-    private Music music5;
-    private Music music6;
-//    private Music music7;
-
     private Texture buttonBack;
     private Texture buttonPlay;
     private Texture header;
@@ -66,18 +61,32 @@ public class StageSelectScreen extends LazyScreen {
     private Texture selectArrowLeft;
     private Texture selectArrowRight;
     private Texture overlayBackground;
+    private Texture easy;
+    private Texture normal;
+    private Texture hard;
+
     private BitmapFont font;
 
+    private Music music1;
+    private Music music2;
+    private Music music3;
+    private Music music4;
+    private Music music5;
+    private Music music6;
+
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
     private int currentStageNumber = 0;
     private int modes;
     private int cooldown;
 
     @Inject
-    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screens, MusicManager musicManager) {
+    StageSelectScreen(TrashMelody game, Camera camera, ScreenProvider screens, MusicManager musicManager,Viewport viewport) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;
         this.musicManager = musicManager;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
     }
 
     @Override
@@ -96,19 +105,20 @@ public class StageSelectScreen extends LazyScreen {
 
         game.batch.begin();
         // Show the logo and clouds
-        drawCenter(game.batch, overlayBackground, 6464 / 6, 4460 / 6);
-        drawCenter(game.batch, trashworldLogo, 2265 / 5, 1370 / 5);
-        drawCenter(game.batch, cloud, 7507 / 6, 2644 / 6);
+        //drawCenter(game.batch, overlayBackground, 6464 / 6, 4460 / 6);
+        game.batch.draw(trashworldLogo,vw/2.7F,vh/2.5F,vw/4.2F,vh/4);
+        //drawCenter(game.batch, cloud, 7507 / 6, 2644 / 6);
 
         // Show the header + footer of the game
-        game.batch.draw(header, 0, getViewportHeight() - 100, 4485 / 5, 608 / 5);
-        drawCenterX(game.batch, footer, getViewportWidth(), 296 / 5, 0);
+        game.batch.draw(header, 0, vh/1.15F, vw/2, vh/8);
+        game.batch.draw(footer, 0, 0, vw, vh/12);
 
         // Show the button interfaces
-        game.batch.draw(buttonPlay, 20, 5, 670 / 5, 239 / 5);
-        game.batch.draw(buttonBack, getViewportWidth() - 20 - (687 / 5), 5, 687 / 5, 236 / 5);
-        game.batch.draw(selectArrowLeft, getViewportWidth() - (291 / 6), getViewportHeight() / 10, 291 / 8, 456 / 8);
-        game.batch.draw(selectArrowRight, getViewportWidth() - (291 / 4), getViewportHeight() / 10, 291 / 8, 456 / 8);
+        game.batch.draw(buttonPlay, vw/64, 0, vw/10, vh/16);
+        game.batch.draw(buttonBack, vw/1.13F, 0, vw/10, vh/16);
+        game.batch.draw(selectArrowLeft, vw/1.4F, vh/8, vw/28, vh/10);
+        game.batch.draw(selectArrowRight, vw/1.065F, vh/8, vw/28, vh/10);
+
 
         // Show the text of the selected item
         switch (currentStageNumber) {
@@ -282,6 +292,10 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
 
+        assets.load(GAME_LEVEL_1, TEXTURE);
+        assets.load(GAME_LEVEL_2, TEXTURE);
+        assets.load(GAME_LEVEL_3, TEXTURE);
+
         assets.load(MUSIC_1_SONG, MUSIC);
         assets.load(MUSIC_2_SONG, MUSIC);
         assets.load(MUSIC_3_SONG, MUSIC);
@@ -332,6 +346,9 @@ public class StageSelectScreen extends LazyScreen {
 
         this.font = assets.getSuperSpaceFont(42, Color.RED);
 
+        this.normal = assets.get(GAME_LEVEL_1, TEXTURE);
+        this.easy = assets.get(GAME_LEVEL_2, TEXTURE);
+        this.hard = assets.get(GAME_LEVEL_3, TEXTURE);
     }
 
     @Override

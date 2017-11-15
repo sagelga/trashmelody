@@ -7,8 +7,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
@@ -18,6 +21,8 @@ import com.trashmelody.managers.ScreenProvider;
 
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.clearScreen;
+import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
+import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 @Singleton
 public class SplashScreen extends LazyScreen {
@@ -28,13 +33,17 @@ public class SplashScreen extends LazyScreen {
     private Stage stage;
     private Texture splashScreenLogo;
     private long timeLapsed;
+    private Viewport viewport;
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
 
     @Inject
-    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager, Camera camera) {
+    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager, Camera camera,Viewport viewport) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;
         this.musicManager = musicManager;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
     }
 
     @Override
@@ -59,7 +68,9 @@ public class SplashScreen extends LazyScreen {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        super.resize(width, height);
+
+        viewport.update(width, height);
     }
 
     @Override

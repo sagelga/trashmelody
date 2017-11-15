@@ -264,6 +264,13 @@ public class StageSelectScreen extends LazyScreen {
     }
 
     @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
+    }
+
+    @Override
     public void loadAssets(Assets assets) {
         assets.load(STAGE_BD_SHOW_OFFICE, TEXTURE);
         assets.load(STAGE_BD_SHOW_CINEMA, TEXTURE);

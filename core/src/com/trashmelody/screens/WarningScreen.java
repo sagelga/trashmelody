@@ -59,6 +59,12 @@ public class WarningScreen extends LazyScreen {
 
         game.batch.end();
     }
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
+    }
 
     @Override
     protected void loadAssets(Assets assets) {

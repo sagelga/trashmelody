@@ -1,11 +1,16 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -24,6 +29,7 @@ public class WarningScreen extends LazyScreen {
     private Texture warningScreenText;
     private long timeLapsed;
     private Camera camera;
+    private Stage stage;
 
     private Viewport viewport;
     private float vh = getViewportHeight();
@@ -49,15 +55,21 @@ public class WarningScreen extends LazyScreen {
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
-        // Start loading assets
         game.batch.begin();
-        game.batch.draw(warningScreenText,vw/9,vh/6,vw/1.3F,vh/1.5F);
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
         // Debug zone
 
         game.batch.end();
+
+        stage.act();
+        stage.draw();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
@@ -68,5 +80,20 @@ public class WarningScreen extends LazyScreen {
     @Override
     public void afterLoad(Assets assets) {
         this.warningScreenText = assets.get(WARNING_TEXT, TEXTURE);
+        this.stage = getStage();
+    }
+
+    private Stage getStage() {
+        Image warningText = new Image(new TextureRegion(warningScreenText));
+
+        Container<Image> container = new Container<>(warningText);
+        container.setFillParent(true);
+        container.center();
+
+        Stage stage = new Stage(new ScreenViewport(camera));
+        Gdx.input.setInputProcessor(stage);
+        stage.addActor(container);
+
+        return stage;
     }
 }

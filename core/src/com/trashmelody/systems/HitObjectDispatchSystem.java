@@ -22,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.util.function.Predicate;
 
 import static com.badlogic.gdx.Input.Keys.*;
+import static com.trashmelody.managers.Assets.HITORIGOTO_HARD;
 
 public class HitObjectDispatchSystem extends EntitySystem {
     private Beatmap beatmap;
@@ -80,7 +81,7 @@ public class HitObjectDispatchSystem extends EntitySystem {
 
     private Beatmap getBeatmap() {
         BeatmapParser parser = new BeatmapParser();
-        File file = new File("songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Hard].osu");
+        File file = new File(HITORIGOTO_HARD);
         Beatmap beatmap = null;
         try {
             beatmap = parser.parse(file, ManiaBeatmap.class);

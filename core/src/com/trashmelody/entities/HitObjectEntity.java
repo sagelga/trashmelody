@@ -25,7 +25,6 @@ public class HitObjectEntity extends Entity {
                            HitObject hitObject,
                            HitObjectComponent hitObjectComponent,
                            TypeComponent type,
-                           Engine engine,
                            Assets assets) {
         this.hitObject = hitObject;
 

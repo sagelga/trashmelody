@@ -49,19 +49,21 @@ public class HitObjectDispatchSystem extends EntitySystem {
     public void update(float deltaTime) {
         updateState(deltaTime);
 
-        hitObjects.headOption().filter(isAfter(elapsedTime)).forEach(hitObject -> {
-            HitObjectEntity hitObjectEntity = new HitObjectEntity(
+        hitObjects
+                .headOption()
+                .filter(isAfter(elapsedTime))
+                .map(hitObject -> new HitObjectEntity(
                     world,
                     hitObject,
                     new HitObjectComponent(A, D, W, Q, 300F),
                     new TypeComponent(TypeComponent.PLAYER),
-                    engine,
                     assets
-            );
-            engine.addEntity(hitObjectEntity);
-            activeHitObjects = activeHitObjects.enqueue(hitObjectEntity);
-            hitObjects = hitObjects.tail();
-        });
+                ))
+                .peek(hitObjectEntity -> {
+                    activeHitObjects = activeHitObjects.enqueue(hitObjectEntity);
+                    hitObjects = hitObjects.tail();
+                })
+                .forEach(engine::addEntity);
 
         activeHitObjects
                 .headOption()

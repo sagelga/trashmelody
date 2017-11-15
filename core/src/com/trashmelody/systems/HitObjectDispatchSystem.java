@@ -2,14 +2,14 @@ package com.trashmelody.systems;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.EntitySystem;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.trashmelody.components.HitObjectComponent;
-import com.trashmelody.components.TransformComponent;
+import com.trashmelody.components.Mapper;
 import com.trashmelody.components.TypeComponent;
 import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.managers.Assets;
+import io.vavr.collection.Queue;
 import io.vavr.collection.Stream;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
@@ -22,11 +22,11 @@ import java.io.FileNotFoundException;
 import java.util.function.Predicate;
 
 import static com.badlogic.gdx.Input.Keys.*;
-import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class HitObjectDispatchSystem extends EntitySystem {
     private Beatmap beatmap;
     private Stream<HitObject> hitObjects;
+    private Queue<HitObjectEntity> activeHitObjects = Queue.empty();
     private Engine engine;
     private World world;
     private Assets assets;
@@ -49,18 +49,25 @@ public class HitObjectDispatchSystem extends EntitySystem {
         updateState(deltaTime);
 
         hitObjects.headOption().filter(isAfter(elapsedTime)).forEach(hitObject -> {
-            Vector2 hitObjectPosition = hitObject.getPosition().toGdxVector();
-            float hitObjectX = 200 * 2 / PPM;
-            float hitObjectY = (hitObjectPosition.y + 120) / PPM;
-            engine.addEntity(new HitObjectEntity(
+            HitObjectEntity hitObjectEntity = new HitObjectEntity(
                     world,
+                    hitObject,
                     new HitObjectComponent(A, D, W, Q, 300F),
                     new TypeComponent(TypeComponent.PLAYER),
-                    new TransformComponent(new Vector2(hitObjectX, hitObjectY), 0.1F),
+                    engine,
                     assets
-            ));
+            );
+            engine.addEntity(hitObjectEntity);
+            activeHitObjects = activeHitObjects.enqueue(hitObjectEntity);
             hitObjects = hitObjects.tail();
         });
+
+        activeHitObjects
+                .headOption()
+                .filter(hitObjectEntity -> isAfter(elapsedTime - 2).test(hitObjectEntity.hitObject))
+                .peek(engine::removeEntity)
+                .peek(hitObjectEntity -> world.destroyBody(Mapper.physics.get(hitObjectEntity).body))
+                .forEach(hitObjectEntity -> activeHitObjects = activeHitObjects.dequeue()._2);
     }
 
     private Predicate<HitObject> isAfter(float elapsedTime) {

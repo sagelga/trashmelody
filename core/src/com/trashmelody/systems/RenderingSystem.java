@@ -39,8 +39,6 @@ public class RenderingSystem extends IteratingSystem {
         Vector2 position = transformComponent.position;
         float scale = transformComponent.scale;
 
-        System.out.println("inside rendering system");
-
         TextureComponent textureComponent = Mapper.texture.get(entity);
         if (textureComponent != null) {
             Texture img = textureComponent.texture;

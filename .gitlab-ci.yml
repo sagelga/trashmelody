@@ -39,37 +39,35 @@ code-count:
     #
     # Calculate .java count
     - echo '|Lines |Words |Chars' > java_tracker.txt
-    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
-    - echo '|Lines |Words |Chars'
     - git ls-files | grep "\(.java\)$" | xargs wc -cwl
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
     #
     # Calculate with coverage
-    - cloc core > adv_java_tracker.txt
-    - cloc desktop >> adv_java_tracker.txt
-    - cloc . --by-file-by-lang > all_adv_java_tracker.txt
     - cloc core
+    - cloc core > adv_java_tracker.txt
     - cloc desktop
+    - cloc desktop >> adv_java_tracker.txt
     - cloc . --by-file-by-lang
+    - cloc . --by-file-by-lang > all_adv_java_tracker.txt
     #
     # Calculate .gradle count
-    - echo '|Lines |Words |Chars' > gradle_tracker.txt
-    - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
-    - echo '|Lines |Words |Chars'
+    #- echo '|Lines |Words |Chars' > gradle_tracker.txt
     - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl
+    #- git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
     #
     # Lists all assets
     - git ls-files > assets_list.txt
     #
     # Keep the development graph line
-    - git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
     - git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+    #- git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
     #
     # Check directory again
     - mkdir trackers
     - mv *.txt trackers/
     - ls -las
   artifacts:
-    expire_in: 90 day
+    expire_in: 30 day
     paths:
     - trackers
   allow_failure: true
@@ -114,7 +112,7 @@ export-to-jar:
   script:
     - gradle :desktop:dist
   artifacts:
-      expire_in: 3 day
+      expire_in: 2 hour
       paths:
         - desktop/build/libs
   only:

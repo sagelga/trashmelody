@@ -71,6 +71,9 @@ code-count:
     - trackers
   allow_failure: true
   retry: 1
+  only:
+    - master
+    - develop
 
 gradle-check:
   stage: check

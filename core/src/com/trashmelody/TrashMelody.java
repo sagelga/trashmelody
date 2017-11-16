@@ -51,8 +51,6 @@ public class TrashMelody extends Game {
 	public void render () {
 		super.render();
 		batch.begin();
-		// Toggling the Debugger for all screen
-		if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) Debugger.debug_mode = !Debugger.debug_mode;
 		// Flashing the background music progress bar
 		batch.end();
 	}

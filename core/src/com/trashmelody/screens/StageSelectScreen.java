@@ -111,8 +111,8 @@ public class StageSelectScreen extends LazyScreen {
 
         game.batch.begin();
         // Show the logo and clouds
-        game.batch.draw(overlayBackground,vw/4,vh/4,vw/1.5F,vh/1.5F);
-        game.batch.draw(trashworldLogo,vw/2.8F,vh/2.5F,vw/3.7F,vh/3.5F);
+        game.batch.draw(overlayBackground,vw/6,vh/8,vw/1.5F,vh/1.5F);
+        game.batch.draw(trashworldLogo,vw/2.8F,vh/2.8F,vw/3.7F,vh/3.5F);
 
         // Show the header + footer of the game
         game.batch.draw(header, 0, vh/1.15F, vw/2, vh/8);
@@ -132,7 +132,7 @@ public class StageSelectScreen extends LazyScreen {
         switch (currentStageNumber) {
             case (0):
                 game.batch.draw(stageCafeText, vw/64, vh/1.16F, vw/3.5F, vh/8);
-                game.batch.draw(bdCafeShow, vw/2, vh/1.47F, vw/6, vw/9);
+                game.batch.draw(bdCafeShow, vw/2, vh/1.55F, vw/6, vw/9);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -144,7 +144,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (1):
                 game.batch.draw(stageCinemaText, vw/64, vh/1.16F, vw/2.6F, vh/8);
-                game.batch.draw(bdCinemaShow, vw/1.57F, vh/2.05F, vw/6, vh/3);
+                game.batch.draw(bdCinemaShow, vw/1.57F, vh/2.25F, vw/6, vh/3);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -156,7 +156,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (2):
                 game.batch.draw(stageHospitalText, vw/64, vh/1.16F, vw/2, vh/8);
-                game.batch.draw(bdHospitalShow, vw/1.7F, vh/3.4F, vw/5, vh/4);
+                game.batch.draw(bdHospitalShow, vw/1.7F, vh/3.8F, vw/5, vh/4);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -167,7 +167,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (3):
-                game.batch.draw(bdSchoolShow, vw/2.8F, vh/6, vw/4, vh/4);
+                game.batch.draw(bdSchoolShow, vw/2.8F, vh/7.6F, vw/4, vh/4);
                 game.batch.draw(stageSchoolText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
@@ -179,7 +179,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (4):
-                game.batch.draw(bdHomeShow, vw/4.8F, vh/3.85F, vw/4.2F, vh/2.5F);
+                game.batch.draw(bdHomeShow, vw/5F, vh/4.15F, vw/4.2F, vh/2.5F);
                 game.batch.draw(stageHomeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
@@ -191,7 +191,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (5):
-                game.batch.draw(bdOfficeShow, vw/3.7F, vh/1.58F, vw/4.2F, vh/4);
+                game.batch.draw(bdOfficeShow, vw/3.7F, vh/1.68F, vw/4.2F, vh/4);
                 game.batch.draw(stageOfficeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
@@ -209,22 +209,22 @@ public class StageSelectScreen extends LazyScreen {
 
         // Show the stage building --------------------------------
         if (currentStageNumber != 0) {
-            game.batch.draw(bdCafeHide, vw/2, vh/1.47F, vw/6, vw/9);
+            game.batch.draw(bdCafeHide, vw/2, vh/1.55F, vw/6, vw/9);
         }
         if (currentStageNumber != 1) {
-            game.batch.draw(bdCinemaHide, vw/1.57F, vh/2.05F, vw/6, vh/3);
+            game.batch.draw(bdCinemaHide, vw/1.57F, vh/2.25F, vw/6, vh/3);
         }
         if (currentStageNumber != 2) {
-            game.batch.draw(bdHospitalHide, vw/1.7F, vh/3.4F, vw/5, vh/4);
+            game.batch.draw(bdHospitalHide, vw/1.7F, vh/3.8F, vw/5, vh/4);
         }
         if (currentStageNumber != 3) {
-            game.batch.draw(bdSchoolHide, vw/2.8F, vh/6, vw/4, vh/4);
+            game.batch.draw(bdSchoolHide, vw/2.8F, vh/7.6F, vw/4, vh/4);
         }
         if (currentStageNumber != 4) {
-            game.batch.draw(bdHomeHide, vw/4.8F, vh/3.85F, vw/4.2F, vh/2.5F);
+            game.batch.draw(bdHomeHide, vw/5F, vh/4.15F, vw/4.2F, vh/2.5F);
         }
         if (currentStageNumber != 5) {
-            game.batch.draw(bdOfficeHide, vw/3.7F, vh/1.58F, vw/4.2F, vh/4);
+            game.batch.draw(bdOfficeHide, vw/3.7F, vh/1.68F, vw/4.2F, vh/4);
         }
 
         if (cooldown > 0)

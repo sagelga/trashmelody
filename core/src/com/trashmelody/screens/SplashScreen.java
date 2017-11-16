@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -29,7 +30,7 @@ public class SplashScreen extends LazyScreen {
     private TrashMelody game;
     private ScreenProvider screens;
     private MusicManager musicManager;
-    private Camera camera;
+    private OrthographicCamera camera;
     private Stage stage;
     private Texture splashScreenLogo;
     private long timeLapsed;
@@ -38,7 +39,7 @@ public class SplashScreen extends LazyScreen {
     private float vw = getViewportWidth();
 
     @Inject
-    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager, Camera camera,Viewport viewport) {
+    SplashScreen(TrashMelody game, ScreenProvider screens, MusicManager musicManager, OrthographicCamera camera,Viewport viewport) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;

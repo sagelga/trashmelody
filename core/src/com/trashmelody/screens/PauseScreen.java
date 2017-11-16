@@ -3,6 +3,7 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
@@ -21,7 +22,7 @@ import static com.trashmelody.utils.RenderingUtils.*;
 @Singleton
 public class PauseScreen extends LazyScreen {
     private TrashMelody game;
-    private Camera camera;
+    private OrthographicCamera camera;
     private Viewport viewport;
     private GameScreen gameScreen;
     private MenuScreen menuScreen;
@@ -35,7 +36,7 @@ public class PauseScreen extends LazyScreen {
     int count = 1;
 
     @Inject
-    PauseScreen(TrashMelody game, Camera camera, Viewport viewport,ScreenProvider screens) {
+    PauseScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport,ScreenProvider screens) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
@@ -47,8 +48,6 @@ public class PauseScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen();
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
 

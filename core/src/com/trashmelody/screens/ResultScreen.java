@@ -1,6 +1,7 @@
 package com.trashmelody.screens;
 
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -17,14 +18,14 @@ import static com.trashmelody.utils.RenderingUtils.*;
 @Singleton
 public class ResultScreen extends LazyScreen {
     private TrashMelody game;
-    private Camera camera;
+    private OrthographicCamera camera;
     private Viewport viewport;
     private Texture bg, header, footer, gradeA, stats;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
     @Inject
-    ResultScreen(TrashMelody game, Camera camera, Viewport viewport) {
+    ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
@@ -33,8 +34,6 @@ public class ResultScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen();
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
 

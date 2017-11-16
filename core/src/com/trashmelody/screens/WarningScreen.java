@@ -91,6 +91,7 @@ public class WarningScreen extends LazyScreen {
         Container<Image> container = new Container<>(warningText);
         container.setFillParent(true);
         container.center();
+        container.maxSize(900 * game.SCALE, 400 * game.SCALE);
 
         Stage stage = new Stage(new ScreenViewport(camera));
         Gdx.input.setInputProcessor(stage);

@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class KeyboardController implements InputProcessor {
-//    public static final Map<String, Integer> ALL_KEYS = Keys
-    public boolean left,right,up,down;
-    public Map<Integer, Boolean> KEY_MAP =
+    //    public static final Map<String, Integer> ALL_KEYS = Keys
+    public boolean left, right, up, down;
+    public Map<Integer, Boolean> keyMap =
             IntStream.range(0, 256)
                     .boxed()
                     .collect(Collectors.toMap(Function.identity(), i -> false));
-    public boolean isMouse1Down, isMouse2Down,isMouse3Down;
+    public boolean isMouse1Down, isMouse2Down, isMouse3Down;
     public boolean isDragged;
-    public Vector2 mouseLocation = new Vector2(0,0);
+    public Vector2 mouseLocation = new Vector2(0, 0);
 
     @Inject
     KeyboardController() {
@@ -26,25 +26,28 @@ public class KeyboardController implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        KEY_MAP.put(keycode, true);
+        keyMap.put(keycode, true);
         return true;
     }
+
     @Override
     public boolean keyUp(int keycode) {
-        KEY_MAP.put(keycode, false);
+        keyMap.put(keycode, false);
         return true;
     }
+
     @Override
     public boolean keyTyped(char character) {
         return false;
     }
+
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if(button == 0){
+        if (button == 0) {
             isMouse1Down = true;
-        }else if(button == 1){
+        } else if (button == 1) {
             isMouse2Down = true;
-        }else if(button == 2){
+        } else if (button == 2) {
             isMouse3Down = true;
         }
         mouseLocation.x = screenX;
@@ -59,11 +62,11 @@ public class KeyboardController implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         isDragged = false;
         //System.out.println(button);
-        if(button == 0){
+        if (button == 0) {
             isMouse1Down = false;
-        }else if(button == 1){
+        } else if (button == 1) {
             isMouse2Down = false;
-        }else if(button == 2){
+        } else if (button == 2) {
             isMouse3Down = false;
         }
         mouseLocation.x = screenX;
@@ -85,6 +88,7 @@ public class KeyboardController implements InputProcessor {
         mouseLocation.y = screenY;
         return false;
     }
+
     @Override
     public boolean scrolled(int amount) {
         return false;

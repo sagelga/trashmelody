@@ -3,6 +3,7 @@ package com.trashmelody.managers;
 import com.badlogic.gdx.audio.Music;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.trashmelody.utils.Debugger;
 
 import static com.trashmelody.managers.Assets.MUSIC;
 import static com.trashmelody.managers.Assets.MUSIC_BG1;
@@ -20,15 +21,19 @@ public class MusicManager {
         this.assets = assets;
     }
 
+
     // Update the local variables
     private void resetVariable() {
-        (new StatsManager()).setCurrentMusicTrack(currentMusic);
-        (new StatsManager()).setCurrentMusicVolume(assets.get(currentMusic, MUSIC).getVolume());
+        StatsManager statsManager = new StatsManager();
+        Debugger.statsManager = statsManager;
+        statsManager.setCurrentMusicTrack(currentMusic);
+        statsManager.setCurrentMusicVolume(assets.get(currentMusic, MUSIC).getVolume());
     }
 
     // Set current music track for future use -----------------------------------------------------
     public void setDefault(String music) {
         currentMusic = music;
+        setMusicLoopStatus(true);
         resetVariable();
     }
 

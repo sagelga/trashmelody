@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -79,14 +78,16 @@ public class MenuScreen extends LazyScreen {
                 case 1:
                     game.setLazyScreen(stageSelectScreen);
                     break;
-                case 4:
+                case 3:
                     System.exit(0);
                     break;
             }
         }
 
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
-        drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
+        if (TrashMelody.enableAnimation) {
+            drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
+        }
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
 
         if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
@@ -95,13 +96,13 @@ public class MenuScreen extends LazyScreen {
         if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         else drawCenterX(game.batch, btnCollection_hover, 320F, 56F, 300F);
 
-        if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);
+        /*if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);*/
 
-        if (menuCount != 4) drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 100F);
+        if (menuCount != 3) drawCenterX(game.batch, btnExit, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 200F);
 
-        if (menuCount > 4) menuCount = 1; else if (menuCount < 1) menuCount = 4;
+        if (menuCount > 3) menuCount = 1; else if (menuCount < 1) menuCount = 3;
 
         game.batch.draw(borderLeft, 0, 0, findRatio(168, 900, vh, 'w'), vh);
         game.batch.draw(borderRight, vw - findRatio(168, 900, vh, 'w'), 0, findRatio(168, 900, vh, 'w'), vh);
@@ -112,7 +113,7 @@ public class MenuScreen extends LazyScreen {
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
-        
+
         game.batch.end();
     }
 
@@ -143,7 +144,9 @@ public class MenuScreen extends LazyScreen {
         assets.load(MENU_BTN_SETTING_HOVER, TEXTURE);
         assets.load(MENU_BTN_EXIT_HOVER, TEXTURE);
         assets.load(MENU_CLOUD, TEXTURE);
-        this.cloud = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MENU_CLOUD).read());
+        if (TrashMelody.enableAnimation) {
+            this.cloud = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MENU_CLOUD).read());
+        }
     }
 
     @Override

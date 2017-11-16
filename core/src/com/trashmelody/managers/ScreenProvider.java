@@ -35,7 +35,6 @@ public class ScreenProvider {
 
     @Inject
     ScreenProvider(TrashMelody game) {
-        ScreenProvider.screenClasses.forEach(System.out::println);
         MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> game.injector.getProvider(screen));
 //        screens.forEach(screen -> MAPPER = MAPPER.put(screen.getClass(), screen));
     }

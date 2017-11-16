@@ -5,18 +5,19 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.trashmelody.TrashMelody;
+import com.trashmelody.managers.StatsManager;
 
 import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
 import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 
 public class Debugger extends ScreenAdapter {
-//    private  MusicManager musicManager;
+    public static StatsManager statsManager;
+    //    private  MusicManager musicManager;
     private TrashMelody game;
 
     private static int line_margin = 20;
 
     public static boolean debug_mode = false;
-
     private static double frame_count;
 
 //    @Inject
@@ -36,19 +37,20 @@ public class Debugger extends ScreenAdapter {
         debugShow(batch, font, "Active Threads : " + Thread.activeCount() , 7);
         debugShow(batch,font,"Current Page : " + current_page,8);
         debugShow(batch,font, "Operating System : " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " (" + getOSType() + ")",9);
-//        debugShow(batch,font,"Music Volume : "  + "| BG " + musicManger.getBGMusicVolume(),10);
+        debugShow(batch,font,"Music Volume : "  + statsManager.getCurrentMusicVolume(),10);
+        debugShow(batch,font,"Current Music Track" + statsManager.getCurrentMusicTrack(),11);
 
         frame_count += Gdx.graphics.getDeltaTime() * Gdx.graphics.getFramesPerSecond();
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed){
         runDebugger(batch, font, current_page);
-        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 11);
+        debugShow(batch, font, "Time Lapsed : " + time_lapsed/1000, 12);
     }
 
     public static void runDebugger(SpriteBatch batch, BitmapFont font, String current_page, long time_lapsed, float asset_load){
         runDebugger(batch, font, current_page);
-        debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",11);
+        debugShow(batch,font,"Assets Loaded : " + asset_load*100 + "% (" + time_lapsed/1000 + " s)",12);
     }
 
     private static String getOSType() {

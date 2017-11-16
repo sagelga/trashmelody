@@ -2,26 +2,46 @@ package com.trashmelody.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.math.Vector2;
-import com.trashmelody.entities.ScanLine;
+import io.vavr.control.Option;
 
 public class TransformComponent implements Component {
     public Vector2 position;
-    public Vector2 size;
+    public Option<Vector2> size;
     public float angelRadiant;
     public float scale;
 
-    public TransformComponent(Vector2 position, float scale, float angleRadiant) {
+    public TransformComponent(Vector2 position, Option<Vector2> size, float scale, float angleRadiant) {
         this.position = position;
+        this.size = size;
         this.scale = scale;
         this.angelRadiant = angleRadiant;
     }
 
-    public TransformComponent(Vector2 position,
-                              float scale) {
-        this(position, scale, 0F);
+    public TransformComponent(float x, float y) {
+        this(new Vector2(x, y));
     }
 
     public TransformComponent(Vector2 position) {
-        this(position, 1F);
+        this(position, Option.none());
+    }
+
+    public TransformComponent(float x, float y, float width, float height) {
+        this(new Vector2(x, y), Option.some(new Vector2(width, height)));
+    }
+
+    public TransformComponent(float x, float y, float width, float height, float scale) {
+        this(new Vector2(x, y), Option.some(new Vector2(width, height)), scale);
+    }
+
+    public TransformComponent(Vector2 position, float scale) {
+        this(position, Option.none(), scale);
+    }
+
+    public TransformComponent(Vector2 position, Option<Vector2> size) {
+        this(position, size, 1F);
+    }
+
+    public TransformComponent(Vector2 position, Option<Vector2> size, float scale) {
+        this(position, size, scale, 0F);
     }
 }

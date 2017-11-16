@@ -34,6 +34,7 @@ public class StageSelectScreen extends LazyScreen {
     private MusicManager musicManager;
     private Assets assets;
     private Viewport viewport;
+    private GameScreen gameScreen;
 
     // Defining building value
     private Texture bdHomeShow;
@@ -93,6 +94,7 @@ public class StageSelectScreen extends LazyScreen {
         this.camera = camera;
         this.musicManager = musicManager;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.gameScreen = screens.get(GameScreen.class);
     }
 
     @Override
@@ -259,6 +261,8 @@ public class StageSelectScreen extends LazyScreen {
 //            modes++;
 //            font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
 //        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) game.setLazyScreen(gameScreen);
 
         game.batch.draw(cloud,vw/6.5F,vh/2.6F,vw/1.3F,vh/2);
         // Debug zone

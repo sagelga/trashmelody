@@ -88,19 +88,19 @@ public class MenuScreen extends LazyScreen {
         if (TrashMelody.enableAnimation) {
             drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
         }
-        drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
+        game.batch.draw(splashScreenLogo, vw / 3.1F, vh / 1.6F, vw / 3, vh / 3);
 
-        if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
-        else drawCenterX(game.batch, btnStart_hover, 320F, 56F, 400F);
+        if (menuCount != 1) game.batch.draw(btnStart, vw / 3, vh / 2, vw / 3, vh / 10);
+        else game.batch.draw(btnStart_hover, vw / 3, vh / 2, vw / 3, vh / 10);
 
-        if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
-        else drawCenterX(game.batch, btnCollection_hover, 320F, 56F, 300F);
+        if (menuCount != 2) game.batch.draw(btnCollection, vw / 3, vh / 2.75F, vw / 3, vh / 10);
+        else game.batch.draw(btnCollection_hover, vw / 3, vh / 2.75F, vw / 3, vh / 10);
 
         /*if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
         else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);*/
 
-        if (menuCount != 3) drawCenterX(game.batch, btnExit, 320F, 56F, 200F);
-        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 200F);
+        if (menuCount != 3) game.batch.draw(btnExit, vw / 3, vh / 4.4F, vw / 3, vh / 10);
+        else game.batch.draw(btnExit_hover, vw / 3, vh / 4.4F, vw / 3, vh / 10);
 
         if (menuCount > 3) menuCount = 1; else if (menuCount < 1) menuCount = 3;
 

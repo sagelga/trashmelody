@@ -49,12 +49,8 @@ public class ScreenProvider {
     }
 
     @SuppressWarnings("unchecked")
-    public static Class<? extends LazyScreen> getScreenFromEnv(Class<? extends LazyScreen> other) {
-        Class<?> loadedClass = Environment.getClassFromEnv("com.trashmelody.screens.", "ENTRY_SCREEN").getOrElse(other);
-        if (LazyScreen.class.isAssignableFrom(loadedClass)) {
-            return (Class<? extends LazyScreen>) loadedClass;
-        } else {
-            return other;
-        }
+    public static Option<Class<? extends LazyScreen>> getScreenFromEnv() {
+        Option<Class<? extends LazyScreen>> mayBeScreen = Environment.getClassFromEnv("com.trashmelody.screens.", "ENTRY_SCREEN").map(screen -> (Class<? extends LazyScreen>) screen);
+        return mayBeScreen.filter(LazyScreen.class::isAssignableFrom);
     }
 }

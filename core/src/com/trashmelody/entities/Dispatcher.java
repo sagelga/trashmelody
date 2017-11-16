@@ -1,21 +1,17 @@
 package com.trashmelody.entities;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.google.inject.Inject;
 import com.trashmelody.components.*;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
 
-public class ScanLine extends Entity {
-    private static final float START_POSITION = 10F / PPM;
-    private World world;
+public class Dispatcher extends Entity {
+    private static float START_POSITION = 10F / PPM;
 
-    public ScanLine(World world,
-                    ScanLineComponent scanLineComponent) {
-        this.world = world;
-
+    public Dispatcher(World world, DispatchComponent dispatchComponent) {
         EdgeShape shape = new EdgeShape();
         shape.set(new Vector2(0F, 0F), new Vector2(0F, 20F));
 
@@ -34,13 +30,12 @@ public class ScanLine extends Entity {
         body.setUserData(this);
 
         PhysicsComponent physics = new PhysicsComponent(body, "Scan Line");
-        physics.body.setLinearVelocity(0F, 0F);
 
         super.add(transformComponent);
         super.add(new PhysicsComponent(body, "Scan Line"));
         super.add(new CollisionComponent());
         super.add(new TypeComponent(TypeComponent.ITEM));
-        super.add(scanLineComponent);
+        super.add(dispatchComponent);
 
         shape.dispose();
     }

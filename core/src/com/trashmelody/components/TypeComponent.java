@@ -7,7 +7,7 @@ public class TypeComponent implements Component {
     public static final short PLAYER = 2;
     public static final short SCENERY = 4;
     // Never collide in same group if Negative
-    public static final short SKILL = -2;
+    public static final short DISPATCHER = -2;
     public static final short ITEM = -4;
 
     private short group;

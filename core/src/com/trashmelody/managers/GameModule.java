@@ -2,7 +2,6 @@ package com.trashmelody.managers;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,6 +14,7 @@ import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.handlers.CollisionDetector;
 import com.trashmelody.handlers.KeyboardController;
@@ -40,6 +40,7 @@ public class GameModule implements Module {
         binder.bind(TrashMelody.class).toInstance(game);
         binder.bind(SpriteBatch.class).toInstance(game.batch);
         binder.bind(Engine.class).toInstance(game.engine);
+        binder.bind(Camera.class).to(OrthographicCamera.class);
         binder.bind(KeyboardController.class).in(Singleton.class);
         binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
@@ -51,15 +52,15 @@ public class GameModule implements Module {
     }
 
     @Provides @Singleton
-    public Camera provideCamera() {
+    public OrthographicCamera provideCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, getViewportWidth(), getViewportHeight());
         camera.update();
         return camera;
     }
 
-    @Provides @Singleton
-    public OrthographicCamera provideOrthographicCamera() {
+    @Provides @Singleton @Named("physics")
+    public OrthographicCamera provideGameCamera() {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, 1920 / PPM, 1080 / PPM);
         camera.update();
@@ -92,7 +93,8 @@ public class GameModule implements Module {
                 HitObjectSystem.class,
                 ScanLineSystem.class,
                 DispatchSystem.class,
-                ScoreSystem.class
+                ScoreSystem.class,
+                RemovingSystem.class
         ));
     }
 }

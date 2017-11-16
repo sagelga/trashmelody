@@ -44,7 +44,7 @@ public class DispatchSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         DispatchComponent dispatch = Mapper.dispatch.get(entity);
         PhysicsComponent physics = Mapper.physics.get(entity);
-        TransformComponent transform = Mapper.transform.get(entity);
+        ScanLineComponent scanLine = getScanLineComponent();
 
         if (dispatch.state == State.Ready) {
             dispatch.state = State.Playing;
@@ -78,10 +78,15 @@ public class DispatchSystem extends IteratingSystem {
                         position.x
                 ))
                 .peek(getEngine()::addEntity)
+//                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
                 .forEach(hitObjectEntity -> dispatch.hitObjects = dispatch.hitObjects.tail());
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {
         return hitObject -> hitObject.isAfterStartTime(elapsedTime);
+    }
+
+    private ScanLineComponent getScanLineComponent() {
+        return Mapper.scanLine.get(getEngine().getEntitiesFor(Family.all(ScanLineComponent.class).get()).first());
     }
 }

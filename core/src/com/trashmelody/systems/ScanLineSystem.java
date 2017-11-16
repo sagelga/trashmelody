@@ -52,7 +52,15 @@ public class ScanLineSystem extends IteratingSystem {
             }
         }
 
-        entities.forEach(hitObjectEntity -> {
+//        scanLine.activeHitObjects
+//                .dequeueOption()
+//                .map(tuple -> tuple._1)
+//                .forEach(hitObjectEntity -> {
+//                    hitObjectEntity.remove(HitObjectComponent.class);
+//                    hitObjectEntity.add(new RemovingComponent(0));
+//                });
+
+        scanLine.activeHitObjects.forEach(hitObjectEntity -> {
             HitObjectComponent hitObjectComponent = Mapper.hitObject.get(hitObjectEntity);
             if (scanLine.elapsedTime - hitObjectComponent.hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME) {
                 hitObjectComponent.status = Status.Died;

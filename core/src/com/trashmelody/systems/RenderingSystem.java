@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.google.inject.name.Named;
 import com.trashmelody.components.Mapper;
 import com.trashmelody.components.TextureComponent;
 import com.trashmelody.components.TextureRegionComponent;
@@ -22,7 +23,7 @@ public class RenderingSystem extends IteratingSystem {
     private OrthographicCamera camera;
 
     @Inject
-    public RenderingSystem(SpriteBatch batch, OrthographicCamera camera) {
+    public RenderingSystem(SpriteBatch batch, @Named("physics") OrthographicCamera camera) {
         super(Family.all(TransformComponent.class)
                 .one(TextureComponent.class, TextureRegionComponent.class)
                 .get()
@@ -54,6 +55,7 @@ public class RenderingSystem extends IteratingSystem {
             } else {
                 alignedPosition = position;
             }
+            System.out.println();
             batch.draw(
                     texture,
                     alignedPosition.x,

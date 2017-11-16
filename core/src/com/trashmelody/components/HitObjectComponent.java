@@ -1,16 +1,17 @@
 package com.trashmelody.components;
 
 import com.badlogic.ashley.core.Component;
+import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 
 public class HitObjectComponent implements Component {
-    public int leftKey, rightKey, upKey, castKey;
-    public float health;
+    public HitObject hitObject;
+    public State state = State.Alive;
 
-    public HitObjectComponent(int leftKey, int rightKey, int upKey, int castKey, float health) {
-        this.leftKey = leftKey;
-        this.rightKey = rightKey;
-        this.upKey = upKey;
-        this.castKey = castKey;
-        this.health = health;
+    public enum State {
+        Alive, Died
+    }
+
+    public HitObjectComponent(HitObject hitObject) {
+        this.hitObject = hitObject;
     }
 }

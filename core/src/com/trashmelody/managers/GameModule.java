@@ -40,7 +40,7 @@ public class GameModule implements Module {
         binder.bind(TrashMelody.class).toInstance(game);
         binder.bind(SpriteBatch.class).toInstance(game.batch);
         binder.bind(Engine.class).toInstance(game.engine);
-        binder.bind(InputProcessor.class).to(KeyboardController.class);
+        binder.bind(KeyboardController.class).in(Singleton.class);
         binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
         binder.bind(KeyboardController.class).in(Singleton.class);
@@ -88,8 +88,11 @@ public class GameModule implements Module {
                 PhysicsDebugSystem.class,
                 PhysicsSystem.class,
                 PhysicsSynchronizationSystem.class,
-                HitObjectDispatchSystem.class,
-                ScanLineSystem.class
+//                HitObjectDispatchSystem.class,
+                HitObjectSystem.class,
+                ScanLineSystem.class,
+                DispatchSystem.class,
+                ScoreSystem.class
         ));
     }
 }

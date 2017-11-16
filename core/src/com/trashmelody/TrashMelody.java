@@ -13,6 +13,7 @@ import com.trashmelody.handlers.DebugInputProcessor;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.GameModule;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.screens.GameScreen;
 import com.trashmelody.screens.LazyScreen;
 import com.trashmelody.screens.LoadingScreen;
 import com.trashmelody.screens.SplashScreen;
@@ -30,10 +31,11 @@ public class TrashMelody extends Game {
     public final float WIDTH = 1920;
     public final float HEIGHT = 1080;
     public float SCALE;
+    public static boolean enableAnimation = false;
 
 	@Override
 	public void create() {
-	        this.batch = new SpriteBatch();
+        this.batch = new SpriteBatch();
         this.font = new BitmapFont();
         this.injector = getInjector();
         this.assets = injector.getInstance(Assets.class);
@@ -42,7 +44,7 @@ public class TrashMelody extends Game {
         loadImportantAssets();
 
         Gdx.input.setInputProcessor(injector.getInstance(DebugInputProcessor.class));
-        setLazyScreen(injector.getInstance(SplashScreen.class));
+        setLazyScreen(injector.getInstance(GameScreen.class));
 	}
 
 	@Override

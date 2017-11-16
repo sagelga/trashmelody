@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -86,7 +85,9 @@ public class MenuScreen extends LazyScreen {
         }
 
         drawCenterX(game.batch, bg, 691 * 2F, vh, 0);
-        drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
+        if (TrashMelody.enableAnimation) {
+            drawCenter(game.batch, cloud.getKeyFrame(elapsed), findRatio(640, 360, vh, 'w'), vh);
+        }
         drawCenterX(game.batch, splashScreenLogo, 450, findRatio(320, 183, 450, 'h'), vh-(findRatio(320, 183, 450, 'h')+100));
 
         if (menuCount != 1) drawCenterX(game.batch, btnStart, 320F, 56F, 400F);
@@ -143,7 +144,9 @@ public class MenuScreen extends LazyScreen {
         assets.load(MENU_BTN_SETTING_HOVER, TEXTURE);
         assets.load(MENU_BTN_EXIT_HOVER, TEXTURE);
         assets.load(MENU_CLOUD, TEXTURE);
-        this.cloud = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MENU_CLOUD).read());
+        if (TrashMelody.enableAnimation) {
+            this.cloud = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MENU_CLOUD).read());
+        }
     }
 
     @Override

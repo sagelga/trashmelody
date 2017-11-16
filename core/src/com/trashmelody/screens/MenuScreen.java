@@ -78,7 +78,7 @@ public class MenuScreen extends LazyScreen {
                 case 1:
                     game.setLazyScreen(stageSelectScreen);
                     break;
-                case 4:
+                case 3:
                     System.exit(0);
                     break;
             }
@@ -96,13 +96,13 @@ public class MenuScreen extends LazyScreen {
         if (menuCount != 2) drawCenterX(game.batch, btnCollection, 320F, 56F, 300F);
         else drawCenterX(game.batch, btnCollection_hover, 320F, 56F, 300F);
 
-        if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
-        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);
+        /*if (menuCount != 3) drawCenterX(game.batch, btnSetting, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnSetting_hover, 320F, 56F, 200F);*/
 
-        if (menuCount != 4) drawCenterX(game.batch, btnExit, 320F, 56F, 100F);
-        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 100F);
+        if (menuCount != 3) drawCenterX(game.batch, btnExit, 320F, 56F, 200F);
+        else drawCenterX(game.batch, btnExit_hover, 320F, 56F, 200F);
 
-        if (menuCount > 4) menuCount = 1; else if (menuCount < 1) menuCount = 4;
+        if (menuCount > 3) menuCount = 1; else if (menuCount < 1) menuCount = 3;
 
         game.batch.draw(borderLeft, 0, 0, findRatio(168, 900, vh, 'w'), vh);
         game.batch.draw(borderRight, vw - findRatio(168, 900, vh, 'w'), 0, findRatio(168, 900, vh, 'w'), vh);
@@ -113,7 +113,7 @@ public class MenuScreen extends LazyScreen {
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
-        
+
         game.batch.end();
     }
 

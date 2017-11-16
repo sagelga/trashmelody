@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.managers.MusicManager;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.utils.Debugger;
 import com.trashmelody.screens.*;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
@@ -17,6 +18,7 @@ import io.vavr.control.Option;
 public class DebugInputProcessor implements InputProcessor {
     private ScreenProvider screens;
     private MusicManager musicManager;
+    private Debugger debugger;
 
     private TrashMelody game;
     private static Map<Integer, Class<? extends LazyScreen>> MAPPER;
@@ -53,6 +55,9 @@ public class DebugInputProcessor implements InputProcessor {
                 break;
             case Input.Keys.MINUS:
                 musicManager.decreaseBackgroundVolume();
+                break;
+            case Input.Keys.NUM_1:
+                Debugger.debug_mode = !Debugger.debug_mode;
                 break;
             default:
                 maybeScreen.forEach(screen -> Gdx.app.log("Switching to", screen.toString()));

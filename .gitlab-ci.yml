@@ -5,8 +5,7 @@ stages:
   - track
   - check
   - build
-  - test
-  - export
+  - run
 
 java-version:
   stage: prepare
@@ -15,6 +14,8 @@ java-version:
     - readlink -f $(which java)
     - java -version
   retry: 1
+  except:
+    - branch
 
 gradle-version:
   stage: prepare
@@ -22,6 +23,8 @@ gradle-version:
     # Checking Gradle version
     - gradle -version
   retry: 1
+  except:
+    - branch
 
 set-paths:
   stage: prepare
@@ -30,6 +33,9 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+  except:
+  - branch
+
 
 code-count:
   stage: track
@@ -71,16 +77,8 @@ code-count:
     - trackers
   allow_failure: true
   retry: 1
-  only:
-    - master
-    - develop
-
-gradle-check:
-  stage: check
-  script:
-    # Gradle check for correct dependency imports
-    - gradle check
-  retry: 1
+  except:
+    - branch
 
 gradle-tasks:
   stage: check
@@ -103,7 +101,7 @@ build-game:
     - gradle assemble
 
 run-game:
-  stage: test
+  stage: run
   script:
     # Do gradle check and gradle assemble
     - gradle run

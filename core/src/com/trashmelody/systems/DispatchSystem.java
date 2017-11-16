@@ -24,11 +24,13 @@ import static com.trashmelody.utils.Functional.isMoreThan;
 public class DispatchSystem extends IteratingSystem {
     private World world;
     private Assets assets;
-    private static final float leftBorderX = 0;
-    private static final float rightBorderX = 1920 / PPM;
-    private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
-    private static final Predicate<Float> isOverBound = isMoreThan.apply(rightBorderX);
-    private static final Predicate<Float> isUnderBound = isLessThan.apply(leftBorderX);
+    private static final float LEFT_BORDER_X = 0;
+    private static final float RIGHT_BORDER_X = 1920 / PPM;
+    private static final float PADDING = 100 / PPM;
+    private static final Predicate<Float> isInBound = isBetween.apply(LEFT_BORDER_X, RIGHT_BORDER_X);
+    private static final Predicate<Float> isOverBound = isMoreThan.apply(RIGHT_BORDER_X);
+    private static final Predicate<Float> isUnderBound = isLessThan.apply(LEFT_BORDER_X);
+    private static final Predicate<Float> inDispatchArea = isBetween.apply(LEFT_BORDER_X + PADDING, RIGHT_BORDER_X - PADDING);
 
     @Inject
     public DispatchSystem(World world, Assets assets) {
@@ -42,6 +44,7 @@ public class DispatchSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         DispatchComponent dispatch = Mapper.dispatch.get(entity);
         PhysicsComponent physics = Mapper.physics.get(entity);
+        ScanLineComponent scanLine = getScanLineComponent();
 
         if (dispatch.state == State.Ready) {
             dispatch.state = State.Playing;
@@ -65,6 +68,7 @@ public class DispatchSystem extends IteratingSystem {
         }
 
         dispatch.hitObjects
+                .filter(hitObject -> inDispatchArea.test(position.x))
                 .takeWhile(ready(dispatch.elapsedTime))
                 .map(hitObject -> new HitObjectEntity(
                         world,
@@ -74,10 +78,15 @@ public class DispatchSystem extends IteratingSystem {
                         position.x
                 ))
                 .peek(getEngine()::addEntity)
+//                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
                 .forEach(hitObjectEntity -> dispatch.hitObjects = dispatch.hitObjects.tail());
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {
         return hitObject -> hitObject.isAfterStartTime(elapsedTime);
+    }
+
+    private ScanLineComponent getScanLineComponent() {
+        return Mapper.scanLine.get(getEngine().getEntitiesFor(Family.all(ScanLineComponent.class).get()).first());
     }
 }

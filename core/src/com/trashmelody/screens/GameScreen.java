@@ -11,10 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
-import com.trashmelody.components.DispatchComponent;
-import com.trashmelody.components.PlayerComponent;
-import com.trashmelody.components.ScanLineComponent;
-import com.trashmelody.components.TypeComponent;
+import com.trashmelody.components.*;
 import com.trashmelody.entities.Dispatcher;
 import com.trashmelody.entities.Platform;
 import com.trashmelody.entities.Player;
@@ -234,7 +231,8 @@ public class GameScreen extends LazyScreen {
         ));
         engine.addEntity(new ScanLine(
                 world,
-                new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 20F, 3F)
+                new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 3F),
+                new TextureComponent(check)
         ));
         engine.addEntity(new Dispatcher(
                 world,

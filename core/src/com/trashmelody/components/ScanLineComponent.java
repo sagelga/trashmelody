@@ -2,15 +2,17 @@ package com.trashmelody.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.audio.Music;
+import com.trashmelody.entities.HitObjectEntity;
+import io.vavr.collection.Queue;
 
 public class ScanLineComponent implements Component {
-    public float delay = 1000;
+    private float delay = 1000;
     public Direction direction = Direction.Right;
-    public float speed;
     public float elapsedTime = -delay;
     public Music music;
     public State state = State.Ready;
     public float velocity;
+    public Queue<HitObjectEntity> activeHitObjects = Queue.empty();
 
     public enum State {
         Ready, Playing, Pause, Stop
@@ -20,8 +22,7 @@ public class ScanLineComponent implements Component {
         Left, Right
     }
 
-    public ScanLineComponent(Music music, float speed, float velocity) {
-        this.speed = speed;
+    public ScanLineComponent(Music music, float velocity) {
         this.music = music;
         this.velocity = velocity;
     }

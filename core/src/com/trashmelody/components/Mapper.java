@@ -14,4 +14,5 @@ public class Mapper {
     public static final ComponentMapper<HitObjectComponent> hitObject = ComponentMapper.getFor(HitObjectComponent.class);
     public static final ComponentMapper<ScanLineComponent> scanLine = ComponentMapper.getFor(ScanLineComponent.class);
     public static final ComponentMapper<DispatchComponent> dispatch = ComponentMapper.getFor(DispatchComponent.class);
+    public static final ComponentMapper<RemovingComponent> removing = ComponentMapper.getFor(RemovingComponent.class);
 }

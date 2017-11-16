@@ -28,6 +28,4 @@ public class PhysicsSynchronizationSystem extends IteratingSystem {
         transformComponent.position.set(body.getPosition());
         transformComponent.angelRadiant = body.getAngle();
     }
-
-
 }

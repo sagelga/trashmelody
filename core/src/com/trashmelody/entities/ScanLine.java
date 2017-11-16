@@ -3,8 +3,8 @@ package com.trashmelody.entities;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.google.inject.Inject;
 import com.trashmelody.components.*;
+import com.trashmelody.components.TransformComponent.Align;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
 
@@ -13,7 +13,8 @@ public class ScanLine extends Entity {
     private World world;
 
     public ScanLine(World world,
-                    ScanLineComponent scanLineComponent) {
+                    ScanLineComponent scanLineComponent,
+                    TextureComponent textureComponent) {
         this.world = world;
 
         EdgeShape shape = new EdgeShape();
@@ -26,7 +27,9 @@ public class ScanLine extends Entity {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
 
-        TransformComponent transformComponent = new TransformComponent(START_POSITION, 540 / PPM);
+        TransformComponent transformComponent = new TransformComponent(START_POSITION, 540 / PPM, - 457 / PPM, 538 / PPM);
+        transformComponent.flipX = true;
+        transformComponent.align = Align.UpperRight;
 
         Body body = world.createBody(bodyDef);
         body.createFixture(fixtureDef);
@@ -37,6 +40,7 @@ public class ScanLine extends Entity {
         physics.body.setLinearVelocity(0F, 0F);
 
         super.add(transformComponent);
+        super.add(textureComponent);
         super.add(new PhysicsComponent(body, "Scan Line"));
         super.add(new CollisionComponent());
         super.add(new TypeComponent(TypeComponent.ITEM));

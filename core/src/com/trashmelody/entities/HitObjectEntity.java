@@ -25,7 +25,8 @@ public class HitObjectEntity extends Entity {
 
         Vector2 hitObjectPosition = hitObjectComponent.hitObject.getPosition().toGdxVector();
         float hitObjectX = dispatcherX;
-        float hitObjectY = (hitObjectPosition.y / yUpperBound * 540 + 540) / PPM;
+        float hitObjectY = (hitObjectPosition.y / yUpperBound * 300 + 640) / PPM;
+//        float hitObjectY = (hitObjectPosition.y % 100 * 3 + 640) / PPM;
         TransformComponent transformComponent = new TransformComponent(hitObjectX, hitObjectY, 0.6F, 0.6F);
 
         CircleShape shape = new CircleShape();

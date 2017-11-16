@@ -29,15 +29,15 @@ public class PlayerControlSystem extends IteratingSystem {
         float yVelocity = physics.body.getLinearVelocity().y;
         float xVelocity = physics.body.getLinearVelocity().x;
         Vector2 worldCenter = physics.body.getWorldCenter();
-        // If body going down set to falling state
+        // If body going down set to falling status
         if (yVelocity > 0) state.set(StateComponent.STATE_FALLING);
 
         // If body stationary on y axis
         if (yVelocity == 0) {
-            // change to normal state if previous state was falling (no mid air jump)
+            // change to normal status if previous status was falling (no mid air jump)
             if (state.get() == StateComponent.STATE_FALLING) state.set(StateComponent.STATE_NORMAL);
 
-            // set state moving if not falling and moving on x axis
+            // set status moving if not falling and moving on x axis
             if (xVelocity != 0) state.set(StateComponent.STATE_MOVING);
         }
 

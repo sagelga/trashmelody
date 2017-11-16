@@ -55,9 +55,10 @@ public class ScoreSystem extends IteratingSystem {
     private int calculateScore(ScanLineComponent scanLine, HitObjectComponent hitObject) {
         float delta = Math.abs(scanLine.elapsedTime - hitObject.hitObject.getStartTime());
 
-        if (delta < 1000) {
+        if (delta < 100) {
             System.out.println(scanLine.elapsedTime);
             System.out.println(hitObject.hitObject.getStartTime());
+            hitObject.status = HitObjectComponent.Status.Died;
             return 100;
         }
 

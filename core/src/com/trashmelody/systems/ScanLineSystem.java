@@ -3,11 +3,11 @@ package com.trashmelody.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
-import com.trashmelody.components.Mapper;
-import com.trashmelody.components.PhysicsComponent;
-import com.trashmelody.components.ScanLineComponent;
+import com.trashmelody.components.*;
+import com.trashmelody.components.HitObjectComponent.Status;
 import com.trashmelody.components.ScanLineComponent.State;
 
 import java.util.function.Predicate;
@@ -18,6 +18,7 @@ import static com.trashmelody.utils.Functional.isLessThan;
 import static com.trashmelody.utils.Functional.isMoreThan;
 
 public class ScanLineSystem extends IteratingSystem {
+    public static final int HIT_OBJECT_LIFE_TIME = 200;
     private static final float leftBorderX = 0;
     private static final float rightBorderX = 1920 / PPM;
     private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
@@ -25,7 +26,7 @@ public class ScanLineSystem extends IteratingSystem {
     private static final Predicate<Float> isUnderBound = isLessThan.apply(leftBorderX);
 
     @Inject
-    public ScanLineSystem() {
+    public ScanLineSystem()  {
         super(Family.all(ScanLineComponent.class).get());
     }
 
@@ -33,6 +34,8 @@ public class ScanLineSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         PhysicsComponent physics = Mapper.physics.get(entity);
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
+        TransformComponent transform = Mapper.transform.get(entity);
+        ImmutableArray<Entity> entities = getEngine().getEntitiesFor(Family.all(HitObjectComponent.class).get());
 
         scanLine.elapsedTime += deltaTime * 1000;
 
@@ -49,14 +52,26 @@ public class ScanLineSystem extends IteratingSystem {
             }
         }
 
-        Vector2 velocity = physics.body.getLinearVelocity();
-        Vector2 position = physics.body.getPosition();
+        entities.forEach(hitObjectEntity -> {
+            HitObjectComponent hitObjectComponent = Mapper.hitObject.get(hitObjectEntity);
+            if (scanLine.elapsedTime - hitObjectComponent.hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME) {
+                hitObjectComponent.status = Status.Died;
+            }
+        });
 
-        if (!isInBound.test(position.x)) {
-            if (isUnderBound.test(position.x)) {
-                physics.body.setLinearVelocity(scanLine.velocity, velocity.y);
+        setScanLineVelocity(scanLine, physics, transform);
+    }
+
+    private void setScanLineVelocity(ScanLineComponent scanLine, PhysicsComponent physics, TransformComponent transform) {
+        if (!isInBound.test(physics.body.getPosition().x)) {
+            if (isUnderBound.test(physics.body.getPosition().x)) {
+                physics.body.setLinearVelocity(scanLine.velocity, 0F);
+                transform.align = TransformComponent.Align.UpperRight;
+                transform.flipX = true;
             } else {
-                physics.body.setLinearVelocity(-scanLine.velocity, velocity.y);
+                physics.body.setLinearVelocity(-scanLine.velocity, 0F);
+                transform.align = TransformComponent.Align.UpperLeft;
+                transform.flipX = false;
             }
         }
     }

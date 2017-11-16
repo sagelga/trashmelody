@@ -662,7 +662,7 @@ public class GifDecoder {
     }
 
     /**
-     * Resets frame state for reading next image.
+     * Resets frame status for reading next image.
      */
     protected void resetFrame() {
         lastDispose = dispose;

@@ -9,6 +9,13 @@ public class TransformComponent implements Component {
     public Option<Vector2> size;
     public float angelRadiant;
     public float scale;
+    public boolean flipX = false;
+    public boolean flipY = false;
+    public Align align = Align.Center;
+
+    public enum Align {
+        Center, UpperRight, UpperLeft
+    }
 
     public TransformComponent(Vector2 position, Option<Vector2> size, float scale, float angleRadiant) {
         this.position = position;
@@ -27,6 +34,12 @@ public class TransformComponent implements Component {
 
     public TransformComponent(float x, float y, float width, float height) {
         this(new Vector2(x, y), Option.some(new Vector2(width, height)));
+    }
+
+    public TransformComponent(float x, float y, float width, float height, Align align) {
+        this(new Vector2(x, y), Option.some(new Vector2(width, height)));
+
+        this.align = align;
     }
 
     public TransformComponent(float x, float y, float width, float height, float scale) {

@@ -69,7 +69,7 @@
 //                .headOption()
 //                .map(Mapper.hitObject::get)
 //                .filter(c -> isAfter(elapsedTime - 2).test(c.hitObject))
-//                .peek(c -> c.state = HitObjectComponent.State.Died)
+//                .peek(c -> c.status = HitObjectComponent.Status.Died)
 //                .forEach(c -> activeHitObjects = activeHitObjects.dequeue()._2);
 //
 ////                .peek(engine::removeEntity)

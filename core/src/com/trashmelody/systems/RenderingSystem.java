@@ -1,6 +1,5 @@
 package com.trashmelody.systems;
 
-import com.badlogic.gdx.graphics.Camera;
 import com.trashmelody.components.Mapper;
 import com.trashmelody.components.TextureComponent;
 import com.trashmelody.components.TextureRegionComponent;
@@ -15,9 +14,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import com.trashmelody.components.TransformComponent.Align;
 import io.vavr.control.Option;
-
-import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class RenderingSystem extends IteratingSystem {
     private SpriteBatch batch;
@@ -48,12 +46,26 @@ public class RenderingSystem extends IteratingSystem {
             Vector2 size = maybeSize.getOrElse(new Vector2(texture.getWidth(), texture.getHeight()));
             float width = size.x * scale;
             float height = size.y * scale;
+            Vector2 alignedPosition;
+            if (transform.align == Align.Center) {
+                alignedPosition = new Vector2(position.x - width / 2F, position.y - height / 2F);
+            } else if (transform.align == Align.UpperLeft) {
+                alignedPosition = new Vector2(position.x - width, position.y);
+            } else {
+                alignedPosition = position;
+            }
             batch.draw(
                     texture,
-                    position.x - width / 2F,
-                    position.y - height / 2F,
+                    alignedPosition.x,
+                    alignedPosition.y,
                     width,
-                    height
+                    height,
+                    0,
+                    0,
+                    texture.getWidth(),
+                    texture.getHeight(),
+                    transform.flipX,
+                    transform.flipY
             );
         }
 

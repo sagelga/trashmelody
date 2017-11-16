@@ -3,6 +3,7 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -27,7 +28,7 @@ public class MenuScreen extends LazyScreen {
     private ResultScreen resultScreen;
     private MusicManager musicManager;
 
-    private Camera camera;
+    private OrthographicCamera camera;
     private Viewport viewport;
     private Texture splashScreenLogo;
     private Texture bg, btnStart, btnCollection, btnSetting, btnExit, borderLeft, borderRight;
@@ -42,7 +43,7 @@ public class MenuScreen extends LazyScreen {
     float elapsed;
 
     @Inject
-    MenuScreen(TrashMelody game, Camera camera, Viewport viewport, ScreenProvider screens, MusicManager musicManager) {
+    MenuScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, MusicManager musicManager) {
         this.game = game;
         this.stageSelectScreen = screens.get(StageSelectScreen.class);
         this.resultScreen = screens.get(ResultScreen.class);
@@ -65,7 +66,6 @@ public class MenuScreen extends LazyScreen {
     @Override
     public void render(float delta) {
         clearScreen();
-        camera.update();
         elapsed += delta;
 
         game.batch.begin();

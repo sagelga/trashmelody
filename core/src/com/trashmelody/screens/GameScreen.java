@@ -6,7 +6,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -19,9 +18,7 @@ import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.utils.Debugger;
-import io.vavr.collection.Stream;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
-import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 import lt.ekgame.beatmap_analyzer.beatmap.mania.ManiaBeatmap;
 import lt.ekgame.beatmap_analyzer.parser.BeatmapException;
 import lt.ekgame.beatmap_analyzer.parser.BeatmapParser;
@@ -39,9 +36,9 @@ public class GameScreen extends LazyScreen {
     private Assets assets;
     private Camera camera;
     private Viewport viewport;
+    private InputProcessor inputProcessor;
     private Engine engine;
     private World world;
-    private Stage stage;
     private Beatmap beatmap;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -57,19 +54,19 @@ public class GameScreen extends LazyScreen {
     private Texture scoreTitle;
     private Texture recycleBin;
     private Texture idkBinPlot;
-    private Texture miss;
     private Texture yellowBin;
     private Texture songNameBar;
+    private Texture perfect;
+    private Texture good;
+    private Texture cool;
     private Texture bad;
+    private Texture miss;
     private Texture idkBin;
     private Texture levelScoreBar;
-    private Texture cool;
     private Texture rainbowFlashBin;
     private Texture hpPoint;
-    private Texture good;
     private Texture centerLine;
     private Texture normal;
-    private Texture perfect;
     private Texture check;
     private Texture easy;
     private Texture songName;
@@ -90,9 +87,12 @@ public class GameScreen extends LazyScreen {
         this.engine = engine;
         this.world = world;
         this.assets = assets;
+        this.inputProcessor = inputProcessor;
         this.beatmap = getBeatmap();
-//        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+    }
 
+    @Override
+    public void show() {
         Gdx.input.setInputProcessor(inputProcessor);
     }
 
@@ -152,11 +152,11 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_LEVEL_BORDER, TEXTURE);
         assets.load(GAME_PAUSE, TEXTURE);
         assets.load(GAME_SCORE, TEXTURE);
-        assets.load(GAME_SCORE_1, TEXTURE);
-        assets.load(GAME_SCORE_2, TEXTURE);
-        assets.load(GAME_SCORE_3, TEXTURE);
-        assets.load(GAME_SCORE_4, TEXTURE);
-        assets.load(GAME_SCORE_5, TEXTURE);
+        assets.load(MISS_ACCURACY, TEXTURE);
+        assets.load(BAD_ACCURACY, TEXTURE);
+        assets.load(COOL_ACCURACY, TEXTURE);
+        assets.load(GOOD_ACCURACY, TEXTURE);
+        assets.load(PERFECT_ACCURACY, TEXTURE);
         assets.load(GAME_SONG_NAME_1, TEXTURE);
         assets.load(GAME_STATUS_BAR, TEXTURE);
         assets.load(CIGARETTE_HIT_OBJECT, TEXTURE);
@@ -192,27 +192,13 @@ public class GameScreen extends LazyScreen {
         this.levelCover = assets.get(GAME_LEVEL_BORDER, TEXTURE);
         this.pauseTab = assets.get(GAME_PAUSE, TEXTURE);
         this.scoreTitle = assets.get(GAME_SCORE, TEXTURE);
-        this.miss = assets.get(GAME_SCORE_1, TEXTURE);
-        this.bad = assets.get(GAME_SCORE_2, TEXTURE);
-        this.cool = assets.get(GAME_SCORE_3, TEXTURE);
-        this.good = assets.get(GAME_SCORE_4, TEXTURE);
-        this.perfect = assets.get(GAME_SCORE_5, TEXTURE);
+        this.miss = assets.get(MISS_ACCURACY, TEXTURE);
+        this.bad = assets.get(BAD_ACCURACY, TEXTURE);
+        this.cool = assets.get(COOL_ACCURACY, TEXTURE);
+        this.good = assets.get(GOOD_ACCURACY, TEXTURE);
+        this.perfect = assets.get(PERFECT_ACCURACY, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
-
-//        BeatmapParser parser = new BeatmapParser();
-//        File file = new File("songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu");
-//        try {
-//            beatmap = parser.parse(file, ManiaBeatmap.class);
-//        } catch (BeatmapException | FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (beatmap != null) {
-//            beatmap.getHitObjects().forEach(System.out::println);
-//            println(String.format("HitObjectEntity count: %d", beatmap.getHitObjects().size()));
-//        }
-//        hitObjects = Stream.ofAll(beatmap.getHitObjects());
 
         createEntities();
     }

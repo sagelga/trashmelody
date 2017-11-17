@@ -27,7 +27,6 @@ public class HitObjectSystem extends IteratingSystem {
         HitObjectComponent hitObject = Mapper.hitObject.get(entity);
         PhysicsComponent physicsComponent = Mapper.physics.get(entity);
 
-
         if (hitObject.status == HitObjectComponent.Status.Died) {
             engine.removeEntity(entity);
             world.destroyBody(physicsComponent.body);

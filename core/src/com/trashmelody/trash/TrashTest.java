@@ -1,5 +1,7 @@
 package com.trashmelody.trash;
 
+import com.trashmelody.trash.dangerous.OilyOiler;
+
 public class TrashTest {
     public static void main(String[] args) {
         OilyOiler oilyOiler = new OilyOiler();

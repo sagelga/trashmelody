@@ -20,8 +20,6 @@ import com.trashmelody.handlers.CollisionDetector;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.systems.*;
 
-import java.util.Arrays;
-
 import static com.trashmelody.constants.B2Dvars.PPM;
 import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
 import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
@@ -45,10 +43,6 @@ public class GameModule implements Module {
         binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
         binder.bind(KeyboardController.class).in(Singleton.class);
-//        binder.bind(ScreenProvider.cl ass).in(Singleton.class);
-//        binder.bind(DebugInputProcessor.class).in(Singleton.class);
-
-//        ScreenProvider.screenClasses.forEach(screen -> binder.bind(screen).in(Singleton.class));
     }
 
     @Provides @Singleton
@@ -82,21 +76,6 @@ public class GameModule implements Module {
 
     @Provides @Singleton
     public Systems systems() {
-        return new Systems(Arrays.asList(
-                CollisionSystem.class,
-                RenderingSystem.class,
-                PlayerControlSystem.class,
-                PhysicsDebugSystem.class,
-                PhysicsSystem.class,
-                PhysicsSynchronizationSystem.class,
-                HitObjectSystem.class,
-                ScanLineSystem.class,
-                DispatchSystem.class,
-                RemovingSystem.class,
-                ControlSystem.class,
-                AccuracySystem.class,
-                ScoringSystem.class,
-                RemovingSystem.class
-        ));
+        return Systems.systems;
     }
 }

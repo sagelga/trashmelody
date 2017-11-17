@@ -16,7 +16,7 @@ public class ScoringSystem extends IteratingSystem {
 
     @Inject
     public ScoringSystem(Assets assets) {
-        super(Family.all(ScoringComponent.class, TextureComponent.class).get(), 11);
+        super(Family.all(ScoringComponent.class, TextureComponent.class).get(), Systems.getIndex(ScoringSystem.class));
 
         this.assets = assets;
     }

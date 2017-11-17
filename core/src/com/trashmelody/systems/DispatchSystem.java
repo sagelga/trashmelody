@@ -22,6 +22,7 @@ import static com.trashmelody.utils.Functional.isLessThan;
 import static com.trashmelody.utils.Functional.isMoreThan;
 
 public class DispatchSystem extends IteratingSystem {
+    public static final int PRE_DISPATCH_TIME = 1000;
     private World world;
     private Assets assets;
     private static final float LEFT_BORDER_X = 0;
@@ -34,7 +35,7 @@ public class DispatchSystem extends IteratingSystem {
 
     @Inject
     public DispatchSystem(World world, Assets assets) {
-        super(Family.all(DispatchComponent.class).get());
+        super(Family.all(DispatchComponent.class).get(), Systems.getIndex(DispatchSystem.class));
 
         this.world = world;
         this.assets = assets;
@@ -51,7 +52,6 @@ public class DispatchSystem extends IteratingSystem {
             physics.body.setLinearVelocity(new Vector2(dispatch.velocity, 0F));
         }
 
-        dispatch.elapsedTime += deltaTime * 1000;
         Vector2 velocity = physics.body.getLinearVelocity();
         Vector2 position = physics.body.getPosition();
 
@@ -69,7 +69,7 @@ public class DispatchSystem extends IteratingSystem {
 
         dispatch.hitObjects
                 .filter(hitObject -> inDispatchArea.test(position.x))
-                .takeWhile(ready(dispatch.elapsedTime))
+                .takeWhile(ready(scanLine.elapsedTime))
                 .map(hitObject -> new HitObjectEntity(
                         world,
                         new HitObjectComponent(hitObject),
@@ -83,7 +83,7 @@ public class DispatchSystem extends IteratingSystem {
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {
-        return hitObject -> hitObject.isAfterStartTime(elapsedTime);
+        return hitObject -> hitObject.isAfterStartTime(elapsedTime + PRE_DISPATCH_TIME);
     }
 
     private ScanLineComponent getScanLineComponent() {

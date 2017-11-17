@@ -4,8 +4,8 @@ public class Trash {
     protected String name, desc;
     protected TrashType type;
 
-    Trash(String name, String desc, TrashType type) {}
-    Trash() {}
+    public Trash(String name, String desc, TrashType type) {}
+    public Trash() {}
 
     public String getName() {
         return this.name;

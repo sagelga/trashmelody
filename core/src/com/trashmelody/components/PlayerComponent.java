@@ -4,14 +4,12 @@ import com.badlogic.ashley.core.Component;
 
 
 public class PlayerComponent implements Component {
-    public int leftKey, rightKey, upKey, castKey;
-    public float health;
+    public int dangerous, recycle, wet, general;
 
-    public PlayerComponent(int leftKey, int rightKey, int upKey, int castKey, float health) {
-        this.leftKey = leftKey;
-        this.rightKey = rightKey;
-        this.upKey = upKey;
-        this.castKey = castKey;
-        this.health = health;
+    public PlayerComponent(int dangerous, int recycle, int wet, int general) {
+        this.dangerous = dangerous;
+        this.recycle = recycle;
+        this.wet = wet;
+        this.general = general;
     }
 }

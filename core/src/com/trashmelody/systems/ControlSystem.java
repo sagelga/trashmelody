@@ -22,8 +22,8 @@ public class ControlSystem extends IteratingSystem {
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         PlayerComponent player = getPlayerComponent();
 
-        if (controller.keyMap.get(player.leftKey)) {
-            controller.keyMap.put(player.leftKey, false);
+        if (controller.keyMap.get(player.dangerous)) {
+            controller.keyMap.put(player.dangerous, false);
 
             scanLine.activeHitObjects
                     .headOption()

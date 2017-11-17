@@ -196,12 +196,7 @@ public class GameScreen extends LazyScreen {
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
                 world,
-                new PlayerComponent(LEFT, RIGHT, UP, SHIFT_RIGHT, 300F),
-                new TypeComponent(TypeComponent.PLAYER)
-        ));
-        engine.addEntity(new Player(
-                world,
-                new PlayerComponent(A, D, W, Q, 300F),
+                new PlayerComponent(D, F, J, K),
                 new TypeComponent(TypeComponent.PLAYER)
         ));
         engine.addEntity(new ScanLine(

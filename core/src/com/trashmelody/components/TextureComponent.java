@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class TextureComponent implements Component {
     public Texture texture;
-    public Color color = Color.WHITE;
+    public Color color = new Color(1F, 1F, 1F, 1F);
 
     public TextureComponent(Texture texture) {
         this.texture = texture;

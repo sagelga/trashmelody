@@ -19,7 +19,6 @@ public class FadingSystem extends IteratingSystem {
         RemovingComponent removing = Mapper.removing.get(entity);
         TextureComponent texture = Mapper.texture.get(entity);
 
-        System.out.println(removing.lifeTime / removing.getMaxLifeTime());
         texture.setAlpha(removing.lifeTime / removing.getMaxLifeTime());
     }
 }

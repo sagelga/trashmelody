@@ -12,12 +12,7 @@ import com.trashmelody.managers.Assets;
 import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
-    Assets assets;
-    private Texture perfect;
-    private Texture good;
-    private Texture cool;
-    private Texture bad;
-    private Texture miss;
+    private Assets assets;
 
     @Inject
     public ScoringSystem(Assets assets) {
@@ -30,7 +25,7 @@ public class ScoringSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         ScoringComponent scoring = Mapper.scoring.get(entity);
         TextureComponent texture = Mapper.texture.get(entity);
-        Texture accuracyTexture = miss;
+        Texture accuracyTexture = assets.get(MISS_ACCURACY);
 
         if (scoring.getAccuracy() == Accuracy.Perfect) {
             accuracyTexture = assets.get(PERFECT_ACCURACY);

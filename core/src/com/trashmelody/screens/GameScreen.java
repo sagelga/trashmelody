@@ -2,10 +2,10 @@ package com.trashmelody.screens;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -36,9 +36,9 @@ public class GameScreen extends LazyScreen {
     private Assets assets;
     private Camera camera;
     private Viewport viewport;
+    private InputProcessor inputProcessor;
     private Engine engine;
     private World world;
-    private Stage stage;
     private Beatmap beatmap;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -87,10 +87,8 @@ public class GameScreen extends LazyScreen {
         this.engine = engine;
         this.world = world;
         this.assets = assets;
+        this.inputProcessor = inputProcessor;
         this.beatmap = getBeatmap();
-//        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
-
-        Gdx.input.setInputProcessor(inputProcessor);
     }
 
     @Override
@@ -211,6 +209,7 @@ public class GameScreen extends LazyScreen {
 //        }
 //        hitObjects = Stream.ofAll(beatmap.getHitObjects());
 
+        Gdx.input.setInputProcessor(inputProcessor);
         createEntities();
     }
 

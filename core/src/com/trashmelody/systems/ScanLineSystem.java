@@ -7,7 +7,6 @@ import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
-import com.trashmelody.components.HitObjectComponent.Status;
 import com.trashmelody.components.ScanLineComponent.State;
 
 import java.util.function.Predicate;
@@ -57,8 +56,8 @@ public class ScanLineSystem extends IteratingSystem {
                 .map(tuple -> tuple._1)
                 .filter(e -> scanLine.elapsedTime - Mapper.hitObject.get(e).hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME)
                 .peek(hitObjectEntity -> {
-                    hitObjectEntity.remove(HitObjectComponent.class);
-                    hitObjectEntity.add(new RemovingComponent(3));
+                    HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
+                    hitObjectEntity.add(new ScoringComponent(ControlSystem.calculateDelta(scanLine, hitObject)));
                     scanLine.activeHitObjects = scanLine.activeHitObjects.dequeue()._2;
                 });
 

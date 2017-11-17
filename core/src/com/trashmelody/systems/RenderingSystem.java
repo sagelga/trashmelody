@@ -55,7 +55,6 @@ public class RenderingSystem extends IteratingSystem {
             } else {
                 alignedPosition = position;
             }
-            System.out.println();
             batch.draw(
                     texture,
                     alignedPosition.x,

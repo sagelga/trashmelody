@@ -34,19 +34,17 @@ public class ScanLineSystem extends IteratingSystem {
         PhysicsComponent physics = Mapper.physics.get(entity);
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         TransformComponent transform = Mapper.transform.get(entity);
-        ImmutableArray<Entity> entities = getEngine().getEntitiesFor(Family.all(HitObjectComponent.class).get());
-
-        scanLine.elapsedTime += deltaTime * 1000;
 
         if (scanLine.state == State.Ready) {
             if (scanLine.elapsedTime > 0) {
-                System.out.println("Music Started");
                 scanLine.state = State.Playing;
                 scanLine.music.play();
                 scanLine.music.setVolume(0.3F);
+                scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
                 physics.body.setLinearVelocity(new Vector2(scanLine.velocity, 0F));
                 return;
             } else {
+                scanLine.elapsedTime += deltaTime * 1000;
                 return;
             }
         }
@@ -59,6 +57,7 @@ public class ScanLineSystem extends IteratingSystem {
                     HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
                     hitObjectEntity.add(new ScoringComponent(ControlSystem.calculateDelta(scanLine, hitObject)));
                     scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
+                    scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
                 });
 
 //        scanLine.activeHitObjects.forEach(hitObjectEntity -> {
@@ -68,6 +67,7 @@ public class ScanLineSystem extends IteratingSystem {
 //            }
 //        });
 
+        scanLine.elapsedTime += deltaTime * 1000;
         setScanLineVelocity(scanLine, physics, transform);
     }
 

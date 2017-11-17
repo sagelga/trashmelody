@@ -1,10 +1,7 @@
 package com.trashmelody.systems;
 
 import com.google.inject.name.Named;
-import com.trashmelody.components.Mapper;
-import com.trashmelody.components.TextureComponent;
-import com.trashmelody.components.TextureRegionComponent;
-import com.trashmelody.components.TransformComponent;
+import com.trashmelody.components.*;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -26,7 +23,8 @@ public class RenderingSystem extends IteratingSystem {
     public RenderingSystem(SpriteBatch batch, @Named("physics") OrthographicCamera camera) {
         super(Family.all(TransformComponent.class)
                 .one(TextureComponent.class, TextureRegionComponent.class)
-                .get()
+                .get(),
+                100
         );
         this.batch = batch;
         this.camera = camera;

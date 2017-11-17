@@ -36,7 +36,6 @@ public class AccuracySystem extends IteratingSystem {
 
         Accuracy accuracy = getAccuracy(scoring.getTimingError());
         scoring.setAccuracy(accuracy);
-        System.out.println(scoring.getTimingError());
 
         entity.remove(HitObjectComponent.class);
     }

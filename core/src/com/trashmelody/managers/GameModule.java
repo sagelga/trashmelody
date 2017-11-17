@@ -97,7 +97,8 @@ public class GameModule implements Module {
                 RemovingSystem.class,
                 ControlSystem.class,
                 AccuracySystem.class,
-                ScoringSystem.class
+                ScoringSystem.class,
+                RemovingSystem.class
         ));
     }
 }

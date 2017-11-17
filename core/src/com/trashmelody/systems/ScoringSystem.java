@@ -38,10 +38,9 @@ public class ScoringSystem extends IteratingSystem {
         } else if (scoring.getAccuracy() == Accuracy.Miss) {
             accuracyTexture = assets.get(MISS_ACCURACY);
         }
-
         texture.texture = accuracyTexture;
 
-        entity.remove(HitObjectComponent.class);
-        entity.add(new RemovingComponent(1));
+        entity.remove(ScoringComponent.class);
+        entity.add(new RemovingComponent(2000));
     }
 }

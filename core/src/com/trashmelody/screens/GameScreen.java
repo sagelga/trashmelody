@@ -92,6 +92,11 @@ public class GameScreen extends LazyScreen {
     }
 
     @Override
+    public void show() {
+        Gdx.input.setInputProcessor(inputProcessor);
+    }
+
+    @Override
     public void render(float delta) {
         clearScreen(0, 0, 0, 1);
         camera.update();
@@ -209,7 +214,6 @@ public class GameScreen extends LazyScreen {
 //        }
 //        hitObjects = Stream.ofAll(beatmap.getHitObjects());
 
-        Gdx.input.setInputProcessor(inputProcessor);
         createEntities();
     }
 

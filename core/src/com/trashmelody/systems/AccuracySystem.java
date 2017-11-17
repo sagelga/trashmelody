@@ -11,14 +11,15 @@ import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 import java.util.function.Predicate;
 
 import static com.trashmelody.components.ScoringComponent.*;
+import static com.trashmelody.utils.Functional.*;
 
 public class AccuracySystem extends IteratingSystem {
-    private static Predicate<Float> isPerfect = Functional.isBetween.apply(-20F, 20F);
-    private static Predicate<Float> isGood = Functional.isBetween.apply(-50F, 50F);
-    private static Predicate<Float> isCool = Functional.isBetween.apply(-100F, 100F);
-    private static Predicate<Float> isBad = Functional.isBetween.apply(-200F, 200F);
-    private static Predicate<Float> isMiss = Functional.isBetween.apply(-300F, 300F);
-    private static Predicate<Float> isReacheable = Functional.isBetween.apply(-500F, 500F);
+    public static Predicate<Float> isPerfect = isBetween.apply(-20F, 20F);
+    public static Predicate<Float> isGood = isBetween.apply(-50F, 50F);
+    public static Predicate<Float> isCool = isBetween.apply(-100F, 100F);
+    public static Predicate<Float> isBad = isBetween.apply(-200F, 200F);
+    public static Predicate<Float> isMiss = isBetween.apply(-300F, -300F);
+    public static Predicate<Float> isReachable = isBetween.apply(-500F, 500F);
 
     @Inject
     public AccuracySystem() {
@@ -35,6 +36,9 @@ public class AccuracySystem extends IteratingSystem {
 
         Accuracy accuracy = getAccuracy(scoring.getTimingError());
         scoring.setAccuracy(accuracy);
+        System.out.println(scoring.getTimingError());
+
+        entity.remove(HitObjectComponent.class);
     }
 
     private float getErrorDiff(ScanLineComponent scanLine, HitObjectComponent hitObject) {
@@ -54,10 +58,8 @@ public class AccuracySystem extends IteratingSystem {
             return Accuracy.Cool;
         } else if (isBad.test(timingError)) {
             return Accuracy.Bad;
-        } else if (isMiss.test(timingError)) {
-            return Accuracy.Miss;
         } else {
-            throw new RuntimeException("Unhandled accuracy");
+            return Accuracy.Miss;
         }
     }
 }

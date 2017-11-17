@@ -31,11 +31,9 @@ public class ControlSystem extends IteratingSystem {
                     .filter(hitObjectEntity -> isClickable(scanLine, Mapper.hitObject.get(hitObjectEntity)))
                     .forEach(hitObjectEntity -> {
                         HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
-                        hitObjectEntity.remove(HitObjectComponent.class);
                         hitObjectEntity.add(new ScoringComponent(calculateDelta(scanLine, hitObject)));
                         scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
                     });
-            System.out.println("----------");
 //            hitObjectEntities.forEach(hitObjectEntity -> {
 //
 //                float score = calculateScore(scanLine, hitObjectEntity);
@@ -64,8 +62,7 @@ public class ControlSystem extends IteratingSystem {
     }
 
     private static boolean isClickable(ScanLineComponent scanLine, HitObjectComponent hitObject) {
-        float delta = calculateDelta(scanLine, hitObject);
-        return delta < 400 && delta > -400;
+        return AccuracySystem.isReachable.test(calculateDelta(scanLine, hitObject));
     }
 
     private int calculateScore(ScanLineComponent scanLine, Entity hitObjectEntity) {

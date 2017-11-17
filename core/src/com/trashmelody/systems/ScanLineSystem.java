@@ -58,7 +58,7 @@ public class ScanLineSystem extends IteratingSystem {
                 .peek(hitObjectEntity -> {
                     HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
                     hitObjectEntity.add(new ScoringComponent(ControlSystem.calculateDelta(scanLine, hitObject)));
-                    scanLine.activeHitObjects = scanLine.activeHitObjects.dequeue()._2;
+                    scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
                 });
 
 //        scanLine.activeHitObjects.forEach(hitObjectEntity -> {

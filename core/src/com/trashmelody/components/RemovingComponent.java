@@ -7,7 +7,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 public class RemovingComponent implements Component {
     public float lifeTime;
 
-    public RemovingComponent(float lifeTime) {
-        this.lifeTime = lifeTime;
+    public RemovingComponent(float lifeTimeRemaining) {
+        this.lifeTime = lifeTimeRemaining;
     }
 }

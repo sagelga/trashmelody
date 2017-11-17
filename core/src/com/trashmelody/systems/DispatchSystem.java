@@ -78,7 +78,7 @@ public class DispatchSystem extends IteratingSystem {
                         position.x
                 ))
                 .peek(getEngine()::addEntity)
-//                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
+                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
                 .forEach(hitObjectEntity -> dispatch.hitObjects = dispatch.hitObjects.tail());
     }
 

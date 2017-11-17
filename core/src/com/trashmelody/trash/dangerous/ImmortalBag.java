@@ -1,4 +1,7 @@
-package com.trashmelody.trash;
+package com.trashmelody.trash.dangerous;
+
+import com.trashmelody.trash.Trash;
+import com.trashmelody.trash.TrashType;
 
 public class ImmortalBag extends Trash {
     private static final String NAME = "Immortal bag";

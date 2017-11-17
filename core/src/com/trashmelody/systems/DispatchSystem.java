@@ -33,6 +33,17 @@ public class DispatchSystem extends IteratingSystem {
     private static final Predicate<Float> isOverBound = isMoreThan.apply(RIGHT_BORDER_X);
     private static final Predicate<Float> isUnderBound = isLessThan.apply(LEFT_BORDER_X);
     private static final Predicate<Float> inDispatchArea = isBetween.apply(LEFT_BORDER_X + PADDING, RIGHT_BORDER_X - PADDING);
+    private TimerListener fadeUpListener = new TimerListener() {
+        @Override
+        public void handle(Entity entity, float lifeTime, float remaining) {
+            TransformComponent transform = Mapper.transform.get(entity);
+            transform.scale = (float) Math.sqrt(1 - Math.pow(remaining / lifeTime, 2));
+        }
+
+        @Override
+        public void done(Entity entity) {
+        }
+    };
 
     @Inject
     public DispatchSystem(World world, Assets assets) {
@@ -76,6 +87,7 @@ public class DispatchSystem extends IteratingSystem {
                         new HitObjectComponent(hitObject),
                         new TypeComponent(TypeComponent.DISPATCHER),
                         new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE), new Color(1F, 1F, 1F, 1F)),
+                        new TimerComponent(fadeUpListener, 400),
                         position.x
                 ))
                 .peek(getEngine()::addEntity)

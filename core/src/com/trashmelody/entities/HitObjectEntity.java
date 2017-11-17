@@ -21,6 +21,7 @@ public class HitObjectEntity extends Entity {
                            HitObjectComponent hitObjectComponent,
                            TypeComponent type,
                            TextureComponent textureComponent,
+                           TimerComponent timerComponent,
                            float dispatcherX) {
 
         Vector2 hitObjectPosition = hitObjectComponent.hitObject.getPosition().toGdxVector();
@@ -50,6 +51,7 @@ public class HitObjectEntity extends Entity {
         super.add(hitObjectComponent);
         super.add(textureComponent);
         super.add(new StateComponent());
+        super.add(timerComponent);
 
         shape.dispose();
     }

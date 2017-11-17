@@ -60,13 +60,6 @@ public class ScanLineSystem extends IteratingSystem {
                     scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
                 });
 
-//        scanLine.activeHitObjects.forEach(hitObjectEntity -> {
-//            HitObjectComponent hitObjectComponent = Mapper.hitObject.get(hitObjectEntity);
-//            if (scanLine.elapsedTime - hitObjectComponent.hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME) {
-//                hitObjectComponent.status = Status.Died;
-//            }
-//        });
-
         scanLine.elapsedTime += deltaTime * 1000;
         setScanLineVelocity(scanLine, physics, transform);
     }

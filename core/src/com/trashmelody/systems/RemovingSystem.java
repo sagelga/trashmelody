@@ -23,16 +23,11 @@ public class RemovingSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        RemovingComponent removing = Mapper.removing.get(entity);
         PhysicsComponent physics = Mapper.physics.get(entity);
-        removing.lifeTime -= deltaTime * 1000;
 
-        if (removing.lifeTime <= 0) {
-            entity.remove(TextureComponent.class);
-            getEngine().removeEntity(entity);
-            if (physics != null) {
-                world.destroyBody(physics.body);
-            }
+        getEngine().removeEntity(entity);
+        if (physics != null) {
+            world.destroyBody(physics.body);
         }
     }
 }

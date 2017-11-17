@@ -13,10 +13,25 @@ import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
     private Assets assets;
+    private TimerListener listener = new TimerListener() {
+        @Override
+        public void handle(Entity entity, float lifeTime, float remaining) {
+            TransformComponent transform = Mapper.transform.get(entity);
+            TextureComponent texture = Mapper.texture.get(entity);
+
+            texture.setAlpha(remaining / lifeTime);
+            transform.scale = 2F - remaining / lifeTime;
+        }
+
+        @Override
+        public void done(Entity entity) {
+            entity.add(new RemovingComponent());
+        }
+    };
 
     @Inject
     public ScoringSystem(Assets assets) {
-        super(Family.all(ScoringComponent.class, TextureComponent.class).get(), Systems.getIndex(ScoringSystem.class));
+        super(Family.all(ScoringComponent.class).get(), Systems.getIndex(ScoringSystem.class));
 
         this.assets = assets;
     }
@@ -41,6 +56,6 @@ public class ScoringSystem extends IteratingSystem {
         texture.texture = accuracyTexture;
 
         entity.remove(ScoringComponent.class);
-        entity.add(new RemovingComponent(2000));
+        entity.add(new TimerComponent(listener, 2000));
     }
 }

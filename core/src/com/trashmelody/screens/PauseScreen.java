@@ -36,7 +36,7 @@ public class PauseScreen extends LazyScreen {
     int count = 1;
 
     @Inject
-    PauseScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport,ScreenProvider screens) {
+    PauseScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens) {
         this.game = game;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);

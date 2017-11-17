@@ -47,8 +47,14 @@ public class CollectionScreen extends LazyScreen {
         game.batch.draw(dangerBag, vw/64, vh/9, vw/3.5F, vh/1.5F);
         game.batch.draw(dangerBag, vw/19, vh/9, vw/3.5F, vh/1.5F);
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) count++;
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) count--;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
+            game.batch.draw(arrow, vw/20, vh/9, vw/3, vh/12);
+            count++;
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
+            game.batch.draw(arrow, vw/28, vh/9, vw/3, vh/12);
+            count--;
+        }
 
         if(count==1) {
             game.batch.draw(dangerBag, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);

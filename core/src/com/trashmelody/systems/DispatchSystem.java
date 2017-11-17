@@ -3,6 +3,7 @@ package com.trashmelody.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
@@ -74,7 +75,7 @@ public class DispatchSystem extends IteratingSystem {
                         world,
                         new HitObjectComponent(hitObject),
                         new TypeComponent(TypeComponent.DISPATCHER),
-                        new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE)),
+                        new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE), new Color(1F, 1F, 1F, 1F)),
                         position.x
                 ))
                 .peek(getEngine()::addEntity)

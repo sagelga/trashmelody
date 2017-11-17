@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.badlogic.gdx.graphics.Color;
 import com.google.inject.name.Named;
 import com.trashmelody.components.*;
 import com.badlogic.ashley.core.Entity;
@@ -26,6 +27,7 @@ public class RenderingSystem extends IteratingSystem {
                 .get(),
                 Systems.getIndex(RenderingSystem.class)
         );
+
         this.batch = batch;
         this.camera = camera;
     }
@@ -39,7 +41,6 @@ public class RenderingSystem extends IteratingSystem {
         Vector2 position = transform.position;
         Option<Vector2> maybeSize = transform.size;
         float scale = transform.scale;
-
         if (textureComponent != null) {
             Texture texture = textureComponent.texture;
             Vector2 size = maybeSize.getOrElse(new Vector2(texture.getWidth(), texture.getHeight()));
@@ -53,6 +54,7 @@ public class RenderingSystem extends IteratingSystem {
             } else {
                 alignedPosition = position;
             }
+            batch.setColor(textureComponent.color);
             batch.draw(
                     texture,
                     alignedPosition.x,
@@ -66,6 +68,7 @@ public class RenderingSystem extends IteratingSystem {
                     transform.flipX,
                     transform.flipY
             );
+            batch.setColor(Color.WHITE);
         }
 
         if (textureRegionComponent != null) {

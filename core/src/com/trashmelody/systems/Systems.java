@@ -15,6 +15,7 @@ public class Systems {
             AccuracySystem.class,
             ScoringSystem.class,
             RemovingSystem.class,
+            FadingSystem.class,
             PhysicsSystem.class,
             CollisionSystem.class,
             PhysicsSynchronizationSystem.class,

@@ -106,19 +106,8 @@ public class GameScreen extends LazyScreen {
         drawBackground();
         game.batch.end();
 
-//        println(hitObjects.head().getPosition());
-
-//        Vector2 notePosition = hitObjects.head().getPosition().toGdxVector();
-//        engine.addEntity(new HitObjectEntity(
-//                world,
-//                new HitObjectComponent(A, D, W, Q, 300F),
-//                new TypeComponent(TypeComponent.PLAYER),
-//                new TransformComponent(new Vector2(notePosition.y * 2 / PPM, notePosition.x * 2 / PPM))
-//        ));
-//        hitObjects = hitObjects.tail();
-//
         if (isLoaded()) {
-            engine.update(delta / 10);
+            engine.update(delta);
         }
     }
 

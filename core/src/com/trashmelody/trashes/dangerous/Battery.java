@@ -1,7 +1,7 @@
-package com.trashmelody.trash.dangerous;
+package com.trashmelody.trashes.dangerous;
 
-import com.trashmelody.trash.Trash;
-import com.trashmelody.trash.TrashType;
+import com.trashmelody.trashes.Trash;
+import com.trashmelody.trashes.TrashType;
 
 public class MrBatteree extends Trash {
     private static final String NAME = "Mr. Batteree";

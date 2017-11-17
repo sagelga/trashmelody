@@ -1,6 +1,6 @@
-package com.trashmelody.trash;
+package com.trashmelody.trashes;
 
-import com.trashmelody.trash.dangerous.OilyOiler;
+import com.trashmelody.trashes.dangerous.OilyOiler;
 
 public class TrashTest {
     public static void main(String[] args) {

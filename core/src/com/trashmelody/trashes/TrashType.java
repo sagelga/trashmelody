@@ -1,4 +1,4 @@
-package com.trashmelody.trash;
+package com.trashmelody.trashes;
 
 public enum TrashType {
     DANGEROUS, WET, RECYCLE

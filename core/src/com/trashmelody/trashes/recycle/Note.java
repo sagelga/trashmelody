@@ -1,13 +1,13 @@
-package com.trashmelody.trash.recycle;
+package com.trashmelody.trashes.recycle;
 
-import com.trashmelody.trash.Trash;
-import com.trashmelody.trash.TrashType;
+import com.trashmelody.trashes.Trash;
+import com.trashmelody.trashes.TrashType;
 
-public class Pep extends Trash {
+public class Note extends Trash {
     private static final String NAME = "Pep";
     private static final String DESC = "The lost piece of Pep Guardiola’s note, so the name \"Pep\" literally comes from his owner.";
 
-    public Pep() {
+    public Note() {
         this.name = NAME;
         this.desc = DESC;
         this.type = TrashType.RECYCLE;

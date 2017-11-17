@@ -1,6 +1,6 @@
-package com.trashmelody.trash;
+package com.trashmelody.trashes;
 
-public class Trash {
+public abstract class Trash {
     protected String name, desc;
     protected TrashType type;
 

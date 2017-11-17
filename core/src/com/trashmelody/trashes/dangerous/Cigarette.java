@@ -1,13 +1,13 @@
-package com.trashmelody.trash.dangerous;
+package com.trashmelody.trashes.dangerous;
 
-import com.trashmelody.trash.Trash;
-import com.trashmelody.trash.TrashType;
+import com.trashmelody.trashes.Trash;
+import com.trashmelody.trashes.TrashType;
 
-public class Cigar extends Trash {
+public class Cigarette extends Trash {
     private static final String NAME = "Cigar";
     private static final String DESC = "A friend of every man *Cough*. But his health *Cough* is not very well lately *Cough* due to *Cough* his oral cavity, larynx, esophagus, and lung cancer.";
 
-    public Cigar() {
+    public Cigarette() {
         this.name = NAME;
         this.desc = DESC;
         this.type = TrashType.DANGEROUS;

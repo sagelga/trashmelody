@@ -200,20 +200,6 @@ public class GameScreen extends LazyScreen {
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
 
-//        BeatmapParser parser = new BeatmapParser();
-//        File file = new File("songs/Hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu");
-//        try {
-//            beatmap = parser.parse(file, ManiaBeatmap.class);
-//        } catch (BeatmapException | FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (beatmap != null) {
-//            beatmap.getHitObjects().forEach(System.out::println);
-//            println(String.format("HitObjectEntity count: %d", beatmap.getHitObjects().size()));
-//        }
-//        hitObjects = Stream.ofAll(beatmap.getHitObjects());
-
         createEntities();
     }
 

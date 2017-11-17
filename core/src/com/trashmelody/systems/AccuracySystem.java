@@ -14,10 +14,10 @@ import static com.trashmelody.components.ScoringComponent.*;
 import static com.trashmelody.utils.Functional.*;
 
 public class AccuracySystem extends IteratingSystem {
-    public static Predicate<Float> isPerfect = isBetween.apply(-20F, 20F);
+    public static Predicate<Float> isPerfect = isBetween.apply(-30F, 30F);
     public static Predicate<Float> isGood = isBetween.apply(-50F, 50F);
     public static Predicate<Float> isCool = isBetween.apply(-100F, 100F);
-    public static Predicate<Float> isBad = isBetween.apply(-200F, 200F);
+    public static Predicate<Float> isBad = isBetween.apply(-150F, 200F);
     public static Predicate<Float> isMiss = isBetween.apply(-300F, -300F);
     public static Predicate<Float> isReachable = isBetween.apply(-500F, 500F);
 

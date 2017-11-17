@@ -15,7 +15,7 @@ public class HitObjectSystem extends IteratingSystem {
 
     @Inject
     public HitObjectSystem(World world) {
-        super(Family.all(HitObjectComponent.class).get());
+        super(Family.all(HitObjectComponent.class).get(), Systems.getIndex(HitObjectSystem.class));
 
         this.world = world;
     }

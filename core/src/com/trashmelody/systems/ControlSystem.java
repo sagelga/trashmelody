@@ -12,7 +12,7 @@ public class ControlSystem extends IteratingSystem {
 
     @Inject
     ControlSystem(KeyboardController controller) {
-        super(Family.all(ScanLineComponent.class).get());
+        super(Family.all(ScanLineComponent.class).get(), Systems.getIndex(ControlSystem.class));
 
         this.controller = controller;
     }

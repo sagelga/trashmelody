@@ -10,7 +10,7 @@ import com.trashmelody.components.ScanLineComponent;
 public class MusicSynchronizeSystem extends IntervalSystem {
     @Inject
     public MusicSynchronizeSystem() {
-        super(5, 100);
+        super(5, Systems.getIndex(MusicSynchronizeSystem.class));
     }
 
     @Override

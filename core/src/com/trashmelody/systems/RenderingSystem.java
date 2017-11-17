@@ -24,7 +24,7 @@ public class RenderingSystem extends IteratingSystem {
         super(Family.all(TransformComponent.class)
                 .one(TextureComponent.class, TextureRegionComponent.class)
                 .get(),
-                100
+                Systems.getIndex(RenderingSystem.class)
         );
         this.batch = batch;
         this.camera = camera;

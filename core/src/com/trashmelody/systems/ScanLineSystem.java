@@ -17,7 +17,7 @@ import static com.trashmelody.utils.Functional.isLessThan;
 import static com.trashmelody.utils.Functional.isMoreThan;
 
 public class ScanLineSystem extends IteratingSystem {
-    public static final int HIT_OBJECT_LIFE_TIME = 200;
+    private static final int HIT_OBJECT_LIFE_TIME = 200;
     private static final float leftBorderX = 0;
     private static final float rightBorderX = 1920 / PPM;
     private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
@@ -26,7 +26,7 @@ public class ScanLineSystem extends IteratingSystem {
 
     @Inject
     public ScanLineSystem()  {
-        super(Family.all(ScanLineComponent.class).get());
+        super(Family.all(ScanLineComponent.class).get(), Systems.getIndex(ScanLineSystem.class));
     }
 
     @Override

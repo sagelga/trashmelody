@@ -23,7 +23,7 @@ public class AccuracySystem extends IteratingSystem {
 
     @Inject
     public AccuracySystem() {
-        super(Family.all(ScoringComponent.class, HitObjectComponent.class).get(), 10);
+        super(Family.all(ScoringComponent.class, HitObjectComponent.class).get(), Systems.getIndex(AccuracySystem.class));
     }
 
     @Override

@@ -7,22 +7,25 @@ import java.util.List;
 
 public class Systems {
     public static Systems systems = new Systems(Arrays.asList(
-            CollisionSystem.class,
-            RenderingSystem.class,
-            PlayerControlSystem.class,
-            PhysicsDebugSystem.class,
-            PhysicsSystem.class,
-            PhysicsSynchronizationSystem.class,
-            MusicSynchronizeSystem.class,
-            HitObjectSystem.class,
-            ScanLineSystem.class,
             DispatchSystem.class,
-            RemovingSystem.class,
+            ScanLineSystem.class,
+            PlayerControlSystem.class,
             ControlSystem.class,
+            HitObjectSystem.class,
             AccuracySystem.class,
             ScoringSystem.class,
-            RemovingSystem.class
+            RemovingSystem.class,
+            PhysicsSystem.class,
+            CollisionSystem.class,
+            PhysicsSynchronizationSystem.class,
+            MusicSynchronizeSystem.class,
+            RenderingSystem.class,
+            PhysicsDebugSystem.class
     ));
+
+    public static int getIndex(Class<? extends EntitySystem> system) {
+        return systems.list.indexOf(system);
+    }
 
     public List<Class<? extends EntitySystem>> list;
 

@@ -118,7 +118,7 @@ public class GameScreen extends LazyScreen {
 //        hitObjects = hitObjects.tail();
 //
         if (isLoaded()) {
-            engine.update(delta);
+            engine.update(delta / 10);
         }
     }
 

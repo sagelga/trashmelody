@@ -17,7 +17,7 @@ public class PhysicsDebugSystem extends EntitySystem {
 
     @Inject
     public PhysicsDebugSystem(World world, @Named("physics") OrthographicCamera camera) {
-        super(100);
+        super(Systems.getIndex(PhysicsDebugSystem.class));
 
         this.camera = camera;
 //        this.camera = new OrthographicCamera(1280 * 2 / PPM, 720 * 2 / PPM);

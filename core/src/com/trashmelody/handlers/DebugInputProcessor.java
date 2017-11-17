@@ -25,8 +25,8 @@ public class DebugInputProcessor implements InputProcessor {
 
     static {
         MAPPER = HashMap.of(
-                Input.Keys.P, PauseScreen.class,
                 Input.Keys.G, GameScreen.class,
+                Input.Keys.P, PauseScreen.class,
                 Input.Keys.S, StageSelectScreen.class,
                 Input.Keys.C, CollectionScreen.class,
                 Input.Keys.R, ResultScreen.class,

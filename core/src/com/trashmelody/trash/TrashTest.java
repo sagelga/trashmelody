@@ -6,5 +6,6 @@ public class TrashTest {
         System.out.println(oilyOiler.getName());
         System.out.println(oilyOiler.getDesc());
         System.out.println(oilyOiler.getType());
+        System.out.println(oilyOiler.isDangerous());
     }
 }

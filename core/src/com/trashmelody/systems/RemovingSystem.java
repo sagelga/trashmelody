@@ -16,7 +16,7 @@ public class RemovingSystem extends IteratingSystem {
 
     @Inject
     RemovingSystem(World world) {
-        super(Family.all(RemovingComponent.class).get(), 12);
+        super(Family.all(RemovingComponent.class).get(), Systems.getIndex(RemovingSystem.class));
 
         this.world = world;
     }

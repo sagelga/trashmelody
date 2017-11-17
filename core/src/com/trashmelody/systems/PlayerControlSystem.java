@@ -17,7 +17,8 @@ public class PlayerControlSystem extends IteratingSystem {
 
     @Inject
     public PlayerControlSystem(KeyboardController controller) {
-        super(Family.all(PlayerComponent.class).get());
+        super(Family.all(PlayerComponent.class).get(), Systems.getIndex(PlayerControlSystem.class));
+
         this.controller = controller;
     }
     @Override

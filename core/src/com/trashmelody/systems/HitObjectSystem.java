@@ -11,25 +11,16 @@ import com.trashmelody.components.Mapper;
 import com.trashmelody.components.PhysicsComponent;
 
 public class HitObjectSystem extends IteratingSystem {
-    private Engine engine;
     private World world;
 
     @Inject
-    public HitObjectSystem(Engine engine, World world) {
-        super(Family.all(HitObjectComponent.class).get());
+    public HitObjectSystem(World world) {
+        super(Family.all(HitObjectComponent.class).get(), Systems.getIndex(HitObjectSystem.class));
 
-        this.engine = engine;
         this.world = world;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        HitObjectComponent hitObject = Mapper.hitObject.get(entity);
-        PhysicsComponent physicsComponent = Mapper.physics.get(entity);
-
-        if (hitObject.status == HitObjectComponent.Status.Died) {
-            engine.removeEntity(entity);
-            world.destroyBody(physicsComponent.body);
-        }
     }
 }

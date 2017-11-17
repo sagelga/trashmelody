@@ -10,7 +10,7 @@ public class CollisionSystem extends IteratingSystem {
 
     @Inject
     public CollisionSystem() {
-        super(Family.all(CollisionComponent.class, PlayerComponent.class).get());
+        super(Family.all(CollisionComponent.class, PlayerComponent.class).get(), Systems.getIndex(CollisionSystem.class));
     }
 
     @Override

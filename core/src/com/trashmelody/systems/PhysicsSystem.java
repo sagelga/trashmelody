@@ -13,6 +13,8 @@ public class PhysicsSystem extends EntitySystem {
 
     @Inject
     public PhysicsSystem(World world) {
+        super(Systems.getIndex(PhysicsSystem.class));
+
         this.world = world;
     }
 

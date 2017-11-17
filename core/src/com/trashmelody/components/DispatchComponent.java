@@ -7,7 +7,6 @@ import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 
 public class DispatchComponent implements Component {
     public Stream<HitObject> hitObjects;
-    public float elapsedTime;
     public State state = State.Ready;
     public float velocity;
 

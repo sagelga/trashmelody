@@ -16,7 +16,7 @@ public class PhysicsSynchronizationSystem extends IteratingSystem {
         super(Family.all(
                 TransformComponent.class,
                 PhysicsComponent.class
-        ).get());
+        ).get(), Systems.getIndex(PhysicsSynchronizationSystem.class));
     }
 
     @Override

@@ -10,6 +10,6 @@ public class TheTrio extends Trash {
     public TheTrio() {
         this.name = NAME;
         this.desc = DESC;
-        this.type = TrashType.DANGEROUS;
+        this.type = TrashType.RECYCLE;
     }
 }

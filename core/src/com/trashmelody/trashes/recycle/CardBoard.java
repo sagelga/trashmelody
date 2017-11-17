@@ -7,9 +7,7 @@ public class CardBoard extends Trash {
     private static final String NAME = "BokkKung";
     private static final String DESC = "A cardboard box that used to contain a dog. He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
 
-    public CardBoard() {
-        this.name = NAME;
-        this.desc = DESC;
-        this.type = TrashType.RECYCLE;
+    public CardBoard(String name, String description, TrashType type) {
+        super(name, description, type);
     }
 }

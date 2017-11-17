@@ -1,18 +1,24 @@
 package com.trashmelody.trashes;
 
 public abstract class Trash {
-    protected String name, desc;
+    protected String name, description;
     protected TrashType type;
 
-    public Trash(String name, String desc, TrashType type) {}
-    public Trash() {}
+    public Trash(String name, String description, TrashType type) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+    }
+
+    public Trash() {
+    }
 
     public String getName() {
         return this.name;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public String getDescription() {
+        return this.description;
     }
 
     public TrashType getType() {
@@ -20,14 +26,14 @@ public abstract class Trash {
     }
 
     public boolean isDangerous() {
-        return this.type == TrashType.DANGEROUS;
+        return this.type == TrashType.Dangerous;
     }
 
     public boolean isWet() {
-        return this.type == TrashType.WET;
+        return this.type == TrashType.Wet;
     }
 
     public boolean isRecycle() {
-        return this.type == TrashType.RECYCLE;
+        return this.type == TrashType.Recycle;
     }
 }

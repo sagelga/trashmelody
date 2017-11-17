@@ -6,6 +6,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
+import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.handlers.KeyboardController;
 
 public class ScoreSystem extends IteratingSystem {
@@ -29,9 +30,8 @@ public class ScoreSystem extends IteratingSystem {
 
             System.out.println("----------");
             hitObjectEntities.forEach(hitObjectEntity -> {
-                HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
 
-                float score = calculateScore(scanLine, hitObject);
+                float score = calculateScore(scanLine, hitObjectEntity);
             });
         }
     }
@@ -52,7 +52,8 @@ public class ScoreSystem extends IteratingSystem {
         return getEngine().getEntitiesFor(Family.all(HitObjectComponent.class).get());
     }
 
-    private int calculateScore(ScanLineComponent scanLine, HitObjectComponent hitObject) {
+    private int calculateScore(ScanLineComponent scanLine, Entity hitObjectEntity) {
+        HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
         float delta = Math.abs(scanLine.elapsedTime - hitObject.hitObject.getStartTime());
 
         if (delta < 100) {

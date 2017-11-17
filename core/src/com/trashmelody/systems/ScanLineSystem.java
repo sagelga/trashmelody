@@ -52,20 +52,22 @@ public class ScanLineSystem extends IteratingSystem {
             }
         }
 
-//        scanLine.activeHitObjects
-//                .dequeueOption()
-//                .map(tuple -> tuple._1)
-//                .forEach(hitObjectEntity -> {
-//                    hitObjectEntity.remove(HitObjectComponent.class);
-//                    hitObjectEntity.add(new RemovingComponent(0));
-//                });
+        scanLine.activeHitObjects
+                .dequeueOption()
+                .map(tuple -> tuple._1)
+                .filter(e -> scanLine.elapsedTime - Mapper.hitObject.get(e).hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME)
+                .peek(hitObjectEntity -> {
+                    hitObjectEntity.remove(HitObjectComponent.class);
+                    hitObjectEntity.add(new RemovingComponent(3));
+                    scanLine.activeHitObjects = scanLine.activeHitObjects.dequeue()._2;
+                });
 
-        scanLine.activeHitObjects.forEach(hitObjectEntity -> {
-            HitObjectComponent hitObjectComponent = Mapper.hitObject.get(hitObjectEntity);
-            if (scanLine.elapsedTime - hitObjectComponent.hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME) {
-                hitObjectComponent.status = Status.Died;
-            }
-        });
+//        scanLine.activeHitObjects.forEach(hitObjectEntity -> {
+//            HitObjectComponent hitObjectComponent = Mapper.hitObject.get(hitObjectEntity);
+//            if (scanLine.elapsedTime - hitObjectComponent.hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME) {
+//                hitObjectComponent.status = Status.Died;
+//            }
+//        });
 
         setScanLineVelocity(scanLine, physics, transform);
     }

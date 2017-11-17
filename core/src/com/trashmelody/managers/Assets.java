@@ -146,11 +146,11 @@ public class Assets extends AssetManager {
     public static final String GAME_PAUSE               = "GameScreen/PAUSE.png";
     public static final String GAME_LEVEL_BORDER        = "GameScreen/Level-Border.png";
     public static final String GAME_SCORE               = "GameScreen/SCORE.png";
-    public static final String GAME_SCORE_1             = "GameScreen/SCORE-1.png";
-    public static final String GAME_SCORE_2             = "GameScreen/SCORE-2.png";
-    public static final String GAME_SCORE_3             = "GameScreen/SCORE-3.png";
-    public static final String GAME_SCORE_4             = "GameScreen/SCORE-4.png";
-    public static final String GAME_SCORE_5             = "GameScreen/SCORE-5.png";
+    public static final String MISS_ACCURACY = "GameScreen/SCORE-1.png";
+    public static final String BAD_ACCURACY = "GameScreen/SCORE-2.png";
+    public static final String COOL_ACCURACY = "GameScreen/SCORE-3.png";
+    public static final String GOOD_ACCURACY = "GameScreen/SCORE-4.png";
+    public static final String PERFECT_ACCURACY = "GameScreen/SCORE-5.png";
     public static final String GAME_STATUS_BAR          = "GameScreen/STATUS-BAR.png";
 
     // Pause Screen Assets

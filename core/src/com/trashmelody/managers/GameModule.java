@@ -93,8 +93,10 @@ public class GameModule implements Module {
                 HitObjectSystem.class,
                 ScanLineSystem.class,
                 DispatchSystem.class,
-                ScoreSystem.class,
-                RemovingSystem.class
+//                ScoreSystem.class,
+                RemovingSystem.class,
+                AccuracySystem.class,
+                ScoringSystem.class
         ));
     }
 }

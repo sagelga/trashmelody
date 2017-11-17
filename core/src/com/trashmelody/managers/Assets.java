@@ -99,8 +99,21 @@ public class Assets extends AssetManager {
     public static final String STAGE_BG_ARROW_R         = "StageSelect/Background/stage-arrow-right.png";
 
     // Collection Stage Assets
-    public static final String COLLECTION_SCREEN_TITLE  = "CollectionScreen/screen-title.png";
-    public static final String COLLECTION_BG            = "CollectionScreen/bg.jpg";
+    public static final String COLLECTION_SCREEN_TITLE         = "CollectionScreen/screen-title.png";
+    public static final String COLLECTION_BG                   = "CollectionScreen/bg.jpg";
+    public static final String COLLECTION_BAR                  = "CollectionScreen/info-bar.png";
+    public static final String COLLECTION_ARROW                = "CollectionScreen/arrow.png";
+    public static final String COLLECTION_TEXT_EXAMPLE         = "CollectionScreen/text-example.png";
+    public static final String COLLECTION_LV1                  = "CollectionScreen/lv1.png";
+    public static final String COLLECTION_LV2                  = "CollectionScreen/lv2.png";
+    public static final String COLLECTION_LV3                  = "CollectionScreen/lv3.png";
+    public static final String COLLECTION_LV4                  = "CollectionScreen/lv4.png";
+    public static final String COLLECTION_LV5                  = "CollectionScreen/lv5.png";
+    public static final String COLLECTION_LV6                  = "CollectionScreen/lv6.png";
+    public static final String COLLECTION_CARD_DANGER_BAG      = "trashes/dangerous/cards/DANGER - CARD-01.png";
+    public static final String COLLECTION_CARD_RECYCLE_TRIO      = "trashes/recycle/cards/RE - CARD-01.png";
+    public static final String COLLECTION_CARD_WET_POPCORN      = "trashes/wet/cards/FOOD - CARD-01.png";
+
 
     // Countdown Stage Assets
     public static final String COUNTDOWN_BACKGROUND1    = "CountdownPage/background1.png";

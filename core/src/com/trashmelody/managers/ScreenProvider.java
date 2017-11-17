@@ -27,9 +27,9 @@ public class ScreenProvider {
                 StageSelectScreen.class,
                 CollectionScreen.class,
                 GameScreen.class,
-                SandboxScreen.class,
+                PauseScreen.class,
                 ResultScreen.class,
-                PauseScreen.class
+                SandboxScreen.class
         );
     }
 

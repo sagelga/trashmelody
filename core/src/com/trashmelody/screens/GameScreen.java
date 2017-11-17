@@ -248,7 +248,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
         game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
         game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
-        game.batch.draw(hpPoint, vw / 1.56F, vh / 20.2F, vw / 40, vh / 24);
+        game.batch.draw(hpPoint, vw / setHpBar(50), vh / 20.2F, vw / 40, vh / 24);
         //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
         //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
@@ -271,5 +271,10 @@ public class GameScreen extends LazyScreen {
         }
 
         return beatmap;
+    }
+
+    private float setHpBar(int hp) {
+        if (hp >= 0 && hp <= 100) return (float)(3F - hp / 100F * (3F - 1.56F));
+        return 0;
     }
 }

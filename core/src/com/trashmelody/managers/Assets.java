@@ -192,17 +192,16 @@ public class Assets extends AssetManager {
     // Result Screen Assets
     public static final String RESULT_RESULT_BACKGROUND = "ResultScreen/Result-Background.png";
     public static final String RESULT_RESULT_HEADER = "ResultScreen/Result-Header.png";
-    public static final String RESULT_RESULT_FOOTER = "ResultScreen/Result-Footer.png";
     public static final String RESULT_RESULT_GRADE_A = "ResultScreen/Result-Grade-A.png";
     public static final String RESULT_RESULT_GRADE_B = "ResultScreen/Result-Grade-B.png";
     public static final String RESULT_RESULT_GRADE_C = "ResultScreen/Result-Grade-C.png";
     public static final String RESULT_RESULT_GRADE_D = "ResultScreen/Result-Grade-D.png";
     public static final String RESULT_RESULT_GRADE_F = "ResultScreen/Result-Grade-F.png";
-    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
-    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
-    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
-    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
-    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
+//    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
+//    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
+//    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
+//    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
+//    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
     public static final String RESULT_RESULT_TEXT_ALL = "ResultScreen/Result-Text-All.png";
 
     // Setting Screen Assets

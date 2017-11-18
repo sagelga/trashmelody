@@ -13,7 +13,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 	    TrashMelody game = new TrashMelody();
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.fullscreen = false;
+		config.fullscreen = true;
 		config.width  = (int) (game.WIDTH  * SCREEN_SCALE);
 		config.height = (int) (game.HEIGHT * SCREEN_SCALE);
 		config.useHDPI = true;

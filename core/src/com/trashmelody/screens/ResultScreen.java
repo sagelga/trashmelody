@@ -3,8 +3,11 @@ package com.trashmelody.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -31,14 +34,18 @@ public class ResultScreen extends LazyScreen {
     private float vw = getViewportWidth();
     private enum Grade { A, B, C, D, F }
     private Grade grade;
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private int perfect, good, nice, miss, combo, score;
 
     @Inject
-    ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, StageSelectScreen stageSelectScreen) {
+    ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, StageSelectScreen stageSelectScreen, SpriteBatch batch) {
         this.game = game;
         this.camera = camera;
         this.screens = screens;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
         this.stageSelectScreen = screens.get(StageSelectScreen.class);
+        this.batch = batch;
     }
 
     @Override
@@ -73,7 +80,22 @@ public class ResultScreen extends LazyScreen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) game.setLazyScreen(stageSelectScreen);
 
+        // Perfect
+        font.draw(batch, String.valueOf(perfect), vw / 1.3F, vh / 1.252F);
+        // Good
+        font.draw(batch, String.valueOf(good), vw / 1.3F, vh / 1.465F);
+        // Nice
+        font.draw(batch, String.valueOf(nice), vw / 1.3F, vh / 1.782F);
+        // Miss
+        font.draw(batch, String.valueOf(miss), vw / 1.3F, vh / 2.28F);
+        // Combo
+        font.draw(batch, String.valueOf(combo), vw / 1.3F, vh / 3.06F);
+        // Score
+        font.draw(batch, String.valueOf(score), vw / 1.3F, vh / 4.55F);
+
         game.batch.end();
+
+        setScores(99, 120, 155, 20, 50, 1000);
     }
 
     @Override
@@ -109,9 +131,19 @@ public class ResultScreen extends LazyScreen {
         this.stats = assets.get(RESULT_RESULT_TEXT_ALL, TEXTURE);
         this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
         this.btnBack = assets.get(GLOBAL_ICON_BACK, TEXTURE);
+        this.font = assets.get8bitFont(54, Color.RED);
     }
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {
+        this.perfect = perfect;
+        this.good = good;
+        this.nice = nice;
+        this.miss = miss;
+        this.combo = combo;
+        this.score = score;
     }
 }

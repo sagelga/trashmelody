@@ -253,9 +253,9 @@ public class StageSelectScreen extends LazyScreen {
             cooldown--;
         
 
-//        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-//            game.setLazyScreen(screens.get(MenuScreen.class));
-//        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+            game.setLazyScreen(screens.get(MenuScreen.class));
+        }
 //
 //        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
 //            game.setLazyScreen(screens.get(GameScreen.class));

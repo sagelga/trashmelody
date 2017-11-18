@@ -5,12 +5,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
@@ -20,16 +22,19 @@ import static com.trashmelody.utils.RenderingUtils.*;
 @Singleton
 public class CollectionScreen extends LazyScreen {
     private TrashMelody game;
+    private ScreenProvider screens;
     private OrthographicCamera camera;
     private Viewport viewport;
-    private Texture bg, screenTitle,buttonBack,footer,bar,arrow,textExample,lv1,lv2,lv3,lv4,lv5,lv6,dangerBag,reTrio,wetCorn;
+    private Texture bg, screenTitle, buttonBack, footer, bar, arrow, textExample;
+    private Texture lv1, lv2, lv3, lv4, lv5, lv6, dangerBag, reTrio, wetCorn;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
-    private int count =1;
+    private int count = 1;
 
     @Inject
-    CollectionScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport) {
+    CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport) {
         this.game = game;
+        this.screens = screens;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
     }
@@ -39,6 +44,7 @@ public class CollectionScreen extends LazyScreen {
         clearScreen();
 
         game.batch.begin();
+
         game.batch.draw(bg, 0, 0, vw, vh);
         game.batch.draw(screenTitle, 0, vh/1.35F,vw/1.5F,vh/4);
         game.batch.draw(bar, vw/2.5F, vh/64, vw/1.5F, vh/1.2F);
@@ -47,32 +53,37 @@ public class CollectionScreen extends LazyScreen {
         game.batch.draw(dangerBag, vw/64, vh/9, vw/3.5F, vh/1.5F);
         game.batch.draw(dangerBag, vw/19, vh/9, vw/3.5F, vh/1.5F);
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
-            game.batch.draw(arrow, vw/20, vh/9, vw/3, vh/12);
-            count++;
-        }
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
-            game.batch.draw(arrow, vw/28, vh/9, vw/3, vh/12);
-            count--;
+        game.batch.draw(arrow, vw/20, vh/9, vw/3, vh/12);
+        game.batch.draw(arrow, vw/28, vh/9, vw/3, vh/12);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+            game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
-        if(count==1) {
+        if (count == 1) {
             game.batch.draw(dangerBag, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
             game.batch.draw(textExample, vw / 2.5F, vh / 3.5F, vw / 1.8F, vh / 1.6F);
             game.batch.draw(lv1, vw / 1.7F, vh / 7, vw / 4, vh / 5);
         }
-        if(count==2) {
+        else if (count == 2) {
             game.batch.draw(reTrio, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
             game.batch.draw(lv2, vw / 1.7F, vh / 7, vw / 4, vh / 5);
         }
-        if(count==3) {
+        else if (count == 3) {
             game.batch.draw(wetCorn, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
             game.batch.draw(lv6, vw / 1.7F, vh / 7, vw / 4, vh / 5);
         }
-        if(count>3) count = 3;
-        if(count<1) count = 1;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) count++;
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) count--;
+
+        // Reset counter
+        if (count > 3) count = 1;
+        else if (count < 1) count = 3;
+
         //arrow pad
         game.batch.draw(arrow, vw/24, vh/9, vw/3, vh/12);
+
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
         // Debug zone

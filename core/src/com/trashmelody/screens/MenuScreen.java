@@ -27,6 +27,7 @@ public class MenuScreen extends LazyScreen {
     private StageSelectScreen stageSelectScreen;
     private ResultScreen resultScreen;
     private MusicManager musicManager;
+    private CollectionScreen collectionScreen;
 
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -47,6 +48,7 @@ public class MenuScreen extends LazyScreen {
         this.game = game;
         this.stageSelectScreen = screens.get(StageSelectScreen.class);
         this.resultScreen = screens.get(ResultScreen.class);
+        this.collectionScreen = screens.get(CollectionScreen.class);
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
@@ -77,6 +79,9 @@ public class MenuScreen extends LazyScreen {
             switch (menuCount) {
                 case 1:
                     game.setLazyScreen(stageSelectScreen);
+                    break;
+                case 2:
+                    game.setLazyScreen(collectionScreen);
                     break;
                 case 3:
                     System.exit(0);

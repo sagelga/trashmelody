@@ -95,15 +95,12 @@ public class Assets extends AssetManager {
     public static final String STAGE_TEXT_SCHOOL = "StageSelect/Text/stage-school-text.png";
     public static final String STAGE_TEXT_HOME = "StageSelect/Text/stage-home-text.png";
     public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
-    public static final String STAGE_BG_BACKBUTTON = "StageSelect/Background/stage-backbutton.png";
-    public static final String STAGE_BG_PLAYBUTTON = "StageSelect/Background/stage-playbutton.png";
     public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
     public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
-    public static final String STAGE_BG_FOOTER = "StageSelect/Background/stage-footer.png";
     public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
-    public static final String STAGE_BG_OVERLAY = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
     public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
+    public static final String STAGE_BG = "StageSelect/Background/stage-bg.png";
 
     // Collection Stage Assets
     public static final String COLLECTION_HEADER = "CollectionScreen/Header.png";
@@ -204,17 +201,16 @@ public class Assets extends AssetManager {
     // Result Screen Assets
     public static final String RESULT_RESULT_BACKGROUND = "ResultScreen/Result-Background.png";
     public static final String RESULT_RESULT_HEADER = "ResultScreen/Result-Header.png";
-    public static final String RESULT_RESULT_FOOTER = "ResultScreen/Result-Footer.png";
     public static final String RESULT_RESULT_GRADE_A = "ResultScreen/Result-Grade-A.png";
     public static final String RESULT_RESULT_GRADE_B = "ResultScreen/Result-Grade-B.png";
     public static final String RESULT_RESULT_GRADE_C = "ResultScreen/Result-Grade-C.png";
     public static final String RESULT_RESULT_GRADE_D = "ResultScreen/Result-Grade-D.png";
     public static final String RESULT_RESULT_GRADE_F = "ResultScreen/Result-Grade-F.png";
-    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
-    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
-    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
-    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
-    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
+//    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
+//    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
+//    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
+//    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
+//    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
     public static final String RESULT_RESULT_TEXT_ALL = "ResultScreen/Result-Text-All.png";
 
     // Setting Screen Assets
@@ -275,4 +271,8 @@ public class Assets extends AssetManager {
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";
     public static final String PLAYER_PLAY = "SFX/vol - template.png";
 
+    // Globally-Reusable Assets
+    public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
+    public static final String GLOBAL_ICON_PLAY = "Global/icon-play.png";
+    public static final String GLOBAL_FOOTER_BAR = "Global/footer-bar.png";
 }

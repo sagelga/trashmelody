@@ -87,14 +87,12 @@ public class CollectionScreen extends LazyScreen {
     @Override
     public void loadAssets(Assets assets) {
         assets.load(COLLECTION_BG, TEXTURE);
-        assets.load(COLLECTION_FOOTER, TEXTURE);
         assets.load(COLLECTION_HEADER, TEXTURE);
         assets.load(COLLECTION_PACK, TEXTURE);
         assets.load(COLLECTION_LEFT, TEXTURE);
         assets.load(COLLECTION_RIGHT, TEXTURE);
         assets.load(COLLECTION_LEFT_H, TEXTURE);
         assets.load(COLLECTION_RIGHT_H, TEXTURE);
-        assets.load(STAGE_BG_BACKBUTTON, TEXTURE);
         //Trashes
         assets.load(COLLECTION_DANGER_1, TEXTURE);
         assets.load(COLLECTION_DANGER_2, TEXTURE);
@@ -111,19 +109,21 @@ public class CollectionScreen extends LazyScreen {
         assets.load(COLLECTION_WET_3, TEXTURE);
         assets.load(COLLECTION_WET_4, TEXTURE);
         assets.load(COLLECTION_WET_5, TEXTURE);
+        assets.load(GLOBAL_ICON_BACK, TEXTURE);
+        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
     }
 
     @Override
     public void afterLoad(Assets assets) {
         this.bg         = assets.get(COLLECTION_BG, TEXTURE);
-        this.footer     = assets.get(COLLECTION_FOOTER, TEXTURE);
+        this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
         this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
         this.pack       = assets.get(COLLECTION_PACK, TEXTURE);
         this.l          = assets.get(COLLECTION_LEFT, TEXTURE);
         this.r          = assets.get(COLLECTION_RIGHT, TEXTURE);
         this.lh         = assets.get(COLLECTION_LEFT_H, TEXTURE);
         this.rh         = assets.get(COLLECTION_RIGHT_H, TEXTURE);
-        this.back       = assets.get(STAGE_BG_BACKBUTTON, TEXTURE);
+        this.back       = assets.get(GLOBAL_ICON_BACK, TEXTURE);
         //Danger Trashes
         this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
         this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);

@@ -1,5 +1,7 @@
 package com.trashmelody.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
@@ -20,6 +23,8 @@ public class ResultScreen extends LazyScreen {
     private TrashMelody game;
     private OrthographicCamera camera;
     private Viewport viewport;
+    private ScreenProvider screens;
+    private StageSelectScreen stageSelectScreen;
     private Texture gradeA, gradeB, gradeC, gradeD, gradeF, stats, gradeToShow;
     private Texture bg, header, footer, btnBack;
     private float vh = getViewportHeight();
@@ -28,10 +33,12 @@ public class ResultScreen extends LazyScreen {
     private Grade grade;
 
     @Inject
-    ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport) {
+    ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, StageSelectScreen stageSelectScreen) {
         this.game = game;
         this.camera = camera;
+        this.screens = screens;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.stageSelectScreen = screens.get(StageSelectScreen.class);
     }
 
     @Override
@@ -63,6 +70,8 @@ public class ResultScreen extends LazyScreen {
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
         // Debug zone
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) game.setLazyScreen(stageSelectScreen);
 
         game.batch.end();
     }

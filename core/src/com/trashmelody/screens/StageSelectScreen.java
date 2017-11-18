@@ -139,7 +139,7 @@ public class StageSelectScreen extends LazyScreen {
                 break;
             case (3):
                 font.draw(batch, Integer.toString(statsManager.getStageScore("stage4Score")), vw / 1.3F, vh / 6);
-                game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.6F, vw / 4, vh / 4);
+                game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
                 game.batch.draw(stageSchoolText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
                 if (cooldown == 0) {
@@ -191,7 +191,7 @@ public class StageSelectScreen extends LazyScreen {
             game.batch.draw(bdHospitalHide, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
         }
         if (currentStageNumber != 3) {
-            game.batch.draw(bdSchoolHide, vw / 2.8F, vh / 7.6F, vw / 4, vh / 4);
+            game.batch.draw(bdSchoolHide, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
         }
         if (currentStageNumber != 4) {
             game.batch.draw(bdHomeHide, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);

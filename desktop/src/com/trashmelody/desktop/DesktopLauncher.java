@@ -18,12 +18,33 @@ public class DesktopLauncher {
 		config.height = (int) (game.HEIGHT * SCREEN_SCALE);
 		config.useHDPI = true;
 		config.samples = 3;
-		config.addIcon("GameLogo/Icon2/MacOS.png", Files.FileType.Internal);
-		config.addIcon("GameLogo/Icon2/Linux.png", Files.FileType.Internal);
-		config.addIcon("GameLogo/Icon2/Windows.png", Files.FileType.Internal);
-		config.addIcon("GameLogo/game-logo.jpeg", Files.FileType.Internal);
+		config.addIcon("GameLogo/MacOS.png", Files.FileType.Internal);
+		config.addIcon("GameLogo/Linux.png", Files.FileType.Internal);
+		config.addIcon("GameLogo/Windows.png", Files.FileType.Internal);
+
 		System.setProperty("org.lwjgl.opengl.Display.enableOSXFullscreenModeAPI", "true");
 
 		new LwjglApplication(game, config);
 	}
 }
+
+/*      Please no bug, no crash and Java is our savior
+	                                  _
+                               _ooOoo_
+                              o8888888o
+                              88" . "88
+                              (| -_- |)
+                              O\  =  /O
+                           ____/`---'\____
+                         .'  \\|     |//  `.
+                        /  \\|||  :  |||//  \
+                       /  _||||| -:- |||||_  \
+                       |   | \\\  -  /'| |   |
+                       | \_|  `\`---'//  |_/ |
+                       \  .-\__ `-. -'__/-.  /
+                     ___`. .'  /--.--\  `. .'___
+                  ."" '<  `.___\_<|>_/___.' _> \"".
+                 | | :  `- \`. ;`. _/; .'/ /  .' ; |
+                 \  \ `-.   \_\_`. _.'_/_/  -' _.' /
+       ===========`-.`___`-.__\ \___  /__.-'_.'_.-'===========
+                               `=--=-'               kumamon*/

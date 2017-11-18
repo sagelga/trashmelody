@@ -17,7 +17,7 @@ public class MusicManager {
     private static String currentMusic;
 
     @Inject
-    MusicManager(Assets assets) {
+    public MusicManager(Assets assets) {
         this.assets = assets;
     }
 

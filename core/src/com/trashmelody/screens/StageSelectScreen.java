@@ -130,7 +130,7 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(trashworldLogo,vw/2.8F,vh/2.8F,vw/3.7F,vh/3.5F);
 
         // Show the header + footer of the game
-        game.batch.draw(header, 0, vh/1.15F, vw/2, vh/8);
+        game.batch.draw(header, 0, vh/1.142F, vw/2, vh/8);
         game.batch.draw(footer, 0, 0, vw, vh/12);
 
         // Show the button interfaces
@@ -139,15 +139,16 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(selectArrowLeft, vw/1.4F, vh/8, vw/28, vh/10);
         game.batch.draw(selectArrowRight, vw/1.065F, vh/8, vw/28, vh/10);
 
+        font.draw(batch,"High Score",vw/1.3F,vh/4.5F);
+
         int count = 0;
 
 
         // Show the text of the selected item
         switch (currentStageNumber) {
             case (0):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage1ID,vw/1.3F,vh/6);
-                game.batch.draw(stageCafeText, vw/64, vh/1.16F, vw/3.5F, vh/8);
+                game.batch.draw(stageCafeText, vw/64, vh/1.155F, vw/3.5F, vh/8);
                 game.batch.draw(bdCafeShow, vw/2, vh/1.55F, vw/6, vw/9);
 
                 if (cooldown == 0) {
@@ -159,9 +160,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (1):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage2ID,vw/1.3F,vh/6);
-                game.batch.draw(stageCinemaText, vw/64, vh/1.16F, vw/2.6F, vh/8);
+                game.batch.draw(stageCinemaText, vw/64, vh/1.155F, vw/2.6F, vh/8);
                 game.batch.draw(bdCinemaShow, vw/1.57F, vh/2.25F, vw/6, vh/3);
 
                 if (cooldown == 0) {
@@ -173,9 +173,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (2):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage3ID,vw/1.3F,vh/6);
-                game.batch.draw(stageHospitalText, vw/64, vh/1.16F, vw/2, vh/8);
+                game.batch.draw(stageHospitalText, vw/64, vh/1.155F, vw/2, vh/8);
                 game.batch.draw(bdHospitalShow, vw/1.7F, vh/3.8F, vw/5, vh/4);
 
                 if (cooldown == 0) {
@@ -187,10 +186,9 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (3):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage4ID,vw/1.3F,vh/6);
                 game.batch.draw(bdSchoolShow, vw/2.8F, vh/7.6F, vw/4, vh/4);
-                game.batch.draw(stageSchoolText, vw/64, vh/1.16F, vw/2.5F, vh/8);
+                game.batch.draw(stageSchoolText, vw/64, vh/1.155F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -201,10 +199,9 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (4):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage5ID,vw/1.3F,vh/6);
                 game.batch.draw(bdHomeShow, vw/5F, vh/4.15F, vw/4.2F, vh/2.5F);
-                game.batch.draw(stageHomeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
+                game.batch.draw(stageHomeText, vw/64, vh/1.155F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -215,10 +212,9 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (5):
-                font.draw(batch,"High Score",vw/1.31F,vh/4.5F);
                 font.draw(batch,stage6ID,vw/1.3F,vh/6);
                 game.batch.draw(bdOfficeShow, vw/3.7F, vh/1.68F, vw/4.2F, vh/4);
-                game.batch.draw(stageOfficeText, vw/64, vh/1.16F, vw/2.5F, vh/8);
+                game.batch.draw(stageOfficeText, vw/64, vh/1.155F, vw/2.5F, vh/8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -267,13 +263,13 @@ public class StageSelectScreen extends LazyScreen {
 
         if (modes == 0) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
-                game.batch.draw(selectArrowRight, vw/1.04F, vh/8, vw/28, vh/10);
+                //game.batch.draw(selectArrowRight, vw/1.04F, vh/8, vw/28, vh/10);
                 currentStageNumber = (currentStageNumber + 1) % 6;
                 cooldown = 50;
                 musicManager.stopMusic();
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
-                game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
+                //game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
                 currentStageNumber = (currentStageNumber - 1) % 6;
                 if (currentStageNumber < 0) {
                     currentStageNumber = 5;

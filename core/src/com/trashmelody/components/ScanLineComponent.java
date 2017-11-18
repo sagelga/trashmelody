@@ -23,4 +23,11 @@ public class ScanLineComponent implements Component {
         this.music = music;
         this.velocity = velocity;
     }
+
+    public ScanLineComponent() {
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
 }

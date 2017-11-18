@@ -37,6 +37,10 @@ public class Assets extends AssetManager {
         return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 
+    public BitmapFont get8bitFont(Integer size, Color color) {
+        return getFont("fonts/8-BIT WONDER.ttf", size, color);
+    }
+
     public static Class<Texture> TEXTURE = Texture.class;
     public static Class<Music> MUSIC = Music.class;
     public static Class<Animation> ANIMATION = Animation.class;

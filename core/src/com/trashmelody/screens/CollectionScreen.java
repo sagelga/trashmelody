@@ -112,7 +112,7 @@ public class CollectionScreen extends LazyScreen {
         assets.load(COLLECTION_LV5, TEXTURE);
         assets.load(COLLECTION_LV6, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
-        assets.load(STAGE_BG_FOOTER, TEXTURE);
+        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
         assets.load(COLLECTION_CARD_DANGER_BAG, TEXTURE);
         assets.load(COLLECTION_CARD_RECYCLE_TRIO, TEXTURE);
         assets.load(COLLECTION_CARD_WET_POPCORN, TEXTURE);
@@ -121,7 +121,7 @@ public class CollectionScreen extends LazyScreen {
     @Override
     public void afterLoad(Assets assets) {
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE);
-        this.footer = assets.get(STAGE_BG_FOOTER, TEXTURE);
+        this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
         this.bg = assets.get(COLLECTION_BG, TEXTURE);
         this.screenTitle = assets.get(COLLECTION_SCREEN_TITLE, TEXTURE);
         this.bar = assets.get(COLLECTION_BAR, TEXTURE);

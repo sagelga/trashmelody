@@ -277,7 +277,7 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(GLOBAL_ICON_PLAY, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
-        assets.load(STAGE_BG_FOOTER, TEXTURE);
+        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
         assets.load(STAGE_BG_TRASHWORLD, TEXTURE);
         // UNUSED assets.load(STAGE_BG_OVERLAY, TEXTURE);
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
@@ -318,7 +318,7 @@ public class StageSelectScreen extends LazyScreen {
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
         this.buttonPlay = assets.get(GLOBAL_ICON_PLAY, TEXTURE); // 670  × 239
         this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
-        this.footer = assets.get(STAGE_BG_FOOTER, TEXTURE); // 8002 × 296
+        this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE); // 8002 × 296
         this.cloud = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644
         this.trashworldLogo = assets.get(STAGE_BG_TRASHWORLD, TEXTURE); // 2265 × 1370
         // UNUSED this.overlayBackground = assets.get(STAGE_BG_OVERLAY, TEXTURE); // 6464 × 4460

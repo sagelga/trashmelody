@@ -97,7 +97,6 @@ public class Assets extends AssetManager {
     public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
     public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
     public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
-    public static final String STAGE_BG_FOOTER = "StageSelect/Background/stage-footer.png";
     public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
     public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
     public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
@@ -267,4 +266,5 @@ public class Assets extends AssetManager {
     // Globally-Reusable Assets
     public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
     public static final String GLOBAL_ICON_PLAY = "Global/icon-play.png";
+    public static final String GLOBAL_FOOTER_BAR = "Global/footer-bar.png";
 }

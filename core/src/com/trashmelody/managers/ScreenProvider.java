@@ -14,7 +14,7 @@ import io.vavr.control.Option;
 @Singleton
 public class ScreenProvider {
     public static List<Class<? extends Screen>> screenClasses;
-    private Map<Class<? extends Screen>, Provider<? extends Screen>> MAPPER;
+    public static Map<Class<? extends Screen>, Provider<? extends Screen>> MAPPER;
 
     static {
         screenClasses = List.of(
@@ -34,8 +34,8 @@ public class ScreenProvider {
     }
 
     @Inject
-    ScreenProvider(TrashMelody game) {
-        MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> game.injector.getProvider(screen));
+    ScreenProvider() {
+//        MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> game.injector.getProvider(screen));
 //        screens.forEach(screen -> MAPPER = MAPPER.put(screen.getClass(), screen));
     }
 

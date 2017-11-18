@@ -3,13 +3,21 @@ package com.trashmelody.handlers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.trashmelody.TrashMelody;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.screens.MenuScreen;
+import com.trashmelody.screens.PauseScreen;
 
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Singleton
 public class KeyboardController implements InputProcessor {
+    TrashMelody game;
+    ScreenProvider screens;
     //    public static final Map<String, Integer> ALL_KEYS = Keys
     public boolean left, right, up, down;
     public Map<Integer, Boolean> keyMap =
@@ -19,9 +27,19 @@ public class KeyboardController implements InputProcessor {
     public boolean isMouse1Down, isMouse2Down, isMouse3Down;
     public boolean isDragged;
     public Vector2 mouseLocation = new Vector2(0, 0);
+    public boolean keyJustPressed(int keycode) {
+        if(keyMap.get(keycode)) {
+            keyMap.put(keycode, false);
+            return true;
+        }
+
+        return false;
+    }
 
     @Inject
-    KeyboardController() {
+    KeyboardController(TrashMelody game, ScreenProvider screens) {
+        this.game = game;
+        this.screens = screens;
     }
 
     @Override
@@ -38,6 +56,10 @@ public class KeyboardController implements InputProcessor {
 
     @Override
     public boolean keyTyped(char character) {
+//        switch (character) {
+//            case 'z':
+//                game.setLazyScreen(screens.get(PauseScreen.class));
+//        }
         return false;
     }
 

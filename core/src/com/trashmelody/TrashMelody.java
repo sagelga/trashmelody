@@ -96,5 +96,6 @@ public class TrashMelody extends Game {
         injector.getInstance(Systems.class).list.stream()
                 .map(systemClass -> injector.getInstance(systemClass))
                 .forEach(entitySystem -> engine.addSystem(entitySystem));
+        ScreenProvider.MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> injector.getProvider(screen));
     }
 }

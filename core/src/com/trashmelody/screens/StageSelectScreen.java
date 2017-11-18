@@ -82,12 +82,6 @@ public class StageSelectScreen extends LazyScreen {
     private int cooldown;
 
     StatsManager statsManager = new StatsManager();
-    private String stage1ID = Integer.toString(statsManager.getStageScore("stage1Score"));
-    private String stage2ID = Integer.toString(statsManager.getStageScore("stage2Score"));
-    private String stage3ID = Integer.toString(statsManager.getStageScore("stage3Score"));
-    private String stage4ID = Integer.toString(statsManager.getStageScore("stage4Score"));
-    private String stage5ID = Integer.toString(statsManager.getStageScore("stage5Score"));
-    private String stage6ID = Integer.toString(statsManager.getStageScore("stage6Score"));
 
 
     @Inject
@@ -139,7 +133,7 @@ public class StageSelectScreen extends LazyScreen {
         // Show the text of the selected item
         switch (currentStageNumber) {
             case (0):
-                font.draw(batch, stage1ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage1Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(stageCafeText, vw / 64, vh / 1.155F, vw / 3.5F, vh / 8);
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
@@ -152,7 +146,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (1):
-                font.draw(batch, stage2ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage2Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(stageCinemaText, vw / 64, vh / 1.155F, vw / 2.6F, vh / 8);
                 game.batch.draw(bdCinemaShow, vw / 1.57F, vh / 2.25F, vw / 6, vh / 3);
 
@@ -165,7 +159,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (2):
-                font.draw(batch, stage3ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage3Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(stageHospitalText, vw / 64, vh / 1.155F, vw / 2, vh / 8);
                 game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
@@ -178,7 +172,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (3):
-                font.draw(batch, stage4ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage4Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.6F, vw / 4, vh / 4);
                 game.batch.draw(stageSchoolText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
 
@@ -191,7 +185,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (4):
-                font.draw(batch, stage5ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage5Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
                 game.batch.draw(stageHomeText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
 
@@ -204,7 +198,7 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (5):
-                font.draw(batch, stage6ID, vw / 1.3F, vh / 6);
+                font.draw(batch, Integer.toString(statsManager.getStageScore("stage6Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
                 game.batch.draw(stageOfficeText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
 
@@ -374,7 +368,7 @@ public class StageSelectScreen extends LazyScreen {
         this.music5 = assets.get(MUSIC_5_SONG, MUSIC);
         this.music6 = assets.get(MUSIC_6_SONG, MUSIC);
 
-        this.font = assets.getSuperSpaceFont(36, Color.GREEN);
+        this.font = assets.get8bitFont(24, Color.GREEN);
 
     }
 

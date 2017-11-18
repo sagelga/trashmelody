@@ -4,7 +4,10 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
@@ -41,7 +44,7 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private Beatmap beatmap;
-    private ScanLineComponent scanLine;
+    private BitmapFont font;
     private HealthComponent health;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -76,7 +79,9 @@ public class GameScreen extends LazyScreen {
     private Texture footerTab;
     private Texture hard;
     private Texture hpBar;
+    private SpriteBatch batch;
 
+    ScanLineComponent scanLine = new ScanLineComponent();
     @Inject
     GameScreen(TrashMelody game,
                Engine engine,
@@ -84,7 +89,8 @@ public class GameScreen extends LazyScreen {
                Assets assets,
                Camera camera,
                Viewport viewport,
-               KeyboardController inputProcessor) {
+               KeyboardController inputProcessor,
+               SpriteBatch batch) {
         this.game = game;
         this.camera = camera;
         this.engine = engine;
@@ -92,6 +98,7 @@ public class GameScreen extends LazyScreen {
         this.assets = assets;
         this.inputProcessor = inputProcessor;
         this.beatmap = getBeatmap();
+        this.batch = batch;
     }
 
     @Override
@@ -191,6 +198,7 @@ public class GameScreen extends LazyScreen {
         this.perfect = assets.get(PERFECT_ACCURACY, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
+        this.font = assets.getSuperSpaceFont(40, Color.WHITE);
 
         createEntities();
     }
@@ -246,6 +254,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
+        font.draw(batch,Integer.toString(scanLine.getTotalScore()),vw/1.2F,vh/1.016F);
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }

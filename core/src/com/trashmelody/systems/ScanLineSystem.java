@@ -11,10 +11,6 @@ import com.trashmelody.components.ScanLineComponent.State;
 import static com.trashmelody.constants.Constants.*;
 
 public class ScanLineSystem extends IteratingSystem {
-//    private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
-//    private static final Predicate<Float> isOverBound = isMoreThan.apply(rightBorderX);
-//    private static final Predicate<Float> isUnderBound = isLessThan.apply(leftBorderX);
-
     @Inject
     public ScanLineSystem()  {
         super(Family.all(ScanLineComponent.class).get(), Systems.getIndex(ScanLineSystem.class));
@@ -38,6 +34,12 @@ public class ScanLineSystem extends IteratingSystem {
                 scanLine.elapsedTime += deltaTime * 1000;
                 return;
             }
+        }
+
+        if (scanLine.state == State.Pause) {
+            scanLine.state = State.Playing;
+            scanLine.music.play();
+            scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
         }
 
         scanLine.activeHitObjects

@@ -49,6 +49,7 @@ public class PauseScreen extends LazyScreen {
     public void render(float delta) {
         clearScreen();
 
+        game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
 
         //Components Draw

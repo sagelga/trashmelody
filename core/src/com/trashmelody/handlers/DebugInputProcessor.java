@@ -13,6 +13,7 @@ import com.trashmelody.screens.*;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.control.Option;
+import static com.trashmelody.managers.Assets.*;
 
 @Singleton
 public class DebugInputProcessor implements InputProcessor {
@@ -51,9 +52,11 @@ public class DebugInputProcessor implements InputProcessor {
                 Gdx.app.exit();
             case Input.Keys.EQUALS:
                 musicManager.increaseBackgroundVolume();
+                musicManager.playMusic(SFX_VOLUME_CHECK, musicManager.getBackgroundMusicVolume());
                 break;
             case Input.Keys.MINUS:
                 musicManager.decreaseBackgroundVolume();
+                musicManager.playMusic(SFX_VOLUME_CHECK, musicManager.getBackgroundMusicVolume());
                 break;
             case Input.Keys.NUM_1:
                 Debugger.debug_mode = !Debugger.debug_mode;

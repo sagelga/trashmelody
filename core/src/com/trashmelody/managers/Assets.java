@@ -18,6 +18,9 @@ public class Assets extends AssetManager {
         super();
 
         load(MUSIC_BG1, Music.class);
+        load(SFX_VOLUME_CHECK, Music.class);
+        load(PLAYER_PLAY, Texture.class);
+        load(PLAYER_MUTE, Texture.class);
         finishLoading();
     }
 
@@ -40,218 +43,223 @@ public class Assets extends AssetManager {
     public static Class<BitmapFont> BITMAP_FONT = BitmapFont.class;
 
     // Splash Screen Assets
-    public static final String SPLASH_LOGO              = "splash-logo.png";
+    public static final String SPLASH_LOGO = "splash-logo.png";
 
     // Loading Screen Assets
-    public static final String LOADING_LOGO             = "LoadingScreen/Loading_Logo.gif";
+    public static final String LOADING_LOGO = "LoadingScreen/Loading_Logo.gif";
 
     // Warning Screen Assets
-    public static final String WARNING_TEXT             = "WarningScreen/warning-screen-text.png";
+    public static final String WARNING_TEXT = "WarningScreen/warning-screen-text.png";
 
     // Menu Screen Assets
-    public static final String MENU_BTN_START           = "MenuScreen/btn-start.png";
-    public static final String MENU_BTN_COLLECTION      = "MenuScreen/btn-collection.png";
-    public static final String MENU_BTN_SETTING         = "MenuScreen/btn-setting.png";
-    public static final String MENU_BTN_EXIT            = "MenuScreen/btn-exit.png";
-    public static final String MENU_BG                  = "MenuScreen/bg.png";
-    public static final String MENU_BORDER_LEFT         = "MenuScreen/border-left.png";
-    public static final String MENU_BORDER_RIGHT        = "MenuScreen/border-right.png";
-    public static final String MENU_BTN_START_HOVER     = "MenuScreen/btn-start-hover.png";
+    public static final String MENU_BTN_START = "MenuScreen/btn-start.png";
+    public static final String MENU_BTN_COLLECTION = "MenuScreen/btn-collection.png";
+    public static final String MENU_BTN_SETTING = "MenuScreen/btn-setting.png";
+    public static final String MENU_BTN_EXIT = "MenuScreen/btn-exit.png";
+    public static final String MENU_BG = "MenuScreen/bg.png";
+    public static final String MENU_BORDER_LEFT = "MenuScreen/border-left.png";
+    public static final String MENU_BORDER_RIGHT = "MenuScreen/border-right.png";
+    public static final String MENU_BTN_START_HOVER = "MenuScreen/btn-start-hover.png";
     public static final String MENU_BTN_COLLECTION_HOVER = "MenuScreen/btn-collection-hover.png";
-    public static final String MENU_BTN_SETTING_HOVER   = "MenuScreen/btn-setting-hover.png";
-    public static final String MENU_BTN_EXIT_HOVER      = "MenuScreen/btn-exit-hover.png";
-    public static final String MENU_CLOUD               = "MenuScreen/cloud.gif";
+    public static final String MENU_BTN_SETTING_HOVER = "MenuScreen/btn-setting-hover.png";
+    public static final String MENU_BTN_EXIT_HOVER = "MenuScreen/btn-exit-hover.png";
+    public static final String MENU_CLOUD = "MenuScreen/cloud.gif";
 
     // Name Screen Assets
-    public static final String NAME_ENTER_BOX           = "NameScreen/enterbox.png";
-    public static final String NAME_ENTER_NAME          = "NameScreen/entername.png";
-    public static final String NAME_CLOUD               = "NameScreen/cloud.png";
-    public static final String NAME_BORDER              = "NameScreen/border.png";
-    public static final String NAME_BACKGROUND          = "NameScreen/bg.png";
+    public static final String NAME_ENTER_BOX = "NameScreen/enterbox.png";
+    public static final String NAME_ENTER_NAME = "NameScreen/entername.png";
+    public static final String NAME_CLOUD = "NameScreen/cloud.png";
+    public static final String NAME_BORDER = "NameScreen/border.png";
+    public static final String NAME_BACKGROUND = "NameScreen/bg.png";
 
     // Stage Selection Screen Assets
-    public static final String STAGE_BD_SHOW_OFFICE    = "StageSelect/Building/Show/office.png";
-    public static final String STAGE_BD_SHOW_CINEMA    = "StageSelect/Building/Show/cinema.png";
-    public static final String STAGE_BD_SHOW_HOSPITAL  = "StageSelect/Building/Show/hospital.png";
-    public static final String STAGE_BD_SHOW_SCHOOL    = "StageSelect/Building/Show/school.png";
-    public static final String STAGE_BD_SHOW_HOME      = "StageSelect/Building/Show/home.png";
-    public static final String STAGE_BD_SHOW_CAFE      = "StageSelect/Building/Show/cafe.png";
-    public static final String STAGE_BD_HIDE_OFFICE    = "StageSelect/Building/Hide/office.png";
-    public static final String STAGE_BD_HIDE_CINEMA    = "StageSelect/Building/Hide/cinema.png";
-    public static final String STAGE_BD_HIDE_HOSPITAL  = "StageSelect/Building/Hide/hospital.png";
-    public static final String STAGE_BD_HIDE_SCHOOL    = "StageSelect/Building/Hide/school.png";
-    public static final String STAGE_BD_HIDE_HOME      = "StageSelect/Building/Hide/home.png";
-    public static final String STAGE_BD_HIDE_CAFE      = "StageSelect/Building/Hide/cafe.png";
-    public static final String STAGE_TEXT_OFFICE        = "StageSelect/Text/stage-office-text.png";
-    public static final String STAGE_TEXT_CINEMA        = "StageSelect/Text/stage-cinema-text.png";
-    public static final String STAGE_TEXT_HOSPITAL      = "StageSelect/Text/stage-hospital-text.png";
-    public static final String STAGE_TEXT_SCHOOL        = "StageSelect/Text/stage-school-text.png";
-    public static final String STAGE_TEXT_HOME          = "StageSelect/Text/stage-home-text.png";
-    public static final String STAGE_TEXT_CAFE          = "StageSelect/Text/stage-cafe-text.png";
-    public static final String STAGE_BG_BACKBUTTON      = "StageSelect/Background/stage-backbutton.png";
-    public static final String STAGE_BG_PLAYBUTTON      = "StageSelect/Background/stage-playbutton.png";
-    public static final String STAGE_BG_CLOUD           = "StageSelect/Background/stage-cloud.png";
-    public static final String STAGE_BG_HEADER          = "StageSelect/Background/stage-header.png";
-    public static final String STAGE_BG_FOOTER          = "StageSelect/Background/stage-footer.png";
-    public static final String STAGE_BG_TRASHWORLD      = "StageSelect/Background/trashworld.png";
-    public static final String STAGE_BG_OVERLAY         = "StageSelect/Background/stage-overlay-background.png";
-    public static final String STAGE_BG_ARROW_L         = "StageSelect/Background/stage-arrow-left.png";
-    public static final String STAGE_BG_ARROW_R         = "StageSelect/Background/stage-arrow-right.png";
+    public static final String STAGE_BD_SHOW_OFFICE = "StageSelect/Building/Show/office.png";
+    public static final String STAGE_BD_SHOW_CINEMA = "StageSelect/Building/Show/cinema.png";
+    public static final String STAGE_BD_SHOW_HOSPITAL = "StageSelect/Building/Show/hospital.png";
+    public static final String STAGE_BD_SHOW_SCHOOL = "StageSelect/Building/Show/school.png";
+    public static final String STAGE_BD_SHOW_HOME = "StageSelect/Building/Show/home.png";
+    public static final String STAGE_BD_SHOW_CAFE = "StageSelect/Building/Show/cafe.png";
+    public static final String STAGE_BD_HIDE_OFFICE = "StageSelect/Building/Hide/office.png";
+    public static final String STAGE_BD_HIDE_CINEMA = "StageSelect/Building/Hide/cinema.png";
+    public static final String STAGE_BD_HIDE_HOSPITAL = "StageSelect/Building/Hide/hospital.png";
+    public static final String STAGE_BD_HIDE_SCHOOL = "StageSelect/Building/Hide/school.png";
+    public static final String STAGE_BD_HIDE_HOME = "StageSelect/Building/Hide/home.png";
+    public static final String STAGE_BD_HIDE_CAFE = "StageSelect/Building/Hide/cafe.png";
+    public static final String STAGE_TEXT_OFFICE = "StageSelect/Text/stage-office-text.png";
+    public static final String STAGE_TEXT_CINEMA = "StageSelect/Text/stage-cinema-text.png";
+    public static final String STAGE_TEXT_HOSPITAL = "StageSelect/Text/stage-hospital-text.png";
+    public static final String STAGE_TEXT_SCHOOL = "StageSelect/Text/stage-school-text.png";
+    public static final String STAGE_TEXT_HOME = "StageSelect/Text/stage-home-text.png";
+    public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
+    public static final String STAGE_BG_BACKBUTTON = "StageSelect/Background/stage-backbutton.png";
+    public static final String STAGE_BG_PLAYBUTTON = "StageSelect/Background/stage-playbutton.png";
+    public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
+    public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
+    public static final String STAGE_BG_FOOTER = "StageSelect/Background/stage-footer.png";
+    public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
+    public static final String STAGE_BG_OVERLAY = "StageSelect/Background/stage-overlay-background.png";
+    public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
+    public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
 
     // Collection Stage Assets
-    public static final String COLLECTION_SCREEN_TITLE         = "CollectionScreen/screen-title.png";
-    public static final String COLLECTION_BG                   = "CollectionScreen/bg.jpg";
-    public static final String COLLECTION_BAR                  = "CollectionScreen/info-bar.png";
-    public static final String COLLECTION_ARROW                = "CollectionScreen/arrow.png";
-    public static final String COLLECTION_TEXT_EXAMPLE         = "CollectionScreen/text-example.png";
-    public static final String COLLECTION_LV1                  = "CollectionScreen/lv1.png";
-    public static final String COLLECTION_LV2                  = "CollectionScreen/lv2.png";
-    public static final String COLLECTION_LV3                  = "CollectionScreen/lv3.png";
-    public static final String COLLECTION_LV4                  = "CollectionScreen/lv4.png";
-    public static final String COLLECTION_LV5                  = "CollectionScreen/lv5.png";
-    public static final String COLLECTION_LV6                  = "CollectionScreen/lv6.png";
-    public static final String COLLECTION_CARD_DANGER_BAG      = "trashes/dangerous/cards/DANGER - CARD-01.png";
-    public static final String COLLECTION_CARD_RECYCLE_TRIO      = "trashes/recycle/cards/RE - CARD-01.png";
-    public static final String COLLECTION_CARD_WET_POPCORN      = "trashes/wet/cards/FOOD - CARD-01.png";
+    public static final String COLLECTION_SCREEN_TITLE = "CollectionScreen/screen-title.png";
+    public static final String COLLECTION_BG = "CollectionScreen/bg.jpg";
+    public static final String COLLECTION_BAR = "CollectionScreen/info-bar.png";
+    public static final String COLLECTION_ARROW = "CollectionScreen/arrow.png";
+    public static final String COLLECTION_TEXT_EXAMPLE = "CollectionScreen/text-example.png";
+    public static final String COLLECTION_LV1 = "CollectionScreen/lv1.png";
+    public static final String COLLECTION_LV2 = "CollectionScreen/lv2.png";
+    public static final String COLLECTION_LV3 = "CollectionScreen/lv3.png";
+    public static final String COLLECTION_LV4 = "CollectionScreen/lv4.png";
+    public static final String COLLECTION_LV5 = "CollectionScreen/lv5.png";
+    public static final String COLLECTION_LV6 = "CollectionScreen/lv6.png";
+    public static final String COLLECTION_CARD_DANGER_BAG = "trashes/dangerous/cards/DANGER - CARD-01.png";
+    public static final String COLLECTION_CARD_RECYCLE_TRIO = "trashes/recycle/cards/RE - CARD-01.png";
+    public static final String COLLECTION_CARD_WET_POPCORN = "trashes/wet/cards/FOOD - CARD-01.png";
 
 
     // Countdown Stage Assets
-    public static final String COUNTDOWN_BACKGROUND1    = "CountdownPage/background1.png";
-    public static final String COUNTDOWN_COUNT_NUM_0    = "CountdownPage/count-num-0.png";
-    public static final String COUNTDOWN_COUNT_NUM_1    = "CountdownPage/count-num-1.png";
-    public static final String COUNTDOWN_COUNT_NUM_2    = "CountdownPage/count-num-2.png";
-    public static final String COUNTDOWN_COUNT_NUM_3    = "CountdownPage/count-num-3.png";
-    public static final String COUNTDOWN_COUNT_NUM_4    = "CountdownPage/count-num-4.png";
-    public static final String COUNTDOWN_COUNT_NUM_5    = "CountdownPage/count-num-5.png";
-    public static final String COUNTDOWN_RING           = "CountdownPage/ring.png";
-    public static final String COUNTDOWN_STRIPE1        = "CountdownPage/stripe1.png";
-    public static final String COUNTDOWN_STRIPE2        = "CountdownPage/stripe2.png";
-    public static final String COUNTDOWN_STRIPE3        = "CountdownPage/stripe3.png";
-    public static final String COUNTDOWN_STRIPE4        = "CountdownPage/stripe4.png";
-    public static final String COUNTDOWN_STRIPE5        = "CountdownPage/stripe5.png";
-    public static final String COUNTDOWN_STRIPE6        = "CountdownPage/stripe6.png";
+    public static final String COUNTDOWN_BACKGROUND1 = "CountdownPage/background1.png";
+    public static final String COUNTDOWN_COUNT_NUM_0 = "CountdownPage/count-num-0.png";
+    public static final String COUNTDOWN_COUNT_NUM_1 = "CountdownPage/count-num-1.png";
+    public static final String COUNTDOWN_COUNT_NUM_2 = "CountdownPage/count-num-2.png";
+    public static final String COUNTDOWN_COUNT_NUM_3 = "CountdownPage/count-num-3.png";
+    public static final String COUNTDOWN_COUNT_NUM_4 = "CountdownPage/count-num-4.png";
+    public static final String COUNTDOWN_COUNT_NUM_5 = "CountdownPage/count-num-5.png";
+    public static final String COUNTDOWN_RING = "CountdownPage/ring.png";
+    public static final String COUNTDOWN_STRIPE1 = "CountdownPage/stripe1.png";
+    public static final String COUNTDOWN_STRIPE2 = "CountdownPage/stripe2.png";
+    public static final String COUNTDOWN_STRIPE3 = "CountdownPage/stripe3.png";
+    public static final String COUNTDOWN_STRIPE4 = "CountdownPage/stripe4.png";
+    public static final String COUNTDOWN_STRIPE5 = "CountdownPage/stripe5.png";
+    public static final String COUNTDOWN_STRIPE6 = "CountdownPage/stripe6.png";
 
     // Game Screen Assets
-    public static final String GAME_BACKGROUND1         = "GameScreen/background1.png";
-    public static final String GAME_BACKGROUND_FOOTER1  = "GameScreen/background-footer1.png";
-    public static final String GAME_BIN_01              = "GameScreen/BIN-1.png";
-    public static final String GAME_BIN_02              = "GameScreen/BIN-2.png";
-    public static final String GAME_BIN_03              = "GameScreen/BIN-3.png";
-    public static final String GAME_BIN_04              = "GameScreen/BIN-4.png";
-    public static final String GAME_BIN_05              = "GameScreen/BIN-5.png";
-    public static final String GAME_CENTER              = "GameScreen/CENTER.png";
-    public static final String GAME_CHECK               = "GameScreen/CHECK.png";
-    public static final String GAME_HEADER              = "GameScreen/HEADER.png";
-    public static final String GAME_HEADER2             = "GameScreen/HEADER2.png";
-    public static final String GAME_FOOTER              = "GameScreen/FOOTER.png";
-    public static final String GAME_HANOI_1             = "GameScreen/HANOI-1.png";
-    public static final String GAME_HANOI_2             = "GameScreen/HANOI-2.png";
-    public static final String GAME_HANOI_3             = "GameScreen/HANOI-3.png";
-    public static final String GAME_HANOI_4             = "GameScreen/HANOI-4.png";
-    public static final String GAME_LEVEL_1             = "GameScreen/LEVEL-1.png";
-    public static final String GAME_LEVEL_2             = "GameScreen/LEVEL-2.png";
-    public static final String GAME_LEVEL_3             = "GameScreen/LEVEL-3.png";
-    public static final String GAME_ICON                = "GameScreen/ICON.png";
-    public static final String GAME_SONG_NAME_1         = "GameScreen/Song-Name-1.png";
-    public static final String GAME_PAUSE               = "GameScreen/PAUSE.png";
-    public static final String GAME_LEVEL_BORDER        = "GameScreen/Level-Border.png";
-    public static final String GAME_SCORE               = "GameScreen/SCORE.png";
+    public static final String GAME_BACKGROUND1 = "GameScreen/background1.png";
+    public static final String GAME_BACKGROUND_FOOTER1 = "GameScreen/background-footer1.png";
+    public static final String GAME_BIN_01 = "GameScreen/BIN-1.png";
+    public static final String GAME_BIN_02 = "GameScreen/BIN-2.png";
+    public static final String GAME_BIN_03 = "GameScreen/BIN-3.png";
+    public static final String GAME_BIN_04 = "GameScreen/BIN-4.png";
+    public static final String GAME_BIN_05 = "GameScreen/BIN-5.png";
+    public static final String GAME_CENTER = "GameScreen/CENTER.png";
+    public static final String GAME_CHECK = "GameScreen/CHECK.png";
+    public static final String GAME_HEADER = "GameScreen/HEADER.png";
+    public static final String GAME_HEADER2 = "GameScreen/HEADER2.png";
+    public static final String GAME_FOOTER = "GameScreen/FOOTER.png";
+    public static final String GAME_HANOI_1 = "GameScreen/HANOI-1.png";
+    public static final String GAME_HANOI_2 = "GameScreen/HANOI-2.png";
+    public static final String GAME_HANOI_3 = "GameScreen/HANOI-3.png";
+    public static final String GAME_HANOI_4 = "GameScreen/HANOI-4.png";
+    public static final String GAME_LEVEL_1 = "GameScreen/LEVEL-1.png";
+    public static final String GAME_LEVEL_2 = "GameScreen/LEVEL-2.png";
+    public static final String GAME_LEVEL_3 = "GameScreen/LEVEL-3.png";
+    public static final String GAME_ICON = "GameScreen/ICON.png";
+    public static final String GAME_SONG_NAME_1 = "GameScreen/Song-Name-1.png";
+    public static final String GAME_PAUSE = "GameScreen/PAUSE.png";
+    public static final String GAME_LEVEL_BORDER = "GameScreen/Level-Border.png";
+    public static final String GAME_SCORE = "GameScreen/SCORE.png";
     public static final String MISS_ACCURACY = "GameScreen/SCORE-1.png";
     public static final String BAD_ACCURACY = "GameScreen/SCORE-2.png";
     public static final String COOL_ACCURACY = "GameScreen/SCORE-3.png";
     public static final String GOOD_ACCURACY = "GameScreen/SCORE-4.png";
     public static final String PERFECT_ACCURACY = "GameScreen/SCORE-5.png";
-    public static final String GAME_STATUS_BAR          = "GameScreen/STATUS-BAR.png";
+    public static final String GAME_STATUS_BAR = "GameScreen/STATUS-BAR.png";
 
     // Pause Screen Assets
-    public static final String PAUSE_CONTINUE_BTN1      = "PauseScreen/PAUSE-BUTTON-01.png";
-    public static final String PAUSE_CONTINUE_BTN2      = "PauseScreen/PAUSE-BUTTON-02.png";
-    public static final String PAUSE_SETTING_BTN1       = "PauseScreen/PAUSE-BUTTON-03.png";
-    public static final String PAUSE_SETTING_BTN2       = "PauseScreen/PAUSE-BUTTON-04.png";
-    public static final String PAUSE_RETRY_BTN1         = "PauseScreen/PAUSE-BUTTON-05.png";
-    public static final String PAUSE_RETRY_BTN2         = "PauseScreen/PAUSE-BUTTON-06.png";
-    public static final String PAUSE_HOME_BTN1          = "PauseScreen/PAUSE-BUTTON-07.png";
-    public static final String PAUSE_HOME_BTN2          = "PauseScreen/PAUSE-BUTTON-08.png";
-    public static final String PAUSE_SELECTOR_ARROW     = "PauseScreen/PAUSE-SIDE.png";
+    public static final String PAUSE_CONTINUE_BTN1 = "PauseScreen/PAUSE-BUTTON-01.png";
+    public static final String PAUSE_CONTINUE_BTN2 = "PauseScreen/PAUSE-BUTTON-02.png";
+    public static final String PAUSE_SETTING_BTN1 = "PauseScreen/PAUSE-BUTTON-03.png";
+    public static final String PAUSE_SETTING_BTN2 = "PauseScreen/PAUSE-BUTTON-04.png";
+    public static final String PAUSE_RETRY_BTN1 = "PauseScreen/PAUSE-BUTTON-05.png";
+    public static final String PAUSE_RETRY_BTN2 = "PauseScreen/PAUSE-BUTTON-06.png";
+    public static final String PAUSE_HOME_BTN1 = "PauseScreen/PAUSE-BUTTON-07.png";
+    public static final String PAUSE_HOME_BTN2 = "PauseScreen/PAUSE-BUTTON-08.png";
+    public static final String PAUSE_SELECTOR_ARROW = "PauseScreen/PAUSE-SIDE.png";
 
     // Calibrate Screen Assets
-    public static final String CALIBRATE_HEADER         = "CalibrateScreen/Calibrate-Header.png";
-    public static final String CALIBRATE_FOOTER         = "CalibrateScreen/Calibrate-Footer.png";
-    public static final String CALIBRATE_NUM_5          = "CalibrateScreen/Calibrate-Num-5.png";
-    public static final String CALIBRATE_NUM_4          = "CalibrateScreen/Calibrate-Num-4.png";
-    public static final String CALIBRATE_NUM_3          = "CalibrateScreen/Calibrate-Num-3.png";
-    public static final String CALIBRATE_NUM_2          = "CalibrateScreen/Calibrate-Num-2.png";
-    public static final String CALIBRATE_NUM_1          = "CalibrateScreen/Calibrate-Num-1.png";
-    public static final String CALIBRATE_SPEED_POINTER  = "CalibrateScreen/Calibrate-Speed-Pointer.png";
-    public static final String CALIBRATE_SPEED_BAR      = "CalibrateScreen/Calibrate-Speed-Bar.png";
+    public static final String CALIBRATE_HEADER = "CalibrateScreen/Calibrate-Header.png";
+    public static final String CALIBRATE_FOOTER = "CalibrateScreen/Calibrate-Footer.png";
+    public static final String CALIBRATE_NUM_5 = "CalibrateScreen/Calibrate-Num-5.png";
+    public static final String CALIBRATE_NUM_4 = "CalibrateScreen/Calibrate-Num-4.png";
+    public static final String CALIBRATE_NUM_3 = "CalibrateScreen/Calibrate-Num-3.png";
+    public static final String CALIBRATE_NUM_2 = "CalibrateScreen/Calibrate-Num-2.png";
+    public static final String CALIBRATE_NUM_1 = "CalibrateScreen/Calibrate-Num-1.png";
+    public static final String CALIBRATE_SPEED_POINTER = "CalibrateScreen/Calibrate-Speed-Pointer.png";
+    public static final String CALIBRATE_SPEED_BAR = "CalibrateScreen/Calibrate-Speed-Bar.png";
 
     // Result Screen Assets
     public static final String RESULT_RESULT_BACKGROUND = "ResultScreen/Result-Background.png";
-    public static final String RESULT_RESULT_HEADER     = "ResultScreen/Result-Header.png";
-    public static final String RESULT_RESULT_FOOTER     = "ResultScreen/Result-Footer.png";
-    public static final String RESULT_RESULT_GRADE_A    = "ResultScreen/Result-Grade-A.png";
-    public static final String RESULT_RESULT_GRADE_B    = "ResultScreen/Result-Grade-B.png";
-    public static final String RESULT_RESULT_GRADE_C    = "ResultScreen/Result-Grade-C.png";
-    public static final String RESULT_RESULT_GRADE_D    = "ResultScreen/Result-Grade-D.png";
-    public static final String RESULT_RESULT_GRADE_F    = "ResultScreen/Result-Grade-F.png";
-    public static final String RESULT_RESULT_PERFECT    = "ResultScreen/Result-Perfect.png";
-    public static final String RESULT_RESULT_GOOD       = "ResultScreen/Result-Good.png";
-    public static final String RESULT_RESULT_NICE       = "ResultScreen/Result-Nice.png";
-    public static final String RESULT_RESULT_MISS       = "ResultScreen/Result-Miss.png";
-    public static final String RESULT_RESULT_COMBO      = "ResultScreen/Result-Combo.png";
-    public static final String RESULT_RESULT_TEXT_ALL   = "ResultScreen/Result-Text-All.png";
+    public static final String RESULT_RESULT_HEADER = "ResultScreen/Result-Header.png";
+    public static final String RESULT_RESULT_FOOTER = "ResultScreen/Result-Footer.png";
+    public static final String RESULT_RESULT_GRADE_A = "ResultScreen/Result-Grade-A.png";
+    public static final String RESULT_RESULT_GRADE_B = "ResultScreen/Result-Grade-B.png";
+    public static final String RESULT_RESULT_GRADE_C = "ResultScreen/Result-Grade-C.png";
+    public static final String RESULT_RESULT_GRADE_D = "ResultScreen/Result-Grade-D.png";
+    public static final String RESULT_RESULT_GRADE_F = "ResultScreen/Result-Grade-F.png";
+    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
+    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
+    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
+    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
+    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
+    public static final String RESULT_RESULT_TEXT_ALL = "ResultScreen/Result-Text-All.png";
 
     // Setting Screen Assets
-    public static final String SETTING_BACK_BUTTON      = "SettingScreen/SETTING-BACK-BUTTON.png";
-    public static final String SETTING_CALIBRATE        = "SettingScreen/SETTING-CALIBRATE.png";
-    public static final String SETTING_EFFECT           = "SettingScreen/SETTING-EFFECT.png";
-    public static final String SETTING_FULLSCREEN       = "SettingScreen/SETTING-FULLSCREEN.png";
-    public static final String SETTING_HEADER           = "SettingScreen/SETTING-HEADER.png";
-    public static final String SETTING_MUSIC            = "SettingScreen/SETTING-MUSIC.png";
-    public static final String SETTING_SLIDE_BAR        = "SettingScreen/SETTING-SLIDE-BAR.png";
-    public static final String SETTING_VOLUME           = "SettingScreen/SETTING-VOLUME.png";
-    public static final String SETTING_VOLUME_BAR       = "SettingScreen/SETTING-VOLUME-BAR.png";
-    public static final String SETTING_WINDOW           = "SettingScreen/SETTING-WINDOW.png";
+    public static final String SETTING_BACK_BUTTON = "SettingScreen/SETTING-BACK-BUTTON.png";
+    public static final String SETTING_CALIBRATE = "SettingScreen/SETTING-CALIBRATE.png";
+    public static final String SETTING_EFFECT = "SettingScreen/SETTING-EFFECT.png";
+    public static final String SETTING_FULLSCREEN = "SettingScreen/SETTING-FULLSCREEN.png";
+    public static final String SETTING_HEADER = "SettingScreen/SETTING-HEADER.png";
+    public static final String SETTING_MUSIC = "SettingScreen/SETTING-MUSIC.png";
+    public static final String SETTING_SLIDE_BAR = "SettingScreen/SETTING-SLIDE-BAR.png";
+    public static final String SETTING_VOLUME = "SettingScreen/SETTING-VOLUME.png";
+    public static final String SETTING_VOLUME_BAR = "SettingScreen/SETTING-VOLUME-BAR.png";
+    public static final String SETTING_WINDOW = "SettingScreen/SETTING-WINDOW.png";
 
     // Music Assets
-    public static final String MUSIC_BG1                = "Song/Background Music/Background_Music1.mp3";
-    public static final String MUSIC_BG2                = "Song/Background Music/Background_Music2.mp3";
-    public static final String MUSIC_1_SONG             = "Song/1HITORIGOTO/AUDIO.mp3";
-    public static final String MUSIC_1_BG_CLEAR         = "Song/1HITORIGOTO/BG1_CLEAR.png";
-    public static final String MUSIC_1_BG_OPAC          = "Song/1HITORIGOTO/BG1_OPAC70.png";
-    public static final String MUSIC_1_BG_BLUR          = "Song/1HITORIGOTO/BG1_BLUR.png";
-    public static final String MUSIC_2_SONG             = "Song/2MARBLE SODA/AUDIO.mp3";
-    public static final String MUSIC_2_BG_CLEAR         = "Song/2MARBLE SODA/BG1_CLEAR.jpg";
-    public static final String MUSIC_2_BG_OPAC          = "Song/2MARBLE SODA/BG1_OPAC70.png";
-    public static final String MUSIC_2_BG_BLUR          = "Song/2MARBLE SODA/BG1_BLUR.png";
-    public static final String MUSIC_3_SONG             = "Song/3REUNIOUN/AUDIO.mp3";
-    public static final String MUSIC_3_BG_CLEAR         = "Song/3REUNIOUN/BG1_CLEAR.jpg";
-    public static final String MUSIC_3_BG_OPAC          = "Song/3REUNIOUN/BG1_OPAC70.jpg";
-    public static final String MUSIC_3_BG_BLUR          = "Song/3REUNIOUN/BG1_BLUR.png";
-    public static final String MUSIC_4_SONG             = "Song/4KANASHII URESHII/AUDIO.mp3";
-    public static final String MUSIC_4_BG_CLEAR         = "Song/4KANASHII URESHII/BG1_CLEAR.jpg";
-    public static final String MUSIC_4_BG_OPAC          = "Song/4KANASHII URESHII/BG1_OPAC70.png";
-    public static final String MUSIC_4_BG_BLUR          = "Song/4KANASHII URESHII/BG1_BLUR.png";
-    public static final String MUSIC_5_SONG             = "Song/5ORANGE/AUDIO.mp3";
-    public static final String MUSIC_5_BG_CLEAR         = "Song/5ORANGE/BG1_CLEAR.jpg";
-    public static final String MUSIC_5_BG_OPAC          = "Song/5ORANGE/BG1_OPAC70.png";
-    public static final String MUSIC_5_BG_BLUR          = "Song/5ORANGE/BG1_BLUR.png";
-    public static final String MUSIC_6_SONG             = "Song/6TELL YOUR WORLD/AUDIO.mp3";
-    public static final String MUSIC_6_BG_CLEAR         = "Song/6TELL YOUR WORLD/BG1_CLEAR.jpg";
-    public static final String MUSIC_6_BG_OPAC          = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
-    public static final String MUSIC_6_BG_BLUR          = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
+    public static final String MUSIC_BG1 = "Song/Background Music/Background_Music1.mp3";
+    public static final String MUSIC_BG2 = "Song/Background Music/Background_Music2.mp3";
+    public static final String MUSIC_1_SONG = "Song/1HITORIGOTO/AUDIO.mp3";
+    public static final String MUSIC_1_BG_CLEAR = "Song/1HITORIGOTO/BG1_CLEAR.png";
+    public static final String MUSIC_1_BG_OPAC = "Song/1HITORIGOTO/BG1_OPAC70.png";
+    public static final String MUSIC_1_BG_BLUR = "Song/1HITORIGOTO/BG1_BLUR.png";
+    public static final String MUSIC_2_SONG = "Song/2MARBLE SODA/AUDIO.mp3";
+    public static final String MUSIC_2_BG_CLEAR = "Song/2MARBLE SODA/BG1_CLEAR.jpg";
+    public static final String MUSIC_2_BG_OPAC = "Song/2MARBLE SODA/BG1_OPAC70.png";
+    public static final String MUSIC_2_BG_BLUR = "Song/2MARBLE SODA/BG1_BLUR.png";
+    public static final String MUSIC_3_SONG = "Song/3REUNIOUN/AUDIO.mp3";
+    public static final String MUSIC_3_BG_CLEAR = "Song/3REUNIOUN/BG1_CLEAR.jpg";
+    public static final String MUSIC_3_BG_OPAC = "Song/3REUNIOUN/BG1_OPAC70.jpg";
+    public static final String MUSIC_3_BG_BLUR = "Song/3REUNIOUN/BG1_BLUR.png";
+    public static final String MUSIC_4_SONG = "Song/4KANASHII URESHII/AUDIO.mp3";
+    public static final String MUSIC_4_BG_CLEAR = "Song/4KANASHII URESHII/BG1_CLEAR.jpg";
+    public static final String MUSIC_4_BG_OPAC = "Song/4KANASHII URESHII/BG1_OPAC70.png";
+    public static final String MUSIC_4_BG_BLUR = "Song/4KANASHII URESHII/BG1_BLUR.png";
+    public static final String MUSIC_5_SONG = "Song/5ORANGE/AUDIO.mp3";
+    public static final String MUSIC_5_BG_CLEAR = "Song/5ORANGE/BG1_CLEAR.jpg";
+    public static final String MUSIC_5_BG_OPAC = "Song/5ORANGE/BG1_OPAC70.png";
+    public static final String MUSIC_5_BG_BLUR = "Song/5ORANGE/BG1_BLUR.png";
+    public static final String MUSIC_6_SONG = "Song/6TELL YOUR WORLD/AUDIO.mp3";
+    public static final String MUSIC_6_BG_CLEAR = "Song/6TELL YOUR WORLD/BG1_CLEAR.jpg";
+    public static final String MUSIC_6_BG_OPAC = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
+    public static final String MUSIC_6_BG_BLUR = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
 
     // Hit Objects
-    public static final String PLASTIC_BAG_HIT_OBJECT   = "trashes/dangerous/buttons/button-01.png";
-    public static final String HAIR_SPRAY_HIT_OBJECT    = "trashes/dangerous/buttons/button-02.png";
-    public static final String CIGARETTE_HIT_OBJECT     = "trashes/dangerous/buttons/button-03.png";
-    public static final String THINNER_HIT_OBJECT       = "trashes/dangerous/buttons/button-04.png";
-    public static final String OIL_CAN_HIT_OBJECT       = "trashes/dangerous/buttons/button-05.png";
+    public static final String PLASTIC_BAG_HIT_OBJECT = "trashes/dangerous/buttons/button-01.png";
+    public static final String HAIR_SPRAY_HIT_OBJECT = "trashes/dangerous/buttons/button-02.png";
+    public static final String CIGARETTE_HIT_OBJECT = "trashes/dangerous/buttons/button-03.png";
+    public static final String THINNER_HIT_OBJECT = "trashes/dangerous/buttons/button-04.png";
+    public static final String OIL_CAN_HIT_OBJECT = "trashes/dangerous/buttons/button-05.png";
 
-    public static final String HITORIGOTO_EASY          = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu";
-    public static final String HITORIGOTO_HARD          = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Hard].osu";
-    public static final String HITORIGOTO_INSANE        = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Insane].osu";
+    public static final String HITORIGOTO_EASY = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu";
+    public static final String HITORIGOTO_HARD = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Hard].osu";
+    public static final String HITORIGOTO_INSANE = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Insane].osu";
 
     // Sound Effects Assets
-    public static final String SFX_SOUND_INCREASE       = "SFx/VolumeCheck.wav";
+    public static final String SFX_VOLUME_CHECK = "SFx/VolumeCheck.wav";
+
+    // Music change block Assets
+    public static final String PLAYER_MUTE = "SFx/vol - mute.png";
+    public static final String PLAYER_PLAY = "SFX/vol - template.png";
+
 }

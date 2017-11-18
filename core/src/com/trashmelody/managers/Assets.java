@@ -95,13 +95,10 @@ public class Assets extends AssetManager {
     public static final String STAGE_TEXT_SCHOOL = "StageSelect/Text/stage-school-text.png";
     public static final String STAGE_TEXT_HOME = "StageSelect/Text/stage-home-text.png";
     public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
-    public static final String STAGE_BG_BACKBUTTON = "StageSelect/Background/stage-backbutton.png";
-    public static final String STAGE_BG_PLAYBUTTON = "StageSelect/Background/stage-playbutton.png";
     public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
     public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
     public static final String STAGE_BG_FOOTER = "StageSelect/Background/stage-footer.png";
     public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
-    public static final String STAGE_BG_OVERLAY = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
     public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
     public static final String STAGE_BG = "StageSelect/Background/stage-bg.png";
@@ -267,4 +264,7 @@ public class Assets extends AssetManager {
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";
     public static final String PLAYER_PLAY = "SFX/vol - template.png";
 
+    // Globally-Reusable Assets
+    public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
+    public static final String GLOBAL_ICON_PLAY = "Global/icon-play.png";
 }

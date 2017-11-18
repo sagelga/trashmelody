@@ -87,8 +87,8 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(footer, 0, 0, vw, vh / 12);
 
         // Show the button interfaces
-        game.batch.draw(buttonPlay, vw / 64, 0, vw / 10, vh / 16);
-        game.batch.draw(buttonBack, vw / 1.13F, 0, vw / 10, vh / 16);
+        game.batch.draw(buttonPlay, vw / 64, 0, findRatio(180, 71, vh/16F, 'w'), vh / 16);
+        game.batch.draw(buttonBack, vw / 1.13F, 0, findRatio(180, 71, vh/16F, 'w'), vh / 16);
         game.batch.draw(selectArrowLeft, vw / 1.4F, vh / 8, vw / 28, vh / 10);
         game.batch.draw(selectArrowRight, vw / 1.065F, vh / 8, vw / 28, vh / 10);
 
@@ -153,7 +153,7 @@ public class StageSelectScreen extends LazyScreen {
             case (4):
                 font.draw(batch, Integer.toString(statsManager.getStageScore("stage5Score")), vw / 1.3F, vh / 6);
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
-                game.batch.draw(stageHomeText, vw / 64, vh / 1.43F, vw / 2.5F, vh / 8);
+                game.batch.draw(stageHomeText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -273,8 +273,8 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_TEXT_SCHOOL, TEXTURE);
         assets.load(STAGE_TEXT_HOME, TEXTURE);
         assets.load(STAGE_TEXT_CAFE, TEXTURE);
-        assets.load(STAGE_BG_BACKBUTTON, TEXTURE);
-        assets.load(STAGE_BG_PLAYBUTTON, TEXTURE);
+        assets.load(GLOBAL_ICON_BACK, TEXTURE);
+        assets.load(GLOBAL_ICON_PLAY, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
         assets.load(STAGE_BG_FOOTER, TEXTURE);
@@ -315,8 +315,8 @@ public class StageSelectScreen extends LazyScreen {
         this.stageHospitalText = assets.get(STAGE_TEXT_HOSPITAL, TEXTURE); // 3428 × 487
         this.stageSchoolText = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
 
-        this.buttonBack = assets.get(STAGE_BG_BACKBUTTON, TEXTURE); // 687  × 236
-        this.buttonPlay = assets.get(STAGE_BG_PLAYBUTTON, TEXTURE); // 670  × 239
+        this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
+        this.buttonPlay = assets.get(GLOBAL_ICON_PLAY, TEXTURE); // 670  × 239
         this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
         this.footer = assets.get(STAGE_BG_FOOTER, TEXTURE); // 8002 × 296
         this.cloud = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644

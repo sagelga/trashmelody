@@ -20,9 +20,11 @@ public class ResultScreen extends LazyScreen {
     private TrashMelody game;
     private OrthographicCamera camera;
     private Viewport viewport;
-    private Texture bg, header, footer, gradeA, stats;
+    private Texture bg, header, footer, gradeA, gradeB, gradeC, gradeD, stats, gradeToShow;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
+    private enum Grade { A, B, C, D }
+    private Grade grade;
 
     @Inject
     ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport) {
@@ -33,20 +35,30 @@ public class ResultScreen extends LazyScreen {
 
     @Override
     public void render(float delta) {
+        // Assume that the grade is B
+        grade = Grade.B;
+
         clearScreen();
 
         game.batch.begin();
 
         game.batch.draw(bg, 0, 0, vw, vh);
-        game.batch.draw(header, 0, vh/1.1F,vw/2,vh/11);
-        game.batch.draw(footer, 0, 0, vw, vh/12);
-        game.batch.draw(gradeA, vw/12, vh/3.5F, vw/4, vh/2);
-        game.batch.draw(stats, vw/2, vh/5, vw/4, vh/1.5F);
-        
+        game.batch.draw(header, 0, vh/1.1F, (float) vw/1.7F, findRatio(1200, 105, (float) vw/1.7F, 'h'));
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+
+        switch (grade) {
+            case A: gradeToShow = gradeA; break;
+            case B: gradeToShow = gradeB; break;
+            case C: gradeToShow = gradeC; break;
+            case D: gradeToShow = gradeD; break;
+            default: gradeToShow = gradeA;
+        }
+
+        game.batch.draw(gradeToShow, vw/12, vh/5.6F, vw/3.2F, vh/1.6F);
+        game.batch.draw(stats, vw/2.1F, vh/5.6F, vw/4.3F, vh/1.6F);
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
-
         // Debug zone
 
         game.batch.end();
@@ -83,6 +95,13 @@ public class ResultScreen extends LazyScreen {
         this.header = assets.get(RESULT_RESULT_HEADER, TEXTURE);
         this.footer = assets.get(RESULT_RESULT_FOOTER, TEXTURE);
         this.gradeA = assets.get(RESULT_RESULT_GRADE_A, TEXTURE);
+        this.gradeB = assets.get(RESULT_RESULT_GRADE_B, TEXTURE);
+        this.gradeC = assets.get(RESULT_RESULT_GRADE_C, TEXTURE);
+        this.gradeD = assets.get(RESULT_RESULT_GRADE_D, TEXTURE);
         this.stats = assets.get(RESULT_RESULT_TEXT_ALL, TEXTURE);
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 }

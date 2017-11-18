@@ -12,6 +12,7 @@ import com.trashmelody.managers.Assets;
 import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
+    public static final int HIT_OBJECT_FADING_INTERVAL = 1200;
     private Assets assets;
 
     @Inject
@@ -26,17 +27,22 @@ public class ScoringSystem extends IteratingSystem {
         ScoringComponent scoring = Mapper.scoring.get(entity);
         TextureComponent texture = Mapper.texture.get(entity);
         HealthComponent health = getHealthComponent();
+        ScanLineComponent scanLine = getScanLineComponent();
         Texture accuracyTexture = assets.get(MISS_ACCURACY);
 
         if (scoring.getAccuracy() == Accuracy.Perfect) {
             accuracyTexture = assets.get(PERFECT_ACCURACY);
+            scanLine.totalScore += 8000;
         } else if (scoring.getAccuracy() == Accuracy.Good) {
             accuracyTexture = assets.get(GOOD_ACCURACY);
+            scanLine.totalScore += 7000;
         } else if (scoring.getAccuracy() == Accuracy.Cool) {
             accuracyTexture = assets.get(COOL_ACCURACY);
+            scanLine.totalScore += 5000;
         } else if (scoring.getAccuracy() == Accuracy.Bad) {
             accuracyTexture = assets.get(BAD_ACCURACY);
             health.health -= 300;
+            scanLine.totalScore += 2000;
         } else if (scoring.getAccuracy() == Accuracy.Miss) {
             accuracyTexture = assets.get(MISS_ACCURACY);
             health.health -= 800;
@@ -45,7 +51,7 @@ public class ScoringSystem extends IteratingSystem {
 
         entity.remove(ScoringComponent.class);
         entity.add(fadeDown());
-        entity.add(new CallbackComponent(entity1 -> entity1.add(new DestroyComponent()), 2000));
+        entity.add(new CallbackComponent(entity1 -> entity1.add(new DestroyComponent()), HIT_OBJECT_FADING_INTERVAL));
     }
 
     private static TimerComponent fadeDown() {
@@ -55,8 +61,9 @@ public class ScoringSystem extends IteratingSystem {
 
             texture.setAlpha(remaining / lifeTime);
             transform.scale = 2F - remaining / lifeTime;
-        }, 2000);
+        }, HIT_OBJECT_FADING_INTERVAL);
     }
+
 
 //    private static TimerComponent reduceHealth(float healthReduced) {
 //        return new TimerComponent((entity, lifeTime, remaining, delta) -> {
@@ -68,5 +75,9 @@ public class ScoringSystem extends IteratingSystem {
 
     private HealthComponent getHealthComponent() {
         return Mapper.health.get(getEngine().getEntitiesFor(Family.all(HealthComponent.class).get()).first());
+    }
+
+    private ScanLineComponent getScanLineComponent() {
+        return Mapper.scanLine.get(getEngine().getEntitiesFor(Family.all(ScanLineComponent.class).get()).first());
     }
 }

@@ -8,7 +8,7 @@ import com.trashmelody.components.*;
 import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class Dispatcher extends Entity {
-    private static float START_POSITION = 10F / PPM;
+    private static final float START_POSITION = 10F / PPM;
 
     public Dispatcher(World world, DispatchComponent dispatch) {
         EdgeShape shape = new EdgeShape();

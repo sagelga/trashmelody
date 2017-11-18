@@ -16,18 +16,16 @@ import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
 
 import java.util.function.Predicate;
 
+import static com.trashmelody.constants.Constants.PRE_DISPATCH_TIME;
 import static com.trashmelody.managers.Assets.CIGARETTE_HIT_OBJECT;
 import static com.trashmelody.managers.Assets.TEXTURE;
 
 public class DispatchSystem extends IteratingSystem {
     private World world;
     private Assets assets;
-    private TimerListener fadeUpListener = new TimerListener() {
-        @Override
-        public void handle(Entity entity, float lifeTime, float remaining, float delta) {
-            TransformComponent transform = Mapper.transform.get(entity);
-            transform.scale = (float) Math.sqrt(1 - Math.pow(remaining / lifeTime, 2));
-        }
+    private static TimerListener fadeUpListener = (entity, lifeTime, remaining, delta) -> {
+        TransformComponent transform = Mapper.transform.get(entity);
+        transform.scale = (float) Math.sqrt(1 - Math.pow(remaining / lifeTime, 2));
     };
 
     @Inject
@@ -81,7 +79,7 @@ public class DispatchSystem extends IteratingSystem {
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {
-        return hitObject -> hitObject.isAfterStartTime(elapsedTime + Constants.PRE_DISPATCH_TIME);
+        return hitObject -> hitObject.isAfterStartTime(elapsedTime + PRE_DISPATCH_TIME);
     }
 
     private ScanLineComponent getScanLineComponent() {

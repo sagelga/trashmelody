@@ -8,19 +8,15 @@ import io.vavr.collection.Queue;
 
 public class ScanLineComponent implements Component {
     private float delay = Constants.PRE_DISPATCH_TIME;
-    public Direction direction = Direction.Right;
+    public float velocity;
     public float elapsedTime = -delay;
+    public int totalScore = 0;
     public Music music;
     public State state = State.Ready;
-    public float velocity;
     public Queue<HitObjectEntity> activeHitObjects = Queue.empty();
 
     public enum State {
         Ready, Playing, Pause, Stop
-    }
-
-    public enum Direction {
-        Left, Right
     }
 
     public ScanLineComponent(Music music, float velocity) {

@@ -10,13 +10,11 @@ import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class ScanLine extends Entity {
     private static final float START_POSITION = 10F / PPM;
-    private World world;
 
     public ScanLine(World world,
                     ScanLineComponent scanLineComponent,
                     TextureComponent textureComponent,
                     HealthComponent healthComponent) {
-        this.world = world;
 
         EdgeShape shape = new EdgeShape();
         shape.set(new Vector2(0F, 0F), new Vector2(0F, 20F));

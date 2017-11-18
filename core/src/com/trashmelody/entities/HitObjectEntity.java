@@ -23,7 +23,7 @@ public class HitObjectEntity extends Entity {
         float hitObjectX = dispatcherX;
         float hitObjectY = (hitObjectPosition.y / yUpperBound * 300 + 640) / PPM;
 //        float hitObjectY = (hitObjectPosition.y % 100 * 3 + 640) / PPM;
-        TransformComponent transformComponent = new TransformComponent(hitObjectX, hitObjectY, 0.6F, 0.6F);
+        TransformComponent transformComponent = new TransformComponent(hitObjectX, hitObjectY, 0.8F, 0.8F);
 
         CircleShape shape = new CircleShape();
         shape.setRadius(0.3F);

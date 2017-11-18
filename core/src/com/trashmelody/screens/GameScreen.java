@@ -41,7 +41,8 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private Beatmap beatmap;
-    private HealthComponent health = new HealthComponent(0);
+    private ScanLineComponent scanLine;
+    private HealthComponent health;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -195,6 +196,7 @@ public class GameScreen extends LazyScreen {
     }
 
     private void createEntities() {
+        scanLine = new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 2F);
         health = new HealthComponent(10000);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
@@ -204,13 +206,13 @@ public class GameScreen extends LazyScreen {
         ));
         engine.addEntity(new ScanLine(
                 world,
-                new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 3F),
+                scanLine,
                 new TextureComponent(check),
                 health
         ));
         engine.addEntity(new Dispatcher(
                 world,
-                new DispatchComponent(beatmap, 3F)
+                new DispatchComponent(beatmap, 2F)
         ));
     }
 
@@ -250,7 +252,7 @@ public class GameScreen extends LazyScreen {
 
     private Beatmap getBeatmap() {
         BeatmapParser parser = new BeatmapParser();
-        File file = new File(HITORIGOTO_HARD);
+        File file = new File(HITORIGOTO_EASY);
         Beatmap beatmap = null;
         try {
             beatmap = parser.parse(file, ManiaBeatmap.class);

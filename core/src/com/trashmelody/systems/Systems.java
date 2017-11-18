@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Systems {
     public static Systems systems = new Systems(Arrays.asList(
-            DispatchSystem.class,
             ScanLineSystem.class,
+            DispatchSystem.class,
             PlayerControlSystem.class,
             ControlSystem.class,
             HitObjectSystem.class,

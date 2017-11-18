@@ -84,11 +84,11 @@ public class StageSelectScreen extends LazyScreen {
 
         // Show the header + footer of the game
         game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw/1.5F, 'h'));
-        game.batch.draw(footer, 0, 0, vw, vh / 12);
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
 
         // Show the button interfaces
-        game.batch.draw(buttonPlay, vw / 64, 0, findRatio(180, 71, vh/16F, 'w'), vh / 16);
-        game.batch.draw(buttonBack, vw / 1.13F, 0, findRatio(180, 71, vh/16F, 'w'), vh / 16);
+        game.batch.draw(buttonPlay, vw / 64, 0, findRatio(176, 54, vh/16F, 'w'), vh / 16);
+        game.batch.draw(buttonBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(selectArrowLeft, vw / 1.4F, vh / 8, vw / 28, vh / 10);
         game.batch.draw(selectArrowRight, vw / 1.065F, vh / 8, vw / 28, vh / 10);
 

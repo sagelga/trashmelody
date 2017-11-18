@@ -17,4 +17,5 @@ public class Mapper {
     public static final ComponentMapper<DestoryComponent> removing = ComponentMapper.getFor(DestoryComponent.class);
     public static final ComponentMapper<ScoringComponent> scoring = ComponentMapper.getFor(ScoringComponent.class);
     public static final ComponentMapper<TimerComponent> timer = ComponentMapper.getFor(TimerComponent.class);
+    public static final ComponentMapper<HealthComponent> health = ComponentMapper.getFor(HealthComponent.class);
 }

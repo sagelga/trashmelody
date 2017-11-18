@@ -17,6 +17,7 @@ import com.trashmelody.entities.Player;
 import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.mania.ManiaBeatmap;
@@ -40,6 +41,7 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private Beatmap beatmap;
+    private HealthComponent health = new HealthComponent(0);
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -193,6 +195,7 @@ public class GameScreen extends LazyScreen {
     }
 
     private void createEntities() {
+        health = new HealthComponent(10000);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
                 world,
@@ -202,7 +205,8 @@ public class GameScreen extends LazyScreen {
         engine.addEntity(new ScanLine(
                 world,
                 new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 3F),
-                new TextureComponent(check)
+                new TextureComponent(check),
+                health
         ));
         engine.addEntity(new Dispatcher(
                 world,
@@ -232,7 +236,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
         game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
         game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
-        game.batch.draw(hpPoint, vw / setHpBar(50), vh / 20.2F, vw / 40, vh / 24);
+        game.batch.draw(hpPoint, vw / getHpSliderPositionX(health), vh / 20.2F, vw / 40, vh / 24);
         //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
         //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
@@ -257,8 +261,8 @@ public class GameScreen extends LazyScreen {
         return beatmap;
     }
 
-    private float setHpBar(int hp) {
-        if (hp >= 0 && hp <= 100) return (float)(3F - hp / 100F * (3F - 1.56F));
-        return 0;
+    private float getHpSliderPositionX(HealthComponent health) {
+        float healthPercentage = health.health / health.getMaxHealth() * 100;
+        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
     }
 }

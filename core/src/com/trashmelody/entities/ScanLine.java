@@ -14,7 +14,8 @@ public class ScanLine extends Entity {
 
     public ScanLine(World world,
                     ScanLineComponent scanLineComponent,
-                    TextureComponent textureComponent) {
+                    TextureComponent textureComponent,
+                    HealthComponent healthComponent) {
         this.world = world;
 
         EdgeShape shape = new EdgeShape();
@@ -45,6 +46,7 @@ public class ScanLine extends Entity {
         super.add(new CollisionComponent());
         super.add(new TypeComponent(TypeComponent.ITEM));
         super.add(scanLineComponent);
+        super.add(healthComponent);
 
         shape.dispose();
     }

@@ -40,6 +40,7 @@ public class ScoringSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         ScoringComponent scoring = Mapper.scoring.get(entity);
         TextureComponent texture = Mapper.texture.get(entity);
+        HealthComponent health = getHealthComponent();
         Texture accuracyTexture = assets.get(MISS_ACCURACY);
 
         if (scoring.getAccuracy() == Accuracy.Perfect) {
@@ -50,12 +51,18 @@ public class ScoringSystem extends IteratingSystem {
             accuracyTexture = assets.get(COOL_ACCURACY);
         } else if (scoring.getAccuracy() == Accuracy.Bad) {
             accuracyTexture = assets.get(BAD_ACCURACY);
+            health.health -= 400;
         } else if (scoring.getAccuracy() == Accuracy.Miss) {
             accuracyTexture = assets.get(MISS_ACCURACY);
+            health.health -= 900;
         }
         texture.texture = accuracyTexture;
 
         entity.remove(ScoringComponent.class);
         entity.add(new TimerComponent(listener, 2000));
+    }
+
+    private HealthComponent getHealthComponent() {
+        return Mapper.health.get(getEngine().getEntitiesFor(Family.all(HealthComponent.class).get()).first());
     }
 }

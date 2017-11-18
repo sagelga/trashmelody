@@ -25,7 +25,7 @@ public class ScoringSystem extends IteratingSystem {
 
         @Override
         public void done(Entity entity) {
-            entity.add(new RemovingComponent());
+            entity.add(new DestoryComponent());
         }
     };
 

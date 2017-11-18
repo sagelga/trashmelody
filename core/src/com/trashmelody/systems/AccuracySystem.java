@@ -4,23 +4,15 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.google.inject.Inject;
-import com.trashmelody.components.*;
-import com.trashmelody.utils.Functional;
-import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
+import com.trashmelody.components.HitObjectComponent;
+import com.trashmelody.components.Mapper;
+import com.trashmelody.components.ScanLineComponent;
+import com.trashmelody.components.ScoringComponent;
 
-import java.util.function.Predicate;
-
-import static com.trashmelody.components.ScoringComponent.*;
-import static com.trashmelody.utils.Functional.*;
+import static com.trashmelody.components.ScoringComponent.Accuracy;
+import static com.trashmelody.constants.Constants.*;
 
 public class AccuracySystem extends IteratingSystem {
-    public static Predicate<Float> isPerfect = isBetween.apply(-30F, 30F);
-    public static Predicate<Float> isGood = isBetween.apply(-50F, 50F);
-    public static Predicate<Float> isCool = isBetween.apply(-100F, 100F);
-    public static Predicate<Float> isBad = isBetween.apply(-150F, 200F);
-    public static Predicate<Float> isMiss = isBetween.apply(-300F, -300F);
-    public static Predicate<Float> isReachable = isBetween.apply(-500F, 500F);
-
     @Inject
     public AccuracySystem() {
         super(Family.all(ScoringComponent.class, HitObjectComponent.class).get(), Systems.getIndex(AccuracySystem.class));

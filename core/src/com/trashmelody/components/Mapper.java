@@ -14,7 +14,7 @@ public class Mapper {
     public static final ComponentMapper<HitObjectComponent> hitObject = ComponentMapper.getFor(HitObjectComponent.class);
     public static final ComponentMapper<ScanLineComponent> scanLine = ComponentMapper.getFor(ScanLineComponent.class);
     public static final ComponentMapper<DispatchComponent> dispatch = ComponentMapper.getFor(DispatchComponent.class);
-    public static final ComponentMapper<RemovingComponent> removing = ComponentMapper.getFor(RemovingComponent.class);
+    public static final ComponentMapper<DestoryComponent> removing = ComponentMapper.getFor(DestoryComponent.class);
     public static final ComponentMapper<ScoringComponent> scoring = ComponentMapper.getFor(ScoringComponent.class);
     public static final ComponentMapper<TimerComponent> timer = ComponentMapper.getFor(TimerComponent.class);
 }

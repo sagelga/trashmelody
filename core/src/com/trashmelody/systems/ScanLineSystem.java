@@ -3,26 +3,17 @@ package com.trashmelody.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScanLineComponent.State;
 
-import java.util.function.Predicate;
-
-import static com.trashmelody.constants.B2Dvars.PPM;
-import static com.trashmelody.utils.Functional.isBetween;
-import static com.trashmelody.utils.Functional.isLessThan;
-import static com.trashmelody.utils.Functional.isMoreThan;
+import static com.trashmelody.constants.Constants.*;
 
 public class ScanLineSystem extends IteratingSystem {
-    private static final int HIT_OBJECT_LIFE_TIME = 200;
-    private static final float leftBorderX = 0;
-    private static final float rightBorderX = 1920 / PPM;
-    private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
-    private static final Predicate<Float> isOverBound = isMoreThan.apply(rightBorderX);
-    private static final Predicate<Float> isUnderBound = isLessThan.apply(leftBorderX);
+//    private static final Predicate<Float> isInBound = isBetween.apply(leftBorderX, rightBorderX);
+//    private static final Predicate<Float> isOverBound = isMoreThan.apply(rightBorderX);
+//    private static final Predicate<Float> isUnderBound = isLessThan.apply(leftBorderX);
 
     @Inject
     public ScanLineSystem()  {

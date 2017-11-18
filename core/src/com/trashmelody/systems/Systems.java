@@ -14,7 +14,7 @@ public class Systems {
             HitObjectSystem.class,
             AccuracySystem.class,
             ScoringSystem.class,
-            RemovingSystem.class,
+            DestroySystem.class,
             PhysicsSystem.class,
             CollisionSystem.class,
             TimerSystem.class,

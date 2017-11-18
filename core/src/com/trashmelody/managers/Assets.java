@@ -104,6 +104,7 @@ public class Assets extends AssetManager {
     public static final String STAGE_BG_OVERLAY = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
     public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
+    public static final String STAGE_BG = "StageSelect/Background/stage-bg.png";
 
     // Collection Stage Assets
     public static final String COLLECTION_SCREEN_TITLE = "CollectionScreen/screen-title.png";

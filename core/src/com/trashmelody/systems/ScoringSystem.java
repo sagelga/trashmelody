@@ -13,21 +13,6 @@ import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
     private Assets assets;
-    private TimerListener listener = new TimerListener() {
-        @Override
-        public void handle(Entity entity, float lifeTime, float remaining) {
-            TransformComponent transform = Mapper.transform.get(entity);
-            TextureComponent texture = Mapper.texture.get(entity);
-
-            texture.setAlpha(remaining / lifeTime);
-            transform.scale = 2F - remaining / lifeTime;
-        }
-
-        @Override
-        public void done(Entity entity) {
-            entity.add(new DestoryComponent());
-        }
-    };
 
     @Inject
     public ScoringSystem(Assets assets) {
@@ -51,16 +36,35 @@ public class ScoringSystem extends IteratingSystem {
             accuracyTexture = assets.get(COOL_ACCURACY);
         } else if (scoring.getAccuracy() == Accuracy.Bad) {
             accuracyTexture = assets.get(BAD_ACCURACY);
-            health.health -= 400;
+            health.health -= 300;
         } else if (scoring.getAccuracy() == Accuracy.Miss) {
             accuracyTexture = assets.get(MISS_ACCURACY);
-            health.health -= 900;
+            health.health -= 800;
         }
         texture.texture = accuracyTexture;
 
         entity.remove(ScoringComponent.class);
-        entity.add(new TimerComponent(listener, 2000));
+        entity.add(fadeDown());
+        entity.add(new CallbackComponent(entity1 -> entity1.add(new DestroyComponent()), 2000));
     }
+
+    private static TimerComponent fadeDown() {
+        return new TimerComponent((entity, lifeTime, remaining, delta) -> {
+            TransformComponent transform = Mapper.transform.get(entity);
+            TextureComponent texture = Mapper.texture.get(entity);
+
+            texture.setAlpha(remaining / lifeTime);
+            transform.scale = 2F - remaining / lifeTime;
+        }, 2000);
+    }
+
+//    private static TimerComponent reduceHealth(float healthReduced) {
+//        return new TimerComponent((entity, lifeTime, remaining, delta) -> {
+//            HealthComponent health = Mapper.health.get(entity);
+//            System.out.println("reducing health");
+//            health.health -= (delta / lifeTime) * healthReduced;
+//        }, 2000);
+//    }
 
     private HealthComponent getHealthComponent() {
         return Mapper.health.get(getEngine().getEntitiesFor(Family.all(HealthComponent.class).get()).first());

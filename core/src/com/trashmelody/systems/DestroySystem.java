@@ -7,14 +7,14 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.trashmelody.components.Mapper;
 import com.trashmelody.components.PhysicsComponent;
-import com.trashmelody.components.DestoryComponent;
+import com.trashmelody.components.DestroyComponent;
 
 public class DestroySystem extends IteratingSystem {
     private World world;
 
     @Inject
     DestroySystem(World world) {
-        super(Family.all(DestoryComponent.class).get(), Systems.getIndex(DestroySystem.class));
+        super(Family.all(DestroyComponent.class).get(), Systems.getIndex(DestroySystem.class));
 
         this.world = world;
     }

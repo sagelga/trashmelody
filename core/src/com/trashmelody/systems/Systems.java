@@ -18,6 +18,7 @@ public class Systems {
             PhysicsSystem.class,
             CollisionSystem.class,
             TimerSystem.class,
+            CallbackSystem.class,
             PhysicsSynchronizationSystem.class,
             MusicSynchronizeSystem.class,
             RenderingSystem.class,

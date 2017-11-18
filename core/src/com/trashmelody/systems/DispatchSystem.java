@@ -24,7 +24,7 @@ public class DispatchSystem extends IteratingSystem {
     private Assets assets;
     private TimerListener fadeUpListener = new TimerListener() {
         @Override
-        public void handle(Entity entity, float lifeTime, float remaining) {
+        public void handle(Entity entity, float lifeTime, float remaining, float delta) {
             TransformComponent transform = Mapper.transform.get(entity);
             transform.scale = (float) Math.sqrt(1 - Math.pow(remaining / lifeTime, 2));
         }

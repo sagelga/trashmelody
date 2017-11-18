@@ -17,11 +17,10 @@ public class TimerSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         TimerComponent timer = Mapper.timer.get(entity);
 
-        timer.listener.handle(entity, timer.getLifeTime(), timer.remaining);
+        timer.listener.handle(entity, timer.getLifeTime(), timer.remaining, deltaTime * 1000);
         timer.remaining -= deltaTime * 1000;
 
         if (timer.remaining <= 0) {
-            timer.listener.done(entity);
             entity.remove(TimerComponent.class);
         }
     }

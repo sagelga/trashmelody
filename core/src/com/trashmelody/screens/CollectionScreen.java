@@ -89,7 +89,6 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void loadAssets(Assets assets) {
-
         assets.load(COLLECTION_BG, TEXTURE);
         assets.load(COLLECTION_SCREEN_TITLE, TEXTURE);
         assets.load(COLLECTION_BAR, TEXTURE);

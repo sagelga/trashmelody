@@ -1,15 +1,13 @@
-package com.trashmelody.trash.wet;
+package com.trashmelody.trashes.wet;
 
-import com.trashmelody.trash.Trash;
-import com.trashmelody.trash.TrashType;
+import com.trashmelody.trashes.Trash;
+import com.trashmelody.trashes.TrashType;
 
 public class IceCream extends Trash {
     private static final String NAME = "Izu-chan";
     private static final String DESC = "Her full name is Izu - Pink Cremu. She is a sweetened frozen girl you'll want to eat if you see one. Her cheek is pink and her hair is white.";
 
-    public IceCream() {
-        this.name = NAME;
-        this.desc = DESC;
-        this.type = TrashType.WET;
+    public IceCream(String name, String description, TrashType type) {
+        super(name, description, type);
     }
 }

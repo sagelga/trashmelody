@@ -20,7 +20,6 @@ public class PhysicsDebugSystem extends EntitySystem {
         super(Systems.getIndex(PhysicsDebugSystem.class));
 
         this.camera = camera;
-//        this.camera = new OrthographicCamera(1280 * 2 / PPM, 720 * 2 / PPM);
         this.world = world;
     }
 

@@ -7,16 +7,18 @@ import java.util.List;
 
 public class Systems {
     public static Systems systems = new Systems(Arrays.asList(
-            DispatchSystem.class,
             ScanLineSystem.class,
+            DispatchSystem.class,
             PlayerControlSystem.class,
             ControlSystem.class,
             HitObjectSystem.class,
             AccuracySystem.class,
             ScoringSystem.class,
-            RemovingSystem.class,
+            DestroySystem.class,
             PhysicsSystem.class,
             CollisionSystem.class,
+            TimerSystem.class,
+            CallbackSystem.class,
             PhysicsSynchronizationSystem.class,
             MusicSynchronizeSystem.class,
             RenderingSystem.class,

@@ -17,6 +17,7 @@ import com.trashmelody.entities.Player;
 import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
 import lt.ekgame.beatmap_analyzer.beatmap.mania.ManiaBeatmap;
@@ -40,6 +41,8 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private Beatmap beatmap;
+    private ScanLineComponent scanLine;
+    private HealthComponent health;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
 
@@ -106,19 +109,8 @@ public class GameScreen extends LazyScreen {
         drawBackground();
         game.batch.end();
 
-//        println(hitObjects.head().getPosition());
-
-//        Vector2 notePosition = hitObjects.head().getPosition().toGdxVector();
-//        engine.addEntity(new HitObjectEntity(
-//                world,
-//                new HitObjectComponent(A, D, W, Q, 300F),
-//                new TypeComponent(TypeComponent.PLAYER),
-//                new TransformComponent(new Vector2(notePosition.y * 2 / PPM, notePosition.x * 2 / PPM))
-//        ));
-//        hitObjects = hitObjects.tail();
-//
         if (isLoaded()) {
-            engine.update(delta / 10);
+            engine.update(delta);
         }
     }
 
@@ -204,25 +196,23 @@ public class GameScreen extends LazyScreen {
     }
 
     private void createEntities() {
+        scanLine = new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 2F);
+        health = new HealthComponent(10000);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
                 world,
-                new PlayerComponent(LEFT, RIGHT, UP, SHIFT_RIGHT, 300F),
-                new TypeComponent(TypeComponent.PLAYER)
-        ));
-        engine.addEntity(new Player(
-                world,
-                new PlayerComponent(A, D, W, Q, 300F),
+                new PlayerComponent(D, F, J, K),
                 new TypeComponent(TypeComponent.PLAYER)
         ));
         engine.addEntity(new ScanLine(
                 world,
-                new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 3F),
-                new TextureComponent(check)
+                scanLine,
+                new TextureComponent(check),
+                health
         ));
         engine.addEntity(new Dispatcher(
                 world,
-                new DispatchComponent(beatmap, 3F)
+                new DispatchComponent(beatmap, 2F)
         ));
     }
 
@@ -248,7 +238,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
         game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
         game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
-        game.batch.draw(hpPoint, vw / setHpBar(50), vh / 20.2F, vw / 40, vh / 24);
+        game.batch.draw(hpPoint, vw / getHpSliderPositionX(health), vh / 20.2F, vw / 40, vh / 24);
         //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
         //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
@@ -262,7 +252,7 @@ public class GameScreen extends LazyScreen {
 
     private Beatmap getBeatmap() {
         BeatmapParser parser = new BeatmapParser();
-        File file = new File(HITORIGOTO_HARD);
+        File file = new File(HITORIGOTO_EASY);
         Beatmap beatmap = null;
         try {
             beatmap = parser.parse(file, ManiaBeatmap.class);
@@ -273,8 +263,8 @@ public class GameScreen extends LazyScreen {
         return beatmap;
     }
 
-    private float setHpBar(int hp) {
-        if (hp >= 0 && hp <= 100) return (float)(3F - hp / 100F * (3F - 1.56F));
-        return 0;
+    private float getHpSliderPositionX(HealthComponent health) {
+        float healthPercentage = health.health / health.getMaxHealth() * 100;
+        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
     }
 }

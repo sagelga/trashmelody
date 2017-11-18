@@ -5,6 +5,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
+import com.trashmelody.constants.Constants;
 import com.trashmelody.handlers.KeyboardController;
 
 public class ControlSystem extends IteratingSystem {
@@ -22,8 +23,8 @@ public class ControlSystem extends IteratingSystem {
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         PlayerComponent player = getPlayerComponent();
 
-        if (controller.keyMap.get(player.leftKey)) {
-            controller.keyMap.put(player.leftKey, false);
+        if (controller.keyMap.get(player.dangerous)) {
+            controller.keyMap.put(player.dangerous, false);
 
             scanLine.activeHitObjects
                     .headOption()
@@ -36,16 +37,15 @@ public class ControlSystem extends IteratingSystem {
         }
     }
 
-    private PlayerComponent getPlayerComponent() {
-        return Mapper.player.get(getEngine().getEntitiesFor(Family.all(PlayerComponent.class).get()).first());
-    }
-
-
     public static float calculateDelta(ScanLineComponent scanLine, HitObjectComponent hitObject) {
         return scanLine.elapsedTime - hitObject.hitObject.getStartTime();
     }
 
+    private PlayerComponent getPlayerComponent() {
+        return Mapper.player.get(getEngine().getEntitiesFor(Family.all(PlayerComponent.class).get()).first());
+    }
+
     private static boolean isClickable(ScanLineComponent scanLine, HitObjectComponent hitObject) {
-        return AccuracySystem.isReachable.test(calculateDelta(scanLine, hitObject));
+        return Constants.isReachable.test(calculateDelta(scanLine, hitObject));
     }
 }

@@ -60,8 +60,8 @@ public class PauseScreen extends LazyScreen {
             switch (count) {
                 case 1: game.setLazyScreen(gameScreen); break;
                 case 2: game.setLazyScreen(gameScreen); break;
-                case 3: game.setLazyScreen(resultScreen); break;
-                case 4: game.setLazyScreen(menuScreen); break;
+                case 3
+                        : game.setLazyScreen(menuScreen); break;
             }
         }
 

@@ -103,20 +103,29 @@ public class Assets extends AssetManager {
     public static final String STAGE_BG = "StageSelect/Background/stage-bg.png";
 
     // Collection Stage Assets
-    public static final String COLLECTION_SCREEN_TITLE = "CollectionScreen/screen-title.png";
-    public static final String COLLECTION_BG = "CollectionScreen/bg.jpg";
-    public static final String COLLECTION_BAR = "CollectionScreen/info-bar.png";
-    public static final String COLLECTION_ARROW = "CollectionScreen/arrow.png";
-    public static final String COLLECTION_TEXT_EXAMPLE = "CollectionScreen/text-example.png";
-    public static final String COLLECTION_LV1 = "CollectionScreen/lv1.png";
-    public static final String COLLECTION_LV2 = "CollectionScreen/lv2.png";
-    public static final String COLLECTION_LV3 = "CollectionScreen/lv3.png";
-    public static final String COLLECTION_LV4 = "CollectionScreen/lv4.png";
-    public static final String COLLECTION_LV5 = "CollectionScreen/lv5.png";
-    public static final String COLLECTION_LV6 = "CollectionScreen/lv6.png";
-    public static final String COLLECTION_CARD_DANGER_BAG = "trashes/dangerous/cards/DANGER - CARD-01.png";
-    public static final String COLLECTION_CARD_RECYCLE_TRIO = "trashes/recycle/cards/RE - CARD-01.png";
-    public static final String COLLECTION_CARD_WET_POPCORN = "trashes/wet/cards/FOOD - CARD-01.png";
+    public static final String COLLECTION_HEADER = "CollectionScreen/Header.png";
+    public static final String COLLECTION_BG = "CollectionScreen/BG.gif";
+    public static final String COLLECTION_FOOTER = "CollectionScreen/Footer.png";
+    public static final String COLLECTION_PACK = "CollectionScreen/CardPack.png";
+    public static final String COLLECTION_RIGHT = "CollectionScreen/ArrowRight.png";
+    public static final String COLLECTION_LEFT = "CollectionScreen/ArrowLeft.png";
+    public static final String COLLECTION_RIGHT_H = "CollectionScreen/ArrowRightHover.png";
+    public static final String COLLECTION_LEFT_H = "CollectionScreen/ArrowLeftHover.png";
+    public static final String COLLECTION_DANGER_1 = "trashes/dangerous/cards/DANGER - CARD-01.png";
+    public static final String COLLECTION_DANGER_2 = "trashes/dangerous/cards/DANGER - CARD-02.png";
+    public static final String COLLECTION_DANGER_3 = "trashes/dangerous/cards/DANGER - CARD-03.png";
+    public static final String COLLECTION_DANGER_4 = "trashes/dangerous/cards/DANGER - CARD-04.png";
+    public static final String COLLECTION_DANGER_5 = "trashes/dangerous/cards/DANGER - CARD-05.png";
+    public static final String COLLECTION_RECYCLE_1 = "trashes/recycle/cards/RE - CARD-01.png";
+    public static final String COLLECTION_RECYCLE_2 = "trashes/recycle/cards/RE - CARD-02.png";
+    public static final String COLLECTION_RECYCLE_3 = "trashes/recycle/cards/RE - CARD-03.png";
+    public static final String COLLECTION_RECYCLE_4 = "trashes/recycle/cards/RE - CARD-04.png";
+    public static final String COLLECTION_RECYCLE_5 = "trashes/recycle/cards/RE - CARD-05.png";
+    public static final String COLLECTION_WET_1 = "trashes/wet/cards/FOOD - CARD-01.png";
+    public static final String COLLECTION_WET_2 = "trashes/wet/cards/FOOD - CARD-02.png";
+    public static final String COLLECTION_WET_3 = "trashes/wet/cards/FOOD - CARD-03.png";
+    public static final String COLLECTION_WET_4 = "trashes/wet/cards/FOOD - CARD-04.png";
+    public static final String COLLECTION_WET_5 = "trashes/wet/cards/FOOD - CARD-05.png";
 
 
     // Countdown Stage Assets

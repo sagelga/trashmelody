@@ -14,7 +14,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
 import com.trashmelody.beatmap.parser.beatmap.Beatmap;
-import com.trashmelody.constants.Beatmaps;
+import com.trashmelody.constants.BeatmapGroupId;
 import com.trashmelody.managers.*;
 import com.trashmelody.models.Building;
 import com.trashmelody.utils.Debugger;
@@ -42,12 +42,12 @@ public class StageSelectScreen extends LazyScreen {
     private StatsManager statsManager;
     private Map<String, Stream<Beatmap>> beatmaps;
 
-    private Building cafe = new Building("Cafe", Beatmaps.HITORIGOTO_BEATMAP_GROUP_ID);
-    private Building cinema = new Building("Cinema", Beatmaps.MARBLE_SODA_BEATMAP_GROUP_ID);
-    private Building hospital = new Building("Hospital", Beatmaps.REUNION_BEATMAP_GROUP_ID);
-    private Building school = new Building("School", Beatmaps.KANASHII_URESHII_BEATMAP_GROUP_ID);
-    private Building home = new Building("Home", Beatmaps.MIRROR_BEATMAP_GROUP_ID);
-    private Building office = new Building("Office", Beatmaps.STEP_AHEAD_BEATMAP_GROUP_ID);
+    private Building cafe = new Building("Cafe", BeatmapGroupId.HITORIGOTO_BEATMAP_GROUP_ID);
+    private Building cinema = new Building("Cinema", BeatmapGroupId.MARBLE_SODA_BEATMAP_GROUP_ID);
+    private Building hospital = new Building("Hospital", BeatmapGroupId.REUNION_BEATMAP_GROUP_ID);
+    private Building school = new Building("School", BeatmapGroupId.KANASHII_URESHII_BEATMAP_GROUP_ID);
+    private Building home = new Building("Home", BeatmapGroupId.MIRROR_BEATMAP_GROUP_ID);
+    private Building office = new Building("Office", BeatmapGroupId.STEP_AHEAD_BEATMAP_GROUP_ID);
 
     // Defining building value
     private Texture bdHomeShow, bdCafeShow, bdCinemaShow, bdHospitalShow, bdSchoolShow, bdOfficeShow;

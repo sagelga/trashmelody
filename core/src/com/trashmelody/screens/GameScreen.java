@@ -16,6 +16,7 @@ import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.beatmap.parser.beatmap.Beatmap;
 import com.trashmelody.components.*;
+import com.trashmelody.constants.Constants;
 import com.trashmelody.entities.Dispatcher;
 import com.trashmelody.entities.Platform;
 import com.trashmelody.entities.Player;
@@ -215,7 +216,7 @@ public class GameScreen extends LazyScreen {
 
     private void createEntities() {
         scanLine = new ScanLineComponent(music, 2F);
-        health = new HealthComponent(10000);
+        health = new HealthComponent(Constants.MAX_HEALTH);
 //        dispatch = new DispatchComponent(beatmap, 2F);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
@@ -265,7 +266,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
-        font.draw(batch,Integer.toString(scanLine.getTotalScore()),vw/1.2F,vh/1.016F);
+        font.draw(batch,Integer.toString(scanLine.score.totalScore),vw/1.2F,vh/1.016F);
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }

@@ -1,6 +1,5 @@
 package com.trashmelody.systems;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -8,12 +7,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
+import com.trashmelody.beatmap.parser.beatmap.HitObject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.DispatchComponent.State;
 import com.trashmelody.constants.Constants;
 import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.managers.Assets;
-import com.trashmelody.beatmap.parser.beatmap.HitObject;
 
 import java.util.function.Predicate;
 

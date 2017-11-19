@@ -2,7 +2,9 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.loaders.resolvers.ExternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -146,7 +148,7 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(stageCinemaText, vw / 64, vh / 1.143F, vw / 2.6F, vh / 8);
                 game.batch.draw(bdCinemaShow, vw / 1.57F, vh / 2.25F, vw / 6, vh / 3);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = beatmaps.get(cinema.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -161,7 +163,7 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(stageHospitalText, vw / 64, vh / 1.143F, vw / 2, vh / 8);
                 game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = beatmaps.get(hospital.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -176,7 +178,7 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
                 game.batch.draw(stageSchoolText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = beatmaps.get(school.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -191,7 +193,7 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
                 game.batch.draw(stageHomeText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = beatmaps.get(home.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -206,7 +208,7 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
                 game.batch.draw(stageOfficeText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = beatmaps.get(office.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -219,6 +221,7 @@ public class StageSelectScreen extends LazyScreen {
             default:
                 currentStageNumber %= 5;
         }
+        gameScreen.setBeatmap(currentBeatmap);
 
         // Show the stage building
         if (currentStageNumber != 0) {
@@ -245,7 +248,6 @@ public class StageSelectScreen extends LazyScreen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            gameScreen.setBeatmap(currentBeatmap);
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
@@ -276,7 +278,13 @@ public class StageSelectScreen extends LazyScreen {
             font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
         }*/
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) game.setLazyScreen(gameScreen);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+            System.out.println(gameScreen);
+            gameScreen.setBeatmap(currentBeatmap);
+            Path musicFile = currentBeatmap.getPath().resolveSibling(currentBeatmap.getGenerals().getAudioFileName());
+            gameScreen.setMusic(Gdx.audio.newMusic(Gdx.files.absolute(musicFile.toString())));
+            game.setLazyScreen(gameScreen);
+        }
 
         game.batch.draw(cloud, vw / 6.5F, vh / 2.6F, vw / 1.3F, vh / 2);
         // Debug zone

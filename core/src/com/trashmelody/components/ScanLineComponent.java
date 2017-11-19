@@ -24,9 +24,6 @@ public class ScanLineComponent implements Component {
         this.velocity = velocity;
     }
 
-    public ScanLineComponent() {
-    }
-
     public int getTotalScore() {
         return totalScore;
     }

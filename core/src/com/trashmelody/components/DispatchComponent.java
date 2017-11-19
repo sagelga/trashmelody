@@ -2,8 +2,8 @@ package com.trashmelody.components;
 
 import com.badlogic.ashley.core.Component;
 import io.vavr.collection.Stream;
-import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
-import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
+import com.trashmelody.beatmap.parser.beatmap.Beatmap;
+import com.trashmelody.beatmap.parser.beatmap.HitObject;
 
 public class DispatchComponent implements Component {
     public Stream<HitObject> hitObjects;

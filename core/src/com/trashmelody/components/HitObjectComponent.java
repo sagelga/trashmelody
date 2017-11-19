@@ -1,7 +1,7 @@
 package com.trashmelody.components;
 
 import com.badlogic.ashley.core.Component;
-import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
+import com.trashmelody.beatmap.parser.beatmap.HitObject;
 
 public class HitObjectComponent implements Component {
     public HitObject hitObject;

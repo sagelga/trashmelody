@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.google.inject.name.Named;
 import com.trashmelody.components.*;

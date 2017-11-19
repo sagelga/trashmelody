@@ -1,6 +1,7 @@
 package com.trashmelody.screens;
 
 import com.badlogic.ashley.core.Engine;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
@@ -13,6 +14,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
+import com.trashmelody.beatmap.parser.beatmap.Beatmap;
+import com.trashmelody.beatmap.parser.beatmap.mania.ManiaBeatmap;
+import com.trashmelody.beatmap.parser.parser.BeatmapException;
+import com.trashmelody.beatmap.parser.parser.BeatmapParser;
 import com.trashmelody.components.*;
 import com.trashmelody.entities.Dispatcher;
 import com.trashmelody.entities.Platform;
@@ -22,10 +27,6 @@ import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
-import lt.ekgame.beatmap_analyzer.beatmap.Beatmap;
-import lt.ekgame.beatmap_analyzer.beatmap.mania.ManiaBeatmap;
-import lt.ekgame.beatmap_analyzer.parser.BeatmapException;
-import lt.ekgame.beatmap_analyzer.parser.BeatmapParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,11 +44,12 @@ public class GameScreen extends LazyScreen {
     private InputProcessor inputProcessor;
     private Engine engine;
     private World world;
-    private Beatmap beatmap;
+    private ScanLineComponent scanLine;
     private BitmapFont font;
     private HealthComponent health;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
+    private Beatmap beatmap;
 
     private Texture bg1;
     private Texture redBinPlot;
@@ -81,7 +83,6 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
     private SpriteBatch batch;
 
-    ScanLineComponent scanLine = new ScanLineComponent();
     @Inject
     GameScreen(TrashMelody game,
                Engine engine,
@@ -203,6 +204,19 @@ public class GameScreen extends LazyScreen {
         createEntities();
     }
 
+    public void restartGame() {
+//        engine.removeAllEntities();
+//        game.injector.getInstance(Systems.class).list.stream()
+//            .map(game.injector::getInstance)
+//            .forEach(engine::addSystem);
+//        createEntities();
+        setLoaded(true);
+    }
+
+    public void stop() {
+        setLoaded(false);
+    }
+
     private void createEntities() {
         scanLine = new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 2F);
         health = new HealthComponent(10000);
@@ -264,7 +278,7 @@ public class GameScreen extends LazyScreen {
         File file = new File(HITORIGOTO_EASY);
         Beatmap beatmap = null;
         try {
-            beatmap = parser.parse(file, ManiaBeatmap.class);
+            beatmap = parser.parse(file.toPath(), ManiaBeatmap.class);
         } catch (BeatmapException | FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -275,5 +289,9 @@ public class GameScreen extends LazyScreen {
     private float getHpSliderPositionX(HealthComponent health) {
         float healthPercentage = health.health / health.getMaxHealth() * 100;
         return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
+    }
+
+    public void setBeatmap(Beatmap beatmap) {
+        this.beatmap = beatmap;
     }
 }

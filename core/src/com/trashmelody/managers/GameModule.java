@@ -42,6 +42,7 @@ public class GameModule implements Module {
         binder.bind(KeyboardController.class).in(Singleton.class);
         binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
+        binder.bind(BeatmapManager.class).in(Singleton.class);
     }
 
     @Provides @Singleton

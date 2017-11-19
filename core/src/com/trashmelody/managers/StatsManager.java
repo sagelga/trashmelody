@@ -93,7 +93,7 @@ public class StatsManager {
     }
 
     private void resetStageScore(String stageID) {
-        preferences.putInteger(stageID, 0);
+        setStageScore(stageID, 0);
     }
 
     public void setDevelopmentMode() {
@@ -111,6 +111,17 @@ public class StatsManager {
 
     public void setRecurrentUser() {
         preferences.putBoolean("recurrentUser", true);
+    }
+
+    public void setStageStats(String stageID,String type,int value){
+        stageID += type;
+        preferences.putInteger(stageID,value);
+        preferences.flush();
+    }
+
+    public int getStageStatus(String stageID,String type){
+        stageID += type;
+        return preferences.getInteger(stageID);
     }
 
 }

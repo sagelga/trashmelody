@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -12,7 +13,7 @@ import com.trashmelody.components.DispatchComponent.State;
 import com.trashmelody.constants.Constants;
 import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.managers.Assets;
-import lt.ekgame.beatmap_analyzer.beatmap.HitObject;
+import com.trashmelody.beatmap.parser.beatmap.HitObject;
 
 import java.util.function.Predicate;
 

@@ -1,5 +1,6 @@
 package com.trashmelody.systems;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -8,13 +9,9 @@ import com.google.inject.Inject;
 import com.trashmelody.components.HitObjectComponent;
 
 public class HitObjectSystem extends IteratingSystem {
-    private World world;
-
     @Inject
-    public HitObjectSystem(World world) {
+    public HitObjectSystem() {
         super(Family.all(HitObjectComponent.class).get(), Systems.getIndex(HitObjectSystem.class));
-
-        this.world = world;
     }
 
     @Override

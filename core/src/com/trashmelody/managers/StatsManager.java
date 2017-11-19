@@ -1,10 +1,10 @@
 package com.trashmelody.managers;
 
-import java.io.*;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.google.inject.Singleton;
 
+@Singleton
 public class StatsManager {
 
     private Preferences preferences = getPrefs();

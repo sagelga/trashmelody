@@ -21,6 +21,7 @@ public class PlayerControlSystem extends IteratingSystem {
 
         this.controller = controller;
     }
+
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         StateComponent state = Mapper.state.get(entity);

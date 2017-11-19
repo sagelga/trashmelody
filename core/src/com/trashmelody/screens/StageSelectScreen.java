@@ -13,12 +13,22 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.*;
-import com.trashmelody.managers.Assets;
-import com.trashmelody.managers.MusicManager;
-import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.managers.StatsManager;
+import com.trashmelody.beatmap.parser.beatmap.Beatmap;
+import com.trashmelody.constants.Beatmaps;
+import com.trashmelody.managers.*;
+import com.trashmelody.models.Building;
+import com.trashmelody.models.Difficulty;
 import com.trashmelody.utils.Debugger;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.vavr.CheckedFunction1;
+import io.vavr.Function1;
+import io.vavr.collection.List;
+import io.vavr.collection.Map;
+import io.vavr.collection.Stream;
+import io.vavr.control.Option;
+
+import java.nio.file.*;
+
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -32,6 +42,15 @@ public class StageSelectScreen extends LazyScreen {
     private Viewport viewport;
     private GameScreen gameScreen;
     private SpriteBatch batch;
+    private BeatmapManager beatmapManager;
+    private Map<String, Stream<Beatmap>> beatmaps;
+
+    private Building cafe = new Building("Cafe", Beatmaps.HITORIGOTO_BEATMAP_GROUP_ID);
+    private Building cinema = new Building("Cinema", Beatmaps.MARBLE_SODA_BEATMAP_GROUP_ID);
+    private Building hospital = new Building("Hospital", Beatmaps.REUNION_BEATMAP_GROUP_ID);
+    private Building school = new Building("School", Beatmaps.KANASHII_URESHII_BEATMAP_GROUP_ID);
+    private Building home = new Building("Home", Beatmaps.MIRROR_BEATMAP_GROUP_ID);
+    private Building office = new Building("Office", Beatmaps.TELL_YOUR_WORLD_BEATMAP_GROUP_ID);
 
     // Defining building value
     private Texture bdHomeShow;
@@ -81,7 +100,7 @@ public class StageSelectScreen extends LazyScreen {
     private int modes;
     private int cooldown;
 
-    StatsManager statsManager = new StatsManager();
+    private StatsManager statsManager = new StatsManager();
     private String stage1ID = Integer.toString(statsManager.getStageScore("stage1Score"));
     private String stage2ID = Integer.toString(statsManager.getStageScore("stage2Score"));
     private String stage3ID = Integer.toString(statsManager.getStageScore("stage3Score"));
@@ -89,9 +108,14 @@ public class StageSelectScreen extends LazyScreen {
     private String stage5ID = Integer.toString(statsManager.getStageScore("stage5Score"));
     private String stage6ID = Integer.toString(statsManager.getStageScore("stage6Score"));
 
-
     @Inject
-    StageSelectScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, MusicManager musicManager, Viewport viewport, SpriteBatch batch) {
+    StageSelectScreen(TrashMelody game,
+                      OrthographicCamera camera,
+                      ScreenProvider screens,
+                      MusicManager musicManager,
+                      SpriteBatch batch,
+                      Viewport viewport,
+                      BeatmapManager beatmapManager) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;
@@ -99,7 +123,10 @@ public class StageSelectScreen extends LazyScreen {
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
         this.gameScreen = screens.get(GameScreen.class);
         this.batch = batch;
+        this.viewport = viewport;
+        this.beatmapManager = beatmapManager;
 
+        beatmaps = beatmapManager.getBeatmapsByGroupId();
     }
 
     @Override
@@ -134,7 +161,7 @@ public class StageSelectScreen extends LazyScreen {
         font.draw(batch, "High Score", vw / 1.3F, vh / 4.5F);
 
         int count = 0;
-
+        Beatmap currentBeatmap = null;
 
         // Show the text of the selected item
         switch (currentStageNumber) {
@@ -143,18 +170,21 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(stageCafeText, vw / 64, vh / 1.155F, vw / 3.5F, vh / 8);
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+
                 if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_1_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             case (1):
                 font.draw(batch, stage2ID, vw / 1.3F, vh / 6);
                 game.batch.draw(stageCinemaText, vw / 64, vh / 1.155F, vw / 2.6F, vh / 8);
                 game.batch.draw(bdCinemaShow, vw / 1.57F, vh / 2.25F, vw / 6, vh / 3);
+
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -169,6 +199,8 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(stageHospitalText, vw / 64, vh / 1.155F, vw / 2, vh / 8);
                 game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+
                 if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_3_SONG);
@@ -181,6 +213,8 @@ public class StageSelectScreen extends LazyScreen {
                 font.draw(batch, stage4ID, vw / 1.3F, vh / 6);
                 game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.6F, vw / 4, vh / 4);
                 game.batch.draw(stageSchoolText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
+
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -195,6 +229,8 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
                 game.batch.draw(stageHomeText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
 
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+
                 if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_5_SONG);
@@ -207,6 +243,8 @@ public class StageSelectScreen extends LazyScreen {
                 font.draw(batch, stage6ID, vw / 1.3F, vh / 6);
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
                 game.batch.draw(stageOfficeText, vw / 64, vh / 1.155F, vw / 2.5F, vh / 8);
+
+                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
 
                 if (cooldown == 0) {
                     cooldown--;
@@ -246,6 +284,7 @@ public class StageSelectScreen extends LazyScreen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+            gameScreen.setBeatmap(currentBeatmap);
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 //
@@ -325,7 +364,6 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
 
-
         assets.load(MUSIC_1_SONG, MUSIC);
         assets.load(MUSIC_2_SONG, MUSIC);
         assets.load(MUSIC_3_SONG, MUSIC);
@@ -383,5 +421,11 @@ public class StageSelectScreen extends LazyScreen {
         currentStageNumber = 0;
         cooldown = 0;
         musicManager.stopMusic();
+    }
+
+    private List<Building> getBuildings() {
+        return List.of(
+
+        );
     }
 }

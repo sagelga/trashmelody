@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,11 +46,13 @@ public class GameScreen extends LazyScreen {
     private Engine engine;
     private World world;
     private ScanLineComponent scanLine;
-    private BitmapFont font;
     private HealthComponent health;
+    private DispatchComponent dispatch = new DispatchComponent(getBeatmap(), 2F);
+    private BitmapFont font;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private Beatmap beatmap;
+    private Music music;
 
     private Texture bg1;
     private Texture redBinPlot;
@@ -218,8 +221,9 @@ public class GameScreen extends LazyScreen {
     }
 
     private void createEntities() {
-        scanLine = new ScanLineComponent(assets.get(MUSIC_1_SONG, MUSIC), 2F);
+        scanLine = new ScanLineComponent(music, 2F);
         health = new HealthComponent(10000);
+//        dispatch = new DispatchComponent(beatmap, 2F);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
                 world,
@@ -234,7 +238,7 @@ public class GameScreen extends LazyScreen {
         ));
         engine.addEntity(new Dispatcher(
                 world,
-                new DispatchComponent(beatmap, 2F)
+                dispatch
         ));
     }
 
@@ -293,5 +297,10 @@ public class GameScreen extends LazyScreen {
 
     public void setBeatmap(Beatmap beatmap) {
         this.beatmap = beatmap;
+        this.dispatch.beatmap = beatmap;
+    }
+
+    public void setMusic(Music music) {
+        this.music = music;
     }
 }

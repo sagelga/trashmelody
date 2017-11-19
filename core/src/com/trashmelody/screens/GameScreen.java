@@ -1,7 +1,6 @@
 package com.trashmelody.screens;
 
 import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
@@ -26,7 +25,6 @@ import com.trashmelody.entities.Player;
 import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
-import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 
 import java.io.File;
@@ -47,7 +45,7 @@ public class GameScreen extends LazyScreen {
     private World world;
     private ScanLineComponent scanLine;
     private HealthComponent health;
-    private DispatchComponent dispatch = new DispatchComponent(getBeatmap(), 2F);
+    private DispatchComponent dispatch;
     private BitmapFont font;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -101,7 +99,7 @@ public class GameScreen extends LazyScreen {
         this.world = world;
         this.assets = assets;
         this.inputProcessor = inputProcessor;
-        this.beatmap = getBeatmap();
+//        this.beatmap = getBeatmap();
         this.batch = batch;
     }
 
@@ -226,19 +224,19 @@ public class GameScreen extends LazyScreen {
 //        dispatch = new DispatchComponent(beatmap, 2F);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
-                world,
-                new PlayerComponent(D, F, J, K),
-                new TypeComponent(TypeComponent.PLAYER)
+            world,
+            new PlayerComponent(D, F, J, K),
+            new TypeComponent(TypeComponent.PLAYER)
         ));
         engine.addEntity(new ScanLine(
-                world,
-                scanLine,
-                new TextureComponent(check),
-                health
+            world,
+            scanLine,
+            new TextureComponent(check),
+            health
         ));
         engine.addEntity(new Dispatcher(
-                world,
-                dispatch
+            world,
+            dispatch
         ));
     }
 
@@ -277,18 +275,18 @@ public class GameScreen extends LazyScreen {
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
 
-    private Beatmap getBeatmap() {
-        BeatmapParser parser = new BeatmapParser();
-        File file = new File(HITORIGOTO_EASY);
-        Beatmap beatmap = null;
-        try {
-            beatmap = parser.parse(file.toPath(), ManiaBeatmap.class);
-        } catch (BeatmapException | FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return beatmap;
-    }
+//    private Beatmap getBeatmap() {
+//        BeatmapParser parser = new BeatmapParser();
+//        File file = new File(HITORIGOTO_EASY);
+//        Beatmap beatmap = null;
+//        try {
+//            beatmap = parser.parse(file.toPath(), ManiaBeatmap.class);
+//        } catch (BeatmapException | FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return beatmap;
+//    }
 
     private float getHpSliderPositionX(HealthComponent health) {
         float healthPercentage = health.health / health.getMaxHealth() * 100;
@@ -297,7 +295,7 @@ public class GameScreen extends LazyScreen {
 
     public void setBeatmap(Beatmap beatmap) {
         this.beatmap = beatmap;
-        this.dispatch.beatmap = beatmap;
+        this.dispatch = new DispatchComponent(beatmap, 2F);
     }
 
     public void setMusic(Music music) {

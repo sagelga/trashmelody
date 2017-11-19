@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,6 +19,7 @@ import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
+import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
@@ -33,17 +35,19 @@ public class CollectionScreen extends LazyScreen {
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private int count = 1;
-    private Texture bg,footer,header,pack,l,r,lh,rh,back;
+    private Animation<TextureRegion> bg;
+    private Texture footer, header, pack, l, r, lh, rh, back;
     //Dangerous Trashes
-    private Texture cigar,spray,can,bag,thinner;
+    private Texture cigar, spray, can, bag, thinner;
     //Recycle Trashes
-    private Texture  cardboard,glass,note,paper,plastic;
+    private Texture  cardboard, glass, note, paper, plastic;
     //Wet Trashes
-    private Texture curry,donut,icecream,matcha,popcorn;
+    private Texture curry, donut, icecream, matcha, popcorn;
     //Bin
-    private Texture dangerBin,recycleBin,wetBin,idkBin;
+    private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Temporary Current Stage
     private int currentStage = 1;
+    float elapsed;
 
     @Inject
     CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
@@ -56,6 +60,7 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void render(float delta) {
+        elapsed += delta;
         clearScreen();
 
         Texture cardToDraw;
@@ -64,7 +69,11 @@ public class CollectionScreen extends LazyScreen {
         game.batch.begin();
 
         // Draw Background
-        game.batch.draw(bg,0,0,vw,vh);
+        if (TrashMelody.enableAnimation) {
+            game.batch.draw(bg.getKeyFrame(elapsed), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        } else {
+            game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        }
         game.batch.draw(footer, 0, 0, vw, vh / 12);
         game.batch.draw(back, vw / 1.13F, 0, vw / 10, vh / 16);
         game.batch.draw(pack, vw / 4.5F, vw/ 6.5F, vw / 1.8F, vh / 2);
@@ -273,11 +282,13 @@ public class CollectionScreen extends LazyScreen {
         assets.load(GAME_BIN_02, TEXTURE);
         assets.load(GAME_BIN_03, TEXTURE);
         assets.load(GAME_BIN_04, TEXTURE);
+
+        this.bg = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(COLLECTION_BG).read());
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.bg         = assets.get(COLLECTION_BG, TEXTURE);
+//        this.bg         = assets.get(COLLECTION_BG, TEXTURE);
         this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
         this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
         this.pack       = assets.get(COLLECTION_PACK, TEXTURE);

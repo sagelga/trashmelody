@@ -2,10 +2,11 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -15,6 +16,7 @@ import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
+import com.trashmelody.utils.GifDecoder;
 
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
@@ -25,64 +27,210 @@ public class CollectionScreen extends LazyScreen {
     private ScreenProvider screens;
     private OrthographicCamera camera;
     private Viewport viewport;
-    private Texture bg, screenTitle, buttonBack, footer, bar, arrow, textExample;
-    private Texture lv1, lv2, lv3, lv4, lv5, lv6, dangerBag, reTrio, wetCorn;
+    private SpriteBatch batch;
+    private BitmapFont fontTitle, fontDesc, fontTrashType;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private int count = 1;
+    private Animation<TextureRegion> bg;
+    private Texture footer, header, pack, l, r, lh, rh, btnBack;
+    //Dangerous Trashes
+    private Texture cigar, spray, can, bag, thinner;
+    //Recycle Trashes
+    private Texture  cardboard, glass, note, paper, plastic;
+    //Wet Trashes
+    private Texture curry, donut, icecream, matcha, popcorn;
+    //Bin
+    private Texture dangerBin, recycleBin, wetBin, idkBin;
+    //Temporary Current Stage
+    private int currentStage = 1;
+    float elapsed;
+    private GlyphLayout layoutTitle = new GlyphLayout();
+    private GlyphLayout layoutDesc = new GlyphLayout();
+    private GlyphLayout layoutTrashType = new GlyphLayout();
 
     @Inject
-    CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport) {
+    CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.batch = batch;
     }
 
     @Override
     public void render(float delta) {
+        elapsed += delta;
         clearScreen();
+
+        Texture cardToDraw;
+        String nameToDraw = "";
+        String descToDraw = "";
+        String typeToDraw = "";
 
         game.batch.begin();
 
-        game.batch.draw(bg, 0, 0, vw, vh);
-        game.batch.draw(screenTitle, 0, vh/1.35F,vw/1.5F,vh/4);
-        game.batch.draw(bar, vw/2.5F, vh/64, vw/1.5F, vh/1.2F);
-        game.batch.draw(footer, 0, 0, vw, vh/12);
-        game.batch.draw(buttonBack, vw/1.13F, 0, vw/10, vh/16);
-        game.batch.draw(dangerBag, vw/64, vh/9, vw/3.5F, vh/1.5F);
-        game.batch.draw(dangerBag, vw/19, vh/9, vw/3.5F, vh/1.5F);
+        // Draw Background
+        if (TrashMelody.enableAnimation) {
+            game.batch.draw(bg.getKeyFrame(elapsed), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        } else {
+            game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        }
+        game.batch.draw(pack, vw / 4.5F, vw/ 6.5F, vw / 1.8F, vh / 2);
+        game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(btnBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
+        game.batch.draw(l, vw/6, vh / 2, vw / 45, vh / 24);
+        game.batch.draw(r, vw/1.23F, vh / 2, vw / 45, vh / 24);
 
-        game.batch.draw(arrow, vw/20, vh/9, vw/3, vh/12);
-        game.batch.draw(arrow, vw/28, vh/9, vw/3, vh/12);
+        // Trash on Stage 1
+        if (count < 1) count = 1;
+        if (count > 3 * currentStage) count = 3 * currentStage;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
+        switch (count) {
+            case 1:
+                cardToDraw = bag;
+                nameToDraw = "Immortal bag";
+                descToDraw = "She was born 700 years ago. And as her name says; "
+                        + "she is a plastic bag that could live through centuries.";
+                break;
+            case 2:
+                cardToDraw = paper;
+                nameToDraw = "The Trio";
+                descToDraw = "The trio of derpy paper friends that "
+                        + "a famous artist has thrown into the bin.";
+                break;
+            case 3:
+                cardToDraw = popcorn;
+                nameToDraw = "Popu-san";
+                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
+                        + "He has starred in many popular films such as Trash 1997 and "
+                        + "earned Oscar nominations for Get Trash 2008.";
+                break;
+            case 4:
+                cardToDraw = spray;
+                nameToDraw = "Hairspray chan";
+                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
+                        + "she then determined to founding her own salon "
+                        + "with Wax-kung and Gel-kung to take revenge.";
+                break;
+            case 5:
+                cardToDraw = note;
+                nameToDraw = "Pep";
+                descToDraw = "The lost piece of Pep Guardiola’s note, "
+                        + "so the name \"Pep\" literally comes from his owner.";
+                break;
+            case 6:
+                cardToDraw = donut;
+                nameToDraw = "Dono-chan";
+                descToDraw = "Dono-Chan is a teacher of Circle Dance and Sing Academy. "
+                        + "Although she is fat, she can dance very well. "
+                        + "She and everyone is jealous of her talent.";
+                break;
+            case 7:
+                cardToDraw = cigar;
+                nameToDraw = "Cigar";
+                descToDraw = "A friend of every man *Cough*. But his health *Cough* "
+                        + "is not very well lately *Cough* due to *Cough* "
+                        + "his oral cavity, larynx, esophagus, and lung cancer.";
+                break;
+            case 8:
+                cardToDraw = plastic;
+                nameToDraw = "SaiSai";
+                descToDraw = "A plastic box that wants to find new friends and go explore the world.";
+                break;
+            case 9:
+                cardToDraw = curry;
+                nameToDraw = "Keri-a";
+                descToDraw = "Keri-a is the hottest girl in Trash World. "
+                        + "  She had her red lips cosmetically enhanced. "
+                        + "She is the Miss Popular Vote in the Trash World.";
+                break;
+            case 10:
+                cardToDraw = thinner;
+                nameToDraw = "Thinner the Carpenter";
+                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
+                        + "hallucinations to everyone near him.";
+                break;
+            case 11:
+                cardToDraw = glass;
+                nameToDraw = "MookMook";
+                descToDraw = "An empty plastic glass from a bubble milk tea shop. "
+                        + "He is finding a way back to the shop.";
+                break;
+            case 12:
+                cardToDraw = matcha;
+                nameToDraw = "Matty";
+                descToDraw = "His full name is Matcha-sama. He has dark-green eyes, "
+                        + "and he has a lot of success with ladies. He has been voted "
+                        + "the sexiest man in Trash World many times.";
+                break;
+            case 13:
+                cardToDraw = can;
+                nameToDraw = "Oily Oiler";
+                descToDraw = "Oily Oiler is an oil can from the suburb. "
+                        + "After he had been emptied petrol, he got thrown away without care.";
+                break;
+            case 14:
+                cardToDraw = cardboard;
+                nameToDraw = "Bokk Kung";
+                descToDraw = "A cardboard box that used to contain a dog. "
+                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
+                break;
+            case 15:
+                cardToDraw = icecream;
+                nameToDraw = "Izu-chan";
+                descToDraw = "Her full name is Izu - Pink Cremu. She is a sweetened frozen girl "
+                        + "you'll want to eat if you see one. Her cheek is pink and her hair is white.";
+                break;
+            default:
+                cardToDraw = bag;
+        }
+
+        game.batch.draw(cardToDraw, vw / 2.52F, vh / 3.1F, vw / 5, vh / 2.2F);
+
+        // Set fontTitle properties and draw
+        layoutTitle.setText(fontTitle, nameToDraw, Color.WHITE, vw, Align.center, true);
+        fontTitle.draw(batch, layoutTitle, 0, vw / 6.2F);
+
+        // Set fontDesc properties and draw
+        float descWidth;
+        if (vw < 1500) descWidth = vw/1.5F; else descWidth = vw/2.5F;
+        layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, descWidth, Align.center, true);
+        fontDesc.draw(batch, layoutDesc, (vw/2)-(descWidth/2F), vw / 8);
+
+        // Set fontTrashType properties and draw
+        if (count == 1 || count == 4 || count == 7 || count == 10 || count == 13) {
+            typeToDraw = "Type * Dangerous";
+            game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);
+        } else if (count == 2 || count == 5 || count == 8 || count == 11 || count == 14) {
+            typeToDraw = "Type * Recycle";
+            game.batch.draw(recycleBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
+        } else if (count == 3 || count == 6 || count == 9 || count == 12 || count == 15) {
+            typeToDraw = "Type * Wet";
+            game.batch.draw(wetBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
+        }
+        layoutTrashType.setText(fontTrashType, typeToDraw, Color.WHITE, vw, Align.center, true);
+        fontTrashType.draw(batch, layoutTrashType, 0, vw / 24);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
+            game.batch.draw(rh, vw/1.23F, vh / 2, vw / 45, vh / 24);
+            count ++;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
+            game.batch.draw(lh, vw/6, vh / 2, vw / 45, vh / 24);
+            count--;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) currentStage++;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) currentStage--;
+        if (currentStage > 5) currentStage = 5;
+        if (currentStage < 1) currentStage = 1;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
-
-        if (count == 1) {
-            game.batch.draw(dangerBag, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
-            game.batch.draw(textExample, vw / 2.5F, vh / 3.5F, vw / 1.8F, vh / 1.6F);
-            game.batch.draw(lv1, vw / 1.7F, vh / 7, vw / 4, vh / 5);
-        }
-        else if (count == 2) {
-            game.batch.draw(reTrio, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
-            game.batch.draw(lv2, vw / 1.7F, vh / 7, vw / 4, vh / 5);
-        }
-        else if (count == 3) {
-            game.batch.draw(wetCorn, vw / 11, vh / 9, vw / 3.5F, vh / 1.5F);
-            game.batch.draw(lv6, vw / 1.7F, vh / 7, vw / 4, vh / 5);
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) count++;
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) count--;
-
-        // Reset counter
-        if (count > 3) count = 1;
-        else if (count < 1) count = 3;
-
-        //arrow pad
-        game.batch.draw(arrow, vw/24, vh/9, vw/3, vh/12);
 
         // Debug zone
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
@@ -101,40 +249,76 @@ public class CollectionScreen extends LazyScreen {
     @Override
     public void loadAssets(Assets assets) {
         assets.load(COLLECTION_BG, TEXTURE);
-        assets.load(COLLECTION_SCREEN_TITLE, TEXTURE);
-        assets.load(COLLECTION_BAR, TEXTURE);
-        assets.load(COLLECTION_ARROW, TEXTURE);
-        assets.load(COLLECTION_TEXT_EXAMPLE, TEXTURE);
-        assets.load(COLLECTION_LV1, TEXTURE);
-        assets.load(COLLECTION_LV2, TEXTURE);
-        assets.load(COLLECTION_LV3, TEXTURE);
-        assets.load(COLLECTION_LV4, TEXTURE);
-        assets.load(COLLECTION_LV5, TEXTURE);
-        assets.load(COLLECTION_LV6, TEXTURE);
-        assets.load(STAGE_BG_BACKBUTTON, TEXTURE);
-        assets.load(STAGE_BG_FOOTER, TEXTURE);
-        assets.load(COLLECTION_CARD_DANGER_BAG, TEXTURE);
-        assets.load(COLLECTION_CARD_RECYCLE_TRIO, TEXTURE);
-        assets.load(COLLECTION_CARD_WET_POPCORN, TEXTURE);
+        assets.load(COLLECTION_HEADER, TEXTURE);
+        assets.load(COLLECTION_PACK, TEXTURE);
+        assets.load(COLLECTION_LEFT, TEXTURE);
+        assets.load(COLLECTION_RIGHT, TEXTURE);
+        assets.load(COLLECTION_LEFT_H, TEXTURE);
+        assets.load(COLLECTION_RIGHT_H, TEXTURE);
+        //Trashes
+        assets.load(COLLECTION_DANGER_1, TEXTURE);
+        assets.load(COLLECTION_DANGER_2, TEXTURE);
+        assets.load(COLLECTION_DANGER_3, TEXTURE);
+        assets.load(COLLECTION_DANGER_4, TEXTURE);
+        assets.load(COLLECTION_DANGER_5, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_1, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_2, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_3, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_4, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_5, TEXTURE);
+        assets.load(COLLECTION_WET_1, TEXTURE);
+        assets.load(COLLECTION_WET_2, TEXTURE);
+        assets.load(COLLECTION_WET_3, TEXTURE);
+        assets.load(COLLECTION_WET_4, TEXTURE);
+        assets.load(COLLECTION_WET_5, TEXTURE);
+        assets.load(GLOBAL_ICON_BACK, TEXTURE);
+        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        //Bin
+        assets.load(GAME_BIN_01, TEXTURE);
+        assets.load(GAME_BIN_02, TEXTURE);
+        assets.load(GAME_BIN_03, TEXTURE);
+        assets.load(GAME_BIN_04, TEXTURE);
+
+        this.bg = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(COLLECTION_BG).read());
     }
 
     @Override
     public void afterLoad(Assets assets) {
-        this.buttonBack = assets.get(STAGE_BG_BACKBUTTON, TEXTURE);
-        this.footer = assets.get(STAGE_BG_FOOTER, TEXTURE);
-        this.bg = assets.get(COLLECTION_BG, TEXTURE);
-        this.screenTitle = assets.get(COLLECTION_SCREEN_TITLE, TEXTURE);
-        this.bar = assets.get(COLLECTION_BAR, TEXTURE);
-        this.arrow = assets.get(COLLECTION_ARROW, TEXTURE);
-        this.textExample = assets.get(COLLECTION_TEXT_EXAMPLE, TEXTURE);
-        this.lv1 = assets.get(COLLECTION_LV1, TEXTURE);
-        this.lv2 = assets.get(COLLECTION_LV2, TEXTURE);
-        this.lv3 = assets.get(COLLECTION_LV3, TEXTURE);
-        this.lv4 = assets.get(COLLECTION_LV4, TEXTURE);
-        this.lv5 = assets.get(COLLECTION_LV5, TEXTURE);
-        this.lv6 = assets.get(COLLECTION_LV6, TEXTURE);
-        this.dangerBag = assets.get(COLLECTION_CARD_DANGER_BAG, TEXTURE);
-        this.reTrio = assets.get(COLLECTION_CARD_RECYCLE_TRIO, TEXTURE);
-        this.wetCorn = assets.get(COLLECTION_CARD_WET_POPCORN, TEXTURE);
+//        this.bg         = assets.get(COLLECTION_BG, TEXTURE);
+        this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
+        this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
+        this.pack       = assets.get(COLLECTION_PACK, TEXTURE);
+        this.l          = assets.get(COLLECTION_LEFT, TEXTURE);
+        this.r          = assets.get(COLLECTION_RIGHT, TEXTURE);
+        this.lh         = assets.get(COLLECTION_LEFT_H, TEXTURE);
+        this.rh         = assets.get(COLLECTION_RIGHT_H, TEXTURE);
+        this.btnBack    = assets.get(GLOBAL_ICON_BACK, TEXTURE);
+        //Danger Trashes
+        this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
+        this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);
+        this.cigar      = assets.get(COLLECTION_DANGER_3, TEXTURE);
+        this.thinner    = assets.get(COLLECTION_DANGER_4, TEXTURE);
+        this.can        = assets.get(COLLECTION_DANGER_5, TEXTURE);
+        //Recycle Trashes
+        this.paper      = assets.get(COLLECTION_RECYCLE_1, TEXTURE);
+        this.note       = assets.get(COLLECTION_RECYCLE_2, TEXTURE);
+        this.plastic    = assets.get(COLLECTION_RECYCLE_3, TEXTURE);
+        this.glass      = assets.get(COLLECTION_RECYCLE_4, TEXTURE);
+        this.cardboard  = assets.get(COLLECTION_RECYCLE_5, TEXTURE);
+        //Wet Trashes
+        this.popcorn    = assets.get(COLLECTION_WET_1, TEXTURE);
+        this.donut      = assets.get(COLLECTION_WET_2, TEXTURE);
+        this.curry      = assets.get(COLLECTION_WET_3, TEXTURE);
+        this.matcha     = assets.get(COLLECTION_WET_4, TEXTURE);
+        this.icecream   = assets.get(COLLECTION_WET_5, TEXTURE);
+        //Bin
+        this.dangerBin  = assets.get(GAME_BIN_01, TEXTURE);
+        this.recycleBin = assets.get(GAME_BIN_02, TEXTURE);
+        this.wetBin     = assets.get(GAME_BIN_03, TEXTURE);
+        this.idkBin     = assets.get(GAME_BIN_04, TEXTURE);
+
+        this.fontTitle       = assets.get8bitFont(40, Color.WHITE);
+        this.fontDesc = assets.getSuperSpaceFont(31, Color.WHITE);
+        this.fontTrashType = assets.get8bitFont(24, Color.WHITE);
     }
 }

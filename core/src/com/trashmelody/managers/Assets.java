@@ -37,6 +37,10 @@ public class Assets extends AssetManager {
         return getFont("fonts/Superspace Bold ver 1.00.otf", size, color);
     }
 
+    public BitmapFont get8bitFont(Integer size, Color color) {
+        return getFont("fonts/8-BIT WONDER.ttf", size, color);
+    }
+
     public static Class<Texture> TEXTURE = Texture.class;
     public static Class<Music> MUSIC = Music.class;
     public static Class<Animation> ANIMATION = Animation.class;
@@ -91,31 +95,37 @@ public class Assets extends AssetManager {
     public static final String STAGE_TEXT_SCHOOL = "StageSelect/Text/stage-school-text.png";
     public static final String STAGE_TEXT_HOME = "StageSelect/Text/stage-home-text.png";
     public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
-    public static final String STAGE_BG_BACKBUTTON = "StageSelect/Background/stage-backbutton.png";
-    public static final String STAGE_BG_PLAYBUTTON = "StageSelect/Background/stage-playbutton.png";
     public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
     public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
-    public static final String STAGE_BG_FOOTER = "StageSelect/Background/stage-footer.png";
     public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
-    public static final String STAGE_BG_OVERLAY = "StageSelect/Background/stage-overlay-background.png";
     public static final String STAGE_BG_ARROW_L = "StageSelect/Background/stage-arrow-left.png";
     public static final String STAGE_BG_ARROW_R = "StageSelect/Background/stage-arrow-right.png";
+    public static final String STAGE_BG = "StageSelect/Background/stage-bg.png";
 
     // Collection Stage Assets
-    public static final String COLLECTION_SCREEN_TITLE = "CollectionScreen/screen-title.png";
-    public static final String COLLECTION_BG = "CollectionScreen/bg.jpg";
-    public static final String COLLECTION_BAR = "CollectionScreen/info-bar.png";
-    public static final String COLLECTION_ARROW = "CollectionScreen/arrow.png";
-    public static final String COLLECTION_TEXT_EXAMPLE = "CollectionScreen/text-example.png";
-    public static final String COLLECTION_LV1 = "CollectionScreen/lv1.png";
-    public static final String COLLECTION_LV2 = "CollectionScreen/lv2.png";
-    public static final String COLLECTION_LV3 = "CollectionScreen/lv3.png";
-    public static final String COLLECTION_LV4 = "CollectionScreen/lv4.png";
-    public static final String COLLECTION_LV5 = "CollectionScreen/lv5.png";
-    public static final String COLLECTION_LV6 = "CollectionScreen/lv6.png";
-    public static final String COLLECTION_CARD_DANGER_BAG = "trashes/dangerous/cards/DANGER - CARD-01.png";
-    public static final String COLLECTION_CARD_RECYCLE_TRIO = "trashes/recycle/cards/RE - CARD-01.png";
-    public static final String COLLECTION_CARD_WET_POPCORN = "trashes/wet/cards/FOOD - CARD-01.png";
+    public static final String COLLECTION_HEADER = "CollectionScreen/Header.png";
+    public static final String COLLECTION_BG = "CollectionScreen/BG.gif";
+    public static final String COLLECTION_FOOTER = "CollectionScreen/Footer.png";
+    public static final String COLLECTION_PACK = "CollectionScreen/CardPack.png";
+    public static final String COLLECTION_RIGHT = "CollectionScreen/ArrowRight.png";
+    public static final String COLLECTION_LEFT = "CollectionScreen/ArrowLeft.png";
+    public static final String COLLECTION_RIGHT_H = "CollectionScreen/ArrowRightHover.png";
+    public static final String COLLECTION_LEFT_H = "CollectionScreen/ArrowLeftHover.png";
+    public static final String COLLECTION_DANGER_1 = "trashes/dangerous/cards/DANGER - CARD-01.png";
+    public static final String COLLECTION_DANGER_2 = "trashes/dangerous/cards/DANGER - CARD-02.png";
+    public static final String COLLECTION_DANGER_3 = "trashes/dangerous/cards/DANGER - CARD-03.png";
+    public static final String COLLECTION_DANGER_4 = "trashes/dangerous/cards/DANGER - CARD-04.png";
+    public static final String COLLECTION_DANGER_5 = "trashes/dangerous/cards/DANGER - CARD-05.png";
+    public static final String COLLECTION_RECYCLE_1 = "trashes/recycle/cards/RE - CARD-01.png";
+    public static final String COLLECTION_RECYCLE_2 = "trashes/recycle/cards/RE - CARD-02.png";
+    public static final String COLLECTION_RECYCLE_3 = "trashes/recycle/cards/RE - CARD-03.png";
+    public static final String COLLECTION_RECYCLE_4 = "trashes/recycle/cards/RE - CARD-04.png";
+    public static final String COLLECTION_RECYCLE_5 = "trashes/recycle/cards/RE - CARD-05.png";
+    public static final String COLLECTION_WET_1 = "trashes/wet/cards/FOOD - CARD-01.png";
+    public static final String COLLECTION_WET_2 = "trashes/wet/cards/FOOD - CARD-02.png";
+    public static final String COLLECTION_WET_3 = "trashes/wet/cards/FOOD - CARD-03.png";
+    public static final String COLLECTION_WET_4 = "trashes/wet/cards/FOOD - CARD-04.png";
+    public static final String COLLECTION_WET_5 = "trashes/wet/cards/FOOD - CARD-05.png";
 
 
     // Countdown Stage Assets
@@ -191,17 +201,16 @@ public class Assets extends AssetManager {
     // Result Screen Assets
     public static final String RESULT_RESULT_BACKGROUND = "ResultScreen/Result-Background.png";
     public static final String RESULT_RESULT_HEADER = "ResultScreen/Result-Header.png";
-    public static final String RESULT_RESULT_FOOTER = "ResultScreen/Result-Footer.png";
     public static final String RESULT_RESULT_GRADE_A = "ResultScreen/Result-Grade-A.png";
     public static final String RESULT_RESULT_GRADE_B = "ResultScreen/Result-Grade-B.png";
     public static final String RESULT_RESULT_GRADE_C = "ResultScreen/Result-Grade-C.png";
     public static final String RESULT_RESULT_GRADE_D = "ResultScreen/Result-Grade-D.png";
     public static final String RESULT_RESULT_GRADE_F = "ResultScreen/Result-Grade-F.png";
-    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
-    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
-    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
-    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
-    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
+//    public static final String RESULT_RESULT_PERFECT = "ResultScreen/Result-Perfect.png";
+//    public static final String RESULT_RESULT_GOOD = "ResultScreen/Result-Good.png";
+//    public static final String RESULT_RESULT_NICE = "ResultScreen/Result-Nice.png";
+//    public static final String RESULT_RESULT_MISS = "ResultScreen/Result-Miss.png";
+//    public static final String RESULT_RESULT_COMBO = "ResultScreen/Result-Combo.png";
     public static final String RESULT_RESULT_TEXT_ALL = "ResultScreen/Result-Text-All.png";
 
     // Setting Screen Assets
@@ -262,4 +271,8 @@ public class Assets extends AssetManager {
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";
     public static final String PLAYER_PLAY = "SFX/vol - template.png";
 
+    // Globally-Reusable Assets
+    public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
+    public static final String GLOBAL_ICON_PLAY = "Global/icon-play.png";
+    public static final String GLOBAL_FOOTER_BAR = "Global/footer-bar.png";
 }

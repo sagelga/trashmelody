@@ -76,9 +76,17 @@ public class CollectionScreen extends LazyScreen {
         } else {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
         }
-        game.batch.draw(pack, vw / 4F, vw/ 5.85F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
+
         game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
-        game.batch.draw(storyBG, (vw/2)-((vw/2F)/2), 0, vw/2F, findRatio(991, 359, vw/2F, 'h'));
+
+        if (vw < 1500) {
+            game.batch.draw(storyBG, (vw / 2) - ((vw / 1.3F) / 2), 0, vw / 1.3F, vh/3.4F);
+            game.batch.draw(pack, vw / 4F, vw/ 5F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
+        } else {
+            game.batch.draw(storyBG, (vw / 2) - ((vw / 2F) / 2), 0, vw / 2F, findRatio(991, 359, vw / 2F, 'h'));
+            game.batch.draw(pack, vw / 4F, vw/ 5.85F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
+        }
+
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
         game.batch.draw(btnBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 1.9F, vw / 45, vh / 24);
@@ -188,7 +196,11 @@ public class CollectionScreen extends LazyScreen {
                 cardToDraw = bag;
         }
 
-        game.batch.draw(cardToDraw, vw / 2.52F, vh / 3F, vw / 5, vh / 2.2F);
+        if (vw < 1500) {
+            game.batch.draw(cardToDraw, vw / 2.52F, vh / 3.1F, vw / 5, vh / 2.2F);
+        } else {
+            game.batch.draw(cardToDraw, vw / 2.52F, vh / 3F, vw / 5, vh / 2.2F);
+        }
 
         // Set fontTitle properties and draw
         layoutTitle.setText(fontTitle, nameToDraw, Color.WHITE, vw, Align.center, true);

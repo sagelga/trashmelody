@@ -2,7 +2,6 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,7 +28,7 @@ public class CollectionScreen extends LazyScreen {
     private OrthographicCamera camera;
     private Viewport viewport;
     private SpriteBatch batch;
-    private BitmapFont fontTitle,font2,font3,font4;
+    private BitmapFont fontTitle, fontDesc, font3, font4;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private int count = 1;
@@ -46,7 +45,8 @@ public class CollectionScreen extends LazyScreen {
     //Temporary Current Stage
     private int currentStage = 1;
     float elapsed;
-    private GlyphLayout layout = new GlyphLayout();
+    private GlyphLayout layoutTitle = new GlyphLayout();
+    private GlyphLayout layoutDesc = new GlyphLayout();
 
     @Inject
     CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
@@ -64,6 +64,7 @@ public class CollectionScreen extends LazyScreen {
 
         Texture cardToDraw;
         String nameToDraw = "";
+        String descToDraw = "";
 
         game.batch.begin();
 
@@ -89,119 +90,111 @@ public class CollectionScreen extends LazyScreen {
             case 1:
                 cardToDraw = bag;
                 nameToDraw = "Immortal bag";
-                font2.draw(batch, "She was born 700 years ago. And as her name says;"
-                        + "\n" + "she is a plastic bag that could live through centuries.", vw / 2.9F, vw / 8);
+                descToDraw = "She was born 700 years ago. And as her name says; "
+                        + "she is a plastic bag that could live through centuries.";
                 break;
             case 2:
                 cardToDraw = paper;
                 nameToDraw = "The Trio";
-                font2.draw(batch, "The trio of derpy paper friends that"
-                        + "\n" + "a famous artist has thrown into the bin.", vw / 2.5F, vw / 8);
+                descToDraw = "The trio of derpy paper friends that "
+                        + "a famous artist has thrown into the bin.";
                 break;
             case 3:
                 cardToDraw = popcorn;
                 nameToDraw = "Popu-san";
-                font2.draw(batch, "He is the son of comedy director M-san.Popu-san is a popular actor." + "\n"
-                                + "   He has starred in many popular films such as Trash 1997 and" + "\n"
-                                + "        earned Oscar nominations for Get Trash 2008."
-                        , vw / 3.25F, vw / 8);
+                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
+                        + "He has starred in many popular films such as Trash 1997 and "
+                        + "earned Oscar nominations for Get Trash 2008.";
                 break;
             case 4:
                 cardToDraw = spray;
                 nameToDraw = "Hairspray chan";
-                font2.draw(batch, "Fired from a beauty salon being accused of causing global warming, " + "\n"
-                                + "       she then determined to founding her own salon " + "\n"
-                                + "       with Wax-kung and Gel-kung to take revenge."
-                        , vw / 3.25F, vw / 8);
+                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
+                        + "she then determined to founding her own salon "
+                        + "with Wax-kung and Gel-kung to take revenge.";
                 break;
             case 5:
                 cardToDraw = note;
                 nameToDraw = "Pep";
-                font2.draw(batch, "   The lost piece of Pep Guardiola’s note, " + "\n"
-                                + "so the name \"Pep\" literally comes from his owner."
-                        , vw / 2.7F, vw / 8);
+                descToDraw = "The lost piece of Pep Guardiola’s note, "
+                        + "so the name \"Pep\" literally comes from his owner.";
                 break;
             case 6:
                 cardToDraw = donut;
                 nameToDraw = "Dono-chan";
-                font2.draw(batch, "  Dono-Chan is a teacher of Circle Dance and Sing Academy." + "\n"
-                                + "       Although she is fat. she can dance very well. " + "\n"
-                                + "         She and everyone is jealous of her talent."
-                        , vw / 3.25F, vw / 8);
+                descToDraw = "Dono-Chan is a teacher of Circle Dance and Sing Academy. "
+                        + "Although she is fat, she can dance very well. "
+                        + "She and everyone is jealous of her talent.";
                 break;
             case 7:
                 cardToDraw = cigar;
                 nameToDraw = "Cigar";
-                font2.draw(batch, "A friend of every man *Cough*. But his health *Cough* " + "\n" +
-                                "    is not very well lately *Cough* due to *Cough* " + "\n" +
-                                "  his oral cavity, larynx, esophagus, and lung cancer."
-                        , vw / 2.9F, vw / 8);
+                descToDraw = "A friend of every man *Cough*. But his health *Cough* "
+                        + "is not very well lately *Cough* due to *Cough* "
+                        + "his oral cavity, larynx, esophagus, and lung cancer.";
                 break;
             case 8:
                 cardToDraw = plastic;
                 nameToDraw = "SaiSai";
-                font2.draw(batch, "A plastic box that wants to find new friends " + "\n" +
-                                "          and go explore the world."
-                        , vw / 2.7F, vw / 8);
+                descToDraw = "A plastic box that wants to find new friends and go explore the world.";
                 break;
             case 9:
                 cardToDraw = curry;
                 nameToDraw = "Keri-a";
-                font2.draw(batch, "     Keri-a is the hottest girl in Trash World. " + "\n" +
-                                "  She had her red lips cosmetically enhanced. " + "\n" +
-                                "She is the Miss Popular Vote in the Trash World."
-                        , vw / 2.8F, vw / 8);
+                descToDraw = "Keri-a is the hottest girl in Trash World. "
+                        + "  She had her red lips cosmetically enhanced. "
+                        + "She is the Miss Popular Vote in the Trash World.";
                 break;
             case 10:
                 cardToDraw = thinner;
                 nameToDraw = "Thinner the Carpenter";
-                font2.draw(batch, "A hot and flammable guy. His smell can cause pleasant " + "\n" +
-                                "           hallucinations to everyone near him."
-                        , vw / 3.1F, vw / 8);
+                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
+                        + "hallucinations to everyone near him.";
                 break;
             case 11:
                 cardToDraw = glass;
                 nameToDraw = "MookMook";
-                font2.draw(batch, "An empty plastic glass from a bubble milk tea shop. " + "\n" +
-                                "         He is finding a way back to the shop."
-                        , vw / 2.9F, vw / 8);
+                descToDraw = "An empty plastic glass from a bubble milk tea shop. "
+                        + "He is finding a way back to the shop.";
                 break;
             case 12:
                 cardToDraw = matcha;
                 nameToDraw = "Matty";
-                font2.draw(batch, "   His full name is Matcha-sama. He has dark-green eyes, " + "\n" +
-                                "and he has a lot of success with ladies. He has been voted " + "\n" +
-                                "        the sexiest man in Trash World many times."
-                        , vw / 3.2F, vw / 8);
+                descToDraw = "His full name is Matcha-sama. He has dark-green eyes, "
+                        + "and he has a lot of success with ladies. He has been voted "
+                        + "the sexiest man in Trash World many times.";
                 break;
             case 13:
                 cardToDraw = can;
                 nameToDraw = "Oily Oiler";
-                font2.draw(batch, "                Oily Oiler is an oil can from the suburb. " + "\n" +
-                                "After he had been emptied petrol, he got thrown away without care."
-                        , vw / 3.45F, vw / 8);
+                descToDraw = "Oily Oiler is an oil can from the suburb. "
+                        + "After he had been emptied petrol, he got thrown away without care.";
                 break;
             case 14:
                 cardToDraw = cardboard;
                 nameToDraw = "Bokk Kung";
-                font2.draw(batch, "          A cardboard box that used to contain a dog. " + "\n" +
-                                "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog."
-                        , vw / 3.3F, vw / 8);
+                descToDraw = "A cardboard box that used to contain a dog. "
+                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
                 break;
             case 15:
                 cardToDraw = icecream;
                 nameToDraw = "Izu-chan";
-                font2.draw(batch, "    Her full name is Izu - Pink Cremu. She is a sweetened frozen girl " + "\n" +
-                                "you'll want to eat if you see one. Her cheek is pink and her hair is white."
-                        , vw / 3.45F, vw / 8);
+                descToDraw = "Her full name is Izu - Pink Cremu. She is a sweetened frozen girl "
+                        + "you'll want to eat if you see one. Her cheek is pink and her hair is white.";
                 break;
             default:
                 cardToDraw = bag;
         }
 
         game.batch.draw(cardToDraw, vw / 2.52F, vh / 3.1F, vw / 5, vh / 2.2F);
-        layout.setText(fontTitle, nameToDraw, Color.WHITE, vw, Align.center, true);
-        fontTitle.draw(batch, layout, 0, vw / 6);
+
+        // Set fontTitle properties and draw
+        layoutTitle.setText(fontTitle, nameToDraw, Color.WHITE, vw, Align.center, true);
+        fontTitle.draw(batch, layoutTitle, 0, vw / 6);
+
+        // Set fontDesc properties and draw
+        layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, vw/2.5F, Align.center, true);
+        fontDesc.draw(batch, layoutDesc, (vw/2)-((vw/2.5F)/2F), vw / 8);
 
         if (count == 1 || count == 4 || count == 7 || count == 10 || count == 13) {
             game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);
@@ -323,7 +316,7 @@ public class CollectionScreen extends LazyScreen {
         this.idkBin     = assets.get(GAME_BIN_04, TEXTURE);
 
         this.fontTitle       = assets.get8bitFont(40, Color.WHITE);
-        this.font2      = assets.getSuperSpaceFont(24, Color.WHITE);
+        this.fontDesc = assets.getSuperSpaceFont(31, Color.WHITE);
         this.font3       = assets.get8bitFont(24, Color.WHITE);
         this.font4       = assets.getSuperSpaceFont(24, Color.WHITE);
     }

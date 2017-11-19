@@ -9,6 +9,8 @@ import com.trashmelody.components.*;
 import com.trashmelody.components.ScoringComponent.Accuracy;
 import com.trashmelody.managers.Assets;
 
+import static com.trashmelody.constants.Constants.healthUpdateMap;
+import static com.trashmelody.constants.Constants.scoreMap;
 import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
@@ -28,30 +30,42 @@ public class ScoringSystem extends IteratingSystem {
         TextureComponent texture = Mapper.texture.get(entity);
         HealthComponent health = getHealthComponent();
         ScanLineComponent scanLine = getScanLineComponent();
-        Texture accuracyTexture = assets.get(MISS_ACCURACY);
 
-        if (scoring.getAccuracy() == Accuracy.Perfect) {
-            accuracyTexture = assets.get(PERFECT_ACCURACY);
-            scanLine.totalScore += 8000;
-        } else if (scoring.getAccuracy() == Accuracy.Good) {
-            accuracyTexture = assets.get(GOOD_ACCURACY);
-            scanLine.totalScore += 7000;
-        } else if (scoring.getAccuracy() == Accuracy.Cool) {
-            accuracyTexture = assets.get(COOL_ACCURACY);
-            scanLine.totalScore += 5000;
-        } else if (scoring.getAccuracy() == Accuracy.Bad) {
-            accuracyTexture = assets.get(BAD_ACCURACY);
-            health.health -= 300;
-            scanLine.totalScore += 2000;
-        } else if (scoring.getAccuracy() == Accuracy.Miss) {
-            accuracyTexture = assets.get(MISS_ACCURACY);
-            health.health -= 800;
-        }
-        texture.texture = accuracyTexture;
+        texture.texture = updateStatistic(scoring, scanLine);
+        health.health = updateHealth(health, scoring.getAccuracy());
+        scanLine.score.totalScore = updateScore(scanLine, scoring.getAccuracy());
 
         entity.remove(ScoringComponent.class);
         entity.add(fadeDown());
         entity.add(new CallbackComponent(entity1 -> entity1.add(new DestroyComponent()), HIT_OBJECT_FADING_INTERVAL));
+    }
+
+    private float updateHealth(HealthComponent health, Accuracy accuracy) {
+        return health.health + healthUpdateMap.get(accuracy).get();
+    }
+
+    private int updateScore(ScanLineComponent scanLine, Accuracy accuracy) {
+        return scanLine.score.totalScore + scoreMap.get(accuracy).get();
+    }
+
+    private Texture updateStatistic(ScoringComponent scoring,
+                                    ScanLineComponent scanLine) {
+        if (scoring.getAccuracy() == Accuracy.Perfect) {
+            scanLine.score.perfect++;
+            return assets.get(PERFECT_ACCURACY);
+        } else if (scoring.getAccuracy() == Accuracy.Good) {
+            scanLine.score.good++;
+            return assets.get(GOOD_ACCURACY);
+        } else if (scoring.getAccuracy() == Accuracy.Cool) {
+            scanLine.score.cool++;
+            return assets.get(COOL_ACCURACY);
+        } else if (scoring.getAccuracy() == Accuracy.Bad) {
+            scanLine.score.bad++;
+            return  assets.get(BAD_ACCURACY);
+        } else {
+            scanLine.score.miss++;
+            return assets.get(MISS_ACCURACY);
+        }
     }
 
     private static TimerComponent fadeDown() {

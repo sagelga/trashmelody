@@ -4,7 +4,7 @@ import com.trashmelody.beatmap.parser.beatmap.Beatmap;
 import com.trashmelody.beatmap.parser.utils.ScoreVersion;
 import com.trashmelody.beatmap.parser.utils.MathUtils;
 
-public class  ScoreBuilder {
+public class ScoreBuilder {
 	
 	private Beatmap beatmap;
 	private int score = 1000000, combo, numMiss = 0;

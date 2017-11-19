@@ -5,11 +5,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.trashmelody.components.*;
 import com.trashmelody.components.TransformComponent.Align;
+import com.trashmelody.constants.Constants;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class ScanLine extends Entity {
-    private static final float START_POSITION = 10F / PPM;
 
     public ScanLine(World world,
                     ScanLineComponent scanLineComponent,
@@ -26,7 +26,7 @@ public class ScanLine extends Entity {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
 
-        TransformComponent transformComponent = new TransformComponent(START_POSITION, 540 / PPM, - 457 / PPM, 538 / PPM);
+        TransformComponent transformComponent = new TransformComponent(Constants.START_POSITION, 540 / PPM, - 457 / PPM, 538 / PPM);
         transformComponent.flipX = true;
         transformComponent.align = Align.UpperRight;
 

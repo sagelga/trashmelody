@@ -30,6 +30,8 @@ import static com.trashmelody.utils.RenderingUtils.*;
 
 @Singleton
 public class StageSelectScreen extends LazyScreen {
+    private static final int MUSIC_PREVIEW_DELAY = 0;
+    
     private TrashMelody game;
     private ScreenProvider screens;
     private OrthographicCamera camera;
@@ -254,7 +256,7 @@ public class StageSelectScreen extends LazyScreen {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
                 //game.batch.draw(selectArrowRight, vw/1.04F, vh/8, vw/28, vh/10);
                 currentStageNumber = (currentStageNumber + 1) % 6;
-                cooldown = 50;
+                cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
@@ -263,7 +265,7 @@ public class StageSelectScreen extends LazyScreen {
                 if (currentStageNumber < 0) {
                     currentStageNumber = 5;
                 }
-                cooldown = 50;
+                cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
             }
         }

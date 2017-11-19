@@ -31,7 +31,7 @@ import static com.trashmelody.utils.RenderingUtils.*;
 @Singleton
 public class StageSelectScreen extends LazyScreen {
     private static final int MUSIC_PREVIEW_DELAY = 0;
-    
+
     private TrashMelody game;
     private ScreenProvider screens;
     private OrthographicCamera camera;
@@ -133,7 +133,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_1_SONG);
                     musicManager.playMusic(.3F);
@@ -147,7 +147,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(cinema.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_2_SONG);
                     musicManager.playMusic(.3F);
@@ -162,7 +162,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(hospital.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_3_SONG);
                     musicManager.playMusic(.3F);
@@ -177,7 +177,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(school.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_4_SONG);
                     musicManager.playMusic(.3F);
@@ -192,7 +192,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(home.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_5_SONG);
                     musicManager.playMusic(.3F);
@@ -207,7 +207,7 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(office.getBeatmapGroupId()).get().head();
 
-                if (cooldown == 0) {
+                if (cooldown <= 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_6_SONG);
                     musicManager.playMusic(.3F);

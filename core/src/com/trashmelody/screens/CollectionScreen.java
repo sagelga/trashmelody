@@ -28,7 +28,7 @@ public class CollectionScreen extends LazyScreen {
     private OrthographicCamera camera;
     private Viewport viewport;
     private SpriteBatch batch;
-    private BitmapFont fontTitle, fontDesc, fontTrashType, font4;
+    private BitmapFont fontTitle, fontDesc, fontTrashType;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private int count = 1;
@@ -320,6 +320,5 @@ public class CollectionScreen extends LazyScreen {
         this.fontTitle       = assets.get8bitFont(40, Color.WHITE);
         this.fontDesc = assets.getSuperSpaceFont(31, Color.WHITE);
         this.fontTrashType = assets.get8bitFont(24, Color.WHITE);
-        this.font4       = assets.getSuperSpaceFont(24, Color.WHITE);
     }
 }

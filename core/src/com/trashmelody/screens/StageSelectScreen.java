@@ -2,9 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.loaders.resolvers.ExternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,15 +17,11 @@ import com.trashmelody.beatmap.parser.beatmap.Beatmap;
 import com.trashmelody.constants.Beatmaps;
 import com.trashmelody.managers.*;
 import com.trashmelody.models.Building;
-import com.trashmelody.models.Difficulty;
 import com.trashmelody.utils.Debugger;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.vavr.CheckedFunction1;
-import io.vavr.Function1;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
 import io.vavr.collection.Stream;
-import io.vavr.control.Option;
 
 import java.nio.file.*;
 
@@ -45,6 +39,7 @@ public class StageSelectScreen extends LazyScreen {
     private GameScreen gameScreen;
     private SpriteBatch batch;
     private BeatmapManager beatmapManager;
+    private StatsManager statsManager;
     private Map<String, Stream<Beatmap>> beatmaps;
 
     private Building cafe = new Building("Cafe", Beatmaps.HITORIGOTO_BEATMAP_GROUP_ID);
@@ -52,7 +47,7 @@ public class StageSelectScreen extends LazyScreen {
     private Building hospital = new Building("Hospital", Beatmaps.REUNION_BEATMAP_GROUP_ID);
     private Building school = new Building("School", Beatmaps.KANASHII_URESHII_BEATMAP_GROUP_ID);
     private Building home = new Building("Home", Beatmaps.MIRROR_BEATMAP_GROUP_ID);
-    private Building office = new Building("Office", Beatmaps.TELL_YOUR_WORLD_BEATMAP_GROUP_ID);
+    private Building office = new Building("Office", Beatmaps.STEP_AHEAD_BEATMAP_GROUP_ID);
 
     // Defining building value
     private Texture bdHomeShow, bdCafeShow, bdCinemaShow, bdHospitalShow, bdSchoolShow, bdOfficeShow;
@@ -69,13 +64,12 @@ public class StageSelectScreen extends LazyScreen {
     private int currentStageNumber = 0;
     private int modes, cooldown;
 
-    StatsManager statsManager = new StatsManager();
-
     @Inject
     StageSelectScreen(TrashMelody game,
                       OrthographicCamera camera,
                       ScreenProvider screens,
                       MusicManager musicManager,
+                      StatsManager statsManager,
                       SpriteBatch batch,
                       Viewport viewport,
                       BeatmapManager beatmapManager) {
@@ -88,6 +82,7 @@ public class StageSelectScreen extends LazyScreen {
         this.batch = batch;
         this.viewport = viewport;
         this.beatmapManager = beatmapManager;
+        this.statsManager = statsManager;
 
         beatmaps = beatmapManager.getBeatmapsByGroupId();
     }
@@ -279,7 +274,6 @@ public class StageSelectScreen extends LazyScreen {
         }*/
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-            System.out.println(gameScreen);
             gameScreen.setBeatmap(currentBeatmap);
             Path musicFile = currentBeatmap.getPath().resolveSibling(currentBeatmap.getGenerals().getAudioFileName());
             gameScreen.setMusic(Gdx.audio.newMusic(Gdx.files.absolute(musicFile.toString())));

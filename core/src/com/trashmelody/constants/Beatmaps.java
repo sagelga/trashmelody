@@ -6,5 +6,5 @@ public class Beatmaps {
     public static final String REUNION_BEATMAP_GROUP_ID = "84458";
     public static final String KANASHII_URESHII_BEATMAP_GROUP_ID = "635275";
     public static final String MIRROR_BEATMAP_GROUP_ID = "322428";
-    public static final String TELL_YOUR_WORLD_BEATMAP_GROUP_ID = "321428";
+    public static final String STEP_AHEAD_BEATMAP_GROUP_ID = "59841";
 }

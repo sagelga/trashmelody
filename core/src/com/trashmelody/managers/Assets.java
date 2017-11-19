@@ -126,6 +126,7 @@ public class Assets extends AssetManager {
     public static final String COLLECTION_WET_3 = "trashes/wet/cards/FOOD - CARD-03.png";
     public static final String COLLECTION_WET_4 = "trashes/wet/cards/FOOD - CARD-04.png";
     public static final String COLLECTION_WET_5 = "trashes/wet/cards/FOOD - CARD-05.png";
+    public static final String COLLECTION_STORY_BG = "CollectionScreen/Story-BG.png";
 
 
     // Countdown Stage Assets

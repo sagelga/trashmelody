@@ -13,6 +13,14 @@ import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
     public static final int HIT_OBJECT_FADING_INTERVAL = 1200;
+    public static final int PERFECT_SCORE = 8000;
+    public static final int GOOD_SCORE = 7000;
+    public static final int COOL_SCORE = 5000;
+    public static final int BAD_SCORE = 2000;
+    public static final int MISS_SCORE = 0;
+    public static final int BAD_HEALTH_REDUCTION = 300;
+    public static final int MISS_HEALTH_REDUCTION = 800;
+    public static final int PERFECT_HEALTH_INCRESION = 0;
     private Assets assets;
 
     @Inject
@@ -32,20 +40,24 @@ public class ScoringSystem extends IteratingSystem {
 
         if (scoring.getAccuracy() == Accuracy.Perfect) {
             accuracyTexture = assets.get(PERFECT_ACCURACY);
-            scanLine.totalScore += 8000;
+            health.health -= PERFECT_HEALTH_INCRESION;
+            scanLine.totalScore += PERFECT_SCORE;
         } else if (scoring.getAccuracy() == Accuracy.Good) {
             accuracyTexture = assets.get(GOOD_ACCURACY);
-            scanLine.totalScore += 7000;
+            health.health -= 0;
+            scanLine.totalScore += GOOD_SCORE;
         } else if (scoring.getAccuracy() == Accuracy.Cool) {
             accuracyTexture = assets.get(COOL_ACCURACY);
-            scanLine.totalScore += 5000;
+            health.health -= 0;
+            scanLine.totalScore += COOL_SCORE;
         } else if (scoring.getAccuracy() == Accuracy.Bad) {
             accuracyTexture = assets.get(BAD_ACCURACY);
-            health.health -= 300;
-            scanLine.totalScore += 2000;
+            health.health -= BAD_HEALTH_REDUCTION;
+            scanLine.totalScore += BAD_SCORE;
         } else if (scoring.getAccuracy() == Accuracy.Miss) {
             accuracyTexture = assets.get(MISS_ACCURACY);
-            health.health -= 800;
+            scanLine.totalScore += MISS_SCORE;
+            health.health -= MISS_HEALTH_REDUCTION;
         }
         texture.texture = accuracyTexture;
 

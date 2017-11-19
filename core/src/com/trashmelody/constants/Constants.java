@@ -14,7 +14,7 @@ public class Constants {
     public static final float yUpperBound = 384;
     public static final float LEFT_BORDER_X = 0;
     public static final float RIGHT_BORDER_X = 1920 / PPM;
-    public static final float PADDING = 100 / PPM;
+    public static final float PADDING = 200 / PPM;
     public static final Predicate<Float> isUnderBound = isLessThan.apply(LEFT_BORDER_X);
     public static final Predicate<Float> isOverBound = isMoreThan.apply(RIGHT_BORDER_X);
     public static final Predicate<Float> isInBound = isBetween.apply(LEFT_BORDER_X, RIGHT_BORDER_X);

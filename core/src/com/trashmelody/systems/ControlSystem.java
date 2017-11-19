@@ -34,10 +34,6 @@ public class ControlSystem extends IteratingSystem {
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         PlayerComponent player = getPlayerComponent();
 
-        if (scanLine.elapsedTime > 2) {
-            screens.get(GameScreen.class).restartGame();
-        }
-
         if (controller.keyJustPressed(Input.Keys.Z)) {
             scanLine.music.pause();
             scanLine.state = State.Pause;

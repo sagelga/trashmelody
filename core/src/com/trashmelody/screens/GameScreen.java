@@ -15,9 +15,6 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.beatmap.parser.beatmap.Beatmap;
-import com.trashmelody.beatmap.parser.beatmap.mania.ManiaBeatmap;
-import com.trashmelody.beatmap.parser.parser.BeatmapException;
-import com.trashmelody.beatmap.parser.parser.BeatmapParser;
 import com.trashmelody.components.*;
 import com.trashmelody.entities.Dispatcher;
 import com.trashmelody.entities.Platform;
@@ -25,10 +22,8 @@ import com.trashmelody.entities.Player;
 import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 
 import static com.badlogic.gdx.Input.Keys.*;
 import static com.trashmelody.managers.Assets.*;
@@ -206,11 +201,11 @@ public class GameScreen extends LazyScreen {
     }
 
     public void restartGame() {
-//        engine.removeAllEntities();
-//        game.injector.getInstance(Systems.class).list.stream()
-//            .map(game.injector::getInstance)
-//            .forEach(engine::addSystem);
-//        createEntities();
+        engine.removeAllEntities();
+        game.injector.getInstance(Systems.class).list.stream()
+            .map(game.injector::getInstance)
+            .forEach(engine::addSystem);
+        createEntities();
         setLoaded(true);
     }
 
@@ -274,19 +269,6 @@ public class GameScreen extends LazyScreen {
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
-
-//    private Beatmap getBeatmap() {
-//        BeatmapParser parser = new BeatmapParser();
-//        File file = new File(HITORIGOTO_EASY);
-//        Beatmap beatmap = null;
-//        try {
-//            beatmap = parser.parse(file.toPath(), ManiaBeatmap.class);
-//        } catch (BeatmapException | FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return beatmap;
-//    }
 
     private float getHpSliderPositionX(HealthComponent health) {
         float healthPercentage = health.health / health.getMaxHealth() * 100;

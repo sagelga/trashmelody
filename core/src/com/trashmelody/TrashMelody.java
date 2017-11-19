@@ -61,7 +61,7 @@ public class TrashMelody extends Game {
 
     @Override
     public void render() {
-        MusicManager musicManager = new MusicManager(assets);
+        MusicManager musicManager = injector.getInstance(MusicManager.class);
         ShapeRenderer shapeRenderer = new ShapeRenderer();
 
         super.render();

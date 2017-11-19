@@ -17,6 +17,7 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.handlers.CollisionDetector;
+import com.trashmelody.handlers.DebugInputProcessor;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.systems.*;
 
@@ -35,14 +36,21 @@ public class GameModule implements Module {
     public void configure(Binder binder) {
         binder.requireAtInjectOnConstructors();
         binder.requireExactBindingAnnotations();
+
         binder.bind(TrashMelody.class).toInstance(game);
         binder.bind(SpriteBatch.class).toInstance(game.batch);
         binder.bind(Engine.class).toInstance(game.engine);
+
         binder.bind(Camera.class).to(OrthographicCamera.class);
+
         binder.bind(KeyboardController.class).in(Singleton.class);
-        binder.bind(Assets.class).in(Singleton.class);
         binder.bind(MusicManager.class).in(Singleton.class);
         binder.bind(BeatmapManager.class).in(Singleton.class);
+        binder.bind(Assets.class).in(Singleton.class);
+        binder.bind(MusicManager.class).in(Singleton.class);
+        binder.bind(ScreenProvider.class).in(Singleton.class);
+        binder.bind(DebugInputProcessor.class).in(Singleton.class);
+        binder.bind(StatsManager.class).in(Singleton.class);
     }
 
     @Provides @Singleton

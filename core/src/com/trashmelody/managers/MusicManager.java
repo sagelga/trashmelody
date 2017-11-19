@@ -9,20 +9,21 @@ import static com.trashmelody.managers.Assets.MUSIC;
 @Singleton
 public class MusicManager {
     private Assets assets;
+    private StatsManager statsManager;
 
     private static final float MUSIC_VOLUME_TOGGLE = 0.1F;
     private static final float MUSIC_DEFAULT_VOLUME = 0.5F;
     private static String currentMusic;
 
     @Inject
-    public MusicManager(Assets assets) {
+    public MusicManager(Assets assets, StatsManager statsManager) {
         this.assets = assets;
+        this.statsManager = statsManager;
     }
 
 
     // Update the local variables
     private void resetVariable() {
-        StatsManager statsManager = new StatsManager();
         Debugger.statsManager = statsManager;
         statsManager.setCurrentMusicTrack(currentMusic);
         statsManager.setCurrentMusicVolume(assets.get(currentMusic, MUSIC).getVolume());

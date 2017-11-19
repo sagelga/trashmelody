@@ -39,6 +39,7 @@ public class StageSelectScreen extends LazyScreen {
     private GameScreen gameScreen;
     private SpriteBatch batch;
     private BeatmapManager beatmapManager;
+    private StatsManager statsManager;
     private Map<String, Stream<Beatmap>> beatmaps;
 
     private Building cafe = new Building("Cafe", Beatmaps.HITORIGOTO_BEATMAP_GROUP_ID);
@@ -63,13 +64,12 @@ public class StageSelectScreen extends LazyScreen {
     private int currentStageNumber = 0;
     private int modes, cooldown;
 
-    StatsManager statsManager = new StatsManager();
-
     @Inject
     StageSelectScreen(TrashMelody game,
                       OrthographicCamera camera,
                       ScreenProvider screens,
                       MusicManager musicManager,
+                      StatsManager statsManager,
                       SpriteBatch batch,
                       Viewport viewport,
                       BeatmapManager beatmapManager) {
@@ -82,6 +82,7 @@ public class StageSelectScreen extends LazyScreen {
         this.batch = batch;
         this.viewport = viewport;
         this.beatmapManager = beatmapManager;
+        this.statsManager = statsManager;
 
         beatmaps = beatmapManager.getBeatmapsByGroupId();
     }

@@ -140,9 +140,6 @@ public class TrashMelody extends Game {
 
     private void loadBootstrap() {
         SCALE = Gdx.graphics.getPpiX() / 100;
-        injector.getInstance(Systems.class).list.stream()
-            .map(injector::getInstance)
-            .forEach(engine::addSystem);
         ScreenProvider.MAPPER = ScreenProvider.screenClasses.toMap(screen -> screen, screen -> injector.getProvider(screen));
     }
 }

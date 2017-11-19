@@ -40,10 +40,8 @@ public class ControlSystem extends IteratingSystem {
             game.setLazyScreen(screens.get(PauseScreen.class));
         }
 
-        if (controller.keyJustPressed(Input.Keys.R)) {
-            screens.get(GameScreen.class).stop();
-            scanLine.music.stop();
-            screens.get(GameScreen.class).restartGame();
+        if (controller.keyJustPressed(Input.Keys.ESCAPE)) {
+            screens.get(GameScreen.class).setCommand(GameScreen.Command.Restart);
         }
 
         if (controller.keyMap.get(player.dangerous)) {

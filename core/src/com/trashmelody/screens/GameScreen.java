@@ -47,6 +47,7 @@ public class GameScreen extends LazyScreen {
     private float vw = getViewportWidth();
     private Beatmap beatmap;
     private Music music;
+    private int counter = 0;
 
     private Texture bg1;
     private Texture redBinPlot;
@@ -79,6 +80,11 @@ public class GameScreen extends LazyScreen {
     private Texture hard;
     private Texture hpBar;
     private SpriteBatch batch;
+    private Command command = Command.Loading;
+
+    public enum Command {
+        Loading, Ready, Waiting, Start, Restart
+    }
 
     @Inject
     GameScreen(TrashMelody game,
@@ -86,7 +92,6 @@ public class GameScreen extends LazyScreen {
                World world,
                Assets assets,
                Camera camera,
-               Viewport viewport,
                KeyboardController inputProcessor,
                SpriteBatch batch) {
         this.game = game;
@@ -95,7 +100,6 @@ public class GameScreen extends LazyScreen {
         this.world = world;
         this.assets = assets;
         this.inputProcessor = inputProcessor;
-//        this.beatmap = getBeatmap();
         this.batch = batch;
     }
 
@@ -114,14 +118,36 @@ public class GameScreen extends LazyScreen {
         drawBackground();
         game.batch.end();
 
-        if (isLoaded()) {
-            engine.update(delta);
-        }
+        handleCommand(delta);
     }
 
-    @Override
-    public void resize(int width, int height) {
-//        viewport.update(width, height);
+    private void handleCommand(float delta) {
+        switch (command) {
+            case Loading:
+                if (isLoaded()) {
+                    command = Command.Ready;
+                }
+                break;
+            case Ready:
+                counter = 2;
+                command = Command.Waiting;
+                break;
+            case Waiting:
+                if (counter > 0) {
+                    counter -= delta;
+                } else {
+                    command = Command.Start;
+                }
+                break;
+            case Start:
+                engine.update(delta);
+                break;
+            case Restart:
+                scanLine.music.stop();
+                restartGame();
+                command = Command.Ready;
+                break;
+        }
     }
 
     @Override
@@ -198,26 +224,33 @@ public class GameScreen extends LazyScreen {
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
         this.font = assets.getSuperSpaceFont(40, Color.WHITE);
 
-        createEntities();
+        prepareEngine();
     }
 
-    public void restartGame() {
-        engine.removeAllEntities();
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    private void restartGame() {
+        clearEntities();
+        prepareEngine();
+    }
+
+    private void prepareEngine() {
+        createEntities();
         game.injector.getInstance(Systems.class).list.stream()
             .map(game.injector::getInstance)
             .forEach(engine::addSystem);
-        createEntities();
-        setLoaded(true);
     }
 
-    public void stop() {
-        setLoaded(false);
+    private void clearEntities() {
+        engine.removeAllEntities();
     }
 
     private void createEntities() {
-        scanLine = new ScanLineComponent(music, 2F);
+        scanLine = new ScanLineComponent(music, beatmap, 2F);
         health = new HealthComponent(Constants.MAX_HEALTH);
-//        dispatch = new DispatchComponent(beatmap, 2F);
+        dispatch = new DispatchComponent(beatmap, 2F);
         engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
             world,

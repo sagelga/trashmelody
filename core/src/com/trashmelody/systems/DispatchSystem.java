@@ -62,20 +62,20 @@ public class DispatchSystem extends IteratingSystem {
             }
         }
 
-        dispatch.hitObjects
-                .filter(hitObject -> Constants.inDispatchArea.test(position.x))
-                .takeWhile(ready(scanLine.elapsedTime))
-                .map(hitObject -> new HitObjectEntity(
-                        world,
-                        new HitObjectComponent(hitObject),
-                        new TypeComponent(TypeComponent.DISPATCHER),
-                        new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE), new Color(1F, 1F, 1F, 1F)),
-                        new TimerComponent(fadeUpListener, 400),
-                        position.x
-                ))
-                .peek(getEngine()::addEntity)
-                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
-                .forEach(hitObjectEntity -> dispatch.hitObjects = dispatch.hitObjects.tail());
+        scanLine.hitObjects
+            .filter(hitObject -> Constants.inDispatchArea.test(position.x))
+            .takeWhile(ready(scanLine.elapsedTime))
+            .map(hitObject -> new HitObjectEntity(
+                world,
+                new HitObjectComponent(hitObject),
+                new TypeComponent(TypeComponent.DISPATCHER),
+                new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE), new Color(1F, 1F, 1F, 1F)),
+                new TimerComponent(fadeUpListener, 400),
+                position.x
+            ))
+            .peek(getEngine()::addEntity)
+            .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
+            .forEach(hitObjectEntity -> scanLine.hitObjects = scanLine.hitObjects.tail());
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {

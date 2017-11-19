@@ -28,7 +28,7 @@ public class CollectionScreen extends LazyScreen {
     private OrthographicCamera camera;
     private Viewport viewport;
     private SpriteBatch batch;
-    private BitmapFont fontTitle, fontDesc, font3, font4;
+    private BitmapFont fontTitle, fontDesc, fontTrashType, font4;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private int count = 1;
@@ -47,6 +47,7 @@ public class CollectionScreen extends LazyScreen {
     float elapsed;
     private GlyphLayout layoutTitle = new GlyphLayout();
     private GlyphLayout layoutDesc = new GlyphLayout();
+    private GlyphLayout layoutTrashType = new GlyphLayout();
 
     @Inject
     CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
@@ -65,6 +66,7 @@ public class CollectionScreen extends LazyScreen {
         Texture cardToDraw;
         String nameToDraw = "";
         String descToDraw = "";
+        String typeToDraw = "";
 
         game.batch.begin();
 
@@ -80,7 +82,6 @@ public class CollectionScreen extends LazyScreen {
         game.batch.draw(btnBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 2, vw / 45, vh / 24);
         game.batch.draw(r, vw/1.23F, vh / 2, vw / 45, vh / 24);
-        font3.draw(batch, "TYPE", vw / 2.2F, vw / 24);
 
         // Trash on Stage 1
         if (count < 1) count = 1;
@@ -198,20 +199,19 @@ public class CollectionScreen extends LazyScreen {
         layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, descWidth, Align.center, true);
         fontDesc.draw(batch, layoutDesc, (vw/2)-(descWidth/2F), vw / 8);
 
+        // Set fontTrashType properties and draw
         if (count == 1 || count == 4 || count == 7 || count == 10 || count == 13) {
+            typeToDraw = "Type * Dangerous";
             game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);
-            font4.draw(batch, ": DANGER", vw / 1.9F, vw / 26);
-        }
-
-        if (count == 2 || count == 5 || count == 8 || count == 11 || count == 14) {
+        } else if (count == 2 || count == 5 || count == 8 || count == 11 || count == 14) {
+            typeToDraw = "Type * Recycle";
             game.batch.draw(recycleBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
-            font4.draw(batch, ": RECYCLE", vw / 1.9F, vw / 26);
-        }
-
-        if (count == 3 || count == 6 || count == 9 || count == 12 || count == 15) {
+        } else if (count == 3 || count == 6 || count == 9 || count == 12 || count == 15) {
+            typeToDraw = "Type * Wet";
             game.batch.draw(wetBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
-            font4.draw(batch, ": WET", vw / 1.9F, vw / 26);
         }
+        layoutTrashType.setText(fontTrashType, typeToDraw, Color.WHITE, vw, Align.center, true);
+        fontTrashType.draw(batch, layoutTrashType, 0, vw / 24);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
             game.batch.draw(rh, vw/1.23F, vh / 2, vw / 45, vh / 24);
@@ -319,7 +319,7 @@ public class CollectionScreen extends LazyScreen {
 
         this.fontTitle       = assets.get8bitFont(40, Color.WHITE);
         this.fontDesc = assets.getSuperSpaceFont(31, Color.WHITE);
-        this.font3       = assets.get8bitFont(24, Color.WHITE);
+        this.fontTrashType = assets.get8bitFont(24, Color.WHITE);
         this.font4       = assets.getSuperSpaceFont(24, Color.WHITE);
     }
 }

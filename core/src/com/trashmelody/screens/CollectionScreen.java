@@ -36,7 +36,7 @@ public class CollectionScreen extends LazyScreen {
     private float vw = getViewportWidth();
     private int count = 1;
     private Animation<TextureRegion> bg;
-    private Texture footer, header, pack, l, r, lh, rh, back;
+    private Texture footer, header, pack, l, r, lh, rh, btnBack;
     //Dangerous Trashes
     private Texture cigar, spray, can, bag, thinner;
     //Recycle Trashes
@@ -74,10 +74,10 @@ public class CollectionScreen extends LazyScreen {
         } else {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
         }
-        game.batch.draw(footer, 0, 0, vw, vh / 12);
-        game.batch.draw(back, vw / 1.13F, 0, vw / 10, vh / 16);
         game.batch.draw(pack, vw / 4.5F, vw/ 6.5F, vw / 1.8F, vh / 2);
         game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(btnBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 2, vw / 45, vh / 24);
         game.batch.draw(r, vw/1.23F, vh / 2, vw / 45, vh / 24);
         font3.draw(batch, "TYPE", vw / 2.2F, vw / 24);
@@ -296,7 +296,7 @@ public class CollectionScreen extends LazyScreen {
         this.r          = assets.get(COLLECTION_RIGHT, TEXTURE);
         this.lh         = assets.get(COLLECTION_LEFT_H, TEXTURE);
         this.rh         = assets.get(COLLECTION_RIGHT_H, TEXTURE);
-        this.back       = assets.get(GLOBAL_ICON_BACK, TEXTURE);
+        this.btnBack    = assets.get(GLOBAL_ICON_BACK, TEXTURE);
         //Danger Trashes
         this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
         this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);

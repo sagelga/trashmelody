@@ -190,11 +190,13 @@ public class CollectionScreen extends LazyScreen {
 
         // Set fontTitle properties and draw
         layoutTitle.setText(fontTitle, nameToDraw, Color.WHITE, vw, Align.center, true);
-        fontTitle.draw(batch, layoutTitle, 0, vw / 6);
+        fontTitle.draw(batch, layoutTitle, 0, vw / 6.2F);
 
         // Set fontDesc properties and draw
-        layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, vw/2.5F, Align.center, true);
-        fontDesc.draw(batch, layoutDesc, (vw/2)-((vw/2.5F)/2F), vw / 8);
+        float descWidth;
+        if (vw < 1500) descWidth = vw/1.5F; else descWidth = vw/2.5F;
+        layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, descWidth, Align.center, true);
+        fontDesc.draw(batch, layoutDesc, (vw/2)-(descWidth/2F), vw / 8);
 
         if (count == 1 || count == 4 || count == 7 || count == 10 || count == 13) {
             game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);

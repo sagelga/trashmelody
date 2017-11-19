@@ -15,6 +15,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.managers.StatsManager;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
 
@@ -37,6 +38,7 @@ public class ResultScreen extends LazyScreen {
     private SpriteBatch batch;
     private BitmapFont font;
     private int perfect, good, nice, miss, combo, score;
+    private StatsManager statsManager;
 
     @Inject
     ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, StageSelectScreen stageSelectScreen, SpriteBatch batch) {
@@ -147,5 +149,11 @@ public class ResultScreen extends LazyScreen {
         this.miss = miss;
         this.combo = combo;
         this.score = score;
+        statsManager.setStageStats("stage1", "perfect", perfect);
+        statsManager.setStageStats("stage1", "good", good);
+        statsManager.setStageStats("stage1", "nice", nice);
+        statsManager.setStageStats("stage1", "miss", miss);
+        statsManager.setStageStats("stage1", "combo", combo);
+        statsManager.setStageStats("stage1", "score", score);
     }
 }

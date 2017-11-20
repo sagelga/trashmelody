@@ -49,7 +49,7 @@ public class Constants {
         Accuracy.Good, 0F,
         Accuracy.Cool, 0F,
         Accuracy.Bad, -300F,
-        Accuracy.Miss, -800F
+        Accuracy.Miss, -500F
     );
 
 }

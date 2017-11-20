@@ -248,8 +248,8 @@ public class StageSelectScreen extends LazyScreen {
         }
 
         font_StageName.draw(batch, stageNameToShow, vw / 64, vh / 1.026F);
-        font_HighScore.draw(batch, "High Score", vw / 1.302F, vh / 4.7F);
-        font_HighScore.draw(batch, Integer.toString(highScoreToShow), vw / 1.302F, vh / 6.1F);
+        font_HighScore.draw(batch, "High Score", vw / 1.307F, vh / 4.7F);
+        font_HighScore.draw(batch, Integer.toString(highScoreToShow), vw / 1.307F, vh / 6.1F);
 
         if (cooldown > 0) cooldown--;
 
@@ -375,8 +375,8 @@ public class StageSelectScreen extends LazyScreen {
 
         this.SFxStageChange = assets.get(SFX_STAGE_CHANGE, MUSIC);
 
-        this.font_HighScore = assets.get8bitFont(33, Color.BLACK);
-        this.font_StageName = assets.getSuperSpaceFont(100, Color.WHITE);
+        this.font_HighScore = assets.get8bitFont(26, Color.BLACK);
+        this.font_StageName = assets.getSuperSpaceFont(90, Color.WHITE);
     }
 
     @Override

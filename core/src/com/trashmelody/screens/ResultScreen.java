@@ -38,7 +38,7 @@ public class ResultScreen extends LazyScreen {
     private SpriteBatch batch;
     private BitmapFont font;
     private int perfect, good, nice, miss, combo, score;
-    private StatsManager statsManager;
+    private StatsManager statsManager = new StatsManager();
 
     @Inject
     ResultScreen(TrashMelody game, OrthographicCamera camera, Viewport viewport, ScreenProvider screens, StageSelectScreen stageSelectScreen, SpriteBatch batch) {
@@ -96,8 +96,6 @@ public class ResultScreen extends LazyScreen {
         font.draw(batch, String.valueOf(score), vw / 1.3F, vh / 4.55F);
 
         game.batch.end();
-
-        setScores(99, 120, 155, 20, 50, 1000);
     }
 
     @Override
@@ -149,11 +147,7 @@ public class ResultScreen extends LazyScreen {
         this.miss = miss;
         this.combo = combo;
         this.score = score;
-        statsManager.setStageStats("stage1", "perfect", perfect);
-        statsManager.setStageStats("stage1", "good", good);
-        statsManager.setStageStats("stage1", "nice", nice);
-        statsManager.setStageStats("stage1", "miss", miss);
-        statsManager.setStageStats("stage1", "combo", combo);
+        // TODO: Save only the highest-recorded score
         statsManager.setStageStats("stage1", "score", score);
     }
 }

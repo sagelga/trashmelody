@@ -214,7 +214,7 @@ public class GameScreen extends LazyScreen {
 
     private float getHpSliderPositionX(HealthComponent health) {
         float healthPercentage = health.health / health.getMaxHealth() * 100;
-        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
+        return Math.max(Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F), 1.56F);
     }
 
     public void setBeatmap(Beatmap beatmap) {
@@ -318,9 +318,9 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
-        game.batch.draw(footerTab, 0, 0, vw, vh / 12);
+        game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
-        game.batch.draw(pauseTab, vw / 1.16F, vh / 100, vw / 8, vh / 24);
+        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(186, 54, vw/8, 'h'));
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);

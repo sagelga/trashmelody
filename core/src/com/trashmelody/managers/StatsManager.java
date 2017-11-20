@@ -9,10 +9,11 @@ import com.google.inject.Singleton;
 public class StatsManager {
 
     @Inject
-    StatsManager() {
+    public StatsManager() {
+        getPreferences();
     }
 
-    private Preferences preferences = getPrefs();
+    private Preferences preferences = getPreferences();
 
     /* Preference current HashMaps
     Key | Value Type
@@ -28,23 +29,29 @@ public class StatsManager {
    recurrentUser | boolean // For checking that user is recurrent user or not
 */
 
-    protected Preferences getPrefs() {
-        if (preferences == null) {
-            preferences = Gdx.app.getPreferences("TrashMelody");
+    protected Preferences getPreferences() {
+        preferences = Gdx.app.getPreferences("TrashMelody");
+        preferences = Gdx.app.getPreferences("TrashMelody");
 
-            // Initialize default data
-            if (getRecurrentUser()) {
-                setCurrentStage(1);
-                for (int i = 1; i <= 6; i++) {
-                    String n = String.valueOf(i);
-                    resetStageScore(n);
-                }
-                setCurrentMusicVolume(0.3F);
-                setCurrentMusicTrack("MUSIC_BG1");
-                setRecurrentUser();
+        // Initialize default data
+        if (!getRecurrentUser()) {
+            setCurrentStage(1);
+            for (int i = 1; i <= 6; i++) {
+                String n = String.valueOf(i);
+                resetStageScore(n);
             }
-        }
+            setCurrentMusicVolume(0.3F);
+            setCurrentMusicTrack("MUSIC_BG1");
+            setRecurrentUser();
 
+            setStageStats("stage1", "perfect", 0);
+            setStageStats("stage1", "perfect", 0);
+            setStageStats("stage1", "good", 0);
+            setStageStats("stage1", "nice", 0);
+            setStageStats("stage1", "miss", 0);
+            setStageStats("stage1", "combo", 0);
+            setStageStats("stage1", "score", 0);
+        }
         preferences.flush();
         return preferences;
     }
@@ -100,7 +107,7 @@ public class StatsManager {
         preferences.putBoolean("developMode", !(getDevelopmentMode()));
     }
 
-    public boolean getDevelopmentMode() {
+    public boolean getDevelopmentMode(){
         return preferences.getBoolean("developMode");
     }
 

@@ -13,8 +13,7 @@ import static com.trashmelody.utils.Functional.isMoreThan;
 
 public class Constants {
 
-//    public static final int MAX_HEALTH = 10000;
-    public static final int MAX_HEALTH = 1000000000;
+    public static final int MAX_HEALTH = 10000;
     public static final int PRE_DISPATCH_TIME = 1200;
     public static final int HIT_OBJECT_LIFE_TIME = 200;
     public static final int END_OF_GAME_DELAY = 4000;
@@ -46,11 +45,11 @@ public class Constants {
     );
 
     public static final Map<Accuracy, Float> healthUpdateMap = HashMap.of(
-        Accuracy.Perfect, 0F,
-        Accuracy.Good, 0F,
-        Accuracy.Nice, 0F,
+        Accuracy.Perfect, 30F,
+        Accuracy.Good, 20F,
+        Accuracy.Nice, 10F,
         Accuracy.Bad, -300F,
-        Accuracy.Miss, -800F
+        Accuracy.Miss, -500F
     );
 
 }

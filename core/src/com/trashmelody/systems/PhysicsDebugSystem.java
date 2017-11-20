@@ -1,6 +1,5 @@
 package com.trashmelody.systems;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,8 +7,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-
-import static com.trashmelody.constants.B2Dvars.PPM;
 
 public class PhysicsDebugSystem extends EntitySystem {
     private World world;

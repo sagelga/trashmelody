@@ -22,6 +22,7 @@ public class HitObjectEntity extends Entity {
                            TypeComponent type,
                            TextureComponent textureComponent,
                            TimerComponent timerComponent,
+                           Trash trash,
                            float dispatcherX) {
 
         Vector2 hitObjectPosition = hitObjectComponent.hitObject.getPosition().toGdxVector();

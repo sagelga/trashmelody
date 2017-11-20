@@ -1,6 +1,8 @@
 package com.trashmelody.screens;
 
 import com.badlogic.ashley.core.Engine;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
@@ -24,6 +26,8 @@ import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.managers.TrashManager;
+import com.trashmelody.models.trashes.Trash;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 
@@ -35,6 +39,7 @@ import static com.trashmelody.utils.RenderingUtils.*;
 public class GameScreen extends LazyScreen {
     private TrashMelody game;
     private ScreenProvider screens;
+    private TrashManager trashManager;
     private OrthographicCamera camera;
     private InputProcessor inputProcessor;
     private Engine engine;
@@ -91,6 +96,7 @@ public class GameScreen extends LazyScreen {
                Engine engine,
                World world,
                ScreenProvider screens,
+               TrashManager trashManager,
                OrthographicCamera camera,
                KeyboardController inputProcessor,
                SpriteBatch batch) {
@@ -101,6 +107,7 @@ public class GameScreen extends LazyScreen {
         this.camera = camera;
         this.inputProcessor = inputProcessor;
         this.batch = batch;
+        this.trashManager = trashManager;
     }
 
     @Override
@@ -129,7 +136,7 @@ public class GameScreen extends LazyScreen {
                 }
                 break;
             case Ready:
-                counter = 2;
+                counter = 3;
                 command = Command.Waiting;
                 break;
             case Waiting:
@@ -148,6 +155,64 @@ public class GameScreen extends LazyScreen {
                 command = Command.Ready;
                 break;
         }
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    private void restartGame() {
+        clearEntities();
+        prepareEngine();
+    }
+
+    private void prepareEngine() {
+        createEntities();
+        game.injector.getInstance(Systems.class).list.stream()
+            .map(game.injector::getInstance)
+            .forEach(engine::addSystem);
+    }
+
+    private void clearEntities() {
+        engine.getEntitiesFor(Family.all(PhysicsComponent.class).get())
+            .forEach(entity -> world.destroyBody(Mapper.physics.get(entity).body));
+        engine.removeAllEntities();
+    }
+
+    private void createEntities() {
+        scanLine = new ScanLineComponent(music, beatmap, 2F);
+        health = new HealthComponent(Constants.MAX_HEALTH);
+        dispatch = new DispatchComponent(beatmap, 2F);
+        engine.addEntity(new Platform(world));
+        engine.addEntity(new Player(
+            world,
+            new PlayerComponent(D, F, J, K),
+            new TypeComponent(TypeComponent.PLAYER)
+        ));
+        engine.addEntity(new ScanLine(
+            world,
+            scanLine,
+            new TextureComponent(check),
+            health
+        ));
+        engine.addEntity(new Dispatcher(
+            world,
+            dispatch
+        ));
+    }
+
+    private float getHpSliderPositionX(HealthComponent health) {
+        float healthPercentage = health.health / health.getMaxHealth() * 100;
+        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
+    }
+
+    public void setBeatmap(Beatmap beatmap) {
+        this.beatmap = beatmap;
+        this.dispatch = new DispatchComponent(beatmap, 2F);
+    }
+
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
     @Override
@@ -188,6 +253,9 @@ public class GameScreen extends LazyScreen {
         assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
         assets.load(THINNER_HIT_OBJECT, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
+        trashManager.getTrashes()
+            .map(Trash::getTexturePath)
+            .forEach(texture -> assets.load(texture, TEXTURE));
 
         screens.get(PauseScreen.class).loadAssets(assets);
     }
@@ -229,48 +297,6 @@ public class GameScreen extends LazyScreen {
         prepareEngine();
     }
 
-    public void setCommand(Command command) {
-        this.command = command;
-    }
-
-    private void restartGame() {
-        clearEntities();
-        prepareEngine();
-    }
-
-    private void prepareEngine() {
-        createEntities();
-        game.injector.getInstance(Systems.class).list.stream()
-            .map(game.injector::getInstance)
-            .forEach(engine::addSystem);
-    }
-
-    private void clearEntities() {
-        engine.removeAllEntities();
-    }
-
-    private void createEntities() {
-        scanLine = new ScanLineComponent(music, beatmap, 2F);
-        health = new HealthComponent(Constants.MAX_HEALTH);
-        dispatch = new DispatchComponent(beatmap, 2F);
-        engine.addEntity(new Platform(world));
-        engine.addEntity(new Player(
-            world,
-            new PlayerComponent(D, F, J, K),
-            new TypeComponent(TypeComponent.PLAYER)
-        ));
-        engine.addEntity(new ScanLine(
-            world,
-            scanLine,
-            new TextureComponent(check),
-            health
-        ));
-        engine.addEntity(new Dispatcher(
-            world,
-            dispatch
-        ));
-    }
-
     private void drawBackground() {
         game.batch.draw(bg1, 0, vh / 10, vw, vh / 1.15F);
         game.batch.draw(bgFooter, 0, 0, vw, vh / 2);
@@ -304,19 +330,5 @@ public class GameScreen extends LazyScreen {
         font.draw(batch, Integer.toString(scanLine.score.totalScore), vw / 1.2F, vh / 1.016F);
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
-    }
-
-    private float getHpSliderPositionX(HealthComponent health) {
-        float healthPercentage = health.health / health.getMaxHealth() * 100;
-        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
-    }
-
-    public void setBeatmap(Beatmap beatmap) {
-        this.beatmap = beatmap;
-        this.dispatch = new DispatchComponent(beatmap, 2F);
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
     }
 }

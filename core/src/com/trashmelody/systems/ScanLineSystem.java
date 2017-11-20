@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScanLineComponent.State;
-import com.trashmelody.screens.GameScreen;
 
 import static com.trashmelody.constants.Constants.*;
 

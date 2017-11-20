@@ -51,6 +51,7 @@ public class GameModule implements Module {
         binder.bind(ScreenProvider.class).in(Singleton.class);
         binder.bind(DebugInputProcessor.class).in(Singleton.class);
         binder.bind(StatsManager.class).in(Singleton.class);
+        binder.bind(TrashManager.class).in(Singleton.class);
     }
 
     @Provides @Singleton

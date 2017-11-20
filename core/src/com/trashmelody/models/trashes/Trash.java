@@ -1,16 +1,20 @@
 package com.trashmelody.models.trashes;
 
 public class Trash {
-    protected String name, description;
-    protected TrashType type;
+    private String name, description;
+    private TrashType type;
+    private String texturePath;
+    private int unlockAt;
 
-    public Trash(String name, String description, TrashType type) {
+    public Trash(String name,
+                 String description,
+                 String texturePath,
+                 TrashType type,
+                 int unlockAt) {
         this.name = name;
         this.description = description;
+        this.texturePath = texturePath;
         this.type = type;
-    }
-
-    public Trash() {
     }
 
     public String getName() {
@@ -35,5 +39,13 @@ public class Trash {
 
     public boolean isRecycle() {
         return this.type == TrashType.Recycle;
+    }
+
+    public String getTexturePath() {
+        return texturePath;
+    }
+
+    public int getUnlockAt() {
+        return unlockAt;
     }
 }

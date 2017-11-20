@@ -1,16 +1,16 @@
 package com.trashmelody.systems;
 
-import com.trashmelody.components.Mapper;
-import com.trashmelody.components.PhysicsComponent;
-import com.trashmelody.components.PlayerComponent;
-import com.trashmelody.components.StateComponent;
-import com.trashmelody.handlers.KeyboardController;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import com.trashmelody.components.Mapper;
+import com.trashmelody.components.PhysicsComponent;
+import com.trashmelody.components.PlayerComponent;
+import com.trashmelody.components.StateComponent;
+import com.trashmelody.handlers.KeyboardController;
 
 public class PlayerControlSystem extends IteratingSystem {
     private KeyboardController controller;

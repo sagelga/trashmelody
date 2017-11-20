@@ -88,7 +88,7 @@ public class GameScreen extends LazyScreen {
     private Command command = Command.Loading;
 
     public enum Command {
-        Loading, Ready, Waiting, Start, Restart
+        Loading, Ready, Waiting, Start, Restart, End
     }
 
     @Inject
@@ -153,6 +153,9 @@ public class GameScreen extends LazyScreen {
                 scanLine.music.stop();
                 restartGame();
                 command = Command.Ready;
+                break;
+            case End:
+                System.out.println("Music ended");
                 break;
         }
     }

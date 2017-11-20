@@ -38,6 +38,8 @@ public class ScanLine extends Entity {
         PhysicsComponent physics = new PhysicsComponent(body, "Scan Line");
         physics.body.setLinearVelocity(0F, 0F);
 
+        scanLineComponent.endTime = scanLineComponent.hitObjects.last().getStartTime();
+
         super.add(transformComponent);
         super.add(textureComponent);
         super.add(new PhysicsComponent(body, "Scan Line"));

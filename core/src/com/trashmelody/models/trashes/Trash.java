@@ -15,6 +15,7 @@ public class Trash {
         this.description = description;
         this.texturePath = texturePath;
         this.type = type;
+        this.unlockAt = unlockAt;
     }
 
     public String getName() {

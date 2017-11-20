@@ -14,9 +14,11 @@ import static com.trashmelody.utils.Functional.isMoreThan;
 
 public class Constants {
 
-    public static final int MAX_HEALTH = 10000;
+//    public static final int MAX_HEALTH = 10000;
+    public static final int MAX_HEALTH = 1000000000;
     public static final int PRE_DISPATCH_TIME = 1200;
     public static final int HIT_OBJECT_LIFE_TIME = 200;
+    public static final int END_OF_GAME_DELAY = 3000;
     public static final float xUpperBound = 512;
     public static final float yUpperBound = 384;
     public static final float START_POSITION = 10F / PPM;

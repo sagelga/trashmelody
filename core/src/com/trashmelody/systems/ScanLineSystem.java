@@ -7,13 +7,19 @@ import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScanLineComponent.State;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.screens.GameScreen;
 
 import static com.trashmelody.constants.Constants.*;
 
 public class ScanLineSystem extends IteratingSystem {
+    private GameScreen gameScreen;
+
     @Inject
-    public ScanLineSystem()  {
+    public ScanLineSystem(ScreenProvider screens)  {
         super(Family.all(ScanLineComponent.class).get(), Systems.getIndex(ScanLineSystem.class));
+
+        this.gameScreen = screens.get(GameScreen.class);
     }
 
     @Override
@@ -34,6 +40,10 @@ public class ScanLineSystem extends IteratingSystem {
                 scanLine.elapsedTime += deltaTime * 1000;
                 return;
             }
+        }
+
+        if (scanLine.elapsedTime > scanLine.endTime + END_OF_GAME_DELAY) {
+            gameScreen.setCommand(GameScreen.Command.End);
         }
 
         if (scanLine.state == State.Pause) {

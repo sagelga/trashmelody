@@ -55,7 +55,6 @@ public class StageSelectScreen extends LazyScreen {
     // Defining building value
     private Texture bdHomeShow, bdCafeShow, bdCinemaShow, bdHospitalShow, bdSchoolShow, bdOfficeShow;
     private Texture bdHomeHide, bdCafeHide, bdCinemaHide, bdHospitalHide, bdSchoolHide, bdOfficeHide;
-    private Texture stageHomeText, stageCafeText, stageCinemaText, stageHospitalText, stageSchoolText, stageOfficeText;
     private Texture buttonBack, buttonContinue, header, footer, cloud, trashworldLogo, selectArrowLeft, selectArrowRight, bg;
 
     private BitmapFont font_HighScore, font_StageName;
@@ -144,9 +143,6 @@ public class StageSelectScreen extends LazyScreen {
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
                 currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
-
-                game.batch.draw(stageCafeText, vw / 64, vh / 1.143F, vw / 3.5F, vh / 8);
-                game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
                 if (cooldown <= 0) {
                     cooldown--;

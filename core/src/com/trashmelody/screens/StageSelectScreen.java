@@ -139,7 +139,7 @@ public class StageSelectScreen extends LazyScreen {
                 stageNameToShow = "DIRTY CAFE";
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
-                currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(cafe);
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -153,7 +153,7 @@ public class StageSelectScreen extends LazyScreen {
                 stageNameToShow = "MESSY CINEMA";
                 game.batch.draw(bdCinemaShow, vw / 1.57F, vh / 2.25F, vw / 6, vh / 3);
 
-                currentBeatmap = beatmaps.get(cinema.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(cinema);
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -167,7 +167,7 @@ public class StageSelectScreen extends LazyScreen {
                 stageNameToShow = "DISORDER HOME";
                 game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
-                currentBeatmap = beatmaps.get(hospital.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(home);
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -177,12 +177,12 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (3):
-                highScoreToShow = school.highScore;
+                highScoreToShow = hospital.highScore;
                 stageNameToShow = "SCRUFFY HOSPITAL";
 
                 game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
 
-                currentBeatmap = beatmaps.get(school.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(hospital);
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -196,7 +196,7 @@ public class StageSelectScreen extends LazyScreen {
                 stageNameToShow = "TRASH OFFICE";
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
 
-                currentBeatmap = beatmaps.get(home.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(office);
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -210,7 +210,8 @@ public class StageSelectScreen extends LazyScreen {
                 stageNameToShow = "NASTY SCHOOL";
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
 
-                currentBeatmap = beatmaps.get(office.getBeatmapGroupId()).get().head();
+                currentBeatmap = getCurrentBeatmap(school);
+
 
                 if (cooldown <= 0) {
                     cooldown--;
@@ -397,5 +398,9 @@ public class StageSelectScreen extends LazyScreen {
         school.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
         home.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
         office.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+    }
+
+    private Beatmap getCurrentBeatmap(Building building) {
+        return beatmaps.get(building.getBeatmapGroupId()).get().head();
     }
 }

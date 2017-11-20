@@ -253,6 +253,7 @@ public class GameScreen extends LazyScreen {
         assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
         assets.load(THINNER_HIT_OBJECT, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
+
         trashManager.getTrashes()
             .map(Trash::getTexturePath)
             .forEach(texture -> assets.load(texture, TEXTURE));

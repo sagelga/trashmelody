@@ -81,11 +81,10 @@ public class DispatchSystem extends IteratingSystem {
             .takeWhile(ready(scanLine.elapsedTime))
             .map(hitObject -> new HitObjectEntity(
                 world,
-                new HitObjectComponent(hitObject),
+                new HitObjectComponent(hitObject, dispatchingTrash),
                 new TypeComponent(TypeComponent.DISPATCHER),
                 new TextureComponent(assets.get(dispatchingTrash.getTexturePath(), TEXTURE)),
                 new TimerComponent(fadeUpListener, 400),
-                dispatchingTrash,
                 position.x
             ))
             .peek(getEngine()::addEntity)

@@ -142,24 +142,16 @@ public class ResultScreen extends LazyScreen {
         else this.grade = Grade.A;
     }
 
-    public void setScores(int perfect, int good, int nice, int miss, int combo, int score, int stageID) {
+    public void setScores(int perfect, int good, int nice, int miss, int combo, int score, String songName) {
+        // Set the stats to be displayed on ResultScreen
         this.perfect = perfect;
         this.good = good;
         this.nice = nice;
         this.miss = miss;
         this.combo = combo;
         this.score = score;
-        String stageToSave;
-        switch (stageID) {
-            case 1: stageToSave = "stage1"; break;
-            case 2: stageToSave = "stage2"; break;
-            case 3: stageToSave = "stage3"; break;
-            case 4: stageToSave = "stage4"; break;
-            case 5: stageToSave = "stage5"; break;
-            case 6: stageToSave = "stage6"; break;
-            default: stageToSave = "INVALID STAGE";
-        }
-        statsManager.setStageScore(stageToSave, score);
+        // Record in pref.
+        statsManager.setStageScore(songName, score);
     }
 
     // DEPRECATED | overloaded method to support legacy method call

@@ -122,7 +122,7 @@ public class GuideCardScreen extends LazyScreen {
             }
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
             game.setLazyScreen(screens.get(StageSelectScreen.class));
         }
 

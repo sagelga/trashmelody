@@ -87,7 +87,7 @@ public class CollectionScreen extends LazyScreen {
             game.batch.draw(pack, vw / 4F, vw/ 5.85F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
         }
 
-        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(btnBack, vw / 64, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 1.9F, vw / 45, vh / 24);
         game.batch.draw(r, vw/1.23F, vh / 1.9F, vw / 45, vh / 24);
@@ -270,7 +270,7 @@ public class CollectionScreen extends LazyScreen {
         assets.load(COLLECTION_RIGHT_H, TEXTURE);
         assets.load(COLLECTION_STORY_BG, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
-        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         //Trashes
         assets.load(COLLECTION_DANGER_1, TEXTURE);
         assets.load(COLLECTION_DANGER_2, TEXTURE);
@@ -298,7 +298,7 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void afterLoad(Assets assets) {
-        this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
+        this.footer     = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
         this.pack       = assets.get(COLLECTION_PACK, TEXTURE);
         this.l          = assets.get(COLLECTION_LEFT, TEXTURE);

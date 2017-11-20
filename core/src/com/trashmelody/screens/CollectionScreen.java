@@ -88,7 +88,7 @@ public class CollectionScreen extends LazyScreen {
         }
 
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
-        game.batch.draw(btnBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
+        game.batch.draw(btnBack, vw / 64, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 1.9F, vw / 45, vh / 24);
         game.batch.draw(r, vw/1.23F, vh / 1.9F, vw / 45, vh / 24);
 

@@ -64,7 +64,7 @@ public class ResultScreen extends LazyScreen {
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
         game.batch.draw(btnContinue, vw / 1.237F, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
 
-        switch (grade) {
+        switch (setGrade(200, 100)) {
             case A: gradeToShow = gradeA; break;
             case B: gradeToShow = gradeB; break;
             case C: gradeToShow = gradeC; break;
@@ -136,8 +136,13 @@ public class ResultScreen extends LazyScreen {
         this.font = assets.get8bitFont(54, Color.RED);
     }
 
-    public void setGrade(Grade grade) {
-        this.grade = grade;
+    public Grade setGrade(float fullScoreOfTheStage, float playerScore) {
+        float percentage = (playerScore/fullScoreOfTheStage) * 100;
+        if (percentage < 40) return Grade.F;
+        else if (percentage < 50) return Grade.D;
+        else if (percentage < 65) return Grade.C;
+        else if (percentage < 90) return Grade.B;
+        else return Grade.A;
     }
 
     public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {
@@ -150,4 +155,5 @@ public class ResultScreen extends LazyScreen {
         // TODO: Save only the highest-recorded score
         statsManager.setStageStats("stage1", "score", score);
     }
+
 }

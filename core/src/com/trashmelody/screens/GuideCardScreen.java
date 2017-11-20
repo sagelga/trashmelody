@@ -82,8 +82,10 @@ public class GuideCardScreen extends LazyScreen {
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
         game.batch.draw(buttonPlay, vw / 64, 0, findRatio(176, 54, vh/16F, 'w'), vh / 16);
         //Trash Unlocked Case
+        game.batch.draw(spray,vw / 2.5F, vh / 3.1F, vw / 5, vh / 2.2F);
+        game.batch.draw(dangerBin, vw / 1.85F, vh / 1.4F, vw / 19.5F, vh / 14);
         //0% trash @ menu screen on before first play only
-        game.batch.draw(spray,vw / 12, vh / 3.1F, vw / 5, vh / 2.2F);
+        /*game.batch.draw(spray,vw / 12, vh / 3.1F, vw / 5, vh / 2.2F);
         game.batch.draw(popcorn,vw / 3.45F, vh / 3.1F, vw / 5, vh / 2.2F);
         game.batch.draw(paper,vw / 2, vh / 3.1F, vw / 5, vh / 2.2F);
         game.batch.draw(bag,vw / 1.4F, vh / 3.1F, vw / 5, vh / 2.2F);
@@ -95,7 +97,7 @@ public class GuideCardScreen extends LazyScreen {
         game.batch.draw(key_f, vw / 2.7F, vh / 4.5F, vw / 22F, vh / 14);
         game.batch.draw(key_j, vw / 1.75F, vh / 4.5F, vw / 22F, vh / 14);
         game.batch.draw(key_k, vw / 1.25F, vh / 4.5F, vw / 22F, vh / 14);
-
+*/
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)){

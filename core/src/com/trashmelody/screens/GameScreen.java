@@ -327,12 +327,6 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
         game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
         game.batch.draw(hpPoint, vw / getHpSliderPositionX(health), vh / 20.2F, vw / 40, vh / 24);
-        //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
-        //game.batch.draw(good,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
         font.draw(batch, Integer.toString(scanLine.score.totalScore), vw / 1.2F, vh / 1.016F);
 

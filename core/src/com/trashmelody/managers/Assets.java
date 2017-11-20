@@ -127,7 +127,11 @@ public class Assets extends AssetManager {
     public static final String COLLECTION_WET_4 = "trashes/wet/cards/FOOD - CARD-04.png";
     public static final String COLLECTION_WET_5 = "trashes/wet/cards/FOOD - CARD-05.png";
     public static final String COLLECTION_STORY_BG = "CollectionScreen/Story-BG.png";
-
+    public static final String COLLECTION_GENERAL_1 = "trashes/general/cards/general cards-01.png";
+    public static final String COLLECTION_GENERAL_2 = "trashes/general/cards/general cards-02.png";
+    public static final String COLLECTION_GENERAL_3 = "trashes/general/cards/general cards-03.png";
+    public static final String COLLECTION_GENERAL_4 = "trashes/general/cards/general cards-04.png";
+    public static final String COLLECTION_GENERAL_5 = "trashes/general/cards/general cards-05.png";
 
     // Countdown Stage Assets
     public static final String COUNTDOWN_BACKGROUND1 = "CountdownPage/background1.png";

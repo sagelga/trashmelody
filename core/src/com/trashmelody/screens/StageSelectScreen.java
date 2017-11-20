@@ -243,8 +243,7 @@ public class StageSelectScreen extends LazyScreen {
             game.batch.draw(bdOfficeHide, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
         }
 
-        if (cooldown > 0)
-            cooldown--;
+        if (cooldown > 0) cooldown--;
 
         if (modes == 0) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
@@ -256,7 +255,7 @@ public class StageSelectScreen extends LazyScreen {
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
                 //game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
-                currentStageNumber += 5;
+                currentStageNumber += 6;
                 currentStageNumber = (currentStageNumber - 1) % 6;
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();

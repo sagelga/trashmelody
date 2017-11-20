@@ -100,31 +100,26 @@ public class CollectionScreen extends LazyScreen {
 
         switch (count) {
             case 1:
-                cardToDraw = spray;
-                nameToDraw = "Hairspray chan";
-                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
-                        + "she then determined to founding her own salon "
-                        + "with Wax-kung and Gel-kung to take revenge.";
+                cardToDraw = thinner;
+                nameToDraw = "Thinner the Carpenter";
+                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
+                        + "hallucinations to everyone near him.";
                 break;
-
             case 2:
-                cardToDraw = paper;
-                nameToDraw = "The Trio";
-                descToDraw = "The trio of derpy paper friends that "
-                        + "a famous artist has thrown into the bin.";
+                cardToDraw = cardboard;
+                nameToDraw = "Bokk Kung";
+                descToDraw = "A cardboard box that used to contain a dog. "
+                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
                 break;
             case 3:
-                cardToDraw = popcorn;
-                nameToDraw = "Popu-san";
-                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
-                        + "He has starred in many popular films such as Trash 1997 and "
-                        + "earned Oscar nominations for Get Trash 2008.";
+                cardToDraw = donut;
+                nameToDraw = "Dono-chan";
+                descToDraw = "Dono-Chan is a teacher of Circle Dance and Sing Academy. "
+                        + "Although she is fat, she can dance very well. "
+                        + "She and everyone is jealous of her talent.";
                 break;
             case 4:
-                cardToDraw = bag;
-                nameToDraw = "Immortal bag";
-                descToDraw = "She was born 700 years ago. And as her name says; "
-                        + "she is a plastic bag that could live through centuries.";
+                cardToDraw = pencil;
                 break;
             case 5:
                 cardToDraw = bottle;
@@ -136,11 +131,11 @@ public class CollectionScreen extends LazyScreen {
                         + "so the name \"Pep\" literally comes from his owner.";
                 break;
             case 7:
-                cardToDraw = donut;
-                nameToDraw = "Dono-chan";
-                descToDraw = "Dono-Chan is a teacher of Circle Dance and Sing Academy. "
-                        + "Although she is fat, she can dance very well. "
-                        + "She and everyone is jealous of her talent.";
+                cardToDraw = popcorn;
+                nameToDraw = "Popu-san";
+                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
+                        + "He has starred in many popular films such as Trash 1997 and "
+                        + "earned Oscar nominations for Get Trash 2008.";
                 break;
             case 8:
                 cardToDraw = plate;
@@ -168,10 +163,11 @@ public class CollectionScreen extends LazyScreen {
                 cardToDraw = tooth;
                 break;
             case 13:
-                cardToDraw = thinner;
-                nameToDraw = "Thinner the Carpenter";
-                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
-                        + "hallucinations to everyone near him.";
+                cardToDraw = spray;
+                nameToDraw = "Hairspray chan";
+                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
+                        + "she then determined to founding her own salon "
+                        + "with Wax-kung and Gel-kung to take revenge.";
                 break;
             case 14:
                 cardToDraw = glass;
@@ -196,10 +192,10 @@ public class CollectionScreen extends LazyScreen {
                         + "After he had been emptied petrol, he got thrown away without care.";
                 break;
             case 18:
-                cardToDraw = cardboard;
-                nameToDraw = "Bokk Kung";
-                descToDraw = "A cardboard box that used to contain a dog. "
-                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
+                cardToDraw = paper;
+                nameToDraw = "The Trio";
+                descToDraw = "The trio of derpy paper friends that "
+                        + "a famous artist has thrown into the bin.";
                 break;
             case 19:
                 cardToDraw = icecream;
@@ -208,7 +204,10 @@ public class CollectionScreen extends LazyScreen {
                         + "you'll want to eat if you see one. Her cheek is pink and her hair is white.";
                 break;
             case 20:
-                cardToDraw = pencil;
+                cardToDraw = bag;
+                nameToDraw = "Immortal bag";
+                descToDraw = "She was born 700 years ago. And as her name says; "
+                        + "she is a plastic bag that could live through centuries.";
                 break;
             default:
                 cardToDraw = spray;

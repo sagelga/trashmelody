@@ -105,6 +105,7 @@ public class Assets extends AssetManager {
 
     // Collection Stage Assets
     public static final String COLLECTION_HEADER = "CollectionScreen/Header.png";
+    public static final String COLLECTION_HEADER2 = "CollectionScreen/Header2.png";
     public static final String COLLECTION_BG = "CollectionScreen/BG.gif";
     public static final String COLLECTION_FOOTER = "CollectionScreen/Footer.png";
     public static final String COLLECTION_PACK = "CollectionScreen/CardPack.png";
@@ -295,5 +296,6 @@ public class Assets extends AssetManager {
     public static final String GUIDE_ICON_F = "KeyboardButtons/F.png";
     public static final String GUIDE_ICON_J = "KeyboardButtons/J.png";
     public static final String GUIDE_ICON_K = "KeyboardButtons/K.png";
+    public static final String GUIDE_ANYKEY = "GuideScreen/anykey.gif";
 
 }

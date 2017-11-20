@@ -95,12 +95,12 @@ public class StageSelectScreen extends LazyScreen {
         currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
         currentStageNumber = 0;
 
-        cafe.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
-        cinema.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
-        hospital.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
-        school.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
-        home.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
-        office.highScore = statsManager.getScore(currentBeatmap.getBeatmapId(), "score");
+        cafe.highScore = statsManager.getScore(currentBeatmap.getBeatmapId())   ;
+        cinema.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        hospital.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        school.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        home.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        office.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
 
         if (musicManager.getMusicPlayStatus(MUSIC_BG1)) {
             musicManager.stopMusic(MUSIC_BG1);

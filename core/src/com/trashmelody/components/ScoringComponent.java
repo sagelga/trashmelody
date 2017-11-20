@@ -24,9 +24,6 @@ public class ScoringComponent implements Component {
         return timingError;
     }
 
-    public void setTimingError(float timingError) {
-        this.timingError = timingError;
-    }
 
     public void setAccuracy(Accuracy accuracy) {
         this.accuracy = accuracy;

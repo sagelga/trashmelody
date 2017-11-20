@@ -1,2 +1,3 @@
 # Trash Collection
-When you play the game, the trash collection will be added automatically. 
+ระบบ Trash Collection นั้นมีเพื่อให้ผู้เล่นสะสมระหว่างการเล่น
+เมื่อผู้เล่นกดเข้าไปดูในหน้า Collection นั้น ผู้ใช้จะเห็นถึงขยะที่ผู้เล่นเคยแยกแล้ว

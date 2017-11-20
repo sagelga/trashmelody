@@ -14,8 +14,8 @@ java-version:
     - readlink -f $(which java)
     - java -version
   retry: 1
-  except:
-    - branch
+  only:
+  - develop
 
 gradle-version:
   stage: prepare
@@ -23,8 +23,8 @@ gradle-version:
     # Checking Gradle version
     - gradle -version
   retry: 1
-  except:
-    - branch
+  only:
+    - develop
 
 set-paths:
   stage: prepare
@@ -33,9 +33,8 @@ set-paths:
     - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
     - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
-  except:
-  - branch
-
+  only:
+  - develop
 
 code-count:
   stage: track
@@ -64,7 +63,7 @@ code-count:
     - git ls-files > assets_list.txt
     #
     # Keep the development graph line
-    - git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+    - git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
     #- git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
     #
     # Check directory again
@@ -77,8 +76,9 @@ code-count:
     - trackers
   allow_failure: true
   retry: 1
-  except:
-    - branch
+  only:
+    - develop
+    - master
 
 gradle-tasks:
   stage: check

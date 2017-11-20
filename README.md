@@ -1,5 +1,5 @@
-<img src="https://github.com/sagelga/trashmelody/blob/develop/core/assets/splash-logo.png?raw=true" align="center" width="70%">
-﻿<h2 align="center">Trash Melody</h2>
+<img align="center" src="https://github.com/sagelga/trashmelody/blob/develop/core/assets/splash-logo.png?raw=true" width="70%">
+﻿<h2 align="center">Welcome to TrashMelody Repository Page</h2>
 เมื่อเมืองเต็มไปด้วยขยะ คุณผู้ได้รับหน้าที่อาสาสมัครคัดแยกขยะจึงต้องมาช่วยแยกขยะลงไปในถังขยะให้ถูกต้อง ไม่ว่าจะเป็นขยะทั่วไป ขยะเปียก ขยะรีไซเคิล และขยะอันตราย เมื่อเปิดเกมขึ้นมา ผู้เล่นจะได้เลือกแผนที่ที่จะเล่น แต่ละสถานที่ก็จะมีขยะแตกต่างกันไป เช่น คอนโดฯ ตลาด เป็นต้น ในการเล่นเกม ผู้เล่นจะต้องกดปุ่มเพื่อให้ขยะที่ไหลลงมาตามสายพานถูกจัดไปอยู่ในถังขยะที่ถูกต้อง หากผู้เล่นไม่รู้ว่าขยะใดจะต้องไปอยู่กับถังใด ก็สามารถเปิดดูได้ว่า ขยะประเภทนี้เป็นประเภทอะไร โดยแต่ละด่านก็จะมีเวลาจำกัดแตกต่างกันไป และคะแนนที่คุณจะได้ขึ้นอยู่กับความถูกต้องของขยะที่หล่นไปในถัง หากคัดแยกไม่ถูกต้อง หรือขยะหล่นจากสายพานไปก่อน ก็จะโดนทำโทษโดยการหักคะแนน
 
 ผู้เล่นจะสะสมคะแนนไปเรื่อยๆ เพื่อปลดล็อคด่านต่อไป และในเกมก็มีคอลเลกชันสำหรับสะสมขยะที่ได้เก็บมาแล้วด้วย ยิ่งเล่นไปเรื่อยๆ ก็จะได้เจอขยะชนิดใหม่ๆ ให้สะสมลงในคอลเลกชันมากขึ้น
@@ -7,30 +7,14 @@
 ความยากจะเพื่มขื้นเรื่อยๆ ตามระดับของด่าน โดยที่จะมีประเภทขยะ และการหักคะแนนที่มากขื้นเพื่อเป็นการปรับความยากง่ายให้กับเกมส์ หากว่าผู้เล่นไม่สามารถทำตามเป้าหมายของเกมส์ได้ (เช่นแยกขยะให้ถูกต้องอย่างน้อย 80%) ก็จะถือว่าเล่นด่านนั้นๆ ไม่ผ่านโดยจะเก็บแต้มไปเรื่อยๆ จนเพลงจบ ในแคตตาล็อกจะแยกข้อมูลขยะทั้ง 4 ถังและชื่อขยะนั้นๆ
 
 <hr>
-<h2 align="center">Before playing</h2>
-<p>เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด เพื่อการเล่นทีดีที่สุด<br>แต่ท่านก็สามารถเข้าไปเล่นได้ในทันที โดยการกด Double Click ที่ตัวเกม .exe เพื่อเรื่มเล่นเกม</p>
+<h2 align="center">วิธีการเรื่มเกม</h2>
+<p>เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด เพื่อการเล่นทีดีที่สุด<br>แต่ท่านก็สามารถเข้าไปเล่นได้ในทันที โดยการกด Double Click ที่ตัวเกม .exe เพื่อเรื่มเล่นเกม<br>
+และหากว่ายังเล่นยังไม่เป็น ก็สามารถเข้าไปดูได้ที่</p>[github.com/sagelga/wiki](https://github.com/sagelga/wiki)
 
 <hr>
-<h2 align="center">How to play</h2>
-
-<hr>
-<h2 align="center">Development Test Check</h2>
-<p align="center">This test check is automatically shows updates on Ubuntu Server CI Pipeline.</p>
-<table style="width: 100%">
-
-<tr>
-<th>Build Test (Master)</th>
-<th>Build Test (Development)</th>
-</tr>
-
-<tr>
-<td><a href="http://git.nyancode.io/z/trashmelody/commits/master"><img alt="pipeline status" src="http://git.nyancode.io/z/trashmelody/badges/master/pipeline.svg" /></a></td>
-<td><a href="http://git.nyancode.io/z/trashmelody/commits/develop"><img alt="pipeline status" src="http://git.nyancode.io/z/trashmelody/badges/develop/pipeline.svg" /></a></td>
-</tr>
-    
-</table>
-
-<img src="http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg">
+<h2 align="center">Documentations</h2>
+We have recorded all of the resources in the wiki. Please check out the wiki page [here](https://github.com/sagelga/trashmelody/wiki)
+                             
 <hr>
 <h2 align="center">The teams</h2>
 <p align="center">We are a student in Information Technology, King Mongkut Institute of Technology Ladkrabang</p>

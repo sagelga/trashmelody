@@ -22,7 +22,6 @@ public class HitObjectEntity extends Entity {
                            TypeComponent type,
                            TextureComponent textureComponent,
                            TimerComponent timerComponent,
-                           Trash trash,
                            float dispatcherX) {
 
         Vector2 hitObjectPosition = hitObjectComponent.hitObject.getPosition().toGdxVector();
@@ -44,8 +43,6 @@ public class HitObjectEntity extends Entity {
         Body body = world.createBody(bodyDef);
         body.createFixture(fixtureDef);
         body.setTransform(transformComponent.position, 0F);
-
-//        TextureRegion textureRegion = new TextureRegion(texture, 250, 140);
 
         super.add(transformComponent);
         super.add(new PhysicsComponent(body, "HitObjectEntity"));

@@ -11,6 +11,8 @@ import com.trashmelody.components.ScanLineComponent.State;
 import com.trashmelody.constants.Constants;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.models.trashes.Trash;
+import com.trashmelody.models.trashes.TrashType;
 import com.trashmelody.screens.PauseScreen;
 
 public class ControlSystem extends IteratingSystem {
@@ -38,21 +40,34 @@ public class ControlSystem extends IteratingSystem {
             game.setLazyScreen(screens.get(PauseScreen.class));
         }
 
-        if (controller.keyMap.get(player.dangerous)) {
-            controller.keyMap.put(player.dangerous, false);
+        processClick(player, scanLine);
+    }
 
-            scanLine.activeHitObjects
-                .headOption()
-                .filter(hitObjectEntity -> isClickable(scanLine, Mapper.hitObject.get(hitObjectEntity)))
-                .forEach(hitObjectEntity -> {
-                    HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
-                    hitObjectEntity.add(new ScoringComponent(calculateDelta(scanLine, hitObject)));
-                    scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
-                });
+    private void processClick(PlayerComponent player, ScanLineComponent scanLine) {
+        if (controller.keyJustPressed(player.dangerous)) {
+            processHitObject(scanLine, TrashType.Dangerous);
+        } else if (controller.keyJustPressed(player.recycle)) {
+            processHitObject(scanLine, TrashType.Recycle);
+        } else if (controller.keyJustPressed(player.wet)) {
+            processHitObject(scanLine, TrashType.Wet);
+        } else if (controller.keyJustPressed(player.general)) {
+            processHitObject(scanLine, TrashType.General);
         }
     }
 
-    public static float calculateDelta(ScanLineComponent scanLine, HitObjectComponent hitObject) {
+    private void processHitObject(ScanLineComponent scanLine, TrashType trashType) {
+        scanLine.activeHitObjects
+            .filter(entity -> Mapper.hitObject.get(entity).trash.getType() == trashType)
+            .headOption()
+            .filter(entity -> isClickable(scanLine, Mapper.hitObject.get(entity)))
+            .forEach(entity -> {
+                HitObjectComponent hitObject = Mapper.hitObject.get(entity);
+                entity.add(new ScoringComponent(calculateDelta(scanLine, hitObject)));
+                scanLine.activeHitObjects = scanLine.activeHitObjects.remove(entity);
+            });
+    }
+
+    static float calculateDelta(ScanLineComponent scanLine, HitObjectComponent hitObject) {
         return scanLine.elapsedTime - hitObject.hitObject.getStartTime();
     }
 

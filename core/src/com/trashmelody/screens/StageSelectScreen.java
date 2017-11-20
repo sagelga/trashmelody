@@ -95,12 +95,7 @@ public class StageSelectScreen extends LazyScreen {
         currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
         currentStageNumber = 0;
 
-        cafe.highScore = statsManager.getScore(currentBeatmap.getBeatmapId())   ;
-        cinema.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
-        hospital.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
-        school.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
-        home.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
-        office.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        updateBeatmap();
 
         if (musicManager.getMusicPlayStatus(MUSIC_BG1)) {
             musicManager.stopMusic(MUSIC_BG1);
@@ -134,6 +129,8 @@ public class StageSelectScreen extends LazyScreen {
         int count = 0;
         String stageNameToShow = "";
         int highScoreToShow;
+
+        updateBeatmap();
 
         // Show the text of the selected item
         switch (currentStageNumber) {
@@ -257,6 +254,7 @@ public class StageSelectScreen extends LazyScreen {
         if (cooldown > 0) cooldown--;
 
         if (modes == 0) {
+
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
                 //game.batch.draw(selectArrowRight, vw/1.04F, vh/8, vw/28, vh/10);
                 currentStageNumber = (currentStageNumber + 1) % 6;
@@ -388,13 +386,16 @@ public class StageSelectScreen extends LazyScreen {
         musicManager.stopMusic();
     }
 
-    private List<Building> getBuildings() {
-        return List.of(
-
-        );
-    }
-
     public int getTimes() {
         return times;
+    }
+
+    private void updateBeatmap() {
+        cafe.highScore = statsManager.getScore(currentBeatmap.getBeatmapId())   ;
+        cinema.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        hospital.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        school.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        home.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
+        office.highScore = statsManager.getScore(currentBeatmap.getBeatmapId());
     }
 }

@@ -9,7 +9,7 @@ public class ScoringComponent implements Component {
     private Accuracy accuracy;
 
     public enum Accuracy {
-        Perfect, Good, Cool, Bad, Miss
+        Perfect, Good, Nice, Bad, Miss
     }
 
     public ScoringComponent(float timingError) {

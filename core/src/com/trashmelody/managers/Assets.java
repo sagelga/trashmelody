@@ -172,7 +172,7 @@ public class Assets extends AssetManager {
     public static final String GAME_SCORE = "GameScreen/SCORE.png";
     public static final String MISS_ACCURACY = "GameScreen/SCORE-1.png";
     public static final String BAD_ACCURACY = "GameScreen/SCORE-2.png";
-    public static final String COOL_ACCURACY = "GameScreen/SCORE-3.png";
+    public static final String NICE_ACCURACY = "GameScreen/SCORE-3.png";
     public static final String GOOD_ACCURACY = "GameScreen/SCORE-4.png";
     public static final String PERFECT_ACCURACY = "GameScreen/SCORE-5.png";
     public static final String GAME_STATUS_BAR = "GameScreen/STATUS-BAR.png";

@@ -1,13 +1,9 @@
 package com.trashmelody.utils;
 
-import io.vavr.CheckedFunction1;
-import io.vavr.Function1;
 import io.vavr.collection.Stream;
+import io.vavr.collection.Traversable;
 import io.vavr.control.Option;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -20,21 +16,13 @@ public class Functional {
 
     public static BiFunction<Float, Float, Predicate<Float>> isBetween = (lower, upper) -> isMoreThan.apply(lower).and(isLessThan.apply(upper));
 
-    public static Stream<Path> listFiles(Path path) {
-        try {
-            return Stream.ofAll(Files.list(path));
-        } catch (IOException e) {
+    public static <T> Stream<T> flatten(Traversable<Option<T>> traversable) {
+        if (traversable.isEmpty()) {
             return Stream.empty();
-        }
-    }
-
-    public static <T> Stream<T> flatten(Stream<Option<T>> stream) {
-        if (stream.isEmpty()) {
-            return Stream.empty();
-        } else if (stream.head().isEmpty()) {
-            return flatten(stream.tail());
+        } else if (traversable.head().isEmpty()) {
+            return flatten(traversable.tail());
         } else {
-            return flatten(stream.tail()).prepend(stream.head().get());
+            return flatten(traversable.tail()).prepend(traversable.head().get());
         }
     }
 

@@ -45,8 +45,8 @@ public class AccuracySystem extends IteratingSystem {
             return Accuracy.Perfect;
         } else if (isGood.test(timingError)) {
             return Accuracy.Good;
-        } else if (isCool.test(timingError)) {
-            return Accuracy.Cool;
+        } else if (isNice.test(timingError)) {
+            return Accuracy.Nice;
         } else if (isBad.test(timingError)) {
             return Accuracy.Bad;
         } else {

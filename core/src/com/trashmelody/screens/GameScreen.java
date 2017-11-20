@@ -1,12 +1,10 @@
 package com.trashmelody.screens;
 
 import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -27,6 +25,7 @@ import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.managers.TrashManager;
+import com.trashmelody.models.Score;
 import com.trashmelody.models.trashes.Trash;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
@@ -88,7 +87,7 @@ public class GameScreen extends LazyScreen {
     private Command command = Command.Loading;
 
     public enum Command {
-        Loading, Ready, Waiting, Start, Restart
+        Loading, Ready, Waiting, Start, Restart, End
     }
 
     @Inject
@@ -153,6 +152,18 @@ public class GameScreen extends LazyScreen {
                 scanLine.music.stop();
                 restartGame();
                 command = Command.Ready;
+                break;
+            case End:
+                Score score = scanLine.score;
+                screens.get(ResultScreen.class).setScores(
+                    score.perfect,
+                    score.good,
+                    score.nice,
+                    score.miss + score.bad,
+                    100,
+                    score.totalScore
+                );
+                game.setLazyScreen(screens.get(ResultScreen.class));
                 break;
         }
     }
@@ -242,16 +253,11 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_SCORE, TEXTURE);
         assets.load(MISS_ACCURACY, TEXTURE);
         assets.load(BAD_ACCURACY, TEXTURE);
-        assets.load(COOL_ACCURACY, TEXTURE);
+        assets.load(NICE_ACCURACY, TEXTURE);
         assets.load(GOOD_ACCURACY, TEXTURE);
         assets.load(PERFECT_ACCURACY, TEXTURE);
         assets.load(GAME_SONG_NAME_1, TEXTURE);
         assets.load(GAME_STATUS_BAR, TEXTURE);
-        assets.load(CIGARETTE_HIT_OBJECT, TEXTURE);
-        assets.load(HAIR_SPRAY_HIT_OBJECT, TEXTURE);
-        assets.load(OIL_CAN_HIT_OBJECT, TEXTURE);
-        assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
-        assets.load(THINNER_HIT_OBJECT, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
 
         trashManager.getTrashes()
@@ -288,7 +294,7 @@ public class GameScreen extends LazyScreen {
         this.scoreTitle = assets.get(GAME_SCORE, TEXTURE);
         this.miss = assets.get(MISS_ACCURACY, TEXTURE);
         this.bad = assets.get(BAD_ACCURACY, TEXTURE);
-        this.cool = assets.get(COOL_ACCURACY, TEXTURE);
+        this.cool = assets.get(NICE_ACCURACY, TEXTURE);
         this.good = assets.get(GOOD_ACCURACY, TEXTURE);
         this.perfect = assets.get(PERFECT_ACCURACY, TEXTURE);
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);

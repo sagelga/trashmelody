@@ -283,6 +283,7 @@ public class Assets extends AssetManager {
     public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
     public static final String GLOBAL_ICON_PLAY = "Global/icon-play.png";
     public static final String GLOBAL_ICON_CONTINUE = "Global/icon-continue.png";
+    public static final String GLOBAL_ICON_PAUSE = "Global/icon-pause.png";
     public static final String GLOBAL_FOOTER_BAR = "Global/footer-bar.png";
 
     //Game Guide Screen

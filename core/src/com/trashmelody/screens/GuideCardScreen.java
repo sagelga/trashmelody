@@ -1,4 +1,196 @@
 package com.trashmelody.screens;
 
-public class GuideCardScreen {
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.managers.TrashManager;
+import com.trashmelody.models.trashes.dangerous.Cigarette;
+import com.trashmelody.models.trashes.dangerous.OilCan;
+import com.trashmelody.models.trashes.recycle.Paper;
+import com.trashmelody.models.trashes.wet.Popcorn;
+import com.trashmelody.utils.Debugger;
+import com.trashmelody.TrashMelody;
+import com.trashmelody.utils.GifDecoder;
+
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.utils.RenderingUtils.*;
+
+@Singleton
+public class GuideCardScreen extends LazyScreen {
+    private TrashMelody game;
+    private ScreenProvider screens;
+    private OrthographicCamera camera;
+    private Viewport viewport;
+    private SpriteBatch batch;
+    private float vh = getViewportHeight();
+    private float vw = getViewportWidth();
+    private TrashManager trashManager;
+    private int count = 1;
+    private Animation<TextureRegion> bg;
+    private Texture footer, header, buttonPlay;
+    //Dangerous Trashes
+    private Texture cigar, spray, can, bag, thinner;
+    //Recycle Trashes
+    private Texture  cardboard, glass, note, paper, plastic;
+    //Wet Trashes
+    private Texture curry, donut, icecream, matcha, popcorn;
+    //Bin
+    private Texture dangerBin, recycleBin, wetBin, idkBin;
+    //Key
+    private Texture key_d,key_f,key_j,key_k;
+    //Temporary Current Stage
+    private int currentStage = 1;
+    float elapsed;
+    private GlyphLayout layoutTitle = new GlyphLayout();
+    private GlyphLayout layoutDesc = new GlyphLayout();
+    private GlyphLayout layoutTrashType = new GlyphLayout();
+
+    @Inject
+    GuideCardScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
+        this.game = game;
+        this.screens = screens;
+        this.camera = camera;
+        this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
+        this.batch = batch;
+    }
+
+    @Override
+    public void render(float delta) {
+        elapsed += delta;
+        clearScreen();
+
+        game.batch.begin();
+
+        // Draw Background
+        if (TrashMelody.enableAnimation) {
+            game.batch.draw(bg.getKeyFrame(elapsed), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        } else {
+            game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+        }
+        game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(buttonPlay, vw / 64, 0, findRatio(176, 54, vh/16F, 'w'), vh / 16);
+        //Trash Unlocked Case
+        //0% trash @ menu screen on before first play only
+        game.batch.draw(spray,vw / 12, vh / 3.1F, vw / 5, vh / 2.2F);
+        game.batch.draw(popcorn,vw / 3.45F, vh / 3.1F, vw / 5, vh / 2.2F);
+        game.batch.draw(paper,vw / 2, vh / 3.1F, vw / 5, vh / 2.2F);
+        game.batch.draw(bag,vw / 1.4F, vh / 3.1F, vw / 5, vh / 2.2F);
+        game.batch.draw(dangerBin, vw / 4.5F, vh / 1.45F, vw / 19.5F, vh / 14);
+        game.batch.draw(recycleBin, vw / 2.33F, vh / 1.45F, vw / 19, vh / 14);
+        game.batch.draw(wetBin, vw / 1.565F, vh / 1.45F, vw / 19, vh / 14);
+        game.batch.draw(idkBin, vw / 1.169F, vh / 1.45F, vw / 19, vh / 14);
+        game.batch.draw(key_d, vw / 6, vh / 4.5F, vw / 22F, vh / 14);
+        game.batch.draw(key_f, vw / 2.7F, vh / 4.5F, vw / 22F, vh / 14);
+        game.batch.draw(key_j, vw / 1.75F, vh / 4.5F, vw / 22F, vh / 14);
+        game.batch.draw(key_k, vw / 1.25F, vh / 4.5F, vw / 22F, vh / 14);
+
+
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
+            game.setLazyScreen(screens.get(StageSelectScreen.class));
+        }
+
+        // Debug zone
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
+        // Debug zone
+
+        game.batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+
+        viewport.update(width, height);
+    }
+
+    @Override
+    public void loadAssets(Assets assets) {
+        assets.load(COLLECTION_BG, TEXTURE);
+        assets.load(COLLECTION_HEADER, TEXTURE);
+        assets.load(COLLECTION_PACK, TEXTURE);
+        assets.load(COLLECTION_LEFT, TEXTURE);
+        assets.load(COLLECTION_RIGHT, TEXTURE);
+        assets.load(COLLECTION_LEFT_H, TEXTURE);
+        assets.load(COLLECTION_RIGHT_H, TEXTURE);
+        assets.load(COLLECTION_STORY_BG, TEXTURE);
+        assets.load(GLOBAL_ICON_BACK, TEXTURE);
+        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        //Trashes
+        assets.load(COLLECTION_DANGER_1, TEXTURE);
+        assets.load(COLLECTION_DANGER_2, TEXTURE);
+        assets.load(COLLECTION_DANGER_3, TEXTURE);
+        assets.load(COLLECTION_DANGER_4, TEXTURE);
+        assets.load(COLLECTION_DANGER_5, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_1, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_2, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_3, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_4, TEXTURE);
+        assets.load(COLLECTION_RECYCLE_5, TEXTURE);
+        assets.load(COLLECTION_WET_1, TEXTURE);
+        assets.load(COLLECTION_WET_2, TEXTURE);
+        assets.load(COLLECTION_WET_3, TEXTURE);
+        assets.load(COLLECTION_WET_4, TEXTURE);
+        assets.load(COLLECTION_WET_5, TEXTURE);
+        assets.load(GLOBAL_ICON_PLAY, TEXTURE);
+        //Bin
+        assets.load(GAME_BIN_01, TEXTURE);
+        assets.load(GAME_BIN_02, TEXTURE);
+        assets.load(GAME_BIN_03, TEXTURE);
+        assets.load(GAME_BIN_04, TEXTURE);
+        //Key
+        assets.load(GUIDE_ICON_D, TEXTURE);
+        assets.load(GUIDE_ICON_F, TEXTURE);
+        assets.load(GUIDE_ICON_J, TEXTURE);
+        assets.load(GUIDE_ICON_K, TEXTURE);
+
+        this.bg = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(COLLECTION_BG).read());
+    }
+
+    @Override
+    public void afterLoad(Assets assets) {
+        this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
+        this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
+        this.buttonPlay = assets.get(GLOBAL_ICON_PLAY, TEXTURE);
+        //Danger Trashes
+        this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
+        this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);
+        this.cigar      = assets.get(COLLECTION_DANGER_3, TEXTURE);
+        this.thinner    = assets.get(COLLECTION_DANGER_4, TEXTURE);
+        this.can        = assets.get(COLLECTION_DANGER_5, TEXTURE);
+        //Recycle Trashes
+        this.paper      = assets.get(COLLECTION_RECYCLE_1, TEXTURE);
+        this.note       = assets.get(COLLECTION_RECYCLE_2, TEXTURE);
+        this.plastic    = assets.get(COLLECTION_RECYCLE_3, TEXTURE);
+        this.glass      = assets.get(COLLECTION_RECYCLE_4, TEXTURE);
+        this.cardboard  = assets.get(COLLECTION_RECYCLE_5, TEXTURE);
+        //Wet Trashes
+        this.popcorn    = assets.get(COLLECTION_WET_1, TEXTURE);
+        this.donut      = assets.get(COLLECTION_WET_2, TEXTURE);
+        this.curry      = assets.get(COLLECTION_WET_3, TEXTURE);
+        this.matcha     = assets.get(COLLECTION_WET_4, TEXTURE);
+        this.icecream   = assets.get(COLLECTION_WET_5, TEXTURE);
+        //Bin
+        this.dangerBin  = assets.get(GAME_BIN_01, TEXTURE);
+        this.recycleBin = assets.get(GAME_BIN_02, TEXTURE);
+        this.wetBin     = assets.get(GAME_BIN_03, TEXTURE);
+        this.idkBin     = assets.get(GAME_BIN_04, TEXTURE);
+        //Key
+        this.key_d     = assets.get(GUIDE_ICON_D, TEXTURE);
+        this.key_f     = assets.get(GUIDE_ICON_F, TEXTURE);
+        this.key_j     = assets.get(GUIDE_ICON_J, TEXTURE);
+        this.key_k     = assets.get(GUIDE_ICON_K, TEXTURE);
+    }
 }

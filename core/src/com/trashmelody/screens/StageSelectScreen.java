@@ -65,6 +65,7 @@ public class StageSelectScreen extends LazyScreen {
     private float vw = getViewportWidth();
     private int currentStageNumber = 0;
     private int modes, cooldown;
+    int times = 1;
 
     @Inject
     StageSelectScreen(TrashMelody game,
@@ -85,7 +86,6 @@ public class StageSelectScreen extends LazyScreen {
         this.viewport = viewport;
         this.beatmapManager = beatmapManager;
         this.statsManager = statsManager;
-
         beatmaps = beatmapManager.getBeatmapsByGroupId();
     }
 
@@ -288,6 +288,7 @@ public class StageSelectScreen extends LazyScreen {
         // Debug zone
 
         game.batch.end();
+        times++;
     }
 
     @Override
@@ -392,5 +393,9 @@ public class StageSelectScreen extends LazyScreen {
         return List.of(
 
         );
+    }
+
+    public int getTimes(){
+        return times;
     }
 }

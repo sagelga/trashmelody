@@ -25,6 +25,7 @@ import static com.trashmelody.utils.RenderingUtils.*;
 public class MenuScreen extends LazyScreen {
     private TrashMelody game;
     private StageSelectScreen stageSelectScreen;
+    private GuideCardScreen guideCardScreen;
     private ResultScreen resultScreen;
     private MusicManager musicManager;
     private CollectionScreen collectionScreen;
@@ -49,6 +50,7 @@ public class MenuScreen extends LazyScreen {
         this.stageSelectScreen = screens.get(StageSelectScreen.class);
         this.resultScreen = screens.get(ResultScreen.class);
         this.collectionScreen = screens.get(CollectionScreen.class);
+        this.guideCardScreen = screens.get(GuideCardScreen.class);
         this.musicManager = musicManager;
         this.camera = camera;
         this.viewport = viewport;
@@ -71,14 +73,18 @@ public class MenuScreen extends LazyScreen {
         elapsed += delta;
 
         game.batch.begin();
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) menuCount++;
         else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) menuCount--;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             switch (menuCount) {
                 case 1:
-                    game.setLazyScreen(stageSelectScreen);
+                    if(stageSelectScreen.getTimes() == 1){
+                        game.setLazyScreen(guideCardScreen);
+                    }
+                    else {
+                        game.setLazyScreen(stageSelectScreen);
+                    }
                     break;
                 case 2:
                     game.setLazyScreen(collectionScreen);

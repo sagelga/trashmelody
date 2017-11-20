@@ -155,15 +155,17 @@ public class GameScreen extends LazyScreen {
                 break;
             case End:
                 Score score = scanLine.score;
-                screens.get(ResultScreen.class).setScores(
+                ResultScreen resultScreen = screens.get(ResultScreen.class);
+                resultScreen.setScores(
                     score.perfect,
                     score.good,
                     score.nice,
                     score.miss + score.bad,
-                    100,
+                    17,
                     score.totalScore
                 );
-                game.setLazyScreen(screens.get(ResultScreen.class));
+                resultScreen.setGrade(score.totalScore, score.totalScore);
+                game.setLazyScreen(resultScreen);
                 break;
         }
     }
@@ -249,7 +251,7 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_LEVEL_2, TEXTURE);
         assets.load(GAME_LEVEL_3, TEXTURE);
         assets.load(GAME_LEVEL_BORDER, TEXTURE);
-        assets.load(GAME_PAUSE, TEXTURE);
+        assets.load(GLOBAL_ICON_PAUSE, TEXTURE);
         assets.load(GAME_SCORE, TEXTURE);
         assets.load(MISS_ACCURACY, TEXTURE);
         assets.load(BAD_ACCURACY, TEXTURE);
@@ -290,7 +292,7 @@ public class GameScreen extends LazyScreen {
         this.easy = assets.get(GAME_LEVEL_2, TEXTURE);
         this.hard = assets.get(GAME_LEVEL_3, TEXTURE);
         this.levelCover = assets.get(GAME_LEVEL_BORDER, TEXTURE);
-        this.pauseTab = assets.get(GAME_PAUSE, TEXTURE);
+        this.pauseTab = assets.get(GLOBAL_ICON_PAUSE, TEXTURE);
         this.scoreTitle = assets.get(GAME_SCORE, TEXTURE);
         this.miss = assets.get(MISS_ACCURACY, TEXTURE);
         this.bad = assets.get(BAD_ACCURACY, TEXTURE);
@@ -320,7 +322,7 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
-        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(186, 54, vw/8, 'h'));
+        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);

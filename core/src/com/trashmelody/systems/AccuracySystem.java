@@ -33,7 +33,7 @@ public class AccuracySystem extends IteratingSystem {
 
         scoring.getClickedType().forEach(clickedType -> getEngine().addEntity(new FallingTrash(
             world,
-            GameScreen.BIN_POSITION_MAPPER.get(clickedType).get(),
+            GameScreen.binPositionMapper.get(clickedType).get(),
             new TextureComponent(texture.texture),
             new TypeComponent(TypeComponent.ITEM)
         )));

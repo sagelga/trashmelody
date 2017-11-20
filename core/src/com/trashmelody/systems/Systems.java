@@ -9,7 +9,7 @@ public class Systems {
     public static Systems systems = new Systems(Arrays.asList(
             ScanLineSystem.class,
             DispatchSystem.class,
-            PlayerControlSystem.class,
+//            PlayerControlSystem.class,
             ControlSystem.class,
             HitObjectSystem.class,
             AccuracySystem.class,
@@ -21,8 +21,8 @@ public class Systems {
             CallbackSystem.class,
             PhysicsSynchronizationSystem.class,
             MusicSynchronizeSystem.class,
-            RenderingSystem.class,
-            PhysicsDebugSystem.class
+            RenderingSystem.class
+//            PhysicsDebugSystem.class
     ));
 
     public static int getIndex(Class<? extends EntitySystem> system) {

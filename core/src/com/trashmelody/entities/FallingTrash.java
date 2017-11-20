@@ -1,14 +1,9 @@
 package com.trashmelody.entities;
 
-import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.trashmelody.components.*;
-
-import static com.trashmelody.constants.B2Dvars.PPM;
-import static com.trashmelody.constants.Constants.yUpperBound;
 
 public class FallingTrash extends Entity {
 

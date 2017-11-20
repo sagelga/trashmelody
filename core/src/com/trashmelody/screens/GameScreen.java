@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -27,8 +28,13 @@ import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.managers.TrashManager;
 import com.trashmelody.models.Score;
 import com.trashmelody.models.trashes.Trash;
+import com.trashmelody.models.trashes.TrashType;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
+import io.vavr.collection.HashMap;
+import io.vavr.collection.Map;
+
+import java.util.Vector;
 
 import static com.badlogic.gdx.Input.Keys.*;
 import static com.trashmelody.managers.Assets.*;
@@ -340,4 +346,12 @@ public class GameScreen extends LazyScreen {
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
+
+    public static Map<TrashType, Vector2> BIN_POSITION_MAPPER = HashMap.of(
+        TrashType.Dangerous, new Vector2(1, 1),
+        TrashType.Recycle, new Vector2(2, 1),
+        TrashType.Wet, new Vector2(3, 1),
+        TrashType.General, new Vector2(4, 1)
+    );
+
 }

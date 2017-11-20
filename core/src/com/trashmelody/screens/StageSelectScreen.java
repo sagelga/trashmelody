@@ -60,6 +60,7 @@ public class StageSelectScreen extends LazyScreen {
     private BitmapFont font;
 
     private Music music1, music2, music3, music4, music5, music6;
+    private Music SFxStageChange;
 
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -109,7 +110,7 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(trashworldLogo, vw / 2.8F, vh / 2.8F, vw / 3.7F, vh / 3.5F);
 
         // Show the header + footer of the game
-        game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw/1.5F, 'h'));
+        game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw / 1.5F, 'h'));
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
 
         // Show the button interfaces
@@ -251,15 +252,15 @@ public class StageSelectScreen extends LazyScreen {
                 currentStageNumber = (currentStageNumber + 1) % 6;
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
+                musicManager.playMusic(SFX_STAGE_CHANGE);
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
                 //game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
+                currentStageNumber += 5;
                 currentStageNumber = (currentStageNumber - 1) % 6;
-                if (currentStageNumber < 0) {
-                    currentStageNumber = 5;
-                }
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
+                musicManager.playMusic(SFX_STAGE_CHANGE);
             }
         }
 
@@ -332,6 +333,8 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(MUSIC_4_SONG, MUSIC);
         assets.load(MUSIC_5_SONG, MUSIC);
         assets.load(MUSIC_6_SONG, MUSIC);
+
+        assets.load(SFX_STAGE_CHANGE, MUSIC);
     }
 
     @Override
@@ -375,6 +378,8 @@ public class StageSelectScreen extends LazyScreen {
         this.music5 = assets.get(MUSIC_5_SONG, MUSIC);
         this.music6 = assets.get(MUSIC_6_SONG, MUSIC);
 
+        this.SFxStageChange = assets.get(SFX_STAGE_CHANGE, MUSIC);
+
         this.font = assets.get8bitFont(24, Color.GREEN);
 
     }
@@ -392,7 +397,7 @@ public class StageSelectScreen extends LazyScreen {
         );
     }
 
-    public int getTimes(){
+    public int getTimes() {
         return times;
     }
 }

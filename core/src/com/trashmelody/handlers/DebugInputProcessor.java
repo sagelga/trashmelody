@@ -52,11 +52,11 @@ public class DebugInputProcessor implements InputProcessor {
                 Gdx.app.exit();
             case Input.Keys.EQUALS:
                 musicManager.increaseBackgroundVolume();
-                musicManager.playMusic(SFX_VOLUME_CHECK, musicManager.getBackgroundMusicVolume());
+                musicManager.playMusic(SFX_VOLUME_CHECK);
                 break;
             case Input.Keys.MINUS:
                 musicManager.decreaseBackgroundVolume();
-                musicManager.playMusic(SFX_VOLUME_CHECK, musicManager.getBackgroundMusicVolume());
+                musicManager.playMusic(SFX_VOLUME_CHECK);
                 break;
             case Input.Keys.NUM_1:
                 Debugger.debug_mode = !Debugger.debug_mode;

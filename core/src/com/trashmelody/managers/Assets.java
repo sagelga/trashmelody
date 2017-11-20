@@ -257,6 +257,7 @@ public class Assets extends AssetManager {
 
     // Sound Effects Assets
     public static final String SFX_VOLUME_CHECK = "SFx/VolumeCheck.wav";
+    public static final String SFX_STAGE_CHANGE = "SFx/StageChange.wav";
 
     // Music change block Assets
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";

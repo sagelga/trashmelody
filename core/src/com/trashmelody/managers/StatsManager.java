@@ -44,13 +44,6 @@ public class StatsManager {
             setCurrentMusicTrack("MUSIC_BG1");
             setRecurrentUser();
 
-            setStageStats("stage1", "perfect", 0);
-            setStageStats("stage1", "perfect", 0);
-            setStageStats("stage1", "good", 0);
-            setStageStats("stage1", "nice", 0);
-            setStageStats("stage1", "miss", 0);
-            setStageStats("stage1", "combo", 0);
-            setStageStats("stage1", "score", 0);
         }
         preferences.flush();
         return preferences;

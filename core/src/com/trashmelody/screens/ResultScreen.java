@@ -52,9 +52,6 @@ public class ResultScreen extends LazyScreen {
 
     @Override
     public void render(float delta) {
-        // Assume that the grade is B
-        grade = Grade.B;
-
         clearScreen();
 
         game.batch.begin();
@@ -136,8 +133,13 @@ public class ResultScreen extends LazyScreen {
         this.font = assets.get8bitFont(54, Color.RED);
     }
 
-    public void setGrade(Grade grade) {
-        this.grade = grade;
+    public void setGrade(float fullScoreOfTheStage, float playerScore) {
+        float percentage = (playerScore/fullScoreOfTheStage) * 100;
+        if (percentage < 40) this.grade = Grade.F;
+        else if (percentage < 50) this.grade = Grade.D;
+        else if (percentage < 65) this.grade = Grade.C;
+        else if (percentage < 90) this.grade = Grade.B;
+        else this.grade = Grade.A;
     }
 
     public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {
@@ -150,4 +152,5 @@ public class ResultScreen extends LazyScreen {
         // TODO: Save only the highest-recorded score
         statsManager.setStageStats("stage1", "score", score);
     }
+
 }

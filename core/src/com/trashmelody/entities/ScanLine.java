@@ -8,6 +8,7 @@ import com.trashmelody.components.TransformComponent.Align;
 import com.trashmelody.constants.Constants;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
+import static com.trashmelody.constants.Constants.scoreMap;
 
 public class ScanLine extends Entity {
 
@@ -39,6 +40,7 @@ public class ScanLine extends Entity {
         physics.body.setLinearVelocity(0F, 0F);
 
         scanLineComponent.endTime = scanLineComponent.hitObjects.last().getStartTime();
+        scanLineComponent.score.fullScore = scanLineComponent.hitObjects.length() * scoreMap.get(ScoringComponent.Accuracy.Perfect).get();
 
         super.add(transformComponent);
         super.add(textureComponent);

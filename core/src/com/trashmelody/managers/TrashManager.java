@@ -8,14 +8,11 @@ import com.trashmelody.models.trashes.dangerous.*;
 import com.trashmelody.models.trashes.recycle.*;
 import com.trashmelody.models.trashes.wet.*;
 import io.vavr.collection.Array;
-import io.vavr.collection.HashSet;
-import io.vavr.collection.Set;
 
 @Singleton
 public class TrashManager {
 
     private Array<Trash> trashes = Array.of(
-        new Trash(Battery.NAME, Battery.DESCRIPTION, Battery.TEXTURE, TrashType.Dangerous, 0),
         new Trash(Cigarette.NAME, Cigarette.DESCRIPTION, Cigarette.TEXTURE, TrashType.Dangerous, 0),
         new Trash(Hairspray.NAME, Hairspray.DESCRIPTION, Hairspray.TEXTURE, TrashType.Dangerous, 0),
         new Trash(OilCan.NAME, OilCan.DESCRIPTION, OilCan.TEXTURE, TrashType.Dangerous, 0),

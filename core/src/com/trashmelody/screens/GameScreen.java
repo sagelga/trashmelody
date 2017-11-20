@@ -155,7 +155,8 @@ public class GameScreen extends LazyScreen {
                 break;
             case End:
                 Score score = scanLine.score;
-                screens.get(ResultScreen.class).setScores(
+                ResultScreen resultScreen = screens.get(ResultScreen.class);
+                resultScreen.setScores(
                     score.perfect,
                     score.good,
                     score.nice,
@@ -163,7 +164,8 @@ public class GameScreen extends LazyScreen {
                     100,
                     score.totalScore
                 );
-                game.setLazyScreen(screens.get(ResultScreen.class));
+                resultScreen.setGrade(score.totalScore, score.totalScore);
+                game.setLazyScreen(resultScreen);
                 break;
         }
     }

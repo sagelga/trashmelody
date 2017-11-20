@@ -62,10 +62,6 @@ public class DispatchSystem extends IteratingSystem {
         Vector2 position = physics.body.getPosition();
 
         if (!Constants.isInBound.test(position.x)) {
-            physics.body.setLinearVelocity(-velocity.x, velocity.y);
-        }
-
-        if (!Constants.isInBound.test(position.x)) {
             if (Constants.isUnderBound.test(position.x)) {
                 physics.body.setLinearVelocity(dispatch.velocity, velocity.y);
             } else {

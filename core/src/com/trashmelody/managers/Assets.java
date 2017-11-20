@@ -13,6 +13,7 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class Assets extends AssetManager {
+
     @Inject
     Assets() {
         super();
@@ -254,23 +255,29 @@ public class Assets extends AssetManager {
     public static final String MUSIC_6_BG_OPAC = "Song/6TELL YOUR WORLD/BG1_OPAC70.jpg";
     public static final String MUSIC_6_BG_BLUR = "Song/6TELL YOUR WORLD/BG1_BLUR.png";
 
-    // Hit Objects
-    public static final String PLASTIC_BAG_HIT_OBJECT = "trashes/dangerous/buttons/button-01.png";
-    public static final String HAIR_SPRAY_HIT_OBJECT = "trashes/dangerous/buttons/button-02.png";
-    public static final String CIGARETTE_HIT_OBJECT = "trashes/dangerous/buttons/button-03.png";
-    public static final String THINNER_HIT_OBJECT = "trashes/dangerous/buttons/button-04.png";
-    public static final String OIL_CAN_HIT_OBJECT = "trashes/dangerous/buttons/button-05.png";
-
-    public static final String HITORIGOTO_EASY = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Easy].osu";
-    public static final String HITORIGOTO_HARD = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Hard].osu";
-    public static final String HITORIGOTO_INSANE = "beatmaps/hitorigoto/ClariS - Hitorigoto -TV MIX- (Doormat) [Insane].osu";
-
     // Sound Effects Assets
     public static final String SFX_VOLUME_CHECK = "SFx/VolumeCheck.wav";
 
     // Music change block Assets
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";
     public static final String PLAYER_PLAY = "SFX/vol - template.png";
+
+    // Hit Objects
+    public static final String CIGARETTE_HIT_OBJECT = "trashes/dangerous/buttons/DANGER - BUT-03.png";
+    public static final String HAIR_SPRAY_HIT_OBJECT = "trashes/dangerous/buttons/DANGER - BUT-02.png";
+    public static final String OIL_CAN_HIT_OBJECT = "trashes/dangerous/buttons/DANGER - BUT-05.png";
+    public static final String PLASTIC_BAG_HIT_OBJECT = "trashes/dangerous/buttons/DANGER - BUT-01.png";
+    public static final String THINNER_HIT_OBJECT = "trashes/dangerous/buttons/DANGER - BUT-04.png";
+    public static final String CARD_BOARD__HIT_OBJECT = "trashes/recycle/buttons/RE - BUT-05.png";
+    public static final String GLASS_HIT_OBJECT = "trashes/recycle/buttons/RE - BUT-04.png";
+    public static final String NOTE_HIT_OBJECT = "trashes/recycle/buttons/RE - BUT-02.png";
+    public static final String PAPER_HIT_OBJECT = "trashes/recycle/buttons/RE - BUT-01.png";
+    public static final String PLASTIC_BOX_HIT_OBJECT = "trashes/recycle/buttons/RE - BUT-03.png";
+    public static final String CURRY_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-03.png";
+    public static final String DONUT_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-02.png";
+    public static final String ICE_CREAM_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-05.png";
+    public static final String MATCHA_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-04.png";
+    public static final String POPCORN_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-01.png";
 
     // Globally-Reusable Assets
     public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";
@@ -283,4 +290,5 @@ public class Assets extends AssetManager {
     public static final String GUIDE_ICON_F = "KeyboardButtons/F.png";
     public static final String GUIDE_ICON_J = "KeyboardButtons/J.png";
     public static final String GUIDE_ICON_K = "KeyboardButtons/K.png";
+
 }

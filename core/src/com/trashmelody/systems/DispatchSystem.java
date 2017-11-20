@@ -13,7 +13,11 @@ import com.trashmelody.components.DispatchComponent.State;
 import com.trashmelody.constants.Constants;
 import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.TrashManager;
+import com.trashmelody.models.trashes.Trash;
+import io.vavr.collection.Array;
 
+import java.util.Random;
 import java.util.function.Predicate;
 
 import static com.trashmelody.constants.Constants.PRE_DISPATCH_TIME;
@@ -21,19 +25,26 @@ import static com.trashmelody.managers.Assets.CIGARETTE_HIT_OBJECT;
 import static com.trashmelody.managers.Assets.TEXTURE;
 
 public class DispatchSystem extends IteratingSystem {
+
+    private static final int USER_PROGRESS = 0;
+
     private World world;
     private Assets assets;
+    private TrashManager trashManager;
+    private Random random = new Random();
+
     private static TimerListener fadeUpListener = (entity, lifeTime, remaining, delta) -> {
         TransformComponent transform = Mapper.transform.get(entity);
         transform.scale = (float) Math.sqrt(1 - Math.pow(remaining / lifeTime, 2));
     };
 
     @Inject
-    public DispatchSystem(World world, Assets assets) {
+    public DispatchSystem(World world, Assets assets, TrashManager trashManager) {
         super(Family.all(DispatchComponent.class).get(), Systems.getIndex(DispatchSystem.class));
 
         this.world = world;
         this.assets = assets;
+        this.trashManager = trashManager;
     }
 
     @Override
@@ -62,20 +73,24 @@ public class DispatchSystem extends IteratingSystem {
             }
         }
 
-        dispatch.hitObjects
-                .filter(hitObject -> Constants.inDispatchArea.test(position.x))
-                .takeWhile(ready(scanLine.elapsedTime))
-                .map(hitObject -> new HitObjectEntity(
-                        world,
-                        new HitObjectComponent(hitObject),
-                        new TypeComponent(TypeComponent.DISPATCHER),
-                        new TextureComponent(assets.get(CIGARETTE_HIT_OBJECT, TEXTURE), new Color(1F, 1F, 1F, 1F)),
-                        new TimerComponent(fadeUpListener, 400),
-                        position.x
-                ))
-                .peek(getEngine()::addEntity)
-                .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
-                .forEach(hitObjectEntity -> dispatch.hitObjects = dispatch.hitObjects.tail());
+        Array<Trash> trashes = trashManager.getDiscoveredTrash(USER_PROGRESS);
+        Trash dispatchingTrash = trashes.get(random.nextInt(trashes.length()));
+
+        scanLine.hitObjects
+            .filter(hitObject -> Constants.inDispatchArea.test(position.x))
+            .takeWhile(ready(scanLine.elapsedTime))
+            .map(hitObject -> new HitObjectEntity(
+                world,
+                new HitObjectComponent(hitObject),
+                new TypeComponent(TypeComponent.DISPATCHER),
+                new TextureComponent(assets.get(dispatchingTrash.getTexturePath(), TEXTURE)),
+                new TimerComponent(fadeUpListener, 400),
+                dispatchingTrash,
+                position.x
+            ))
+            .peek(getEngine()::addEntity)
+            .peek(hitObjectEntity -> scanLine.activeHitObjects = scanLine.activeHitObjects.enqueue(hitObjectEntity))
+            .forEach(hitObjectEntity -> scanLine.hitObjects = scanLine.hitObjects.tail());
     }
 
     private Predicate<HitObject> ready(float elapsedTime) {
@@ -85,4 +100,5 @@ public class DispatchSystem extends IteratingSystem {
     private ScanLineComponent getScanLineComponent() {
         return Mapper.scanLine.get(getEngine().getEntitiesFor(Family.all(ScanLineComponent.class).get()).first());
     }
+
 }

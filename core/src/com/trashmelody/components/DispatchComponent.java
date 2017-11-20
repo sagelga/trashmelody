@@ -6,8 +6,7 @@ import com.trashmelody.beatmap.parser.beatmap.Beatmap;
 import com.trashmelody.beatmap.parser.beatmap.HitObject;
 
 public class DispatchComponent implements Component {
-    public Beatmap beatmap;
-    public Stream<HitObject> hitObjects;
+
     public State state = State.Ready;
     public float velocity;
 
@@ -16,13 +15,7 @@ public class DispatchComponent implements Component {
     }
 
     public DispatchComponent(Beatmap beatmap, float velocity) {
-        this.beatmap = beatmap;
-        this.hitObjects = Stream.ofAll(beatmap.getHitObjects());
         this.velocity = velocity;
     }
 
-    public void setBeatmap(Beatmap beatmap) {
-        this.beatmap = beatmap;
-        this.hitObjects = Stream.ofAll(beatmap.getHitObjects());
-    }
 }

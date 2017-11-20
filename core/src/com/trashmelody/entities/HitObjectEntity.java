@@ -4,6 +4,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.trashmelody.components.*;
+import com.trashmelody.models.trashes.Trash;
+
+import java.util.Random;
 
 import static com.trashmelody.constants.B2Dvars.PPM;
 import static com.trashmelody.constants.Constants.yUpperBound;
@@ -12,17 +15,20 @@ import static com.trashmelody.constants.Constants.yUpperBound;
 *  x (Integer) ranges from 0 to 512 (inclusive) and y (Integer) ranges from 0 to 384 (inclusive).
 * */
 public class HitObjectEntity extends Entity {
+    private Random random = new Random();
+
     public HitObjectEntity(World world,
                            HitObjectComponent hitObjectComponent,
                            TypeComponent type,
                            TextureComponent textureComponent,
                            TimerComponent timerComponent,
+                           Trash trash,
                            float dispatcherX) {
 
         Vector2 hitObjectPosition = hitObjectComponent.hitObject.getPosition().toGdxVector();
         float hitObjectX = dispatcherX;
         float hitObjectY = (hitObjectPosition.y / yUpperBound * 300 + 640) / PPM;
-//        float hitObjectY = (hitObjectPosition.y % 100 * 3 + 640) / PPM;
+//        float hitObjectY = (random.nextFloat() * 240F + 650) / PPM; random y-position
         TransformComponent transformComponent = new TransformComponent(hitObjectX, hitObjectY, 0.8F, 0.8F);
 
         CircleShape shape = new CircleShape();

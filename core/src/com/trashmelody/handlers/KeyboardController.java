@@ -28,6 +28,7 @@ public class KeyboardController implements InputProcessor {
     public boolean isDragged;
     public Vector2 mouseLocation = new Vector2(0, 0);
     public boolean keyJustPressed(int keycode) {
+
         if(keyMap.get(keycode)) {
             keyMap.put(keycode, false);
             return true;

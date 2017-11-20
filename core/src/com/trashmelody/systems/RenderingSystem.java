@@ -1,12 +1,9 @@
 package com.trashmelody.systems;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.google.inject.name.Named;
-import com.trashmelody.components.*;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,6 +11,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
+import com.trashmelody.components.Mapper;
+import com.trashmelody.components.TextureComponent;
+import com.trashmelody.components.TextureRegionComponent;
+import com.trashmelody.components.TransformComponent;
 import com.trashmelody.components.TransformComponent.Align;
 import io.vavr.control.Option;
 

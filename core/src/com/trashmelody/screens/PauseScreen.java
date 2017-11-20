@@ -58,10 +58,17 @@ public class PauseScreen extends LazyScreen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             switch (count) {
-                case 1: game.setLazyScreen(gameScreen); break;
-                case 2: game.setLazyScreen(gameScreen); break;
-                case 3
-                        : game.setLazyScreen(menuScreen); break;
+                case 1:
+                    game.setLazyScreen(gameScreen);
+                    break;
+                case 2:
+                    gameScreen.setCommand(GameScreen.Command.Restart);
+                    game.setLazyScreen(gameScreen);
+                    break;
+                case 3:
+                    gameScreen.setCommand(GameScreen.Command.Restart);
+                    game.setLazyScreen(menuScreen);
+                    break;
             }
         }
 

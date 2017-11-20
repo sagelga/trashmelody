@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScanLineComponent.State;
-import com.trashmelody.screens.GameScreen;
 
 import static com.trashmelody.constants.Constants.*;
 
@@ -44,15 +43,15 @@ public class ScanLineSystem extends IteratingSystem {
         }
 
         scanLine.activeHitObjects
-                .dequeueOption()
-                .map(tuple -> tuple._1)
-                .filter(e -> scanLine.elapsedTime - Mapper.hitObject.get(e).hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME)
-                .peek(hitObjectEntity -> {
-                    HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
-                    hitObjectEntity.add(new ScoringComponent(ControlSystem.calculateDelta(scanLine, hitObject)));
-                    scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
-                    scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
-                });
+            .dequeueOption()
+            .map(tuple -> tuple._1)
+            .filter(e -> scanLine.elapsedTime - Mapper.hitObject.get(e).hitObject.getStartTime() > HIT_OBJECT_LIFE_TIME)
+            .peek(hitObjectEntity -> {
+                HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
+                hitObjectEntity.add(new ScoringComponent(ControlSystem.calculateDelta(scanLine, hitObject)));
+                scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
+                scanLine.elapsedTime = scanLine.music.getPosition() * 1000;
+            });
 
         scanLine.elapsedTime += deltaTime * 1000;
         setScanLineVelocity(scanLine, physics, transform);

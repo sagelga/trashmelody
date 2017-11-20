@@ -1,6 +1,5 @@
 package com.trashmelody.systems;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -12,7 +11,6 @@ import com.trashmelody.components.ScanLineComponent.State;
 import com.trashmelody.constants.Constants;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.screens.GameScreen;
 import com.trashmelody.screens.PauseScreen;
 
 public class ControlSystem extends IteratingSystem {
@@ -34,29 +32,23 @@ public class ControlSystem extends IteratingSystem {
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         PlayerComponent player = getPlayerComponent();
 
-        if (controller.keyJustPressed(Input.Keys.Z)) {
+        if (controller.keyJustPressed(Input.Keys.ESCAPE)) {
             scanLine.music.pause();
             scanLine.state = State.Pause;
             game.setLazyScreen(screens.get(PauseScreen.class));
-        }
-
-        if (controller.keyJustPressed(Input.Keys.R)) {
-            screens.get(GameScreen.class).stop();
-            scanLine.music.stop();
-            screens.get(GameScreen.class).restartGame();
         }
 
         if (controller.keyMap.get(player.dangerous)) {
             controller.keyMap.put(player.dangerous, false);
 
             scanLine.activeHitObjects
-                    .headOption()
-                    .filter(hitObjectEntity -> isClickable(scanLine, Mapper.hitObject.get(hitObjectEntity)))
-                    .forEach(hitObjectEntity -> {
-                        HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
-                        hitObjectEntity.add(new ScoringComponent(calculateDelta(scanLine, hitObject)));
-                        scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
-                    });
+                .headOption()
+                .filter(hitObjectEntity -> isClickable(scanLine, Mapper.hitObject.get(hitObjectEntity)))
+                .forEach(hitObjectEntity -> {
+                    HitObjectComponent hitObject = Mapper.hitObject.get(hitObjectEntity);
+                    hitObjectEntity.add(new ScoringComponent(calculateDelta(scanLine, hitObject)));
+                    scanLine.activeHitObjects = scanLine.activeHitObjects.tail();
+                });
         }
     }
 

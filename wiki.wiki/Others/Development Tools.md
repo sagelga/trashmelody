@@ -1,0 +1,12 @@
+# Developement Tools
+- Google Search
+- Google images
+- IntelliJ IDEA
+- Sublime Text & Atom
+- Eclipse
+- Adobe Photoshop
+- Adobe Illustration
+- GitLab Private Server (ระหว่างการทำงาน)
+- GitHub (เพื่อจัดเก็บแบบระยะยาว)
+- Google Docs
+- Google Slides

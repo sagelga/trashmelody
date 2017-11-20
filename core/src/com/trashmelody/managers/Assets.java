@@ -90,12 +90,6 @@ public class Assets extends AssetManager {
     public static final String STAGE_BD_HIDE_SCHOOL = "StageSelect/Building/Hide/school.png";
     public static final String STAGE_BD_HIDE_HOME = "StageSelect/Building/Hide/home.png";
     public static final String STAGE_BD_HIDE_CAFE = "StageSelect/Building/Hide/cafe.png";
-    public static final String STAGE_TEXT_OFFICE = "StageSelect/Text/stage-office-text.png";
-    public static final String STAGE_TEXT_CINEMA = "StageSelect/Text/stage-cinema-text.png";
-    public static final String STAGE_TEXT_HOSPITAL = "StageSelect/Text/stage-hospital-text.png";
-    public static final String STAGE_TEXT_SCHOOL = "StageSelect/Text/stage-school-text.png";
-    public static final String STAGE_TEXT_HOME = "StageSelect/Text/stage-home-text.png";
-    public static final String STAGE_TEXT_CAFE = "StageSelect/Text/stage-cafe-text.png";
     public static final String STAGE_BG_CLOUD = "StageSelect/Background/stage-cloud.png";
     public static final String STAGE_BG_HEADER = "StageSelect/Background/stage-header.png";
     public static final String STAGE_BG_TRASHWORLD = "StageSelect/Background/trashworld.png";
@@ -257,6 +251,7 @@ public class Assets extends AssetManager {
 
     // Sound Effects Assets
     public static final String SFX_VOLUME_CHECK = "SFx/VolumeCheck.wav";
+    public static final String SFX_STAGE_CHANGE = "SFx/StageChange.wav";
 
     // Music change block Assets
     public static final String PLAYER_MUTE = "SFx/vol - mute.png";

@@ -63,7 +63,6 @@ public class GuideCardScreen extends LazyScreen {
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
         this.batch = batch;
-        trashManager.getTrashes();
     }
 
     @Override

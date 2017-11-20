@@ -99,6 +99,7 @@ public class Assets extends AssetManager {
 
     // Collection Stage Assets
     public static final String COLLECTION_HEADER = "CollectionScreen/Header.png";
+    public static final String COLLECTION_HEADER2 = "CollectionScreen/Header2.png";
     public static final String COLLECTION_BG = "CollectionScreen/BG.gif";
     public static final String COLLECTION_FOOTER = "CollectionScreen/Footer.png";
     public static final String COLLECTION_PACK = "CollectionScreen/CardPack.png";
@@ -122,7 +123,11 @@ public class Assets extends AssetManager {
     public static final String COLLECTION_WET_4 = "trashes/wet/cards/FOOD - CARD-04.png";
     public static final String COLLECTION_WET_5 = "trashes/wet/cards/FOOD - CARD-05.png";
     public static final String COLLECTION_STORY_BG = "CollectionScreen/Story-BG.png";
-
+    public static final String COLLECTION_GENERAL_1 = "trashes/general/cards/general cards-01.png";
+    public static final String COLLECTION_GENERAL_2 = "trashes/general/cards/general cards-02.png";
+    public static final String COLLECTION_GENERAL_3 = "trashes/general/cards/general cards-03.png";
+    public static final String COLLECTION_GENERAL_4 = "trashes/general/cards/general cards-04.png";
+    public static final String COLLECTION_GENERAL_5 = "trashes/general/cards/general cards-05.png";
 
     // Countdown Stage Assets
     public static final String COUNTDOWN_BACKGROUND1 = "CountdownPage/background1.png";
@@ -280,11 +285,13 @@ public class Assets extends AssetManager {
     public static final String GLOBAL_ICON_CONTINUE = "Global/icon-continue.png";
     public static final String GLOBAL_ICON_PAUSE = "Global/icon-pause.png";
     public static final String GLOBAL_FOOTER_BAR = "Global/footer-bar.png";
+    public static final String GLOBAL_FOOTER_METAL_BAR = "Global/footer-metal-bar.png";
 
     //Game Guide Screen
     public static final String GUIDE_ICON_D = "KeyboardButtons/D.png";
     public static final String GUIDE_ICON_F = "KeyboardButtons/F.png";
     public static final String GUIDE_ICON_J = "KeyboardButtons/J.png";
     public static final String GUIDE_ICON_K = "KeyboardButtons/K.png";
+    public static final String GUIDE_ANYKEY = "GuideScreen/anykey.gif";
 
 }

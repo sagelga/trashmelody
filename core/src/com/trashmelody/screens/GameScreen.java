@@ -246,7 +246,7 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_BIN_05, TEXTURE);
         assets.load(GAME_CENTER, TEXTURE);
         assets.load(GAME_CHECK, TEXTURE);
-        assets.load(GAME_FOOTER, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         assets.load(GAME_HANOI_1, TEXTURE);
         assets.load(GAME_HANOI_2, TEXTURE);
         assets.load(GAME_HANOI_3, TEXTURE);
@@ -287,7 +287,7 @@ public class GameScreen extends LazyScreen {
         this.rainbowFlashBin = assets.get(GAME_BIN_05, TEXTURE);
         this.centerLine = assets.get(GAME_CENTER, TEXTURE);
         this.check = assets.get(GAME_CHECK, TEXTURE);
-        this.footerTab = assets.get(GAME_FOOTER, TEXTURE);
+        this.footerTab = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.redBinPlot = assets.get(GAME_HANOI_1, TEXTURE);
         this.recycleBinPlot = assets.get(GAME_HANOI_2, TEXTURE);
         this.yellowBinPlot = assets.get(GAME_HANOI_3, TEXTURE);
@@ -336,12 +336,6 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(scoreTitle, vw / 1.39F, vh / 1.05F, vw / 10, vh / 30);
         game.batch.draw(hpBar, vw / 3, vh / 20, vw / 3, vh / 30);
         game.batch.draw(hpPoint, vw / getHpSliderPositionX(health), vh / 20.2F, vw / 40, vh / 24);
-        //game.batch.draw(miss,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(bad,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(cool, vw / 8, vh / 1.8F, vw / 5, vh / 3);
-        //game.batch.draw(good,vw/8,vh/1.8F,vw/5,vh/3);
-        //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
-        game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
         font.draw(batch, Integer.toString(scanLine.score.totalScore), vw / 1.2F, vh / 1.016F);
 

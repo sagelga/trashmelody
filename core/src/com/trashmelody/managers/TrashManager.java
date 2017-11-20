@@ -20,14 +20,14 @@ public class TrashManager {
 
         // dangerous
         new Trash(Cigarette.NAME, Cigarette.DESCRIPTION, Cigarette.TEXTURE, Cigarette.TYPE, 0),
-        new Trash(Hairspray.NAME, Hairspray.DESCRIPTION, Hairspray.TEXTURE, Hairspray.TYPE, 0),
+        new Trash(Hairspray.NAME, Hairspray.DESCRIPTION, Hairspray.TEXTURE, Hairspray.TYPE, 1),
         new Trash(OilCan.NAME, OilCan.DESCRIPTION, OilCan.TEXTURE, OilCan.TYPE, 0),
         new Trash(Thinner.NAME, Thinner.DESCRIPTION, Thinner.TEXTURE, Thinner.TYPE, 0),
 
         // recycle
         new Trash(CardBoard.NAME, CardBoard.DESCRIPTION, CardBoard.TEXTURE, CardBoard.TYPE, 0),
         new Trash(Glass.NAME, Glass.DESCRIPTION, Glass.TEXTURE, Glass.TYPE, 0),
-        new Trash(Note.NAME, Note.DESCRIPTION, Note.TEXTURE, Note.TYPE, 0),
+        new Trash(Note.NAME, Note.DESCRIPTION, Note.TEXTURE, Note.TYPE, 2),
         new Trash(Paper.NAME, Paper.DESCRIPTION, Paper.TEXTURE, Paper.TYPE, 0),
         new Trash(PlasticBox.NAME, PlasticBox.DESCRIPTION, PlasticBox.TEXTURE, PlasticBox.TYPE, 0),
 
@@ -53,6 +53,10 @@ public class TrashManager {
 
     public Array<Trash> getDiscoveredTrash(int userProgress) {
         return trashes.filter(trash -> userProgress >= trash.getUnlockAt());
+    }
+
+    public Trash getTrashByName(String name) {
+        return trashes.filter(trash -> trash.getName().equalsIgnoreCase(name)).head();
     }
 
 }

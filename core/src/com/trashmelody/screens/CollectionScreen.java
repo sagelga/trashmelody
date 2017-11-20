@@ -35,11 +35,13 @@ public class CollectionScreen extends LazyScreen {
     private Animation<TextureRegion> bg;
     private Texture footer, header, pack, l, r, lh, rh, btnBack, storyBG;
     //Dangerous Trashes
-    private Texture cigar, spray, can, bag, thinner;
+    private Texture cigar, spray, can, thinner;
     //Recycle Trashes
-    private Texture  cardboard, glass, note, paper, plastic;
+    private Texture  cardboard, glass, note, paper, plastic,bottle;
     //Wet Trashes
     private Texture curry, donut, icecream, matcha, popcorn;
+    //General Trashes
+    private Texture bag,plate,tooth,cloth,pencil;
     //Bin
     private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Temporary Current Stage
@@ -87,113 +89,128 @@ public class CollectionScreen extends LazyScreen {
             game.batch.draw(pack, vw / 4F, vw/ 5.85F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
         }
 
-        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(btnBack, vw / 64, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(l, vw/6, vh / 1.9F, vw / 45, vh / 24);
         game.batch.draw(r, vw/1.23F, vh / 1.9F, vw / 45, vh / 24);
 
         // Trash on Stage 1
         if (count < 1) count = 1;
-        if (count > 3 * currentStage) count = 3 * currentStage;
+        if (count > 4 * currentStage) count = 4 * currentStage;
 
         switch (count) {
             case 1:
-                cardToDraw = bag;
-                nameToDraw = "Immortal bag";
-                descToDraw = "She was born 700 years ago. And as her name says; "
-                        + "she is a plastic bag that could live through centuries.";
+                cardToDraw = thinner;
+                nameToDraw = "Thinner the Carpenter";
+                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
+                        + "hallucinations to everyone near him.";
                 break;
             case 2:
-                cardToDraw = paper;
-                nameToDraw = "The Trio";
-                descToDraw = "The trio of derpy paper friends that "
-                        + "a famous artist has thrown into the bin.";
+                cardToDraw = cardboard;
+                nameToDraw = "Bokk Kung";
+                descToDraw = "A cardboard box that used to contain a dog. "
+                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
                 break;
             case 3:
-                cardToDraw = popcorn;
-                nameToDraw = "Popu-san";
-                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
-                        + "He has starred in many popular films such as Trash 1997 and "
-                        + "earned Oscar nominations for Get Trash 2008.";
-                break;
-            case 4:
-                cardToDraw = spray;
-                nameToDraw = "Hairspray chan";
-                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
-                        + "she then determined to founding her own salon "
-                        + "with Wax-kung and Gel-kung to take revenge.";
-                break;
-            case 5:
-                cardToDraw = note;
-                nameToDraw = "Pep";
-                descToDraw = "The lost piece of Pep Guardiola’s note, "
-                        + "so the name \"Pep\" literally comes from his owner.";
-                break;
-            case 6:
                 cardToDraw = donut;
                 nameToDraw = "Dono-chan";
                 descToDraw = "Dono-Chan is a teacher of Circle Dance and Sing Academy. "
                         + "Although she is fat, she can dance very well. "
                         + "She and everyone is jealous of her talent.";
                 break;
+            case 4:
+                cardToDraw = pencil;
+                break;
+            case 5:
+                cardToDraw = bottle;
+                break;
+            case 6:
+                cardToDraw = note;
+                nameToDraw = "Pep";
+                descToDraw = "The lost piece of Pep Guardiola’s note, "
+                        + "so the name \"Pep\" literally comes from his owner.";
+                break;
             case 7:
+                cardToDraw = popcorn;
+                nameToDraw = "Popu-san";
+                descToDraw = "He is the son of comedy director M-san.Popu-san is a popular actor. "
+                        + "He has starred in many popular films such as Trash 1997 and "
+                        + "earned Oscar nominations for Get Trash 2008.";
+                break;
+            case 8:
+                cardToDraw = plate;
+                break;
+            case 9:
                 cardToDraw = cigar;
                 nameToDraw = "Cigar";
                 descToDraw = "A friend of every man *Cough*. But his health *Cough* "
                         + "is not very well lately *Cough* due to *Cough* "
                         + "his oral cavity, larynx, esophagus, and lung cancer.";
                 break;
-            case 8:
+            case 10:
                 cardToDraw = plastic;
                 nameToDraw = "SaiSai";
                 descToDraw = "A plastic box that wants to find new friends and go explore the world.";
                 break;
-            case 9:
+            case 11:
                 cardToDraw = curry;
                 nameToDraw = "Keri-a";
                 descToDraw = "Keri-a is the hottest girl in Trash World. "
                         + "  She had her red lips cosmetically enhanced. "
                         + "She is the Miss Popular Vote in the Trash World.";
                 break;
-            case 10:
-                cardToDraw = thinner;
-                nameToDraw = "Thinner the Carpenter";
-                descToDraw = "A hot and flammable guy. His smell can cause pleasant "
-                        + "hallucinations to everyone near him.";
+            case 12:
+                cardToDraw = tooth;
                 break;
-            case 11:
+            case 13:
+                cardToDraw = spray;
+                nameToDraw = "Hairspray chan";
+                descToDraw = "Fired from a beauty salon being accused of causing global warming, "
+                        + "she then determined to founding her own salon "
+                        + "with Wax-kung and Gel-kung to take revenge.";
+                break;
+            case 14:
                 cardToDraw = glass;
                 nameToDraw = "MookMook";
                 descToDraw = "An empty plastic glass from a bubble milk tea shop. "
                         + "He is finding a way back to the shop.";
                 break;
-            case 12:
+            case 15:
                 cardToDraw = matcha;
                 nameToDraw = "Matty";
                 descToDraw = "His full name is Matcha-sama. He has dark-green eyes, "
                         + "and he has a lot of success with ladies. He has been voted "
                         + "the sexiest man in Trash World many times.";
                 break;
-            case 13:
+            case 16:
+                cardToDraw = cloth;
+                break;
+            case 17:
                 cardToDraw = can;
                 nameToDraw = "Oily Oiler";
                 descToDraw = "Oily Oiler is an oil can from the suburb. "
                         + "After he had been emptied petrol, he got thrown away without care.";
                 break;
-            case 14:
-                cardToDraw = cardboard;
-                nameToDraw = "Bokk Kung";
-                descToDraw = "A cardboard box that used to contain a dog. "
-                        + "He hopes to find a new dog and he’d bark \"Box-Box\" like a dog.";
+            case 18:
+                cardToDraw = paper;
+                nameToDraw = "The Trio";
+                descToDraw = "The trio of derpy paper friends that "
+                        + "a famous artist has thrown into the bin.";
                 break;
-            case 15:
+            case 19:
                 cardToDraw = icecream;
                 nameToDraw = "Izu-chan";
                 descToDraw = "Her full name is Izu - Pink Cremu. She is a sweetened frozen girl "
                         + "you'll want to eat if you see one. Her cheek is pink and her hair is white.";
                 break;
-            default:
+            case 20:
                 cardToDraw = bag;
+                nameToDraw = "Immortal bag";
+                descToDraw = "She was born 700 years ago. And as her name says; "
+                        + "she is a plastic bag that could live through centuries.";
+                break;
+            default:
+                cardToDraw = spray;
         }
 
         if (vw < 1500) {
@@ -213,15 +230,18 @@ public class CollectionScreen extends LazyScreen {
         fontDesc.draw(batch, layoutDesc, (vw/2)-(descWidth/2F), vw / 8);
 
         // Set fontTrashType properties and draw
-        if (count == 1 || count == 4 || count == 7 || count == 10 || count == 13) {
+        if (count == 1 || count == 9 || count == 13 || count == 17) {
             typeToDraw = "Type * Dangerous";
             game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);
-        } else if (count == 2 || count == 5 || count == 8 || count == 11 || count == 14) {
+        } else if (count == 2 ||count == 5 || count == 6 || count == 10 || count == 14 || count == 18) {
             typeToDraw = "Type * Recycle";
             game.batch.draw(recycleBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
-        } else if (count == 3 || count == 6 || count == 9 || count == 12 || count == 15) {
+        } else if (count == 3 || count == 7 || count == 11 || count == 15 || count == 19) {
             typeToDraw = "Type * Wet";
             game.batch.draw(wetBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
+        } else if (count == 4 || count ==8 || count == 12 || count == 16 || count == 20){
+            typeToDraw = "Type * General";
+            game.batch.draw(idkBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
         }
         layoutTrashType.setText(fontTrashType, typeToDraw, Color.WHITE, vw, Align.center, true);
         fontTrashType.draw(batch, layoutTrashType, 0, vw / 24);
@@ -270,7 +290,7 @@ public class CollectionScreen extends LazyScreen {
         assets.load(COLLECTION_RIGHT_H, TEXTURE);
         assets.load(COLLECTION_STORY_BG, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
-        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         //Trashes
         assets.load(COLLECTION_DANGER_1, TEXTURE);
         assets.load(COLLECTION_DANGER_2, TEXTURE);
@@ -287,6 +307,11 @@ public class CollectionScreen extends LazyScreen {
         assets.load(COLLECTION_WET_3, TEXTURE);
         assets.load(COLLECTION_WET_4, TEXTURE);
         assets.load(COLLECTION_WET_5, TEXTURE);
+        assets.load(COLLECTION_GENERAL_1, TEXTURE);
+        assets.load(COLLECTION_GENERAL_2, TEXTURE);
+        assets.load(COLLECTION_GENERAL_3, TEXTURE);
+        assets.load(COLLECTION_GENERAL_4, TEXTURE);
+        assets.load(COLLECTION_GENERAL_5, TEXTURE);
         //Bin
         assets.load(GAME_BIN_01, TEXTURE);
         assets.load(GAME_BIN_02, TEXTURE);
@@ -298,7 +323,7 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void afterLoad(Assets assets) {
-        this.footer     = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
+        this.footer     = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
         this.pack       = assets.get(COLLECTION_PACK, TEXTURE);
         this.l          = assets.get(COLLECTION_LEFT, TEXTURE);
@@ -308,7 +333,6 @@ public class CollectionScreen extends LazyScreen {
         this.btnBack    = assets.get(GLOBAL_ICON_BACK, TEXTURE);
         this.storyBG    = assets.get(COLLECTION_STORY_BG);
         //Danger Trashes
-        this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
         this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);
         this.cigar      = assets.get(COLLECTION_DANGER_3, TEXTURE);
         this.thinner    = assets.get(COLLECTION_DANGER_4, TEXTURE);
@@ -319,12 +343,19 @@ public class CollectionScreen extends LazyScreen {
         this.plastic    = assets.get(COLLECTION_RECYCLE_3, TEXTURE);
         this.glass      = assets.get(COLLECTION_RECYCLE_4, TEXTURE);
         this.cardboard  = assets.get(COLLECTION_RECYCLE_5, TEXTURE);
+        this.bottle     = assets.get(COLLECTION_GENERAL_1, TEXTURE);
         //Wet Trashes
         this.popcorn    = assets.get(COLLECTION_WET_1, TEXTURE);
         this.donut      = assets.get(COLLECTION_WET_2, TEXTURE);
         this.curry      = assets.get(COLLECTION_WET_3, TEXTURE);
         this.matcha     = assets.get(COLLECTION_WET_4, TEXTURE);
         this.icecream   = assets.get(COLLECTION_WET_5, TEXTURE);
+        //General Trashes
+        this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
+        this.plate      = assets.get(COLLECTION_GENERAL_2, TEXTURE);
+        this.tooth      = assets.get(COLLECTION_GENERAL_3, TEXTURE);
+        this.cloth      = assets.get(COLLECTION_GENERAL_4, TEXTURE);
+        this.pencil     = assets.get(COLLECTION_GENERAL_5, TEXTURE);
         //Bin
         this.dangerBin  = assets.get(GAME_BIN_01, TEXTURE);
         this.recycleBin = assets.get(GAME_BIN_02, TEXTURE);

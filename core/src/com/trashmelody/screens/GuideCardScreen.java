@@ -38,7 +38,7 @@ public class GuideCardScreen extends LazyScreen {
     private float vw = getViewportWidth();
     private TrashManager trashManager;
     private int count = 1;
-    private Animation<TextureRegion> bg;
+    private Animation<TextureRegion> bg, anykey;
     private Texture footer, header2, buttonPlay;
     //Dangerous Trashes
     private Texture cigar, spray, can, thinner;
@@ -51,7 +51,7 @@ public class GuideCardScreen extends LazyScreen {
     //Bin
     private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Key
-    private Texture key_d, key_f, key_j, key_k,anykey;
+    private Texture key_d, key_f, key_j, key_k;
     //Temporary Current Stage
     private int currentStage = 1;
     float elapsed;
@@ -80,9 +80,12 @@ public class GuideCardScreen extends LazyScreen {
         // Draw Background
         if (TrashMelody.enableAnimation) {
             game.batch.draw(bg.getKeyFrame(elapsed), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+            game.batch.draw(anykey.getKeyFrame(elapsed), (vw/2)-((vw/1.6F)/2), vh/21, vw/1.6F, findRatio(8, 1, vh, 'h'));
         } else {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
+            game.batch.draw(anykey.getKeyFrame(0), (vw/2)-((vw/1.6F)/2), vh/21, vw/1.6F, findRatio(8, 1, vh, 'h'));
         }
+        
         //Trash Unlocked Case
         String[] trashName = {"Cigar", "Hairspray-chan","Pep", "Oily Oiler",
                 "MookMook", "Pep", "The Trio", "SaiSai", "Keri-a", "Izu-chan", "Matty", "Popu-san"};
@@ -187,6 +190,7 @@ public class GuideCardScreen extends LazyScreen {
         assets.load(GUIDE_ANYKEY, TEXTURE);
 
         this.bg = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(COLLECTION_BG).read());
+        this.anykey = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(GUIDE_ANYKEY).read());
     }
 
     @Override

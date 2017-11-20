@@ -3,6 +3,7 @@ package com.trashmelody.models;
 public class Building {
     private String name;
     private String beatmapGroupId;
+    public int highScore;
 
     public Building(String name, String beatmapGroupId) {
         this.name = name;

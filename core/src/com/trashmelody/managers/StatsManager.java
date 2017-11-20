@@ -93,10 +93,11 @@ public class StatsManager {
     }
 
     public int getStageScore(String stageID) {
-        if (stageID.startsWith("stage") && stageID.endsWith("Score")) {
-            return preferences.getInteger(stageID);
-        }
-        return -1;
+        return preferences.getInteger(stageID);
+    }
+
+    public int getScore(String beatmapId, String attribute) {
+        return preferences.getInteger(beatmapId + attribute);
     }
 
     private void resetStageScore(String stageID) {

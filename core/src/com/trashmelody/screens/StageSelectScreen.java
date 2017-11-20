@@ -55,7 +55,7 @@ public class StageSelectScreen extends LazyScreen {
     private Texture bdHomeShow, bdCafeShow, bdCinemaShow, bdHospitalShow, bdSchoolShow, bdOfficeShow;
     private Texture bdHomeHide, bdCafeHide, bdCinemaHide, bdHospitalHide, bdSchoolHide, bdOfficeHide;
     private Texture stageHomeText, stageCafeText, stageCinemaText, stageHospitalText, stageSchoolText, stageOfficeText;
-    private Texture buttonBack, buttonPlay, header, footer, cloud, trashworldLogo, selectArrowLeft, selectArrowRight, bg;
+    private Texture buttonBack, buttonContinue, header, footer, cloud, trashworldLogo, selectArrowLeft, selectArrowRight, bg;
 
     private BitmapFont font;
 
@@ -113,8 +113,10 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
 
         // Show the button interfaces
-        game.batch.draw(buttonPlay, vw / 64, 0, findRatio(176, 54, vh/16F, 'w'), vh / 16);
-        game.batch.draw(buttonBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
+//        game.batch.draw(buttonContinue, vw / 64, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
+//        game.batch.draw(buttonBack, vw / 1.15F, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
+        game.batch.draw(buttonContinue, vw / 1.24F, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
+        game.batch.draw(buttonBack, vw / 64, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
         game.batch.draw(selectArrowLeft, vw / 1.4F, vh / 8, vw / 28, vh / 10);
         game.batch.draw(selectArrowRight, vw / 1.065F, vh / 8, vw / 28, vh / 10);
 
@@ -243,15 +245,6 @@ public class StageSelectScreen extends LazyScreen {
         if (cooldown > 0)
             cooldown--;
 
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X)){
-            game.setLazyScreen(screens.get(MenuScreen.class));
-        }
-
-        /*if (Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            game.setLazyScreen(screens.get(GameScreen.class));
-        }*/
-
         if (modes == 0) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
                 //game.batch.draw(selectArrowRight, vw/1.04F, vh/8, vw/28, vh/10);
@@ -274,6 +267,10 @@ public class StageSelectScreen extends LazyScreen {
             modes++;
             font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
         }*/
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+            game.setLazyScreen(screens.get(MenuScreen.class));
+        }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             gameScreen.setBeatmap(currentBeatmap);
@@ -320,7 +317,7 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_TEXT_HOME, TEXTURE);
         assets.load(STAGE_TEXT_CAFE, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
-        assets.load(GLOBAL_ICON_PLAY, TEXTURE);
+        assets.load(GLOBAL_ICON_CONTINUE, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
         assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
@@ -361,7 +358,7 @@ public class StageSelectScreen extends LazyScreen {
         this.stageSchoolText = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
 
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
-        this.buttonPlay = assets.get(GLOBAL_ICON_PLAY, TEXTURE); // 670  × 239
+        this.buttonContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE); // 670  × 239
         this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
         this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE); // 8002 × 296
         this.cloud = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644

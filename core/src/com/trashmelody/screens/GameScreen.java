@@ -203,7 +203,7 @@ public class GameScreen extends LazyScreen {
 
     private float getHpSliderPositionX(HealthComponent health) {
         float healthPercentage = health.health / health.getMaxHealth() * 100;
-        return Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F);
+        return Math.max(Math.min(3F - healthPercentage / 100F * (3F - 1.56F), 3F), 1.56F);
     }
 
     public void setBeatmap(Beatmap beatmap) {

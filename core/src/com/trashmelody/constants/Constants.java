@@ -45,9 +45,9 @@ public class Constants {
     );
 
     public static final Map<Accuracy, Float> healthUpdateMap = HashMap.of(
-        Accuracy.Perfect, 0F,
-        Accuracy.Good, 0F,
-        Accuracy.Cool, 0F,
+        Accuracy.Perfect, 30F,
+        Accuracy.Good, 20F,
+        Accuracy.Cool, 10F,
         Accuracy.Bad, -300F,
         Accuracy.Miss, -500F
     );

@@ -29,7 +29,8 @@ public class ScreenProvider {
                 GameScreen.class,
                 PauseScreen.class,
                 ResultScreen.class,
-                SandboxScreen.class
+                SandboxScreen.class,
+                GuideCardScreen.class
         );
     }
 

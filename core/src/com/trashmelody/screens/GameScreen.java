@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -27,8 +28,13 @@ import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.managers.TrashManager;
 import com.trashmelody.models.Score;
 import com.trashmelody.models.trashes.Trash;
+import com.trashmelody.models.trashes.TrashType;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
+import io.vavr.collection.HashMap;
+import io.vavr.collection.Map;
+
+import java.util.Vector;
 
 import static com.badlogic.gdx.Input.Keys.*;
 import static com.trashmelody.managers.Assets.*;
@@ -161,7 +167,7 @@ public class GameScreen extends LazyScreen {
                     score.good,
                     score.nice,
                     score.miss + score.bad,
-                    100,
+                    17,
                     score.totalScore
                 );
                 resultScreen.setGrade(score.totalScore, score.totalScore);
@@ -251,7 +257,7 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_LEVEL_2, TEXTURE);
         assets.load(GAME_LEVEL_3, TEXTURE);
         assets.load(GAME_LEVEL_BORDER, TEXTURE);
-        assets.load(GAME_PAUSE, TEXTURE);
+        assets.load(GLOBAL_ICON_PAUSE, TEXTURE);
         assets.load(GAME_SCORE, TEXTURE);
         assets.load(MISS_ACCURACY, TEXTURE);
         assets.load(BAD_ACCURACY, TEXTURE);
@@ -292,7 +298,7 @@ public class GameScreen extends LazyScreen {
         this.easy = assets.get(GAME_LEVEL_2, TEXTURE);
         this.hard = assets.get(GAME_LEVEL_3, TEXTURE);
         this.levelCover = assets.get(GAME_LEVEL_BORDER, TEXTURE);
-        this.pauseTab = assets.get(GAME_PAUSE, TEXTURE);
+        this.pauseTab = assets.get(GLOBAL_ICON_PAUSE, TEXTURE);
         this.scoreTitle = assets.get(GAME_SCORE, TEXTURE);
         this.miss = assets.get(MISS_ACCURACY, TEXTURE);
         this.bad = assets.get(BAD_ACCURACY, TEXTURE);
@@ -322,7 +328,7 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
-        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(186, 54, vw/8, 'h'));
+        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
@@ -340,4 +346,12 @@ public class GameScreen extends LazyScreen {
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
+
+    public static Map<TrashType, Vector2> BIN_POSITION_MAPPER = HashMap.of(
+        TrashType.Dangerous, new Vector2(1, 1),
+        TrashType.Recycle, new Vector2(2, 1),
+        TrashType.Wet, new Vector2(3, 1),
+        TrashType.General, new Vector2(4, 1)
+    );
+
 }

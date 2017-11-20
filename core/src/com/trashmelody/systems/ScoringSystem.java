@@ -8,6 +8,8 @@ import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScoringComponent.Accuracy;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
+import com.trashmelody.screens.GameScreen;
 
 import static com.trashmelody.constants.Constants.healthUpdateMap;
 import static com.trashmelody.constants.Constants.scoreMap;
@@ -16,11 +18,13 @@ import static com.trashmelody.managers.Assets.*;
 public class ScoringSystem extends IteratingSystem {
     public static final int HIT_OBJECT_FADING_INTERVAL = 1200;
     private Assets assets;
+    private GameScreen gameScreen;
 
     @Inject
-    public ScoringSystem(Assets assets) {
+    public ScoringSystem(ScreenProvider screens, Assets assets) {
         super(Family.all(ScoringComponent.class).get(), Systems.getIndex(ScoringSystem.class));
 
+        this.gameScreen = screens.get(GameScreen.class);
         this.assets = assets;
     }
 
@@ -32,8 +36,14 @@ public class ScoringSystem extends IteratingSystem {
         ScanLineComponent scanLine = getScanLineComponent();
 
         texture.texture = updateStatistic(scoring, scanLine);
-        health.health = updateHealth(health, scoring.getAccuracy());
         scanLine.score.totalScore = updateScore(scanLine, scoring.getAccuracy());
+
+        float updatedHealth = updateHealth(health, scoring.getAccuracy());
+        if (updatedHealth <= 0) {
+            gameScreen.setCommand(GameScreen.Command.Restart);
+        }
+        health.health = updateHealth(health, scoring.getAccuracy());
+
 
         entity.remove(ScoringComponent.class);
         entity.add(fadeDown());

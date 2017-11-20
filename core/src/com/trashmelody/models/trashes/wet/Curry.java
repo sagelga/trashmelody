@@ -1,7 +1,9 @@
 package com.trashmelody.models.trashes.wet;
 
+import com.trashmelody.managers.Assets;
+
 public class Curry {
     public static final String NAME = "Keri-a";
     public static final String DESCRIPTION = "Keri-a is the hottest girl in Trash World. She had her red lips cosmetically enhanced. She is the Miss Popular Vote in the Trash World.";
-    public static final String TEXTURE = "trashes/wet/buttons/FOOD - BUT-03.png";
+    public static final String TEXTURE = Assets.CURRY_HIT_OBJECT;
 }

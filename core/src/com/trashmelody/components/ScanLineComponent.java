@@ -14,12 +14,14 @@ public class ScanLineComponent implements Component {
     public float delay = Constants.PRE_DISPATCH_TIME;
     public float velocity;
     public float elapsedTime = -delay;
+    public float endTime;
     public Score score = new Score();
     public Music music;
     public State state = State.Ready;
     public Queue<HitObjectEntity> activeHitObjects = Queue.empty();
     public Beatmap beatmap;
     public Stream<HitObject> hitObjects;
+
 
     public enum State {
         Ready, Playing, Pause, Stop

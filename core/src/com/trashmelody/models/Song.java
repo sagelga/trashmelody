@@ -6,8 +6,6 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import static com.trashmelody.utils.Functional.listFiles;
-
 public class Song {
 
     private static final PathMatcher osuExtension = FileSystems.getDefault().getPathMatcher("glob:**/*.osu");

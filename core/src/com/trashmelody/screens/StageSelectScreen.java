@@ -312,22 +312,16 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_BD_HIDE_HOME, TEXTURE);
         assets.load(STAGE_BD_HIDE_CAFE, TEXTURE);
 
-        assets.load(STAGE_TEXT_OFFICE, TEXTURE);
-        assets.load(STAGE_TEXT_CINEMA, TEXTURE);
-        assets.load(STAGE_TEXT_HOSPITAL, TEXTURE);
-        assets.load(STAGE_TEXT_SCHOOL, TEXTURE);
-        assets.load(STAGE_TEXT_HOME, TEXTURE);
-        assets.load(STAGE_TEXT_CAFE, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
         assets.load(GLOBAL_ICON_CONTINUE, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
         assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
         assets.load(STAGE_BG_TRASHWORLD, TEXTURE);
-        // UNUSED assets.load(STAGE_BG_OVERLAY, TEXTURE);
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
         assets.load(STAGE_BG, TEXTURE);
+
         assets.load(MUSIC_1_SONG, MUSIC);
         assets.load(MUSIC_2_SONG, MUSIC);
         assets.load(MUSIC_3_SONG, MUSIC);
@@ -354,13 +348,6 @@ public class StageSelectScreen extends LazyScreen {
         this.bdHomeHide = assets.get(STAGE_BD_HIDE_HOME, TEXTURE);
         this.bdCafeHide = assets.get(STAGE_BD_HIDE_CAFE, TEXTURE);
 
-        this.stageHomeText = assets.get(STAGE_TEXT_HOME, TEXTURE); // 2826 × 487
-        this.stageOfficeText = assets.get(STAGE_TEXT_OFFICE, TEXTURE); // 2507 × 487
-        this.stageCafeText = assets.get(STAGE_TEXT_CAFE, TEXTURE); // 2057 × 487
-        this.stageCinemaText = assets.get(STAGE_TEXT_CINEMA, TEXTURE); // 2601 × 487
-        this.stageHospitalText = assets.get(STAGE_TEXT_HOSPITAL, TEXTURE); // 3428 × 487
-        this.stageSchoolText = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
-
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
         this.buttonContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE); // 670  × 239
         this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
@@ -383,7 +370,6 @@ public class StageSelectScreen extends LazyScreen {
 
         this.font_HighScore = assets.get8bitFont(33, Color.BLACK);
         this.font_StageName = assets.getSuperSpaceFont(100, Color.WHITE);
-
     }
 
     @Override

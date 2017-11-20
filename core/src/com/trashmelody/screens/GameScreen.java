@@ -6,11 +6,11 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.TrashMelody;
@@ -23,6 +23,7 @@ import com.trashmelody.entities.Player;
 import com.trashmelody.entities.ScanLine;
 import com.trashmelody.handlers.KeyboardController;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.systems.Systems;
 import com.trashmelody.utils.Debugger;
 
@@ -33,9 +34,8 @@ import static com.trashmelody.utils.RenderingUtils.*;
 @Singleton
 public class GameScreen extends LazyScreen {
     private TrashMelody game;
-    private Assets assets;
-    private Camera camera;
-    private Viewport viewport;
+    private ScreenProvider screens;
+    private OrthographicCamera camera;
     private InputProcessor inputProcessor;
     private Engine engine;
     private World world;
@@ -90,15 +90,15 @@ public class GameScreen extends LazyScreen {
     GameScreen(TrashMelody game,
                Engine engine,
                World world,
-               Assets assets,
-               Camera camera,
+               ScreenProvider screens,
+               OrthographicCamera camera,
                KeyboardController inputProcessor,
                SpriteBatch batch) {
         this.game = game;
-        this.camera = camera;
         this.engine = engine;
         this.world = world;
-        this.assets = assets;
+        this.screens = screens;
+        this.camera = camera;
         this.inputProcessor = inputProcessor;
         this.batch = batch;
     }
@@ -188,6 +188,8 @@ public class GameScreen extends LazyScreen {
         assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
         assets.load(THINNER_HIT_OBJECT, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
+
+        screens.get(PauseScreen.class).loadAssets(assets);
     }
 
     @Override
@@ -299,7 +301,7 @@ public class GameScreen extends LazyScreen {
         //game.batch.draw(perfect,vw/8,vh/1.8F,vw/5,vh/3);
         game.batch.draw(check, vw / 32, vh / 2, vw / 5, vh / 2.4F);
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
-        font.draw(batch,Integer.toString(scanLine.score.totalScore),vw/1.2F,vh/1.016F);
+        font.draw(batch, Integer.toString(scanLine.score.totalScore), vw / 1.2F, vh / 1.016F);
 
         if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }

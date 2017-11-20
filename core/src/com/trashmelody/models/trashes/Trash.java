@@ -1,6 +1,6 @@
 package com.trashmelody.models.trashes;
 
-public abstract class Trash {
+public class Trash {
     protected String name, description;
     protected TrashType type;
 

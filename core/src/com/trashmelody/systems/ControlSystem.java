@@ -34,14 +34,10 @@ public class ControlSystem extends IteratingSystem {
         ScanLineComponent scanLine = Mapper.scanLine.get(entity);
         PlayerComponent player = getPlayerComponent();
 
-        if (controller.keyJustPressed(Input.Keys.Z)) {
+        if (controller.keyJustPressed(Input.Keys.ESCAPE)) {
             scanLine.music.pause();
             scanLine.state = State.Pause;
             game.setLazyScreen(screens.get(PauseScreen.class));
-        }
-
-        if (controller.keyJustPressed(Input.Keys.ESCAPE)) {
-            screens.get(GameScreen.class).setCommand(GameScreen.Command.Restart);
         }
 
         if (controller.keyMap.get(player.dangerous)) {

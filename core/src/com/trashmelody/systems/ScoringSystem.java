@@ -66,9 +66,9 @@ public class ScoringSystem extends IteratingSystem {
         } else if (scoring.getAccuracy() == Accuracy.Good) {
             scanLine.score.good++;
             return assets.get(GOOD_ACCURACY);
-        } else if (scoring.getAccuracy() == Accuracy.Cool) {
-            scanLine.score.cool++;
-            return assets.get(COOL_ACCURACY);
+        } else if (scoring.getAccuracy() == Accuracy.Nice) {
+            scanLine.score.nice++;
+            return assets.get(NICE_ACCURACY);
         } else if (scoring.getAccuracy() == Accuracy.Bad) {
             scanLine.score.bad++;
             return  assets.get(BAD_ACCURACY);

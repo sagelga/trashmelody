@@ -258,11 +258,6 @@ public class GameScreen extends LazyScreen {
         assets.load(PERFECT_ACCURACY, TEXTURE);
         assets.load(GAME_SONG_NAME_1, TEXTURE);
         assets.load(GAME_STATUS_BAR, TEXTURE);
-        assets.load(CIGARETTE_HIT_OBJECT, TEXTURE);
-        assets.load(HAIR_SPRAY_HIT_OBJECT, TEXTURE);
-        assets.load(OIL_CAN_HIT_OBJECT, TEXTURE);
-        assets.load(PLASTIC_BAG_HIT_OBJECT, TEXTURE);
-        assets.load(THINNER_HIT_OBJECT, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
 
         trashManager.getTrashes()

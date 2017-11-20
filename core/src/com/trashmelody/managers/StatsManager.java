@@ -36,14 +36,9 @@ public class StatsManager {
         // Initialize default data
         if (!getRecurrentUser()) {
             setCurrentStage(1);
-            for (int i = 1; i <= 6; i++) {
-                String n = String.valueOf(i);
-                resetStageScore(n);
-            }
             setCurrentMusicVolume(0.3F);
             setCurrentMusicTrack("MUSIC_BG1");
             setRecurrentUser();
-
         }
         preferences.flush();
         return preferences;
@@ -86,10 +81,15 @@ public class StatsManager {
     }
 
     public int getStageScore(String stageID) {
-        if (stageID.startsWith("stage") && stageID.endsWith("score")) {
-            return preferences.getInteger(stageID);
-        }
-        return -1;
+        return preferences.getInteger(stageID);
+    }
+
+    public int getScore(String beatmapId) {
+        return preferences.getInteger(beatmapId + "score");
+    }
+
+    public void setScore(String beatmapId, int score) {
+        preferences.putInteger(beatmapId + "score", score);
     }
 
     private void resetStageScore(String stageID) {

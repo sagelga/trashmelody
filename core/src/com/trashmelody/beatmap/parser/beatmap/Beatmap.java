@@ -109,4 +109,8 @@ public abstract class Beatmap {
 		return metadata.getBeatmapSetId();
 	}
 
+	public String getBeatmapId() {
+		return metadata.getBeatmapId();
+	}
+
 }

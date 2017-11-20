@@ -168,7 +168,8 @@ public class GameScreen extends LazyScreen {
                     score.nice,
                     score.miss + score.bad,
                     17,
-                    score.totalScore
+                    score.totalScore,
+                    beatmap.getBeatmapId()
                 );
                 resultScreen.setGrade(score.totalScore, score.totalScore);
                 game.setLazyScreen(resultScreen);

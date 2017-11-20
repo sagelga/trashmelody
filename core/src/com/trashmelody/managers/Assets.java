@@ -226,9 +226,11 @@ public class Assets extends AssetManager {
     public static final String SETTING_VOLUME_BAR = "SettingScreen/SETTING-VOLUME-BAR.png";
     public static final String SETTING_WINDOW = "SettingScreen/SETTING-WINDOW.png";
 
-    // Music Assets
+    // Background Music Assets
     public static final String MUSIC_BG1 = "Song/Background Music/Background_Music1.mp3";
     public static final String MUSIC_BG2 = "Song/Background Music/Background_Music2.mp3";
+
+    // Game Music Assets
     public static final String MUSIC_1_SONG = "Song/1HITORIGOTO/AUDIO.mp3";
     public static final String MUSIC_1_BG_CLEAR = "Song/1HITORIGOTO/BG1_CLEAR.png";
     public static final String MUSIC_1_BG_OPAC = "Song/1HITORIGOTO/BG1_OPAC70.png";

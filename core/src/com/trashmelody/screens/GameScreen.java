@@ -161,7 +161,7 @@ public class GameScreen extends LazyScreen {
                     score.good,
                     score.nice,
                     score.miss + score.bad,
-                    100,
+                    17,
                     score.totalScore
                 );
                 resultScreen.setGrade(score.totalScore, score.totalScore);

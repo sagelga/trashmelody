@@ -44,13 +44,6 @@ public class StatsManager {
             setCurrentMusicTrack("MUSIC_BG1");
             setRecurrentUser();
 
-            setStageStats("stage1", "perfect", 0);
-            setStageStats("stage1", "perfect", 0);
-            setStageStats("stage1", "good", 0);
-            setStageStats("stage1", "nice", 0);
-            setStageStats("stage1", "miss", 0);
-            setStageStats("stage1", "combo", 0);
-            setStageStats("stage1", "score", 0);
         }
         preferences.flush();
         return preferences;
@@ -93,7 +86,7 @@ public class StatsManager {
     }
 
     public int getStageScore(String stageID) {
-        if (stageID.startsWith("stage") && stageID.endsWith("Score")) {
+        if (stageID.startsWith("stage") && stageID.endsWith("score")) {
             return preferences.getInteger(stageID);
         }
         return -1;

@@ -1,9 +1,9 @@
-# Basic Requirements
-1. Keyboard Input
-2. Desktop Operating Systems (Windows / MacOS / Linux)
+# Basic Requirements ความต้องการพื้นฐาน
+1. Keyboard Input อินพุตคีย์บอร์ด
+2. Desktop Operating Systems (Windows / MacOS / Linux) ระบบปฎิบัติการคอมพิวเตอร์
 3. Java 8 / OpenJDK 8 or more
-4. Audio transmitter devices (very recommended)
-5. 2GB of RAM Memory
+4. Audio transmitter devices (very recommended) อุปกรณ์ส่งเสียง (เช่นหูฟัง)
+5. 2GB of RAM Memory แรมขนาด 2GB
 
 # Recommended Computer Requirements
 - Latest patch of Java 8

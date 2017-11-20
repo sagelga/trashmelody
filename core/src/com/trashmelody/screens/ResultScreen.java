@@ -142,6 +142,19 @@ public class ResultScreen extends LazyScreen {
         else this.grade = Grade.A;
     }
 
+    public void setScores(int perfect, int good, int nice, int miss, int combo, int score, String songName) {
+        // Set the stats to be displayed on ResultScreen
+        this.perfect = perfect;
+        this.good = good;
+        this.nice = nice;
+        this.miss = miss;
+        this.combo = combo;
+        this.score = score;
+        // Record in pref.
+        statsManager.setStageScore(songName, score);
+    }
+
+    // DEPRECATED | overloaded method to support legacy method call
     public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {
         this.perfect = perfect;
         this.good = good;
@@ -149,8 +162,7 @@ public class ResultScreen extends LazyScreen {
         this.miss = miss;
         this.combo = combo;
         this.score = score;
-        // TODO: Save only the highest-recorded score
-        statsManager.setStageStats("stage1", "score", score);
+        statsManager.setStageScore("stage1", score);
     }
 
 }

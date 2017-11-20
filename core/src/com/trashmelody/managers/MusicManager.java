@@ -12,7 +12,7 @@ public class MusicManager {
     private StatsManager statsManager;
 
     private static final float MUSIC_VOLUME_TOGGLE = 0.1F;
-    private static final float MUSIC_DEFAULT_VOLUME = 0.5F;
+    private static float MUSIC_DEFAULT_VOLUME = 0.5F;
     private static String currentMusic;
 
     @Inject
@@ -26,7 +26,8 @@ public class MusicManager {
     private void resetVariable() {
         Debugger.statsManager = statsManager;
         statsManager.setCurrentMusicTrack(currentMusic);
-        statsManager.setCurrentMusicVolume(assets.get(currentMusic, MUSIC).getVolume());
+        MUSIC_DEFAULT_VOLUME = assets.get(currentMusic, MUSIC).getVolume();
+        statsManager.setCurrentMusicVolume(MUSIC_DEFAULT_VOLUME);
     }
 
     // Set current music track for future use -----------------------------------------------------
@@ -142,6 +143,7 @@ public class MusicManager {
     }
 
     public float getMusicPosition(String music) {
+        resetVariable();
         return assets.get(music, MUSIC).getPosition();
     }
 
@@ -151,6 +153,7 @@ public class MusicManager {
 
     public void setMusicPosition(String music, float position) {
         assets.get(music, MUSIC).setPosition(position);
+        resetVariable();
     }
 
     // Fading up and down of music

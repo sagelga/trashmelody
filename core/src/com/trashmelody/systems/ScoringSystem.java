@@ -4,9 +4,12 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScoringComponent.Accuracy;
+import com.trashmelody.entities.FallingTrash;
 import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.screens.GameScreen;
@@ -16,16 +19,19 @@ import static com.trashmelody.constants.Constants.scoreMap;
 import static com.trashmelody.managers.Assets.*;
 
 public class ScoringSystem extends IteratingSystem {
+
     public static final int HIT_OBJECT_FADING_INTERVAL = 1200;
     private Assets assets;
+    private World world;
     private GameScreen gameScreen;
 
     @Inject
-    public ScoringSystem(ScreenProvider screens, Assets assets) {
+    public ScoringSystem(ScreenProvider screens, Assets assets, World world) {
         super(Family.all(ScoringComponent.class).get(), Systems.getIndex(ScoringSystem.class));
 
         this.gameScreen = screens.get(GameScreen.class);
         this.assets = assets;
+        this.world = world;
     }
 
     @Override
@@ -43,7 +49,6 @@ public class ScoringSystem extends IteratingSystem {
             gameScreen.setCommand(GameScreen.Command.Restart);
         }
         health.health = updateHealth(health, scoring.getAccuracy());
-
 
         entity.remove(ScoringComponent.class);
         entity.add(fadeDown());
@@ -88,7 +93,6 @@ public class ScoringSystem extends IteratingSystem {
         }, HIT_OBJECT_FADING_INTERVAL);
     }
 
-
 //    private static TimerComponent reduceHealth(float healthReduced) {
 //        return new TimerComponent((entity, lifeTime, remaining, delta) -> {
 //            HealthComponent health = Mapper.health.get(entity);
@@ -104,4 +108,5 @@ public class ScoringSystem extends IteratingSystem {
     private ScanLineComponent getScanLineComponent() {
         return Mapper.scanLine.get(getEngine().getEntitiesFor(Family.all(ScanLineComponent.class).get()).first());
     }
+
 }

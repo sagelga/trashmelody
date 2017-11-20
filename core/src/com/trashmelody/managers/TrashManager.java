@@ -47,10 +47,6 @@ public class TrashManager {
 
     );
 
-    private Array<Class> trashClasses = Array.of(
-        Cigarette.class
-    );
-
     public Array<Trash> getTrashes() {
         return trashes;
     }

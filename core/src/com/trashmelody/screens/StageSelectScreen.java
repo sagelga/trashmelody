@@ -57,9 +57,10 @@ public class StageSelectScreen extends LazyScreen {
     private Texture stageHomeText, stageCafeText, stageCinemaText, stageHospitalText, stageSchoolText, stageOfficeText;
     private Texture buttonBack, buttonContinue, header, footer, cloud, trashworldLogo, selectArrowLeft, selectArrowRight, bg;
 
-    private BitmapFont font;
+    private BitmapFont font_HighScore, font_StageName;
 
     private Music music1, music2, music3, music4, music5, music6;
+    private Music SFxStageChange;
 
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -109,7 +110,7 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(trashworldLogo, vw / 2.8F, vh / 2.8F, vw / 3.7F, vh / 3.5F);
 
         // Show the header + footer of the game
-        game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw/1.5F, 'h'));
+        game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw / 1.5F, 'h'));
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
 
         // Show the button interfaces
@@ -120,17 +121,17 @@ public class StageSelectScreen extends LazyScreen {
         game.batch.draw(selectArrowLeft, vw / 1.4F, vh / 8, vw / 28, vh / 10);
         game.batch.draw(selectArrowRight, vw / 1.065F, vh / 8, vw / 28, vh / 10);
 
-        font.draw(batch, "High Score", vw / 1.3F, vh / 4.5F);
-
         int count = 0;
+        String stageNameToShow = "";
+        int highScoreToShow;
 
         Beatmap currentBeatmap = null;
 
         // Show the text of the selected item
         switch (currentStageNumber) {
             case (0):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage1Score")), vw / 1.3F, vh / 6);
-                game.batch.draw(stageCafeText, vw / 64, vh / 1.143F, vw / 3.5F, vh / 8);
+                highScoreToShow = statsManager.getStageScore("stage1score");
+                stageNameToShow = "DIRTY CAFE";
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
                 currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
@@ -143,8 +144,8 @@ public class StageSelectScreen extends LazyScreen {
                 }
                 break;
             case (1):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage2Score")), vw / 1.3F, vh / 6);
-                game.batch.draw(stageCinemaText, vw / 64, vh / 1.143F, vw / 2.6F, vh / 8);
+                highScoreToShow = statsManager.getStageScore("stage2score");
+                stageNameToShow = "MESSY CINEMA";
                 game.batch.draw(bdCinemaShow, vw / 1.57F, vh / 2.25F, vw / 6, vh / 3);
 
                 currentBeatmap = beatmaps.get(cinema.getBeatmapGroupId()).get().head();
@@ -154,12 +155,11 @@ public class StageSelectScreen extends LazyScreen {
                     musicManager.setDefault(MUSIC_2_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             case (2):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage3Score")), vw / 1.3F, vh / 6);
-                game.batch.draw(stageHospitalText, vw / 64, vh / 1.143F, vw / 2, vh / 8);
+                highScoreToShow = statsManager.getStageScore("stage3score");
+                stageNameToShow = "DISORDER HOME";
                 game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
                 currentBeatmap = beatmaps.get(hospital.getBeatmapGroupId()).get().head();
@@ -169,13 +169,12 @@ public class StageSelectScreen extends LazyScreen {
                     musicManager.setDefault(MUSIC_3_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             case (3):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage4Score")), vw / 1.3F, vh / 6);
+                highScoreToShow = statsManager.getStageScore("stage4score");
+                stageNameToShow = "SCRUFFY HOSPITAL";
                 game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
-                game.batch.draw(stageSchoolText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
                 currentBeatmap = beatmaps.get(school.getBeatmapGroupId()).get().head();
 
@@ -184,13 +183,12 @@ public class StageSelectScreen extends LazyScreen {
                     musicManager.setDefault(MUSIC_4_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             case (4):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage5Score")), vw / 1.3F, vh / 6);
+                highScoreToShow = statsManager.getStageScore("stage5score");
+                stageNameToShow = "TRASH OFFICE";
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
-                game.batch.draw(stageHomeText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
                 currentBeatmap = beatmaps.get(home.getBeatmapGroupId()).get().head();
 
@@ -199,13 +197,12 @@ public class StageSelectScreen extends LazyScreen {
                     musicManager.setDefault(MUSIC_5_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             case (5):
-                font.draw(batch, Integer.toString(statsManager.getStageScore("stage6Score")), vw / 1.3F, vh / 6);
+                highScoreToShow = statsManager.getStageScore("stage6score");
+                stageNameToShow = "NASTY SCHOOL";
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
-                game.batch.draw(stageOfficeText, vw / 64, vh / 1.143F, vw / 2.5F, vh / 8);
 
                 currentBeatmap = beatmaps.get(office.getBeatmapGroupId()).get().head();
 
@@ -214,12 +211,14 @@ public class StageSelectScreen extends LazyScreen {
                     musicManager.setDefault(MUSIC_6_SONG);
                     musicManager.playMusic(.3F);
 //                    musicManager.setMusicPosition(52);
-
                 }
                 break;
             default:
                 currentStageNumber %= 5;
+                highScoreToShow = 0;
+                stageNameToShow = "Select a stage";
         }
+
         gameScreen.setBeatmap(currentBeatmap);
 
         // Show the stage building
@@ -242,8 +241,11 @@ public class StageSelectScreen extends LazyScreen {
             game.batch.draw(bdOfficeHide, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
         }
 
-        if (cooldown > 0)
-            cooldown--;
+        font_StageName.draw(batch, stageNameToShow, vw / 64, vh / 1.026F);
+        font_HighScore.draw(batch, "High Score", vw / 1.302F, vh / 4.7F);
+        font_HighScore.draw(batch, Integer.toString(highScoreToShow), vw / 1.302F, vh / 6.1F);
+
+        if (cooldown > 0) cooldown--;
 
         if (modes == 0) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
@@ -251,21 +253,21 @@ public class StageSelectScreen extends LazyScreen {
                 currentStageNumber = (currentStageNumber + 1) % 6;
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
+                musicManager.playMusic(SFX_STAGE_CHANGE);
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
                 //game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
+                currentStageNumber += 6;
                 currentStageNumber = (currentStageNumber - 1) % 6;
-                if (currentStageNumber < 0) {
-                    currentStageNumber = 5;
-                }
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
+                musicManager.playMusic(SFX_STAGE_CHANGE);
             }
         }
 
         /*if ((modes == 0) && (Gdx.input.isKeyJustPressed(Input.Keys.ENTER))) {
             modes++;
-            font.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
+            font_HighScore.draw(game.batch, "Fuck you",getViewportWidth() - 100,getViewportHeight() - 100);
         }*/
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
@@ -310,28 +312,24 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(STAGE_BD_HIDE_HOME, TEXTURE);
         assets.load(STAGE_BD_HIDE_CAFE, TEXTURE);
 
-        assets.load(STAGE_TEXT_OFFICE, TEXTURE);
-        assets.load(STAGE_TEXT_CINEMA, TEXTURE);
-        assets.load(STAGE_TEXT_HOSPITAL, TEXTURE);
-        assets.load(STAGE_TEXT_SCHOOL, TEXTURE);
-        assets.load(STAGE_TEXT_HOME, TEXTURE);
-        assets.load(STAGE_TEXT_CAFE, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
         assets.load(GLOBAL_ICON_CONTINUE, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
         assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
         assets.load(STAGE_BG_TRASHWORLD, TEXTURE);
-        // UNUSED assets.load(STAGE_BG_OVERLAY, TEXTURE);
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
         assets.load(STAGE_BG, TEXTURE);
+
         assets.load(MUSIC_1_SONG, MUSIC);
         assets.load(MUSIC_2_SONG, MUSIC);
         assets.load(MUSIC_3_SONG, MUSIC);
         assets.load(MUSIC_4_SONG, MUSIC);
         assets.load(MUSIC_5_SONG, MUSIC);
         assets.load(MUSIC_6_SONG, MUSIC);
+
+        assets.load(SFX_STAGE_CHANGE, MUSIC);
     }
 
     @Override
@@ -349,13 +347,6 @@ public class StageSelectScreen extends LazyScreen {
         this.bdSchoolHide = assets.get(STAGE_BD_HIDE_SCHOOL, TEXTURE);
         this.bdHomeHide = assets.get(STAGE_BD_HIDE_HOME, TEXTURE);
         this.bdCafeHide = assets.get(STAGE_BD_HIDE_CAFE, TEXTURE);
-
-        this.stageHomeText = assets.get(STAGE_TEXT_HOME, TEXTURE); // 2826 × 487
-        this.stageOfficeText = assets.get(STAGE_TEXT_OFFICE, TEXTURE); // 2507 × 487
-        this.stageCafeText = assets.get(STAGE_TEXT_CAFE, TEXTURE); // 2057 × 487
-        this.stageCinemaText = assets.get(STAGE_TEXT_CINEMA, TEXTURE); // 2601 × 487
-        this.stageHospitalText = assets.get(STAGE_TEXT_HOSPITAL, TEXTURE); // 3428 × 487
-        this.stageSchoolText = assets.get(STAGE_TEXT_SCHOOL, TEXTURE); // 2702 × 487
 
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
         this.buttonContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE); // 670  × 239
@@ -375,8 +366,10 @@ public class StageSelectScreen extends LazyScreen {
         this.music5 = assets.get(MUSIC_5_SONG, MUSIC);
         this.music6 = assets.get(MUSIC_6_SONG, MUSIC);
 
-        this.font = assets.get8bitFont(24, Color.GREEN);
+        this.SFxStageChange = assets.get(SFX_STAGE_CHANGE, MUSIC);
 
+        this.font_HighScore = assets.get8bitFont(33, Color.BLACK);
+        this.font_StageName = assets.getSuperSpaceFont(100, Color.WHITE);
     }
 
     @Override
@@ -392,7 +385,7 @@ public class StageSelectScreen extends LazyScreen {
         );
     }
 
-    public int getTimes(){
+    public int getTimes() {
         return times;
     }
 }

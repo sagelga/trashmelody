@@ -6,7 +6,7 @@
 Welcome to the TrashMelody wiki page. <br>
 \Here's you can find some resource that may help you to fix, improve or play our game.
 
-หน้า Wiki หลายๆหน้า จะเขียนเป็นภาษาไทย<br>
+หน้า Wiki หลายๆหน้า จะเขียนเป็นภาษาไทย ทางทีมงานขอแสดงความขอโทษไว้ล่วงหน้า<br>
 Most of the wiki page will be written in Thai. Sorry for the inconvenience.
 
 **We have closed all the merge/pull requests ticket as the development of this game will be discontinued.**<br>
@@ -14,6 +14,8 @@ If you like to make this game feels perfect for you, <br>
 please fork this repository to make this game feels like yours. (Under the license terms and conditions)
 
 # Table of Contents สารบัญ
+## Project Report รายงานของเกม
+1. [Project Report รายงานเกม](Project Report)
 
 ## User Basics พื้นฐานของเกม
 1. [Introduction and Origin](Basics/Introduction) ที่มาและการแนะนำเกม
@@ -27,7 +29,7 @@ please fork this repository to make this game feels like yours. (Under the licen
 9. [Trash Collection](Basics/Trash Collection) คอลเล็กชั่นขยะ
 
 ## Development Background ด้านหลังการพัฒนาเกม
-1. [Package Structure](Developer/Basic Structure) การจัดกลุ่ม Package
+1. [Package Structure](Developer/Package Structure) การจัดกลุ่ม Package
 2. [Inheritance](Developer/Inheritance) การสืบทอดของโปรแกรม
 3. [Game Assets](Developer/Game Assets) ทรัพยากรของเกม
 4. [Administration with BeatMaps + Core Game](Developer/Beat Maps) การดูแล BeatMaps และตัวเกมหลัก
@@ -37,14 +39,20 @@ please fork this repository to make this game feels like yours. (Under the licen
 
 ## Other อื่นๆ
 1. [Team members](Others/Team Members) รายชื่อคนในกลุ่ม
-2. [Use of Open Source Software](Others/Open Source Software) การใช้งานซอฟต์แวร์โอเพนซอร์สในตัวเกม
+2. [Use of Open Source Software](Others/Open Source Software) การใช้งานซอฟต์แวร์โอเพ่นซอร์สในตัวเกม
 3. [Development tools](Others/Development Tools) อุปกรณ์ในการพัฒนา
 4. [Future Developments](Others/Future Development) การพัฒนาต่อ
 5. [Developer's Development Scheme](Others/Development Scheme) วิธีการทำงานและพัฒนาของผู้พัฒนา
 6. [Knowledge Management Integrations](Others/KM Integrations) การใช้งาน Knowledge Management ในการพัฒนา
 7. [LibGDX Integrations](Others/LibGDX Integrations)การใช้งาน LibGDX ในการพัฒนา
 8. [Object Oriented Integrations](Others/OO Integrations) การใช้งานหลักการ OO ในการพัฒนา
+9. [Repository Usage](Others/Repository) การใช้งาน Repository ให้เป็นประโยชน์
 
 ---
-<p align="center">เกมนี้เป็นโปรแกรม Open Source กรุณาอ่านไฟล์ `LICENSE.md` สำหรับข้อกำหนดของเรา <br>
+<p align="center">เกมนี้เป็นโปรแกรม Open Source ท่านสามารถเข้าไปอ่านข้อกำหนดของเราได้ที่ `LICENSE.md`<br>
 This game was created as Open Sourced project. Please read our `LICENSE.md` to learn more</p>
+
+---
+รายงานประเภท Wiki นี้เป็นส่วนหนึ่งของรายวิชาดังต่อไปนี้
+- การสร้างโปรแกรมเชิงอ็อบเจกต์ (Object Oriented Programming) รหัส 06016211
+- การจัดการความรู้ (Knowledge Management) รหัส 90306006

@@ -52,9 +52,6 @@ public class ResultScreen extends LazyScreen {
 
     @Override
     public void render(float delta) {
-        // Assume that the grade is B
-        grade = Grade.B;
-
         clearScreen();
 
         game.batch.begin();
@@ -64,7 +61,7 @@ public class ResultScreen extends LazyScreen {
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
         game.batch.draw(btnContinue, vw / 1.237F, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
 
-        switch (setGrade(200, 100)) {
+        switch (grade) {
             case A: gradeToShow = gradeA; break;
             case B: gradeToShow = gradeB; break;
             case C: gradeToShow = gradeC; break;
@@ -136,13 +133,13 @@ public class ResultScreen extends LazyScreen {
         this.font = assets.get8bitFont(54, Color.RED);
     }
 
-    public Grade setGrade(float fullScoreOfTheStage, float playerScore) {
+    public void setGrade(float fullScoreOfTheStage, float playerScore) {
         float percentage = (playerScore/fullScoreOfTheStage) * 100;
-        if (percentage < 40) return Grade.F;
-        else if (percentage < 50) return Grade.D;
-        else if (percentage < 65) return Grade.C;
-        else if (percentage < 90) return Grade.B;
-        else return Grade.A;
+        if (percentage < 40) this.grade = Grade.F;
+        else if (percentage < 50) this.grade = Grade.D;
+        else if (percentage < 65) this.grade = Grade.C;
+        else if (percentage < 90) this.grade = Grade.B;
+        else this.grade = Grade.A;
     }
 
     public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {

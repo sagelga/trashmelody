@@ -90,9 +90,7 @@ public class ControlSystem extends IteratingSystem {
             .headOption()
             .filter(entity -> isClickable(scanLine, Mapper.hitObject.get(entity)))
             .forEach(entity -> {
-                HitObjectComponent hitObject = Mapper.hitObject.get(entity);
-
-                entity.add(new ScoringComponent(calculateDelta(scanLine, hitObject), Option.some(trashType)));
+                entity.add(new ScoringComponent(10000, Option.some(trashType)));
                 scanLine.activeHitObjects = scanLine.activeHitObjects.remove(entity);
             });
     }

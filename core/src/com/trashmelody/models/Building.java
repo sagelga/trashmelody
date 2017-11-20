@@ -3,6 +3,9 @@ package com.trashmelody.models;
 public class Building {
     private String name;
     private String beatmapGroupId;
+    private String easyBeatmapId;
+    private String mediumBeatmapId;
+    private String hardBeatmapId;
     public int highScore;
 
     public Building(String name, String beatmapGroupId) {

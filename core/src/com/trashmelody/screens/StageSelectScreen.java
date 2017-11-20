@@ -19,7 +19,6 @@ import com.trashmelody.managers.*;
 import com.trashmelody.models.Building;
 import com.trashmelody.utils.Debugger;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.vavr.collection.List;
 import io.vavr.collection.Map;
 import io.vavr.collection.Stream;
 
@@ -145,7 +144,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_1_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             case (1):
@@ -159,7 +157,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_2_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             case (2):
@@ -173,7 +170,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_3_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             case (3):
@@ -188,7 +184,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_4_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             case (4):
@@ -202,7 +197,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_5_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             case (5):
@@ -217,7 +211,6 @@ public class StageSelectScreen extends LazyScreen {
                     cooldown--;
                     musicManager.setDefault(MUSIC_6_SONG);
                     musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
                 }
                 break;
             default:
@@ -262,6 +255,7 @@ public class StageSelectScreen extends LazyScreen {
                 cooldown = MUSIC_PREVIEW_DELAY;
                 musicManager.stopMusic();
                 musicManager.playMusic(SFX_STAGE_CHANGE);
+//                musicManager.setMusicPosition(currentBeatmap.getGenerals().getPreviewTime() / 1000);
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
                 //game.batch.draw(selectArrowLeft, vw/1.45F, vh/8, vw/28, vh/10);
@@ -284,8 +278,7 @@ public class StageSelectScreen extends LazyScreen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             gameScreen.setBeatmap(currentBeatmap);
-            Path musicFile = currentBeatmap.getPath().resolveSibling(currentBeatmap.getGenerals().getAudioFileName());
-            gameScreen.setMusic(Gdx.audio.newMusic(Gdx.files.absolute(musicFile.toString())));
+            gameScreen.setMusic(getMusic(getMusicPath(currentBeatmap)));
             game.setLazyScreen(gameScreen);
         }
 
@@ -296,6 +289,14 @@ public class StageSelectScreen extends LazyScreen {
 
         game.batch.end();
         times++;
+    }
+
+    private Path getMusicPath(Beatmap beatmap) {
+        return beatmap.getPath().resolveSibling(currentBeatmap.getGenerals().getAudioFileName());
+    }
+
+    private Music getMusic(Path path) {
+        return Gdx.audio.newMusic(Gdx.files.absolute(path.toString()));
     }
 
     @Override

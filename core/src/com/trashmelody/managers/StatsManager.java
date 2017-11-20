@@ -86,7 +86,7 @@ public class StatsManager {
     }
 
     public int getStageScore(String stageID) {
-        if (stageID.startsWith("stage") && stageID.endsWith("Score")) {
+        if (stageID.startsWith("stage") && stageID.endsWith("score")) {
             return preferences.getInteger(stageID);
         }
         return -1;

@@ -58,7 +58,7 @@ public class ResultScreen extends LazyScreen {
 
         game.batch.draw(bg, 0, 0, vw, vh);
         game.batch.draw(header, 0, vh/1.1F, (float) vw/1.7F, findRatio(1200, 105, (float) vw/1.7F, 'h'));
-        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(btnContinue, vw / 1.237F, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
 
         switch (grade) {
@@ -112,7 +112,7 @@ public class ResultScreen extends LazyScreen {
         assets.load(RESULT_RESULT_GRADE_D, TEXTURE);
         assets.load(RESULT_RESULT_GRADE_F, TEXTURE);
         assets.load(RESULT_RESULT_TEXT_ALL, TEXTURE);
-        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         assets.load(GLOBAL_ICON_BACK, TEXTURE);
         assets.load(GLOBAL_ICON_CONTINUE, TEXTURE);
     }
@@ -127,7 +127,7 @@ public class ResultScreen extends LazyScreen {
         this.gradeD = assets.get(RESULT_RESULT_GRADE_D, TEXTURE);
         this.gradeF = assets.get(RESULT_RESULT_GRADE_F, TEXTURE);
         this.stats = assets.get(RESULT_RESULT_TEXT_ALL, TEXTURE);
-        this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE);
+        this.footer = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.btnBack = assets.get(GLOBAL_ICON_BACK, TEXTURE);
         this.btnContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE);
         this.font = assets.get8bitFont(54, Color.RED);

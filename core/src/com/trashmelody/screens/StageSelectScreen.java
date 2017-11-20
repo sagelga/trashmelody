@@ -121,7 +121,7 @@ public class StageSelectScreen extends LazyScreen {
 
         // Show the header + footer of the game
         game.batch.draw(header, 0, vh / 1.12F, vw / 1.5F, findRatio(1920, 260, vw / 1.5F, 'h'));
-        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 72, vw, 'h'));
+        game.batch.draw(footer, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
 
         // Show the button interfaces
 //        game.batch.draw(buttonContinue, vw / 64, 0, findRatio(276, 54, vh/16F, 'w'), vh / 16);
@@ -325,7 +325,7 @@ public class StageSelectScreen extends LazyScreen {
         assets.load(GLOBAL_ICON_CONTINUE, TEXTURE);
         assets.load(STAGE_BG_CLOUD, TEXTURE);
         assets.load(STAGE_BG_HEADER, TEXTURE);
-        assets.load(GLOBAL_FOOTER_BAR, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         assets.load(STAGE_BG_TRASHWORLD, TEXTURE);
         assets.load(STAGE_BG_ARROW_L, TEXTURE);
         assets.load(STAGE_BG_ARROW_R, TEXTURE);
@@ -360,7 +360,7 @@ public class StageSelectScreen extends LazyScreen {
         this.buttonBack = assets.get(GLOBAL_ICON_BACK, TEXTURE); // 687  × 236
         this.buttonContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE); // 670  × 239
         this.header = assets.get(STAGE_BG_HEADER, TEXTURE); // 4485 × 608
-        this.footer = assets.get(GLOBAL_FOOTER_BAR, TEXTURE); // 8002 × 296
+        this.footer = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE); // 1920 × 80
         this.cloud = assets.get(STAGE_BG_CLOUD, TEXTURE); // 7507 × 2644
         this.trashworldLogo = assets.get(STAGE_BG_TRASHWORLD, TEXTURE); // 2265 × 1370
         // UNUSED this.overlayBackground = assets.get(STAGE_BG_OVERLAY, TEXTURE); // 6464 × 4460

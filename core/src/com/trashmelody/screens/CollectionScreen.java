@@ -2,6 +2,7 @@ package com.trashmelody.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.trashmelody.managers.Assets;
+import com.trashmelody.managers.MusicManager;
 import com.trashmelody.managers.ScreenProvider;
 import com.trashmelody.utils.Debugger;
 import com.trashmelody.TrashMelody;
@@ -28,6 +30,8 @@ public class CollectionScreen extends LazyScreen {
     private OrthographicCamera camera;
     private Viewport viewport;
     private SpriteBatch batch;
+    private MusicManager musicManager;
+    private Music bgMusic2;
     private BitmapFont fontTitle, fontDesc, fontTrashType;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
@@ -37,11 +41,11 @@ public class CollectionScreen extends LazyScreen {
     //Dangerous Trashes
     private Texture cigar, spray, can, thinner;
     //Recycle Trashes
-    private Texture  cardboard, glass, note, paper, plastic,bottle;
+    private Texture cardboard, glass, note, paper, plastic, bottle;
     //Wet Trashes
     private Texture curry, donut, icecream, matcha, popcorn;
     //General Trashes
-    private Texture bag,plate,tooth,cloth,pencil;
+    private Texture bag, plate, tooth, cloth, pencil;
     //Bin
     private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Temporary Current Stage
@@ -52,12 +56,20 @@ public class CollectionScreen extends LazyScreen {
     private GlyphLayout layoutTrashType = new GlyphLayout();
 
     @Inject
-    CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport,SpriteBatch batch) {
+    CollectionScreen(TrashMelody game, OrthographicCamera camera, ScreenProvider screens, Viewport viewport, SpriteBatch batch, MusicManager musicManager) {
         this.game = game;
         this.screens = screens;
         this.camera = camera;
         this.viewport = new ScalingViewport(Scaling.fit, vw, vh, camera);
         this.batch = batch;
+        this.musicManager = musicManager;
+    }
+
+    @Override
+    public void show(){
+        musicManager.setDefault(MUSIC_BG2);
+        musicManager.playMusic();
+        musicManager.setMusicLoopStatus(true);
     }
 
     @Override
@@ -79,20 +91,20 @@ public class CollectionScreen extends LazyScreen {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
         }
 
-        game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
+        game.batch.draw(header, vw / 128, vh / 1.25F, vw / 2.5F, vh / 5);
 
         if (vw < 1500) {
-            game.batch.draw(storyBG, (vw / 2) - ((vw / 1.3F) / 2), 0, vw / 1.3F, vh/3.32F);
-            game.batch.draw(pack, vw / 4F, vw/ 5F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
+            game.batch.draw(storyBG, (vw / 2) - ((vw / 1.3F) / 2), 0, vw / 1.3F, vh / 3.32F);
+            game.batch.draw(pack, vw / 4F, vw / 5F, vw / 2F, findRatio(1200, 627, vw / 2, 'h'));
         } else {
             game.batch.draw(storyBG, (vw / 2) - ((vw / 2F) / 2), 0, vw / 2F, findRatio(991, 359, vw / 2F, 'h'));
-            game.batch.draw(pack, vw / 4F, vw/ 5.85F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
+            game.batch.draw(pack, vw / 4F, vw / 5.85F, vw / 2F, findRatio(1200, 627, vw / 2, 'h'));
         }
 
         game.batch.draw(footer, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
-        game.batch.draw(btnBack, vw / 64, 0, findRatio(180, 54, vh/16F, 'w'), vh / 16);
-        game.batch.draw(l, vw/6, vh / 1.9F, vw / 45, vh / 24);
-        game.batch.draw(r, vw/1.23F, vh / 1.9F, vw / 45, vh / 24);
+        game.batch.draw(btnBack, vw / 64, 0, findRatio(180, 54, vh / 16F, 'w'), vh / 16);
+        game.batch.draw(l, vw / 6, vh / 1.9F, vw / 45, vh / 24);
+        game.batch.draw(r, vw / 1.23F, vh / 1.9F, vw / 45, vh / 24);
 
         // Trash on Stage 1
         if (count < 1) count = 1;
@@ -225,21 +237,22 @@ public class CollectionScreen extends LazyScreen {
 
         // Set fontDesc properties and draw
         float descWidth;
-        if (vw < 1500) descWidth = vw/1.5F; else descWidth = vw/2.5F;
+        if (vw < 1500) descWidth = vw / 1.5F;
+        else descWidth = vw / 2.5F;
         layoutDesc.setText(fontDesc, descToDraw, Color.WHITE, descWidth, Align.center, true);
-        fontDesc.draw(batch, layoutDesc, (vw/2)-(descWidth/2F), vw / 8);
+        fontDesc.draw(batch, layoutDesc, (vw / 2) - (descWidth / 2F), vw / 8);
 
         // Set fontTrashType properties and draw
         if (count == 1 || count == 9 || count == 13 || count == 17) {
             typeToDraw = "Type * Dangerous";
             game.batch.draw(dangerBin, vw / 1.75F, vh / 3.2F, vw / 19.5F, vh / 14);
-        } else if (count == 2 ||count == 5 || count == 6 || count == 10 || count == 14 || count == 18) {
+        } else if (count == 2 || count == 5 || count == 6 || count == 10 || count == 14 || count == 18) {
             typeToDraw = "Type * Recycle";
             game.batch.draw(recycleBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
         } else if (count == 3 || count == 7 || count == 11 || count == 15 || count == 19) {
             typeToDraw = "Type * Wet";
             game.batch.draw(wetBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
-        } else if (count == 4 || count ==8 || count == 12 || count == 16 || count == 20){
+        } else if (count == 4 || count == 8 || count == 12 || count == 16 || count == 20) {
             typeToDraw = "Type * General";
             game.batch.draw(idkBin, vw / 1.75F, vh / 3.2F, vw / 19, vh / 14);
         }
@@ -247,12 +260,12 @@ public class CollectionScreen extends LazyScreen {
         fontTrashType.draw(batch, layoutTrashType, 0, vw / 24);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
-            game.batch.draw(rh, vw/1.23F, vh / 1.9F, vw / 45, vh / 24);
-            count ++;
+            game.batch.draw(rh, vw / 1.23F, vh / 1.9F, vw / 45, vh / 24);
+            count++;
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
-            game.batch.draw(lh, vw/6, vh / 1.9F, vw / 45, vh / 24);
+            game.batch.draw(lh, vw / 6, vh / 1.9F, vw / 45, vh / 24);
             count--;
         }
 
@@ -261,12 +274,12 @@ public class CollectionScreen extends LazyScreen {
         if (currentStage > 5) currentStage = 5;
         if (currentStage < 1) currentStage = 1;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setLazyScreen(screens.get(MenuScreen.class));
         }
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Collection Screen");
+        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Collection Screen");
         // Debug zone
 
         game.batch.end();
@@ -281,6 +294,7 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void loadAssets(Assets assets) {
+        assets.load(MUSIC_BG2,MUSIC);
         assets.load(COLLECTION_BG, TEXTURE);
         assets.load(COLLECTION_HEADER, TEXTURE);
         assets.load(COLLECTION_PACK, TEXTURE);
@@ -323,46 +337,47 @@ public class CollectionScreen extends LazyScreen {
 
     @Override
     public void afterLoad(Assets assets) {
-        this.footer     = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
-        this.header     = assets.get(COLLECTION_HEADER, TEXTURE);
-        this.pack       = assets.get(COLLECTION_PACK, TEXTURE);
-        this.l          = assets.get(COLLECTION_LEFT, TEXTURE);
-        this.r          = assets.get(COLLECTION_RIGHT, TEXTURE);
-        this.lh         = assets.get(COLLECTION_LEFT_H, TEXTURE);
-        this.rh         = assets.get(COLLECTION_RIGHT_H, TEXTURE);
-        this.btnBack    = assets.get(GLOBAL_ICON_BACK, TEXTURE);
-        this.storyBG    = assets.get(COLLECTION_STORY_BG);
+        this.bgMusic2 = assets.get(MUSIC_BG2, MUSIC);
+        this.footer = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
+        this.header = assets.get(COLLECTION_HEADER, TEXTURE);
+        this.pack = assets.get(COLLECTION_PACK, TEXTURE);
+        this.l = assets.get(COLLECTION_LEFT, TEXTURE);
+        this.r = assets.get(COLLECTION_RIGHT, TEXTURE);
+        this.lh = assets.get(COLLECTION_LEFT_H, TEXTURE);
+        this.rh = assets.get(COLLECTION_RIGHT_H, TEXTURE);
+        this.btnBack = assets.get(GLOBAL_ICON_BACK, TEXTURE);
+        this.storyBG = assets.get(COLLECTION_STORY_BG);
         //Danger Trashes
-        this.spray      = assets.get(COLLECTION_DANGER_2, TEXTURE);
-        this.cigar      = assets.get(COLLECTION_DANGER_3, TEXTURE);
-        this.thinner    = assets.get(COLLECTION_DANGER_4, TEXTURE);
-        this.can        = assets.get(COLLECTION_DANGER_5, TEXTURE);
+        this.spray = assets.get(COLLECTION_DANGER_2, TEXTURE);
+        this.cigar = assets.get(COLLECTION_DANGER_3, TEXTURE);
+        this.thinner = assets.get(COLLECTION_DANGER_4, TEXTURE);
+        this.can = assets.get(COLLECTION_DANGER_5, TEXTURE);
         //Recycle Trashes
-        this.paper      = assets.get(COLLECTION_RECYCLE_1, TEXTURE);
-        this.note       = assets.get(COLLECTION_RECYCLE_2, TEXTURE);
-        this.plastic    = assets.get(COLLECTION_RECYCLE_3, TEXTURE);
-        this.glass      = assets.get(COLLECTION_RECYCLE_4, TEXTURE);
-        this.cardboard  = assets.get(COLLECTION_RECYCLE_5, TEXTURE);
-        this.bottle     = assets.get(COLLECTION_GENERAL_1, TEXTURE);
+        this.paper = assets.get(COLLECTION_RECYCLE_1, TEXTURE);
+        this.note = assets.get(COLLECTION_RECYCLE_2, TEXTURE);
+        this.plastic = assets.get(COLLECTION_RECYCLE_3, TEXTURE);
+        this.glass = assets.get(COLLECTION_RECYCLE_4, TEXTURE);
+        this.cardboard = assets.get(COLLECTION_RECYCLE_5, TEXTURE);
+        this.bottle = assets.get(COLLECTION_GENERAL_1, TEXTURE);
         //Wet Trashes
-        this.popcorn    = assets.get(COLLECTION_WET_1, TEXTURE);
-        this.donut      = assets.get(COLLECTION_WET_2, TEXTURE);
-        this.curry      = assets.get(COLLECTION_WET_3, TEXTURE);
-        this.matcha     = assets.get(COLLECTION_WET_4, TEXTURE);
-        this.icecream   = assets.get(COLLECTION_WET_5, TEXTURE);
+        this.popcorn = assets.get(COLLECTION_WET_1, TEXTURE);
+        this.donut = assets.get(COLLECTION_WET_2, TEXTURE);
+        this.curry = assets.get(COLLECTION_WET_3, TEXTURE);
+        this.matcha = assets.get(COLLECTION_WET_4, TEXTURE);
+        this.icecream = assets.get(COLLECTION_WET_5, TEXTURE);
         //General Trashes
-        this.bag        = assets.get(COLLECTION_DANGER_1, TEXTURE);
-        this.plate      = assets.get(COLLECTION_GENERAL_2, TEXTURE);
-        this.tooth      = assets.get(COLLECTION_GENERAL_3, TEXTURE);
-        this.cloth      = assets.get(COLLECTION_GENERAL_4, TEXTURE);
-        this.pencil     = assets.get(COLLECTION_GENERAL_5, TEXTURE);
+        this.bag = assets.get(COLLECTION_DANGER_1, TEXTURE);
+        this.plate = assets.get(COLLECTION_GENERAL_2, TEXTURE);
+        this.tooth = assets.get(COLLECTION_GENERAL_3, TEXTURE);
+        this.cloth = assets.get(COLLECTION_GENERAL_4, TEXTURE);
+        this.pencil = assets.get(COLLECTION_GENERAL_5, TEXTURE);
         //Bin
-        this.dangerBin  = assets.get(GAME_BIN_01, TEXTURE);
+        this.dangerBin = assets.get(GAME_BIN_01, TEXTURE);
         this.recycleBin = assets.get(GAME_BIN_02, TEXTURE);
-        this.wetBin     = assets.get(GAME_BIN_03, TEXTURE);
-        this.idkBin     = assets.get(GAME_BIN_04, TEXTURE);
+        this.wetBin = assets.get(GAME_BIN_03, TEXTURE);
+        this.idkBin = assets.get(GAME_BIN_04, TEXTURE);
         // Fonts
-        this.fontTitle       = assets.get8bitFont(40, Color.WHITE);
+        this.fontTitle = assets.get8bitFont(40, Color.WHITE);
         this.fontDesc = assets.getSuperSpaceFont(31, Color.WHITE);
         this.fontTrashType = assets.get8bitFont(24, Color.WHITE);
     }

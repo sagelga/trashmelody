@@ -162,4 +162,15 @@ public class ResultScreen extends LazyScreen {
         statsManager.setStageScore(stageToSave, score);
     }
 
+    // DEPRECATED | overloaded method to support legacy method call
+    public void setScores(int perfect, int good, int nice, int miss, int combo, int score) {
+        this.perfect = perfect;
+        this.good = good;
+        this.nice = nice;
+        this.miss = miss;
+        this.combo = combo;
+        this.score = score;
+        statsManager.setStageScore("stage1", score);
+    }
+
 }

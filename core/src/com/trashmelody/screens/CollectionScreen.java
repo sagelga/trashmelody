@@ -80,7 +80,7 @@ public class CollectionScreen extends LazyScreen {
         game.batch.draw(header, vw/128, vh / 1.25F, vw / 2.5F, vh / 5);
 
         if (vw < 1500) {
-            game.batch.draw(storyBG, (vw / 2) - ((vw / 1.3F) / 2), 0, vw / 1.3F, vh/3.4F);
+            game.batch.draw(storyBG, (vw / 2) - ((vw / 1.3F) / 2), 0, vw / 1.3F, vh/3.32F);
             game.batch.draw(pack, vw / 4F, vw/ 5F, vw / 2F, findRatio(1200, 627, vw/2, 'h'));
         } else {
             game.batch.draw(storyBG, (vw / 2) - ((vw / 2F) / 2), 0, vw / 2F, findRatio(991, 359, vw / 2F, 'h'));

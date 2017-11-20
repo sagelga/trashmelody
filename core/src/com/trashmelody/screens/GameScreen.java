@@ -245,7 +245,7 @@ public class GameScreen extends LazyScreen {
         assets.load(GAME_BIN_05, TEXTURE);
         assets.load(GAME_CENTER, TEXTURE);
         assets.load(GAME_CHECK, TEXTURE);
-        assets.load(GAME_FOOTER, TEXTURE);
+        assets.load(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         assets.load(GAME_HANOI_1, TEXTURE);
         assets.load(GAME_HANOI_2, TEXTURE);
         assets.load(GAME_HANOI_3, TEXTURE);
@@ -286,7 +286,7 @@ public class GameScreen extends LazyScreen {
         this.rainbowFlashBin = assets.get(GAME_BIN_05, TEXTURE);
         this.centerLine = assets.get(GAME_CENTER, TEXTURE);
         this.check = assets.get(GAME_CHECK, TEXTURE);
-        this.footerTab = assets.get(GAME_FOOTER, TEXTURE);
+        this.footerTab = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.redBinPlot = assets.get(GAME_HANOI_1, TEXTURE);
         this.recycleBinPlot = assets.get(GAME_HANOI_2, TEXTURE);
         this.yellowBinPlot = assets.get(GAME_HANOI_3, TEXTURE);

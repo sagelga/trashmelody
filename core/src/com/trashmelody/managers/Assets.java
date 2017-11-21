@@ -284,27 +284,29 @@ public class Assets extends AssetManager {
     public static final String PLATE_HIT_OBJECT = "trashes/general/buttons/general - button-3.png";
     public static final String TOOTHPASTE_HIT_OBJECT = "trashes/general/buttons/general - button-4.png";
     public static final String RAG_HIT_OBJECT = "trashes/general/buttons/general - button-5.png";
+    public static final String BOTTLE_HIT_OBJECT = "trashes/general/buttons/general - button-6.png";
 
-    // Hit Objects
-    public static final String CIGARETTE_TRASH = "trashes/dangerous/without-border/DANGER - BUT-03.png";
-    public static final String HAIR_SPRAY_TRASH = "trashes/dangerous/without-border/DANGER - BUT-02.png";
-    public static final String OIL_CAN_TRASH = "trashes/dangerous/without-border/DANGER - BUT-05.png";
-    public static final String PLASTIC_BAG_TRASH = "trashes/dangerous/without-border/DANGER - BUT-01.png";
-    public static final String THINNER_TRASH = "trashes/dangerous/without-border/DANGER - BUT-04.png";
-    public static final String CARD_BOARD__TRASH = "trashes/recycle/without-border/RE - BUT-05.png";
-    public static final String GLASS_TRASH = "trashes/recycle/without-border/RE - BUT-04.png";
-    public static final String NOTE_TRASH = "trashes/recycle/without-border/RE - BUT-02.png";
-    public static final String PAPER_TRASH = "trashes/recycle/without-border/RE - BUT-01.png";
-    public static final String PLASTIC_BOX_TRASH = "trashes/recycle/without-border/RE - BUT-03.png";
-    public static final String CURRY_TRASH = "trashes/wet/without-border/FOOD - BUT-03.png";
-    public static final String DONUT_TRASH = "trashes/wet/without-border/FOOD - BUT-02.png";
-    public static final String ICE_CREAM_TRASH = "trashes/wet/without-border/FOOD - BUT-05.png";
-    public static final String MATCHA_TRASH = "trashes/wet/without-border/FOOD - BUT-04.png";
-    public static final String POPCORN_TRASH = "trashes/wet/without-border/FOOD - BUT-01.png";
-    public static final String PENCIL_TRASH = "trashes/general/without-border/general - button-1.png";
-    public static final String PLATE_TRASH = "trashes/general/without-border/general - button-3.png";
-    public static final String TOOTHPASTE_TRASH = "trashes/general/without-border/general - button-4.png";
-    public static final String RAG_TRASH = "trashes/general/without-border/general - button-5.png";
+    // TRASH
+    public static final String CIGARETTE_TRASH = "trashes/new-trash/with-border/dangerous - wbd-01-05.png";
+    public static final String HAIR_SPRAY_TRASH = "trashes/new-trash/with-border/dangerous - wbd-01-05-03.png";
+    public static final String OIL_CAN_TRASH = "trashes/new-trash/with-border/dangerous - wbd-01-05-04.png";
+    public static final String PLASTIC_BAG_TRASH = "trashes/new-trash/with-border/dangerous - wbd-01-05-01.png";
+    public static final String THINNER_TRASH = "trashes/new-trash/with-border/dangerous - wbd-01-05-02.png";
+    public static final String CARD_BOARD_TRASH = "trashes/new-trash/with-border/recycle - nbd-05.png";
+    public static final String GLASS_TRASH = "trashes/new-trash/with-border/recycle - nbd-03.png";
+    public static final String NOTE_TRASH = "trashes/new-trash/with-border/recycle - nbd-04.png";
+    public static final String PAPER_TRASH = "trashes/new-trash/with-border/recycle - nbd-02.png";
+    public static final String PLASTIC_BOX_TRASH = "trashes/new-trash/with-border/recycle - nbd-01.png";
+    public static final String CURRY_TRASH = "trashes/new-trash/with-border/wet - nbd-03.png";
+    public static final String DONUT_TRASH = "trashes/new-trash/with-border/wet - nbd-02.png";
+    public static final String ICE_CREAM_TRASH = "trashes/new-trash/with-border/wet - nbd-05-05.png";
+    public static final String MATCHA_TRASH = "trashes/new-trash/with-border/wet - nbd-04.png";
+    public static final String POPCORN_TRASH = "trashes/new-trash/with-border/wet - nbd-01.png";
+    public static final String PENCIL_TRASH = "trashes/new-trash/with-border/general - nbd-05.png";
+    public static final String PLATE_TRASH = "trashes/new-trash/with-border/general - nbd-02.png";
+    public static final String TOOTHPASTE_TRASH = "trashes/new-trash/with-border/general - nbd-03.png";
+    public static final String RAG_TRASH = "trashes/new-trash/with-border/general - nbd-04.png";
+    public static final String BOTTLE_TRASH = "trashes/new-trash/with-border/general - nbd-01.png";
 
     // Globally-Reusable Assets
     public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";

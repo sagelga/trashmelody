@@ -25,6 +25,9 @@ allprojects {
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        guiceVersion = '4.1.0'
+        vavrVersion = '0.9.1'
+        testngVersion = '6.9.10'
     }
 
     repositories {
@@ -45,7 +48,6 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        
     }
 }
 
@@ -58,7 +60,11 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        
+        compile "com.google.inject:guice:$guiceVersion"
+        compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
+        compile "com.google.inject.extensions:guice-grapher:$guiceVersion"
+        compile "io.vavr:vavr:$vavrVersion"
+        compile "org.testng:testng:$testngVersion"
     }
 }
 

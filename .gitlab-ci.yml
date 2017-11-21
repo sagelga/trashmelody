@@ -1,44 +1,98 @@
 image: java:1.8.0-jdk
 
 stages:
+  - prepare
+  - track
   - check
   - build
-  - test
-  - export
+  - run
 
-before_script:
-#  - echo `pwd` # debug
-#  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
-#  - export GRADLE_USER_HOME=`pwd`/.gradle
-
-version-checker:
-  stage: check
+java-version:
+  stage: prepare
   script:
     # Checking Java version + Directories
+    - readlink -f $(which java)
     - java -version
-    - echo $JAVA_HOME
+  retry: 1
+  only:
+  - develop
 
+gradle-version:
+  stage: prepare
+  script:
     # Checking Gradle version
     - gradle -version
   retry: 1
+  only:
+    - develop
 
-dependency-checker:
-  stage: check
+set-paths:
+  stage: prepare
   script:
-    # Gradle check for correct dependency imports
-    - gradle check
+    # Setting JAVA and Gradle to the default path
+    - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
+    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+    - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+  only:
+  - develop
+
+code-count:
+  stage: track
+  script:
+    - ls -las
+    #
+    # Calculate .java count
+    - echo '|Lines |Words |Chars' > java_tracker.txt
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
+    #
+    # Calculate with coverage
+    - cloc core
+    - cloc core > adv_java_tracker.txt
+    - cloc desktop
+    - cloc desktop >> adv_java_tracker.txt
+    - cloc . --by-file-by-lang
+    - cloc . --by-file-by-lang > all_adv_java_tracker.txt
+    #
+    # Calculate .gradle count
+    #- echo '|Lines |Words |Chars' > gradle_tracker.txt
+    - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl
+    #- git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
+    #
+    # Lists all assets
+    - git ls-files > assets_list.txt
+    #
+    # Keep the development graph line
+    - git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+    #- git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
+    #
+    # Check directory again
+    - mkdir trackers
+    - mv *.txt trackers/
+    - ls -las
+  artifacts:
+    expire_in: 30 day
+    paths:
+    - trackers
+  allow_failure: true
+  retry: 1
+  only:
+    - develop
+    - master
 
 gradle-tasks:
   stage: check
   script:
     # Gives out lists of Gradle Tasks
     - gradle -q tasks
+  retry: 1
 
 gradle-clean:
   stage: check
   script:
     # Deletes previous build cache
     - gradle clean
+  retry: 1
 
 build-game:
   stage: build
@@ -47,18 +101,8 @@ build-game:
     - gradle assemble
 
 run-game:
-  stage: test
+  stage: run
   script:
     # Do gradle check and gradle assemble
     - gradle run
-
-#export-game:
-#  stage: export
-#  script:
-#    - gradle fatJar
-#  artifacts:
-#    paths:
-#      - $project/build/libs/
-#    expire_in: 5 day
-#  allow_failure: true
-#  retry: 1
+  retry: 1

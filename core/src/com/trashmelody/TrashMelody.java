@@ -24,9 +24,8 @@ import com.trashmelody.utils.Debugger;
 import com.trashmelody.utils.Grapher;
 import com.trashmelody.utils.RenderingUtils;
 
-import static com.trashmelody.managers.Assets.PLAYER_MUTE;
-import static com.trashmelody.managers.Assets.PLAYER_PLAY;
-import static com.trashmelody.managers.Assets.TEXTURE;
+import static com.trashmelody.managers.Assets.*;
+import static com.trashmelody.managers.Assets.SFX_VOLUME_CHECK;
 import static com.trashmelody.utils.RenderingUtils.getViewportWidth;
 import static com.trashmelody.utils.RenderingUtils.getViewportHeight;
 
@@ -67,9 +66,23 @@ public class TrashMelody extends Game {
         super.render();
 
         batch.begin();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.EQUALS) || Gdx.input.isKeyJustPressed(Input.Keys.MINUS)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.EQUALS)) {
+            musicManager.increaseBackgroundVolume();
+            musicManager.playMusic(SFX_VOLUME_CHECK);
             timer = 60;
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.MINUS)) {
+            musicManager.decreaseBackgroundVolume();
+            musicManager.playMusic(SFX_VOLUME_CHECK);
+            timer = 60;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
+            Debugger.debug_mode = !Debugger.debug_mode;
+        }
+
+        if (Debugger.debug_mode)
+            Debugger.runDebugger(batch,font);
 
         if (timer > 0) {
             if (musicManager.getBackgroundMusicVolume() > 0)

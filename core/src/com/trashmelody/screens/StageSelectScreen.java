@@ -290,7 +290,7 @@ public class StageSelectScreen extends LazyScreen {
 
         game.batch.draw(cloud, vw / 6.5F, vh / 2.6F, vw / 1.3F, vh / 2);
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
         // Debug zone
 
         game.batch.end();

@@ -1,5 +1,7 @@
 package com.trashmelody.models;
 
+import com.badlogic.gdx.audio.Music;
+
 public class Building {
     private String name;
     private String beatmapGroupId;

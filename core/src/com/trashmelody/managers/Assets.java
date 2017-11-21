@@ -280,6 +280,10 @@ public class Assets extends AssetManager {
     public static final String ICE_CREAM_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-05.png";
     public static final String MATCHA_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-04.png";
     public static final String POPCORN_HIT_OBJECT = "trashes/wet/buttons/FOOD - BUT-01.png";
+    public static final String PENCIL_HIT_OBJECT = "trashes/general/buttons/general - button-1.png";
+    public static final String PLATE_HIT_OBJECT = "trashes/general/buttons/general - button-3.png";
+    public static final String TOOTHPASTE_HIT_OBJECT = "trashes/general/buttons/general - button-4.png";
+    public static final String RAG_HIT_OBJECT = "trashes/general/buttons/general - button-5.png";
 
     // Globally-Reusable Assets
     public static final String GLOBAL_ICON_BACK = "Global/icon-back.png";

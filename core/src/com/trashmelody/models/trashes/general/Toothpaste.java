@@ -4,8 +4,8 @@ import com.trashmelody.managers.Assets;
 import com.trashmelody.models.trashes.TrashType;
 
 public class Toothpaste {
-    public static final String NAME = "Immortal bag";
-    public static final String DESCRIPTION = "She was born 700 years ago. And as her name says; she is a plastic bag that could live through centuries.";
-    public static final String TEXTURE = Assets.PLASTIC_BAG_HIT_OBJECT;
+    public static final String NAME = "Toothpaste";
+    public static final String DESCRIPTION = "Toothpaste is Pencie’s close friend .He is smart and clean guy so he always clean every tooth of everybody in trash world";
+    public static final String TEXTURE = Assets.TOOTHPASTE_HIT_OBJECT;
     public static final TrashType TYPE = TrashType.General;
 }

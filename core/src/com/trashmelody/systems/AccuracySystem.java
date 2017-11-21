@@ -7,26 +7,31 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.trashmelody.components.*;
 import com.trashmelody.entities.FallingTrash;
+import com.trashmelody.managers.Assets;
 import com.trashmelody.screens.GameScreen;
 
 import static com.trashmelody.components.ScoringComponent.Accuracy;
 import static com.trashmelody.constants.Constants.*;
+import static com.trashmelody.managers.Assets.TEXTURE;
 
 public class AccuracySystem extends IteratingSystem {
 
     private World world;
+    private Assets assets;
 
     @Inject
-    public AccuracySystem(World world) {
+    public AccuracySystem(World world, Assets assets) {
         super(Family.all(ScoringComponent.class, HitObjectComponent.class).get(), Systems.getIndex(AccuracySystem.class));
 
         this.world = world;
+        this.assets = assets;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         ScoringComponent scoring = Mapper.scoring.get(entity);
         TextureComponent texture = Mapper.texture.get(entity);
+        HitObjectComponent hitObject = Mapper.hitObject.get(entity);
 
         Accuracy accuracy = getAccuracy(scoring.getTimingError());
         scoring.setAccuracy(accuracy);
@@ -34,7 +39,7 @@ public class AccuracySystem extends IteratingSystem {
         scoring.getClickedType().forEach(clickedType -> getEngine().addEntity(new FallingTrash(
             world,
             GameScreen.binPositionMapper.get(clickedType).get(),
-            new TextureComponent(texture.texture),
+            new TextureComponent(assets.get(hitObject.trash.getTexturePath(), TEXTURE)),
             new TypeComponent(TypeComponent.ITEM)
         )));
 

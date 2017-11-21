@@ -48,12 +48,21 @@ public class BeatmapManager {
     }
 
     private Stream<Beatmap> getBeatmaps() {
-        return getOsuFiles().flatMap(parser::parseManiaBeatmap);
+        return getOsuFilesFromAssets().flatMap(parser::parseManiaBeatmap);
     }
 
     private Stream<Path> getOsuFiles() {
         try {
             return Stream.ofAll(Files.walk(homeDirectory.resolve(beatmapPath))).filter(osuExtension::matches);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Stream.empty();
+        }
+    }
+
+    private Stream<Path> getOsuFilesFromAssets() {
+        try {
+            return Stream.ofAll(Files.walk(beatmapPath)).filter(osuExtension::matches);
         } catch (IOException e) {
             e.printStackTrace();
             return Stream.empty();

@@ -357,9 +357,9 @@ public class GameScreen extends LazyScreen {
     }
 
     public static Map<TrashType, Vector2> binPositionMapper = HashMap.of(
-        TrashType.Dangerous, new Vector2(160 / PPM, 510 / PPM),
-        TrashType.Recycle, new Vector2(480 / PPM, 510 / PPM),
-        TrashType.Wet, new Vector2(1440 / PPM, 510 / PPM),
-        TrashType.General, new Vector2(1760 / PPM, 510 / PPM)
+        TrashType.Dangerous, new Vector2(160 / PPM, 500 / PPM),
+        TrashType.Recycle, new Vector2(480 / PPM, 500 / PPM),
+        TrashType.Wet, new Vector2(1440 / PPM, 500 / PPM),
+        TrashType.General, new Vector2(1760 / PPM, 500 / PPM)
     );
 }

@@ -12,7 +12,7 @@ public class FallingTrash extends Entity {
                         TextureComponent texture,
                         TypeComponent type) {
 
-        TransformComponent transformComponent = new TransformComponent(position.x, position.y, 0.5F, 0.5F);
+        TransformComponent transformComponent = new TransformComponent(position.x, position.y, 0.7F, 0.7F);
 
         CircleShape shape = new CircleShape();
         shape.setRadius(0.3F);

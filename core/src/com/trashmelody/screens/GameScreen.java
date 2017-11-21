@@ -277,6 +277,10 @@ public class GameScreen extends LazyScreen {
             .map(Trash::getTexturePath)
             .forEach(texture -> assets.load(texture, TEXTURE));
 
+        trashManager.getTrashes()
+            .map(Trash::getRawTexturePath)
+            .forEach(texture -> assets.load(texture, TEXTURE));
+
         screens.get(PauseScreen.class).loadAssets(assets);
     }
 
@@ -353,9 +357,9 @@ public class GameScreen extends LazyScreen {
     }
 
     public static Map<TrashType, Vector2> binPositionMapper = HashMap.of(
-        TrashType.Dangerous, new Vector2(160 / PPM, 540 / PPM),
-        TrashType.Recycle, new Vector2(480 / PPM, 540 / PPM),
-        TrashType.Wet, new Vector2(1440 / PPM, 540 / PPM),
-        TrashType.General, new Vector2(1760 / PPM, 540 / PPM)
+        TrashType.Dangerous, new Vector2(160 / PPM, 500 / PPM),
+        TrashType.Recycle, new Vector2(480 / PPM, 500 / PPM),
+        TrashType.Wet, new Vector2(1440 / PPM, 500 / PPM),
+        TrashType.General, new Vector2(1760 / PPM, 500 / PPM)
     );
 }

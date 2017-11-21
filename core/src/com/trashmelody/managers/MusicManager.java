@@ -61,7 +61,9 @@ public class MusicManager {
     }
 
     public void stopMusic() {
-        assets.get(currentMusic, MUSIC).stop();
+        if (currentMusic != null) {
+            assets.get(currentMusic, MUSIC).stop();
+        }
     }
 
     public void stopMusic(String music) {

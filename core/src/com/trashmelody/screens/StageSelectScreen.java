@@ -7,23 +7,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.trashmelody.*;
+import com.trashmelody.TrashMelody;
 import com.trashmelody.beatmap.parser.beatmap.Beatmap;
 import com.trashmelody.constants.BeatmapGroupId;
 import com.trashmelody.managers.*;
 import com.trashmelody.models.Building;
-import com.trashmelody.utils.Debugger;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.collection.Stream;
 
-import java.nio.file.*;
+import java.nio.file.Path;
 
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
@@ -158,36 +157,36 @@ public class StageSelectScreen extends LazyScreen {
 
                 break;
             case (2):
-                highScoreToShow = home.highScore;
-                stageNameToShow = "DISORDER HOME";
-                game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
-
-                currentBeatmap = getBeatmapFromBuilding(home);
-
-                break;
-            case (3):
                 highScoreToShow = hospital.highScore;
                 stageNameToShow = "SCRUFFY HOSPITAL";
-
-                game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
+                game.batch.draw(bdHospitalShow, vw / 1.7F, vh / 3.8F, vw / 5, vh / 4);
 
                 currentBeatmap = getBeatmapFromBuilding(hospital);
 
                 break;
+            case (3):
+                highScoreToShow = school.highScore;
+                stageNameToShow = "NASTY SCHOOL";
+
+                game.batch.draw(bdSchoolShow, vw / 2.8F, vh / 7.9F, vw / 4, vh / 4);
+
+                currentBeatmap = getBeatmapFromBuilding(school);
+
+                break;
             case (4):
-                highScoreToShow = office.highScore;
-                stageNameToShow = "TRASH OFFICE";
+                highScoreToShow = home.highScore;
+                stageNameToShow = "DISORDER HOME";
                 game.batch.draw(bdHomeShow, vw / 5F, vh / 4.15F, vw / 4.2F, vh / 2.5F);
 
-                currentBeatmap = getBeatmapFromBuilding(office);
+                currentBeatmap = getBeatmapFromBuilding(home);
 
                 break;
             case (5):
-                highScoreToShow = school.highScore;
-                stageNameToShow = "NASTY SCHOOL";
+                highScoreToShow = office.highScore;
+                stageNameToShow = "TRASH OFFICE";
                 game.batch.draw(bdOfficeShow, vw / 3.7F, vh / 1.68F, vw / 4.2F, vh / 4);
 
-                currentBeatmap = getBeatmapFromBuilding(school);
+                currentBeatmap = getBeatmapFromBuilding(office);
 
                 break;
             default:

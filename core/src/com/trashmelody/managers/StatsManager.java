@@ -113,16 +113,5 @@ public class StatsManager {
         preferences.putBoolean("recurrentUser", true);
     }
 
-    public void setStageStats(String stageID,String type,int value){
-        stageID += type;
-        preferences.putInteger(stageID,value);
-        preferences.flush();
-    }
-
-    public int getStageStatus(String stageID,String type){
-        stageID += type;
-        return preferences.getInteger(stageID);
-    }
-
 }
 

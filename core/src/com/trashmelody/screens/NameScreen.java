@@ -35,7 +35,7 @@ public class NameScreen extends LazyScreen {
         game.batch.draw(nameScreenBorderRight,855,0,-50,500);
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Name Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Name Screen");
         // Debug zone
 
         game.batch.end();

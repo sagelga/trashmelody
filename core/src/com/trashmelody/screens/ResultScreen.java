@@ -74,7 +74,7 @@ public class ResultScreen extends LazyScreen {
         game.batch.draw(stats, vw/2.1F, vh/5.6F, vw/4.3F, vh/1.6F);
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Result Screen");
         // Debug zone
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) game.setLazyScreen(stageSelectScreen);

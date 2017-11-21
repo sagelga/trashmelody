@@ -58,7 +58,7 @@ public class WarningScreen extends LazyScreen {
         game.batch.begin();
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font,"Warning Screen",TimeUtils.timeSinceMillis(timeLapsed));
         // Debug zone
 
         game.batch.end();

@@ -120,7 +120,7 @@ public class MenuScreen extends LazyScreen {
             game.setLazyScreen(resultScreen);
         }
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Main Menu Screen");
         // Debug zone
 
         game.batch.end();

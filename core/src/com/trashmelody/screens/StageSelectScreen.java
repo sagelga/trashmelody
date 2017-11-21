@@ -141,11 +141,11 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(cafe.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_1_SONG);
-                    musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
+                    musicManager.playMusic();
+                    musicManager.setMusicPosition(54.26F);
                 }
                 break;
             case (1):
@@ -155,11 +155,11 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(cinema.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_2_SONG);
-                    musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
+                    musicManager.playMusic();
+                    musicManager.setMusicPosition(126.47F);
                 }
                 break;
             case (2):
@@ -169,11 +169,11 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(hospital.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_3_SONG);
-                    musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
+                    musicManager.playMusic();
+                    musicManager.setMusicPosition(57);
                 }
                 break;
             case (3):
@@ -184,11 +184,11 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(school.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_4_SONG);
-                    musicManager.playMusic(.3F);
-//                    musicManager.setMusicPosition(52);
+                    musicManager.playMusic();
+                    musicManager.setMusicPosition(61.17F);
                 }
                 break;
             case (4):
@@ -198,10 +198,10 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(home.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_5_SONG);
-                    musicManager.playMusic(.3F);
+                    musicManager.playMusic();
 //                    musicManager.setMusicPosition(52);
                 }
                 break;
@@ -212,10 +212,10 @@ public class StageSelectScreen extends LazyScreen {
 
                 currentBeatmap = beatmaps.get(office.getBeatmapGroupId()).get().head();
 
-                if (cooldown <= 0) {
+                if (cooldown == 0) {
                     cooldown--;
                     musicManager.setDefault(MUSIC_6_SONG);
-                    musicManager.playMusic(.3F);
+                    musicManager.playMusic();
 //                    musicManager.setMusicPosition(52);
                 }
                 break;
@@ -290,7 +290,7 @@ public class StageSelectScreen extends LazyScreen {
 
         game.batch.draw(cloud, vw / 6.5F, vh / 2.6F, vw / 1.3F, vh / 2);
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Stage Selection Screen");
         // Debug zone
 
         game.batch.end();

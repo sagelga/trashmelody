@@ -131,7 +131,7 @@ public class GuideCardScreen extends LazyScreen {
         }
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Collection Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Collection Screen");
         // Debug zone
 
         game.batch.end();

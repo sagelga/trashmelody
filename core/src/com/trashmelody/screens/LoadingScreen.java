@@ -78,9 +78,10 @@ public class LoadingScreen extends LazyScreen {
 
         // Start loading assets
 
+
         // Debug zone
-        if (Debugger.debug_mode)
-            Debugger.runDebugger(game.batch, game.font, "Loading Screen", TimeUtils.timeSinceMillis(time_lapsed), assets.getProgress());
+//        if (Debugger.debug_mode)
+//            Debugger.runDebugger(game.batch, game.font, "Loading Screen", TimeUtils.timeSinceMillis(time_lapsed), assets.getProgress());
         // Debug zone
 
         stage.act();

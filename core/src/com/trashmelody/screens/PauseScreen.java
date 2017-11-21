@@ -93,7 +93,7 @@ public class PauseScreen extends LazyScreen {
         if (count > 3) count = 1; else if (count<1) count = 3;
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Pause Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Pause Screen");
         // Debug zone
 
         game.batch.end();

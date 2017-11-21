@@ -12,7 +12,7 @@ public class MusicManager {
     private StatsManager statsManager;
 
     private static final float MUSIC_VOLUME_TOGGLE = 0.1F;
-    private static float MUSIC_DEFAULT_VOLUME = 0.5F;
+    private static float MUSIC_DEFAULT_VOLUME;
     private static String currentMusic;
 
     @Inject
@@ -25,8 +25,8 @@ public class MusicManager {
     // Update the local variables
     private void resetVariable() {
         Debugger.statsManager = statsManager;
-        statsManager.setCurrentMusicTrack(currentMusic);
         MUSIC_DEFAULT_VOLUME = assets.get(currentMusic, MUSIC).getVolume();
+        statsManager.setCurrentMusicTrack(currentMusic);
         statsManager.setCurrentMusicVolume(MUSIC_DEFAULT_VOLUME);
     }
 
@@ -106,7 +106,7 @@ public class MusicManager {
     }
 
     public void increaseVolume(String music) {
-        assets.get(music, MUSIC).setVolume(Math.min(assets.get(music, MUSIC).getVolume() + MUSIC_VOLUME_TOGGLE, 1F));
+        assets.get(music, MUSIC).setVolume(Math.min(getVolue(music) + MUSIC_VOLUME_TOGGLE, 1F));
         resetVariable();
     }
 
@@ -115,7 +115,7 @@ public class MusicManager {
     }
 
     public void decreaseVolume(String music) {
-        assets.get(music, MUSIC).setVolume(Math.max(assets.get(music, MUSIC).getVolume() - MUSIC_VOLUME_TOGGLE, 0F));
+        assets.get(music, MUSIC).setVolume(Math.max(getVolue(music) - MUSIC_VOLUME_TOGGLE, 0F));
         resetVariable();
     }
 
@@ -135,6 +135,10 @@ public class MusicManager {
     public void setVolume(String music, float volume) {
         assets.get(music, MUSIC).setVolume(volume);
         resetVariable();
+    }
+
+    public float getVolue(String music){
+        return assets.get(music, MUSIC).getVolume();
     }
 
     // Getters + Setter music positions -----------------------------------------------------------

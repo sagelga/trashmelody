@@ -19,7 +19,6 @@ import static com.trashmelody.managers.Assets.*;
 public class DebugInputProcessor implements InputProcessor {
     private ScreenProvider screens;
     private MusicManager musicManager;
-    private Debugger debugger;
 
     private TrashMelody game;
     private static Map<Integer, Class<? extends LazyScreen>> MAPPER;
@@ -50,17 +49,6 @@ public class DebugInputProcessor implements InputProcessor {
         switch (keycode) {
             case Input.Keys.Q:
                 Gdx.app.exit();
-            case Input.Keys.EQUALS:
-                musicManager.increaseBackgroundVolume();
-                musicManager.playMusic(SFX_VOLUME_CHECK);
-                break;
-            case Input.Keys.MINUS:
-                musicManager.decreaseBackgroundVolume();
-                musicManager.playMusic(SFX_VOLUME_CHECK);
-                break;
-            case Input.Keys.NUM_1:
-                Debugger.debug_mode = !Debugger.debug_mode;
-                break;
             default:
                 maybeScreen.forEach(screen -> Gdx.app.log("Switching to", screen.toString()));
                 maybeScreen.forEach(game::setLazyScreen);

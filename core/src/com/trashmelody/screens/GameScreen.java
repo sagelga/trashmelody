@@ -335,7 +335,7 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(centerLine, 0, vh / 2.02F, vw, vh / 128);
         font.draw(batch, Integer.toString(scanLine.score.totalScore), vw / 1.2F, vh / 1.016F);
 
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
 
     private void drawForeground() {

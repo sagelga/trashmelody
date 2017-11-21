@@ -48,7 +48,7 @@ public class CollectionScreen extends LazyScreen {
     //Bin
     private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Temporary Current Stage
-    private int currentUnlock = -1;
+    private int currentUnlock = 3;
     float elapsed;
     private GlyphLayout layoutTitle = new GlyphLayout();
     private GlyphLayout layoutDesc = new GlyphLayout();
@@ -107,27 +107,7 @@ public class CollectionScreen extends LazyScreen {
 
         // Trash on Stage 1
         if (count < 1) count = 1;
-        else if(currentUnlock == -1) count = 1;
-        else if(currentUnlock == -1) count = 2;
-        else if(currentUnlock == -1) count = 3;
-        else if(currentUnlock == -1) count = 4;
-        else if(count == 5 && currentUnlock == 0) count = 5;
-        else if(count == 6 && currentUnlock == 1) count = 6;
-        else if(count == 7 && currentUnlock == 2) count = 7;
-        else if(count == 8 && currentUnlock == 3) count = 8;
-        else if(count == 9 && currentUnlock == 4) count = 9;
-        else if(count == 10 && currentUnlock == 5) count = 10;
-        else if(count == 11 && currentUnlock == 6) count = 11;
-        else if(count == 12 && currentUnlock == 7) count = 12;
-        else if(count == 13 && currentUnlock == 8) count = 13;
-        else if(count == 14 && currentUnlock == 9) count = 14;
-        else if(count == 15 && currentUnlock == 10) count = 15;
-        else if(count == 16 && currentUnlock == 11) count = 16;
-        else if(count == 17 && currentUnlock == 12) count = 17;
-        else if(count == 18 && currentUnlock == 13) count = 18;
-        else if(count == 19 && currentUnlock == 14) count = 19;
-        else if(count == 20 && currentUnlock == 15) count = 20;
-        else if (count > 20) count = 20;
+        if (count > 20) count = 20;
 
         switch (count) {
             case 1:
@@ -257,6 +237,15 @@ public class CollectionScreen extends LazyScreen {
                 cardToDraw = spray;
         }
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
+            game.batch.draw(rh, vw / 1.23F, vh / 1.9F, vw / 45, vh / 24);
+            count++;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
+            game.batch.draw(lh, vw / 6, vh / 1.9F, vw / 45, vh / 24);
+            count--;
+        }
         if (vw < 1500) {
             game.batch.draw(cardToDraw, vw / 2.52F, vh / 3.1F, vw / 5, vh / 2.2F);
         } else {
@@ -290,21 +279,6 @@ public class CollectionScreen extends LazyScreen {
         }
         layoutTrashType.setText(fontTrashType, typeToDraw, Color.WHITE, vw, Align.center, true);
         fontTrashType.draw(batch, layoutTrashType, 0, vw / 24);
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_RIGHT)) {
-            game.batch.draw(rh, vw / 1.23F, vh / 1.9F, vw / 45, vh / 24);
-            count++;
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DPAD_LEFT)) {
-            game.batch.draw(lh, vw / 6, vh / 1.9F, vw / 45, vh / 24);
-            count--;
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) currentUnlock++;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) currentUnlock--;
-        if (currentUnlock > 15) currentUnlock = 15;
-        if (currentUnlock < -1) currentUnlock = -1;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setLazyScreen(screens.get(MenuScreen.class));

@@ -130,7 +130,7 @@ public class ResultScreen extends LazyScreen {
         this.footer = assets.get(GLOBAL_FOOTER_METAL_BAR, TEXTURE);
         this.btnBack = assets.get(GLOBAL_ICON_BACK, TEXTURE);
         this.btnContinue = assets.get(GLOBAL_ICON_CONTINUE, TEXTURE);
-        this.font = assets.get8bitFont(54, Color.RED);
+        this.font = assets.get8bitFont(54, Color.WHITE);
     }
 
     public void setGrade(float fullScoreOfTheStage, float playerScore) {

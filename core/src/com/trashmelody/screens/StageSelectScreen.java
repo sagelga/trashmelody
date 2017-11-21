@@ -144,7 +144,6 @@ public class StageSelectScreen extends LazyScreen {
             case (0):
                 highScoreToShow = cafe.highScore;
                 stageNameToShow = "DIRTY CAFE";
-                gameScreen.setSongTitle("What is this song");
                 game.batch.draw(bdCafeShow, vw / 2, vh / 1.55F, vw / 6, vw / 9);
 
                 currentBeatmap = getBeatmapFromBuilding(cafe);

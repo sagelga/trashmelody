@@ -93,8 +93,6 @@ public class GameScreen extends LazyScreen {
     private SpriteBatch batch;
     private Command command = Command.Loading;
 
-    private String songTitle = "";
-
     public enum Command {
         Loading, Ready, Waiting, Start, Restart, End
     }
@@ -271,7 +269,7 @@ public class GameScreen extends LazyScreen {
         assets.load(NICE_ACCURACY, TEXTURE);
         assets.load(GOOD_ACCURACY, TEXTURE);
         assets.load(PERFECT_ACCURACY, TEXTURE);
-        assets.load(GAME_SONG_NAME_1, TEXTURE);
+//        assets.load(GAME_SONG_NAME_1, TEXTURE);
         assets.load(GAME_STATUS_BAR, TEXTURE);
         assets.load(MUSIC_1_SONG, MUSIC);
 
@@ -312,7 +310,7 @@ public class GameScreen extends LazyScreen {
         this.cool = assets.get(NICE_ACCURACY, TEXTURE);
         this.good = assets.get(GOOD_ACCURACY, TEXTURE);
         this.perfect = assets.get(PERFECT_ACCURACY, TEXTURE);
-        this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
+//        this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
         this.font = assets.getSuperSpaceFont(40, Color.WHITE);
         this.font_SongTitle = assets.getSuperSpaceFont(60, Color.WHITE);
@@ -321,12 +319,13 @@ public class GameScreen extends LazyScreen {
     }
 
     private void drawBackground() {
+        String songTitleToShow = beatmap.getMetadata().getTitleRomanized();
+
         game.batch.draw(bg1, 0, vh / 10, vw, vh / 1.15F);
         game.batch.draw(bgFooter, 0, 0, vw, vh / 2);
         game.batch.draw(levelScoreBar, vw / 2, vh / 1.07F, vw / 2, vh / 7);
         game.batch.draw(songNameBar, 0, vh / 1.09F, vw / 1.8F, vh / 10);
-//        game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
-        font_SongTitle.draw(batch, songTitle, vw / 64, vh / 1.02F);
+        font_SongTitle.draw(batch, songTitleToShow, vw / 64, vh / 1.02F);
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
@@ -359,9 +358,4 @@ public class GameScreen extends LazyScreen {
         TrashType.Wet, new Vector2(1440 / PPM, 540 / PPM),
         TrashType.General, new Vector2(1760 / PPM, 540 / PPM)
     );
-
-    public void setSongTitle(String name) {
-        this.songTitle = name;
-    }
-
 }

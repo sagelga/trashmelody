@@ -37,6 +37,7 @@ import io.vavr.collection.Map;
 import java.util.Vector;
 
 import static com.badlogic.gdx.Input.Keys.*;
+import static com.trashmelody.constants.B2Dvars.PPM;
 import static com.trashmelody.managers.Assets.*;
 import static com.trashmelody.utils.RenderingUtils.*;
 
@@ -131,6 +132,11 @@ public class GameScreen extends LazyScreen {
         game.batch.end();
 
         handleCommand(delta);
+
+        game.batch.setProjectionMatrix(camera.combined);
+        game.batch.begin();
+        drawForeground();
+        game.batch.end();
     }
 
     private void handleCommand(float delta) {
@@ -203,9 +209,7 @@ public class GameScreen extends LazyScreen {
         scanLine = new ScanLineComponent(music, beatmap, 2F);
         health = new HealthComponent(Constants.MAX_HEALTH);
         dispatch = new DispatchComponent(beatmap, 2F);
-        engine.addEntity(new Platform(world));
         engine.addEntity(new Player(
-            world,
             new PlayerComponent(D, F, J, K),
             new TypeComponent(TypeComponent.PLAYER)
         ));
@@ -319,14 +323,6 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(levelScoreBar, vw / 2, vh / 1.07F, vw / 2, vh / 7);
         game.batch.draw(songNameBar, 0, vh / 1.09F, vw / 1.8F, vh / 10);
         game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
-        game.batch.draw(dangerRedBin, vw / 128, vw / 128, vw / 7F, vh / 5);
-        game.batch.draw(recycleBin, vw / 5.6F, vw / 128, vw / 7F, vh / 5);
-        game.batch.draw(yellowBin, vw / 1.47F, vw / 128, vw / 7F, vh / 5);
-        game.batch.draw(idkBin, vw / 1.18F, vw / 128, vw / 7F, vh / 5);
-        game.batch.draw(redBinPlot, vw / 128, vh / 2.3F, vw / 7F, vh / 16);
-        game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
-        game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
-        game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
         game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
@@ -342,11 +338,22 @@ public class GameScreen extends LazyScreen {
 //        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Game Screen");
     }
 
-    public static Map<TrashType, Vector2> BIN_POSITION_MAPPER = HashMap.of(
-        TrashType.Dangerous, new Vector2(1, 1),
-        TrashType.Recycle, new Vector2(2, 1),
-        TrashType.Wet, new Vector2(3, 1),
-        TrashType.General, new Vector2(4, 1)
+    private void drawForeground() {
+        game.batch.draw(dangerRedBin, vw / 128, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(recycleBin, vw / 5.6F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(yellowBin, vw / 1.47F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(idkBin, vw / 1.18F, vw / 128, vw / 7F, vh / 5);
+        game.batch.draw(redBinPlot, vw / 128, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
+    }
+
+    public static Map<TrashType, Vector2> binPositionMapper = HashMap.of(
+        TrashType.Dangerous, new Vector2(160 / PPM, 540 / PPM),
+        TrashType.Recycle, new Vector2(480 / PPM, 540 / PPM),
+        TrashType.Wet, new Vector2(1440 / PPM, 540 / PPM),
+        TrashType.General, new Vector2(1760 / PPM, 540 / PPM)
     );
 
 }

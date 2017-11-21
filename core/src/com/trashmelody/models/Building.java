@@ -1,8 +1,13 @@
 package com.trashmelody.models;
 
+import com.badlogic.gdx.audio.Music;
+
 public class Building {
     private String name;
     private String beatmapGroupId;
+    private String easyBeatmapId;
+    private String mediumBeatmapId;
+    private String hardBeatmapId;
     public int highScore;
 
     public Building(String name, String beatmapGroupId) {

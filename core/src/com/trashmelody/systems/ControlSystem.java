@@ -4,27 +4,17 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.World;
 import com.google.inject.Inject;
 import com.trashmelody.TrashMelody;
 import com.trashmelody.components.*;
 import com.trashmelody.components.ScanLineComponent.State;
 import com.trashmelody.constants.Constants;
-import com.trashmelody.entities.FallingTrash;
 import com.trashmelody.entities.HitObjectEntity;
 import com.trashmelody.handlers.KeyboardController;
-import com.trashmelody.managers.Assets;
 import com.trashmelody.managers.ScreenProvider;
-import com.trashmelody.models.trashes.Trash;
 import com.trashmelody.models.trashes.TrashType;
-import com.trashmelody.screens.GameScreen;
 import com.trashmelody.screens.PauseScreen;
 import io.vavr.control.Option;
-
-import static com.trashmelody.managers.Assets.PLASTIC_BAG_HIT_OBJECT;
-import static com.trashmelody.managers.Assets.TEXTURE;
 
 public class ControlSystem extends IteratingSystem {
     private TrashMelody game;

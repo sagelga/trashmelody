@@ -1,14 +1,9 @@
 package com.trashmelody.entities;
 
-import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.trashmelody.components.*;
-
-import static com.trashmelody.constants.B2Dvars.PPM;
-import static com.trashmelody.constants.Constants.yUpperBound;
 
 public class FallingTrash extends Entity {
 
@@ -17,7 +12,7 @@ public class FallingTrash extends Entity {
                         TextureComponent texture,
                         TypeComponent type) {
 
-        TransformComponent transformComponent = new TransformComponent(position.x, position.y, 0.8F, 0.8F);
+        TransformComponent transformComponent = new TransformComponent(position.x, position.y, 0.5F, 0.5F);
 
         CircleShape shape = new CircleShape();
         shape.setRadius(0.3F);

@@ -85,7 +85,7 @@ public class GuideCardScreen extends LazyScreen {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
             game.batch.draw(anykey.getKeyFrame(0), (vw/2)-((vw/1.6F)/2), vh/21, vw/1.6F, findRatio(8, 1, vh, 'h'));
         }
-        
+
         //Trash Unlocked Case
         String[] trashName = {"Cigar", "Hairspray-chan","Pep", "Oily Oiler",
                 "MookMook", "Pep", "The Trio", "SaiSai", "Keri-a", "Izu-chan", "Matty", "Popu-san"};
@@ -130,7 +130,7 @@ public class GuideCardScreen extends LazyScreen {
         }
 
         // Debug zone
-        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Collection Screen");
+//        if (Debugger.debug_mode) Debugger.runDebugger(game.batch, game.font, "Collection Screen");
         // Debug zone
 
         game.batch.end();

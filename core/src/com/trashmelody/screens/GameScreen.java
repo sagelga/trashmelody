@@ -53,7 +53,7 @@ public class GameScreen extends LazyScreen {
     private ScanLineComponent scanLine;
     private HealthComponent health;
     private DispatchComponent dispatch;
-    private BitmapFont font;
+    private BitmapFont font, font_SongTitle;
     private float vh = getViewportHeight();
     private float vw = getViewportWidth();
     private Beatmap beatmap;
@@ -92,6 +92,8 @@ public class GameScreen extends LazyScreen {
     private Texture hpBar;
     private SpriteBatch batch;
     private Command command = Command.Loading;
+
+    private String songTitle = "";
 
     public enum Command {
         Loading, Ready, Waiting, Start, Restart, End
@@ -313,6 +315,7 @@ public class GameScreen extends LazyScreen {
         this.songName = assets.get(GAME_SONG_NAME_1, TEXTURE);
         this.hpBar = assets.get(GAME_STATUS_BAR, TEXTURE);
         this.font = assets.getSuperSpaceFont(40, Color.WHITE);
+        this.font_SongTitle = assets.getSuperSpaceFont(60, Color.WHITE);
 
         prepareEngine();
     }
@@ -322,10 +325,9 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(bgFooter, 0, 0, vw, vh / 2);
         game.batch.draw(levelScoreBar, vw / 2, vh / 1.07F, vw / 2, vh / 7);
         game.batch.draw(songNameBar, 0, vh / 1.09F, vw / 1.8F, vh / 10);
-        game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
-        game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
+//        game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
+        font_SongTitle.draw(batch, songTitle, vw / 64, vh / 1.02F);
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
-        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
@@ -347,6 +349,8 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
+        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
     }
 
     public static Map<TrashType, Vector2> binPositionMapper = HashMap.of(
@@ -355,5 +359,9 @@ public class GameScreen extends LazyScreen {
         TrashType.Wet, new Vector2(1440 / PPM, 540 / PPM),
         TrashType.General, new Vector2(1760 / PPM, 540 / PPM)
     );
+
+    public void setSongTitle(String name) {
+        this.songTitle = name;
+    }
 
 }

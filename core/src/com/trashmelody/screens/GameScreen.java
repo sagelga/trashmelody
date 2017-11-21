@@ -323,9 +323,7 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(levelScoreBar, vw / 2, vh / 1.07F, vw / 2, vh / 7);
         game.batch.draw(songNameBar, 0, vh / 1.09F, vw / 1.8F, vh / 10);
         game.batch.draw(songName, vw / 128, vh / 1.05F, vw / 3.2F, vh / 32);
-        game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
         game.batch.draw(levelCover, vw / 1.8F, vh / 1.05F, vw / 7, vh / 30);
-        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
         game.batch.draw(normal, vw / 1.73F, vh / 1.05F, vw / 10, vh / 30);
         //game.batch.draw(easy,vw/1.73F,vh/1.05F,vw/10,vh/30);
         //game.batch.draw(hard,vw/1.73F,vh/1.05F,vw/10,vh/30);
@@ -347,6 +345,8 @@ public class GameScreen extends LazyScreen {
         game.batch.draw(recycleBinPlot, vw / 5.6F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(yellowBinPlot, vw / 1.47F, vh / 2.3F, vw / 7F, vh / 16);
         game.batch.draw(idkBinPlot, vw / 1.18F, vh / 2.3F, vw / 7F, vh / 16);
+        game.batch.draw(footerTab, 0, 0, vw, findRatio(1920, 80, vw, 'h'));
+        game.batch.draw(pauseTab, vw / 1.16F, 0, vw / 8, findRatio(218, 59, vw/8, 'h'));
     }
 
     public static Map<TrashType, Vector2> binPositionMapper = HashMap.of(

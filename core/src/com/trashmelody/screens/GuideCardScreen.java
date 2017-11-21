@@ -85,11 +85,12 @@ public class GuideCardScreen extends LazyScreen {
             game.batch.draw(bg.getKeyFrame(0), 0, 0, findRatio(16, 9, vh, 'w'), vh);
             game.batch.draw(anykey.getKeyFrame(0), (vw/2)-((vw/1.6F)/2), vh/21, vw/1.6F, findRatio(8, 1, vh, 'h'));
         }
-
-        //Trash Unlocked Case
-        String[] trashName = {"Cigar", "Hairspray-chan","Pep", "Oily Oiler",
-                "MookMook", "Pep", "The Trio", "SaiSai", "Keri-a", "Izu-chan", "Matty", "Popu-san"};
-        Texture[] trashTexture = {cigar,spray,note};
+        
+        //Trash Unlocked 16 (0-15)Case
+        String[] trashName = {"Botty", "Pep","Popu-san", "dish - dash", "Cigar", "SaiSai", "Keri-a", "toothpast",
+                "Hairspray-chan", "MookMook", "Matty", "Raggy", "Oily Oiler", "The Trio", "Izu-chan", "Immortal bag"};
+        Texture[] trashTexture = {bottle, note,popcorn,plate,cigar,plastic,curry,tooth,spray,glass
+        ,matcha,cloth,can,paper,icecream,bag};
         int currentUnlock = -1;
         if(currentUnlock < 0) {
             game.batch.draw(header2, 0, vh / 1.12F, vw, vh / 8);

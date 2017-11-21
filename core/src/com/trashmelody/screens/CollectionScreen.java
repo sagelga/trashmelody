@@ -48,7 +48,7 @@ public class CollectionScreen extends LazyScreen {
     //Bin
     private Texture dangerBin, recycleBin, wetBin, idkBin;
     //Temporary Current Stage
-    private int currentStage = 1;
+    private int currentUnlock = -1;
     float elapsed;
     private GlyphLayout layoutTitle = new GlyphLayout();
     private GlyphLayout layoutDesc = new GlyphLayout();
@@ -107,7 +107,27 @@ public class CollectionScreen extends LazyScreen {
 
         // Trash on Stage 1
         if (count < 1) count = 1;
-        if (count > 4 * currentStage) count = 4 * currentStage;
+        else if(currentUnlock == -1) count = 1;
+        else if(currentUnlock == -1) count = 2;
+        else if(currentUnlock == -1) count = 3;
+        else if(currentUnlock == -1) count = 4;
+        else if(count == 5 && currentUnlock == 0) count = 5;
+        else if(count == 6 && currentUnlock == 1) count = 6;
+        else if(count == 7 && currentUnlock == 2) count = 7;
+        else if(count == 8 && currentUnlock == 3) count = 8;
+        else if(count == 9 && currentUnlock == 4) count = 9;
+        else if(count == 10 && currentUnlock == 5) count = 10;
+        else if(count == 11 && currentUnlock == 6) count = 11;
+        else if(count == 12 && currentUnlock == 7) count = 12;
+        else if(count == 13 && currentUnlock == 8) count = 13;
+        else if(count == 14 && currentUnlock == 9) count = 14;
+        else if(count == 15 && currentUnlock == 10) count = 15;
+        else if(count == 16 && currentUnlock == 11) count = 16;
+        else if(count == 17 && currentUnlock == 12) count = 17;
+        else if(count == 18 && currentUnlock == 13) count = 18;
+        else if(count == 19 && currentUnlock == 14) count = 19;
+        else if(count == 20 && currentUnlock == 15) count = 20;
+        else if (count > 20) count = 20;
 
         switch (count) {
             case 1:
@@ -131,9 +151,14 @@ public class CollectionScreen extends LazyScreen {
                 break;
             case 4:
                 cardToDraw = pencil;
+                nameToDraw = "Pencie";
+                descToDraw = "a nerd in school on trash world, " +
+                        "he is very smart every one can depends on him when struggle on something";
                 break;
             case 5:
                 cardToDraw = bottle;
+                nameToDraw = "Botty";
+                descToDraw = "Good Bottle Guys that want to be a hero";
                 break;
             case 6:
                 cardToDraw = note;
@@ -150,6 +175,8 @@ public class CollectionScreen extends LazyScreen {
                 break;
             case 8:
                 cardToDraw = plate;
+                nameToDraw = "dish - dash";
+                descToDraw = "the most friendly girl on trash world she always positive and friendly on everything";
                 break;
             case 9:
                 cardToDraw = cigar;
@@ -172,6 +199,9 @@ public class CollectionScreen extends LazyScreen {
                 break;
             case 12:
                 cardToDraw = tooth;
+                nameToDraw = "toothpast";
+                descToDraw = "Pencie’s closefriends .He is smart and clean guy so " +
+                        "he always clean every tooth of everybody in trash world";
                 break;
             case 13:
                 cardToDraw = spray;
@@ -195,6 +225,9 @@ public class CollectionScreen extends LazyScreen {
                 break;
             case 16:
                 cardToDraw = cloth;
+                nameToDraw = "Raggy";
+                descToDraw = "a slave in the cafe every one always use and insult him " +
+                        "on one decide him as friend except dish-dash";
                 break;
             case 17:
                 cardToDraw = can;
@@ -268,10 +301,10 @@ public class CollectionScreen extends LazyScreen {
             count--;
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) currentStage++;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) currentStage--;
-        if (currentStage > 5) currentStage = 5;
-        if (currentStage < 1) currentStage = 1;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.O)) currentUnlock++;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) currentUnlock--;
+        if (currentUnlock > 15) currentUnlock = 15;
+        if (currentUnlock < -1) currentUnlock = -1;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setLazyScreen(screens.get(MenuScreen.class));

@@ -8,16 +8,14 @@
 
 <hr>
 <h2 align="center">วิธีการเรื่มเกม</h2>
-<p>เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด เพื่อการเล่นทีดีที่สุด<br>แต่ท่านก็สามารถเข้าไปเล่นได้ในทันที โดยการกด Double Click ที่ตัวเกม .exe เพื่อเรื่มเล่นเกม<br>
-และหากว่ายังเล่นยังไม่เป็น ก็สามารถเข้าไปดูได้ที่</p>[github.com/sagelga/wiki](https://github.com/sagelga/wiki)
+<p>เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด [ได้ที่นี่](https://github.com/sagelga/trashmelody/releases)<br> โดยการ Extract และกด Double Click ที่ desktop1.0.jar เพื่อเรื่มเล่นเกม<br>
+
+และหากว่ายังเล่นยังไม่เป็นก็สามารถเข้าไปดูได้ที่</p>[github.com/sagelga/trashmelody/wiki](https://github.com/sagelga/trashmelody/wiki)><br>
+และหากต้องการที่จะอ่านรายละเอียดของเกม ก็สามารถที่จะเข้าไปที่หน้า Wiki ได้เช่นเดียวกัน
 
 <hr>
-<h2 align="center">Documentations</h2>
-We have recorded all of the resources in the wiki. Please check out the wiki page [here](https://github.com/sagelga/trashmelody/wiki)
-                             
-<hr>
-<h2 align="center">The teams</h2>
-<p align="center">We are a student in Information Technology, King Mongkut Institute of Technology Ladkrabang</p>
+<h2 align="center">ทีมผู้ผลิต TrashMelody</h2>
+<p align="center">We are a student in</p>
 
 <h3>Team Members</h3>
 <table style="width:100%">
@@ -29,53 +27,53 @@ We have recorded all of the resources in the wiki. Please check out the wiki pag
     </tr>
 
 <tr>
-    <td><img height="100px" 
-             width="100px" 
-             src="https://avatars0.githubusercontent.com/u/20960087" 
+    <td><img height="100px"
+             width="100px"
+             src="https://avatars0.githubusercontent.com/u/20960087"
              alt="Profile Photos"></td>
-    <td>Kavin<br>Rueangprateepsang</td>
+    <td>กวิน<br>เรืองประทีปแสง</td>
     <td>59070009</td>
-    <td>Developer<br><a href="https://github.com/kavinvin">@kavinvin</a></td>
+    <td>นักพัฒนา<br><a href="https://github.com/kavinvin">@kavinvin</a></td>
 </tr>
 
 <tr>
-    <td><img height="100px" 
-             width="100px" 
-             src="https://avatars0.githubusercontent.com/u/13056824" 
+    <td><img height="100px"
+             width="100px"
+             src="https://avatars0.githubusercontent.com/u/13056824"
              alt="Profile Photos"></td>
-    <td>Kunanon<br>Srisuntiroj</td>
+    <td>คุณานนต์<br>ศรีสันติโรจน์</td>
     <td>59070022</td>
-    <td>Developer<br><a href="https://github.com/sagelga">@sagelga</a></td>
+    <td>นักพัฒนา<br><a href="https://github.com/sagelga">@sagelga</a></td>
 </tr>
 
 <tr>
-    <td><img height="100px" 
-             width="100px" 
-             src="https://avatars0.githubusercontent.com/u/22119886" 
+    <td><img height="100px"
+             width="100px"
+             src="https://avatars0.githubusercontent.com/u/22119886"
              alt="Profile Photos"></td>
-    <td>Thitipat<br>Worrarat</td>
+    <td>ฐิติภัทร<br>วรรัตน์</td>
     <td>59070043</td>
-    <td>Developer<br><a href="https://github.com/ynhof6">@ynhof6</a></td>
+    <td>นักพัฒนา<br><a href="https://github.com/ynhof6">@ynhof6</a></td>
 </tr>
 
 <tr>
-    <td><img height="100px" 
-         width="100px" 
-         src="https://avatars0.githubusercontent.com/u/3814520" 
+    <td><img height="100px"
+         width="100px"
+         src="https://avatars0.githubusercontent.com/u/3814520"
          alt="Profile Photos"></td>
-    <td>Nathan<br>Yiangsupapaanontr</td>
+    <td>นาธาน<br>เยี่ยงศุภพานนทร์</td>
     <td>59070087</td>
-    <td>Developer<br><a href="https://github.com/DobaKung">@dobakung</a></td>
+    <td>นักพัฒนา<br><a href="https://github.com/DobaKung">@dobakung</a></td>
 </tr>
 
 <tr>
-    <td><img height="100px" 
-         width="100px" 
-         src="https://avatars0.githubusercontent.com/u/31977194" 
+    <td><img height="100px"
+         width="100px"
+         src="https://avatars0.githubusercontent.com/u/31977194"
          alt="Profile Photos"></td>
-    <td>Apichaya<br>Khumpoh</td>
+    <td>อภิชญา<br>ค้ำโพธิ์</td>
     <td>59070186</td>
-    <td>Graphic Designer<br><a href="https://github.com/Yupiiina">@yupiiina</a></td>
+    <td>ออกแบบดีไซน์เกม<br><a href="https://github.com/Yupiiina">@yupiiina</a></td>
 </tr>
 
 </table>
@@ -90,17 +88,17 @@ We have recorded all of the resources in the wiki. Please check out the wiki pag
     </tr>
 
 <tr>
-    <td><img height="100px" 
-             width="100px" 
-             src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/22046935_1550697448309193_9201685132243419545_n.jpg?oh=cf4cf636c968df088efd8135c34e2b4a&oe=5AAD43F0" 
+    <td><img height="100px"
+             width="100px"
+             src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/22046935_1550697448309193_9201685132243419545_n.jpg?oh=cf4cf636c968df088efd8135c34e2b4a&oe=5AAD43F0"
              alt="Profile Photos"></td>
     <td>Asst. Professor<br>Manop<br>Phankokkruad</td>
 </tr>
 
 <tr>
-    <td><img height="100px" 
-             width="100px" 
-             src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t31.0-8/20748257_10155539234573805_8065043536591232148_o.jpg?oh=b23af60fd0ba5907165e4c0faa34c7bc&oe=5AAC4ACC" 
+    <td><img height="100px"
+             width="100px"
+             src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t31.0-8/20748257_10155539234573805_8065043536591232148_o.jpg?oh=b23af60fd0ba5907165e4c0faa34c7bc&oe=5AAC4ACC"
              alt="Profile Photos"></td>
     <td>Asst. Professor<br>Thanisa<br>Noomnon</td>
 </tr>
@@ -117,4 +115,3 @@ We have recorded all of the resources in the wiki. Please check out the wiki pag
 <img src="http://forthebadge.com/images/badges/powered-by-responsibility.svg">
 <img src="http://forthebadge.com/images/badges/built-with-love.svg">
 </p>
-

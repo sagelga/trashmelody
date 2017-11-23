@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../../../core/src"/>
+	<levels>
+		<level name="Gradle: com.badlogicgames.gdx:gdx:1.9.6" value="project"/>
+		<level name="Gradle: com.badlogicgames.gdx:gdx-box2d:1.9.6" value="project"/>
+		<level name="Gradle: com.badlogicgames.ashley:ashley:1.7.0" value="project"/>
+		<level name="Gradle: com.badlogicgames.gdx:gdx-freetype:1.9.6" value="project"/>
+		<level name="Gradle: com.google.inject:guice:4.1.0" value="project"/>
+		<level name="Gradle: com.google.inject.extensions:guice-multibindings:4.1.0" value="project"/>
+		<level name="Gradle: com.google.inject.extensions:guice-grapher:4.1.0" value="project"/>
+		<level name="Gradle: io.vavr:vavr:0.9.1" value="project"/>
+		<level name="Gradle: org.testng:testng:6.9.10" value="project"/>
+		<level name="Gradle: javax.inject:javax.inject:1" value="project"/>
+		<level name="Gradle: aopalliance:aopalliance:1.0" value="project"/>
+		<level name="Gradle: com.google.guava:guava:19.0" value="project"/>
+		<level name="Gradle: com.google.inject.extensions:guice-assistedinject:4.1.0" value="project"/>
+		<level name="Gradle: io.vavr:vavr-match:0.9.1" value="project"/>
+		<level name="Gradle: com.beust:jcommander:1.48" value="project"/>
+		<level name="Gradle: org.beanshell:bsh:2.0b4" value="project"/>
+	</levels>
+</component>

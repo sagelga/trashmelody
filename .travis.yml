@@ -14,27 +14,16 @@ script:
     # Calculate .java count
     - echo '|Lines |Words |Chars' > java_tracker.txt
     - git ls-files | grep "\(.java\)$" | xargs wc -cwl
-    - git ls-files | grep "\(.java\)$" | xargs wc -cwl >> java_tracker.txt
     # Calculate with coverage
     - cloc core
-    - cloc core > adv_java_tracker.txt
     - cloc desktop
-    - cloc desktop >> adv_java_tracker.txt
     - cloc . --by-file-by-lang
-    - cloc . --by-file-by-lang > all_adv_java_tracker.txt
     # Calculate .gradle count
-    #- echo '|Lines |Words |Chars' > gradle_tracker.txt
     - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl
-    #- git ls-files | grep "\(.gradle\)$" | xargs wc -cwl >> gradle_tracker.txt
     # Lists all assets
-    - git ls-files > assets_list.txt
+    - git ls-files
     # Keep the development graph line
     - git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
-    #- git log --graph --full-history --all --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" > logs.txt
-    # Check directory again
-    - mkdir trackers
-    - mv *.txt trackers/
-    - ls -las
     # Gives out lists of Gradle Tasks
     - gradle -q tasks
     # Deletes previous build cache

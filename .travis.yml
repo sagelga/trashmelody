@@ -1,5 +1,6 @@
 language: java
 jdk: oraclejdk8
+sudo: true
 
 script:
     # Checking Java version + Directories
@@ -15,6 +16,7 @@ script:
     - echo '|Lines |Words |Chars' > java_tracker.txt
     - git ls-files | grep "\(.java\)$" | xargs wc -cwl
     # Calculate with coverage
+    - sudo apt-get install cloc 
     - cloc core
     - cloc desktop
     - cloc . --by-file-by-lang

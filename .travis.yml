@@ -1,0 +1,36 @@
+language: java
+jdk: oraclejdk8
+sudo: true
+
+script:
+    # Checking Java version + Directories
+    - readlink -f $(which java)
+    - java -version
+    # Checking Gradle version
+    - gradle -version
+    # Setting JAVA and Gradle to the default path
+    - export PATH=$PATH:/opt/gradle/gradle-4.2.1/bin
+    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+    - export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
+    # Calculate .java count
+    - echo '|Lines |Words |Chars' > java_tracker.txt
+    - git ls-files | grep "\(.java\)$" | xargs wc -cwl
+    # Calculate with coverage
+    - sudo apt-get install cloc 
+    - cloc core
+    - cloc desktop
+    - cloc . --by-file-by-lang
+    # Calculate .gradle count
+    - git ls-files | grep "\(.gradle\)$" | xargs wc -cwl
+    # Lists all assets
+    - git ls-files
+    # Keep the development graph line
+    - git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+    # Gives out lists of Gradle Tasks
+    - gradle -q tasks
+    # Deletes previous build cache
+    - gradle clean
+    # Pretty much like compiling the files
+    - gradle assemble
+    # Do gradle check and gradle assemble
+    - gradle run

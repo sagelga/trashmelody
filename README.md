@@ -1,5 +1,8 @@
-<img align="center" src="https://github.com/sagelga/trashmelody/blob/develop/core/assets/splash-logo.png?raw=true" width="70%">
-﻿<h2 align="center">Welcome to TrashMelody Repository Page</h2>
+<img src="https://github.com/sagelga/trashmelody/blob/develop/core/assets/splash-logo.png?raw=true" width="70%" align="center">
+
+<img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/dangerous%20-%20wbd-01-05-01.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/dangerous%20-%20wbd-01-05-02.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/dangerous%20-%20wbd-01-05-03.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/dangerous%20-%20wbd-01-05-04.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/dangerous%20-%20wbd-01-05.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/general%20-%20nbd-01.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/general%20-%20nbd-02.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/general%20-%20nbd-03.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/general%20-%20nbd-04.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/general%20-%20nbd-05.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/recycle%20-%20nbd-01.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/recycle%20-%20nbd-02.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/recycle%20-%20nbd-03.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/recycle%20-%20nbd-04.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/recycle%20-%20nbd-05.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/wet%20-%20nbd-01.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/wet%20-%20nbd-02.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/wet%20-%20nbd-03.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/wet%20-%20nbd-04.png?raw=true" height="10%" width="10%"><img src="https://github.com/sagelga/trashmelody/blob/master/core/assets/trashes/new-trash/with-border/wet%20-%20nbd-05-05.png?raw=true" height="10%" width="10%">
+
+<h2 align="center">Welcome to TrashMelody Repository Page</h2>
 เมื่อเมืองเต็มไปด้วยขยะ คุณผู้ได้รับหน้าที่อาสาสมัครคัดแยกขยะจึงต้องมาช่วยแยกขยะลงไปในถังขยะให้ถูกต้อง ไม่ว่าจะเป็นขยะทั่วไป ขยะเปียก ขยะรีไซเคิล และขยะอันตราย เมื่อเปิดเกมขึ้นมา ผู้เล่นจะได้เลือกแผนที่ที่จะเล่น แต่ละสถานที่ก็จะมีขยะแตกต่างกันไป เช่น คอนโดฯ ตลาด เป็นต้น ในการเล่นเกม ผู้เล่นจะต้องกดปุ่มเพื่อให้ขยะที่ไหลลงมาตามสายพานถูกจัดไปอยู่ในถังขยะที่ถูกต้อง หากผู้เล่นไม่รู้ว่าขยะใดจะต้องไปอยู่กับถังใด ก็สามารถเปิดดูได้ว่า ขยะประเภทนี้เป็นประเภทอะไร โดยแต่ละด่านก็จะมีเวลาจำกัดแตกต่างกันไป และคะแนนที่คุณจะได้ขึ้นอยู่กับความถูกต้องของขยะที่หล่นไปในถัง หากคัดแยกไม่ถูกต้อง หรือขยะหล่นจากสายพานไปก่อน ก็จะโดนทำโทษโดยการหักคะแนน
 
 ผู้เล่นจะสะสมคะแนนไปเรื่อยๆ เพื่อปลดล็อคด่านต่อไป และในเกมก็มีคอลเลกชันสำหรับสะสมขยะที่ได้เก็บมาแล้วด้วย ยิ่งเล่นไปเรื่อยๆ ก็จะได้เจอขยะชนิดใหม่ๆ ให้สะสมลงในคอลเลกชันมากขึ้น
@@ -8,22 +11,25 @@
 
 <hr>
 <h2 align="center">วิธีการเรื่มเกม</h2>
-<p>เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด [ได้ที่นี่](https://github.com/sagelga/trashmelody/releases)<br> โดยการ Extract และกด Double Click ที่ desktop1.0.jar เพื่อเรื่มเล่นเกม<br>
+เราแนะนำให้ผู้เล่นโหลดเกมเวอร์ชั่นล่าสุด โดยท่านสามารถเข้าไปโหลดได้ที่นี่ https://github.com/sagelga/trashmelody/releases เพื่อการเล่นทีดีที่สุด<br>เมื่อท่านได้โหลดเกมเรียบร้อยแล้ว กรุณากด Double Click ที่ไฟล์ desktop1.0.jar เพื่อเรื่มเกม<br>
 
-และหากว่ายังเล่นยังไม่เป็นก็สามารถเข้าไปดูได้ที่</p>[github.com/sagelga/trashmelody/wiki](https://github.com/sagelga/trashmelody/wiki)><br>
-และหากต้องการที่จะอ่านรายละเอียดของเกม ก็สามารถที่จะเข้าไปที่หน้า Wiki ได้เช่นเดียวกัน
+และหากว่าท่านยังไม่รู้วิธีการเล่น หรือความต้องการพื้นฐาน ก็สามารถเข้าไปดูได้ที่ https://github.com/sagelga/trashmelody/wiki
+
+<hr>
+<h2 align="center">ตัวอย่างเกม</h2>
+<img src="https://github.com/sagelga/trashmelody/blob/develop/Game%20Screenshot/Screenshot1.png" height="50%"><img src="https://github.com/sagelga/trashmelody/blob/develop/Game%20Screenshot/Screenshot2.png" height="50%"><img src="https://github.com/sagelga/trashmelody/blob/develop/Game%20Screenshot/Screenshot3.png" height="50%"><img src="https://github.com/sagelga/trashmelody/blob/develop/Game%20Screenshot/Screenshot4.png" height="50%">
 
 <hr>
 <h2 align="center">ทีมผู้ผลิต TrashMelody</h2>
-<p align="center">We are a student in</p>
+<p align="center">พวกเราคือนักศึกษาชั้นปีที่ 2 คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
 
 <h3>Team Members</h3>
 <table style="width:100%">
     <tr>
         <th></th>
-        <th>Name</th>
-        <th>Student ID</th>
-        <th>Team Role</th>
+        <th>ชื่อ</th>
+        <th>รหัสประจำตัวนักศึกษา</th>
+        <th>หน้าที่</th>
     </tr>
 
 <tr>
@@ -73,14 +79,14 @@
          alt="Profile Photos"></td>
     <td>อภิชญา<br>ค้ำโพธิ์</td>
     <td>59070186</td>
-    <td>ออกแบบดีไซน์เกม<br><a href="https://github.com/Yupiiina">@yupiiina</a></td>
+    <td>ออกแบบ<br><a href="https://github.com/Yupiiina">@yupiiina</a></td>
 </tr>
 
 </table>
 
-<p align="center"> This game is a part of a project of Object Oriented Prorgramming (06016211)<br>in Information Technology, King Mongkut Institute of Technology Ladkrabang.</p>
+<p align="center">โดยรายงาน, Repsitory, Wiki และโปรเจ็คนี้ เป็นส่วนหนึ่งของวิชา การสร้างโปรแกรมเชิงอ็อบเจกต์ (Object Oriented Programming) รหัส 06016211 </p>
 
-<h3>Assistant Teacher</h3>
+<h3>ครูผู้ช่วย</h3>
 <table style="width:100%">
     <tr>
         <th></th>

@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsagelga%2Ftrashmelody.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsagelga%2Ftrashmelody?ref=badge_shield)
+
 <img align="center" src="https://github.com/sagelga/trashmelody/blob/develop/core/assets/splash-logo.png?raw=true" width="70%">
 ﻿<h2 align="center">Welcome to TrashMelody Repository Page</h2>
 เมื่อเมืองเต็มไปด้วยขยะ คุณผู้ได้รับหน้าที่อาสาสมัครคัดแยกขยะจึงต้องมาช่วยแยกขยะลงไปในถังขยะให้ถูกต้อง ไม่ว่าจะเป็นขยะทั่วไป ขยะเปียก ขยะรีไซเคิล และขยะอันตราย เมื่อเปิดเกมขึ้นมา ผู้เล่นจะได้เลือกแผนที่ที่จะเล่น แต่ละสถานที่ก็จะมีขยะแตกต่างกันไป เช่น คอนโดฯ ตลาด เป็นต้น ในการเล่นเกม ผู้เล่นจะต้องกดปุ่มเพื่อให้ขยะที่ไหลลงมาตามสายพานถูกจัดไปอยู่ในถังขยะที่ถูกต้อง หากผู้เล่นไม่รู้ว่าขยะใดจะต้องไปอยู่กับถังใด ก็สามารถเปิดดูได้ว่า ขยะประเภทนี้เป็นประเภทอะไร โดยแต่ละด่านก็จะมีเวลาจำกัดแตกต่างกันไป และคะแนนที่คุณจะได้ขึ้นอยู่กับความถูกต้องของขยะที่หล่นไปในถัง หากคัดแยกไม่ถูกต้อง หรือขยะหล่นจากสายพานไปก่อน ก็จะโดนทำโทษโดยการหักคะแนน
@@ -115,3 +117,7 @@
 <img src="http://forthebadge.com/images/badges/powered-by-responsibility.svg">
 <img src="http://forthebadge.com/images/badges/built-with-love.svg">
 </p>
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsagelga%2Ftrashmelody.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsagelga%2Ftrashmelody?ref=badge_large)
